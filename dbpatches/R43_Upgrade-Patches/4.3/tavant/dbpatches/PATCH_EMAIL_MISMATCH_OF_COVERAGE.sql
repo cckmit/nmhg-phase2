@@ -1,0 +1,14 @@
+--Purpose    : Creating eventstate for email notification for Mismatch of Coverage on Part of /Part On,changes made as a part of 4.3 upgrade
+--Author     : Lavin Hawes
+--Created On : 16-July-10
+
+--INSERT INTO EVENT_STATE (ID,VERSION,NAME,DISPLAY_NAME,D_CREATED_ON,D_INTERNAL_COMMENTS,D_UPDATED_ON,D_LAST_UPDATED_BY,D_CREATED_TIME,D_UPDATED_TIME,D_ACTIVE) 
+--VALUES (EVENT_STATE_SEQ.nextval,0,'MISMATCH_OF_COVERAGE','Mismatch of Part on/Part off coverage',sysdate,null,sysdate,null,CAST(sysdate AS TIMESTAMP),CAST(sysdate AS TIMESTAMP),1)
+--/
+--INSERT INTO EVENT_ROLE_MAPPING (EVENT_TYPES, ROLES) VALUES ((SELECT ID FROM EVENT_STATE WHERE NAME = 'MISMATCH_OF_COVERAGE'),(SELECT ID FROM ROLE WHERE NAME = 'processor'))
+--/
+--INSERT INTO EVENT_ROLE_MAPPING (EVENT_TYPES, ROLES) VALUES ((SELECT ID FROM EVENT_STATE WHERE NAME = 'MISMATCH_OF_COVERAGE'),(SELECT ID FROM ROLE WHERE NAME = 'inventoryAdmin'))
+--/
+--Manish - Moved this part to DB patch PATCH_EMAIL_NOTIFICATION_ATTEMPTING_DUPLICATE_DCAP_CLAIM.sql, this patch not needed.
+COMMIT
+/

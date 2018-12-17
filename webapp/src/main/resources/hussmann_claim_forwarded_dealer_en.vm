@@ -1,0 +1,13 @@
+Hi <b>${userName}</b>,<br/><br/> 
+
+The following claim has been forwarded to you and needs your attention:<br/>
+
+Claim Number: <b>${claimNumber}</b><br/>
+      Status: <b>${state}</b><br/><br/><br/>
+ 
+
+You can sign-in to <a href="${url}">NMHG Warranty System</a> to respond to the claim.<br/><br/>
+
+Thank you.<br/><br/>
+
+Please note that this email is an automated notification. Any reply to this email will not be received. For any inquiries or support, you can send an email to <a href="mailto:iriproductionsupport@tavant.com">iriproductionsupport@tavant.com</a>.

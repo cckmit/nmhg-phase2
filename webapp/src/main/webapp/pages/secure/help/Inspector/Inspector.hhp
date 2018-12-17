@@ -1,0 +1,63 @@
+[OPTIONS]
+Compiled File=Inspector.chm
+Title=Inspector
+Contents File=Inspector.hhc
+Index File=Inspector.hhk
+Default topic=
+Default Window=
+Error log file=
+Display compile progress=No
+Display compile notes=No
+Full-text search=Yes
+Binary Index=Yes
+Auto Index=No
+Enhanced decompilation=No
+Binary TOC=No
+Flat=No
+
+[WINDOWS]
+
+[FILES]
+Part_Returns\index.htm
+Settings\index.htm
+Claims\Policy_Details.htm
+Claims\index.htm
+Inventory\index.htm
+Before_you_Begin\common_application_features.htm
+Parts_Recovery\index.htm
+Before_you_Begin\index.htm
+Claims\Claim_Details.htm
+Claims\Search_Claims.htm
+Part_Returns\Search_Parts.htm
+Parts_Recovery\Shipment_Generated.htm
+Parts_Recovery\Search_Parts.htm
+Parts_Recovery\Parts_Recovery.htm
+Parts_Recovery\Barcode_Feature_and_Search_by_Barcode.htm
+Items\Search_Items.htm
+Before_you_Begin\Before_you_Begin.htm
+Before_you_Begin\Copyright.htm
+Part_Returns\Due_Parts_Inspection.htm
+Inventory\Search_Inventory.htm
+Items\index.htm
+Before_you_Begin\Introduction.htm
+Inventory\Equipment_Details.htm
+Inventory\Inventory.htm
+Settings\Profile.htm
+Parts_Recovery\Supplier_Parts_Shipped.htm
+Parts_Recovery\Supplier_Parts_Claimed.htm
+Parts_Recovery\Shipment_Tag.htm
+eHelp.xml
+RoboHHRE.lng
+
+Inspector.glo
+Inspector.brs
+[ALIAS]
+#include Inspector.ali
+
+[MAP]
+#include BSSCDefault.h
+
+[TEXT POPUPS]
+BSSCDefault.h
+
+

@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Review id="majorcomponent-wntyregaddition-webapp">
+  <ReviewIssue id="G4H3O5OC">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-15 :: 20:34:05:820 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-15 :: 20:34:42:414 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ramalakshmi</ReviewerId>
+    <AssignedTo>Lavin</AssignedTo>
+    <ReviewTime>15</ReviewTime>
+    <File line="128">src/main/java/tavant/twms/web/claim/create/ClaimFormListingAction.java</File>
+    <Type>item.type.label.other</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>Method listPartSerialNumbers seem to be added redundantly during check in.</Summary>
+    <Description>Method listPartSerialNumbers seem to be added redundantly during check in.</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+    <ReworkTime></ReworkTime>
+  </ReviewIssue>
+  <ReviewIssue id="G4H3P87X">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-15 :: 20:34:55:773 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-15 :: 20:35:48:711 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ramalakshmi</ReviewerId>
+    <AssignedTo>Lavin</AssignedTo>
+    <ReviewTime>15</ReviewTime>
+    <File line="672">src/main/java/tavant/twms/web/claim/create/ClaimFormListingAction.java</File>
+    <Type>item.type.label.codingStandards</Type>
+    <Severity>item.label.unset</Severity>
+    <Summary>Move method to WarrantyAction or a common class related to WR</Summary>
+    <Description>Move method to WarrantyAction or a common class related to WR
+Also remove the variable currentSelectedBusinessUnit which is not being used</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+    <ReworkTime></ReworkTime>
+  </ReviewIssue>
+  <ReviewIssue id="G4H3UD1K">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-15 :: 20:38:55:304 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-15 :: 20:41:38:758 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ramalakshmi</ReviewerId>
+    <AssignedTo>Lavin</AssignedTo>
+    <ReviewTime>15</ReviewTime>
+    <File line="618">src/main/java/tavant/twms/web/warranty/WarrantyAction.java</File>
+    <Type>item.type.label.programLogic</Type>
+    <Severity>item.label.unset</Severity>
+    <Summary>InventoryItem creation logic</Summary>
+    <Description>1. Remove duplicate set of setBusinessUnitInfo/setFactoryOrderNumber
+2. Remove ManufacturingSite set up as it can be diffrent for the major component
+3. Remove Source Warehouse set up as it can be diffrent for the major component
+4. Remove FactoryOrderNumber set up as it can be diffrent for the major component
+5. Remove BuiltOn set up as it can be diffrent for the major component
+6.Remove ShipmentDate set up as it can be diffrent for the major component
+7.Use constants for sourceofPart</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+    <ReworkTime></ReworkTime>
+  </ReviewIssue>
+  <ReviewIssue id="G4H45EJC">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-15 :: 20:47:30:456 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-15 :: 20:49:56:584 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ramalakshmi</ReviewerId>
+    <AssignedTo>Lavin</AssignedTo>
+    <ReviewTime></ReviewTime>
+    <File line="397">src/main/webapp/pages/secure/inventory/inventoryequipmenthistory.jsp</File>
+    <Type>item.type.label.programLogic</Type>
+    <Severity>item.severity.label.normal</Severity>
+    <Summary>Add messages key for Major Components</Summary>
+    <Description>Avoid text in s:text and use proper key/value. Take care of the same in warranty_majorcomponents.jsp</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+    <ReworkTime></ReworkTime>
+  </ReviewIssue>
+  <ReviewIssue id="G4H4D0ED">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-15 :: 20:53:25:381 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-15 :: 20:54:21:194 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ramalakshmi</ReviewerId>
+    <AssignedTo>Lavin</AssignedTo>
+    <ReviewTime></ReviewTime>
+    <File line="44">src/main/webapp/pages/secure/warranty/warranty_majorcomponents.jsp</File>
+    <Type>item.type.label.codingStandards</Type>
+    <Severity>item.label.unset</Severity>
+    <Summary>Use constants for InventoryItem SourceOfPart field</Summary>
+    <Description>Use constants for InventoryItem SourceOfPart field</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+    <ReworkTime></ReworkTime>
+  </ReviewIssue>
+  <ReviewIssue id="G4H4KQTD">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-15 :: 20:59:26:209 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-15 :: 20:59:57:662 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ramalakshmi</ReviewerId>
+    <AssignedTo>Lavin</AssignedTo>
+    <ReviewTime></ReviewTime>
+    <File line="104">src/main/webapp/pages/secure/warranty/warranty_majorcomponents.jsp</File>
+    <Type>item.type.label.optimization</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>Why not an empty td rather than making it hidden</Summary>
+    <Description>Why not an empty td rather than making it hidden</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+    <ReworkTime></ReworkTime>
+  </ReviewIssue>
+  <ReviewIssue id="G4H4M2FC">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-15 :: 21:00:27:912 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-15 :: 21:01:05:787 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ramalakshmi</ReviewerId>
+    <AssignedTo>Lavin</AssignedTo>
+    <ReviewTime></ReviewTime>
+    <File line="410">src/main/resources/struts/claims.xml</File>
+    <Type>item.type.label.codingStandards</Type>
+    <Severity>item.label.unset</Severity>
+    <Summary>Move action mapping list_major_components to warranty related action mapping</Summary>
+    <Description>Move action mapping list_major_components to warranty related action mapping</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+    <ReworkTime></ReworkTime>
+  </ReviewIssue>
+</Review>

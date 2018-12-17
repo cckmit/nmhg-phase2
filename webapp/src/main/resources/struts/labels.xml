@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="labels" extends="struts-twms-default">
+		<action name="list_labels"
+			class="tavant.twms.web.common.LabelsAction"
+			method="listLabels">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">
+				pages/secure/home/json.jsp
+			</result>
+		</action>
+		
+		<action name="apply_labels_on_*"
+			class="tavant.twms.web.common.LabelsAction"
+			method="applyLabelsOn{1}">
+			<interceptor-ref name="adminTwmsParamsPrepareParams" />
+			<result name="success">
+				pages/secure/admin/policy/labelSuccess.jsp
+			</result>
+			<result name="input">
+				pages/secure/admin/policy/labelSuccess.jsp
+			</result>
+		</action>
+		
+		<action name="remove_labels_on_*"
+			class="tavant.twms.web.common.LabelsAction"
+			method="removeLabelsOn{1}">
+			<interceptor-ref name="adminTwmsParamsPrepareParams" />
+			<result name="success">
+				pages/secure/admin/policy/labelSuccess.jsp
+			</result>
+			<result name="input">
+				pages/secure/admin/policy/labelSuccess.jsp
+			</result>
+		</action>
+
+		<action name="check_labels_on_*"
+			class="tavant.twms.web.common.LabelsAction"
+			method="checkIfLabelExists">
+			<interceptor-ref name="adminParamsWithoutValidation" />
+			<result name="success">
+				pages/secure/admin/policy/labelSuccess.jsp
+			</result>
+			<result name="input">
+				pages/secure/admin/policy/labelSuccess.jsp
+			</result>
+		</action>
+	</package>
+</struts>

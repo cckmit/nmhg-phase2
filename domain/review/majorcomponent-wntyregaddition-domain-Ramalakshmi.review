@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Review id="majorcomponent-wntyregaddition-domain">
+  <ReviewIssue id="G4H2TQ7D">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-15 :: 20:10:26:089 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-15 :: 20:19:01:304 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ramalakshmi</ReviewerId>
+    <AssignedTo>Lavin</AssignedTo>
+    <ReviewTime>15</ReviewTime>
+    <File line="165">src/main/java/tavant/twms/domain/catalog/CatalogServiceImpl.java</File>
+    <Type>item.type.label.codingStandards</Type>
+    <Severity>item.severity.label.normal</Severity>
+    <Summary>API naming convention</Summary>
+    <Description>Rename getAllItemsWithPurposeWarrantyCoverage to findAllItemsWithGivenPurposes and modify this method to take purpose as an input String</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+    <ReworkTime></ReworkTime>
+  </ReviewIssue>
+  <ReviewIssue id="G4H3E9Z8">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-15 :: 20:26:24:836 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-15 :: 20:26:54:633 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ramalakshmi</ReviewerId>
+    <AssignedTo>Lavin</AssignedTo>
+    <ReviewTime>15</ReviewTime>
+    <File line="160">src/main/java/tavant/twms/domain/catalog/CatalogRepositoryImpl.java</File>
+    <Type>item.type.label.programLogic</Type>
+    <Severity>item.severity.label.normal</Severity>
+    <Summary>Do we need two item groups in the query?</Summary>
+    <Description></Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+    <ReworkTime></ReworkTime>
+  </ReviewIssue>
+</Review>

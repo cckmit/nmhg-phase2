@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<functionalareas xmlns="http://www.tavant.com/twms/security/resource"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.tavant.com/twms/security/resource
+			http://www.tavant.com/twms/security/resource">
+	<functionalarea name="inventory" defaultpolicy="none">
+
+	<!-- Resources for update or Read Only -->
+	
+		<resource type="ui" value="inventoryInventoryTab" operation="OR">
+			<permissions>inventory:inventoryInventoryTab:update,inventory:inventoryInventoryTab:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="inventoryStock" operation="OR">
+			<permissions>inventory:inventoryStock:update,inventory:inventoryStock:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="inventoryRetailed" operation="OR">
+			<permissions>inventory:inventoryRetailed:update,inventory:inventoryRetailed:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="inventoryDefineSearchQuery" operation="OR">
+			<permissions>inventory:inventoryDefineSearchQuery:update,inventory:inventoryDefineSearchQuery:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="inventoryPredefinedStockSearch" operation="OR">
+			<permissions>inventory:inventoryPredefinedStockSearch:update,inventory:inventoryPredefinedStockSearch:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="inventoryPredefinedRetailSearch" operation="OR">
+			<permissions>inventory:inventoryPredefinedRetailSearch:update,inventory:inventoryPredefinedRetailSearch:view
+			</permissions>
+		</resource>
+	
+	<!-- Resources for Read Only-->
+	
+		<resource type="ui" value="inventoryInventoryTabReadOnlyView">
+			<permissions>inventory:inventoryInventoryTab:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="inventoryStockReadOnlyView">
+			<permissions>inventory:inventoryStock:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="inventoryRetailedReadOnlyView">
+			<permissions>inventory:inventoryRetailed:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="inventoryDefineSearchQueryReadOnlyView">
+			<permissions>inventory:inventoryDefineSearchQuery:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="inventoryPredefinedStockSearchReadOnlyView">
+			<permissions>inventory:inventoryPredefinedStockSearch:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="inventoryPredefinedRetailSearchReadOnlyView">
+			<permissions>inventory:inventoryPredefinedRetailSearch:view
+			</permissions>
+		</resource>
+        
+	</functionalarea>
+
+</functionalareas>

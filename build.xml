@@ -1,0 +1,22 @@
+<project name="Server" basedir="." default="run.xradar">
+
+	<target name="run.xradar" depends="copyBuildAndPropertiesFiles">
+		<echo message="copied the necessary files for xradar"/>
+	</target>
+
+	<target name="copyBuildAndPropertiesFiles" description="copies the xradar-build.xml and statics.properties in all modules." >
+		<copy toDir="domain" file="xradar-build.xml"/>
+		<rename src="domain/xradar-build.xml" dest="domain/build.xml"/>
+		<copy toDir="engine" file="xradar-build.xml"/>
+		<rename src="engine/xradar-build.xml" dest="engine/build.xml"/>
+		<copy toDir="webapp" file="xradar-build.xml"/>
+		<rename src="webapp/xradar-build.xml" dest="webapp/build.xml"/>
+		<copy toDir="domain/etc" file="etc/statics.properties"/>
+		<copy toDir="engine/etc" file="etc/statics.properties"/>
+		<copy toDir="webapp/etc" file="etc/statics.properties"/>
+		<copy toDir="domain" file="xradar.bat"/>
+		<copy toDir="engine" file="xradar.bat"/>
+		<copy toDir="webapp" file="xradar.bat"/>
+	</target>
+
+</project>

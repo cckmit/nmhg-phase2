@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OEMXREFSyncRequest>
+	<OEMXREF>
+		<CustomerNumber>1422</CustomerNumber> 
+		<OEMDealer>Husqvarna</OEMDealer> 
+		<ItemMappings>
+			<ItemNumber>23442385</ItemNumber>
+			<OEMItemNumber>1234343H</OEMItemNumber>
+		</ItemMappings>
+		<ItemMappings>
+			<ItemNumber>23556666</ItemNumber>
+			<OEMItemNumber>235235GH</OEMItemNumber>			
+		</ItemMappings>
+		<ItemMappings>			
+			<ItemNumber>94756946</ItemNumber>
+			<OEMItemNumber>H234Y354</OEMItemNumber>
+		</ItemMappings>		
+	</OEMXREF>
+</OEMXREFSyncRequest>

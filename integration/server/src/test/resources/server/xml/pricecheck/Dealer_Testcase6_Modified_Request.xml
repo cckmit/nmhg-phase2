@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PriceFetch lang="en" evnironment="Test" revision="1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <ApplicationArea>
+        <Sender>
+            <Task>CCT_WINDCHILL</Task>
+            <LogicalId>TavantWMS</LogicalId>            	    
+            <ReferenceId>1231</ReferenceId>
+        </Sender>
+        <BODId>INT03</BODId>   
+        <InterfaceNumber></InterfaceNumber>
+        <CreationDateTime>2008-12-19 15:09:26</CreationDateTime>
+    </ApplicationArea>
+    <DataArea>
+    	<BUNAME>NMHG-US</BUName>
+        <PriceCheckRequest>            
+            <WarrantyType>STANDARD</WarrantyType>            
+            <DateOfRepair>2008-03-13-07:00</DateOfRepair>
+            <DealerNo>262320</DealerNo>
+            <CurrencyCode>USD</CurrencyCode>
+            <ReplacedParts>
+               <LineItem>	                    
+	                    <PartNumber>P100</PartNumber>
+	                    <Quantity>2</Quantity>
+			    <ManufacturingLocation>123</ManufacturingLocation>
+			    <UOM>Ounce</UOM>
+			    <DivisionCode>BGN</DivisionCode>
+	                </LineItem>
+	     
+	                <LineItem>	                    
+	                    <PartNumber>P200</PartNumber>
+	                    <Quantity>2</Quantity>
+			    <ManufacturingLocation>123</ManufacturingLocation>
+			    <UOM>POUND</UOM>
+			    <DivisionCode>BGN</DivisionCode>
+	                </LineItem>
+	                
+	                <LineItem>	                    
+	                    <PartNumber>P300</PartNumber>
+	                    <Quantity>2</Quantity>
+			    <ManufacturingLocation>123</ManufacturingLocation>
+			    <UOM>KG</UOM>
+			    <DivisionCode>CHN</DivisionCode>
+	                </LineItem>
+	                
+	                <LineItem>	                    
+	                    <PartNumber>P400</PartNumber>
+	                    <Quantity>2</Quantity>
+			    <ManufacturingLocation>123</ManufacturingLocation>
+			    <UOM>POUND</UOM>
+			    <DivisionCode>KRK</DivisionCode>
+	                </LineItem>
+	                
+	                <LineItem>	                    
+	                    <PartNumber>P500</PartNumber>
+	                    <Quantity>2</Quantity>
+			    <ManufacturingLocation>123</ManufacturingLocation>
+			    <UOM>CM</UOM>
+			    <DivisionCode>ATL</DivisionCode>
+	                </LineItem>
+	                
+	                <LineItem>	                    
+	                    <PartNumber>P600</PartNumber>
+	                    <Quantity>2</Quantity>
+			    <ManufacturingLocation>123</ManufacturingLocation>
+			    <UOM>KG</UOM>
+			    <DivisionCode>GLV</DivisionCode>
+	                </LineItem>
+	                
+	                <LineItem>	                    
+	                    <PartNumber>P700</PartNumber>
+	                    <Quantity>2</Quantity>
+			    <ManufacturingLocation>123</ManufacturingLocation>
+			    <UOM>EACH</UOM>
+			    <DivisionCode>MTY</DivisionCode>
+	                </LineItem>
+	            </ReplacedParts>
+        </PriceCheckRequest>          
+    </DataArea>
+</PriceFetch>
+
+
+

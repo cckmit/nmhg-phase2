@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+  <package name="policyadmin" extends="struts-twms-default">
+
+    <action name="policy"
+      class="tavant.twms.web.admin.policy.ListPolicies">
+      <interceptor-ref name="adminParamsPrepare" />
+      <result name="success">pages/secure/admin/policy/policyInboxView.jsp</result>
+    </action>
+
+    <action name="policy_table_body"
+      class="tavant.twms.web.admin.policy.ListPolicies"
+      method="tableBody">
+      <interceptor-ref name="adminParamsPrepare" />
+      <result name="success">pages/secure/home/json.jsp</result>
+      <result name="input">error.jsp</result>
+    </action>
+
+    <action name="search_policy_rule_fragments"
+      class="tavant.twms.web.admin.policy.SearchPolicyRuleFragments"
+      method="search">
+      <interceptor-ref name="adminTwmsParamsPrepareParams"></interceptor-ref>
+      <result name="success">
+        pages/secure/admin/policy/json.jsp
+      </result>
+    </action>
+
+    <!-- Policy Price Modifier -->
+        <action name="list_policy_price_modifiers"
+            class="tavant.twms.web.admin.policy.ListPolicyPriceModifiers">
+            <interceptor-ref name="adminParamsPrepare" />
+            <result name="success">pages/secure/admin/policy/policy_modifier_inbox_view.jsp</result>
+        </action>
+        
+        <action name="get_policy_price_modifiers_body"
+            class="tavant.twms.web.admin.policy.ListPolicyPriceModifiers"
+            method="tableBody">
+            <interceptor-ref name="adminParamsPrepare" />
+            <result name="success">pages/secure/home/json.jsp</result>
+      		<result name="input">error.jsp</result>
+        </action>
+        <action name="preview_policy_price_modifier"
+            class="tavant.twms.web.admin.policy.ManagePolicyPriceModifiers"
+            method="showPrice">
+            <interceptor-ref name="adminParamsPrepare" />
+            <result name="success">pages/secure/admin/policy/preview_policy_modifier.jsp</result>
+        </action>
+        <action name="view_policy_price_modifier"
+            class="tavant.twms.web.admin.policy.ManagePolicyPriceModifiers"
+            method="showPrice">
+            <interceptor-ref name="adminParamsPrepare" />
+           <result name="success">pages/secure/admin/policy/manage_policy_modifier.jsp</result>
+        </action>
+        <action name="create_policy_price_modifier"
+            class="tavant.twms.web.admin.policy.ManagePolicyPriceModifiers"
+            method="createPrice">
+            <interceptor-ref name="adminTwmsParamsPrepareRepeatTableParams" />
+            <result name="success">pages/secure/admin/success.jsp</result>
+            <result name="input">pages/secure/admin/policy/manage_policy_modifier.jsp</result>
+        </action>
+        <action name="update_policy_price_modifier"
+            class="tavant.twms.web.admin.policy.ManagePolicyPriceModifiers"
+            method="updatePrice">
+            <interceptor-ref name="adminTwmsParamsPrepareRepeatTableParams" />
+            <result name="success">pages/secure/admin/success.jsp</result>
+            <result name="input">pages/secure/admin/policy/manage_policy_modifier.jsp</result>
+        </action>
+        <action name="delete_policy_price_modifier"
+            class="tavant.twms.web.admin.policy.ManagePolicyPriceModifiers"
+            method="deletePrice">
+            <interceptor-ref name="adminParamsPrepare" />
+            <result name="success">pages/secure/admin/success.jsp</result>
+            <result name="input">pages/secure/admin/success.jsp</result>
+        </action>
+        <action name="list_policy_definition_codes"
+            class="tavant.twms.web.admin.policy.ManagePolicyPriceModifiers"
+            method="getPolicyDefinitionCodes">
+            <interceptor-ref name="adminParamsPrepare" />
+        </action>
+
+        <action name="list_policy_label_names"
+            class="tavant.twms.web.admin.policy.ManagePolicyPriceModifiers"
+            method="getPolicyLabelNames">
+            <interceptor-ref name="adminParamsPrepare" />
+      <result name="success">pages/secure/home/json.jsp</result>
+        </action>
+        <!-- End of Policy Price Modifier -->
+    
+    <action name="exportPolicyToExcel"
+                class="tavant.twms.web.admin.policy.ListPolicies" method="downloadListingData">
+            <interceptor-ref name="adminParamsPrepare" />
+    </action>
+    
+    <action name="exportPolicyModiferToExcel"
+            class="tavant.twms.web.admin.policy.ListPolicyPriceModifiers" method="downloadListingData"/>
+
+	<action name="new_policy" class="tavant.twms.web.admin.policy.ManagePolicy" method="newPolicy">
+          <interceptor-ref name="adminParamsPrepare" />
+          <result name="success">/pages/secure/admin/policy/createUpdate_policy.jsp</result>
+    	  <result name="input">/pages/secure/admin/policy/createUpdate_policy.jsp</result>
+    </action>
+    
+    <action name="policy_activate" class="tavant.twms.web.admin.policy.ManagePolicy" method="activatePolicy">
+          <interceptor-ref name="adminParamsPrepareWithoutValidation" />
+    	  <result name="success">/pages/secure/admin/policy/createUpdate_policy.jsp</result>
+    	  <result name="input">/pages/secure/admin/policy/createUpdate_policy.jsp</result>
+    </action>
+    
+    <action name="policy_deactivate" class="tavant.twms.web.admin.policy.ManagePolicy" method="deActivatePolicy">
+          <interceptor-ref name="adminParamsPrepareWithoutValidation" />
+    	  <result name="success">/pages/secure/admin/policy/createUpdate_policy.jsp</result>
+    	  <result name="input">/pages/secure/admin/policy/createUpdate_policy.jsp</result>
+    </action>
+    
+    <action name="create_policy" class="tavant.twms.web.admin.policy.ManagePolicy" method="createPolicy">
+          <interceptor-ref name="adminTwmsParamsPrepareRepeatTableParams" />
+    	  <result name="success">/pages/secure/admin/policy/createUpdate_policy.jsp</result>
+    	  <result name="input">/pages/secure/admin/policy/createUpdate_policy.jsp</result>
+    </action>
+    
+    <action name="update_policy" class="tavant.twms.web.admin.policy.ManagePolicy" method="updatePolicy">
+          <interceptor-ref name="adminTwmsParamsPrepareRepeatTableParams" />
+    	  <result name="success">/pages/secure/admin/policy/createUpdate_policy.jsp</result>
+    	  <result name="input">/pages/secure/admin/policy/createUpdate_policy.jsp</result>
+    </action>
+    
+    <action name="show_search_page" class="tavant.twms.web.admin.policy.ManagePolicy" method="updateI18nTerms">
+          <interceptor-ref name="adminTwmsParamsPrepareParams" />
+    	  <result name="success">pages/secure/admin/policy/applicability_terms_search.jsp</result>
+    	  <result name="input">pages/error.jsp</result>
+    </action>
+        
+    <action name="policy_detail" class="tavant.twms.web.admin.policy.ManagePolicy" method="showDetail">
+          <interceptor-ref name="adminParamsPrepareWithoutValidation" />
+    	  <result name="success">/pages/secure/admin/policy/createUpdate_policy.jsp</result>
+    	  <result name="input">/pages/secure/admin/policy/createUpdate_policy.jsp</result>
+    </action>
+        
+    <action name="policy_preview" class="tavant.twms.web.admin.policy.ManagePolicy" method="showPreview">
+          <interceptor-ref name="adminParamsPrepare" />
+    	  <result name="success">pages/secure/admin/policy/policyPreview.jsp</result>
+    </action>
+    
+    <action name="list_products" class="tavant.twms.web.admin.policy.ManagePolicy" method="listItemgroupsOfDifferentPurposes">
+          <interceptor-ref name="adminParamsPrepareWithoutValidation" />
+    	  <result name="success">pages/secure/home/json.jsp</result>
+    	  <result name="input">pages/error.jsp</result>
+    </action>
+    
+      <action name="list_dealers" class="tavant.twms.web.admin.policy.ManagePolicy" method="getServiceProviderNames">
+          <interceptor-ref name="adminParamsPrepareWithoutValidation" />
+    	  <result name="success">pages/secure/home/json.jsp</result>
+    	  <result name="input">pages/error.jsp</result>
+    </action>
+    
+      <action name="list_DealerGroupsInStandard" class="tavant.twms.web.admin.policy.ManagePolicy" method="listDealerGroupsStandard">
+          <interceptor-ref name="adminParamsPrepareWithoutValidation" />
+    	  <result name="success">pages/secure/home/json.jsp</result>
+    	  <result name="input">pages/error.jsp</result>
+    </action>
+    
+       <action name="list_DealerGroupsInExtended" class="tavant.twms.web.admin.policy.ManagePolicy" method="listDealerGroupsExtended">
+          <interceptor-ref name="adminParamsPrepareWithoutValidation" />
+    	  <result name="success">pages/secure/home/json.jsp</result>
+    	  <result name="input">pages/error.jsp</result>
+    </action>
+
+    
+    
+    <action name="i18nTermsAndConditions"
+        class="tavant.twms.web.admin.policy.ManagePolicy">
+      <interceptor-ref name="adminParamsPrepare" />
+	  <result name="success">pages/secure/admin/policy/i18nPolicyTermsAndCondition.jsp</result>
+    </action>
+    
+    <action name="updateI18nTerms"
+        class="tavant.twms.web.admin.policy.ManagePolicy" method="updateI18nTerms">
+      <interceptor-ref name="adminParamsPrepare" />
+	  <result name="success">pages/secure/admin/policy/i18nPolicyTermsAndCondition.jsp</result>
+    </action>    
+  </package>
+</struts>

@@ -1,0 +1,451 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Review id="supplier-recovery-webapp">
+  <ReviewIssue id="G4L1CTP7">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-18 :: 14:40:22:555 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-18 :: 14:40:57:180 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Nanda</ReviewerId>
+    <AssignedTo>Kaustubh</AssignedTo>
+    <File line="115">src/main/webapp/pages/secure/partreturns/receipt_detail.jsp</File>
+    <Type>item.type.label.suggestion</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>Use &lt;s:if test="claim.open"&gt; instead of &lt;s:if test="%{claim.isOpen()}"&gt;</Summary>
+    <Description></Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="G4L1DP86">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-18 :: 14:41:03:414 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-18 :: 18:28:08:781 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Nanda</ReviewerId>
+    <AssignedTo>Kaustubh</AssignedTo>
+    <File line="123">src/main/webapp/pages/secure/partreturns/receipt_detail.jsp</File>
+    <Type>item.type.label.usability</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>Use autoPickDecendentOf="true" instead of picking a random descendant</Summary>
+    <Description>decendentOf attribute is used to specify the tab that should get the focus on close of opening the new tab.</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="G4L9I9Q2">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-18 :: 18:28:33:530 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-18 :: 18:29:14:310 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Nanda</ReviewerId>
+    <AssignedTo>Kaustubh</AssignedTo>
+    <File line="213">src/main/webapp/pages/secure/claims/forms/part_shipped_not_received/write_Detail.jsp</File>
+    <Type>item.type.label.programLogic</Type>
+    <Severity>item.severity.label.normal</Severity>
+    <Summary>supplierRecoveryData should no longer be included from claim detail page. remove this</Summary>
+    <Description></Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="G4LABSFW">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-18 :: 18:51:30:812 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-18 :: 18:52:20:451 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Nanda</ReviewerId>
+    <AssignedTo>Kaustubh</AssignedTo>
+    <File line="5761">src/main/resources/messages.properties</File>
+    <Type>item.type.label.usability</Type>
+    <Severity>item.severity.label.normal</Severity>
+    <Summary>Correct spelling of Successfull to 'Successful'</Summary>
+    <Description></Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="G4LACZ61">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-18 :: 18:52:26:185 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-18 :: 18:52:56:262 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Nanda</ReviewerId>
+    <AssignedTo>Kaustubh</AssignedTo>
+    <File line="1">src/main/resources/messages.properties</File>
+    <Type>item.type.label.programLogic</Type>
+    <Severity>item.severity.label.normal</Severity>
+    <Summary>Move all keys added to messages_en.properties from messages.properties</Summary>
+    <Description></Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="G4LD0JE4">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-18 :: 20:06:44:716 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-18 :: 20:07:28:541 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Nanda</ReviewerId>
+    <AssignedTo>Kaustubh</AssignedTo>
+    <File line="42">src/main/webapp/pages/secure/common/successFullRefresh.jsp</File>
+    <Type>item.type.label.other</Type>
+    <Severity>item.severity.label.normal</Severity>
+    <Summary>Check only for "Accept" transition. Remove check for "Deny"</Summary>
+    <Description></Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="G4LD1WJG">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-18 :: 20:07:48:412 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-18 :: 20:08:03:625 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Nanda</ReviewerId>
+    <AssignedTo>Kaustubh</AssignedTo>
+    <File line="69">src/main/webapp/pages/secure/common/successWithWarning.jsp</File>
+    <Type>item.type.label.other</Type>
+    <Severity>item.severity.label.normal</Severity>
+    <Summary>Check only for "Accept" transition. Remove check for "Deny"</Summary>
+    <Description></Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="G4M7G1YD">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-19 :: 10:18:37:093 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-19 :: 10:19:13:640 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Nanda</ReviewerId>
+    <AssignedTo>Kaustubh</AssignedTo>
+    <File line="157">src/main/webapp/pages/secure/partreturns/specify_supplier_contract.jsp</File>
+    <Type>item.type.label.usability</Type>
+    <Severity>item.severity.label.normal</Severity>
+    <Summary>Reduce width for date and user. Increase width for comments</Summary>
+    <Description></Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="G4M7HMO3">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-19 :: 10:19:50:595 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-19 :: 10:20:11:683 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Nanda</ReviewerId>
+    <AssignedTo>Kaustubh</AssignedTo>
+    <File line="49">src/main/webapp/pages/secure/common/successFullRefresh.jsp</File>
+    <Type>item.type.label.suggestion</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>Use u:openTab instead</Summary>
+    <Description></Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="G4M7IK38">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-19 :: 10:20:33:908 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-19 :: 10:20:41:966 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Nanda</ReviewerId>
+    <AssignedTo>Kaustubh</AssignedTo>
+    <File line="76">src/main/webapp/pages/secure/common/successWithWarning.jsp</File>
+    <Type>item.type.label.suggestion</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>Use u:openTab instead</Summary>
+    <Description></Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="G4M7ONKB">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-19 :: 10:25:18:347 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-19 :: 17:31:35:422 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Nanda</ReviewerId>
+    <AssignedTo>Sudaksh</AssignedTo>
+    <File line="33">src/main/java/tavant/twms/web/supplier/SpecifySupplierRecoveryAction.java</File>
+    <Type>item.type.label.suggestion</Type>
+    <Severity>item.severity.label.trivial</Severity>
+    <Summary>Need a better name for this action class e.g. InitSupplierRecoveryAction</Summary>
+    <Description></Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="G4M7PMW4">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-19 :: 10:26:04:132 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-19 :: 17:31:30:671 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Nanda</ReviewerId>
+    <AssignedTo>Sudaksh</AssignedTo>
+    <File line="60">src/main/java/tavant/twms/web/supplier/SpecifySupplierRecoveryAction.java</File>
+    <Type>item.type.label.other</Type>
+    <Severity>item.severity.label.normal</Severity>
+    <Summary>claimId is redundant. Use claim variable itself. DomainConverter will do the conversion</Summary>
+    <Description></Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="G4M7SLZI">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-19 :: 10:28:22:926 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-19 :: 17:31:27:406 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Nanda</ReviewerId>
+    <AssignedTo>Sudaksh</AssignedTo>
+    <File line="85">src/main/java/tavant/twms/web/supplier/SpecifySupplierRecoveryAction.java</File>
+    <Type>item.type.label.suggestion</Type>
+    <Severity>item.severity.label.trivial</Severity>
+    <Summary>recoveryInfo is a claim attribute</Summary>
+    <Description></Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="G4M7VVIW">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-19 :: 10:30:55:256 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-19 :: 17:31:24:171 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Nanda</ReviewerId>
+    <AssignedTo>Sudaksh</AssignedTo>
+    <File line="50">src/main/java/tavant/twms/web/supplier/SpecifySupplierRecoveryAction.java</File>
+    <Type>item.type.label.suggestion</Type>
+    <Severity>item.severity.label.trivial</Severity>
+    <Summary>rename the following member variables</Summary>
+    <Description>contractForCausalPart - contractsForCausalPart
+contractsForParts - contractsForRemovedParts
+selectedContractForRemovedPart - selectedContractsForRemovedParts</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="G4M7YLYT">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-19 :: 10:33:02:837 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-19 :: 17:31:21:046 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Nanda</ReviewerId>
+    <AssignedTo>Sudaksh</AssignedTo>
+    <File line="33">src/main/java/tavant/twms/web/supplier/SpecifySupplierRecoveryAction.java</File>
+    <Type>item.type.label.usability</Type>
+    <Severity>item.severity.label.normal</Severity>
+    <Summary>This class needs reformatting</Summary>
+    <Description>Use 120 characters as the line width
+Be consistent on where the braces are opened for new methods, if condition. for loops</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="G4MKQD4J">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-19 :: 16:30:33:139 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-19 :: 17:31:17:343 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Nanda</ReviewerId>
+    <AssignedTo>Sudaksh</AssignedTo>
+    <File line="95">src/main/java/tavant/twms/web/supplier/SpecifySupplierRecoveryAction.java</File>
+    <Type>item.type.label.suggestion</Type>
+    <Severity>item.severity.label.normal</Severity>
+    <Summary>recoveryInfo != null is redundant since it is being initialized if null in the if block abaove. In addition this should be else if instead of if</Summary>
+    <Description></Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="G4ML4HRF">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-19 :: 16:41:32:331 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-19 :: 17:31:14:218 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Nanda</ReviewerId>
+    <AssignedTo>Sudaksh</AssignedTo>
+    <File line="68">src/main/java/tavant/twms/web/supplier/SpecifySupplierRecoveryAction.java</File>
+    <Type>item.type.label.suggestion</Type>
+    <Severity>item.severity.label.trivial</Severity>
+    <Summary>rename to adjustRecoveryClaimsFlag</Summary>
+    <Description></Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="G4ML7HHY">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-19 :: 16:43:51:958 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-19 :: 17:31:08:468 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Nanda</ReviewerId>
+    <AssignedTo>Sudaksh</AssignedTo>
+    <File line="105">src/main/java/tavant/twms/web/supplier/SpecifySupplierRecoveryAction.java</File>
+    <Type>item.type.label.suggestion</Type>
+    <Severity>item.severity.label.major</Severity>
+    <Summary>Use the utility method in ServiceDetail for this</Summary>
+    <Description></Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="G4MLB5F0">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-19 :: 16:46:42:924 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-19 :: 17:31:05:202 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Nanda</ReviewerId>
+    <AssignedTo>Sudaksh</AssignedTo>
+    <File line="101">src/main/java/tavant/twms/web/supplier/SpecifySupplierRecoveryAction.java</File>
+    <Type>item.type.label.irrelevant</Type>
+    <Severity>item.severity.label.normal</Severity>
+    <Summary>Remove this line</Summary>
+    <Description>SelectedBusinessUnitsHolder.setSelectedBusinessUnit(claim.getBusinessUnitInfo().getName());</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="G4MLEAWC">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-19 :: 16:49:09:996 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-19 :: 17:31:01:827 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Nanda</ReviewerId>
+    <AssignedTo>Sudaksh</AssignedTo>
+    <File line="140">src/main/java/tavant/twms/web/supplier/SpecifySupplierRecoveryAction.java</File>
+    <Type>item.type.label.programLogic</Type>
+    <Severity>item.severity.label.trivial</Severity>
+    <Summary>Never call 2 non readonly Transactional methods from web layer</Summary>
+    <Description>This will corrupt the data if there is a failure in the second service call because hte transaction for the first service call is already committed.
+
+Add initiateRecoveryClaims to ContractService and call these 2 service methods from there</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="G4MLKW7Q">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-19 :: 16:54:17:558 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-19 :: 17:30:58:983 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Nanda</ReviewerId>
+    <AssignedTo>Sudaksh</AssignedTo>
+    <File line="147">src/main/java/tavant/twms/web/supplier/SpecifySupplierRecoveryAction.java</File>
+    <Type>item.type.label.clarity</Type>
+    <Severity>item.severity.label.major</Severity>
+    <Summary>Too long and repetitive</Summary>
+    <Description>Break it into smaller methods
+Refactor repetitive code</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="G4MLOJ0H">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-19 :: 16:57:07:073 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-19 :: 17:30:56:077 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Nanda</ReviewerId>
+    <AssignedTo>Sudaksh</AssignedTo>
+    <File line="165">src/main/java/tavant/twms/web/supplier/SpecifySupplierRecoveryAction.java</File>
+    <Type>item.type.label.clarity</Type>
+    <Severity>item.severity.label.trivial</Severity>
+    <Summary>if else block redundant. Both if and else code is identical.</Summary>
+    <Description></Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="G4MLPDM5">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-19 :: 16:57:46:733 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-19 :: 17:30:51:577 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Nanda</ReviewerId>
+    <AssignedTo>Sudaksh</AssignedTo>
+    <File line="174">src/main/java/tavant/twms/web/supplier/SpecifySupplierRecoveryAction.java</File>
+    <Type>item.type.label.clarity</Type>
+    <Severity>item.severity.label.trivial</Severity>
+    <Summary>This for loop and the next for loop can be merged</Summary>
+    <Description></Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="G4MLQGIV">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-19 :: 16:58:37:159 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-19 :: 17:30:48:030 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Nanda</ReviewerId>
+    <AssignedTo>Sudaksh</AssignedTo>
+    <File line="247">src/main/java/tavant/twms/web/supplier/SpecifySupplierRecoveryAction.java</File>
+    <Type>item.type.label.clarity</Type>
+    <Severity>item.severity.label.normal</Severity>
+    <Summary>This looks identical to the case where cuasal part contract doesn't cover collateral. Refactor this</Summary>
+    <Description></Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="G4MLUNIS">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-19 :: 17:01:52:852 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-19 :: 17:30:39:826 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Nanda</ReviewerId>
+    <AssignedTo>Sudaksh</AssignedTo>
+    <File line="100">src/main/java/tavant/twms/web/supplier/SpecifySupplierRecoveryAction.java</File>
+    <Type>item.type.label.optimization</Type>
+    <Severity>item.severity.label.normal</Severity>
+    <Summary>prepare will be called for all action mappings. If populateValidContracts() is not needed in all cases it can be taken away from prepare()</Summary>
+    <Description></Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="G4MMG0RN">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-19 :: 17:18:29:795 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-19 :: 17:29:41:169 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Nanda</ReviewerId>
+    <AssignedTo></AssignedTo>
+    <File line="17">src/main/webapp/pages/secure/partreturns/specify_supplier_contract.jsp</File>
+    <Type>item.type.label.other</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>ARe all these hidden variables required?</Summary>
+    <Description></Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+</Review>

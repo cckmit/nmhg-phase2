@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans SYSTEM  "spring-beans.dtd">
+<beans default-autowire="byName">
+
+    <!-- ========================= RESOURCE DEFINITIONS ========================= -->
+    <!-- Configurer that replaces ${...} placeholders with values from a properties file -->
+    <!-- (in this case, JDBC-related settings for the dataSource definition below) -->
+    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="location" value="file:${TWMS_HOME}/${TWMS_ENV_MODE}/integration-server.properties"/>
+        <property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE"/>
+    </bean>
+    <bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+        <property name="jndiName" value="java:comp/env/jdbc/integration-ds"/>
+    </bean>
+    <bean id="log4jInitialization"
+          class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+        <property name="targetClass" value="org.springframework.util.Log4jConfigurer"/>
+        <property name="targetMethod" value="initLogging"/>
+        <property name="arguments">
+            <list>
+                <value>${TWMS_HOME}/${TWMS_ENV_MODE}/integration-log4j.xml</value>
+            </list>
+        </property>
+    </bean>
+
+	    <import resource="classpath:quartz-jobs-context.xml"/>
+
+    <bean id="messageFactory" class="org.springframework.ws.soap.saaj.SaajSoapMessageFactory">
+        <property name="messageFactory">
+            <bean class="com.sun.xml.internal.messaging.saaj.soap.ver1_1.SOAPMessageFactory1_1Impl"/>
+        </property>    
+    </bean>
+
+    <bean id="webServiceTemplate" class="org.springframework.ws.client.core.WebServiceTemplate">
+        <constructor-arg ref="messageFactory"/>
+        <property name="messageSender">
+            <bean class="org.springframework.ws.transport.http.CommonsHttpMessageSender">
+                <property name="credentials">
+                    <bean class="org.apache.commons.httpclient.UsernamePasswordCredentials">
+                        <constructor-arg value="${webservices.username}"/>
+                        <constructor-arg value="${webservices.password}"/>
+                    </bean>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+
+    <bean id="velocityEngine" class="org.springframework.ui.velocity.VelocityEngineFactoryBean">
+        <property name="velocityProperties">
+            <value>
+		resource.loader=class
+		class.resource.loader.class=org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+            </value>
+        </property>
+    </bean>
+
+    <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+        <property name="host" value="${tavant.email.smtp-server}"/>
+    </bean>
+
+    <bean id="sendEmailService" class="tavant.twms.integration.server.common.SendEmailServiceImpl" />
+
+
+    <bean class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor"/>
+
+    <bean id="namingStrategy" class="org.hibernate.cfg.ImprovedNamingStrategy"/>
+
+    <bean id="sessionFactory"
+          class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+        <property name="annotatedClasses">
+            <list>
+                <value>
+                    tavant.twms.integration.server.common.dataaccess.SyncTracker
+                </value>
+                <value>
+                    tavant.twms.integration.server.common.dataaccess.SyncStatus
+                </value>
+                <value>
+                    tavant.twms.integration.server.common.dataaccess.SyncType
+                </value>
+            </list>
+        </property>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">
+                    ${hibernate.dialect}
+                </prop>
+                <prop key="hibernate.show_sql">
+                    ${hibernate.show_sql}
+                </prop>
+                <prop key="hibernate.format_sql">
+                    ${hibernate.format_sql}
+                </prop>
+                <prop key="hibernate.use_sql_comments">
+                    ${hibernate.use_sql_comments}
+                </prop>
+                <prop key="hibernate.generate_statistics">true</prop>
+                <prop key="hibernate.default_batch_fetch_size">25</prop>
+                <prop key="hibernate.cache.provider_class">
+                    org.hibernate.cache.HashtableCacheProvider
+                </prop>
+                <prop key="hibernate.hbm2ddl.auto">
+                    ${hibernate.hbm2ddl}
+                </prop>
+                <prop key="hibernate.cglib.use_reflection_optimizer">
+                    false
+                </prop>
+            </props>
+        </property>
+    </bean>
+    
+    <bean id="beanLocator" class="tavant.twms.integration.server.common.BeanLocator" />
+
+	<bean id="propertiesBean"
+		class="tavant.twms.integration.server.common.PropertiesBean">
+		<property name="integrationURL" value="${twms.integration.url}" />		
+		<!-- End of Changes -->
+		
+	</bean>
+
+    <bean id="jdbcTemplate"
+          class="org.springframework.jdbc.core.JdbcTemplate"/>
+
+
+    <bean id="hibernateTemplate"
+          class="org.springframework.orm.hibernate3.HibernateTemplate"/>
+
+    <bean id="syncServerResponseTransformer"
+          class="tavant.twms.integration.server.common.SyncServerResponseTransformer"/>
+
+    <bean id="transactionManager"
+          class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <!-- enable the configuration of transactional behavior based on annotations -->
+    <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"/>
+    <bean class="org.springframework.transaction.interceptor.TransactionAttributeSourceAdvisor">
+        <property name="transactionInterceptor" ref="txnInterceptor"/>
+    </bean>
+    <bean id="txnInterceptor" class="org.springframework.transaction.interceptor.TransactionInterceptor">
+        <property name="transactionManager" ref="transactionManager"/>
+        <property name="transactionAttributeSource">
+            <bean class="org.springframework.transaction.annotation.AnnotationTransactionAttributeSource"/>
+        </property>
+    </bean>
+
+    <bean id="syncTrackerDao"
+          class="tavant.twms.integration.server.common.dataaccess.SyncTrackerDAOImpl">
+        <property name="maxResults">
+            <value>10</value>
+        </property>
+        <property name="failureCountThreshold">
+            <value>2</value>
+        </property>
+    </bean>
+
+    <!-- Spring HTTP invoker (uses the standard Java serialization mechanism to expose services through HTTP)
+         configuration to expose IntegrationService (defined in integration-layer module) -->
+    <bean id="integrationServiceProxy" class="org.springframework.remoting.httpinvoker.HttpInvokerProxyFactoryBean">
+        <property name="serviceUrl" value="${twms.integration.url}"/>
+        <property name="serviceInterface" value="tavant.twms.integration.layer.IntegrationService"/>
+    </bean>
+
+    <!-- Interceptor which logs incoming requests to Sync_tracker table -->
+    <bean id="inboundSyncInterceptor" class="tavant.twms.integration.server.sync.inbound.InboundSyncInterceptor" />
+
+    <!-- Proxy to intercept calls to IntegrationService (defined in integration-layer module) -->
+    <bean id="integrationService" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <property name="proxyInterfaces" value="tavant.twms.integration.layer.IntegrationService" />
+        <property name="interceptorNames" value="inboundSyncInterceptor" />
+        <property name="target" ref="integrationServiceProxy" />
+    </bean>
+
+ <!--    <bean id="creditSubmitProcessor"
+          class="tavant.twms.integration.server.common.dataaccess.SyncPersisterImpl">
+        <property name="syncType" value="Claim"/>
+    </bean> -->
+    <bean id="extWarrantyDebitSubmitProcessor"
+          class="tavant.twms.integration.server.common.dataaccess.SyncPersisterImpl">
+        <property name="syncType" value="ExtWarrantyDebitSubmit"/>
+    </bean>
+    <bean id="supplierDebitSubmitProcessor"
+          class="tavant.twms.integration.server.common.dataaccess.SyncPersisterImpl">
+        <property name="syncType" value="SupplierDebitSubmit"/>
+    </bean>
+    <!--bean id="creditNotifyProcessor"
+          class="tavant.twms.integration.server.external.SyncResponseProcessorImpl"
+          autowire="byName">
+        <property name="syncType" value="CreditNotification"/>
+        <property name="webmethodsEnv"
+                  value="${webmethods.environment}"/>
+    </bean>
+    <bean id="extWarrantyDebitNotifyProcessor"
+          class="tavant.twms.integration.server.external.SyncResponseProcessorImpl"
+          autowire="byName">
+        <property name="syncType" value="ExtWarrantyDebitNotification"/>
+        <property name="webmethodsEnv"
+                  value="${webmethods.environment}"/>
+    </bean>
+    <bean id="extWarrantyPurchaseNotifyProcessor"
+          class="tavant.twms.integration.server.external.SyncResponseProcessorImpl"
+          autowire="byName">
+        <property name="syncType" value="ExtWarrantyPurchaseNotification"/>
+        <property name="webmethodsEnv"
+                  value="${webmethods.environment}"/>
+    </bean>
+    <bean id="supplierDebitNotifyProcessor"
+          class="tavant.twms.integration.server.external.SyncResponseProcessorImpl"
+          autowire="byName">
+        <property name="syncType" value="SupplierDebitNotification"/>
+        <property name="webmethodsEnv"
+                  value="${webmethods.environment}"/>
+    </bean>
+    <bean id="supplierGlobalDebitNotifyProcessor"
+          class="tavant.twms.integration.server.external.SyncResponseProcessorImpl"
+          autowire="byName">
+        <property name="syncType" value="SupplierDebitNotification"/>
+        <property name="webmethodsEnv"
+                  value="${webmethods.environment}"/>
+    </bean>
+    <bean id="priceCheckProcessor"
+          class="tavant.twms.integration.server.external.SyncProcessorImpl"
+          autowire="byName">
+        <property name="syncType" value="PriceCheck"/>
+        <property name="webmethodsEnv"
+                  value="${webmethods.environment}"/>
+    </bean>
+
+    <bean id="extWarrantyPriceCheckProcessor"
+          class="tavant.twms.integration.server.external.SyncProcessorImpl"
+          autowire="byName">
+        <property name="syncType" value="ExtWarrantyPriceCheck"/>
+        <property name="webmethodsEnv"
+                  value="${webmethods.environment}"/>
+    </bean>
+
+    <bean id="syncCurrencyExchangeRateProcessor"
+          class="tavant.twms.integration.server.external.SyncResponseProcessorImpl"
+          autowire="byName">
+        <property name="syncType" value="CurrencyExchangeRate"/>
+        <property name="webmethodsEnv"
+                  value="${webmethods.environment}"/>
+    </bean>
+
+    <bean id="syncItemProcessor"
+          class="tavant.twms.integration.server.external.SyncItemResponseProcessorImpl"
+          autowire="byName">
+        <property name="syncType" value="Item"/>
+    </bean>
+
+    <bean id="syncInstallBaseProcessor"
+          class="tavant.twms.integration.server.external.SyncResponseProcessorImpl"
+          autowire="byName">
+        <property name="syncType" value="InstallBase"/>
+    </bean>
+
+    <bean id="syncGlobalItemProcessor"
+          class="tavant.twms.integration.server.external.SyncResponseProcessorImpl"
+          autowire="byName">
+        <property name="syncType" value="TKTSA-Item"/>
+        <property name="buName" value="TK"/>
+        <property name="webmethodsEnv"
+                  value="${webmethods.environment}"/>
+    </bean>
+
+    <bean id="syncGlobalCustomerProcessor"
+          class="tavant.twms.integration.server.external.SyncResponseProcessorImpl"
+          autowire="byName">
+        <property name="syncType" value="TKTSA-Customer"/>
+        <property name="buName" value="TK"/>
+        <property name="webmethodsEnv"
+                  value="${webmethods.environment}"/>
+    </bean>
+
+    <bean id="syncGlobalUserProcessor"
+          class="tavant.twms.integration.server.external.SyncResponseProcessorImpl"
+          autowire="byName">
+        <property name="syncType" value="TKTSA-User"/>
+        <property name="buName" value="TK"/>
+        <property name="webmethodsEnv"
+                  value="${webmethods.environment}"/>
+    </bean>
+
+    <bean id="syncGlobalPartsInvProcessor"
+          class="tavant.twms.integration.server.external.SyncResponseProcessorImpl"
+          autowire="byName">
+        <property name="syncType" value="TKTSA-PartsInventory"/>
+        <property name="buName" value="TK"/>
+        <property name="webmethodsEnv"
+                  value="${webmethods.environment}"/>
+    </bean>
+
+    <bean id="syncCustomerProcessor"
+          class="tavant.twms.integration.server.external.SyncResponseProcessorImpl"
+          autowire="byName">
+        <property name="syncType" value="Customer"/>
+        <property name="webmethodsEnv"
+                  value="${webmethods.environment}"/>
+    </bean>
+
+    <bean id="syncUserProcessor"
+          class="tavant.twms.integration.server.external.SyncResponseProcessorImpl"
+          autowire="byName">
+        <property name="syncType" value="User"/>
+        <property name="webmethodsEnv"
+                  value="${webmethods.environment}"/>
+    </bean>
+
+    <bean id="syncOEMXRefProcessor"
+          class="tavant.twms.integration.server.external.SyncResponseProcessorImpl"
+          autowire="byName">
+        <property name="syncType" value="OEMXRef"/>
+        <property name="webmethodsEnv"
+                  value="${webmethods.environment}"/>
+    </bean-->
+
+<!-- Used Only by Mock-Webmethods Start-->
+   	<!--bean id="creditSubmissionJob"
+		class="tavant.twms.integration.server.external.CreditSubmissionJob">
+	</bean>
+    <bean id="extWarrantyDebitSubmissionJob"
+          class="tavant.twms.integration.server.external.CreditSubmissionJob">
+        <property name="maxNoOfRetries" value="50"/>
+    </bean>
+    <bean id="supplierDebitSubmissionJob"
+          class="tavant.twms.integration.server.external.CreditSubmissionJob">
+        <property name="maxNoOfRetries" value="50"/>
+    </bean-->
+<!-- Used Only by Mock-Webmethods End-->
+
+    <bean id="healthCheckService"
+          class="tavant.twms.integration.server.common.HealthCheckServiceImpl"/>
+
+    <!--bean id="creditNotifyGlobalProcessor"
+          class="tavant.twms.integration.server.external.SyncResponseProcessorImpl"
+          autowire="byName">
+        <property name="syncType" value="CreditNotification"/>
+        <property name="webmethodsEnv"
+                  value="${webmethods.environment}"/>
+    </bean-->
+
+    <!--bean id="creditNotifyProcessorTest"
+          class="tavant.twms.integration.server.external.ProcessorImplTest"
+          autowire="byName">
+        <property name="syncType" value="CreditNotification"/>
+        <property name="webmethodsEnv"
+                  value="${webmethods.environment}"/>
+    </bean>
+
+    <bean id="syncItemProcessorTest"
+          class="tavant.twms.integration.server.external.ProcessorImplTest"
+          autowire="byName">
+        <property name="syncType" value="Item"/>
+        <property name="webmethodsEnv"
+                  value="${webmethods.environment}"/>
+    </bean>
+
+    <bean id="syncCustomerProcessorTest"
+          class="tavant.twms.integration.server.external.ProcessorImplTest"
+          autowire="byName">
+        <property name="syncType" value="Customer"/>
+        <property name="webmethodsEnv"
+                  value="${webmethods.environment}"/>
+    </bean>
+
+    <bean id="syncInstallBaseProcessorTest"
+          class="tavant.twms.integration.server.external.ProcessorImplTest"
+          autowire="byName">
+        <property name="syncType" value="InstallBase"/>
+        <property name="webmethodsEnv"
+                  value="${webmethods.environment}"/>
+    </bean>
+
+    <bean id="syncFetchFocOrderDetailsProcessor"
+          class="tavant.twms.integration.server.external.FocProcessorImpl"
+          autowire="byName">
+        <property name="syncType" value="FetchFoc"/>
+        <property name="webmethodsEnv"
+                  value="${webmethods.environment}"/>
+    </bean>
+
+    <bean id="syncPostFocOrderDetailsProcessor"
+          class="tavant.twms.integration.server.external.SyncResponseProcessorImpl"
+          autowire="byName">
+        <property name="syncType" value="PostFoc"/>
+        <property name="webmethodsEnv"
+                  value="${webmethods.environment}"/>
+    </bean>
+    <bean id="dealerIntegrationProcessor"
+          class="tavant.twms.integration.server.external.dealerinterfaces.DealerIntegrationProcessorImpl"
+          autowire="byName">
+    </bean-->
+    
+</beans>

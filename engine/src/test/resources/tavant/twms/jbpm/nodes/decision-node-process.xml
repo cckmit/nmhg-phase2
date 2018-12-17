@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process-definition
+   name="DecisionNodeProcess">
+   <start-state name="start">
+      <transition name="" to="FindApplicablePolicy"></transition>
+   </start-state>
+ 
+   <ruleDecision name="FindApplicablePolicy">
+		<transition name="Accept" to="accept">
+			<condition>#{valid}</condition>
+		</transition>
+		<transition name="Reject" to="reject">
+			<condition>#{!valid}</condition>
+		</transition>
+		<ruleSet>validate</ruleSet>
+		<input>
+			<variable>claim</variable>
+		</input>
+		<postProcess>
+            
+	    </postProcess>
+	</ruleDecision>  
+    
+	<end-state name="accept">
+    </end-state>
+    
+   	<end-state name="reject">
+    </end-state>
+</process-definition>

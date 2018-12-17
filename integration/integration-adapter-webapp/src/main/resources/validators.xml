@@ -1,0 +1,10 @@
+<validators>
+    <validator name="required" class="com.opensymphony.xwork2.validator.validators.RequiredFieldValidator"/>
+    <validator name="date" class="com.opensymphony.xwork2.validator.validators.DateRangeFieldValidator"/>
+    <!-- A date range is considered as valid if:
+        (i)  either or both of the dates are null == OR ==
+        (ii) start date is before or on the same day as the end date.
+    -->
+    <validator name="dateRange" class="tavant.twms.integration.adapter.web.validators.DateRangeValidator"/>
+	
+</validators>

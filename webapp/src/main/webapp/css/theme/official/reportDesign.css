@@ -1,0 +1,139 @@
+div.snap {
+width:100%;
+float:left;
+overflow-x:none;
+height:549px;
+overflow-y:auto;
+background-color:#FFF;
+padding:0;
+}
+
+.report_section_div {
+background-color:#fff;
+border:1px solid #CCCCCC;
+margin-bottom:0;
+font-size:10px;
+width:100%;
+}
+
+.report_data_table {
+font-family:Verdana,sans-serif,Arial,Helvetica;
+font-size:10px;
+font-weight:400;
+font-style:normal;
+color:#959494;
+}
+
+.bgColor {
+border:1px solid #EFEBF7;
+background-color:#F3FBFE;
+padding-left:5px;
+margin-right:2px;
+width:99%;
+padding-top:10px;
+}
+
+.bgColorBorder {
+background-color:#777777;
+margin-left:4px;
+margin-right:2px;
+width:99%;
+padding:1px;
+}
+
+td {
+font-family:Verdana,sans-serif,Arial,Helvetica;
+font-size:10px;
+line-height:15px;
+border:0;
+text-align:left;
+padding:0;
+}
+
+.rightAlign {
+font-family:Verdana,sans-serif,Arial,Helvetica;
+font-size:10px;
+line-height:15px;
+border:0;
+text-align:right;
+padding:2px;
+}
+
+.noBorderCell {
+border:none;
+border-color:#CCC;
+padding:0;
+}
+
+.noBorderCellbg {
+border:none;
+background-color:#777777;
+padding:0;
+}
+
+input {
+font-family:"Verdana","Arial","Helvetica",sans-serif;
+font-size:9px;
+padding:0;
+}
+
+select {
+font-family:"Verdana","Arial","Helvetica",sans-serif;
+font-size:10px;
+text-align:left;
+}
+
+textarea {
+font-family:"Verdana","Arial","Helvetica",sans-serif;
+font-size:7.5pt;
+padding:0;
+}
+
+.label {
+color:#545454;
+font-family:Verdana,sans-serif,Arial,Helvetica;
+font-size:9pt;
+font-weight:700;
+font-style:normal;
+vertical-align:top;
+padding-left:5px;
+text-align:left;
+line-height:20px;
+background-color:#fff;
+}
+
+.label1 {
+color:#959494;
+font-family:Verdana,sans-serif,Arial,Helvetica;
+font-size:7.5pt;
+font-weight:700;
+font-style:normal;
+vertical-align:middle;
+padding-left:5px;
+text-align:left;
+line-height:20px;
+}
+
+.labelBold {
+color:#959494;
+font-family:Verdana,sans-serif,Arial,Helvetica;
+font-size:7.5pt;
+font-weight:700;
+font-style:normal;
+vertical-align:middle;
+padding-left:5px;
+text-align:left;
+line-height:20px;
+background-color:#fff;
+}
+
+.buttonGeneric {
+background:transparent url(../../../image/buttonBg.jpg) repeat-x scroll left center;
+border:1px solid #CCCCCC;
+color:#666666;
+cursor:pointer;
+font-family:Arial,Verdana,sans-serif,Helvetica;
+font-size:7.5pt;
+font-style:normal;
+overflow:visible;
+}

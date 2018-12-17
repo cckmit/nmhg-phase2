@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd"
+	default-autowire="byName">
+
+	<bean id="contextWrapper" class="com.iterative.groovy.spring.ApplicationContextWrapper" />
+
+    <bean id="groovyService" abstract="true" init-method="initialize" destroy-method="destroy">
+        <property name="bindings">
+            <map>
+                <entry key="context" value-ref="contextWrapper" />
+            </map>
+        </property>
+    </bean>
+
+    <bean id="groovyShellService" class="com.iterative.groovy.service.GroovyShellService" parent="groovyService">
+        <property name="socket" value="6789" />
+        <property name="launchAtStart" value="true" />
+    </bean>
+	
+	<bean id="groovyConsoleService" class="com.iterative.groovy.service.GroovyConsoleService" parent="groovyService" />
+
+</beans>

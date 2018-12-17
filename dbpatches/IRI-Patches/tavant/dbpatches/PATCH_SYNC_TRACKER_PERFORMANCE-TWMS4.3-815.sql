@@ -1,0 +1,25 @@
+update sync_tracker set SYNC_TYPE = 'TKTSA-Item' where SYNC_TYPE = 'TK-Item'
+/
+update sync_tracker set SYNC_TYPE = 'TKTSA-Customer' where SYNC_TYPE = 'TK-Customer'
+/
+update sync_tracker set SYNC_TYPE = 'TKTSA-User' where SYNC_TYPE = 'TK-User'
+/
+update sync_tracker set SYNC_TYPE = 'TKTSA-PartsInventory' where SYNC_TYPE = 'TK-PartsInventory'
+/
+COMMIT
+/
+CREATE INDEX SYNC_TRCKR_TYPE_STATUS ON SYNC_TRACKER (SYNC_TYPE, STATUS)
+/
+CREATE INDEX SYNC_TRCKR_BUSINESS_ID ON SYNC_TRACKER (upper(BUSINESS_ID))
+/
+CREATE INDEX SYNC_TRCKR_CREATE_DATE ON SYNC_TRACKER (trunc(CREATE_DATE))
+/
+drop index "SYNC_SYNC_TYPE"
+/
+CREATE INDEX SYNC_SYNC_TYPE ON SYNC_TRACKER (upper(SYNC_TYPE))
+/
+drop index "SYNC_TRCKR_UNQ_VAL"
+/
+CREATE INDEX SYNC_TRCKR_UNQ_VAL ON SYNC_TRACKER (upper(UNIQUE_ID_VALUE))
+/
+

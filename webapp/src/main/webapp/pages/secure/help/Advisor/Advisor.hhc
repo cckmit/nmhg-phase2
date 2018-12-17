@@ -1,0 +1,80 @@
+<html>
+<!-- Sitemap 1.0 -->
+<object type="text/site properties">
+  <param name="SiteType" value="toc">
+  <param name="Image Width" value="16">
+  <param name="Window Styles" value="0x800002">
+  <param name="ExWindow Styles" value="0x100">
+</object>
+<ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Advisor">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="Before you Begin">
+    </object>
+    <ul>
+      <li><object type="text/sitemap">
+        <param name="Name" value="Common Application Features">
+        <param name="Local" value="Before_you_Begin\common_application_features.htm">
+      </object>
+      </ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="Claims">
+    </object>
+    <ul>
+      <li><object type="text/sitemap">
+        <param name="Name" value="Claim Details">
+        <param name="Local" value="Claims\Claim_Details.htm">
+      </object>
+      </ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="Inventory">
+    </object>
+    <ul>
+      <li><object type="text/sitemap">
+        <param name="Name" value="Equipment Details">
+        <param name="Local" value="Inventory\Equipment_Details.htm">
+      </object>
+      </ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="Field Modifications">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="Part Returns">
+    </object>
+    <ul>
+      <li><object type="text/sitemap">
+        <param name="Name" value="Search Parts">
+        <param name="Local" value="Part_Returns\Search_Parts.htm">
+      </object>
+      </ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="Items">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="Reports">
+    </object>
+    <ul>
+      <li><object type="text/sitemap">
+        <param name="Name" value="Reports">
+        <param name="Local" value="Reports\Reports.htm">
+      </object>
+      </ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="Settings">
+    </object>
+    <ul>
+      <li><object type="text/sitemap">
+        <param name="Name" value="Profile">
+        <param name="Local" value="Settings\Profile.htm">
+      </object>
+      <li><object type="text/sitemap">
+        <param name="Name" value="Email Subscription">
+        <param name="Local" value="Settings\Email_Subscription.htm">
+      </object>
+      </ul>
+    </ul>
+</ul>
+</html>

@@ -1,0 +1,9 @@
+-- PATCH_FOR_CLAIM _NUMBER _FORMAT 
+-- Author:  pallavi
+-- Created On :22-04-2013
+
+ 
+ALTER SEQUENCE CLAIM_NUMBER_SEQ MINVALUE=1 MAXVALUE=999999
+/
+commit
+/

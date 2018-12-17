@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<functionalareas xmlns="http://www.tavant.com/twms/security/resource"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.tavant.com/twms/security/resource
+			http://www.tavant.com/twms/security/resource">
+	<functionalarea name="contractadmin" defaultpolicy="none">
+
+	<!-- Resources for update or Read Only -->
+	
+		<resource type="ui" value="contractAdminContractAdminTab" operation="OR">
+			<permissions>contractAdmin:contractAdminContractAdminTab:update,contractAdmin:contractAdminContractAdminTab:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="contractAdminMaintainSupplierContracts" operation="OR">
+			<permissions>contractAdmin:contractAdminMaintainSupplierContracts:update,contractAdmin:contractAdminMaintainSupplierContracts:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="contractAdminManageBusinessConditions" operation="OR">
+			<permissions>contractAdmin:contractAdminManageBusinessConditions:update,contractAdmin:contractAdminManageBusinessConditions:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="contractAdminManageBusinessRules" operation="OR">
+			<permissions>contractAdmin:contractAdminManageBusinessRules:update,contractAdmin:contractAdminManageBusinessRules:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="contractAdminRecoveryClaimProcessorRouting" operation="OR">
+			<permissions>contractAdmin:contractAdminRecoveryClaimProcessorRouting:update,contractAdmin:contractAdminRecoveryClaimProcessorRouting:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="contractAdminManageSuppliers" operation="OR">
+			<permissions>contractAdmin:contractAdminManageSuppliers:update,contractAdmin:contractAdminManageSuppliers:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="contractAdminViewPartSourceHistory" operation="OR">
+			<permissions>contractAdmin:contractAdminViewPartSourceHistory:update,contractAdmin:contractAdminViewPartSourceHistory:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="contractAdminViewSupplier" operation="OR">
+			<permissions>contractAdmin:contractAdminViewSupplier:update,contractAdmin:contractAdminViewSupplier:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="contractAdminManageGroups" operation="OR">
+			<permissions>contractAdmin:contractAdminManageGroups:update,contractAdmin:contractAdminManageGroups:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="contractAdminUserGroups" operation="OR">
+			<permissions>contractAdmin:contractAdminUserGroups:update,contractAdmin:contractAdminUserGroups:view
+			</permissions>
+		</resource>
+	
+	<!-- Resources for Read Only-->
+	
+		<resource type="ui" value="contractAdminContractAdminTabReadOnlyView">
+			<permissions>contractAdmin:contractAdminContractAdminTab:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="contractAdminMaintainSupplierContractsReadOnlyView">
+			<permissions>contractAdmin:contractAdminMaintainSupplierContracts:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="contractAdminManageBusinessConditionsReadOnlyView">
+			<permissions>contractAdmin:contractAdminManageBusinessConditions:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="contractAdminManageBusinessRulesReadOnlyView">
+			<permissions>contractAdmin:contractAdminManageBusinessRules:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="contractAdminRecoveryClaimProcessorRoutingReadOnlyView">
+			<permissions>contractAdmin:contractAdminRecoveryClaimProcessorRouting:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="contractAdminManageSuppliersReadOnlyView">
+			<permissions>contractAdmin:contractAdminManageSuppliers:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="contractAdminViewPartSourceHistoryReadOnlyView">
+			<permissions>contractAdmin:contractAdminViewPartSourceHistory:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="contractAdminViewSupplierReadOnlyView">
+			<permissions>contractAdmin:contractAdminViewSupplier:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="contractAdminManageGroupsReadOnlyView">
+			<permissions>contractAdmin:contractAdminManageGroups:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="contractAdminUserGroupsReadOnlyView">
+			<permissions>contractAdmin:contractAdminUserGroups:view
+			</permissions>
+		</resource>
+        
+	</functionalarea>
+
+</functionalareas>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CreditSubmission xmlns="http://www.tavant.com/globalsync/warrantyclaimcreditsubmission">
+    <ApplicationArea>
+        <Sender>
+            <Task>ESAORACLEAPPS</Task>
+            <LogicalId>TavantWMS</LogicalId>
+            <ReferenceId>Transport Solutions-1000005_3</ReferenceId>
+        </Sender>
+        <BODId>BOD057</BODId>
+        <InterfaceNumber/>
+        <CreationDateTime>2009-01-07T17:54:19.661Z</CreationDateTime>
+    </ApplicationArea>
+    <DataArea>
+        <Invoice>
+            <LineContext>WARRANTY</LineContext>
+            <LineAttribute1>Transport Solutions-1000005_3</LineAttribute1>
+            <BatchSourceName>WARRANTY TAVANT</BatchSourceName>
+            <ShipSiteId>25191</ShipSiteId>
+            <ShipCustomerId>109417</ShipCustomerId>
+            <TrxDate>2009-01-07</TrxDate>
+            <SalesOrderLine>1</SalesOrderLine>
+	    <PartItemNumber>54386560#100</PartItemNumber>
+            <ClaimType>PARTS</ClaimType>
+            <ProjectCode>AR6</ProjectCode>
+            <SMRFlag>N</SMRFlag>
+            <WarrantyType>OUT OF WARRANTY</WarrantyType>
+            <WorkOrderNumber>TTT999</WorkOrderNumber>
+            <BUName>Transport Solutions</BUName>
+            <SerializedClaim>No</SerializedClaim>
+            <LineItems>
+                <LineItem>
+                    <LineAttribute3>IRPARTS</LineAttribute3>
+                    <CurrencyCode>USD</CurrencyCode>
+                    <Amount>-10.0</Amount>
+                    <TotalAmount>-10.0</TotalAmount>
+                    <SubItem>
+                        <LineAttribute4>IRPARTS</LineAttribute4>
+                        <PartNumber>54386560#100</PartNumber>
+                        <Quantity>4</Quantity>
+                        <Amount>10.0</Amount>
+                    </SubItem>
+                </LineItem>
+                <LineItem>
+                    <LineAttribute3>NONIRPARTS</LineAttribute3>
+                    <CurrencyCode>USD</CurrencyCode>
+                    <Amount>0.00</Amount>
+                    <TotalAmount>0.00</TotalAmount>
+                </LineItem>
+	         <LineItem>
+			<LineAttribute3>DCAPAmount</LineAttribute3>
+			<CurrencyCode>USD</CurrencyCode>
+			<Amount>0.00</Amount>
+			<TotalAmount>0.00</TotalAmount>		
+		</LineItem> 
+                <LineItem>
+                    <LineAttribute3>LABOR</LineAttribute3>
+                    <CurrencyCode>USD</CurrencyCode>
+                    <Amount>0.00</Amount>
+                    <TotalAmount>0.00</TotalAmount>
+                </LineItem>
+                <LineItem>
+                    <LineAttribute3>MISCELLANEOUS</LineAttribute3>
+                    <CurrencyCode>USD</CurrencyCode>
+                    <Amount>-200.00</Amount>
+                    <TotalAmount>-200.00</TotalAmount>
+                    <SubItem>
+                        <LineAttribute4>TRAVEL</LineAttribute4>
+                        <Amount>-50.00</Amount>
+                    </SubItem>
+                    <SubItem>
+                        <LineAttribute4>FREIGHT</LineAttribute4>
+                        <Amount>-50.00</Amount>
+                    </SubItem>
+                    <SubItem>
+                        <LineAttribute4>MEALS</LineAttribute4>
+                        <Amount>-50.00</Amount>
+                    </SubItem>
+                    <SubItem>
+                        <LineAttribute4>PARKING</LineAttribute4>
+                        <Amount>-50.00</Amount>
+                    </SubItem>
+                </LineItem>
+            </LineItems>
+        </Invoice>
+    </DataArea>
+</CreditSubmission>

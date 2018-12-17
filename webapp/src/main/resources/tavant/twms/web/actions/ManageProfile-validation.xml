@@ -1,0 +1,52 @@
+<!DOCTYPE validators PUBLIC 
+    "-//Apache Struts//XWork Validator 1.0.2//EN"   
+    "http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+<validators>
+	<field name="user.name">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>		
+			<message key="error.manageProfile.requiredName"/>
+		</field-validator>
+	</field>
+	
+	<field name="user.firstName">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>		
+			<message key="error.manageDealerUsers.firstName"/>
+		</field-validator>
+	</field>
+	
+	<field name="user.lastName">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>		
+			<message key="error.manageDealerUsers.lastName"/>
+		</field-validator>
+	</field>
+	
+	<validator type="fieldexpression">
+		<param name="fieldName">existingPassword</param>
+		<param name="expression"><![CDATA[(isDisabledPasswordUpdate()) || !(existingPassword.length() == 0
+		 	&& newPassword.length() != 0) ]]></param>
+		<message key="error.manageProfile.exisingPassword"/>
+	</validator>
+	
+	<validator type="fieldexpression">
+		<param name="fieldName">newPassword</param>
+		<param name="expression"><![CDATA[(isDisabledPasswordUpdate()) || !(existingPassword.length() > 0 && newPassword.length() == 0) ]]></param>
+		<message key="error.manageProfile.newPassword"/>
+	</validator>
+
+	<validator type="fieldexpression">
+		<param name="fieldName">confirmPassword</param>
+		<param name="expression"><![CDATA[(isDisabledPasswordUpdate()) || newPassword.length() == 0 || confirmPassword.equals(newPassword) ]]></param>
+		<message key="error.manageProfile.differentPasswords"/>
+	</validator>
+
+	
+	<validator type="visitor">
+        <param name="fieldName">user.address</param>
+        <param name="appendPrefix">true</param>
+        <message/>
+    </validator>
+	
+</validators>

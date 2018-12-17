@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<functionalareas xmlns="http://www.tavant.com/twms/security/resource"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.tavant.com/twms/security/resource
+			http://www.tavant.com/twms/security/resource">
+	<functionalarea name="dealerinformation" defaultpolicy="none">
+
+	<!-- Resources for update or Read Only -->
+	
+		<resource type="ui" value="dealerInformationDealerSummary" operation="OR">
+			<permissions>dealerInformation:dealerInformationDealerSummary:update,dealerInformation:dealerInformationDealerSummary:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="dealerInformationDealerSummaryTab" operation="OR">
+			<permissions>dealerInformation:dealerInformationDealerSummaryTab:update,dealerInformation:dealerInformationDealerSummaryTab:view
+			</permissions>
+		</resource>
+	
+	<!-- Resources for Read Only-->
+	
+		<resource type="ui" value="dealerInformationDealerSummaryReadOnlyView">
+			<permissions>dealerInformation:dealerInformationDealerSummary:view
+			</permissions>
+		</resource>
+        
+	</functionalarea>
+
+</functionalareas>

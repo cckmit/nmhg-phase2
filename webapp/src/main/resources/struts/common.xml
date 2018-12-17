@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="common" extends="struts-twms-default">
+		<action name="generate_barcode"
+			class="tavant.twms.web.common.barcode.BarcodeGenerator"
+			method="generate">
+		</action>
+
+		<!--  Manage Profile Action -->
+		<action name="show_profile"
+			class="tavant.twms.web.actions.ManageProfile" method="showProfile">
+			<interceptor-ref name="paramsPrepareWithoutValidation" />
+			<result name="success">
+				pages/secure/customer/manage_profile.jsp
+			</result>
+		</action>
+		
+		<action name="manage_remote_interaction_logs"
+			class="tavant.twms.web.actions.RemoteInteractionLogsAction"
+			method="getSyncTypes">
+			<interceptor-ref name="paramsPrepareWithoutValidation" />
+			<result name="success">
+				pages/secure/common/form/common/manage_remote_interactions.jsp
+			</result>
+		</action>
+		
+		<action name="getRemoteInteractionLogs"
+			class="tavant.twms.web.actions.RemoteInteractionLogsAction"
+			method="tableBody">
+			<interceptor-ref name="paramsPrepareWithoutValidation" />
+			<result name="success">pages/secure/home/json.jsp</result>
+		</action>
+		
+		<action name="exportRemoteLogsToExcel"
+			class="tavant.twms.web.actions.RemoteInteractionLogsAction"
+			method="downloadListingData">
+			<interceptor-ref name="paramsPrepareWithoutValidation" />
+		</action>
+
+		<action name="showRemoteLogsPreview"
+			class="tavant.twms.web.actions.RemoteInteractionLogsAction"
+			method="showPreview">
+			<interceptor-ref name="paramsPrepareWithoutValidation" />
+			<result name="success">pages/secure/common/form/common/previewRemoteLog.jsp</result>
+		</action>
+		
+		<action name="RemoteInteractionLogsAction"
+			class="tavant.twms.web.actions.RemoteInteractionLogsAction">
+			<interceptor-ref name="twmsParamsPrepareParams" />
+			<result>pages/secure/common/form/common/manageRemoteInteractionLogsInboxView.jsp</result>
+			<result name="input" type="chain">
+				manage_remote_interaction_logs
+			</result>
+		</action>
+		
+		<action name="download_request_xml"
+					class="tavant.twms.web.actions.RemoteInteractionLogsAction"
+					method="downloadRequestMessage">
+					<interceptor-ref name="paramsPrepareWithoutValidation" />
+		</action>
+		
+		<action name="get_remoteInteractionLogstest"
+			class="tavant.twms.web.actions.RemoteInteractionLogsAction"
+			method="test">
+			<interceptor-ref name="paramsPrepareWithoutValidation" />
+			<result name="success">
+				pages/secure/common/form/common/finalReprocessStatus.jsp
+			</result>
+		</action>
+		
+		<action name="remoteInteractionLogsReprocess"
+			class="tavant.twms.web.actions.RemoteInteractionLogsAction"
+			method="reProcessIds">
+			<interceptor-ref name="paramsPrepareWithoutValidation" />
+			<result name="success">
+				pages/secure/common/form/common/finalReprocessStatus.jsp
+			</result>
+		</action>
+		
+		<action name="deleteRemoteInteractionLogs"
+			class="tavant.twms.web.actions.RemoteInteractionLogsAction"
+			method="deleteRecords">
+			<interceptor-ref name="paramsPrepareWithoutValidation" />
+			<result name="success">
+				pages/secure/common/form/common/finalReprocessStatus.jsp
+			</result>
+		</action>
+		
+		<action name="update_profile"
+			class="tavant.twms.web.actions.ManageProfile"
+			method="updateProfile">
+			<interceptor-ref name="twmsParamsPrepareParams" />
+			<result name="success">
+				pages/secure/customer/manage_profile.jsp
+			</result>
+			<result name="input">
+				pages/secure/customer/manage_profile.jsp
+			</result>
+		</action>
+		
+		<action name="update_dealer_profile"
+			class="tavant.twms.web.actions.ManageProfile"
+			method="updateDealerProfile">
+			<interceptor-ref name="twmsParamsPrepareParams" />
+			<result name="success">
+				pages/secure/customer/manage_dealer_profile.jsp
+			</result>
+			<result name="input">
+				pages/secure/customer/manage_dealer_profile.jsp
+			</result>
+		</action>
+
+		<action name="update_user_location"
+			class="tavant.twms.web.actions.ManageUserLocations"
+			method="updateOrCreateUserLocation">
+			<interceptor-ref name="twmsParamsPrepareParams" />
+			<param name="context">Dealer</param>
+			<result name="success">pages/secure/admin/success.jsp</result>
+			<result name="input">pages/secure/customer/userLocationDetail.jsp</result>
+			<result name="suppliersuccess">pages/secure/admin/success.jsp</result>
+			<result name="supplierinput">pages/secure/customer/supplierLocationDetail.jsp</result>
+		</action>
+
+		<action name="show_user_locations"
+			class="tavant.twms.web.actions.ManageUserLocations">
+			<interceptor-ref name="paramsPrepareWithoutValidation" />
+			<param name="context">Dealer</param>
+			<result name="success">
+				pages/secure/customer/manageUserLocationsInboxView.jsp
+			</result>
+		</action>
+		
+		<action name="userLocationsBody"
+			class="tavant.twms.web.actions.ManageUserLocations" method="tableBody">
+			<interceptor-ref name="paramsPrepareWithoutValidation" />
+			<result name="success">pages/secure/home/json.jsp</result>	
+		</action>
+
+        <action name="user_location_detail" 
+        class="tavant.twms.web.actions.ManageUserLocations" method="detail">
+        	<interceptor-ref name="adminParamsPrepare" />
+			<param name="context">Dealer</param>
+			<result name="success">pages/secure/customer/userLocationDetail.jsp</result>
+			<result name="input">pages/secure/customer/userLocationDetail.jsp</result>
+			<result name="suppliersuccess">pages/secure/customer/supplierLocationDetail.jsp</result>
+			<result name="supplierinput">pages/secure/customer/supplierLocationDetail.jsp</result>
+        </action>
+        
+        <action name="new_user_location" 
+        class="tavant.twms.web.actions.ManageUserLocations">
+        	<interceptor-ref name="adminParamsPrepare" />
+			<param name="context">Dealer</param>
+			<result name="success">pages/secure/customer/userLocationDetail.jsp</result>
+			<result name="input">pages/secure/customer/userLocationDetail.jsp</result>
+			<result name="suppliersuccess">pages/secure/customer/supplierLocationDetail.jsp</result>
+			<result name="supplierinput">pages/secure/customer/supplierLocationDetail.jsp</result>
+        </action>
+
+		<action name="show_supplier_locations"
+			class="tavant.twms.web.actions.ManageUserLocations">
+			<interceptor-ref name="paramsPrepareWithoutValidation" />
+			<param name="context">Supplier</param>
+			<result name="success">pages/secure/customer/manageUserLocationsInboxView.jsp</result>
+		</action>
+		
+        <action name="supplier_location_detail" 
+        class="tavant.twms.web.actions.ManageUserLocations" method="detail">
+        	<interceptor-ref name="adminParamsPrepare" />
+			<param name="context">Supplier</param>
+			<result name="success">pages/secure/customer/supplierLocationDetail.jsp</result>
+			<result name="input">pages/secure/customer/supplierLocationDetail.jsp</result>
+        </action>
+        
+        <action name="new_supplier_location" 
+        class="tavant.twms.web.actions.ManageUserLocations">
+        	<interceptor-ref name="adminParamsPrepare" />
+			<param name="context">Supplier</param>
+			<result name="success">pages/secure/customer/supplierLocationDetail.jsp</result>
+			<result name="input">pages/secure/customer/supplierLocationDetail.jsp</result>
+        </action>
+
+		<action name="exportUsersToExcel" class="tavant.twms.web.actions.ManageUserLocations"
+           method="downloadListingData" >
+			<interceptor-ref name="paramsPrepare" />
+		</action>
+		
+		<action name="manage_email_subscription" class="tavant.twms.web.actions.EmailSubscriptionAction" method="prepareForUIDisplay">
+			<result name="success">
+				pages/secure/emailnotification/email_subscription.jsp
+			</result>
+		</action>
+		
+		<action name="save_update_subscription" class="tavant.twms.web.actions.EmailSubscriptionAction" method="saveOrUpdateSubscriptions">
+			<result name="success">
+				pages/secure/emailnotification/email_subscription.jsp
+			</result>
+		</action>
+		<action name="downloadTemplate"
+     			class="tavant.twms.web.upload.DownloadTemplate"
+      			method="downloadTemplateFile">
+      		<result name="success">
+        		pages/secure/uploads/loadExcelFile.jsp
+      		</result>
+    	</action>
+		<action name="syncFailedCreditNotifications" class="tavant.twms.web.actions.RemoteInteractionLogsAction"
+        method="syncFailedCreditNotifications">
+            <result name="success">pages/secure/common/form/common/syncCreditNotifications.jsp</result>            
+        </action>
+        
+        <action name="month_end_scheduler"
+			class="tavant.twms.web.actions.MonthEndSchedulerAction"
+			method="runMonthEndScheduler">
+			<interceptor-ref name="paramsPrepareWithoutValidation" />
+			<result name="success">
+				pages/secure/common/scheduler_generated.jsp
+			</result>
+		</action>
+		
+		  <action name="wpra_Schedular"
+			class="tavant.twms.web.actions.MonthEndSchedulerAction"
+			method="runWpraScheduler">
+			<interceptor-ref name="paramsPrepareWithoutValidation" />
+			<result name="success">
+				pages/secure/common/scheduler_generated.jsp
+			</result>
+			<result name="input">
+				pages/secure/common/scheduler_generated.jsp
+			</result>
+		</action>
+		
+		 <action name="update_credit_date"
+			class="tavant.twms.web.actions.MonthEndSchedulerAction"
+			method="updateCreditDate">
+			<interceptor-ref name="paramsPrepareWithoutValidation" />
+			<result name="success">
+				pages/secure/common/scheduler_generated.jsp
+			</result>
+			<result name="input">
+				pages/secure/common/scheduler_generated.jsp
+			</result>
+		</action>
+		
+	</package>
+</struts>

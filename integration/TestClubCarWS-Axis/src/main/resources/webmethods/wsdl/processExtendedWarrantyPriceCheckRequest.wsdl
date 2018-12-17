@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<wsdl:definitions name="Tavant_Process" targetNamespace="http://www.webmethods.com/"
+			xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+			xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+			xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
+			xmlns:tns="http://www.webmethods.com/"
+			xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
+			xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+	<wsdl:types>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://localhost/Tavant/Process/processExtendedWarrantyPriceCheckRequest" xmlns:tns="http://localhost/Tavant/Process/processExtendedWarrantyPriceCheckRequest">
+          <xsd:complexType name="__processExtendedWarrantyPriceCheckRequestInput">
+            <xsd:sequence>
+              <xsd:element name="_x0078_mlin" nillable="true" type="xsd:string"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="__processExtendedWarrantyPriceCheckRequestOutput">
+            <xsd:sequence>
+              <xsd:element name="_x0078_mlout" nillable="true" type="xsd:string"/>
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:schema>
+
+	</wsdl:types>
+	
+	<wsdl:message name="processExtendedWarrantyPriceCheckRequestInput">
+		<wsdl:part name="_x0078_mlin" type="xsd:string"/>
+	</wsdl:message>
+	
+	<wsdl:message name="processExtendedWarrantyPriceCheckRequestOutput">
+		<wsdl:part name="_x0078_mlout" type="xsd:string"/>
+	</wsdl:message>
+	<wsdl:portType name="Tavant_ProcessPortType">
+		<wsdl:operation name="processExtendedWarrantyPriceCheckRequest">
+			<wsdl:input message="tns:processExtendedWarrantyPriceCheckRequestInput"/>
+			<wsdl:output message="tns:processExtendedWarrantyPriceCheckRequestOutput"/>
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="Tavant_ProcessBinding" type="tns:Tavant_ProcessPortType">
+		<soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<wsdl:operation name="processExtendedWarrantyPriceCheckRequest">
+			<soap:operation soapAction=""/>
+			<wsdl:input>
+				<soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://www.webmethods.com/Tavant.Process" use="encoded"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://www.webmethods.com/Tavant.Process" use="encoded"/>
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="Tavant_ProcessService">
+		<wsdl:port name="Tavant_ProcessPort0" binding="tns:Tavant_ProcessBinding">
+			<soap:address location="http://10.80.14.29:5677/soap/rpc"/>
+		</wsdl:port>
+	</wsdl:service>
+	</wsdl:definitions>

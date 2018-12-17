@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2012 rel. 2 sp1 (http://www.altova.com) by rohit (Bobcat) -->
+<xs:schema xmlns="http://www.tavant.com/globalsync/pricefetchresponse" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:oa="http://www.openapplications.org/oagis/9" targetNamespace="http://www.tavant.com/globalsync/pricefetchresponse" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="../../Resources/Nouns/global/ApplicationAreaType.xsd"/>
+	<xs:element name="PriceFetchResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="ApplicationArea" type="ApplicationAreaType"/>
+				<xs:element name="Status" type="StatusType"/>
+				<xs:element name="PriceCheckResponse" type="PriceCheckResponseType"/>
+				<xs:element name="CostCheckResponse" type="CostCheckResponseType" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="StatusType">
+		<xs:sequence>
+			<xs:element ref="code"/>
+			<xs:element ref="errorMessage"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--code : SUCCESS,ERROR -->
+	<xs:element name="code">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="7"/>
+				<xs:enumeration value="ERROR"/>
+				<xs:enumeration value="SUCCESS"/>
+				<xs:enumeration value="FAILURE"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="errorMessage">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="500"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:complexType name="PriceCheckResponseType">
+		<xs:sequence>
+			<xs:element name="LineItem" type="ResponseLineItemType" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CostCheckResponseType">
+		<xs:sequence>
+			<xs:element name="LineItem" type="ResponseLineItemType" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ResponseLineItemType">
+		<xs:sequence>
+			<xs:element name="Status" type="StatusType"/>
+			<xs:element name="PartNo">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="50"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="Quantity" type="xs:int"/>
+			<xs:element name="ListPrice" type="ListPriceType"/>
+			<xs:element name="AdjustedListPrice" type="AdjustedListPriceType" minOccurs="0"/>
+			<xs:element name="MaterialCost" type="MaterialCostType" minOccurs="0"/>
+			<xs:element name="StandardCost" type="StandardCostType" minOccurs="0"/>
+			<!--UOM : ACTIVE,BX,CS,DRUM,EACH,FEET,GALLON,GRAM,INCH,KILOGRAM,KT,LITRE,LT,METER,MILLILITRE,MILLIMETER, PACK OF 10,PACK OF 12,PACK OF 2,PACK OF 25,PACK OF 4,PACK OF 5,PACK OF 50,PACK OF 6,PACK OF 8,PAIL,PALLET,PC,PK,POUND,QUART,SQUARE FEET,SQUARE METER,ST,SI,OZ,KIT,PR,BF,NU,MEA,KG,HR,M3,LB,GL,PT,RL,CCF,CEA,SET,M,EA,OZT,SH,FT,SF,IN,QT,SM,CWT,L,BOT,FL,A,NA,GA -->
+			<xs:element name="UOM">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="50"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<!-- PartPurchasedByDealer : TRUE , FALSE -->
+			<xs:element name="PartPurchasedByDealer">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="1"/>
+						<xs:enumeration value="0"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ListPriceType">
+		<xs:simpleContent>
+			<xs:extension base="xs:decimal">
+				<xs:attribute name="CurrencyCode" type="CurrencyCodeType" default="USD"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="AdjustedListPriceType">
+		<xs:simpleContent>
+			<xs:extension base="xs:decimal">
+				<xs:attribute name="CurrencyCode" type="CurrencyCodeType" default="USD"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:attribute name="CurrencyCode" type="xs:string" default="USD"/>
+	<xs:complexType name="MaterialCostType">
+		<xs:simpleContent>
+			<xs:extension base="xs:decimal">
+				<xs:attribute name="CurrencyCode" type="CurrencyCodeType" default="USD"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="StandardCostType">
+		<xs:simpleContent>
+			<xs:extension base="xs:decimal">
+				<xs:attribute name="CurrencyCode" type="CurrencyCodeType" default="USD"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:simpleType name="CurrencyCodeType">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="3"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

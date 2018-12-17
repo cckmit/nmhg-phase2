@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+    version="2.5">
+    <distributable/>
+    <display-name>TWMS</display-name>
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>
+            classpath:container-ds-context.xml, classpath*:/app-context.xml, classpath:security-context.xml,
+            classpath:quartz-tasks-context.xml, classpath:env-context.xml , classpath:org/codehaus/xfire/spring/xfire.xml
+        </param-value>
+    </context-param>
+
+    <filter>
+        <filter-name>HeaderFilter</filter-name>
+        <filter-class>
+            tavant.twms.filter.HeaderFilter
+        </filter-class>
+    </filter>
+
+    <filter>
+        <filter-name>OpenSessionInViewFilter</filter-name>
+        <filter-class>
+            tavant.twms.infra.web.filter.TwmsOpenSessionInViewFilter
+        </filter-class>
+        <init-param>
+            <param-name>singleSession</param-name>
+            <param-value>true</param-value>
+        </init-param>
+        <!-- Optional. Separate multiple filters using comma. -->
+        <init-param>
+            <param-name>activeHibernateFilters</param-name>
+            <param-value>excludeInactive,excludeMultiClaimAudit,excludeInactiveAddress</param-value>
+        </init-param>
+    </filter>
+
+    <filter>
+        <filter-name>SelectedBusinessUnitsFilter</filter-name>
+        <filter-class>
+            tavant.twms.filter.SelectedBusinessUnitsFilter
+        </filter-class>
+    </filter>
+
+    <filter>
+        <filter-name>AcegiFilterChainProxy</filter-name>
+        <filter-class>
+            org.acegisecurity.util.FilterToBeanProxy
+        </filter-class>
+        <init-param>
+            <param-name>targetClass</param-name>
+            <param-value>
+                org.acegisecurity.util.FilterChainProxy
+            </param-value>
+        </init-param>
+    </filter>
+
+    <filter>
+        <filter-name>ResponseTimeLogFilter</filter-name>
+        <filter-class>
+            tavant.twms.filter.ResponseTimeLogFilter
+        </filter-class>
+    </filter>
+
+    <filter>
+        <filter-name>struts-cleanup</filter-name>
+        <filter-class>
+            org.apache.struts2.dispatcher.ActionContextCleanUp
+        </filter-class>
+    </filter>
+
+    <filter>
+        <filter-name>struts2</filter-name>
+        <filter-class>
+            org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter
+        </filter-class>
+    </filter>
+
+    <filter>
+        <filter-name>charsetFilter</filter-name>
+        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>charsetFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>HeaderFilter</filter-name>
+        <url-pattern>*.html</url-pattern>
+        <url-pattern>*.js</url-pattern>
+        <url-pattern>*.gif</url-pattern>
+        <url-pattern>*.css</url-pattern>
+        <url-pattern>*.png</url-pattern>
+        <url-pattern>*.jpg</url-pattern>
+        <url-pattern>*.ico</url-pattern>
+        <dispatcher>FORWARD</dispatcher>
+        <dispatcher>REQUEST</dispatcher>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>OpenSessionInViewFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>SelectedBusinessUnitsFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>AcegiFilterChainProxy</filter-name>
+        <url-pattern>/*</url-pattern>
+        <dispatcher>FORWARD</dispatcher>
+        <dispatcher>REQUEST</dispatcher>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>ResponseTimeLogFilter</filter-name>
+        <url-pattern>*.action</url-pattern>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>struts2</filter-name>
+        <url-pattern>/*</url-pattern>
+        <dispatcher>FORWARD</dispatcher>
+        <dispatcher>REQUEST</dispatcher>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>struts-cleanup</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <resource-ref>
+        <res-ref-name>jdbc/twms-ds</res-ref-name>
+        <res-type>javax.sql.DataSource</res-type>
+        <res-auth>Container</res-auth>
+    </resource-ref>
+
+    <listener>
+        <listener-class>
+            org.springframework.web.context.ContextLoaderListener
+        </listener-class>
+    </listener>
+
+    <servlet>
+        <servlet-name>dwr</servlet-name>
+        <servlet-class>uk.ltd.getahead.dwr.DWRServlet</servlet-class>
+        <init-param>
+            <param-name>debug</param-name>
+            <param-value>true</param-value>
+        </init-param>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>dwr</servlet-name>
+        <url-pattern>/dwr/*</url-pattern>
+    </servlet-mapping>
+
+    <!-- This servlet exposes dealer integration service (dealer interface) as a webservice -->
+    <servlet>
+        <servlet-name>xfire</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    </servlet>
+
+    <!-- All calls matching this url pattern are assumed to be incoming webservice calls on dealer integration service-->
+    <servlet-mapping>
+        <servlet-name>xfire</servlet-name>
+        <url-pattern>/twmsServices/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>integration</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>integration</servlet-name>
+        <url-pattern>/integration/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ImageServlet</servlet-name>
+        <servlet-class>net.sf.jasperreports.j2ee.servlets.ImageServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ImageServlet</servlet-name>
+        <url-pattern>/servlets/image</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>HealthCheckServlet</servlet-name>
+        <servlet-class>
+            tavant.twms.web.common.HealthCheckServlet
+        </servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>HealthCheckServlet</servlet-name>
+        <url-pattern>/HealthCheck</url-pattern>
+    </servlet-mapping>
+	
+	<error-page>
+		<error-code>404</error-code>
+		<location>/pages/secure/common/error404ForHelp.jsp</location>
+	</error-page>
+	
+    <welcome-file-list>
+        <welcome-file>home.action</welcome-file>
+    </welcome-file-list>
+
+    <jsp-config>
+        <taglib>
+            <taglib-uri>authz</taglib-uri>
+            <taglib-location>/WEB-INF/authz.tld</taglib-location>
+        </taglib>
+        <taglib>
+            <taglib-uri>twms</taglib-uri>
+            <taglib-location>/WEB-INF/twms.tld</taglib-location>
+        </taglib>
+        <taglib>
+            <taglib-uri>jstl</taglib-uri>
+            <taglib-location>/WEB-INF/c.tld</taglib-location>
+        </taglib>
+        <taglib>
+            <taglib-uri>/ui-ext</taglib-uri>
+            <taglib-location>/WEB-INF/ui-ext.tld</taglib-location>
+        </taglib>
+        <!-- This is required since the dojo substitution template which we use in many pages uses the ${...} syntax
+            which will get evaluated by the JSPCompiler, mistaking it for an EL expression. This should be ok, since we
+            are not using JSP2.0 EL features.
+        -->
+        <jsp-property-group>
+            <url-pattern>*.jsp</url-pattern>
+            <el-ignored>true</el-ignored>
+        </jsp-property-group>
+    </jsp-config>
+</web-app>

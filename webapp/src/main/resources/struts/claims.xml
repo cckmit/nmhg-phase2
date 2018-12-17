@@ -1,0 +1,1014 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <package name="claims" extends="struts-twms-default">
+
+        <!-- Claims Action -->
+        <action name="claims"
+            class="tavant.twms.web.claim.ClaimsAction">
+            <interceptor-ref name="paramsPrepare" />
+            <result name="success">pages/secure/claims/claimInboxView.jsp</result>
+        </action>
+
+        <action name="claimsBody"
+            class="tavant.twms.web.claim.ClaimsAction" method="tableBody">
+            <interceptor-ref name="paramsPrepare" />
+            <result name="success">pages/secure/home/json.jsp</result>
+                        <result name="input">error.jsp</result>
+        </action>
+        <action name="list_dealer_brands"
+                class="tavant.twms.web.claim.create.ClaimFormListingAction" method="listDealerBrands">
+            <interceptor-ref name="paramsPrepareWithoutValidation"/>
+        </action>
+
+        <action name="get_inventory_brand"
+                class="tavant.twms.web.claim.create.ClaimFormListingAction" method="getInventoryBrand">
+            <interceptor-ref name="paramsPrepareWithoutValidation"/>
+            <result name="success">pages/secure/home/json.jsp</result>
+            <result name="input">error.jsp</result>
+        </action>
+
+		<action name="claim_edit" class="tavant.twms.web.claim.ClaimsAction" method="refreshOnEdit">
+			<interceptor-ref name="twmsParamsPrepareRepeatTableParamsWithoutValidation"/>
+			<result name="success">pages/secure/claims/forms/${task.baseFormName}/detail.jsp</result>
+            <result name="input">pages/error.jsp</result>
+            <result name="fatalError">pages/taskNullError.jsp</result>
+		</action>
+		
+        <action name="claim_preview"
+                class="tavant.twms.web.claim.ClaimsAction" method="preview">
+            <interceptor-ref name="paramsPrepare"/>
+            <result name="success">pages/secure/claims/forms/${task.baseFormName}/preview.jsp</result>
+        </action>
+
+        <action name="claim_detail"
+                class="tavant.twms.web.claim.ClaimsAction" method="detail">
+            <interceptor-ref name="twmsParamsPrepareRepeatTableParamsWithoutValidation"/>
+            <result name="success">pages/secure/claims/forms/${task.baseFormName}/detail.jsp</result>
+            <result name="input">pages/error.jsp</result>
+        </action>
+
+        <action name="claim_submit"
+            class="tavant.twms.web.claim.ClaimsAction" method="submit">
+            <interceptor-ref name="twmsParamsPrepareRepeatTableParams" />
+            <result name="success">pages/secure/common/successWithWarning.jsp</result>
+            <result name="input">pages/secure/claims/forms/${task.baseFormName}/detail.jsp</result>
+            <result name="fatalError">pages/taskNullError.jsp</result>
+            <result name="dirtyReadClaim">pages/dirtyReadClaim.jsp</result>
+        </action>
+		
+        <action name="claim_reopen_detail"
+            class="tavant.twms.web.claim.ReopenClaimsAction" method="reopen">
+            <interceptor-ref name="twmsParamsPrepareRepeatTableParamsWithoutValidation" />
+            <result name="input">pages/error.jsp</result>
+            <result name="success">pages/secure/claims/forms/processor_review/detail.jsp</result>
+            <result name="alreadyReopened">pages/secure/common/successWithWarning.jsp</result>
+        </action>
+        
+          <action name="notify_processor_if_more_days"
+          	class="tavant.twms.web.claim.ReopenClaimsAction" method="notifyProcessorIfDealerShippedPart">
+          	 <interceptor-ref name="twmsParamsPrepareRepeatTableParamsWithoutValidation" />
+          	 <result name="notifyAdmin">pages/secure/home/json.jsp</result>
+          </action>
+        
+        
+        <action name="claim_transfer_tome"
+            class="tavant.twms.web.claim.ReopenClaimsAction" method="transferClaimFromSearchResult">
+            <interceptor-ref name="twmsParamsPrepareRepeatTableParamsWithoutValidation" />
+            <result name="input">pages/error.jsp</result>
+            <result name="success">pages/secure/common/successFullRefresh.jsp</result>
+        </action>
+        
+         <action name="claim_process"
+            class="tavant.twms.web.claim.ClaimsAction" method="detail">
+            <interceptor-ref name="twmsParamsPrepareRepeatTableParamsWithoutValidation"/>
+            <result name="success">pages/secure/claims/forms/${task.baseFormName}/detail.jsp</result>
+            <result name="input">pages/error.jsp</result>
+            <result name="error">pages/error.jsp</result>
+        </action>
+        
+        <action name="claim_transfer"
+            class="tavant.twms.web.claim.ReopenClaimsAction" method="transferClaimtoDSM">
+            <interceptor-ref name="twmsParamsPrepareRepeatTableParamsWithoutValidation" />
+            <result name="input">pages/error.jsp</result>
+            <result name="success">pages/secure/common/successFullRefresh.jsp</result>
+        </action>
+        
+        <action name="claim_reopen_validate"
+            class="tavant.twms.web.claim.ReopenClaimsAction" method="validateClaim">
+            <interceptor-ref name="twmsParamsPrepareRepeatTableParams" />
+            <result name="input">pages/secure/claims/forms/common/read/validateAndComputeErrors.jsp</result>
+            <result name="success">pages/secure/claims/forms/common/read/validateAndCompute.jsp</result>
+            <result name="fatalError">pages/taskNullError.jsp</result>
+        </action>
+        
+          <action name="parts_claim_reopen_validate"
+            class="tavant.twms.web.claim.ReopenClaimsAction" method="validateClaim">
+            <interceptor-ref name="twmsParamsPrepareRepeatTableParams" />
+            <result name="input">pages/secure/claims/forms/common/read/validateAndComputeErrors.jsp</result>
+            <result name="success">pages/secure/claims/forms/common/read/validateAndCompute.jsp</result>
+            <result name="fatalError">pages/taskNullError.jsp</result>
+        </action>
+        
+        <action name="campaign_claim_reopen_validate"
+            class="tavant.twms.web.claim.ReopenClaimsAction" method="validateClaim">
+            <interceptor-ref name="twmsParamsPrepareRepeatTableParams" />
+            <result name="input">pages/secure/claims/forms/common/read/validateAndComputeErrors.jsp</result>
+            <result name="success">pages/secure/claims/forms/common/read/validateAndCompute.jsp</result>
+            <result name="fatalError">pages/taskNullError.jsp</result>
+        </action>
+        
+        <action name="claim_reopen_submit"
+            class="tavant.twms.web.claim.ReopenClaimsAction" method="submit">
+            <interceptor-ref name="twmsParamsPrepareRepeatTableParams" />
+            <result name="success">pages/secure/common/successFullRefresh.jsp</result>
+            <result name="input">pages/secure/claims/forms/processor_review/detail.jsp</result>
+        </action>
+        
+        <action name="claim_resubmit_detail"
+            class="tavant.twms.web.claim.ReopenClaimsAction" method="resubmissionDetail">
+            <interceptor-ref name="twmsParamsPrepareRepeatTableParamsWithoutValidation" />
+            <result name="input">pages/error.jsp</result>
+            <result name="success">pages/secure/claims/forms/resubmit/detail.jsp</result>
+        </action>
+        
+        <action name="claim_resubmit"
+            class="tavant.twms.web.claim.ReopenClaimsAction" method="resubmit">
+            <interceptor-ref name="twmsParamsPrepareRepeatTableParamsWithoutValidation" />
+            <result name="success">pages/secure/common/successFullRefresh.jsp</result>
+            <result name="input">pages/secure/claims/forms/resubmit/detail.jsp</result>
+            <result name="alreadyAppealed">pages/secure/common/successWithWarning.jsp</result>
+        </action>
+        
+        <action name="draft_claim_validate"
+            class="tavant.twms.web.claim.ClaimsAction" method="validateClaim">
+            <interceptor-ref name="twmsParamsPrepareRepeatTableParams" />
+            <result name="input">pages/secure/claims/forms/common/read/validateAndComputeErrors.jsp</result>
+            <result name="success">pages/secure/claims/forms/common/read/validateAndCompute.jsp</result>
+            <result name="fatalError">pages/taskNullError.jsp</result>
+        </action>
+        
+		<action name="smr_claim_validate"
+            class="tavant.twms.web.claim.ClaimsAction" method="validateClaim">
+            <interceptor-ref name="twmsParamsPrepareRepeatTableParams" />
+            <result name="input">pages/secure/claims/forms/common/read/validateAndComputeErrors.jsp</result>
+            <result name="success">pages/secure/claims/forms/service_manager_review/read/validateAndCompute.jsp</result>
+            <result name="fatalError">pages/taskNullError.jsp</result>
+        </action>
+        <!--TODO: have put the repeatTable stack for draft claim actions... not sure if others need it....
+            please take care of this...-->
+
+        <action name="processor_claim_validate"
+            class="tavant.twms.web.claim.ClaimsAction" method="validateClaim">
+            <interceptor-ref name="twmsParamsPrepareRepeatTableParams" />
+            <result name="input">pages/secure/claims/forms/common/read/validateAndComputeErrors.jsp</result>
+            <result name="success">pages/secure/claims/forms/common/read/validateAndCompute.jsp</result>
+            <result name="fatalError">pages/taskNullError.jsp</result>
+        </action>
+        
+        <action name="reopened_claim_validate"
+            class="tavant.twms.web.claim.ClaimsAction" method="validateClaim">
+            <interceptor-ref name="twmsParamsPrepareRepeatTableParams" />
+            <result name="input">pages/secure/claims/forms/common/read/validateAndComputeErrors.jsp</result>
+            <result name="success">pages/secure/claims/forms/reopened/read/validateAndCompute.jsp</result>
+            <result name="fatalError">pages/taskNullError.jsp</result>
+        </action>
+
+        <action name="parts_claim_submit"
+            class="tavant.twms.web.claim.ClaimsAction" method="submit">
+            <interceptor-ref name="twmsParamsPrepareRepeatTableParams" />
+            <result name="success">pages/secure/common/successWithWarning.jsp</result>
+            <result name="input">pages/secure/claims/forms/${task.baseFormName}/detail.jsp</result>
+            <result name="fatalError">pages/taskNullError.jsp</result>
+        </action>
+
+        <action name="parts_draft_claim_validate"
+            class="tavant.twms.web.claim.ClaimsAction" method="validateClaim">
+             <interceptor-ref name="twmsParamsPrepareRepeatTableParams" />
+            <result name="input">pages/secure/claims/forms/common/read/validateAndComputeErrors.jsp</result>
+            <result name="success">pages/secure/claims/forms/common/read/validateAndCompute.jsp</result>
+            <result name="fatalError">pages/taskNullError.jsp</result>
+        </action>
+        
+        <action name="parts_smr_claim_validate"
+            class="tavant.twms.web.claim.ClaimsAction" method="validateClaim">
+            <interceptor-ref name="twmsParamsPrepareRepeatTableParams" />
+            <result name="input">pages/secure/claims/forms/common/read/validateAndComputeErrors.jsp</result>
+            <result name="success">pages/secure/claims/forms/service_manager_review/read/validateAndCompute.jsp</result>
+            <result name="fatalError">pages/taskNullError.jsp</result>
+        </action>
+
+        <action name="parts_processor_claim_validate"
+            class="tavant.twms.web.claim.ClaimsAction" method="validateClaim">
+            <interceptor-ref name="twmsParamsPrepareRepeatTableParams" />
+            <result name="input">pages/secure/claims/forms/common/read/validateAndComputeErrors.jsp</result>
+            <result name="success">pages/secure/claims/forms/common/read/validateAndCompute.jsp</result>
+            <result name="fatalError">pages/taskNullError.jsp</result>
+        </action>
+
+        <action name="campaign_draft_claim_validate"
+            class="tavant.twms.web.claim.ClaimsAction" method="validateClaim">
+            <interceptor-ref name="twmsParamsPrepareRepeatTableParams" />
+            <result name="input">pages/secure/claims/forms/common/read/validateAndComputeErrors.jsp</result>
+            <result name="success">pages/secure/claims/forms/common/read/validateAndCompute.jsp</result>
+            <result name="fatalError">pages/taskNullError.jsp</result>
+        </action>
+
+        <action name="campaign_smr_claim_validate"
+            class="tavant.twms.web.claim.ClaimsAction" method="validateClaim">
+            <interceptor-ref name="twmsParamsPrepareRepeatTableParams" />
+            <result name="input">pages/secure/claims/forms/common/read/validateAndComputeErrors.jsp</result>
+            <result name="success">pages/secure/claims/forms/service_manager_review/read/validateAndCompute.jsp</result>
+            <result name="fatalError">pages/taskNullError.jsp</result>
+        </action>
+        
+        <action name="campaign_claim_submit"
+            class="tavant.twms.web.claim.ClaimsAction" method="submit">
+            <interceptor-ref name="twmsParamsPrepareRepeatTableParams" />
+            <result name="success">pages/secure/common/successFullRefresh.jsp</result>
+            <result name="input">pages/secure/claims/forms/${task.baseFormName}/detail.jsp</result>
+            <result name="fatalError">pages/taskNullError.jsp</result>
+        </action>
+
+        <action name="claim_save_draft"
+            class="tavant.twms.web.claim.ClaimsAction" method="saveDraft">
+            <interceptor-ref name="twmsParamsPrepareRepeatTableParamsWithoutValidation" />
+            <result name="success" >pages/secure/claims/forms/${task.baseFormName}/detail.jsp</result>
+            <result name="input">pages/secure/claims/forms/${task.baseFormName}/detail.jsp</result>
+            <result name="fatalError">pages/taskNullError.jsp</result>
+        </action>
+        
+        <action name="claim_go_to_page_1" class="tavant.twms.web.claim.ClaimsAction" 
+        	method="saveDraft">
+        	<interceptor-ref name="twmsParamsPrepareRepeatTableParamsWithoutValidation" />
+        	<result name="success" type="chain">showNewClaimForm</result>
+        	<!-- TODO: This is a workarounD. Somebody figure out why the hell Webwork is
+        		looking for an input result, when there are no validators defined! -->
+            <result name="input">pages/secure/claims/forms/${task.baseFormName}/detail.jsp</result> 
+            <result name="fatalError">pages/taskNullError.jsp</result>
+        </action>
+        
+        <action name="campaign_processor_claim_validate"
+            class="tavant.twms.web.claim.ClaimsAction" method="validateClaim">
+            <interceptor-ref name="twmsParamsPrepareRepeatTableParams" />
+            <result name="input">pages/secure/claims/forms/common/read/validateAndComputeErrors.jsp</result>
+            <result name="success">pages/secure/claims/forms/common/read/validateAndCompute.jsp</result>
+            <result name="fatalError">pages/taskNullError.jsp</result>
+        </action>
+
+        <action name="claim_delete_draft"
+            class="tavant.twms.web.claim.ClaimsAction" method="deleteDraft">
+            <interceptor-ref name="twmsParamsPrepareRepeatTableParamsWithoutValidation" />
+            <result name="success">pages/secure/common/successDelete.jsp</result>
+            <result name="fatalError">pages/taskNullError.jsp</result>
+        </action>
+
+        <action name="active_policies"
+            class="tavant.twms.web.claim.ClaimsAction" method="showActivePolicies">
+            <interceptor-ref name="paramsPrepareWithoutValidation" />
+            <result name="success">/pages/secure/claims/forms/common/read/availablePoliciesPopup.jsp</result>
+        </action>
+
+        <action name="showNewClaimForm"
+                class="tavant.twms.web.claim.create.NewClaimAction" method="showForm">
+            <interceptor-ref name="twmsParamsPrepareParams" />
+            <result name="input">/pages/secure/claims/forms/common/write/selectBusinessUnit.jsp</result>
+            <result name="success" type="chain">redirectToClaimTypeAndDealer</result>
+            <result name="multiclaim" type="chain">new_search_expression</result>
+        </action>
+        
+	<action name="showNewThirdPartyClaimForm"
+		class="tavant.twms.web.claim.create.NewClaimAction" method="showForm">
+	    <interceptor-ref name="twmsParamsPrepareParams" />
+	    <result name="input">/pages/secure/claims/forms/common/write/selectBusinessUnit.jsp</result>
+	    <result name="success" type="chain">chooseThirdPartyClaimType</result>
+	    <param name="thirdParty">ThirdParty</param>
+        </action>       
+       
+       <action name="setClaimBusinessUnitInfo"
+                class="tavant.twms.web.claim.create.NewMachineClaimAction" method="setClaimBusinessUnitInfo">
+            <interceptor-ref name="twmsParamsPrepareParams" />
+            <result name="input">/pages/secure/claims/forms/common/write/selectBusinessUnit.jsp</result>
+            <result name="success" type="chain">redirectToClaimTypeAndDealer</result>
+        </action>
+       
+        
+        <action name="searchMultiCarInventories"
+                class="tavant.twms.web.claim.create.NewMachineClaimAction" method="getMultipleInventories">
+                <interceptor-ref name="paramsWithoutValidation" />                
+            <result name="success" >/pages/secure/claims/forms/common/write/multiClaimSearchResultPage.jsp</result> 
+            <result name="input" >/pages/secure/claims/forms/common/write/multiCarSearch.jsp</result>           
+        </action>
+        
+        <action name="searchThirdPartiesForClaim"
+                class="tavant.twms.web.thirdparty.ThirdPartySearchAction" method="geThirdParties">               
+            <result name="success" >/pages/secure/claims/forms/common/write/thirdPartySearchResult.jsp</result>        
+        </action>
+        
+        <action name="displayMultipleEquipInfo"
+                class="tavant.twms.web.claim.create.NewMachineClaimAction" method="getEquipmentDetails">
+            <interceptor-ref name="paramsPrepareWithoutValidation" />
+            <result name="success" >/pages/secure/claims/forms/common/write/dealerEquipment.jsp</result>
+            <result name="input" >/pages/secure/claims/forms/common/write/dealerEquipment.jsp</result>            
+        </action>
+
+		<action name="chooseClaimServiceProviderType"
+                class="tavant.twms.web.claim.create.NewClaimAction" method="chooseClaimServiceProviderType">
+                <interceptor-ref name="twmsParamsPrepareParams" />
+            <result name="dealer" type="chain">redirectToClaimTypeAndDealer</result>
+            <result name="thirdparty" type="chain">chooseThirdPartyClaimType</result>
+            <result name="multiclaim" type="chain">new_search_expression</result>
+        </action>
+        <action name="chooseClaimTypeAndDealer"
+                class="tavant.twms.web.claim.create.NewClaimAction" method="chooseClaimTypeAndDealer">
+                <interceptor-ref name="paramsPrepareWithoutValidation" />
+            <result name="Machine" type="chain">showNewMachineClaimForm</result>
+            <result name="nonSerialized" type="chain">nonSerializedMachineClaim</result>
+            <result name="nonSerializedWithoutBrand" type="chain">nonSerializedMachineClaimWithoutBrand</result>
+            <result name="Attachment" type="chain">showNewAttachmentClaimForm</result>
+            <result name="attachmentNonSerialized" type="chain">nonSerializedAttachmentClaim</result>
+            <result name="partsNonSerialized" type="chain">partsClaimNonSerialized</result>
+            <result name="Parts" type="chain">partsClaim</result>
+            <result name="Campaign" type="chain">newCampaignClaim</result>
+			<result name="multiCampaign">pages/secure/claims/new/new_multi_campaign_claim1.jsp</result>					
+        </action>
+
+        <action name="chooseClaimTypeFromInventoryInbox"
+                class="tavant.twms.web.claim.create.NewClaimAction" method="redirectToClaimType">
+                <interceptor-ref name="paramsPrepareWithoutValidation" />
+            <result name="Machine" type="chain">showNewMachineClaimForm</result>
+            <result name="Attachment" type="chain">showNewAttachmentClaimForm</result>
+            <result name="Parts" type="chain">partsClaim</result>
+            <result name="error">pages/secure/report/error.jsp</result>
+        </action>
+
+        <action name="redirectToClaimTypeAndDealer"
+                class="tavant.twms.web.claim.create.NewClaimAction" method="chooseClaimTypeAndDealer">
+                <interceptor-ref name="twmsParamsPrepareParams" />
+            <result name="Machine">pages/secure/claims/new/new_machine_claim1.jsp</result>
+            <result name="nonSerialized">pages/secure/claims/new/new_non_serialized_claim1.jsp</result>
+            <result name="nonSerializedWithoutBrand">pages/secure/claims/new/new_non_serialized_claim_withoutbranddropdown.jsp</result>
+            <result name="Attachment">pages/secure/claims/new/new_attachment_claim1.jsp</result>
+            <result name="attachmentNonSerialized">pages/secure/claims/new/new_attachment_non_serialized_claim1.jsp</result>
+            <result name="partsNonSerialized">pages/secure/claims/new/new_parts_non_serialized_claim1.jsp</result>
+            <result name="Parts">pages/secure/claims/new/new_parts_claim1.jsp</result>
+            <result name="Campaign">pages/secure/claims/new/new_campaign_claim1.jsp</result>
+			<result name="multiCampaign">pages/secure/claims/new/new_multi_campaign_claim1.jsp</result>
+        </action>
+        
+        <action name="partsClaim" class="tavant.twms.web.claim.create.NewPartsClaimAction">
+            <interceptor-ref name="paramsPrepareWithoutValidation" />
+            <result name="success">pages/secure/claims/new/new_parts_claim1.jsp</result>
+        </action>
+
+        <action name="newCampaignClaim"
+                class="tavant.twms.web.claim.create.NewCampaignClaimAction" method="execute">
+            <interceptor-ref name="paramsPrepareWithoutValidation" />
+            <result name="success">pages/secure/claims/new/new_campaign_claim1.jsp</result>
+        </action>
+        
+        <action name="nonSerializedMachineClaim"
+                class="tavant.twms.web.claim.create.NewMachineClaimAction" method="execute">
+            <interceptor-ref name="twmsParamsPrepareRepeatTableParamsWithoutValidation" />
+            <result name="success">pages/secure/claims/new/new_non_serialized_claim1.jsp</result>          
+        </action>
+
+        <action name="nonSerializedMachineClaimWithoutBrand"
+                class="tavant.twms.web.claim.create.NewMachineClaimAction" method="execute">
+            <interceptor-ref name="twmsParamsPrepareRepeatTableParamsWithoutValidation" />
+            <result name="success">pages/secure/claims/new/new_non_serialized_claim_withoutbranddropdown.jsp</result>
+        </action>
+
+        <action name="nonSerializedAttachmentClaim"
+                class="tavant.twms.web.claim.create.NewMachineClaimAction" method="execute">
+            <interceptor-ref name="twmsParamsPrepareRepeatTableParamsWithoutValidation" />
+            <result name="success">pages/secure/claims/new/new_attachment_non_serialized_claim1.jsp</result>
+        </action>
+
+         <action name="showNewMachineClaimForm"
+                class="tavant.twms.web.claim.create.NewMachineClaimAction" method="execute">
+            <interceptor-ref name="twmsParamsPrepareRepeatTableParamsWithoutValidation" />
+            <result name="success">pages/secure/claims/new/new_machine_claim1.jsp</result>
+        </action>
+
+         <action name="showNewAttachmentClaimForm"
+                class="tavant.twms.web.claim.create.NewAttachmentClaimAction" method="execute">
+            <interceptor-ref name="twmsParamsPrepareRepeatTableParamsWithoutValidation" />
+            <result name="success">pages/secure/claims/new/new_attachment_claim1.jsp</result>
+        </action>
+
+         <action name="partsClaimNonSerialized" class="tavant.twms.web.claim.create.NewPartsClaimAction">
+           <interceptor-ref name="paramsPrepareWithoutValidation" />
+            <result name="success">pages/secure/claims/new/new_parts_non_serialized_claim1.jsp</result>
+        </action>
+        
+        <action name="chooseThirdPartyClaimType"
+                class="tavant.twms.web.claim.create.NewClaimAction" method="chooseThirdPartyClaimType">
+                <interceptor-ref name="twmsParamsPrepareParams" />
+            <result name="Machine">pages/secure/claims/new/new_thirdparty_machine_claim1.jsp</result>
+            <result name="Parts">pages/secure/claims/new/new_thirdparty_machine_claim1.jsp</result>
+            <result name="Campaign">pages/secure/claims/new/new_thirdparty_campaign_claim1.jsp</result>
+       <!-- <result name="multiCampaign">pages/secure/claims/new/new_thirdparty_multi_campaign_claim1.jsp</result> -->
+        </action>
+
+        <action name="saveNonSerializedClaimDraft"
+                class="tavant.twms.web.claim.create.NewMachineClaimAction" method="saveDraft">
+            <interceptor-ref name="twmsParamsPrepareRepeatTableParams" />
+            <result name="success" type="chain">claim_detail</result>
+            <result name="input">pages/secure/claims/new/new_non_serialized_claim1.jsp</result>
+        </action>
+
+         <action name="saveNonSerializedAttachmentClaimDraft"
+                class="tavant.twms.web.claim.create.NewAttachmentClaimAction" method="saveDraft">
+            <interceptor-ref name="twmsParamsPrepareRepeatTableParams" />
+            <result name="success" type="chain">claim_detail</result>
+            <result name="input">pages/secure/claims/new/new_attachment_non_serialized_claim1.jsp</result>
+        </action>
+
+         <action name="saveNonSerializedPartsClaimDraft"
+                class="tavant.twms.web.claim.create.NewPartsClaimAction" method="saveDraft">
+            <interceptor-ref name="twmsParamsPrepareRepeatTableParams" />
+            <result name="success" type="chain">claim_detail</result>
+            <result name="input">pages/secure/claims/new/new_parts_non_serialized_claim1.jsp</result>
+        </action>
+
+        <action name="saveMachineClaimDraft"
+                class="tavant.twms.web.claim.create.NewMachineClaimAction" method="saveDraft">
+            <interceptor-ref name="twmsParamsPrepareRepeatTableParamsCheckBox" />
+            <result name="success" type="chain">redirect_DetailPage</result>
+            <result name="input">pages/secure/claims/new/new_machine_claim1.jsp</result>
+            <result name="none">pages/secure/inventory/machineScrapped.jsp</result>
+        </action>
+
+        <action name="saveAttachmentClaimDraft"
+                class="tavant.twms.web.claim.create.NewAttachmentClaimAction" method="saveDraft">
+            <interceptor-ref name="twmsParamsPrepareRepeatTableParamsCheckBox" />
+            <result name="success" type="chain">redirect_DetailPage</result>
+            <result name="input">pages/secure/claims/new/new_attachment_claim1.jsp</result>
+        </action>
+        
+         <action name="redirect_DetailPage"
+                class="tavant.twms.web.claim.ClaimsAction" method="redirectDetailPage">
+            <interceptor-ref name="prepareInterceptorWithoutParams"/>
+            <result name="success">pages/secure/claims/forms/${task.baseFormName}/detail.jsp</result>
+            <result name="input">pages/error.jsp</result>
+        </action>
+        
+        
+       <action name="saveThirdPartyMachineClaimDraft"
+                class="tavant.twms.web.claim.create.NewMachineClaimAction" method="saveDraft">
+            <interceptor-ref name="twmsParamsPrepareRepeatTableParams" />
+            <result name="success" type="chain">claim_detail</result>
+            <result name="input">pages/secure/claims/new/new_thirdparty_machine_claim1.jsp</result>
+            <result name="none">pages/secure/inventory/machineScrapped.jsp</result>
+        </action>
+
+        <action name="showNewMachineClaimForm"
+                class="tavant.twms.web.claim.create.NewMachineClaimAction" method="execute">
+            <interceptor-ref name="twmsParamsPrepareRepeatTableParamsWithoutValidation" />
+            <result name="success">pages/secure/claims/new/new_machine_claim1.jsp</result>
+        </action>
+        
+        <action name="saveCampaignClaimDraft"
+                class="tavant.twms.web.claim.create.NewCampaignClaimAction" method="saveDraft">
+            <interceptor-ref name="twmsParamsPrepareRepeatTableParams" />
+            <result name="success" type="chain">claim_detail</result>
+            <result name="input">pages/secure/claims/new/new_campaign_claim1.jsp</result>			
+        </action>
+        
+        <action name="saveThirdPartyCampaignClaimDraft"
+                class="tavant.twms.web.claim.create.NewCampaignClaimAction" method="saveDraft">
+            <interceptor-ref name="twmsParamsPrepareRepeatTableParams" />
+            <result name="success" type="chain">claim_detail</result>
+            <result name="input">pages/secure/claims/new/new_thirdparty_campaign_claim1.jsp</result>			
+        </action>
+        
+        <action name="savePartsClaimDraft"
+                class="tavant.twms.web.claim.create.NewPartsClaimAction" method="saveDraft">
+            <interceptor-ref name="twmsParamsPrepareRepeatTableParams" />
+            <result name="success" type="chain">claim_detail</result>
+            <result name="input">pages/secure/claims/new/new_parts_claim1.jsp</result>
+        </action>
+
+        <action name="list_claim_sl_nos"
+                class="tavant.twms.web.claim.create.ClaimFormListingAction" method="listSerialNumbers">
+            <interceptor-ref name="paramsPrepareWithoutValidation"/>
+        </action>
+
+		<action name="list_campaign_claim_sl_nos"
+                class="tavant.twms.web.claim.create.ClaimFormListingAction" method="listSerialNumbersForCampaign">
+            <interceptor-ref name="paramsPrepareWithoutValidation"/>
+        </action>
+        
+        <action name="list_claim_contracts"
+                class="tavant.twms.web.claim.create.ClaimFormListingAction" method="listContracts">
+            <interceptor-ref name="paramsPrepareWithoutValidation"/>
+            <result name="success">pages/secure/home/json.jsp</result>
+        </action>
+        
+        <action name="list_all_contracts"
+                class="tavant.twms.web.claim.create.ClaimFormListingAction" method="listAllContracts">
+            <interceptor-ref name="paramsPrepareWithoutValidation"/>
+            <result name="success">pages/secure/home/json.jsp</result>
+        </action>
+        
+
+        <action name="list_claim_item_nos"
+                class="tavant.twms.web.claim.create.ClaimFormListingAction" method="listItemNumbers">
+            <interceptor-ref name="paramsPrepareWithoutValidation"/>
+        </action>
+        
+        <action name="list_claim_model_names"
+                class="tavant.twms.web.claim.create.ClaimFormListingAction" method="listModelNumbers">
+            <interceptor-ref name="paramsPrepareWithoutValidation"/>
+            <result name="success">pages/secure/home/json.jsp</result>
+        </action>
+        
+        <action name="list_parts"
+			class="tavant.twms.web.claim.create.ClaimFormListingAction"
+			method="listParts" >
+			<interceptor-ref name="adminParamsPrepareWithoutValidation" />
+		</action>
+		 <action name="list_major_components"
+			class="tavant.twms.web.claim.create.ClaimFormListingAction"
+			method="listMajorComponents" >
+			<interceptor-ref name="adminParamsPrepareWithoutValidation" />
+		</action>
+		<action name="list_parts_group_machine"
+			class="tavant.twms.web.claim.create.ClaimFormListingAction"
+			method="listPartsWithTypeMachine" >
+			<interceptor-ref name="adminParamsPrepareWithoutValidation" />
+		</action>
+        <action name="list_claim_item_numbers"
+                class="tavant.twms.web.claim.create.ClaimFormListingAction" method="listItemNumbersForNonSerializedClaim">
+            <interceptor-ref name="paramsPrepareWithoutValidation"/>
+            <result name="success">pages/secure/home/json.jsp</result>
+        </action>
+
+        <action name="list_claim_dealers"
+                class="tavant.twms.web.claim.create.ClaimFormListingAction" method="listDealers">
+            <interceptor-ref name="paramsPrepareWithoutValidation"/>
+            <result name="success">pages/secure/home/json.jsp</result>
+        </action>
+		
+        <action name="list_claim_dealer_numbers"
+                class="tavant.twms.web.claim.create.ClaimFormListingAction" method="listDealerNumbers">
+            <interceptor-ref name="paramsPrepareWithoutValidation"/>
+            <result name="success">pages/secure/home/json.jsp</result>
+        </action>
+
+		<action name="list_claim_dealer_numbers_value_dealerName"
+                class="tavant.twms.web.claim.create.ClaimFormListingAction" method="listDealerNumbersWithValueDealerName">
+            <interceptor-ref name="paramsPrepareWithoutValidation"/>
+        </action>		
+
+        <action name="list_causal_part_nos"
+                class="tavant.twms.web.claim.create.ClaimFormListingAction" method="listCausalPartNos">
+            <interceptor-ref name="paramsPrepareWithoutValidation"/>
+        </action>
+        
+        
+        <action name="list_caused_by"
+                class="tavant.twms.web.claim.create.ClaimFormListingAction" method="listCausedBy">
+            <interceptor-ref name="paramsPrepareWithoutValidation"/>
+        </action>
+
+        <action name="list_root_cause"
+                class="tavant.twms.web.claim.create.ClaimFormListingAction" method="listRootCause">
+            <interceptor-ref name="paramsPrepareWithoutValidation"/>
+        </action>
+
+        <action name="list_processors"
+                class="tavant.twms.web.claim.ClaimsAction" method="listProcessors">
+            <interceptor-ref name="paramsPrepareWithoutValidation"/>
+        </action>
+        
+         <action name="list_warranty_supervisors"
+                class="tavant.twms.web.claim.ClaimsAction" method="listWarrantySupervisors">
+            <interceptor-ref name="paramsPrepareWithoutValidation"/>
+        </action>
+
+        <action name="list_service_managers"
+                class="tavant.twms.web.claim.ClaimsAction" method="listServiceManagers">
+            <interceptor-ref name="paramsPrepareWithoutValidation"/>
+        </action>
+        
+        <action name="list_caused_by_for_model"
+                class="tavant.twms.web.claim.create.ClaimFormListingAction" method="listCausedByForModel">
+            <interceptor-ref name="paramsPrepareWithoutValidation"/>
+            <result name="success">pages/secure/home/json.jsp</result>
+        </action>
+
+        <action name="list_oem_part_slnos"
+                class="tavant.twms.web.claim.create.ClaimFormListingAction" method="listOemPartSerialNumbers">
+            <interceptor-ref name="paramsWithoutValidation"/>
+        </action>
+
+        <action name="getSerializedOemPartDetails"
+                class="tavant.twms.web.claim.create.ClaimFormListingAction" method="getSerializedOemPartDetails">
+            <interceptor-ref name="paramsPrepareWithoutValidation"/>
+            <result name="success">pages/secure/home/json.jsp</result>
+        </action>
+
+		<action name="getMiscellaneousItemDetails"
+                class="tavant.twms.web.claim.create.ClaimFormListingAction" method="getMiscellaneousItemDetails">
+            <interceptor-ref name="paramsPrepareWithoutValidation"/>
+            <result name="success">pages/secure/home/json.jsp</result>
+        </action>
+
+		<action name="getAllMiscPartsForDealer"
+			class="tavant.twms.web.claim.create.ClaimFormListingAction"
+			method="getAllMiscPartsForDealer">
+			<interceptor-ref name="paramsPrepare" />
+		</action>
+		
+		<action name="getTranspotation"
+                class="tavant.twms.web.claim.create.ClaimFormListingAction" method="getTranspotationAmount">
+            <interceptor-ref name="paramsPrepareWithoutValidation"/>
+            <result name="success">pages/secure/home/json.jsp</result>
+        </action>
+        
+        <action name="getTranspotationRate"
+                class="tavant.twms.web.claim.create.ClaimFormListingAction" method="getTranspotationRate">
+            <interceptor-ref name="paramsPrepareWithoutValidation"/>
+            <result name="success">pages/secure/home/json.jsp</result>
+        </action>
+
+		<action name="getMiscellaneousItemDetailsForCampaign"
+                class="tavant.twms.web.claim.create.ClaimFormListingAction" method="getMiscellaneousItemDetailsForCampaign">
+            <interceptor-ref name="paramsPrepareWithoutValidation"/>
+            <result name="success">pages/secure/home/json.jsp</result>
+        </action>
+        
+		<action name="getAllMiscParts"
+			class="tavant.twms.web.claim.create.ClaimFormListingAction"
+			method="getAllMiscParts">
+			<interceptor-ref name="paramsPrepare" />
+		</action>
+		
+		<action name="list_oem_part_itemnos"
+                class="tavant.twms.web.claim.create.ClaimFormListingAction" method="listOemPartItemNumbers">
+            <interceptor-ref name="paramsWithoutValidation"/>
+        </action>
+
+        <action name="list_active_oem_part_itemnos"
+                class="tavant.twms.web.claim.create.ClaimFormListingAction" method="listActiveOemPartItemNumbers">
+        </action>
+
+        <action name="get_brand_item_for_item_no"
+                class="tavant.twms.web.claim.create.ClaimFormListingAction" method="getJsonBrandItemForItemNumber">
+        </action>
+        
+        <action name="list_oem_servicepart_itemnos"
+                class="tavant.twms.web.claim.create.ClaimFormListingAction" method="listOemServicePartItemNumbers">
+            <interceptor-ref name="paramsWithoutValidation"/>
+        </action>
+        
+        <action name="list_oem_part_item_with_label_id"
+                class="tavant.twms.web.claim.create.ClaimFormListingAction" method="listOemPartItemNumbersWithLabel">
+            <interceptor-ref name="paramsWithoutValidation"/>
+        </action>
+        
+        
+        <action name="list_items_parts_claim"
+               class="tavant.twms.web.claim.create.ClaimFormListingAction" method="listItemNumbersForPartsClaim">
+            <interceptor-ref name="paramsWithoutValidation"/>
+        </action>
+        
+		<action name="list_serialized_parts_claim"
+               class="tavant.twms.web.claim.create.ClaimFormListingAction" method="listSerializedPartsForPartsClaim">
+            <interceptor-ref name="paramsWithoutValidation"/>
+        </action>
+        
+        <action name="list_serialized_replacedParts"
+               class="tavant.twms.web.claim.create.ClaimFormListingAction" method="listSerializedReplacedPart">
+            <interceptor-ref name="paramsWithoutValidation"/>
+        </action>
+        
+        <action name="getUnserializedOemPartDetails"
+                class="tavant.twms.web.claim.create.ClaimFormListingAction" method="getUnserializedOemPartDetails">
+            <interceptor-ref name="paramsPrepareWithoutValidation"/>
+            <result name="success">pages/secure/home/json.jsp</result>
+        </action>
+
+        <action name="getUnserializedBrandPartDetails"
+                class="tavant.twms.web.claim.create.ClaimFormListingAction" method="getUnserializedBrandPartDetails">
+            <interceptor-ref name="paramsPrepareWithoutValidation"/>
+            <result name="success">pages/secure/home/json.jsp</result>
+        </action>
+
+		<action name="getUnserializedOemPartInfo"
+                class="tavant.twms.web.claim.create.ClaimFormListingAction" method="getUnserializedOemPartInfo">
+            <interceptor-ref name="paramsPrepareWithoutValidation"/>
+            <result name="success">pages/secure/home/json.jsp</result>
+        </action>
+        
+        <action name="checkOEMPartInNonOEMPart"
+                class="tavant.twms.web.claim.ClaimsAction" method="validateNonOEMPartNumber">
+            <interceptor-ref name="paramsPrepareWithoutValidation"/>
+            <result name="success">pages/secure/home/json.jsp</result>
+        </action>
+        
+        <!-- Mapping for campaign claim filed from the notification view inbox -->
+        <action name="create_campaign_claim"
+            class="tavant.twms.web.campaigns.PreviewAssignmentAction" method="createCampaignClaim">
+            <interceptor-ref name="paramsPrepare" />
+            <result type="chain" name="success">redirectToClaimTypeAndDealer</result>
+        </action>
+        <!-- End -->
+
+		<action name="exportClaimToExcel" class="tavant.twms.web.claim.ClaimsAction"
+           method="downloadListingData" >
+			<interceptor-ref name="paramsPrepare" />
+		</action>
+		<action name="exportHistClaimToExcel" class="tavant.twms.web.search.QuickHistoricalClaimSearch"
+           method="downloadListingData" >
+			<interceptor-ref name="paramsPrepare" />
+		</action>
+		<action name="exportAcceptedClaimSearchResultToExcel" class="tavant.twms.web.search.AcceptedClaimSearchAction"
+           method="downloadListingData" >
+			<interceptor-ref name="paramsPrepare" />
+		</action>
+		
+		<action name="exportShippedNotReceivedSearchResultToExcel" class="tavant.twms.web.search.PartShippedNotReceivedSearchAction"
+           method="downloadListingData" >
+			<interceptor-ref name="paramsPrepare" />
+		</action>
+		
+		<action name="get_matching_customers_for_match_read"
+			class="tavant.twms.web.actions.ManageCustomer"
+			method="searchCustomers">
+			<interceptor-ref name="paramsPrepareWithoutValidation"/>
+			<result name="success">pages/secure/claims/forms/common/write/customer_search.jsp</result>
+		</action>
+		
+		 <action name="selectedClaims"
+            class="tavant.twms.web.claim.MultiClaimMaintenanceAction" method="setClaimsForMaintenance">
+            <interceptor-ref name="twmsParamsPrepareParams" />
+            <result name="success">pages/secure/claims/multipleClaimMaintenance/selectedAttributes.jsp</result>
+            <result name="input">pages/secure/claims/multipleClaimMaintenance/claimSearchResult.jsp</result>
+        </action>
+        <action name="updateClaimsForMaintenance"
+            class="tavant.twms.web.claim.MultiClaimMaintenanceAction" method="updateClaimsForMaintenance">
+            <interceptor-ref name="twmsParamsPrepareParams" />
+            <result name="success">pages/secure/common/successFullRefresh.jsp</result>
+            <result name="input">pages/secure/claims/multipleClaimMaintenance/selectedAttributes.jsp</result>
+        </action>
+		<action name="getInventoriesForPage"
+                class="tavant.twms.web.claim.create.NewMachineClaimAction" method="getInventoriesForpage">
+                <interceptor-ref name="paramsWithoutValidation" />                
+            <result name="success" >/pages/secure/claims/forms/common/write/multiClaimSearchResultPage.jsp</result>
+        </action> 
+		<action name="getInventoriesForNextButton"
+                class="tavant.twms.web.claim.create.NewMachineClaimAction" method="getInventoriesForNextButton">
+                <interceptor-ref name="paramsWithoutValidation" />                
+            <result name="success" >/pages/secure/claims/forms/common/write/multiClaimSearchResultPage.jsp</result>
+        </action>    
+
+		<action name="getInventoriesForPreviousButton"
+                class="tavant.twms.web.claim.create.NewMachineClaimAction" method="getInventoriesForPreviousButton">
+                <interceptor-ref name="paramsWithoutValidation" />                
+            <result name="success" >/pages/secure/claims/forms/common/write/multiClaimSearchResultPage.jsp</result>
+        </action>   
+        <action name="findAttributesForFaultCode"
+            class="tavant.twms.web.claim.ClaimsAction" method="findAttributesForFaultCode">
+            <interceptor-ref name="paramsPrepareWithoutValidation"/>
+            <result name="success">pages/secure/home/json.jsp</result>
+        </action>
+
+		<action name="getAttributesForFaultCode"
+            class="tavant.twms.web.claim.ClaimsAction" method="getAttributesForFaultCode">
+            <interceptor-ref name="paramsPrepareWithoutValidation"/>
+            <result name="success">pages/secure/claims/forms/common/write/fault-code-claim_attribute.jsp</result>
+        </action>
+
+		 <action name="findAttributesForJobCode"
+            class="tavant.twms.web.claim.ClaimsAction" method="findAttributesForJobCode">
+            <interceptor-ref name="paramsPrepareWithoutValidation"/>
+            <result name="success">pages/secure/home/json.jsp</result>
+        </action>
+
+		<action name="getAttributesForJobCode"
+            class="tavant.twms.web.claim.ClaimsAction" method="getAttributesForJobCode">
+            <interceptor-ref name="paramsPrepareWithoutValidation"/>
+            <result name="success">pages/secure/claims/forms/common/write/job-code-claim_attribute.jsp</result>
+        </action>
+        
+        <action name="findServiceProvider"
+            class="tavant.twms.web.claim.create.ClaimFormListingAction" method="findServiceProvider">
+            <interceptor-ref name="paramsPrepareWithoutValidation"/>
+            <result name="success">pages/secure/home/json.jsp</result>
+        </action>
+
+        <action name="findCausalPartDetails"
+            class="tavant.twms.web.claim.create.ClaimFormListingAction" method="getCausalPartDetails">
+            <interceptor-ref name="paramsPrepareWithoutValidation"/>
+            <result name="success">pages/secure/home/json.jsp</result>
+        </action>
+
+		<action name="getAttributesForCausalPart"
+            class="tavant.twms.web.claim.ClaimsAction" method="getAttributesForCausalPart">
+            <interceptor-ref name="paramsPrepareWithoutValidation"/>
+            <result name="success">pages/secure/claims/forms/common/write/causal-part-claim_attribute.jsp</result>
+        </action>
+        
+        <action name="getAttributesForPart"
+            class="tavant.twms.web.claim.ClaimsAction" method="getAttributesForPart">
+            <interceptor-ref name="paramsPrepareWithoutValidation"/>
+            <result name="success">pages/secure/claims/forms/common/write/part-claim-attributes.jsp</result>
+        </action>
+
+		<action name="getCampaignCodesForInventory"
+                class="tavant.twms.web.claim.create.NewCampaignClaimAction" method="getCampaignCodes">
+            <interceptor-ref name="paramsWithoutValidation" />
+            <result name="success">pages/secure/claims/forms/common/write/campaign_header_campaign_code.jsp</result>            
+        </action>
+
+		<action name="multiCampaignClaim"
+                class="tavant.twms.web.claim.create.NewCampaignClaimAction" method="setForMultiCampaignClaim">
+            <interceptor-ref name="paramsWithoutValidation" />
+            <result name="success">pages/secure/claims/new/new_multi_campaign_claim1.jsp</result>            
+        </action>
+        
+    <!--	remove this action as soon as the new_thirdparty_multi_campaign_claim1.jsp is removed. 
+    		now the new_thirdparty_multi_campaign_claim1.jsp page is not obsolete.
+    	<action name="multiThirdPartyCampaignClaim"
+                class="tavant.twms.web.claim.create.NewCampaignClaimAction" method="setForMultiCampaignClaim">
+            <interceptor-ref name="paramsWithoutValidation" />
+            <result name="success">pages/secure/claims/new/new_thirdparty_multi_campaign_claim1.jsp</result>            
+        </action>   -->
+
+		<action name="list_campaign_codes"
+                class="tavant.twms.web.claim.create.ClaimFormListingAction" method="listCampaignsForDealer">
+            <interceptor-ref name="paramsPrepareWithoutValidation"/>
+        </action>
+
+		 <action name="searchMultiCarInventoriesForCampaign"
+                class="tavant.twms.web.claim.create.NewCampaignClaimAction" method="getMultipleInventories">                              
+            <result name="success" >/pages/secure/claims/forms/common/write/multiClaimSearchResultPage.jsp</result>
+        </action>
+
+		<action name="displayMultipleEquipInfoForCampaign"
+                class="tavant.twms.web.claim.create.NewCampaignClaimAction" method="getEquipmentDetails">
+  			<interceptor-ref name="paramsWithoutValidation" />		               
+            <result name="success" >/pages/secure/claims/forms/common/write/dealerEquipment.jsp</result>            
+        </action>
+
+		<action name="saveMultiCampaignClaimDraft"
+                class="tavant.twms.web.claim.create.NewCampaignClaimAction" method="saveDraft">
+            <interceptor-ref name="twmsParamsPrepareRepeatTableParams" />
+            <result name="success" type="chain">claim_detail</result>
+            <result name="input">pages/secure/claims/new/new_multi_campaign_claim1.jsp</result>			
+        </action>
+
+		<action name="get_matching_customers_for_multi_claim"
+			class="tavant.twms.web.actions.ManageCustomer"
+			method="searchCustomers">
+			<interceptor-ref name="paramsPrepareWithoutValidation"/>
+			<result name="success">pages/secure/claims/forms/common/write/customer_search_for_multiClaim.jsp</result>
+		</action>
+		<action name="get_contractDetails"
+            class="tavant.twms.web.claim.create.ClaimFormListingAction" method="getInfoForContract">
+            <interceptor-ref name="paramsPrepareWithoutValidation"/>
+            <result name="success">pages/secure/home/json.jsp</result>
+        </action>
+
+
+        <action name="refresh_payment"
+            class="tavant.twms.web.claim.ClaimsAction" method="refreshPayment">
+            <interceptor-ref name="twmsParamsPrepareRepeatTableParams" />
+            <result name="success">pages/secure/claims/forms/${task.baseFormName}/write/payment.jsp</result>
+            <result name="input">pages/secure/claims/forms/${task.baseFormName}/write/payment.jsp</result>
+        </action>
+
+		<action name="refresh_actions"
+            class="tavant.twms.web.claim.ClaimsAction" method="refreshActions">
+            <interceptor-ref name="twmsParamsPrepareRepeatTableParams" />
+            <result name="success">pages/secure/claims/forms/${task.baseFormName}/write/action_list.jsp</result>
+            <result name="input">pages/secure/claims/forms/${task.baseFormName}/write/action_list.jsp</result>
+        </action>
+
+        <action name="findItemDescription"
+            class="tavant.twms.web.claim.create.ClaimFormListingAction" method="getItemDetails">
+            <interceptor-ref name="paramsPrepareWithoutValidation"/>
+            <result name="success">pages/secure/home/json.jsp</result>
+        </action>
+
+        <action name="list_part_return_locations_for_part"
+			class="tavant.twms.web.claim.create.ClaimFormListingAction"
+			method="listLocations">
+		 <interceptor-ref name="paramsPrepareWithoutValidation"/>
+		</action>
+
+        <action name="claim_deactivate"
+            class="tavant.twms.web.search.ClaimSearchSummaryAction" method="deactivateClaim">
+            <interceptor-ref name="paramsPrepareWithoutValidation"/>
+            <result name="success">pages/secure/common/successFullRefresh.jsp</result>
+        </action>
+
+        <action name="get_fault_code_json"
+            class="tavant.twms.web.claim.ClaimsAction" method="getFaultCodeJSON">
+            <interceptor-ref name="paramsWithoutValidation"/>
+        </action>
+
+        <action name="get_service_procedure_json"
+            class="tavant.twms.web.claim.ClaimsAction" method="getServiceProcedureJSON">
+            <interceptor-ref name="paramsWithoutValidation"/>
+        </action>
+        
+        <action name="claim_list_alarmcode"
+                class="tavant.twms.web.claim.create.ClaimFormListingAction" method="listAlarmCodes">
+            <interceptor-ref name="paramsWithoutValidation"/>
+        </action>
+        <action name="get_alarmcode_description"
+			class="tavant.twms.web.claim.create.ClaimFormListingAction"
+			method="getAlarmCodeDescription">
+				<result name="success">pages/secure/home/json.jsp</result>
+		</action>
+		
+		<action name="resetNewLOAProcessor" class="tavant.twms.web.claim.ClaimsAction" method="getNextNewLOAProcessor">
+                  <interceptor-ref name="paramsWithoutValidation"/>
+                  <result name="success">pages/secure/claims/forms/processor_review/write/approve_and_transfer.jsp</result>                    
+        </action>
+        
+        <action name="pendingRecoveryClaims" class="tavant.twms.web.claim.RecoveryClaimsAction">
+            <interceptor-ref name="paramsPrepare"/>
+            <result name="success">pages/secure/claims/claimInboxView.jsp</result>
+        </action>
+        <action name="recoveryClaimsBody" class="tavant.twms.web.claim.RecoveryClaimsAction" method="tableBody">
+            <interceptor-ref name="paramsPrepare" />
+            <result name="success">pages/secure/home/json.jsp</result>
+                        <result name="input">error.jsp</result>
+        </action>
+        <action name="getOemRemovedInstalledPartTemplate"
+			class="tavant.twms.web.claim.ClaimsAction" method="getOemRemovedInstalledPartTemplate">
+			<interceptor-ref name="paramsWithoutValidation"/>
+			<interceptor-ref name="staticParams">
+          	<param name="parse">true</param>
+          	<param name="overwrite">false</param>
+    		 </interceptor-ref>
+            <result name="success">pages/secure/claims/forms/common/write/installedOemPartTemplate.jsp</result>
+		</action>
+		
+		
+		 <action name="getOemRemovedPartTemplate"
+			class="tavant.twms.web.claim.ClaimsAction" method="getOemRemovedPartTemplate">
+			<interceptor-ref name="paramsWithoutValidation"/>
+			<interceptor-ref name="staticParams">
+          	<param name="parse">true</param>
+          	<param name="overwrite">false</param>
+    		 </interceptor-ref>
+            <result name="success">pages/secure/claims/forms/common/write/removedPartTemplate.jsp</result>
+		</action>
+		
+		 <action name="getOemInstalledPartTemplate"
+			class="tavant.twms.web.claim.ClaimsAction" method="getOemInstalledPartTemplate">
+			<interceptor-ref name="paramsWithoutValidation"/>
+			<interceptor-ref name="staticParams">
+          	<param name="parse">true</param>
+          	<param name="overwrite">false</param>
+    		 </interceptor-ref>
+            <result name="success">pages/secure/claims/forms/common/write/installedPartTemplate.jsp</result>
+		</action>
+
+        <action name="list_description_for_part"
+                class="tavant.twms.web.claim.create.ClaimFormListingAction" method="getDescriptionForPart">
+            <interceptor-ref name="adminParamsWithoutValidation"/>
+            <result name="success">pages/secure/home/json.jsp</result>
+        </action>
+
+
+		 <action name="list_description_for_brand_part"
+                class="tavant.twms.web.claim.create.ClaimFormListingAction" method="getDescriptionForBrandPart">
+            <interceptor-ref name="adminParamsWithoutValidation"/>
+            <result name="success">pages/secure/home/json.jsp</result>
+        </action>
+        <action name="list_description_part_for_inventory"
+                class="tavant.twms.web.claim.create.ClaimFormListingAction" method="getPartAndDescriptionForInventoryItem">
+            <interceptor-ref name="adminParamsWithoutValidation"/>
+            <result name="success">pages/secure/home/json.jsp</result>
+        </action>
+
+        <action name="list_inventory_for_part"
+                class="tavant.twms.web.claim.create.ClaimFormListingAction" method="getInventoryForMC">
+            <interceptor-ref name="adminParamsWithoutValidation"/>
+            <result name="success">pages/secure/home/json.jsp</result>
+        </action>
+
+        <action name="getClaimSyncState"
+                class="tavant.twms.web.claim.ReprocessClaimAction" method="getClaimSyncTrackerState">
+            <interceptor-ref name="adminParamsPrepareWithoutValidation"/>
+            <result name="success">pages/secure/home/json.jsp</result>
+        </action>
+
+        <action name="exportPendingRecClaimToExcel" class="tavant.twms.web.claim.RecoveryClaimsAction"  method="downloadListingData" >
+            <interceptor-ref name="paramsPrepare" />
+        </action>
+        
+    </package>
+</struts>
+

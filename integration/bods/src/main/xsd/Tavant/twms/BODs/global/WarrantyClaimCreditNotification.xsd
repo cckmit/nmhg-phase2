@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2012 rel. 2 sp1 (http://www.altova.com) by rohit (Bobcat) -->
+<xs:schema xmlns="http://www.tavant.com/globalsync/warrantyclaimcreditnotification" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.tavant.com/globalsync/warrantyclaimcreditnotification" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="../../Resources/Nouns/global/ApplicationAreaType.xsd"/>
+	<xs:element name="SyncInvoice">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="ApplicationArea" type="ApplicationAreaType"/>
+				<xs:element name="DataArea" type="CreditNotificationDataAreaType"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ClaimNumber">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="50"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:complexType name="CreditNotificationDataAreaType">
+		<xs:sequence>
+			<xs:element name="Invoice" type="InvoiceType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DocumentIdType">
+		<xs:sequence>
+			<xs:element ref="Id"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DocumentIdsType">
+		<xs:sequence>
+			<xs:element name="DocumentId" type="DocumentIdType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="HeaderType">
+		<xs:sequence>
+			<xs:element name="UserArea" type="UserAreaType"/>
+			<xs:element name="DocumentIds" type="DocumentIdsType"/>
+			<xs:element name="TotalAmount" type="xs:decimal"/>
+				<xs:element name="Currency">
+				 <xs:simpleType>
+	              <xs:restriction base="xs:string">
+		          <xs:maxLength value="3" />
+		           <xs:enumeration value="ZAR" />
+		           <xs:enumeration value="GBP" />
+		           <xs:enumeration value="EUR" />
+		         <xs:enumeration value="CAD" />
+		         <xs:enumeration value="USD" />
+	             </xs:restriction>
+              </xs:simpleType>
+			</xs:element>
+			<xs:element name="DocumentDateTime" type="xs:dateTime"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Id">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="100"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:complexType name="InvoiceType">
+		<xs:sequence>
+			<xs:element name="Header" type="HeaderType"/>
+			<xs:element name="Line" type="LineType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="LineType">
+		<xs:sequence>
+			<xs:element name="Tax" type="TaxType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="TaxType">
+		<xs:sequence>
+			<xs:element name="TaxAmount" type="xs:decimal"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="UserAreaType">
+		<xs:sequence>
+			<xs:element ref="ClaimNumber"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="currencyType">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="3"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<ftstdata>
+<topic name="Create Claim Payment Modifier" url="Warranty_Admin/Create_Claim_Payment_Modifier.htm" />
+<topic name="Create/Update Attributes" url="Warranty_Admin/Create_Update_Attributes.htm" />
+<topic name="Dealer Groups" url="Warranty_Admin/Dealer_Groups.htm" />
+<topic name="Dealer Summary" url="Warranty_Admin/Dealer_Summary.htm" />
+<topic name="Failure Structure" url="Warranty_Admin/Failure_Structure.htm" />
+<topic name="Fault Found/Caused By Association" url="Warranty_Admin/Fault_Found_Caused_By_Association.htm" />
+<topic name="Flat Rates" url="Warranty_Admin/Flat_Rates.htm" />
+<topic name="Index" url="Warranty_Admin/index.htm" />
+<topic name="Item Groups" url="Warranty_Admin/Item_Groups.htm" />
+<topic name="Labor Rates" url="Warranty_Admin/Labor_Rates.htm" />
+<topic name="List Fault Locations" url="Warranty_Admin/List_Fault_Locations.htm" />
+<topic name="List Models" url="Warranty_Admin/List_Models.htm" />
+<topic name="List of Values" url="Warranty_Admin/List_of_Values.htm" />
+<topic name="List Service Procedures" url="Warranty_Admin/List_Service_Procedures.htm" />
+<topic name="Maintain Failure URL of Failure Detail" url="Warranty_Admin/Maintain_Failure_URL_of_Failure_Detail.htm" />
+<topic name="Manage Additional Labour Eligibility" url="Warranty_Admin/Manage_Additional_Labour_Eligibility.htm" />
+<topic name="Manage Alarm Code" url="Warranty_Admin/Manage_Alarm_Code.htm" />
+<topic name="Manage Business Configurations" url="Warranty_Admin/Manage_Business_Configurations.htm" />
+<topic name="Manage Business Rule Groups" url="Warranty_Admin/Manage_Business_Rule_Groups.htm" />
+<topic name="Manage Claim Payment" url="Warranty_Admin/Manage_Claim_Payment.htm" />
+<topic name="Manage Custom Reports" url="Warranty_Admin/Manage_Custom_Reports.htm" />
+<topic name="Manage Groups" url="Warranty_Admin/Manage_Groups.htm" />
+<topic name="Manage Inclusive Job Codes" url="Warranty_Admin/Manage_Inclusive_Job_Codes.htm" />
+<topic name="Manage Labor Split" url="Warranty_Admin/Manage_Labor_Split.htm" />
+<topic name="Manage LOA Schemes" url="Warranty_Admin/Manage_LOA_Schemes.htm" />
+<topic name="Miscellaneous Parts" url="Warranty_Admin/Manage_Miscellaneous_Parts.htm" />
+<topic name="Manage User Availability" url="Warranty_Admin/Manage_User_Availability.htm" />
+<topic name="Part Return Configuration" url="Warranty_Admin/Part_Return_Configuration.htm" />
+<topic name="Policy Definition" url="Warranty_Admin/Policy_Definition.htm" />
+<topic name="Policy Management" url="Warranty_Admin/Policy_Management.htm" />
+<topic name="Product Failure Hierarchy" url="Warranty_Admin/Product_Failure_Hierarchy.htm" />
+<topic name="Related Field Modifications" url="Warranty_Admin/Related_Field_Modifications.htm" />
+<topic name="Field Modification" url="Warranty_Admin/Service_Campaign.htm" />
+<topic name="Travel Rates" url="Warranty_Admin/Travel_Rates.htm" />
+<topic name="UOM Mappings" url="Warranty_Admin/UOM_Mappings.htm" />
+<topic name="User Groups" url="Warranty_Admin/User_Groups.htm" />
+<topic name="View Labels" url="Warranty_Admin/View_Labels.htm" />
+<topic name="View Supplier" url="Warranty_Admin/View_Supplier.htm" />
+<topic name="Warehouses" url="Warranty_Admin/Warehouses.htm" />
+<topic name="Warranty Admin" url="Warranty_Admin/Warranty_Admin.htm" />
+
+</ftstdata>  

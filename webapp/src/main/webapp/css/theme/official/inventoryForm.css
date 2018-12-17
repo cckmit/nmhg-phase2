@@ -1,0 +1,98 @@
+html,body {
+background:#EEEEEE;
+font-family:Verdana, sans-serif, Arial, Helvetica;
+font-size:7.5pt;
+}
+
+#preview .dojoTabPaneWrapper {
+border-top:none;
+border-right:none;
+border-left:none;
+border-bottom:1px solid #D1D1D1;
+background:#FFF;
+}
+
+#preview .dojoTabLabels-bottom {
+margin-left:15px;
+margin-bottom:5px;
+}
+
+#preview .dojoTabLabels-bottom .dojoTab {
+background:#EEEEEE;
+border:1px solid #C3C3C3 !important;
+margin-left:1px;
+}
+
+#preview .dojoTabLabels-bottom .dojoTab div {
+background:#EEEEEE;
+}
+
+#preview .dojoTabLabels-bottom .dojoTab span {
+color:#555555;
+}
+
+#preview .dojoTabLabels-bottom .dojoTab.current {
+background:#FFF;
+border-top:#fff 1px solid !important;
+}
+
+#preview .dojoTabLabels-bottom .dojoTab.current div {
+background:#FFF;
+padding-top:0;
+}
+
+#preview .dojoTabLabels-bottom .dojoTab.current span {
+color:#555555;
+font-weight:700;
+}
+
+.grid {
+border-collapse:collapse;
+}
+
+td,th {
+padding:2px;
+}
+
+.four_column td {
+width:25%;
+}
+
+.non_editable {
+color:#959494;
+font-weight:700;
+}
+
+.section {
+border:1px solid #777777;
+margin-top:5px;
+margin-left:5px;
+margin-right:5px;
+}
+
+tr.title th {
+border-bottom:1px solid #CCCCCC;
+text-align:left;
+}
+
+tr.title {
+background:#777777;
+color:#636363;
+}
+
+tr.row_head th {
+background:#EEEEEE;
+color:#BBBBBB;
+font-weight:700;
+text-align:left;
+border:1px solid #777777;
+}
+
+table.grid > tbody > tr > td  {
+border:1px solid #777777;
+}
+
+#preview,#tabs {
+width:100%;
+height:100%;
+}

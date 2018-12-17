@@ -1,0 +1,28 @@
+<p1:UnitWarrantyRegistrationRequest 
+	xmlns:p1="http://www.tavant.com/dealerinterfaces/warrantyregistration/request" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">	
+			<p1:BUName>Thermo King TSA</p1:BUName>
+			<p1:CurrentlyActiveOrganizationNumber></p1:CurrentlyActiveOrganizationNumber>
+			<p1:ForceToDraft>true</p1:ForceToDraft>
+			<p1:InventorySerialNumber>07722X5168</p1:InventorySerialNumber>
+			<p1:InventoryItemNumber>099028</p1:InventoryItemNumber>
+			<p1:CustomerType>EndCustomer</p1:CustomerType>
+			<p1:CustomerID>10029062</p1:CustomerID>
+			<p1:OperatorType>EndCustomer</p1:OperatorType>
+			<p1:OperatorId>10029062</p1:OperatorId>
+			<p1:TransactionType>Cash Sales</p1:TransactionType>
+			<p1:MarketType>Building/Grounds</p1:MarketType>
+			<p1:CompetitionType></p1:CompetitionType>
+			<p1:FirstTimeOwner>true</p1:FirstTimeOwner>
+			<p1:IfPreviousOwner></p1:IfPreviousOwner>
+			<p1:ModelNo></p1:ModelNo>
+			<p1:CompetitorMake></p1:CompetitorMake>			
+			<p1:Comments>Testing3</p1:Comments>
+			<p1:InstallingDealer>C2637</p1:InstallingDealer>
+			<p1:DateOfDelivery>2010-05-04</p1:DateOfDelivery>
+			<p1:DateOfInstallation>2010-04-21</p1:DateOfInstallation>
+			<p1:HoursInService>0</p1:HoursInService>
+			<p1:EquipmentVINID>12345</p1:EquipmentVINID>
+			<p1:TruckTrailerNumber>12345</p1:TruckTrailerNumber>
+			<p1:OEM>ACTION</p1:OEM>			
+		</p1:UnitWarrantyRegistrationRequest>

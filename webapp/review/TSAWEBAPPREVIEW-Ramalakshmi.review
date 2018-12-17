@@ -1,0 +1,242 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Review id="TSAWEBAPPREVIEW">
+  <ReviewIssue id="G42H8RZF">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-05 :: 14:57:30:219 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-06 :: 18:06:04:236 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ramalakshmi</ReviewerId>
+    <AssignedTo>Ramalakshmi</AssignedTo>
+    <File line="205">src/main/java/tavant/twms/web/admin/policy/ManagePolicy.java</File>
+    <Type>item.type.label.usability</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>Rename method name</Summary>
+    <Description>Rename listProducts method of ManagePolicy as the method now list itemgroups of different purposes.</Description>
+    <Annotation></Annotation>
+    <Revision>1.0</Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.resolved</Status>
+  </ReviewIssue>
+  <ReviewIssue id="G42HDEPW">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-05 :: 15:01:06:308 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-11 :: 11:32:18:956 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ramalakshmi</ReviewerId>
+    <AssignedTo>Lavin</AssignedTo>
+    <File line="215">src/main/java/tavant/twms/web/admin/policy/ManagePolicy.java</File>
+    <Type>item.type.label.optimization</Type>
+    <Severity>item.label.unset</Severity>
+    <Summary>Performance</Summary>
+    <Description>Can the API be called once with a list of purpose rather than calling twice?</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.resolved</Status>
+  </ReviewIssue>
+  <ReviewIssue id="G42HVVXE">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-05 :: 15:15:28:418 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-07 :: 15:59:18:834 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ramalakshmi</ReviewerId>
+    <AssignedTo>Lavin</AssignedTo>
+    <File line="721">src/main/java/tavant/twms/web/admin/policy/ManagePolicy.java</File>
+    <Type>item.type.label.optimization</Type>
+    <Severity>item.severity.label.major</Severity>
+    <Summary>Use struts conversion</Summary>
+    <Description>Try passing id for dealer group from form and use in built struts conversion rather than doing conversion in a loop.  Change List&lt;String&gt; selectedDealerGroups to List&lt;DealerGroups&gt;</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.resolution.label.validNeedsfixing</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="G42I0YYV">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-05 :: 15:19:25:639 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-06 :: 18:04:54:378 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ramalakshmi</ReviewerId>
+    <AssignedTo>Ramalakshmi</AssignedTo>
+    <File line="214">src/main/java/tavant/twms/web/admin/policy/ManagePolicy.java</File>
+    <Type>item.type.label.codingStandards</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>Variable naming convention</Summary>
+    <Description>Rename names variable to itemGroups as it would make more sense. Same applies to namesProductStructurePurpose/namesWarrantyCoveragePurpose</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.resolved</Status>
+  </ReviewIssue>
+  <ReviewIssue id="G42I7CRX">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-05 :: 15:24:23:469 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-06 :: 18:04:33:035 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ramalakshmi</ReviewerId>
+    <AssignedTo>Ramalakshmi</AssignedTo>
+    <File line="725">src/main/java/tavant/twms/web/admin/policy/ManagePolicy.java</File>
+    <Type>item.type.label.codingStandards</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>Use Constants</Summary>
+    <Description>Use constants for warranty types STANDARD/GOODWILL</Description>
+    <Annotation></Annotation>
+    <Revision>1.0</Revision>
+    <Resolution>item.resolution.label.validWontfix</Resolution>
+    <Status>item.status.label.resolved</Status>
+  </ReviewIssue>
+  <ReviewIssue id="G42IH70S">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-05 :: 15:32:02:572 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-06 :: 18:04:09:395 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ramalakshmi</ReviewerId>
+    <AssignedTo>Ramalakshmi</AssignedTo>
+    <File line="167">src/main/resources/messages.properties</File>
+    <Type>item.type.label.codingStandards</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>Messages.properties Key Naming convention</Summary>
+    <Description>1.Rename  label.common.dealerModel to label.common.dealerDealerGroup&#13;
+</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.resolved</Status>
+  </ReviewIssue>
+  <ReviewIssue id="G42IIONK">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-05 :: 15:33:12:080 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-06 :: 18:03:58:099 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ramalakshmi</ReviewerId>
+    <AssignedTo>Ramalakshmi</AssignedTo>
+    <File line="228">src/main/resources/messages.properties</File>
+    <Type>item.type.label.codingStandards</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>Messages.properties Key Naming convention</Summary>
+    <Description>1.label.common.product may be used in multiple places. So add a new key for Product/Model/Item Group</Description>
+    <Annotation></Annotation>
+    <Revision>1.0</Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.resolved</Status>
+  </ReviewIssue>
+  <ReviewIssue id="G42ILNEG">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-05 :: 15:35:30:424 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-06 :: 18:03:42:318 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ramalakshmi</ReviewerId>
+    <AssignedTo>Ramalakshmi</AssignedTo>
+    <File></File>
+    <Type>item.type.label.codingStandards</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>Messages.properties Key Naming convention</Summary>
+    <Description>Rename label.managePolicy.addDealer to label.managePolicy.addDealerDealerGroup. Take care of all these issues in messages_en.properties as well.</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.resolved</Status>
+  </ReviewIssue>
+  <ReviewIssue id="G42IPRAJ">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-05 :: 15:38:42:091 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-05 :: 15:39:26:359 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ramalakshmi</ReviewerId>
+    <AssignedTo>Lavin</AssignedTo>
+    <File></File>
+    <Type>item.type.label.other</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>Deleted by mistake</Summary>
+    <Description>Guess variable "l" was deleted by mistake in this line</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="G42ISIZO">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-05 :: 15:40:51:300 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-06 :: 17:47:12:515 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ramalakshmi</ReviewerId>
+    <AssignedTo>Ramalakshmi</AssignedTo>
+    <File line="1">src/main/webapp/pages/secure/admin/policy/createUpdate_policy.jsp</File>
+    <Type>item.type.label.other</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>Remove smudge alerts from JSP</Summary>
+    <Description>Remove smudge alerts from JSP</Description>
+    <Annotation></Annotation>
+    <Revision>1.0</Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.resolved</Status>
+  </ReviewIssue>
+  <ReviewIssue id="G42J9DTH">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-05 :: 15:53:57:749 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-06 :: 18:02:32:429 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ramalakshmi</ReviewerId>
+    <AssignedTo>Ramalakshmi</AssignedTo>
+    <File></File>
+    <Type>item.type.label.codingStandards</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>JSP Naming convention</Summary>
+    <Description>Rename this  JSP to policy_applicableServiceProviders as it would make more sense</Description>
+    <Annotation></Annotation>
+    <Revision>1.0</Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.resolved</Status>
+  </ReviewIssue>
+  <ReviewIssue id="G42JATP4">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-05 :: 15:55:04:984 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-06 :: 18:02:23:257 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ramalakshmi</ReviewerId>
+    <AssignedTo>Ramalakshmi</AssignedTo>
+    <File line="308">src/main/webapp/pages/secure/admin/policy/policy_dealerTypes.jsp</File>
+    <Type>item.type.label.programLogic</Type>
+    <Severity>item.severity.label.normal</Severity>
+    <Summary>Use correct messages key</Summary>
+    <Description>Add the correct messages key for Dealer Name not the value itself.Same is there with few more keys in the same JSP. </Description>
+    <Annotation></Annotation>
+    <Revision>1.0</Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.resolved</Status>
+  </ReviewIssue>
+  <ReviewIssue id="G42JEIYW">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-05 :: 15:57:57:704 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-11 :: 11:31:08:007 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ramalakshmi</ReviewerId>
+    <AssignedTo>Ramalakshmi</AssignedTo>
+    <File line="154">src/main/webapp/pages/secure/admin/policy/policy_details.jsp</File>
+    <Type>item.type.label.other</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>Use Constants</Summary>
+    <Description>Can this be done better by using a list so that we can use the ENUM constants itself?</Description>
+    <Annotation></Annotation>
+    <Revision>1.0</Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.resolved</Status>
+  </ReviewIssue>
+  <ReviewIssue id="G4HYQBO4">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-16 :: 11:03:34:996 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-16 :: 11:03:43:309 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ramalakshmi</ReviewerId>
+    <AssignedTo>Ramalakshmi</AssignedTo>
+    <File>review/majorcomponent-wntyregaddition-webapp-Ramalakshmi.review</File>
+    <Type>item.label.unset</Type>
+    <Severity>item.label.unset</Severity>
+    <Summary></Summary>
+    <Description></Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+</Review>

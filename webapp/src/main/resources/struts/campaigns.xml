@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="campaigns" extends="struts-twms-default">
+	
+        <action name="list_notifications"
+            class="tavant.twms.web.campaigns.ListAssignedCampaigns">
+            <result>pages/secure/campaigns/campaignInboxView.jsp</result>
+        </action>
+        
+        <action name="get_assignments"
+            class="tavant.twms.web.campaigns.ListAssignedCampaigns"
+            method="tableBody">
+            <result>pages/secure/home/json.jsp</result>
+        </action>
+        
+        <action name="preview_assignment"
+            class="tavant.twms.web.campaigns.PreviewAssignmentAction">
+            <interceptor-ref name="paramsPrepare" />
+            <result>pages/secure/campaigns/campaignAssignmentView.jsp</result>
+        </action>
+        
+         <action name="detail_view"
+            class="tavant.twms.web.campaigns.PreviewAssignmentAction">
+            <interceptor-ref name="paramsPrepare" />
+            <result>pages/secure/campaigns/campaignView.jsp</result>
+        </action>
+        
+        <action name="detail_assignment_view"
+            class="tavant.twms.web.campaigns.PreviewAssignmentAction">
+            <interceptor-ref name="paramsPrepare" />
+            <result>pages/secure/campaigns/campaignDetailedView.jsp</result>
+        </action>
+        <action name="updated_camp_item_view"
+            class="tavant.twms.web.campaigns.PreviewAssignmentAction">
+            <interceptor-ref name="paramsPrepare" />
+            <result>pages/secure/campaigns/updatedCampaignItemDetailsView.jsp</result>
+        </action>
+         <action name="editCampaignNotification"
+            class="tavant.twms.web.campaigns.PreviewAssignmentAction" method="editCampaignNotification">
+            <interceptor-ref name="paramsPrepare" />
+            <result name="input">pages/secure/campaigns/campaignDetailedView.jsp</result>
+            <result name="success">pages/secure/campaigns/campaignDetailedView.jsp</result>
+        </action>
+         <action name="updateCampaignNotification"
+            class="tavant.twms.web.campaigns.PreviewAssignmentAction" method="updateCampaignNotification">
+            <interceptor-ref name="paramsPrepare" />
+            <result name="input">pages/secure/campaigns/campaignDetailedView.jsp</result>
+            <result name="success">pages/secure/campaigns/campaignUpdateSuccess.jsp</result>
+        </action>
+        <action name="updateAndSaveCampaignNotification"
+            class="tavant.twms.web.campaigns.PreviewAssignmentAction" method="updateAndSaveCampaignNotification">
+            <interceptor-ref name="paramsPrepare" />
+            <result name="input">pages/secure/campaigns/campaignDetailedView.jsp</result>
+            <result name="success">pages/secure/campaigns/campaignUpdateSuccess.jsp</result>
+        </action>
+        
+        <action name="exportToExcelForCampaigns"
+                class="tavant.twms.web.campaigns.PreDefinedCampaignsSearchAction" method="downloadListingData" >
+                <interceptor-ref name="adminParamsPrepare" />
+         </action>
+        
+        <action name="exportToExcel"
+                class="tavant.twms.web.campaigns.ListAssignedCampaigns" method="downloadListingData"/>  
+                
+        <action name="list_updatedCampaings"
+            class="tavant.twms.web.campaigns.ListUpdatedCampaigns">
+            <result>pages/secure/campaigns/updateCampaignRequestsInboxView.jsp</result>
+        </action>
+        
+        <action name="get_UpdateCampaignAssignments"
+            class="tavant.twms.web.campaigns.ListUpdatedCampaigns"
+            method="tableBody">
+            <result>pages/secure/home/json.jsp</result>
+        </action> 
+        
+        <action name="exportUpdatedCampNotificationsToExcel"
+                class="tavant.twms.web.campaigns.ListUpdatedCampaigns" method="downloadListingData"/>  
+                
+        <action name="list_deniedCampaignNotifications"
+            class="tavant.twms.web.campaigns.ListDeniedCampaigns">
+            <result>pages/secure/campaigns/deniedCampaignInboxView.jsp</result>
+        </action>
+        
+        <action name="get_DeniedCampaignAssignments"
+            class="tavant.twms.web.campaigns.ListDeniedCampaigns"
+            method="tableBody">
+            <result>pages/secure/home/json.jsp</result>
+        </action> 
+        
+        <action name="exportDeniedCampNotificationsToExcel"
+                class="tavant.twms.web.campaigns.ListDeniedCampaigns" method="downloadListingData"/>
+                
+        <action name="list_pendingReviewCampaignNotifications"
+            class="tavant.twms.web.campaigns.ListPendingReviewCampaigns">
+            <result>pages/secure/campaigns/pendingRequestCampaignInboxView.jsp</result>
+        </action>
+        
+        <action name="get_pendingReviewCampaignAssignments"
+            class="tavant.twms.web.campaigns.ListPendingReviewCampaigns"
+            method="tableBody">
+            <result>pages/secure/home/json.jsp</result>
+        </action> 
+        
+        <action name="exportPendingReviewCampaignNotificationsToExcel"
+                class="tavant.twms.web.campaigns.ListPendingReviewCampaigns" method="downloadListingData"/>
+
+		<action name="getReasonDescription" class="tavant.twms.web.campaigns.PreviewAssignmentAction"
+			method="getReasonDescription">
+			<interceptor-ref name="twmsParamsWithoutPrepare" />
+			<result name="success">pages/secure/home/json.jsp</result>
+			<result name="input">pages/secure/home/json.jsp</result>
+		</action>
+		 <action name="field_mod_action_history"
+            class="tavant.twms.web.campaigns.PreviewAssignmentAction" method="getActionHistory">
+            <interceptor-ref name="twmsParamsWithoutPrepare"/>
+            <result name="success">pages/secure/admin/campaign/read/fieldModUpdateHistory.jsp</result>
+        </action>                    
+	</package>
+</struts>

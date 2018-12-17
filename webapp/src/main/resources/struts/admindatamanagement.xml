@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+  <package name="admindatamanagement" extends="struts-twms-default">
+
+    <action name="upload_inventory_setup" class="tavant.twms.web.admin.upload.inventory.UploadInventoryAction"
+        method="setup">
+      <result name="success">pages/secure/admin/dataManagement/uploadInventory.jsp</result>
+    </action>
+
+    <action name="upload_inventory" class="tavant.twms.web.admin.upload.inventory.UploadInventoryAction">
+      <result name="success">pages/secure/admin/dataManagement/uploadInventory.jsp</result>
+    </action>
+
+    <action name="upload_item_price" class="tavant.twms.web.admin.upload.itemprice.UploadItemPriceAction" 
+    method="setup">
+      <result name="success"> pages/secure/admin/dataManagement/uploadItemPrice.jsp</result>
+    </action>
+    <action name="uploadItemPrices" class="tavant.twms.web.admin.upload.itemprice.UploadItemPriceAction" method="uploadItemPrice">
+      <result name="success"> pages/secure/admin/dataManagement/uploadItemPrice.jsp</result>
+    </action>
+
+    <action name="upload_item_group" class="tavant.twms.web.admin.upload.productstructure.UploadProductStructureAction"
+      method="setup">
+      <result name="success"> pages/secure/admin/dataManagement/uploadItemGroup.jsp</result>
+    </action>
+    <action name="uploadItemGroup" class="tavant.twms.web.admin.upload.productstructure.UploadProductStructureAction"
+      method="uploadProductStructure">
+      <result name="success"> pages/secure/admin/dataManagement/uploadItemGroup.jsp</result>
+    </action>
+
+    <action name="upload_item" class="tavant.twms.web.admin.upload.item.UploadItemAction"
+      method="setup">
+      <result name="success"> pages/secure/admin/dataManagement/uploadItem.jsp</result>
+    </action>
+    <action name="uploadItem" class="tavant.twms.web.admin.upload.item.UploadItemAction"
+      method="uploadItem">
+      <result name="success"> pages/secure/admin/dataManagement/uploadItem.jsp</result>
+    </action>
+
+  </package>
+</struts>

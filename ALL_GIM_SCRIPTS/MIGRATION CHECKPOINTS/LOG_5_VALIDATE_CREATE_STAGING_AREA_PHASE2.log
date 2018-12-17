@@ -1,0 +1,52 @@
+Message: Creating STAGING TABLES.Please provide the source schema name
+
+Enter value for source_schema_name: TWMS_OWNER
+old   5:   P_IN_60_SCHEMA_OWNER := '&&SOURCE_SCHEMA_NAME';
+new   5:   P_IN_60_SCHEMA_OWNER := 'TWMS_OWNER';
+Message: Creating STAGING TABLES completed!
+
+********** VALIDATION OF CREATE STAGING TABLES **********
+
+Number of staging tables created:
+
+TABLE_COUNT                                                                     
+-----------                                                                     
+        441                                                                     
+
+List of Valid staging tables not created:
+
+TABLE_NAME                     STG_TABLE_NAME                                   
+------------------------------ ------------------------------                   
+LINE_ITEM_GROUPS               TG_LINE_ITEM_GROUPS                              
+ITEMS_IN_GROUP                 TG_ITEMS_IN_GROUP                                
+MODIFIERS                      TG_MODIFIERS                                     
+I18NITEM_TEXT                  TG_I18NITEM_TEXT                                 
+ADD_PAYMENT_INFO               TG_ADD_PAYMENT_INFO                              
+
+Number of constraints existing in the SOURCE for this owner:
+
+old   5: AND A.OWNER = '&&SOURCE_SCHEMA_NAME'
+new   5: AND A.OWNER = 'TWMS_OWNER'
+
+SOURCE_CONSTRAINT_COUNT                                                         
+-----------------------                                                         
+                   1256                                                         
+
+Number of constraints existing in the STAGING for this owner:
+
+old   5: AND A.OWNER = '&&SOURCE_SCHEMA_NAME'
+new   5: AND A.OWNER = 'TWMS_OWNER'
+
+STAGE_CONSTRAINT_COUNT                                                          
+----------------------                                                          
+                  1256                                                          
+
+List of MISSING CONSTRAINTS in staging
+old   9: AND A.OWNER = '&&SOURCE_SCHEMA_NAME'
+new   9: AND A.OWNER = 'TWMS_OWNER'
+
+********** END OF VALIDATION OF CREATE STAGING TABLES **********
+
+Message: Please refer LOG_5_VALIDATE_CREATE_STAGING_AREA_PHASE2.log before proceeding
+Message: Next process ==> Porting and Compiling Migration Packages
+

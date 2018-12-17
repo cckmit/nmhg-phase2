@@ -1,0 +1,9 @@
+--PURPOSE    : Patch to add a new column in DOCUMENT table.
+--AUTHOR     : Amrita Rout
+--CREATED ON : 10-July-2012
+
+
+ALTER TABLE document add (
+"ATTACHMENT_TYPE"     NUMBER(19,0),
+CONSTRAINT "ATTACHMENT_TYPE_FK" FOREIGN KEY ("ATTACHMENT_TYPE") REFERENCES LIST_OF_VALUES ("ID"))
+/

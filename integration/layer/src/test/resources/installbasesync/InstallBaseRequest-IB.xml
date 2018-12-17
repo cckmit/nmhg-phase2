@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SyncShipmentSchedule revision="" environment="" lang=""
+	xmlns="http://www.tavant.com/oagis"
+	xmlns:oa="http://www.openapplications.org/oagis/9"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<ApplicationArea>
+		<Sender>
+			<LogicalId>98-572-4444</LogicalId>
+			<Component></Component>
+			<Task>100000002</Task>
+			<ReferenceId></ReferenceId>
+			<Confirmation></Confirmation>
+			<AuthorizationId></AuthorizationId>
+		</Sender>
+		<CreationDateTime>2007-11-03T22:00:20-00:00</CreationDateTime>
+		<Signature qualifyingAgency="" />
+		<BODId>BOD012_USINT0106</BODId>
+		<UserArea></UserArea>
+	</ApplicationArea>
+	<DataArea>
+		<Sync confirm="">
+			<SyncCriteria expressionLanguage="">
+				<SyncExpression action=""></SyncExpression>
+			</SyncCriteria>
+		</Sync>
+		<ShipmentSchedule>
+			<Header>
+				<DocumentIds>
+					<DocumentId>
+						<Id>1997800</Id>
+					</DocumentId>
+				</DocumentIds>
+				<DocumentDateTime>
+					2007-11-03T22:00:20-00:00
+				</DocumentDateTime>
+				<!-- 
+					The Description below is the Transaction type
+					MACHINE SALE or DROP SHIPMENT or RMA . This is mapped
+					to the InventoryType (STOCK or RETAIL) and decides the
+					type of buyer (Dealer or EndCustomer)
+				-->
+				<Description>MACHINE SALE</Description>
+				<Parties>
+					<ShipToParty>
+						<PartyId>
+							<Id>00000000</Id>
+							<site></site>
+						</PartyId>
+					</ShipToParty>
+				</Parties>
+			</Header>
+			<Line>
+				<Item>
+					<ItemId>
+						<Id>PRTVLV1</Id><!-- Item.number -->
+					</ItemId>
+					<Type>CCI</Type><!-- Item.make -->
+					<UserArea>
+						<SerialNumber>CA2646</SerialNumber><!-- InventoryItem.serialNumber -->
+					</UserArea>
+				</Item>
+				<ItemQuantity>1</ItemQuantity><!-- Item.Quantity - static to 1 -->
+				<!-- 
+					If this is a DROP SHIPMENT,then this Description is the Dealer Number (Buyer Number)
+					for the First Transaction and the Seller Number for the second transaction 
+				-->
+				<Description>114</Description>
+				<Parties>
+					<ShipToParty>
+						<PartyId>
+							<Id>PIZZAGALLI CONSTRUCTION CO</Id>
+						</PartyId>
+					</ShipToParty>
+				</Parties>
+				<UserArea>
+					<SalesOrderNumber>11450994</SalesOrderNumber>
+					<!-- InventoryItem.salerOrderNumber -->
+					<SalesOrderLineNumber>01000</SalesOrderLineNumber><!-- This is not used in Clubcar, clarify with client -->
+					<ShipFromOrgCode>913</ShipFromOrgCode><!-- Not required -->
+					<InvoiceNumber>11452743</InvoiceNumber><!-- InventoryItem.invoiceNumber -->
+					<AdditionalSerialNumbers>
+						<AdditionalSerialNumber>
+							<name>EngineSerialNumber</name>
+							<value>AX123</value>
+						</AdditionalSerialNumber>
+						<AdditionalSerialNumber>
+							<name>PumpSerialNumber</name>
+							<value>AX123</value>
+						</AdditionalSerialNumber>
+					</AdditionalSerialNumbers>
+					<InvoiceDate>2007-11-01T00:00:00-00:00</InvoiceDate>
+					<!-- InventoryItem.invoiceDate -->
+					<BuildDate>2007-11-01T00:00:00-00:00</BuildDate>
+					<InventoryItemCondition>NEW</InventoryItemCondition>
+					<ShipFromCostNumber>COMP-123</ShipFromCostNumber>
+					<!-- EndCustomer Number or Dealership number based on description -->
+					<Country>US</Country>
+					<Address1>C/O NEUSE REGIONAL WTP</Address1>
+					<Address2>2811 BARRUS RD</Address2>
+					<City>LA GRANGE</City>
+					<State>NC</State>
+					<ZipCode>28551</ZipCode>
+				</UserArea>
+			</Line>
+		</ShipmentSchedule>
+	</DataArea>
+</SyncShipmentSchedule>

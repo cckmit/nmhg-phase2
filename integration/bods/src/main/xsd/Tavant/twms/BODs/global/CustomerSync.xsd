@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://www.tavant.com/globalsync/customersync"
+           xmlns="http://www.tavant.com/globalsync/customersync"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="qualified"
+           attributeFormDefault="unqualified">
+
+  	   <xs:include schemaLocation="../../Resources/Nouns/global/ApplicationAreaType.xsd" />
+
+
+	    <xs:element name="CustomerSyncRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="ApplicationArea"
+					type="ApplicationAreaType" />
+				<xs:element name="DataArea"
+					type="DataAreaType" />
+			</xs:sequence>
+		</xs:complexType>
+	    </xs:element>
+
+	    <xs:complexType name="DataAreaType">
+			<xs:sequence>
+				<xs:element name="Customer" type="CustomerType" />
+			</xs:sequence>
+	    </xs:complexType>
+	    
+
+	    <xs:complexType name="CustomerType">
+			<xs:sequence>
+				<xs:element name="CustomerName" type="xs:string"/>
+				<xs:element ref="BusinessUnits"/>
+			  	<xs:element name="CustomerNumber" type="xs:string"/>
+			  	<xs:element name="Status">
+				  	<xs:simpleType>
+							<xs:restriction base="xs:string">
+								<xs:enumeration value="A"/>
+								<xs:enumeration value="I"/>
+							</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+			  	<xs:element name="CompanyType">
+			  	 <xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="DEALER"/>
+						<xs:enumeration value="VENDOR"/>
+					</xs:restriction>
+				 </xs:simpleType>
+				</xs:element>
+			  	<xs:element name="Currency" type="xs:string"/>
+			  	<xs:element name="RegionCode" type="xs:string" minOccurs="0"/>
+			  	<xs:element name="DealerFamilyCode" type="xs:string" minOccurs="0"/>
+			  	<xs:element name="BrandInfo" type="BrandInfoType"/>
+                <xs:element name="MarketingGroupCode" type="xs:string" />
+               	<xs:element name="PrimaryContactPerson" type="PrimaryContactPersonType"/>
+			  	<xs:element name="PrimaryShipToAddress" type="AddressType"/>
+			  	<xs:element name="BillToAddress" type="AddressType" minOccurs="0"/>
+			  	<xs:element name="ShipToLocations" type="ShipToLocationsType" minOccurs="0"/>
+                <xs:element name="SellingLocation" type="xs:string"/>
+                <xs:element name="BusinessArea" type="xs:string" minOccurs="0"/>
+                <xs:element name="FleetBusinessArea" type="xs:string" minOccurs="0"/>
+                <xs:element name="ServiceProviderType" type="xs:string" minOccurs="0"/>
+                <xs:element name="ServiceProviderDesc" type="xs:string" minOccurs="0"/>
+                <xs:element name="DualBrandDealer" type="xs:string" minOccurs="0"/>
+                <xs:element name="XmlacknowledgementFooter" type="xs:string" minOccurs="0"/>
+                <xs:element name="Network" type="xs:string" minOccurs="0"/>
+                <xs:element name="Language" type="xs:string" minOccurs="0"/>
+                <xs:element name="ShipToChanged" minOccurs="0">
+	                <xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="Y"/>
+							<xs:enumeration value="N"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+                <xs:element name="SalesTerritoryName" type="xs:string" minOccurs="0"/>
+			</xs:sequence>
+	    </xs:complexType>
+	      <xs:element name="BusinessUnits">
+		    <xs:complexType>
+			 <xs:sequence>
+				<xs:element name="BUName"  maxOccurs="unbounded">
+				 <xs:simpleType>
+					<xs:restriction base="xs:string">
+					 <xs:maxLength value="40"/>
+					</xs:restriction>
+				 </xs:simpleType>
+				</xs:element>
+			  </xs:sequence>
+		     </xs:complexType>
+	       </xs:element>
+	        <xs:complexType name="ShipToLocationsType">
+    		<xs:sequence>
+                <xs:element name="ShipToLocation" type="ShipToLocationType" maxOccurs="unbounded" minOccurs="0"/>
+    		</xs:sequence>
+	       </xs:complexType>
+	         <xs:complexType name="ShipToLocationType">
+    		<xs:sequence>
+                <xs:element name="Address" type="AddressType" />
+    		</xs:sequence>
+	       </xs:complexType>
+	       <xs:complexType name="BrandInfoType">
+    		<xs:sequence>
+                <xs:element name="BrandCode" maxOccurs="unbounded">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:string">
+                                <xs:enumeration value="HYSTER" />
+                                <xs:enumeration value="YALE" />
+                                <xs:enumeration value="UTILEV" />
+                            </xs:restriction>
+                        </xs:simpleType>
+                </xs:element>
+    		</xs:sequence>
+	       </xs:complexType>
+	    <xs:complexType name="PrimaryContactPersonType">
+	    		<xs:sequence>
+	    			<xs:element name="FirstName" type="xs:string" minOccurs="0"/>
+	    			<xs:element name="LastName" type="xs:string" minOccurs="0"/>
+	    		</xs:sequence>
+	    </xs:complexType>
+
+	    <xs:complexType name="AddressType">
+			<xs:sequence>
+				<xs:element name="FirstName" type="xs:string" minOccurs="0"/>
+				<xs:element name="MiddleName" type="xs:string" minOccurs="0"/>
+				<xs:element name="LastName" type="xs:string" minOccurs="0"/>
+				<xs:element name="Addressline1" type="xs:string"/>
+				<xs:element name="Addressline2" type="xs:string" minOccurs="0"/>
+				<xs:element name="Addressline3" type="xs:string" minOccurs="0"/>
+				<xs:element name="Addressline4" type="xs:string" minOccurs="0"/>
+				<xs:element name="SiteNumber" type="xs:string"/>
+				<xs:element name="City" type="xs:string"/>
+				<xs:element name="State" type="xs:string" minOccurs="0"/>
+				<xs:element name="CountyCode" type="xs:string" minOccurs="0"/>
+				<xs:element name="Country" type="xs:string"/>
+				<xs:element name="Zipcode" type="xs:string" minOccurs="0"/>
+				<xs:element name="ZipExtension" type="xs:string" minOccurs="0"/>
+				<xs:element name="Email" type="xs:string" minOccurs="0"/>
+				<xs:element name="Phone" type="xs:string" minOccurs="0"/>
+				<xs:element name="PhoneExt" type="xs:string" minOccurs="0"/>
+				<xs:element name="SecondaryPhone" type="xs:string" minOccurs="0"/>
+				<xs:element name="SecondaryPhoneExt" type="xs:string" minOccurs="0"/>
+				<xs:element name="Fax" type="xs:string" minOccurs="0"/>
+				<xs:element name="Status" type="xs:string" minOccurs="0"/>
+				<xs:element name="Currency" type="xs:string" minOccurs="0"/>
+				<xs:element name="SicCode" type="xs:string" minOccurs="0"/>
+				<xs:element name="IsPrimary" type="xs:string" minOccurs="0"/>
+				<xs:element name="IsEndCustomer" type="xs:string"/>
+			</xs:sequence>
+	</xs:complexType>
+</xs:schema>

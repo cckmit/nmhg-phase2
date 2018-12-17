@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd" 
+	default-autowire="byName">
+	
+	<bean id="sessionFactory" parent="domainSessionFactory"
+		class="tavant.twms.infra.EnhancedAnnotationSessionFactoryBean">
+		<property name="moduleWiseHbmXmls">
+			<set merge="true">
+				<ref bean="Engine.hbm.xmls"/>
+			</set>
+		</property>
+	</bean>
+
+	<bean id="domainDataSetup" class="tavant.twms.infra.DataSetup" >
+		<property name="seedDataResources">
+			<list value-type="java.lang.String"> 
+		    <value>classpath:unit-test/Common.xls</value>
+		    <value>classpath:unit-test/ListOfValues.xls</value>
+		    <value>classpath:unit-test/OrgData.xls</value>
+		    <value>classpath:unit-test/Category.xls</value>
+		    <value>classpath:unit-test/CatalogInventoryData.xls</value>
+		    <value>classpath:unit-test/FailureStructure.xls</value>
+		    <value>classpath:unit-test/PaymentData.xls</value>
+		    <value>classpath:unit-test/PaymentDefinitionData.xls</value>
+		    <value>classpath:unit-test/PolicyData.xls</value>
+		    <value>classpath:unit-test/ClaimData.xls</value>
+		    <value>classpath:unit-test/Rules.xls</value>
+		    <value>classpath:unit-test/PartReturnData.xls</value>
+		    <value>classpath:unit-test/Supplier.xls</value>
+		    <value>classpath:unit-test/CampaignData.xls</value>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="integrationDataSetup" class="tavant.twms.infra.DataSetup" >
+		<property name="seedDataResources">
+			<list value-type="java.lang.String"> 
+		    <value>classpath:RemoteInteractionData.xls</value>
+			</list>
+		</property>
+	</bean>	
+</beans>	

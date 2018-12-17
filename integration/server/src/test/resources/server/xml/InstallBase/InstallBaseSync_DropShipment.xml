@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<InstallBaseSync xmlns="http://www.tavant.com/globalsync/installbasesync">
+    <ApplicationArea>
+        <Sender>
+	     	<Task>TavantWMS</Task>
+            <LogicalId>SAP</LogicalId>  
+            <ReferenceId>1030311200967115</ReferenceId>
+        </Sender>
+        <BODId>BOD058</BODId>
+        <InterfaceNumber>USINT0813</InterfaceNumber>
+        <CreationDateTime>2008-03-14T11:15:03-08:00</CreationDateTime>
+    </ApplicationArea>
+    <DataArea>
+        <InventorySync>
+            <SyncType>DROP_SHIPMENT</SyncType>
+            <ShipFromNumber>129|70422</ShipFromNumber>
+            <ShipFromLocation>129|70422</ShipFromLocation>
+            <ShipToNumber>Anil</ShipToNumber>
+            <ShipToLocation>Anil</ShipToLocation>
+            <ShipToAddress>
+                <Address1>1133 EGEN&#39;L CAVAZOS BLVD.</Address1>
+                <City>KINGSVILLE,</City>
+                <State>TX</State>
+                <ZipCode>78363</ZipCode>
+                <Country>US</Country>
+            </ShipToAddress>
+            <InventoryDetail>
+                <ItemNumber>918590</ItemNumber>
+                <BUName>Thermo King TSA</BUName>
+                <SerialNumber>01167R4371</SerialNumber>
+                <ItemCondition>NEW</ItemCondition>
+                <BuildDate>2009-03-30-08:00</BuildDate>
+                <ManufacturingSite></ManufacturingSite>
+            </InventoryDetail>
+            <SalesOrderNumber>521837</SalesOrderNumber>
+            <SalesOrderLineNumber>1</SalesOrderLineNumber>
+            <FactoryOrderNumber>966927</FactoryOrderNumber>
+            <InvoiceNumber>IC122905776</InvoiceNumber>
+            <InvoiceDate>2009-03-31-08:00</InvoiceDate>
+            <ShipFromOrgCode>TAVANT-TWMS</ShipFromOrgCode>
+            <DeliveryDateTime>2009-03-31-08:00</DeliveryDateTime>
+            <DivisionCode>TAVANT-TWMS</DivisionCode>
+        </InventorySync>
+    </DataArea>
+</InstallBaseSync> 

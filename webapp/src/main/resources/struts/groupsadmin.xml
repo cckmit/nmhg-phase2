@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="groupsadmin" extends="struts-twms-default">
+
+		<!-- Actions for admin item group management. -->
+		<action name="show_item_schemes"
+			class="tavant.twms.web.admin.groups.ListItemSchemes">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">pages/secure/admin/groups/item/itemSchemeInboxView.jsp</result>
+		</action>
+
+		<action name="get_item_schemes_body"
+			class="tavant.twms.web.admin.groups.ListItemSchemes"
+			method="tableBody">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">pages/secure/home/json.jsp</result>
+		</action>
+
+		<action name="export_item_scheme_to_excel"
+			class="tavant.twms.web.admin.groups.ListItemSchemes"
+			method="downloadListingData">
+			<interceptor-ref name="adminParamsPrepare" />
+		</action>
+
+		<action name="item_schemes_previewDetail"
+			class="tavant.twms.web.admin.groups.ManageItemSchemes"
+			method="showItemSchemes">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">
+				pages/secure/admin/groups/item/showSchemes.jsp
+			</result>
+		</action>
+
+		<action name="create_item_scheme"
+			class="tavant.twms.web.admin.groups.ManageItemSchemes"
+			method="createScheme">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">
+				pages/secure/admin/groups/item/showSchemes.jsp
+			</result>
+		</action>
+
+		<action name="save_item_scheme"
+			class="tavant.twms.web.admin.groups.ManageItemSchemes"
+			method="saveScheme">
+			<interceptor-ref name="adminTwmsParamsPrepareParams" />
+			<result name="success">
+				pages/secure/admin/groups/item/showSchemes.jsp
+			</result>
+			<result name="input">
+				pages/secure/admin/groups/item/showSchemes.jsp
+			</result>
+		</action>
+
+		<!-- Actions for ItemGroup  -->
+
+		<action name="list_item_groups"
+			class="tavant.twms.web.admin.groups.ListItemGroups">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">pages/secure/admin/groups/item/itemGroupsInboxView.jsp</result>
+		</action>
+
+		<action name="get_item_groups_body"
+			class="tavant.twms.web.admin.groups.ListItemGroups"
+			method="tableBody">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">pages/secure/home/json.jsp</result>
+		</action>
+
+		<action name="export_item_group_to_excel"
+			class="tavant.twms.web.admin.groups.ListItemGroups"
+			method="downloadListingData">
+			<interceptor-ref name="adminParamsPrepare" />
+		</action>
+
+		<action name="view_item_group_preview"
+			class="tavant.twms.web.admin.groups.ManageItemGroup"
+			method="showGroup">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="item">
+				pages/secure/admin/groups/item/showGroup.jsp
+			</result>
+			<result name="group">
+				pages/secure/admin/groups/item/showGroup.jsp
+			</result>
+		</action>
+
+		<action name="view_item_group"
+			class="tavant.twms.web.admin.groups.ManageItemGroup"
+			method="showGroup">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="item">
+				pages/secure/admin/groups/item/manageItem.jsp
+			</result>
+			<result name="group">
+				pages/secure/admin/groups/item/manageGroup.jsp
+			</result>
+		</action>
+        
+        <action name="get_items_for_item_group" 
+        class="tavant.twms.web.admin.groups.ManageItem"
+        method="gridBody">
+            <interceptor-ref name="adminParamsPrepare" />            
+        </action>
+
+        <action name="remove_items_from_group" 
+        class="tavant.twms.web.admin.groups.ManageItem"
+        method="removeItemsFromGroup">
+            <interceptor-ref name="adminParamsPrepare" />            
+			<result name="input">
+				pages/secure/admin/groups/item/manageItem.jsp
+			</result>
+            <result name="success">
+				pages/secure/admin/groups/item/success.jsp
+			</result>
+        </action>
+		<!--  Actions for Creation of ItemGroup -->
+		<action name="create_item_group"
+			class="tavant.twms.web.admin.groups.CreateItemGroup"
+			method="setUpForCreate">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">
+				pages/secure/admin/groups/item/createItemGroup.jsp
+			</result>
+		</action>
+
+		<action name="save_item_group"
+			class="tavant.twms.web.admin.groups.CreateItemGroup"
+			method="save">
+			<interceptor-ref name="adminTwmsParamsPrepareParams" />
+			<result name="input">
+				pages/secure/admin/groups/item/createItemGroup.jsp
+			</result>
+            <result name="success">
+              pages/secure/admin/groups/item/createItemGroup.jsp
+            </result>
+		</action>
+
+		<action name="manage_group"
+			class="tavant.twms.web.admin.groups.ManageGroup"
+			method="manage">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">
+				pages/secure/admin/groups/item/manageGroup.jsp
+			</result>
+		</action>
+
+		<action name="manage_item"
+			class="tavant.twms.web.admin.groups.ManageItem"
+			method="manage">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">
+				pages/secure/admin/groups/item/manageItem.jsp
+			</result>
+		</action>
+
+		<action name="search_items_for_itemgroup"
+			class="tavant.twms.web.admin.groups.ManageItem"
+			method="search">
+			<interceptor-ref name="adminTwmsParamsPrepareParams" />
+			<result name="input">
+				pages/secure/admin/groups/item/error.jsp
+			</result>
+			<result name="success">
+				pages/secure/admin/groups/item/selectItems.jsp
+			</result>
+		</action>
+
+		<action name="search_groups_for_itemgroup"
+			class="tavant.twms.web.admin.groups.ManageGroup"
+			method="search">
+			<interceptor-ref name="adminTwmsParamsPrepareParams" />
+			<result name="input">
+				pages/secure/admin/groups/item/error.jsp
+			</result>
+			<result name="success">
+				pages/secure/admin/groups/item/selectGroups.jsp
+			</result>
+		</action>
+
+		<action name="add_groups_to_group"
+			class="tavant.twms.web.admin.groups.ManageGroup"
+			method="add">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">
+				pages/secure/admin/groups/item/manageGroup.jsp
+			</result>
+		</action>
+
+		<action name="save_item"
+			class="tavant.twms.web.admin.groups.ManageItem"
+			method="save">
+			<interceptor-ref name="adminTwmsParamsPrepareParams" />
+			<result name="success">
+				pages/secure/admin/groups/item/success.jsp
+			</result>
+			<result name="input">
+				pages/secure/admin/groups/item/manageItem.jsp
+			</result>
+		</action>
+
+		<action name="save_group"
+			class="tavant.twms.web.admin.groups.ManageGroup"
+			method="save">
+			<interceptor-ref name="adminTwmsParamsPrepareParams" />
+			<result name="success">
+				pages/secure/admin/groups/item/success.jsp
+			</result>
+			<result name="input">
+				pages/secure/admin/groups/item/manageGroup.jsp
+			</result>
+		</action>
+	</package>
+</struts>

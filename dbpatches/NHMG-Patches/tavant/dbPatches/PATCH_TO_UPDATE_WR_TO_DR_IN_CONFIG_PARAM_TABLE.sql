@@ -1,0 +1,16 @@
+-- Patch for updating diplay_name 'WR' to 'DR' and 'Warranty Registration' to 'Delivery Report' in config_param and in inventory_transaction_type
+-- Author: PRACHER 
+-- Created On : 12-DEC-2012
+
+UPDATE INVENTORY_TRANSACTION_TYPE SET TRNX_TYPE_VALUE='DR' WHERE TRNX_TYPE_KEY='DR'
+/
+
+UPDATE INVENTORY_TRANSACTION_TYPE SET TRNX_TYPE_VALUE='DR_MODIFY' WHERE TRNX_TYPE_KEY='DR_MODIFY'
+/
+
+UPDATE INVENTORY_TRANSACTION_TYPE SET TRNX_TYPE_VALUE='DR_DELETE' WHERE TRNX_TYPE_KEY='DR_DELETE'
+/
+
+COMMIT
+/
+

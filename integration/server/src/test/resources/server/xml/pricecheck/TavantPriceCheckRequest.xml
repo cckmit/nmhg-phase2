@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?><PriceFetch xmlns="http://www.tavant.com/globalsync/pricefetch">
+    <ApplicationArea>
+        <Sender>
+            <Task>CCT_WINDCHILL</Task>
+            <LogicalId>TavantWMS</LogicalId>
+            <ReferenceId>1230269934847</ReferenceId>
+        </Sender>
+        <BODId>INT03</BODId>
+        <InterfaceNumber/>
+        <CreationDateTime>2008-12-26T05:38:54.847Z</CreationDateTime>
+    </ApplicationArea>
+    <DataArea>
+        <BUName>Club Car</BUName>
+        <PriceCheckRequest>
+            <DateOfRepair>2008-12-02Z</DateOfRepair>
+            <DealerNo>378920</DealerNo>
+            <CurrencyCode>USD</CurrencyCode>
+            <ReplacedParts>
+                <LineItem>
+                    <PartNumber>AM10012</PartNumber>
+                    <Quantity>2</Quantity>
+                    <UOM>EACH</UOM>
+                </LineItem>
+            </ReplacedParts>
+        </PriceCheckRequest>
+    </DataArea>
+</PriceFetch> 

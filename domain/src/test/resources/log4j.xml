@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+  <appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern" value="%-5p %c %x: %m%n" />
+    </layout>
+  </appender>
+
+ <appender name="FILE" class="org.apache.log4j.RollingFileAppender">
+    <param name="File" value="target/warranty.log" />
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern" value="%-5p %c %x: %m%n" />
+    </layout>
+  </appender>
+
+  <appender name="SQL" class="org.apache.log4j.RollingFileAppender">
+    <param name="File" value="target/sql.log" />
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern" value="%m;" />
+    </layout>
+  </appender>
+    
+  <category name="tavant.twms.domain.common" additivity="false">
+    <priority value="ERROR" />
+    <appender-ref ref="FILE" />
+  </category>    
+    
+  <category name="tavant.twms.domain.rules" additivity="false">
+    <priority value="ERROR" />
+    <appender-ref ref="FILE" />
+  </category>    
+    
+  <category name="tavant.twms.domain" additivity="false">
+    <priority value="ERROR" />
+    <appender-ref ref="FILE" />
+  </category>
+
+  <category name="tavant.twms.infra.NestedSetInterceptor" additivity="false">
+    <priority value="ERROR" />
+    <appender-ref ref="FILE" />
+  </category>
+
+  <category name="org.springframework">
+    <priority value="ERROR" />
+    <appender-ref ref="FILE" />
+  </category>
+
+  <category name="org.springmodules">
+    <priority value="ERROR" />
+    <appender-ref ref="FILE" />
+  </category>
+
+  <category name="org.hibernate" additivity="false">
+    <priority value="ERROR" />
+    <appender-ref ref="FILE" />
+  </category>
+
+  <category name="org.hibernate.SQL" additivity="false">
+    <priority value="DEBUG" />
+    <appender-ref ref="FILE" />
+  </category>
+  
+  <category name="org.hibernate.tool.hbm2ddl" additivity="false">
+    <priority value="ERROR" />
+    <appender-ref ref="SQL" />
+  </category>
+
+  <category name="tavant.twms.domain.common.CriteriaPrecedenceStoredProcDefinitions" additivity="false">
+    <priority value="ERROR" />
+    <appender-ref ref="FILE" />
+  </category>
+
+  <category name="org.chiba">
+    <priority value="ERROR" />
+    <appender-ref ref="FILE" />
+  </category>
+    
+  <root>
+      <priority value="DEBUG"/>
+      <appender-ref ref="FILE"/>
+  </root>    
+
+</log4j:configuration>

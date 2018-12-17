@@ -1,0 +1,230 @@
+body {
+    font-family: Verdana, sans-serif, Arial, Helvetica;
+    font-size: 10px;
+}
+
+
+.datePickerContainer {
+    font-size: 16px;
+}
+
+td.nodeEditorContainer {
+    padding-left: 2px;
+    padding-bottom: 15px;
+    padding-top: 5px;
+}
+
+td.nodeEditorBody {
+    font-size: 11px
+}
+
+div.deleteButton {
+    background: url( ../../../image/remove.gif);
+    width: 16px;
+    height: 15px;
+    vertical-align: bottom;
+    background-repeat: no-repeat;
+    float: right;
+    cursor: pointer;
+}
+
+div.addButton {
+    background: url( ../../../image/addRow_new.gif );
+    width: 52px;
+    height: 16px;
+    vertical-align: bottom;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+div.loadingIndicator {
+    background: url( ../../../image/indicator.gif );
+    width: 16px;
+    height: 15px;
+    vertical-align: bottom;
+    background-repeat: no-repeat;
+    cursor: wait;
+    visibility: hidden;
+}
+
+table.editor {
+    background: #DDDDDD;
+    width: 100%;
+    border: 5px;
+}
+
+table.editorBody {
+    background: #EEEEEE;
+    width: 100%;
+}
+
+td.operatorHolder {
+/*Place Holder*/
+}
+
+tr.expressionRow {
+    width: 100%;
+    border-right: 1px !important;
+    border-left: 1px !important;
+    border-bottom: 1px !important;
+}
+
+tr.expressionRow:hover {
+    background-color: #eeeeff;
+}
+
+tr.invalidRow {
+    background-color: #ffccbb;
+}
+
+span.collectionSelectorComboBoxSpan input {
+    width: 50px;
+}
+
+span.lhsComboBoxSpan input {
+    width: 250px;
+}
+
+span.operatorComboBoxSpan input {
+    width: 50px;
+}
+
+span.datePlainDurationComboBoxSpan input {
+	width: 40px;
+}
+
+span.claimDuplicacyRhsPrefix {
+	vertical-align : bottom;
+	font-family: Verdana, sans-serif, Arial, Helvetica;
+    font-size: 10px;
+}
+
+td.indentIndicatorTd {
+/*Place Holder*/
+}
+
+td.foldingTogglerTd {
+/*Place Holder*/
+}
+
+td.collectionSelectorTd {
+/*Place Holder*/
+}
+
+td.lhsComboBoxTd {
+/*Place Holder*/
+}
+
+td.operatorComboBoxTd {
+/*Place Holder*/
+}
+
+td.rhsTd {
+/*Place Holder*/
+}
+
+div.searchPrebuiltExpressions {
+    background: url( ../../../image/addWA.gif );
+    width: 20px;
+    height: 20px;
+    vertical-align: bottom;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+td.ruleBuilder {
+    padding-top: 0;
+    padding-bottom: 0;
+    vertical-align: bottom;
+}
+
+div.indentIndicator {
+    background: url( ../../../image/L_small.png );
+    width: 20px;
+    height: 25px;
+    vertical-align: top;
+    background-repeat: no-repeat;
+}
+
+div.collapseSubRows {
+    background: url( ../../../image/minus_t.gif );
+    width: 15px;
+    height: 12px;
+    vertical-align: middle;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+div.expandSubRows {
+    background: url( ../../../image/plus_t.gif );
+    width: 15px;
+    height: 12px;
+    vertical-align: middle;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+span.intervalSeparator {
+    vertical-align: bottom;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+span.durationSeparator {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+span.invertPredicate {
+    vertical-align: middle;
+    color: black;
+}
+
+input.dojoComboBox {
+    border: 1px solid #CCCCCC;
+}
+
+.dojoValidateValid {
+    background-color: white;
+}
+
+span.validateError {
+    background-image: url( ../../../image/alerts.gif );
+    width: 20px;
+    height: 25px;
+    vertical-align: bottom;
+    background-repeat: no-repeat;
+    position: absolute;
+    margin-left: 3px; /* can't use padding since position is absolute */
+}
+
+span.missing span.invalid span.range {
+    color: #FF6666;
+    display: inline;
+    font-family: Verdana, sans-serif, Arial, Helvetica;
+    font-size: 9px;
+    font-style: italic;
+    font-weight: bold;
+}
+
+input {
+    vertical-align: bottom;
+}
+
+table.bgColor {
+    padding:10px 0 0 5px;
+    width: 99%;
+}
+
+div#errorDialogContent {
+    background:#ffffff;
+    padding-left: 5px;
+}
+
+div#errorDialogCloseNode {
+    border-top:1px solid #CCCCCC;
+}
+
+.official div#errorDialog.dijitDialog {
+    width: 60%;
+}

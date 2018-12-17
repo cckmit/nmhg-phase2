@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SyncInvoice  xmlns="http://www.tavant.com/extwarranty" >
+	<ApplicationArea>
+		<Sender>
+			<Task>0200001999</Task>
+			<LogicalId>98-572-4553</LogicalId>
+		</Sender>
+		<BODId>bodId</BODId>
+		<CreationDateTime>2001-12-17T09:30:47-05:00</CreationDateTime>
+	</ApplicationArea>
+	<DataArea>
+		<Invoice>
+			<Header>
+				<UserArea>
+					<PurchaseOrderNumber>11000034_3W </PurchaseOrderNumber>
+					<DebitMemoNumber>1234324</DebitMemoNumber>
+					<SerialNumber>1234</SerialNumber>
+					<PlansList>					
+						<Plan>
+							<PlanCode>AB08</PlanCode>		
+							<Amount>39.38</Amount>    
+							<TaxAmount>10</TaxAmount>
+						</Plan>					
+					</PlansList>      	
+				</UserArea>
+				<DocumentIds>
+					<DocumentId>
+						<Id>52577887962</Id>
+					</DocumentId>
+				</DocumentIds>
+				<TotalAmount>
+					<body>4500.00</body>
+				</TotalAmount>
+				<DealerNumber>4811</DealerNumber>
+			</Header>
+			<DocumentDateTime> 2001-12-17T09:30:47-05:00 </DocumentDateTime>
+			<Line>
+				<Tax>
+					<TaxAmount>
+						<body>400.00</body>
+					</TaxAmount>
+				</Tax>
+				<TotalAmount currency="USD" />
+			</Line>
+		</Invoice>
+	</DataArea>
+</SyncInvoice>

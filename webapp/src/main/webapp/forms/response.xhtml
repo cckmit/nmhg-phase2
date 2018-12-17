@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <title>Claim Creation response</title>
+    <script type="text/javascript">
+      function updateMasterView(id) {//HACK: actually i should be using utility.js here, insteed of writing this logic but that doesn't seem to work in xhtml.
+        var suffix = "_iframe";
+        var name = window.name;
+        var folderName = null, tabId = null;
+        var indexOfHash = name.indexOf("#");
+        if(indexOfHash == -1) {
+	    	tabId = name.substring(0, name.length - suffix.length);
+        } else {
+        	folderName = name.substring(indexOfHash + 1, name.length - suffix.length).replace("_", " ");
+        	tabId = name.substring(0, indexOfHash);
+        }
+        parent.hideCompletedRow(tabId, id, folderName);
+      }
+    </script>
+  </head>
+  <body>
+  <div style="border:1px solid #FFCC66;background:#FCFCE2;padding:1px;">
+	  <div style="background:#EFEFD4;color:#336600;padding:1px;">
+	  	<table>
+	  		<tr>
+	  			<td style="color:#336600;"><img src="images/applicationSuccessIcon.gif"/></td>
+	  			<td style="color:#336600;"><p style="font-family: Verdana, Arial, Helvetica, sans-serif;font-size: 7.5pt;"/></td>
+	  		</tr>
+	  	</table>
+	  </div>
+  </div>
+  </body>
+</html>

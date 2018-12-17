@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="http://www.tavant.com/globalsync/bookingsync" xmlns="http://www.tavant.com/globalsync/bookingsync"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="Bookings">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="ApplicationArea">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Sender">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Task">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="50" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="LogicalId">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="50" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="ReferenceId">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="100" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="BODId">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="50" />
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="InterfaceNumber" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="50" />
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="CreationDateTime" type="xs:dateTime" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="DataArea">
+					<xs:complexType>
+						<xs:sequence>
+						<xs:element name="BUName">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="50" />
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+					<xs:element name="UnitSerialNumber">
+						<xs:simpleType>
+							<xs:restriction base="xs:string">
+								<xs:maxLength value="25"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element name="TransactionType" >
+						<xs:simpleType>
+							<xs:restriction base="xs:string">
+								<xs:maxLength value="1" />
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element name="TransactionDateTime" type="xs:dateTime" />
+					</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

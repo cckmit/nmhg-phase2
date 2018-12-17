@@ -1,0 +1,644 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<functionalareas xmlns="http://www.tavant.com/twms/security/resource"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.tavant.com/twms/security/resource
+			http://www.tavant.com/twms/security/resource">
+	<functionalarea name="warrantyadmin" defaultpolicy="none">
+
+	<!-- Resources for update or Read Only -->
+	
+		<resource type="ui" value="warrantyAdminWarrantyAdminTab" operation="OR">
+			<permissions>warrantyAdmin:warrantyAdminWarrantyAdminTab:update,warrantyAdmin:warrantyAdminWarrantyAdminTab:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminManageBusinessConfigurations" operation="OR">
+			<permissions>warrantyAdmin:warrantyAdminManageBusinessConfigurations:update,warrantyAdmin:warrantyAdminManageBusinessConfigurations:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminManageWarrantyPolicies" operation="OR">
+			<permissions>warrantyAdmin:warrantyAdminManageWarrantyPolicies:update,warrantyAdmin:warrantyAdminManageWarrantyPolicies:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminPolicyDefinition" operation="OR">
+			<permissions>warrantyAdmin:warrantyAdminPolicyDefinition:update,warrantyAdmin:warrantyAdminPolicyDefinition:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminManageFlatRates" operation="OR">
+			<permissions>warrantyAdmin:warrantyAdminManageFlatRates:update,warrantyAdmin:warrantyAdminManageFlatRates:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminLaborRates" operation="OR">
+			<permissions>warrantyAdmin:warrantyAdminLaborRates:update,warrantyAdmin:warrantyAdminLaborRates:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminTravelRates" operation="OR">
+			<permissions>warrantyAdmin:warrantyAdminTravelRates:update,warrantyAdmin:warrantyAdminTravelRates:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminItemPriceModifiers" operation="OR">
+			<permissions>warrantyAdmin:warrantyAdminItemPriceModifiers:update,warrantyAdmin:warrantyAdminItemPriceModifiers:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminManagePartsCost" operation="OR">
+			<permissions>warrantyAdmin:warrantyAdminManagePartsCost:update,warrantyAdmin:warrantyAdminManagePartsCost:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminPartReturnConfiguration" operation="OR">
+			<permissions>warrantyAdmin:warrantyAdminPartReturnConfiguration:update,warrantyAdmin:warrantyAdminPartReturnConfiguration:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminManageStateMandates" operation="OR">
+			<permissions>warrantyAdmin:warrantyAdminManageStateMandates:update,warrantyAdmin:warrantyAdminManageStateMandates:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminManageClaimPayment" operation="OR">
+			<permissions>warrantyAdmin:warrantyAdminManageClaimPayment:update,warrantyAdmin:warrantyAdminManageClaimPayment:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminCreateClaimPaymentModifier" operation="OR">
+			<permissions>warrantyAdmin:warrantyAdminCreateClaimPaymentModifier:update,warrantyAdmin:warrantyAdminCreateClaimPaymentModifier:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminConfigureClaimPaymentDefinition" operation="OR">
+			<permissions>warrantyAdmin:warrantyAdminConfigureClaimPaymentDefinition:update,warrantyAdmin:warrantyAdminConfigureClaimPaymentDefinition:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminManageFailureStructure" operation="OR">
+			<permissions>warrantyAdmin:warrantyAdminManageFailureStructure:update,warrantyAdmin:warrantyAdminManageFailureStructure:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminSeriesFailureHierarchy" operation="OR">
+			<permissions>warrantyAdmin:warrantyAdminSeriesFailureHierarchy:update,warrantyAdmin:warrantyAdminSeriesFailureHierarchy:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminListFaultLocations" operation="OR">
+			<permissions>warrantyAdmin:warrantyAdminListFaultLocations:update,warrantyAdmin:warrantyAdminListFaultLocations:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminListServiceProcedures" operation="OR">
+			<permissions>warrantyAdmin:warrantyAdminListServiceProcedures:update,warrantyAdmin:warrantyAdminListServiceProcedures:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminFaultFound/CausedByAssociation" operation="OR">
+			<permissions>warrantyAdmin:warrantyAdminFaultFound/CausedByAssociation:update,warrantyAdmin:warrantyAdminFaultFound/CausedByAssociation:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminMaintainFailureDetailofFailureURL" operation="OR">
+			<permissions>warrantyAdmin:warrantyAdminMaintainFailureDetailofFailureURL:update,warrantyAdmin:warrantyAdminMaintainFailureDetailofFailureURL:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminManageGroups" operation="OR">
+			<permissions>warrantyAdmin:warrantyAdminManageGroups:update,warrantyAdmin:warrantyAdminManageGroups:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminItemGroups" operation="OR">
+			<permissions>warrantyAdmin:warrantyAdminItemGroups:update,warrantyAdmin:warrantyAdminItemGroups:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminDealerGroups" operation="OR">
+			<permissions>warrantyAdmin:warrantyAdminDealerGroups:update,warrantyAdmin:warrantyAdminDealerGroups:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminUserGroups" operation="OR">
+			<permissions>warrantyAdmin:warrantyAdminUserGroups:update,warrantyAdmin:warrantyAdminUserGroups:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminManageBusinessRuleGroups" operation="OR">
+			<permissions>warrantyAdmin:warrantyAdminManageBusinessRuleGroups:update,warrantyAdmin:warrantyAdminManageBusinessRuleGroups:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminClaimsProcessing" operation="OR">
+			<permissions>warrantyAdmin:warrantyAdminClaimsProcessing:update,warrantyAdmin:warrantyAdminClaimsProcessing:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminClaimProcessorRouting" operation="OR">
+			<permissions>warrantyAdmin:warrantyAdminClaimProcessorRouting:update,warrantyAdmin:warrantyAdminClaimProcessorRouting:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminDSMRouting" operation="OR">
+			<permissions>warrantyAdmin:warrantyAdminDSMRouting:update,warrantyAdmin:warrantyAdminDSMRouting:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminAdvisorRouting" operation="OR">
+			<permissions>warrantyAdmin:warrantyAdminAdvisorRouting:update,warrantyAdmin:warrantyAdminAdvisorRouting:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminManageBusinessRules" operation="OR">
+			<permissions>warrantyAdmin:warrantyAdminManageBusinessRules:update,warrantyAdmin:warrantyAdminManageBusinessRules:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminRecoveryClaimProcessorRouting" operation="OR">
+			<permissions>warrantyAdmin:warrantyAdminRecoveryClaimProcessorRouting:update,warrantyAdmin:warrantyAdminRecoveryClaimProcessorRouting:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminEntryValidations" operation="OR">
+			<permissions>warrantyAdmin:warrantyAdminEntryValidations:update,warrantyAdmin:warrantyAdminEntryValidations:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminProcessorAuthority" operation="OR">
+			<permissions>warrantyAdmin:warrantyAdminProcessorAuthority:update,warrantyAdmin:warrantyAdminProcessorAuthority:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminManageBusinessConditions" operation="OR">
+			<permissions>warrantyAdmin:warrantyAdminManageBusinessConditions:update,warrantyAdmin:warrantyAdminManageBusinessConditions:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminWarrantyBusinessConditions" operation="OR">
+			<permissions>warrantyAdmin:warrantyAdminWarrantyBusinessConditions:update,warrantyAdmin:warrantyAdminWarrantyBusinessConditions:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminManageUserAvailability" operation="OR">
+			<permissions>warrantyAdmin:warrantyAdminManageUserAvailability:update,warrantyAdmin:warrantyAdminManageUserAvailability:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminProcessor" operation="OR">
+			<permissions>warrantyAdmin:warrantyAdminProcessor:update,warrantyAdmin:warrantyAdminProcessor:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminDSM" operation="OR">
+			<permissions>warrantyAdmin:warrantyAdminDSM:update,warrantyAdmin:warrantyAdminDSM:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminDSMAdvisor" operation="OR">
+			<permissions>warrantyAdmin:warrantyAdminDSMAdvisor:update,warrantyAdmin:warrantyAdminDSMAdvisor:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminRecoveryProcessor" operation="OR">
+			<permissions>warrantyAdmin:warrantyAdminRecoveryProcessor:update,warrantyAdmin:warrantyAdminRecoveryProcessor:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminFieldProductImprovement" operation="OR">
+			<permissions>warrantyAdmin:warrantyAdminFieldProductImprovement:update,warrantyAdmin:warrantyAdminFieldProductImprovement:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminRelatedFPIsManagement" operation="OR">
+			<permissions>warrantyAdmin:warrantyAdminRelatedFPIsManagement:update,warrantyAdmin:warrantyAdminRelatedFPIsManagement:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminManageWarehouses" operation="OR">
+			<permissions>warrantyAdmin:warrantyAdminManageWarehouses:update,warrantyAdmin:warrantyAdminManageWarehouses:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminListOfValues" operation="OR">
+			<permissions>warrantyAdmin:warrantyAdminListOfValues:update,warrantyAdmin:warrantyAdminListOfValues:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminManageDisplayedFaultCode" operation="OR">
+			<permissions>warrantyAdmin:warrantyAdminManageDisplayedFaultCode:update,warrantyAdmin:warrantyAdminManageDisplayedFaultCode:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminAdditionalAttributes" operation="OR">
+			<permissions>warrantyAdmin:warrantyAdminAdditionalAttributes:update,warrantyAdmin:warrantyAdminAdditionalAttributes:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminCreate/UpdateAttributes" operation="OR">
+			<permissions>warrantyAdmin:warrantyAdminCreate/UpdateAttributes:update,warrantyAdmin:warrantyAdminCreate/UpdateAttributes:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminAssociate/DissociatePartAttributes" operation="OR">
+			<permissions>warrantyAdmin:warrantyAdminAssociate/DissociatePartAttributes:update,warrantyAdmin:warrantyAdminAssociate/DissociatePartAttributes:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminAssociate/DissociateFlatRatesAttributes" operation="OR">
+			<permissions>warrantyAdmin:Associate/DissociateFlatRatesAttributes:update,warrantyAdmin:Associate/DissociateFlatRatesAttributes:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminAssociate/DissociateClaimedInventoryAttributes" operation="OR">
+			<permissions>warrantyAdmin:Associate/DissociateClaimedInventoryAttributes:update,warrantyAdmin:Associate/DissociateClaimedInventoryAttributes:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminAssociate/DissociateClaimAttributes" operation="OR">
+			<permissions>warrantyAdmin:warrantyAdminAssociate/DissociateClaimAttributes:update,warrantyAdmin:warrantyAdminAssociate/DissociateClaimAttributes:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminManageFreight/Shippers" operation="OR">
+			<permissions>warrantyAdmin:warrantyAdminManageFreight/Shippers:update,warrantyAdmin:warrantyAdminManageFreight/Shippers:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminViewSupplier" operation="OR">
+			<permissions>warrantyAdmin:warrantyAdminViewSupplier:update,warrantyAdmin:warrantyAdminViewSupplier:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminViewLabels" operation="OR">
+			<permissions>warrantyAdmin:warrantyAdminViewLabels:update,warrantyAdmin:warrantyAdminViewLabels:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminManageLaborSplit" operation="OR">
+			<permissions>warrantyAdmin:warrantyAdminManageLaborSplit:update,warrantyAdmin:warrantyAdminManageLaborSplit:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminCreateLabelsforinventory" operation="OR">
+			<permissions>warrantyAdmin:warrantyAdminCreateLabelsforinventory:update,warrantyAdmin:warrantyAdminCreateLabelsforinventory:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminCreateLabelsforModels" operation="OR">
+			<permissions>warrantyAdmin:warrantyAdminCreateLabelsforModels:update,warrantyAdmin:warrantyAdminCreateLabelsforModels:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminMiscellaneousParts" operation="OR">
+			<permissions>warrantyAdmin:warrantyAdminMiscellaneousParts:update,warrantyAdmin:warrantyAdminMiscellaneousParts:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminManageMiscellaneousParts" operation="OR">
+			<permissions>warrantyAdmin:warrantyAdminManageMiscellaneousParts:update,warrantyAdmin:warrantyAdminManageMiscellaneousParts:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminConfigureMiscellaneousParts" operation="OR">
+			<permissions>warrantyAdmin:warrantyAdminConfigureMiscellaneousParts:update,warrantyAdmin:warrantyAdminConfigureMiscellaneousParts:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminCostCategoryConfiguration" operation="OR">
+			<permissions>warrantyAdmin:warrantyAdminCostCategoryConfiguration:update,warrantyAdmin:warrantyAdminCostCategoryConfiguration:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminManageLOASchemes" operation="OR">
+			<permissions>warrantyAdmin:warrantyAdminManageLOASchemes:update,warrantyAdmin:warrantyAdminManageLOASchemes:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminManageAdditionalLaborEligibility" operation="OR">
+			<permissions>warrantyAdmin:warrantyAdminManageAdditionalLaborEligibility:update,warrantyAdmin:warrantyAdminManageAdditionalLaborEligibility:view
+			</permissions>
+		</resource>
+		
+	<!-- Resources for Read Only-->
+	
+		<resource type="ui" value="warrantyAdminWarrantyAdminTabReadOnlyView">
+			<permissions>warrantyAdmin:warrantyAdminWarrantyAdminTab:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminManageBusinessConfigurationsReadOnlyView">
+			<permissions>warrantyAdmin:warrantyAdminManageBusinessConfigurations:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminManageWarrantyPoliciesReadOnlyView">
+			<permissions>warrantyAdmin:warrantyAdminManageWarrantyPolicies:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminPolicyDefinitionReadOnlyView">
+			<permissions>warrantyAdmin:warrantyAdminPolicyDefinition:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminManageFlatRatesReadOnlyView">
+			<permissions>warrantyAdmin:warrantyAdminManageFlatRates:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminLaborRatesReadOnlyView">
+			<permissions>warrantyAdmin:warrantyAdminLaborRates:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminTravelRatesReadOnlyView">
+			<permissions>warrantyAdmin:warrantyAdminTravelRates:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminItemPriceModifiersReadOnlyView">
+			<permissions>warrantyAdmin:warrantyAdminItemPriceModifiers:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminManagePartsCostReadOnlyView">
+			<permissions>warrantyAdmin:warrantyAdminManagePartsCost:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminPartReturnConfigurationReadOnlyView">
+			<permissions>warrantyAdmin:warrantyAdminPartReturnConfiguration:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminManageStateMandatesReadOnlyView">
+			<permissions>warrantyAdmin:warrantyAdminManageStateMandates:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminManageClaimPaymentReadOnlyView">
+			<permissions>warrantyAdmin:warrantyAdminManageClaimPayment:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminCreateClaimPaymentModifierReadOnlyView">
+			<permissions>warrantyAdmin:warrantyAdminCreateClaimPaymentModifier:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminConfigureClaimPaymentDefinitionReadOnlyView">
+			<permissions>warrantyAdmin:warrantyAdminConfigureClaimPaymentDefinition:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminManageFailureStructureReadOnlyView">
+			<permissions>warrantyAdmin:warrantyAdminManageFailureStructure:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminSeriesFailureHierarchyReadOnlyView">
+			<permissions>warrantyAdmin:warrantyAdminSeriesFailureHierarchy:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminListFaultLocationsReadOnlyView">
+			<permissions>warrantyAdmin:warrantyAdminListFaultLocations:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminListServiceProceduresReadOnlyView">
+			<permissions>warrantyAdmin:warrantyAdminListServiceProcedures:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminFaultFound/CausedByAssociationReadOnlyView">
+			<permissions>warrantyAdmin:warrantyAdminFaultFound/CausedByAssociation:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminMaintainFailureDetailofFailureURLReadOnlyView">
+			<permissions>warrantyAdmin:warrantyAdminMaintainFailureDetailofFailureURL:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminManageGroupsReadOnlyView">
+			<permissions>warrantyAdmin:warrantyAdminManageGroups:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminItemGroupsReadOnlyView">
+			<permissions>warrantyAdmin:warrantyAdminItemGroups:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminDealerGroupsReadOnlyView">
+			<permissions>warrantyAdmin:warrantyAdminDealerGroups:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminUserGroupsReadOnlyView">
+			<permissions>warrantyAdmin:warrantyAdminUserGroups:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminManageBusinessRuleGroupsReadOnlyView">
+			<permissions>warrantyAdmin:warrantyAdminManageBusinessRuleGroups:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminClaimsProcessingReadOnlyView">
+			<permissions>warrantyAdmin:warrantyAdminClaimsProcessing:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminClaimProcessorRoutingReadOnlyView">
+			<permissions>warrantyAdmin:warrantyAdminClaimProcessorRouting:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminDSMRoutingReadOnlyView">
+			<permissions>warrantyAdmin:warrantyAdminDSMRouting:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminAdvisorRoutingReadOnlyView">
+			<permissions>warrantyAdmin:warrantyAdminAdvisorRouting:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminManageBusinessRulesReadOnlyView">
+			<permissions>warrantyAdmin:warrantyAdminManageBusinessRules:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminRecoveryClaimProcessorRoutingReadOnlyView">
+			<permissions>warrantyAdmin:warrantyAdminRecoveryClaimProcessorRouting:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminEntryValidationsReadOnlyView">
+			<permissions>warrantyAdmin:warrantyAdminEntryValidations:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminProcessorAuthorityReadOnlyView">
+			<permissions>warrantyAdmin:warrantyAdminProcessorAuthority:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminManageBusinessConditionsReadOnlyView">
+			<permissions>warrantyAdmin:warrantyAdminManageBusinessConditions:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminWarrantyBusinessConditionsReadOnlyView">
+			<permissions>warrantyAdmin:warrantyAdminWarrantyBusinessConditions:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminManageUserAvailabilityReadOnlyView">
+			<permissions>warrantyAdmin:warrantyAdminManageUserAvailability:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminProcessorReadOnlyView">
+			<permissions>warrantyAdmin:warrantyAdminProcessor:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminDSMReadOnlyView">
+			<permissions>warrantyAdmin:warrantyAdminDSM:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminDSMAdvisorReadOnlyView">
+			<permissions>warrantyAdmin:warrantyAdminDSMAdvisor:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminRecoveryProcessorReadOnlyView">
+			<permissions>warrantyAdmin:warrantyAdminRecoveryProcessor:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminFieldProductImprovementReadOnlyView">
+			<permissions>warrantyAdmin:warrantyAdminFieldProductImprovement:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminRelatedFPIsManagementReadOnlyView">
+			<permissions>warrantyAdmin:warrantyAdminRelatedFPIsManagement:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminManageWarehousesReadOnlyView">
+			<permissions>warrantyAdmin:warrantyAdminManageWarehouses:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminListOfValuesReadOnlyView">
+			<permissions>warrantyAdmin:warrantyAdminListOfValues:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminManageDisplayedFaultCodeReadOnlyView">
+			<permissions>warrantyAdmin:warrantyAdminManageDisplayedFaultCode:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminAdditionalAttributesReadOnlyView">
+			<permissions>warrantyAdmin:warrantyAdminAdditionalAttributes:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminCreate/UpdateAttributesReadOnlyView">
+			<permissions>warrantyAdmin:warrantyAdminCreate/UpdateAttributes:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminAssociate/DissociatePartAttributesReadOnlyView">
+			<permissions>warrantyAdmin:warrantyAdminAssociate/DissociatePartAttributes:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminAssociate/DissociateFlatRatesAttributesReadOnlyView">
+			<permissions>warrantyAdmin:Associate/DissociateFlatRatesAttributes:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminAssociate/DissociateClaimedInventoryAttributesReadOnlyView">
+			<permissions>warrantyAdmin:Associate/DissociateClaimedInventoryAttributes:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminAssociate/DissociateClaimAttributesReadOnlyView">
+			<permissions>warrantyAdmin:warrantyAdminAssociate/DissociateClaimAttributes:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminManageFreight/ShippersReadOnlyView">
+			<permissions>warrantyAdmin:warrantyAdminManageFreight/Shippers:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminViewSupplierReadOnlyView">
+			<permissions>warrantyAdmin:warrantyAdminViewSupplier:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminViewLabelsReadOnlyView">
+			<permissions>warrantyAdmin:warrantyAdminViewLabels:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminManageLaborSplitReadOnlyView">
+			<permissions>warrantyAdmin:warrantyAdminManageLaborSplit:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminCreateLabelsforinventoryReadOnlyView">
+			<permissions>warrantyAdmin:warrantyAdminCreateLabelsforinventory:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminCreateLabelsforModelsReadOnlyView">
+			<permissions>warrantyAdmin:warrantyAdminCreateLabelsforModels:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminMiscellaneousPartsReadOnlyView">
+			<permissions>warrantyAdmin:warrantyAdminMiscellaneousParts:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminManageMiscellaneousPartsReadOnlyView">
+			<permissions>warrantyAdmin:warrantyAdminManageMiscellaneousParts:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminConfigureMiscellaneousPartsReadOnlyView">
+			<permissions>warrantyAdmin:warrantyAdminConfigureMiscellaneousParts:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminCostCategoryConfigurationReadOnlyView">
+			<permissions>warrantyAdmin:warrantyAdminCostCategoryConfiguration:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminManageLOASchemesReadOnlyView">
+			<permissions>warrantyAdmin:warrantyAdminManageLOASchemes:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="warrantyAdminManageAdditionalLaborEligibilityReadOnlyView">
+			<permissions>warrantyAdmin:warrantyAdminManageAdditionalLaborEligibility:view
+			</permissions>
+		</resource>
+        
+	</functionalarea>
+
+</functionalareas>

@@ -1,0 +1,667 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="paymentadmin" extends="struts-twms-default">
+		<!-- action for autosuggest -->
+		<action name="auto_suggest_for_criteria"
+			method="autoSuggestForCriteria"
+			class="tavant.twms.web.admin.payment.AutoSuggestAction">
+		</action>
+
+		<action name="auto_suggest_for_policy"
+			method="autoSuggestForPolicy"
+			class="tavant.twms.web.admin.payment.AutoSuggestAction">
+		</action>
+
+		<action name="auto_suggest_for_rule" method="autoSuggestForRule"
+			class="tavant.twms.web.admin.payment.AutoSuggestAction">
+		</action>
+
+		<action name="auto_suggest_for_part_returns"
+			method="autoSuggestForPartReturns"
+			class="tavant.twms.web.admin.payment.AutoSuggestAction">
+		</action>
+
+		<!-- Actions for Payment Definition..-->
+		<action name="paymentDefinition"
+			class="tavant.twms.web.admin.payment.ListPaymentDefinitions">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">
+				pages/secure/admin/payment/definition/paymentDefinitionInboxView.jsp
+			</result>
+		</action>
+
+		<action name="get_payment_definitions_body"
+			class="tavant.twms.web.admin.payment.ListPaymentDefinitions"
+			method="tableBody">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">pages/secure/home/json.jsp</result>
+		</action>
+
+		<action name="export_payment_definition_to_excel"
+			class="tavant.twms.web.admin.payment.ListPaymentDefinitions"
+			method="downloadListingData">
+			<interceptor-ref name="adminParamsPrepareWithoutValidation" />
+		</action>
+
+		<action name="view_payment_definition"
+			class="tavant.twms.web.admin.payment.ManagePaymentDefinition"
+			method="view">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">
+				pages/secure/admin/payment/definition/paymentDefinition.jsp
+			</result>
+		</action>
+
+		<action name="detail_payment_definition"
+			class="tavant.twms.web.admin.payment.ManagePaymentDefinition"
+			method="detail">
+			<interceptor-ref name="adminTwmsParamsPrepareParams" />
+			<result name="success">
+				pages/secure/admin/payment/definition/maintainPaymentDefinition.jsp
+			</result>
+		</action>
+
+		<action name="new_payment_definition"
+			class="tavant.twms.web.admin.payment.ManagePaymentDefinition"
+			method="newPaymentDefinition">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">
+				pages/secure/admin/payment/definition/newPaymentDefinition.jsp
+			</result>
+		</action>
+		
+		<action name="define_payment_definition_for_cp"
+			class="tavant.twms.web.admin.payment.ManagePaymentDefinition"
+			method="listallPaymentDefinitions">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">
+				pages/secure/admin/payment/definition/definePaymentDefinitionForCP.jsp
+			</result>
+		</action>
+
+		<action name="list_applicable_policies"
+			class="tavant.twms.web.admin.payment.ManagePaymentDefinition"
+			method="listPolicies">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">pages/secure/home/json.jsp</result>
+		</action>
+		<action name="list_policy_categories"
+			class="tavant.twms.web.admin.payment.ManagePaymentDefinition"
+			method="listPolicyCategories">
+			<interceptor-ref name="adminParamsPrepare" />
+		</action>
+
+		<action name="create_payment_definition"
+			class="tavant.twms.web.admin.payment.ManagePaymentDefinition"
+			method="create">
+			<interceptor-ref name="adminTwmsParamsPrepareParams" />
+			<result name="input">
+				pages/secure/admin/payment/definition/newPaymentDefinition.jsp
+			</result>
+			<result name="success">
+				pages/secure/admin/payment/definition/newPaymentDefinition_continue.jsp
+			</result>
+		</action>
+
+		<action name="continue_create_payment_definition"
+			class="tavant.twms.web.admin.payment.ManagePaymentDefinition"
+			method="continueCreate">
+			<interceptor-ref name="adminTwmsParamsPrepareParams" />
+			<result name="success">
+				pages/secure/admin/payment/definition/paymentDefinition.jsp
+			</result>
+			<result name="input">
+				pages/secure/admin/payment/definition/newPaymentDefinition_continue.jsp
+			</result>
+
+		</action>
+
+		<action name="add_payment_item"
+			class="tavant.twms.web.admin.payment.ManagePaymentDefinition"
+			method="addPaymentItem">
+			<interceptor-ref name="adminParamsPrepareWithoutValidation" />
+			<result name="success">
+				pages/secure/admin/payment/definition/paymentDefinition.jsp
+			</result>
+		</action>
+
+		<action name="delete_payment_items"
+			class="tavant.twms.web.admin.payment.ManagePaymentDefinition"
+			method="deletePaymentItems">
+			<interceptor-ref name="adminParamsPrepareWithoutValidation" />
+			<result name="success">
+				pages/secure/admin/payment/definition/paymentDefinition.jsp
+			</result>
+		</action>
+
+		<action name="delete_payment_item"
+			class="tavant.twms.web.admin.payment.ManagePaymentDefinition"
+			method="deletePaymentItem">
+			<interceptor-ref name="adminParamsPrepareWithoutValidation" />
+			<result name="success">
+				pages/secure/admin/payment/definition/paymentDefinition.jsp
+			</result>
+		</action>
+
+		<action name="update_payment_definition"
+			class="tavant.twms.web.admin.payment.ManagePaymentDefinition"
+			method="update">
+			<interceptor-ref name="adminTwmsParamsPrepareParams" />
+			<result name="success">
+				pages/secure/admin/payment/definition/paymentDefinition.jsp
+			</result>
+			<result name="input">
+				pages/secure/admin/payment/definition/paymentDefinition.jsp
+			</result>
+		</action>
+		
+		<action name="update_payment_definition_for_cp"
+			class="tavant.twms.web.admin.payment.ManagePaymentDefinition"
+			method="updatePaymentDefinitionForCP">
+			<interceptor-ref name="adminTwmsParamsPrepareParams" />
+			<result name="success">
+				pages/secure/admin/payment/definition/definePaymentDefinitionForCP.jsp
+			</result>	
+			<result name="input">
+				pages/secure/admin/payment/definition/definePaymentDefinitionForCP.jsp
+			</result>		
+		</action>
+
+
+		<action name="delete_payment_definition"
+			class="tavant.twms.web.admin.payment.ListPaymentDefinitions"
+			method="deletePaymentDefinition">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">
+				pages/secure/admin/payment/definition/maintainPaymentDefinition.jsp
+			</result>
+		</action>
+
+		<!-- Item Price Modifier -->
+		<action name="list_item_price_modifiers"
+			class="tavant.twms.web.admin.payment.ListItemPriceModifiers">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">
+				pages/secure/admin/payment/modifiers/itemPriceInboxView.jsp
+			</result>
+		</action>
+		<action name="get_item_price_modifier_body"
+			class="tavant.twms.web.admin.payment.ListItemPriceModifiers"
+			method="tableBody">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">pages/secure/home/json.jsp</result>
+			<result name="input">error.jsp</result>
+		</action>
+
+		<action name="export_item_price_configuration_to_excel"
+			class="tavant.twms.web.admin.payment.ListItemPriceModifiers"
+			method="downloadListingData">
+			<interceptor-ref name="adminParamsPrepare" />
+		</action>
+
+		<action name="preview_item_price_modifier"
+			class="tavant.twms.web.admin.payment.ManageItemPriceModifier"
+			method="showPrice">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">
+				pages/secure/admin/payment/modifiers/previewPriceModifier.jsp
+			</result>
+		</action>
+		<action name="view_item_price_modifier"
+			class="tavant.twms.web.admin.payment.ManageItemPriceModifier"
+			method="showPrice">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">
+				pages/secure/admin/payment/modifiers/managePriceModifier.jsp
+			</result>
+		</action>
+		<action name="create_item_price_modifier"
+			class="tavant.twms.web.admin.payment.ManageItemPriceModifier"
+			method="showPrice">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">
+				pages/secure/admin/payment/modifiers/managePriceModifier.jsp
+			</result>
+		</action>
+		<action name="save_item_price_modifier"
+			class="tavant.twms.web.admin.payment.ManageItemPriceModifier"
+			method="createPrice">
+			<interceptor-ref
+				name="adminTwmsParamsPrepareRepeatTableParams" />
+			<result name="success">
+				pages/secure/admin/payment/modifiers/itemPriceSuccess.jsp
+			</result>
+			<result name="input">
+				pages/secure/admin/payment/modifiers/managePriceModifier.jsp
+			</result>
+		</action>
+		<action name="update_item_price_modifier"
+			class="tavant.twms.web.admin.payment.ManageItemPriceModifier"
+			method="updatePrice">
+			<interceptor-ref
+				name="adminTwmsParamsPrepareRepeatTableParams" />
+			<result name="success">
+				pages/secure/admin/success.jsp
+			</result>
+			<result name="input">
+				pages/secure/admin/payment/modifiers/managePriceModifier.jsp
+			</result>
+		</action>
+		<action name="delete_item_price_modifier"
+			class="tavant.twms.web.admin.payment.ManageItemPriceModifier"
+			method="deletePrice">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">
+				pages/secure/admin/success.jsp
+			</result>
+			<result name="input">pages/secure/admin/success.jsp</result>
+		</action>
+		<!-- End of item price modifiers -->
+
+		<!-- LaborRate Price Configuration(lrp) Actions -->
+		<action name="list_lr_configuration"
+			class="tavant.twms.web.admin.payment.ListLaborRates">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">
+				pages/secure/admin/payment/price/lrConfigInboxView.jsp
+			</result>
+		</action>
+
+		<action name="get_lr_configuration_body"
+			class="tavant.twms.web.admin.payment.ListLaborRates"
+			method="tableBody">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">pages/secure/home/json.jsp</result>
+			<result name="input">error.jsp</result>
+		</action>
+
+		<action name="export_lr_configuration_to_excel"
+			class="tavant.twms.web.admin.payment.ListLaborRates"
+			method="downloadListingData">
+			<interceptor-ref name="adminParamsPrepare" />
+		</action>
+
+		<action name="preview_lr_configuration"
+			class="tavant.twms.web.admin.payment.ManageLaborRate"
+			method="showPrice">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">
+				pages/secure/admin/payment/price/previewLaborRateConfig.jsp
+			</result>
+		</action>
+
+		<action name="view_lr_configuration"
+			class="tavant.twms.web.admin.payment.ManageLaborRate"
+			method="showPrice">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">
+				pages/secure/admin/payment/price/manageLaborRateConfig.jsp
+			</result>
+		</action>
+		<action name="create_lr_configuration"
+			class="tavant.twms.web.admin.payment.ManageLaborRate"
+			method="createPrice">
+			<interceptor-ref
+				name="adminTwmsParamsPrepareRepeatTableParams" />
+			<result name="success">
+				pages/secure/common/successFullRefresh.jsp
+			</result>
+			<result name="input">
+				pages/secure/admin/payment/price/manageLaborRateConfig.jsp
+			</result>
+		</action>
+		<action name="update_lr_configuration"
+			class="tavant.twms.web.admin.payment.ManageLaborRate"
+			method="updatePrice">
+			<interceptor-ref
+				name="adminTwmsParamsPrepareRepeatTableParams" />
+			<result name="success">
+				pages/secure/common/successListingRefresh.jsp
+			</result>
+			<result name="input">
+				pages/secure/admin/payment/price/manageLaborRateConfig.jsp
+			</result>
+		</action>
+		<action name="delete_lr_configuration"
+			class="tavant.twms.web.admin.payment.ManageLaborRate"
+			method="deleteLaborPrice">
+			<interceptor-ref name="adminParamsPrepareWithoutValidation" />
+			<result name="success">
+				pages/secure/common/successDelete.jsp
+			</result>
+			<result name="input">
+				pages/secure/admin/payment/price/manageLaborRateConfig.jsp
+			</result>
+		</action>
+		
+		<action name="history_lr_configuration"
+               class="tavant.twms.web.admin.payment.ManageLaborRate"
+               method="getHistory">
+               <interceptor-ref name="adminParamsPrepareWithoutValidation" />
+               <result name="success">
+	                pages/secure/admin/payment/price/ViewDetailedLaborHistory.jsp
+               </result>
+               <result name="input">
+                    pages/secure/admin/payment/price/ViewDetailedLaborHistory.jsp
+               </result>
+        </action>
+
+		<!-- End of LaborRate Price Configurations -->
+		
+		<!-- Part Price Configuration Actions -->
+		<action name="list_part_prices"
+			class="tavant.twms.web.admin.payment.ListPartPrices">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">
+				pages/secure/admin/payment/price/partPricesConfigInboxView.jsp
+			</result>
+		</action>
+
+		<action name="get_part_prices_configuration_body"
+			class="tavant.twms.web.admin.payment.ListPartPrices"
+			method="tableBody">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">pages/secure/home/json.jsp</result>
+			<result name="input">error.jsp</result>
+		</action>
+
+		<action name="export_part_prices_configuration_to_excel"
+			class="tavant.twms.web.admin.payment.ListPartPrices"
+			method="downloadListingData">
+			<interceptor-ref name="adminParamsPrepare" />
+		</action>
+
+		<action name="preview_part_prices_configuration"
+			class="tavant.twms.web.admin.payment.ManagePartPrice"
+			method="showPartPrice">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">
+				pages/secure/admin/payment/price/previewPartPriceConfig.jsp
+			</result>
+		</action>
+
+			<action name="list_nmhg_part_number"
+			class="tavant.twms.web.admin.payment.ManagePartPrice"
+			method="listNMHGPartNumbers">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">
+				pages/secure/admin/payment/price/managePartPriceConfig.jsp
+			</result>
+		</action>
+		
+        <action name="findPartDetails"
+            class="tavant.twms.web.admin.payment.ManagePartPrice" method="getCausalPartDetails">
+            <interceptor-ref name="paramsPrepareWithoutValidation"/>
+            <result name="success">pages/secure/home/json.jsp</result>
+        </action>
+			
+		<action name="view_part_prices_configuration"
+			class="tavant.twms.web.admin.payment.ManagePartPrice"
+			method="showPartPrice">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">
+				pages/secure/admin/payment/price/managePartPriceConfig.jsp
+			</result>
+		</action>
+		<action name="create_part_prices_configuration"
+			class="tavant.twms.web.admin.payment.ManagePartPrice"
+			method="createPartPrice">
+			<interceptor-ref
+				name="adminTwmsParamsPrepareRepeatTableParams" />
+			<result name="success">
+				pages/secure/common/successFullRefresh.jsp
+			</result>
+			<result name="input">
+				pages/secure/admin/payment/price/managePartPriceConfig.jsp
+			</result>
+		</action>
+		<action name="update_part_prices_configuration"
+			class="tavant.twms.web.admin.payment.ManagePartPrice"
+			method="updatePartPrice">
+			<interceptor-ref
+				name="adminTwmsParamsPrepareRepeatTableParams" />
+			<result name="success">
+				pages/secure/common/successListingRefresh.jsp
+			</result>
+			<result name="input">
+				pages/secure/admin/payment/price/managePartPriceConfig.jsp
+			</result>
+		</action>
+		<action name="delete_part_prices_configuration"
+			class="tavant.twms.web.admin.payment.ManagePartPrice"
+			method="deletePartPrice">
+			<interceptor-ref name="adminParamsPrepareWithoutValidation" />
+			<result name="success">
+				pages/secure/common/successDelete.jsp
+			</result>
+			<result name="input">
+				pages/secure/admin/payment/price/managePartPriceConfig.jsp
+			</result>
+		</action>
+		
+		<action name="history_part_prices_configuration"
+               class="tavant.twms.web.admin.payment.ManagePartPrice"
+               method="getHistory">
+               <interceptor-ref name="adminParamsPrepareWithoutValidation" />
+               <result name="success">
+	                pages/secure/admin/payment/price/ViewDetailedPartPriceHistory.jsp
+               </result>
+               <result name="input">
+                    pages/secure/admin/payment/price/ViewDetailedPartPriceHistory.jsp
+               </result>
+        </action>
+
+		<!-- End of Part Price Configurations -->
+		
+
+		<!-- TravelRate Price Configuration(lrp) Actions -->
+		<action name="list_tr_configuration"
+			class="tavant.twms.web.admin.payment.ListTravelRates">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">
+				pages/secure/admin/payment/price/trConfigInboxView.jsp
+			</result>
+		</action>
+		<action name="get_tr_configuration_body"
+			class="tavant.twms.web.admin.payment.ListTravelRates"
+			method="tableBody">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">pages/secure/home/json.jsp</result>
+			<result name="input">error.jsp</result>
+		</action>
+
+		<action name="export_tr_configuration_to_excel"
+			class="tavant.twms.web.admin.payment.ListTravelRates"
+			method="downloadListingData">
+			<interceptor-ref name="adminParamsPrepare" />
+		</action>
+
+		<action name="preview_tr_configuration"
+			class="tavant.twms.web.admin.payment.ManageTravelRate"
+			method="showPrice">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">
+				pages/secure/admin/payment/price/previewTravelRateConfig.jsp
+			</result>
+		</action>
+		<action name="view_tr_configuration"
+			class="tavant.twms.web.admin.payment.ManageTravelRate"
+			method="showPrice">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">
+				pages/secure/admin/payment/price/manageTravelRateConfig.jsp
+			</result>
+		</action>
+		<action name="create_tr_configuration"
+			class="tavant.twms.web.admin.payment.ManageTravelRate"
+			method="createPrice">
+			<interceptor-ref
+				name="adminTwmsParamsPrepareRepeatTableParams" />
+			<result name="success">
+				pages/secure/admin/payment/price/trConfigSuccess.jsp
+			</result>
+			<result name="input">
+				pages/secure/admin/payment/price/manageTravelRateConfig.jsp
+			</result>
+		</action>
+		<action name="update_tr_configuration"
+			class="tavant.twms.web.admin.payment.ManageTravelRate"
+			method="updatePrice">
+			<interceptor-ref
+				name="adminTwmsParamsPrepareRepeatTableParams" />
+			<result name="success">
+				pages/secure/admin/payment/price/trConfigSuccess.jsp
+			</result>
+			<result name="input">
+				pages/secure/admin/payment/price/manageTravelRateConfig.jsp
+			</result>
+		</action>
+		<action name="delete_tr_configuration"
+			class="tavant.twms.web.admin.payment.ManageTravelRate"
+			method="deletePrice">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">
+				pages/secure/admin/payment/price/trConfigSuccess.jsp
+			</result>
+			<result name="input">
+				pages/secure/admin/payment/price/trConfigSuccess.jsp
+			</result>
+		</action>
+		<!-- End of TravleRate Price Configurations -->
+
+		<!-- Actions for the claim payment admin screens..(Modifiers) -->
+		<action name="list_payment_modifiers"
+			class="tavant.twms.web.admin.payment.ListModifiersAction">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">
+				pages/secure/admin/payment/modifiers/modifiersInboxView.jsp
+			</result>
+		</action>
+		<action name="get_payment_modifier_body"
+			class="tavant.twms.web.admin.payment.ListModifiersAction"
+			method="tableBody">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">pages/secure/home/json.jsp</result>
+			<result name="input">error.jsp</result>
+		</action>
+		<action name="preview_payment_modifier"
+			class="tavant.twms.web.admin.payment.MaintainModifiersAction"
+			method="showModifier">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">
+				pages/secure/admin/payment/modifiers/previewModifier.jsp
+			</result>
+		</action>
+		<action name="view_payment_modifier"
+			class="tavant.twms.web.admin.payment.MaintainModifiersAction"
+			method="showModifier">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">
+				pages/secure/admin/payment/modifiers/manageModifier.jsp
+			</result>
+		</action>
+		<action name="create_payment_modifier"
+			class="tavant.twms.web.admin.payment.MaintainModifiersAction"
+			method="createModifier">
+			<interceptor-ref
+				name="adminTwmsParamsPrepareRepeatTableParams" />
+			<result name="success">
+				pages/secure/admin/success.jsp
+			</result>
+			<result name="input">
+				pages/secure/admin/payment/modifiers/manageModifier.jsp
+			</result>
+		</action>
+		<action name="update_payment_modifier"
+			class="tavant.twms.web.admin.payment.MaintainModifiersAction"
+			method="updateModifier">
+			<interceptor-ref
+				name="adminTwmsParamsPrepareRepeatTableParams" />
+			<result name="success">
+				pages/secure/admin/success.jsp
+			</result>
+			<result name="input">
+				pages/secure/admin/payment/modifiers/manageModifier.jsp
+			</result>
+		</action>
+		<action name="delete_payment_modifier"
+			class="tavant.twms.web.admin.payment.MaintainModifiersAction"
+			method="deleteModifier">
+			<interceptor-ref name="adminParamsPrepareWithoutValidation" />
+			<result name="success">
+				pages/secure/admin/success.jsp
+			</result>
+			<result name="input">pages/secure/admin/payment/modifiers/manageModifier.jsp</result>
+		</action>
+		<!-- End of actions for admin payment setup screens.. -->
+
+		<!--  Payment Variables  -->
+		<action name="list_payment_variables"
+			class="tavant.twms.web.admin.payment.ManageVariablesAction"
+			method="listVariables">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">
+				pages/secure/admin/payment/modifiers/manageVariables.jsp
+			</result>
+		</action>
+		<action name="create_payment_variable"
+			class="tavant.twms.web.admin.payment.ManageVariablesAction"
+			method="createVariable">
+			<interceptor-ref name="adminTwmsParamsPrepareParams" />
+			<result name="success">
+				pages/secure/admin/payment/modifiers/manageVariables.jsp
+			</result>
+			<result name="input">
+				pages/secure/admin/payment/modifiers/manageVariables.jsp
+			</result>
+		</action>
+		<action name="editModifierName"
+			class="tavant.twms.web.admin.payment.ManageVariablesAction"
+			method="editModfierName">
+			<interceptor-ref name="adminParamsPrepareWithoutValidation" />
+			<result name="success">
+				pages/secure/admin/payment/modifiers/i18NModifierName.jsp
+			</result>
+		</action>
+		<action name="updateModifierName"
+			class="tavant.twms.web.admin.payment.ManageVariablesAction"
+			method="updateModifierName">
+			<interceptor-ref name="adminParamsPrepareWithoutValidation" />
+			<result name="success">
+				pages/secure/admin/payment/modifiers/manageVariables.jsp
+			</result>
+			<result name="input">
+				pages/secure/admin/payment/modifiers/i18NModifierName.jsp
+			</result>
+		</action>
+		<action name="setupFordeactivateVariable"
+			class="tavant.twms.web.admin.payment.ManageVariablesAction"
+			method="setupForDeactivatePaymentVariable">
+			<interceptor-ref name="adminParamsPrepareWithoutValidation" />
+			<result name="success">
+				pages/secure/admin/payment/modifiers/deactivatePaymentVariable.jsp
+			</result>
+		</action>
+		<action name="deactivatePaymentVariable"
+			class="tavant.twms.web.admin.payment.ManageVariablesAction"
+			method="deactivatePaymentVariable">
+			<interceptor-ref name="adminParamsPrepareWithoutValidation" />
+			<result name="success">
+				pages/secure/admin/payment/modifiers/deactivatePaymentVariable.jsp
+			</result>
+		</action>
+		<action name="list_servicing_locations_for_dealer"
+                class="tavant.twms.web.admin.payment.MaintainModifiersAction" method="listServicingLocationForDealer">
+            <interceptor-ref name="adminTwmsParamsWithoutPrepareAndValidate"/>
+            <result name="success">
+				pages/secure/admin/payment/modifiers/servicingLocations.jsp
+			</result>
+        </action>
+		<!--  End of Payment Variables -->
+	</package>
+</struts>

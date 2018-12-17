@@ -1,0 +1,93 @@
+/**
+ * This stylesheet gives the default color and images....
+ */
+/**
+ * @author : janmejay.singh
+ */
+.tableHeaderCell {
+	border-bottom: solid 1px #bbb;
+	background: url( image/bg_tab.gif ) #FAFAFA;
+}
+
+body .buttonContainer {
+	background: #FFF;
+}
+
+.summaryTableHeaderPane {
+    background-color: #FFF;
+}
+
+.summaryTableHeaderPane.ie {
+    border-bottom: 1px solid #CACACA;
+}
+
+.filteringInputs {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+.summaryTableBodyPane {
+    background: #FFF;
+}
+
+.sortedColumnHeadUp {
+    background-image:url( image/sortTable_UpArrow.gif );
+}
+
+.sortedColumnHeadDown {
+    background-image:url( image/sortTable_DownArrow.gif );
+}
+
+.columnGrabber {
+	background-image: url( image/columngrabber.gif );
+}
+
+.previewHidden {
+   background-image: url(image/inbox_button/paginator-upArrow.gif);
+}
+
+.previewShown {
+    background-image: url(image/inbox_button/paginator-downArrow.gif);
+}
+
+.labeledPaginatorButton {
+    color: #555555;
+}
+
+.paginatorInnerDiv {
+    border-top: 1px solid #888888;
+    background: url( image/bg_tab.gif ) #FAFAFA;
+}
+
+.alternateRow {
+	background: #EEEEEE;
+}
+
+.row {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+.highlightRow {
+	background: #CCCCCC !important;
+	color: #000;
+}
+
+.selectedRow {
+	background: #CCCCCC!important;
+	color: #000000!important;
+}
+
+.quick_page_switch table tr td {
+    border-right: 1px solid #BBBBBB;
+    border-left: 1px solid #BBBBBB;
+}
+
+.inboxButton {
+    color: #000;
+}
+
+div.inboxButtonHolder.highlight {
+	border-top:1px solid #999999;
+	border-bottom:1px solid #555555;
+	border-left:1px solid #999999;
+	border-right:1px solid #555555;
+}

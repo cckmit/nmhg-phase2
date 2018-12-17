@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?><PriceFetch lang="en" evnironment="Test" revision="1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <ApplicationArea>
+        <Sender>
+            <Task>CCIMAPICS</Task>
+            <LogicalId>TWMS</LogicalId>
+        </Sender>
+        <CreationDateTime>2008-01-15T01:56:50.651-08:00</CreationDateTime>
+    </ApplicationArea>
+    <DataArea>
+        <PriceCheckRequest>
+            <DealerNo>262320</DealerNo>
+            <CurrencyCode>USD</CurrencyCode>
+            <DateOfRepair>2008-01-04-08:00</DateOfRepair>
+            <BUName>CCI</BUName>
+            <ReplacedParts>
+                <LineItem>
+                    <PartNumber>AM10052</PartNumber>
+                    <Quantity>2</Quantity>
+                </LineItem>
+            </ReplacedParts>
+        </PriceCheckRequest>
+    </DataArea>
+</PriceFetch>

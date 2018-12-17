@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<process-definition name="CancelJoinTest">
+
+  <swimlane name="boss">
+    <assignment
+      class="tavant.twms.jbpm.assignment.ExpressionAssignmentHandler">
+      <expression>actor=mark</expression>
+    </assignment>
+  </swimlane>
+
+  <swimlane name="salesman">
+    <assignment
+      class="tavant.twms.jbpm.assignment.ExpressionAssignmentHandler">
+      <expression>actor=buch</expression>
+    </assignment>
+  </swimlane>
+
+  <start-state name="Start">
+    <transition name="" to="SingleTokenFork" />
+  </start-state>
+
+  <fork name="SingleTokenFork">
+    <transition name="makesale" to="MakeSale" />
+    <transition name="monitorsale" to="MonitorSale" />
+  </fork>
+
+  <task-node name="MakeSale">
+    <task name="Sale" swimlane="salesman" />
+    <transition name="" to="EndTasksJoin" />
+  </task-node>
+
+  <!-- Assume that this task will be ended when the other task comes through -->
+  <task-node name="MonitorSale">
+    <task name="Monitor" swimlane="boss" />
+    <transition name="" to="EndTasksJoin" />
+  </task-node>
+
+  <end-tasks-join name="EndTasksJoin" task-name-to-end="Monitor">
+    <transition to="End" />
+  </end-tasks-join>
+
+  <end-state name="End" />
+</process-definition>

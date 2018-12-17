@@ -1,0 +1,1474 @@
+<ins:InstallBaseSync xmlns:ins="http://www.tavant.com/globalsync/installbasesync">
+	<ApplicationArea>
+		<Sender>
+			<Task>SLMS</Task>
+			<LogicalId>NOMS</LogicalId>
+			<ReferenceId>INT600561304100000000102</ReferenceId>
+		</Sender>
+		<BODId>INT60</BODId>
+		<InterfaceNumber>INT60</InterfaceNumber>
+		<CreationDateTime>2013-04-10T08:19:15</CreationDateTime>
+	</ApplicationArea>
+	<DataArea>
+		<InventorySync>
+			<SyncType>MACHINE_SALE</SyncType>
+			<PreOrderBooking>true</PreOrderBooking>
+			<CustomerInfo>
+				<CustomerNumber>0520657550005001</CustomerNumber>
+				<FirstName>ARABIAN GULF COMPANY</FirstName>
+				<LastName></LastName>
+				<AddressLine1>ERHUMA ALSARI ROAD</AddressLine1>
+				<AddressLine2>ALJAMHURIA STREET</AddressLine2>
+				<AddressLine3>NEAR ALQODES MOSQUE</AddressLine3>
+				<AddressLine4></AddressLine4>
+				<City>TRIPOLI</City>
+				<State></State>
+				<CountyCode></CountyCode>
+				<Country>LY</Country>
+				<PostalCode></PostalCode>
+				<SICode></SICode>
+			</CustomerInfo>
+			<ShipToNumber>052065755</ShipToNumber>
+			<ShipToLocation>0005</ShipToLocation>
+			<BillToNumber>052065755</BillToNumber>
+			<InventoryDetail>
+				<ItemNumber>R005-H5.0FT</ItemNumber>
+				<BUName>056</BUName>
+				<MktGroupCode>052</MktGroupCode>
+				<SerialNumber>R005B02252K123</SerialNumber>
+				<DieselTier></DieselTier>
+				<ItemCondition>NEW</ItemCondition>
+				<BuildDate>2012-11-28</BuildDate>
+				<ManufacturingSite>049</ManufacturingSite>
+			</InventoryDetail>
+			<SalesOrderNumber>196974</SalesOrderNumber>
+			<FactoryOrderNumber>399374</FactoryOrderNumber>
+			<DeliveryDateTime>2013-04-10</DeliveryDateTime>
+			<ProductCode>R005</ProductCode>
+			<ModelCode>H5.0FT</ModelCode>
+			<OperatingUnit></OperatingUnit>
+			<BillToPurchaseOrder>H5.0FT-13-08-2012-AA</BillToPurchaseOrder>
+			<OrderReceivedDate>2012-08-31</OrderReceivedDate>
+			<ActualCTSDate>2012-12-04</ActualCTSDate>
+			<DiscAuthorizationNumber></DiscAuthorizationNumber>
+			<DiscountPercent>10.000</DiscountPercent>
+			<OrderType>R</OrderType>
+			<MDECapacity>0</MDECapacity>
+			<ModelPower></ModelPower>
+			<ITABookDate>2012-08-31</ITABookDate>
+			<BrandType>HYSTER</BrandType>
+			<Options>
+				<Option>
+					<OptionCode>G00110</OptionCode>
+					<OrderOptionLineNumber>1</OrderOptionLineNumber>
+					<OptionType>F</OptionType>
+					<OptionDescription>MODEL H5.0FT</OptionDescription>
+					<OptionGrossPrice>48210.00</OptionGrossPrice>
+					<OptionNetPrice>43389.00</OptionNetPrice>
+					<OptionGrossValue>144630.00</OptionGrossValue>
+					<OptionDiscountValue>14463.00</OptionDiscountValue>
+					<OptionNetValue>130167.00</OptionNetValue>
+					<OptionDiscountPercent>10.000</OptionDiscountPercent>
+					<ActiveInactiveStatus>A</ActiveInactiveStatus>
+					<SpecialOptionStatus></SpecialOptionStatus>
+					<DieselTier></DieselTier>
+					<MastType></MastType>
+					<TireType></TireType>
+					<OptionDesignation>B</OptionDesignation>
+				</Option>
+				<Option>
+					<OptionCode>G00356</OptionCode>
+					<OrderOptionLineNumber>2</OrderOptionLineNumber>
+					<OptionType>F</OptionType>
+					<OptionDescription>FORTENS: DSL KUBOTA 3.6L 2 SPD XMSN
+					</OptionDescription>
+					<OptionGrossPrice>-410.00</OptionGrossPrice>
+					<OptionNetPrice>-369.00</OptionNetPrice>
+					<OptionGrossValue>-1230.00</OptionGrossValue>
+					<OptionDiscountValue>-123.00</OptionDiscountValue>
+					<OptionNetValue>-1107.00</OptionNetValue>
+					<OptionDiscountPercent>10.000</OptionDiscountPercent>
+					<ActiveInactiveStatus>A</ActiveInactiveStatus>
+					<SpecialOptionStatus></SpecialOptionStatus>
+					<DieselTier></DieselTier>
+					<MastType></MastType>
+					<TireType></TireType>
+					<OptionDesignation>B</OptionDesignation>
+				</Option>
+				<Option>
+					<OptionCode>G01803</OptionCode>
+					<OrderOptionLineNumber>3</OrderOptionLineNumber>
+					<OptionType>F</OptionType>
+					<OptionDescription>HOOD: NON VENTED WITH OHG</OptionDescription>
+					<OptionGrossPrice>0.00</OptionGrossPrice>
+					<OptionNetPrice>0.00</OptionNetPrice>
+					<OptionGrossValue>0.00</OptionGrossValue>
+					<OptionDiscountValue>0.00</OptionDiscountValue>
+					<OptionNetValue>0.00</OptionNetValue>
+					<OptionDiscountPercent>10.000</OptionDiscountPercent>
+					<ActiveInactiveStatus>A</ActiveInactiveStatus>
+					<SpecialOptionStatus></SpecialOptionStatus>
+					<DieselTier></DieselTier>
+					<MastType></MastType>
+					<TireType></TireType>
+					<OptionDesignation>B</OptionDesignation>
+				</Option>
+				<Option>
+					<OptionCode>G01002</OptionCode>
+					<OrderOptionLineNumber>4</OrderOptionLineNumber>
+					<OptionType>F</OptionType>
+					<OptionDescription>PREMIUM MONITORING - DSL</OptionDescription>
+					<OptionGrossPrice>0.00</OptionGrossPrice>
+					<OptionNetPrice>0.00</OptionNetPrice>
+					<OptionGrossValue>0.00</OptionGrossValue>
+					<OptionDiscountValue>0.00</OptionDiscountValue>
+					<OptionNetValue>0.00</OptionNetValue>
+					<OptionDiscountPercent>10.000</OptionDiscountPercent>
+					<ActiveInactiveStatus>I</ActiveInactiveStatus>
+					<SpecialOptionStatus></SpecialOptionStatus>
+					<DieselTier></DieselTier>
+					<MastType></MastType>
+					<TireType></TireType>
+					<OptionDesignation>B</OptionDesignation>
+				</Option>
+				<Option>
+					<OptionCode>G02201</OptionCode>
+					<OrderOptionLineNumber>5</OrderOptionLineNumber>
+					<OptionType>F</OptionType>
+					<OptionDescription>START: KEY SWITCH START</OptionDescription>
+					<OptionGrossPrice>0.00</OptionGrossPrice>
+					<OptionNetPrice>0.00</OptionNetPrice>
+					<OptionGrossValue>0.00</OptionGrossValue>
+					<OptionDiscountValue>0.00</OptionDiscountValue>
+					<OptionNetValue>0.00</OptionNetValue>
+					<OptionDiscountPercent>10.000</OptionDiscountPercent>
+					<ActiveInactiveStatus>A</ActiveInactiveStatus>
+					<SpecialOptionStatus></SpecialOptionStatus>
+					<DieselTier></DieselTier>
+					<MastType></MastType>
+					<TireType></TireType>
+					<OptionDesignation>B</OptionDesignation>
+				</Option>
+				<Option>
+					<OptionCode>G02718</OptionCode>
+					<OrderOptionLineNumber>6</OrderOptionLineNumber>
+					<OptionType>F</OptionType>
+					<OptionDescription>EXHAUST: OVERHEAD DIESEL 4.5-5.5
+					</OptionDescription>
+					<OptionGrossPrice>0.00</OptionGrossPrice>
+					<OptionNetPrice>0.00</OptionNetPrice>
+					<OptionGrossValue>0.00</OptionGrossValue>
+					<OptionDiscountValue>0.00</OptionDiscountValue>
+					<OptionNetValue>0.00</OptionNetValue>
+					<OptionDiscountPercent>10.000</OptionDiscountPercent>
+					<ActiveInactiveStatus>A</ActiveInactiveStatus>
+					<SpecialOptionStatus></SpecialOptionStatus>
+					<DieselTier></DieselTier>
+					<MastType></MastType>
+					<TireType></TireType>
+					<OptionDesignation>B</OptionDesignation>
+				</Option>
+				<Option>
+					<OptionCode>G03013</OptionCode>
+					<OrderOptionLineNumber>7</OrderOptionLineNumber>
+					<OptionType>F</OptionType>
+					<OptionDescription>RAD: COMBI-COOLER DSL W/O SCREEN
+					</OptionDescription>
+					<OptionGrossPrice>0.00</OptionGrossPrice>
+					<OptionNetPrice>0.00</OptionNetPrice>
+					<OptionGrossValue>0.00</OptionGrossValue>
+					<OptionDiscountValue>0.00</OptionDiscountValue>
+					<OptionNetValue>0.00</OptionNetValue>
+					<OptionDiscountPercent>10.000</OptionDiscountPercent>
+					<ActiveInactiveStatus>A</ActiveInactiveStatus>
+					<SpecialOptionStatus></SpecialOptionStatus>
+					<DieselTier></DieselTier>
+					<MastType></MastType>
+					<TireType></TireType>
+					<OptionDesignation>B</OptionDesignation>
+				</Option>
+				<Option>
+					<OptionCode>G05402</OptionCode>
+					<OrderOptionLineNumber>8</OrderOptionLineNumber>
+					<OptionType>F</OptionType>
+					<OptionDescription>AIR INTAKE: WITH PRE-CLEANER</OptionDescription>
+					<OptionGrossPrice>260.00</OptionGrossPrice>
+					<OptionNetPrice>234.00</OptionNetPrice>
+					<OptionGrossValue>780.00</OptionGrossValue>
+					<OptionDiscountValue>78.00</OptionDiscountValue>
+					<OptionNetValue>702.00</OptionNetValue>
+					<OptionDiscountPercent>10.000</OptionDiscountPercent>
+					<ActiveInactiveStatus>A</ActiveInactiveStatus>
+					<SpecialOptionStatus></SpecialOptionStatus>
+					<DieselTier></DieselTier>
+					<MastType></MastType>
+					<TireType></TireType>
+					<OptionDesignation>B</OptionDesignation>
+				</Option>
+				<Option>
+					<OptionCode>G06011</OptionCode>
+					<OrderOptionLineNumber>9</OrderOptionLineNumber>
+					<OptionType>F</OptionType>
+					<OptionDescription>DIRECTION CONTROL: LEVER SHIFT
+					</OptionDescription>
+					<OptionGrossPrice>0.00</OptionGrossPrice>
+					<OptionNetPrice>0.00</OptionNetPrice>
+					<OptionGrossValue>0.00</OptionGrossValue>
+					<OptionDiscountValue>0.00</OptionDiscountValue>
+					<OptionNetValue>0.00</OptionNetValue>
+					<OptionDiscountPercent>10.000</OptionDiscountPercent>
+					<ActiveInactiveStatus>A</ActiveInactiveStatus>
+					<SpecialOptionStatus></SpecialOptionStatus>
+					<DieselTier></DieselTier>
+					<MastType></MastType>
+					<TireType></TireType>
+					<OptionDesignation>B</OptionDesignation>
+				</Option>
+				<Option>
+					<OptionCode>G09903</OptionCode>
+					<OrderOptionLineNumber>10</OrderOptionLineNumber>
+					<OptionType>F</OptionType>
+					<OptionDescription>INCHING CNTRL: SINGLE W/WET DISC 80
+					</OptionDescription>
+					<OptionGrossPrice>0.00</OptionGrossPrice>
+					<OptionNetPrice>0.00</OptionNetPrice>
+					<OptionGrossValue>0.00</OptionGrossValue>
+					<OptionDiscountValue>0.00</OptionDiscountValue>
+					<OptionNetValue>0.00</OptionNetValue>
+					<OptionDiscountPercent>10.000</OptionDiscountPercent>
+					<ActiveInactiveStatus>A</ActiveInactiveStatus>
+					<SpecialOptionStatus></SpecialOptionStatus>
+					<DieselTier></DieselTier>
+					<MastType></MastType>
+					<TireType></TireType>
+					<OptionDesignation>B</OptionDesignation>
+				</Option>
+				<Option>
+					<OptionCode>G10504</OptionCode>
+					<OrderOptionLineNumber>11</OrderOptionLineNumber>
+					<OptionType>F</OptionType>
+					<OptionDescription>MAST: 2STG LFL 88/110" (2214/2800MM
+					</OptionDescription>
+					<OptionGrossPrice>0.00</OptionGrossPrice>
+					<OptionNetPrice>0.00</OptionNetPrice>
+					<OptionGrossValue>0.00</OptionGrossValue>
+					<OptionDiscountValue>0.00</OptionDiscountValue>
+					<OptionNetValue>0.00</OptionNetValue>
+					<OptionDiscountPercent>10.000</OptionDiscountPercent>
+					<ActiveInactiveStatus>A</ActiveInactiveStatus>
+					<SpecialOptionStatus></SpecialOptionStatus>
+					<DieselTier></DieselTier>
+					<MastType>V</MastType>
+					<TireType></TireType>
+					<OptionDesignation>B</OptionDesignation>
+				</Option>
+				<Option>
+					<OptionCode>G120A1</OptionCode>
+					<OrderOptionLineNumber>12</OrderOptionLineNumber>
+					<OptionType>F</OptionType>
+					<OptionDescription>CRG 2 STG LFL 1219MM 4.50-5.50 CL4
+					</OptionDescription>
+					<OptionGrossPrice>0.00</OptionGrossPrice>
+					<OptionNetPrice>0.00</OptionNetPrice>
+					<OptionGrossValue>0.00</OptionGrossValue>
+					<OptionDiscountValue>0.00</OptionDiscountValue>
+					<OptionNetValue>0.00</OptionNetValue>
+					<OptionDiscountPercent>10.000</OptionDiscountPercent>
+					<ActiveInactiveStatus>A</ActiveInactiveStatus>
+					<SpecialOptionStatus></SpecialOptionStatus>
+					<DieselTier></DieselTier>
+					<MastType></MastType>
+					<TireType></TireType>
+					<OptionDesignation>B</OptionDesignation>
+				</Option>
+				<Option>
+					<OptionCode>G14703</OptionCode>
+					<OrderOptionLineNumber>13</OrderOptionLineNumber>
+					<OptionType>F</OptionType>
+					<OptionDescription>MAST TILT: 6 FORWARD / 6 BACK
+					</OptionDescription>
+					<OptionGrossPrice>0.00</OptionGrossPrice>
+					<OptionNetPrice>0.00</OptionNetPrice>
+					<OptionGrossValue>0.00</OptionGrossValue>
+					<OptionDiscountValue>0.00</OptionDiscountValue>
+					<OptionNetValue>0.00</OptionNetValue>
+					<OptionDiscountPercent>10.000</OptionDiscountPercent>
+					<ActiveInactiveStatus>A</ActiveInactiveStatus>
+					<SpecialOptionStatus></SpecialOptionStatus>
+					<DieselTier></DieselTier>
+					<MastType></MastType>
+					<TireType></TireType>
+					<OptionDesignation>B</OptionDesignation>
+				</Option>
+				<Option>
+					<OptionCode>G15040</OptionCode>
+					<OrderOptionLineNumber>14</OrderOptionLineNumber>
+					<OptionType>F</OptionType>
+					<OptionDescription>LOAD BACKREST CL IV 1219</OptionDescription>
+					<OptionGrossPrice>0.00</OptionGrossPrice>
+					<OptionNetPrice>0.00</OptionNetPrice>
+					<OptionGrossValue>0.00</OptionGrossValue>
+					<OptionDiscountValue>0.00</OptionDiscountValue>
+					<OptionNetValue>0.00</OptionNetValue>
+					<OptionDiscountPercent>10.000</OptionDiscountPercent>
+					<ActiveInactiveStatus>A</ActiveInactiveStatus>
+					<SpecialOptionStatus></SpecialOptionStatus>
+					<DieselTier></DieselTier>
+					<MastType></MastType>
+					<TireType></TireType>
+					<OptionDesignation>B</OptionDesignation>
+				</Option>
+				<Option>
+					<OptionCode>G15926</OptionCode>
+					<OrderOptionLineNumber>15</OrderOptionLineNumber>
+					<OptionType>F</OptionType>
+					<OptionDescription>FORKS 150X60X1200 CLASS IV STD
+					</OptionDescription>
+					<OptionGrossPrice>0.00</OptionGrossPrice>
+					<OptionNetPrice>0.00</OptionNetPrice>
+					<OptionGrossValue>0.00</OptionGrossValue>
+					<OptionDiscountValue>0.00</OptionDiscountValue>
+					<OptionNetValue>0.00</OptionNetValue>
+					<OptionDiscountPercent>10.000</OptionDiscountPercent>
+					<ActiveInactiveStatus>A</ActiveInactiveStatus>
+					<SpecialOptionStatus></SpecialOptionStatus>
+					<DieselTier></DieselTier>
+					<MastType></MastType>
+					<TireType></TireType>
+					<OptionDesignation>B</OptionDesignation>
+				</Option>
+				<Option>
+					<OptionCode>G17705</OptionCode>
+					<OrderOptionLineNumber>16</OrderOptionLineNumber>
+					<OptionType>F</OptionType>
+					<OptionDescription>OVERHEAD GUARD: HIGH W/DIESEL (EUR)
+					</OptionDescription>
+					<OptionGrossPrice>0.00</OptionGrossPrice>
+					<OptionNetPrice>0.00</OptionNetPrice>
+					<OptionGrossValue>0.00</OptionGrossValue>
+					<OptionDiscountValue>0.00</OptionDiscountValue>
+					<OptionNetValue>0.00</OptionNetValue>
+					<OptionDiscountPercent>10.000</OptionDiscountPercent>
+					<ActiveInactiveStatus>A</ActiveInactiveStatus>
+					<SpecialOptionStatus></SpecialOptionStatus>
+					<DieselTier></DieselTier>
+					<MastType></MastType>
+					<TireType></TireType>
+					<OptionDesignation>B</OptionDesignation>
+				</Option>
+				<Option>
+					<OptionCode>G19835</OptionCode>
+					<OrderOptionLineNumber>17</OrderOptionLineNumber>
+					<OptionType>F</OptionType>
+					<OptionDescription>DR WHLS STD TRD 300X15 SOLID SIT
+					</OptionDescription>
+					<OptionGrossPrice>0.00</OptionGrossPrice>
+					<OptionNetPrice>0.00</OptionNetPrice>
+					<OptionGrossValue>0.00</OptionGrossValue>
+					<OptionDiscountValue>0.00</OptionDiscountValue>
+					<OptionNetValue>0.00</OptionNetValue>
+					<OptionDiscountPercent>10.000</OptionDiscountPercent>
+					<ActiveInactiveStatus>A</ActiveInactiveStatus>
+					<SpecialOptionStatus></SpecialOptionStatus>
+					<DieselTier></DieselTier>
+					<MastType></MastType>
+					<TireType>S</TireType>
+					<OptionDesignation>B</OptionDesignation>
+				</Option>
+				<Option>
+					<OptionCode>G20107</OptionCode>
+					<OrderOptionLineNumber>18</OrderOptionLineNumber>
+					<OptionType>F</OptionType>
+					<OptionDescription>STR WHL 28X9-15 SD SIT 4.5@600-5.5
+					</OptionDescription>
+					<OptionGrossPrice>0.00</OptionGrossPrice>
+					<OptionNetPrice>0.00</OptionNetPrice>
+					<OptionGrossValue>0.00</OptionGrossValue>
+					<OptionDiscountValue>0.00</OptionDiscountValue>
+					<OptionNetValue>0.00</OptionNetValue>
+					<OptionDiscountPercent>10.000</OptionDiscountPercent>
+					<ActiveInactiveStatus>A</ActiveInactiveStatus>
+					<SpecialOptionStatus></SpecialOptionStatus>
+					<DieselTier></DieselTier>
+					<MastType></MastType>
+					<TireType>S</TireType>
+					<OptionDesignation>B</OptionDesignation>
+				</Option>
+				<Option>
+					<OptionCode>G20431</OptionCode>
+					<OrderOptionLineNumber>19</OrderOptionLineNumber>
+					<OptionType>F</OptionType>
+					<OptionDescription>SEAT: FULL SUSPENSION VINYL</OptionDescription>
+					<OptionGrossPrice>0.00</OptionGrossPrice>
+					<OptionNetPrice>0.00</OptionNetPrice>
+					<OptionGrossValue>0.00</OptionGrossValue>
+					<OptionDiscountValue>0.00</OptionDiscountValue>
+					<OptionNetValue>0.00</OptionNetValue>
+					<OptionDiscountPercent>10.000</OptionDiscountPercent>
+					<ActiveInactiveStatus>A</ActiveInactiveStatus>
+					<SpecialOptionStatus></SpecialOptionStatus>
+					<DieselTier></DieselTier>
+					<MastType></MastType>
+					<TireType></TireType>
+					<OptionDesignation>B</OptionDesignation>
+				</Option>
+				<Option>
+					<OptionCode>G20711</OptionCode>
+					<OrderOptionLineNumber>20</OrderOptionLineNumber>
+					<OptionType>F</OptionType>
+					<OptionDescription>COWL MOUNTED LEVERS: 3 FUNCTION NON
+					</OptionDescription>
+					<OptionGrossPrice>0.00</OptionGrossPrice>
+					<OptionNetPrice>0.00</OptionNetPrice>
+					<OptionGrossValue>0.00</OptionGrossValue>
+					<OptionDiscountValue>0.00</OptionDiscountValue>
+					<OptionNetValue>0.00</OptionNetValue>
+					<OptionDiscountPercent>10.000</OptionDiscountPercent>
+					<ActiveInactiveStatus>A</ActiveInactiveStatus>
+					<SpecialOptionStatus></SpecialOptionStatus>
+					<DieselTier></DieselTier>
+					<MastType></MastType>
+					<TireType></TireType>
+					<OptionDesignation>B</OptionDesignation>
+				</Option>
+				<Option>
+					<OptionCode>G21011</OptionCode>
+					<OrderOptionLineNumber>21</OrderOptionLineNumber>
+					<OptionType>F</OptionType>
+					<OptionDescription>3 FUNCT HYD CNTRL VALVE FOR COWL LE
+					</OptionDescription>
+					<OptionGrossPrice>0.00</OptionGrossPrice>
+					<OptionNetPrice>0.00</OptionNetPrice>
+					<OptionGrossValue>0.00</OptionGrossValue>
+					<OptionDiscountValue>0.00</OptionDiscountValue>
+					<OptionNetValue>0.00</OptionNetValue>
+					<OptionDiscountPercent>10.000</OptionDiscountPercent>
+					<ActiveInactiveStatus>A</ActiveInactiveStatus>
+					<SpecialOptionStatus></SpecialOptionStatus>
+					<DieselTier></DieselTier>
+					<MastType></MastType>
+					<TireType></TireType>
+					<OptionDesignation>B</OptionDesignation>
+				</Option>
+				<Option>
+					<OptionCode>G2222B</OptionCode>
+					<OrderOptionLineNumber>22</OrderOptionLineNumber>
+					<OptionType>F</OptionType>
+					<OptionDescription>LIGHT BR/TL/B/UP/TRN/SIDE/FR/RR WOR
+					</OptionDescription>
+					<OptionGrossPrice>0.00</OptionGrossPrice>
+					<OptionNetPrice>0.00</OptionNetPrice>
+					<OptionGrossValue>0.00</OptionGrossValue>
+					<OptionDiscountValue>0.00</OptionDiscountValue>
+					<OptionNetValue>0.00</OptionNetValue>
+					<OptionDiscountPercent>10.000</OptionDiscountPercent>
+					<ActiveInactiveStatus>A</ActiveInactiveStatus>
+					<SpecialOptionStatus></SpecialOptionStatus>
+					<DieselTier></DieselTier>
+					<MastType></MastType>
+					<TireType></TireType>
+					<OptionDesignation>B</OptionDesignation>
+				</Option>
+				<Option>
+					<OptionCode>G28201</OptionCode>
+					<OrderOptionLineNumber>23</OrderOptionLineNumber>
+					<OptionType>F</OptionType>
+					<OptionDescription>WARRANTY: STANDARD 12 MONTHS/2000 H
+					</OptionDescription>
+					<OptionGrossPrice>0.00</OptionGrossPrice>
+					<OptionNetPrice>0.00</OptionNetPrice>
+					<OptionGrossValue>0.00</OptionGrossValue>
+					<OptionDiscountValue>0.00</OptionDiscountValue>
+					<OptionNetValue>0.00</OptionNetValue>
+					<OptionDiscountPercent>0.000</OptionDiscountPercent>
+					<ActiveInactiveStatus>A</ActiveInactiveStatus>
+					<SpecialOptionStatus>W</SpecialOptionStatus>
+					<DieselTier></DieselTier>
+					<MastType></MastType>
+					<TireType></TireType>
+					<OptionDesignation>B</OptionDesignation>
+				</Option>
+				<Option>
+					<OptionCode>G28820</OptionCode>
+					<OrderOptionLineNumber>24</OrderOptionLineNumber>
+					<OptionType>F</OptionType>
+					<OptionDescription>ACCESS EQUIP: REAR DRIVE HANDLE W/H
+					</OptionDescription>
+					<OptionGrossPrice>0.00</OptionGrossPrice>
+					<OptionNetPrice>0.00</OptionNetPrice>
+					<OptionGrossValue>0.00</OptionGrossValue>
+					<OptionDiscountValue>0.00</OptionDiscountValue>
+					<OptionNetValue>0.00</OptionNetValue>
+					<OptionDiscountPercent>10.000</OptionDiscountPercent>
+					<ActiveInactiveStatus>A</ActiveInactiveStatus>
+					<SpecialOptionStatus></SpecialOptionStatus>
+					<DieselTier></DieselTier>
+					<MastType></MastType>
+					<TireType></TireType>
+					<OptionDesignation>B</OptionDesignation>
+				</Option>
+				<Option>
+					<OptionCode>G00002</OptionCode>
+					<OrderOptionLineNumber>25</OrderOptionLineNumber>
+					<OptionType>F</OptionType>
+					<OptionDescription>COMMON TO SERIES EUROPE</OptionDescription>
+					<OptionGrossPrice>0.00</OptionGrossPrice>
+					<OptionNetPrice>0.00</OptionNetPrice>
+					<OptionGrossValue>0.00</OptionGrossValue>
+					<OptionDiscountValue>0.00</OptionDiscountValue>
+					<OptionNetValue>0.00</OptionNetValue>
+					<OptionDiscountPercent>10.000</OptionDiscountPercent>
+					<ActiveInactiveStatus>A</ActiveInactiveStatus>
+					<SpecialOptionStatus></SpecialOptionStatus>
+					<DieselTier></DieselTier>
+					<MastType></MastType>
+					<TireType></TireType>
+					<OptionDesignation>B</OptionDesignation>
+				</Option>
+				<Option>
+					<OptionCode>G00714</OptionCode>
+					<OrderOptionLineNumber>26</OrderOptionLineNumber>
+					<OptionType>F</OptionType>
+					<OptionDescription>WHEELBASE: LONG W/GAS OR DIESEL 4.5
+					</OptionDescription>
+					<OptionGrossPrice>0.00</OptionGrossPrice>
+					<OptionNetPrice>0.00</OptionNetPrice>
+					<OptionGrossValue>0.00</OptionGrossValue>
+					<OptionDiscountValue>0.00</OptionDiscountValue>
+					<OptionNetValue>0.00</OptionNetValue>
+					<OptionDiscountPercent>10.000</OptionDiscountPercent>
+					<ActiveInactiveStatus>A</ActiveInactiveStatus>
+					<SpecialOptionStatus></SpecialOptionStatus>
+					<DieselTier></DieselTier>
+					<MastType></MastType>
+					<TireType></TireType>
+					<OptionDesignation>B</OptionDesignation>
+				</Option>
+				<Option>
+					<OptionCode>G00923</OptionCode>
+					<OrderOptionLineNumber>27</OrderOptionLineNumber>
+					<OptionType>F</OptionType>
+					<OptionDescription>ENGINE-KUBOTA 3.6L DSL T3 (EUR)
+					</OptionDescription>
+					<OptionGrossPrice>0.00</OptionGrossPrice>
+					<OptionNetPrice>0.00</OptionNetPrice>
+					<OptionGrossValue>0.00</OptionGrossValue>
+					<OptionDiscountValue>0.00</OptionDiscountValue>
+					<OptionNetValue>0.00</OptionNetValue>
+					<OptionDiscountPercent>10.000</OptionDiscountPercent>
+					<ActiveInactiveStatus>I</ActiveInactiveStatus>
+					<SpecialOptionStatus></SpecialOptionStatus>
+					<DieselTier>C</DieselTier>
+					<MastType></MastType>
+					<TireType></TireType>
+					<OptionDesignation>B</OptionDesignation>
+				</Option>
+				<Option>
+					<OptionCode>G06304</OptionCode>
+					<OrderOptionLineNumber>28</OrderOptionLineNumber>
+					<OptionType>F</OptionType>
+					<OptionDescription>TRANSMISSION: 2 SPD PSHIFT W/ WET
+					</OptionDescription>
+					<OptionGrossPrice>0.00</OptionGrossPrice>
+					<OptionNetPrice>0.00</OptionNetPrice>
+					<OptionGrossValue>0.00</OptionGrossValue>
+					<OptionDiscountValue>0.00</OptionDiscountValue>
+					<OptionNetValue>0.00</OptionNetValue>
+					<OptionDiscountPercent>10.000</OptionDiscountPercent>
+					<ActiveInactiveStatus>A</ActiveInactiveStatus>
+					<SpecialOptionStatus></SpecialOptionStatus>
+					<DieselTier></DieselTier>
+					<MastType></MastType>
+					<TireType></TireType>
+					<OptionDesignation>B</OptionDesignation>
+				</Option>
+				<Option>
+					<OptionCode>G06913</OptionCode>
+					<OrderOptionLineNumber>29</OrderOptionLineNumber>
+					<OptionType>F</OptionType>
+					<OptionDescription>BRKS:WET8-9ALLW/DMTCH+&amp;10-12DSLW/OD
+					</OptionDescription>
+					<OptionGrossPrice>0.00</OptionGrossPrice>
+					<OptionNetPrice>0.00</OptionNetPrice>
+					<OptionGrossValue>0.00</OptionGrossValue>
+					<OptionDiscountValue>0.00</OptionDiscountValue>
+					<OptionNetValue>0.00</OptionNetValue>
+					<OptionDiscountPercent>10.000</OptionDiscountPercent>
+					<ActiveInactiveStatus>A</ActiveInactiveStatus>
+					<SpecialOptionStatus></SpecialOptionStatus>
+					<DieselTier></DieselTier>
+					<MastType></MastType>
+					<TireType></TireType>
+					<OptionDesignation>B</OptionDesignation>
+				</Option>
+				<Option>
+					<OptionCode>G23101</OptionCode>
+					<OrderOptionLineNumber>30</OrderOptionLineNumber>
+					<OptionType>F</OptionType>
+					<OptionDescription>STEERING WHEEL: WITH WHEEL SPINNER
+					</OptionDescription>
+					<OptionGrossPrice>0.00</OptionGrossPrice>
+					<OptionNetPrice>0.00</OptionNetPrice>
+					<OptionGrossValue>0.00</OptionGrossValue>
+					<OptionDiscountValue>0.00</OptionDiscountValue>
+					<OptionNetValue>0.00</OptionNetValue>
+					<OptionDiscountPercent>10.000</OptionDiscountPercent>
+					<ActiveInactiveStatus>A</ActiveInactiveStatus>
+					<SpecialOptionStatus></SpecialOptionStatus>
+					<DieselTier></DieselTier>
+					<MastType></MastType>
+					<TireType></TireType>
+					<OptionDesignation>B</OptionDesignation>
+				</Option>
+				<Option>
+					<OptionCode>G237EN</OptionCode>
+					<OrderOptionLineNumber>31</OrderOptionLineNumber>
+					<OptionType>F</OptionType>
+					<OptionDescription>LANGUAGE ENGLISH - NON US</OptionDescription>
+					<OptionGrossPrice>0.00</OptionGrossPrice>
+					<OptionNetPrice>0.00</OptionNetPrice>
+					<OptionGrossValue>0.00</OptionGrossValue>
+					<OptionDiscountValue>0.00</OptionDiscountValue>
+					<OptionNetValue>0.00</OptionNetValue>
+					<OptionDiscountPercent>10.000</OptionDiscountPercent>
+					<ActiveInactiveStatus>A</ActiveInactiveStatus>
+					<SpecialOptionStatus></SpecialOptionStatus>
+					<DieselTier></DieselTier>
+					<MastType></MastType>
+					<TireType></TireType>
+					<OptionDesignation>B</OptionDesignation>
+				</Option>
+				<Option>
+					<OptionCode>G28501</OptionCode>
+					<OrderOptionLineNumber>32</OrderOptionLineNumber>
+					<OptionType>F</OptionType>
+					<OptionDescription>TECHNICAL PUBLICATIONS SURCHARGE
+					</OptionDescription>
+					<OptionGrossPrice>15.00</OptionGrossPrice>
+					<OptionNetPrice>15.00</OptionNetPrice>
+					<OptionGrossValue>45.00</OptionGrossValue>
+					<OptionDiscountValue>0.00</OptionDiscountValue>
+					<OptionNetValue>45.00</OptionNetValue>
+					<OptionDiscountPercent>0.000</OptionDiscountPercent>
+					<ActiveInactiveStatus>A</ActiveInactiveStatus>
+					<SpecialOptionStatus>D</SpecialOptionStatus>
+					<DieselTier></DieselTier>
+					<MastType></MastType>
+					<TireType></TireType>
+					<OptionDesignation>B</OptionDesignation>
+				</Option>
+				<Option>
+					<OptionCode>G01021</OptionCode>
+					<OrderOptionLineNumber>33</OrderOptionLineNumber>
+					<OptionType>F</OptionType>
+					<OptionDescription>PREMIUM MONITORING</OptionDescription>
+					<OptionGrossPrice>190.00</OptionGrossPrice>
+					<OptionNetPrice>171.00</OptionNetPrice>
+					<OptionGrossValue>570.00</OptionGrossValue>
+					<OptionDiscountValue>57.00</OptionDiscountValue>
+					<OptionNetValue>513.00</OptionNetValue>
+					<OptionDiscountPercent>10.000</OptionDiscountPercent>
+					<ActiveInactiveStatus>I</ActiveInactiveStatus>
+					<SpecialOptionStatus></SpecialOptionStatus>
+					<DieselTier></DieselTier>
+					<MastType></MastType>
+					<TireType></TireType>
+					<OptionDesignation>B</OptionDesignation>
+				</Option>
+				<Option>
+					<OptionCode>G00923</OptionCode>
+					<OrderOptionLineNumber>34</OrderOptionLineNumber>
+					<OptionType>F</OptionType>
+					<OptionDescription>ENGINE-KUBOTA 3.6L DSL T3 (EUR)
+					</OptionDescription>
+					<OptionGrossPrice>0.00</OptionGrossPrice>
+					<OptionNetPrice>0.00</OptionNetPrice>
+					<OptionGrossValue>0.00</OptionGrossValue>
+					<OptionDiscountValue>0.00</OptionDiscountValue>
+					<OptionNetValue>0.00</OptionNetValue>
+					<OptionDiscountPercent>10.000</OptionDiscountPercent>
+					<ActiveInactiveStatus>A</ActiveInactiveStatus>
+					<SpecialOptionStatus></SpecialOptionStatus>
+					<DieselTier>C</DieselTier>
+					<MastType></MastType>
+					<TireType></TireType>
+					<OptionDesignation>B</OptionDesignation>
+				</Option>
+				<Option>
+					<OptionCode>G01031</OptionCode>
+					<OrderOptionLineNumber>35</OrderOptionLineNumber>
+					<OptionType>F</OptionType>
+					<OptionDescription>SYSTEM MONITORING</OptionDescription>
+					<OptionGrossPrice>0.00</OptionGrossPrice>
+					<OptionNetPrice>0.00</OptionNetPrice>
+					<OptionGrossValue>0.00</OptionGrossValue>
+					<OptionDiscountValue>0.00</OptionDiscountValue>
+					<OptionNetValue>0.00</OptionNetValue>
+					<OptionDiscountPercent>10.000</OptionDiscountPercent>
+					<ActiveInactiveStatus>A</ActiveInactiveStatus>
+					<SpecialOptionStatus></SpecialOptionStatus>
+					<DieselTier></DieselTier>
+					<MastType></MastType>
+					<TireType></TireType>
+					<OptionDesignation>B</OptionDesignation>
+				</Option>
+			</Options>
+			<Components>
+				<Component>
+					<SequenceNumber>1</SequenceNumber>
+					<ComponentSerialType>AA</ComponentSerialType>
+					<SerialTypeDescription>ENGINE</SerialTypeDescription>
+					<Manufacturer>KUT3</Manufacturer>
+					<ComponentPartSerialNumber>2CL2120</ComponentPartSerialNumber>
+					<ComponentPartNumber>Not Available</ComponentPartNumber>
+					<TransactionType>N</TransactionType>
+				</Component>
+				<Component>
+					<SequenceNumber>2</SequenceNumber>
+					<ComponentSerialType>AH</ComponentSerialType>
+					<SerialTypeDescription>DRIVE AXLE</SerialTypeDescription>
+					<Manufacturer>DANA</Manufacturer>
+					<ComponentPartSerialNumber>RHUN148361</ComponentPartSerialNumber>
+					<ComponentPartNumber>Not Available</ComponentPartNumber>
+					<TransactionType>N</TransactionType>
+				</Component>
+				<Component>
+					<SequenceNumber>3</SequenceNumber>
+					<ComponentSerialType>C1</ComponentSerialType>
+					<SerialTypeDescription>TRANSMISSION/MDU 1</SerialTypeDescription>
+					<Manufacturer>NMHG</Manufacturer>
+					<ComponentPartSerialNumber>T150M001637</ComponentPartSerialNumber>
+					<ComponentPartNumber>Not Available</ComponentPartNumber>
+					<TransactionType>N</TransactionType>
+				</Component>
+				<Component>
+					<SequenceNumber>4</SequenceNumber>
+					<ComponentSerialType>JA1</ComponentSerialType>
+					<SerialTypeDescription>HYDRAULIC PUMP 1</SerialTypeDescription>
+					<Manufacturer>KAYA</Manufacturer>
+					<ComponentPartSerialNumber>1L2810</ComponentPartSerialNumber>
+					<ComponentPartNumber>Not Available</ComponentPartNumber>
+					<TransactionType>N</TransactionType>
+				</Component>
+				<Component>
+					<SequenceNumber>6</SequenceNumber>
+					<ComponentSerialType>JD</ComponentSerialType>
+					<SerialTypeDescription>CONTROL VALVE</SerialTypeDescription>
+					<Manufacturer>HUSC</Manufacturer>
+					<ComponentPartSerialNumber>L12D744</ComponentPartSerialNumber>
+					<ComponentPartNumber>Not Available</ComponentPartNumber>
+					<TransactionType>N</TransactionType>
+				</Component> 
+				<Component>
+					<SequenceNumber>6</SequenceNumber>
+					<ComponentSerialType>VSM</ComponentSerialType>
+					<SerialTypeDescription>VEHICLE SYS.MGR</SerialTypeDescription>
+					<Manufacturer>PHNIX</Manufacturer>
+					<ComponentPartSerialNumber>6536373</ComponentPartSerialNumber>
+					<ComponentPartNumber>Not Available</ComponentPartNumber>
+					<TransactionType>N</TransactionType>
+				</Component>
+				<Component>
+					<SequenceNumber>7</SequenceNumber>
+					<ComponentSerialType>AJ3</ComponentSerialType>
+					<SerialTypeDescription>DASH DISPLAY</SerialTypeDescription>
+					<Manufacturer>PHNIX</Manufacturer>
+					<ComponentPartSerialNumber>705418</ComponentPartSerialNumber>
+					<ComponentPartNumber>Not Available</ComponentPartNumber>
+					<TransactionType>N</TransactionType>
+				</Component>
+				<Component>
+					<SequenceNumber>8</SequenceNumber>
+					<ComponentSerialType>JEL</ComponentSerialType>
+					<SerialTypeDescription>TILT CYLINDER L.H.</SerialTypeDescription>
+					<Manufacturer>NMHG</Manufacturer>
+					<ComponentPartSerialNumber>BLK2113</ComponentPartSerialNumber>
+					<ComponentPartNumber>Not Available</ComponentPartNumber>
+					<TransactionType>N</TransactionType>
+				</Component>
+				<Component>
+					<SequenceNumber>9</SequenceNumber>
+					<ComponentSerialType>JER</ComponentSerialType>
+					<SerialTypeDescription>TILT CYLINDER R.H.</SerialTypeDescription>
+					<Manufacturer>NMHG</Manufacturer>
+					<ComponentPartSerialNumber>BLK2113</ComponentPartSerialNumber>
+					<ComponentPartNumber>Not Available</ComponentPartNumber>
+					<TransactionType>N</TransactionType>
+				</Component>
+				<Component>
+					<SequenceNumber>10</SequenceNumber>
+					<ComponentSerialType>GD</ComponentSerialType>
+					<SerialTypeDescription>STEERING CYLINDER</SerialTypeDescription>
+					<Manufacturer>Not Available</Manufacturer>
+					<ComponentPartSerialNumber>Not Available
+					</ComponentPartSerialNumber>
+					<ComponentPartNumber>Not Available</ComponentPartNumber>
+					<TransactionType>N</TransactionType>
+				</Component>
+				<Component>
+					<SequenceNumber>11</SequenceNumber>
+					<ComponentSerialType>EDC</ComponentSerialType>
+					<SerialTypeDescription>STEER AXLE-CRAIGAVON</SerialTypeDescription>
+					<Manufacturer>NMHG</Manufacturer>
+					<ComponentPartSerialNumber>N/A</ComponentPartSerialNumber>
+					<ComponentPartNumber>Not Available</ComponentPartNumber>
+					<TransactionType>N</TransactionType>
+				</Component>
+				<Component>
+					<SequenceNumber>12</SequenceNumber>
+					<ComponentSerialType>AE</ComponentSerialType>
+					<SerialTypeDescription>CATALYTIC MUFFLER(ECES)
+					</SerialTypeDescription>
+					<Manufacturer>Not Available</Manufacturer>
+					<ComponentPartSerialNumber>Not Available
+					</ComponentPartSerialNumber>
+					<ComponentPartNumber>Not Available</ComponentPartNumber>
+					<TransactionType>N</TransactionType>
+				</Component>
+				<Component>
+					<SequenceNumber>13</SequenceNumber>
+					<ComponentSerialType>EFC</ComponentSerialType>
+					<SerialTypeDescription>LP FUEL REGULATOR</SerialTypeDescription>
+					<Manufacturer>Not Available</Manufacturer>
+					<ComponentPartSerialNumber>Not Available
+					</ComponentPartSerialNumber>
+					<ComponentPartNumber>Not Available</ComponentPartNumber>
+					<TransactionType>N</TransactionType>
+				</Component>
+				<Component>
+					<SequenceNumber>14</SequenceNumber>
+					<ComponentSerialType>EIC</ComponentSerialType>
+					<SerialTypeDescription>ENGINE CONTROL MODULE
+					</SerialTypeDescription>
+					<Manufacturer>Not Available</Manufacturer>
+					<ComponentPartSerialNumber>Not Available
+					</ComponentPartSerialNumber>
+					<ComponentPartNumber>Not Available</ComponentPartNumber>
+					<TransactionType>N</TransactionType>
+				</Component>
+				<Component>
+					<SequenceNumber>15</SequenceNumber>
+					<ComponentSerialType>JAB</ComponentSerialType>
+					<SerialTypeDescription>E HYD.JOYSTICK/LEVER</SerialTypeDescription>
+					<Manufacturer>Not Available</Manufacturer>
+					<ComponentPartSerialNumber>Not Available
+					</ComponentPartSerialNumber>
+					<ComponentPartNumber>Not Available</ComponentPartNumber>
+					<TransactionType>N</TransactionType>
+				</Component>
+				<Component>
+					<SequenceNumber>16</SequenceNumber>
+					<ComponentSerialType>IIF</ComponentSerialType>
+					<SerialTypeDescription>HOIST CYLINDER FREELIFT
+					</SerialTypeDescription>
+					<Manufacturer>Not Available</Manufacturer>
+					<ComponentPartSerialNumber>Not Available
+					</ComponentPartSerialNumber>
+					<ComponentPartNumber>Not Available</ComponentPartNumber>
+					<TransactionType>N</TransactionType>
+				</Component>
+				<Component>
+					<SequenceNumber>17</SequenceNumber>
+					<ComponentSerialType>IIR</ComponentSerialType>
+					<SerialTypeDescription>HOIST CYLINDER R.H.</SerialTypeDescription>
+					<Manufacturer>NMHG</Manufacturer>
+					<ComponentPartSerialNumber>CNT4012</ComponentPartSerialNumber>
+					<ComponentPartNumber>Not Available</ComponentPartNumber>
+					<TransactionType>N</TransactionType>
+				</Component>
+				<Component>
+					<SequenceNumber>18</SequenceNumber>
+					<ComponentSerialType>IIL</ComponentSerialType>
+					<SerialTypeDescription>HOIST CYLINDER L.H.</SerialTypeDescription>
+					<Manufacturer>NMHG</Manufacturer>
+					<ComponentPartSerialNumber>CNT4012</ComponentPartSerialNumber>
+					<ComponentPartNumber>Not Available</ComponentPartNumber>
+					<TransactionType>N</TransactionType>
+				</Component>
+				<Component>
+					<SequenceNumber>19</SequenceNumber>
+					<ComponentSerialType>IIS</ComponentSerialType>
+					<SerialTypeDescription>HOIST CYLINDER SIDESHIFT
+					</SerialTypeDescription>
+					<Manufacturer>Not Available</Manufacturer>
+					<ComponentPartSerialNumber>Not Available
+					</ComponentPartSerialNumber>
+					<ComponentPartNumber>Not Available</ComponentPartNumber>
+					<TransactionType>N</TransactionType>
+				</Component>
+				<Component>
+					<SequenceNumber>20</SequenceNumber>
+					<ComponentSerialType>I</ComponentSerialType>
+					<SerialTypeDescription>MAST</SerialTypeDescription>
+					<Manufacturer>NMHG</Manufacturer>
+					<ComponentPartSerialNumber>B750B03807</ComponentPartSerialNumber>
+					<ComponentPartNumber>Not Available</ComponentPartNumber>
+					<TransactionType>N</TransactionType>
+				</Component>
+				<Component>
+					<SequenceNumber>21</SequenceNumber>
+					<ComponentSerialType>K1</ComponentSerialType>
+					<SerialTypeDescription>ATTACHMENT 1</SerialTypeDescription>
+					<Manufacturer>Not Available</Manufacturer>
+					<ComponentPartSerialNumber>Not Available
+					</ComponentPartSerialNumber>
+					<ComponentPartNumber>Not Available</ComponentPartNumber>
+					<TransactionType>N</TransactionType>
+				</Component>
+				<Component>
+					<SequenceNumber>22</SequenceNumber>
+					<ComponentSerialType>DG</ComponentSerialType>
+					<SerialTypeDescription>CAB</SerialTypeDescription>
+					<Manufacturer>Not Available</Manufacturer>
+					<ComponentPartSerialNumber>Not Available
+					</ComponentPartSerialNumber>
+					<ComponentPartNumber>Not Available</ComponentPartNumber>
+					<TransactionType>N</TransactionType>
+				</Component>
+				<Component>
+					<SequenceNumber>23</SequenceNumber>
+					<ComponentSerialType>EFA</ComponentSerialType>
+					<SerialTypeDescription>LPG FUEL MODULE (EPA)
+					</SerialTypeDescription>
+					<Manufacturer>Not Available</Manufacturer>
+					<ComponentPartSerialNumber>Not Available
+					</ComponentPartSerialNumber>
+					<ComponentPartNumber>Not Available</ComponentPartNumber>
+					<TransactionType>N</TransactionType>
+				</Component>
+				<Component>
+					<SequenceNumber>24</SequenceNumber>
+					<ComponentSerialType>EFB</ComponentSerialType>
+					<SerialTypeDescription>LPG CONTROLLER (EPA)</SerialTypeDescription>
+					<Manufacturer>Not Available</Manufacturer>
+					<ComponentPartSerialNumber>Not Available
+					</ComponentPartSerialNumber>
+					<ComponentPartNumber>Not Available</ComponentPartNumber>
+					<TransactionType>N</TransactionType>
+				</Component>
+				<Component>
+					<SequenceNumber>25</SequenceNumber>
+					<ComponentSerialType>ARAD</ComponentSerialType>
+					<SerialTypeDescription>RADIATOR</SerialTypeDescription>
+					<Manufacturer>Not Available</Manufacturer>
+					<ComponentPartSerialNumber>Not Available
+					</ComponentPartSerialNumber>
+					<ComponentPartNumber>Not Available</ComponentPartNumber>
+					<TransactionType>N</TransactionType>
+				</Component>
+				<Component>
+					<SequenceNumber>26</SequenceNumber>
+					<ComponentSerialType>GB</ComponentSerialType>
+					<SerialTypeDescription>HYDRAULIC STEER PUMP</SerialTypeDescription>
+					<Manufacturer>Not Available</Manufacturer>
+					<ComponentPartSerialNumber>Not Available
+					</ComponentPartSerialNumber>
+					<ComponentPartNumber>Not Available</ComponentPartNumber>
+					<TransactionType>N</TransactionType>
+				</Component>
+				<Component>
+					<SequenceNumber>27</SequenceNumber>
+					<ComponentSerialType>AC</ComponentSerialType>
+					<SerialTypeDescription>CATALYTIC MUFFLER</SerialTypeDescription>
+					<Manufacturer>Not Available</Manufacturer>
+					<ComponentPartSerialNumber>Not Available
+					</ComponentPartSerialNumber>
+					<ComponentPartNumber>Not Available</ComponentPartNumber>
+					<TransactionType>N</TransactionType>
+				</Component>
+				<Component>
+					<SequenceNumber>28</SequenceNumber>
+					<ComponentSerialType>EIA</ComponentSerialType>
+					<SerialTypeDescription>GAS FUEL MODULE (EPA)
+					</SerialTypeDescription>
+					<Manufacturer>Not Available</Manufacturer>
+					<ComponentPartSerialNumber>Not Available
+					</ComponentPartSerialNumber>
+					<ComponentPartNumber>Not Available</ComponentPartNumber>
+					<TransactionType>N</TransactionType>
+				</Component>
+				<Component>
+					<SequenceNumber>29</SequenceNumber>
+					<ComponentSerialType>EIB</ComponentSerialType>
+					<SerialTypeDescription>GAS CONTROLLER (EPA)</SerialTypeDescription>
+					<Manufacturer>Not Available</Manufacturer>
+					<ComponentPartSerialNumber>Not Available
+					</ComponentPartSerialNumber>
+					<ComponentPartNumber>Not Available</ComponentPartNumber>
+					<TransactionType>N</TransactionType>
+				</Component>
+				<Component>
+					<SequenceNumber>30</SequenceNumber>
+					<ComponentSerialType>JA2</ComponentSerialType>
+					<SerialTypeDescription>HYDRAULIC PUMP 2</SerialTypeDescription>
+					<Manufacturer>Not Available</Manufacturer>
+					<ComponentPartSerialNumber>Not Available
+					</ComponentPartSerialNumber>
+					<ComponentPartNumber>Not Available</ComponentPartNumber>
+					<TransactionType>N</TransactionType>
+				</Component>
+			</Components>
+			<PartGroups>
+				<PartGroup>
+					<PartGroupCode>AAAAA</PartGroupCode>
+					<PartGroupDescription>********************************
+					</PartGroupDescription>
+					<Quantity>1</Quantity>
+					<StandardCost>0.00</StandardCost>
+				</PartGroup>
+				<PartGroup>
+					<PartGroupCode>AAAAB</PartGroupCode>
+					<PartGroupDescription>************ SMT 1 *************
+					</PartGroupDescription>
+					<Quantity>1</Quantity>
+					<StandardCost>0.00</StandardCost>
+				</PartGroup>
+				<PartGroup>
+					<PartGroupCode>AAAAC</PartGroupCode>
+					<PartGroupDescription>************ SMT 2(A) **********
+					</PartGroupDescription>
+					<Quantity>1</Quantity>
+					<StandardCost>0.00</StandardCost>
+				</PartGroup>
+				<PartGroup>
+					<PartGroupCode>AAAAD</PartGroupCode>
+					<PartGroupDescription>************ SMT 3 *************
+					</PartGroupDescription>
+					<Quantity>1</Quantity>
+					<StandardCost>0.00</StandardCost>
+				</PartGroup>
+				<PartGroup>
+					<PartGroupCode>AAAAE</PartGroupCode>
+					<PartGroupDescription>************ SMT 4 *************
+					</PartGroupDescription>
+					<Quantity>1</Quantity>
+					<StandardCost>0.00</StandardCost>
+				</PartGroup>
+				<PartGroup>
+					<PartGroupCode>AAAAF</PartGroupCode>
+					<PartGroupDescription>************ SMT 2(B) **********
+					</PartGroupDescription>
+					<Quantity>1</Quantity>
+					<StandardCost>0.00</StandardCost>
+				</PartGroup>
+				<PartGroup>
+					<PartGroupCode>AAAAG</PartGroupCode>
+					<PartGroupDescription>************ SMT 5 *************
+					</PartGroupDescription>
+					<Quantity>1</Quantity>
+					<StandardCost>0.00</StandardCost>
+				</PartGroup>
+				<PartGroup>
+					<PartGroupCode>AAAAH</PartGroupCode>
+					<PartGroupDescription>************ SMT 6 *************
+					</PartGroupDescription>
+					<Quantity>1</Quantity>
+					<StandardCost>0.00</StandardCost>
+				</PartGroup>
+				<PartGroup>
+					<PartGroupCode>AAAAI</PartGroupCode>
+					<PartGroupDescription>************ SMT 7(A) **********
+					</PartGroupDescription>
+					<Quantity>1</Quantity>
+					<StandardCost>0.00</StandardCost>
+				</PartGroup>
+				<PartGroup>
+					<PartGroupCode>AAAAJ</PartGroupCode>
+					<PartGroupDescription>************ SMT 7(B) **********
+					</PartGroupDescription>
+					<Quantity>1</Quantity>
+					<StandardCost>0.00</StandardCost>
+				</PartGroup>
+				<PartGroup>
+					<PartGroupCode>AAAAK</PartGroupCode>
+					<PartGroupDescription>************ SMT 8 *************
+					</PartGroupDescription>
+					<Quantity>1</Quantity>
+					<StandardCost>0.00</StandardCost>
+				</PartGroup>
+				<PartGroup>
+					<PartGroupCode>AAAAL</PartGroupCode>
+					<PartGroupDescription>************ SMT 9 *************
+					</PartGroupDescription>
+					<Quantity>1</Quantity>
+					<StandardCost>0.00</StandardCost>
+				</PartGroup>
+				<PartGroup>
+					<PartGroupCode>AAAAM</PartGroupCode>
+					<PartGroupDescription>************ SMT 10 ************
+					</PartGroupDescription>
+					<Quantity>1</Quantity>
+					<StandardCost>0.00</StandardCost>
+				</PartGroup>
+				<PartGroup>
+					<PartGroupCode>AAAAN</PartGroupCode>
+					<PartGroupDescription>************ SHIPPING **********
+					</PartGroupDescription>
+					<Quantity>1</Quantity>
+					<StandardCost>0.00</StandardCost>
+				</PartGroup>
+				<PartGroup>
+					<PartGroupCode>AAAAO</PartGroupCode>
+					<PartGroupDescription>************ SPED **************
+					</PartGroupDescription>
+					<Quantity>1</Quantity>
+					<StandardCost>0.00</StandardCost>
+				</PartGroup>
+				<PartGroup>
+					<PartGroupCode>1492459</PartGroupCode>
+					<PartGroupDescription>LBR 1219mm Cl4 Hyster</PartGroupDescription>
+					<Quantity>1</Quantity>
+					<StandardCost>0.00</StandardCost>
+				</PartGroup>
+				<PartGroup>
+					<PartGroupCode>1492925</PartGroupCode>
+					<PartGroupDescription>H FK CL4 150X60X1200-1362229
+					</PartGroupDescription>
+					<Quantity>1</Quantity>
+					<StandardCost>0.00</StandardCost>
+				</PartGroup>
+				<PartGroup>
+					<PartGroupCode>1519465</PartGroupCode>
+					<PartGroupDescription>Steering whl w/spinner knob
+					</PartGroupDescription>
+					<Quantity>1</Quantity>
+					<StandardCost>0.00</StandardCost>
+				</PartGroup>
+				<PartGroup>
+					<PartGroupCode>1544094</PartGroupCode>
+					<PartGroupDescription>Start W/Key Switch Hyster
+					</PartGroupDescription>
+					<Quantity>1</Quantity>
+					<StandardCost>0.00</StandardCost>
+				</PartGroup>
+				<PartGroup>
+					<PartGroupCode>1545615</PartGroupCode>
+					<PartGroupDescription>Mast Tilt: 6Fwd/6Back</PartGroupDescription>
+					<Quantity>1</Quantity>
+					<StandardCost>0.00</StandardCost>
+				</PartGroup>
+				<PartGroup>
+					<PartGroupCode>1545706</PartGroupCode>
+					<PartGroupDescription>DR 300x15 STD SOLID SIT TRELLE
+					</PartGroupDescription>
+					<Quantity>1</Quantity>
+					<StandardCost>0.00</StandardCost>
+				</PartGroup>
+				<PartGroup>
+					<PartGroupCode>1545716</PartGroupCode>
+					<PartGroupDescription>Lts: Tail/Turn smk F &amp; Rw
+					</PartGroupDescription>
+					<Quantity>1</Quantity>
+					<StandardCost>0.00</StandardCost>
+				</PartGroup>
+				<PartGroup>
+					<PartGroupCode>1551124</PartGroupCode>
+					<PartGroupDescription>Crg 2LFL C4 48" (8502043)
+					</PartGroupDescription>
+					<Quantity>1</Quantity>
+					<StandardCost>0.00</StandardCost>
+				</PartGroup>
+				<PartGroup>
+					<PartGroupCode>1566574</PartGroupCode>
+					<PartGroupDescription>Whl Att Prts Common To Unit
+					</PartGroupDescription>
+					<Quantity>1</Quantity>
+					<StandardCost>0.00</StandardCost>
+				</PartGroup>
+				<PartGroup>
+					<PartGroupCode>1566575</PartGroupCode>
+					<PartGroupDescription>Steering Common To Unit
+					</PartGroupDescription>
+					<Quantity>1</Quantity>
+					<StandardCost>0.00</StandardCost>
+				</PartGroup>
+				<PartGroup>
+					<PartGroupCode>1573222</PartGroupCode>
+					<PartGroupDescription>Mast: 2 Stg Lfl 2740Mm Class 4
+					</PartGroupDescription>
+					<Quantity>1</Quantity>
+					<StandardCost>0.00</StandardCost>
+				</PartGroup>
+				<PartGroup>
+					<PartGroupCode>1611829</PartGroupCode>
+					<PartGroupDescription>Capacity - 110/5.0</PartGroupDescription>
+					<Quantity>1</Quantity>
+					<StandardCost>0.00</StandardCost>
+				</PartGroup>
+				<PartGroup>
+					<PartGroupCode>1616052</PartGroupCode>
+					<PartGroupDescription>VENT lINES FOR 2LFL &amp; 3FFL MAST
+					</PartGroupDescription>
+					<Quantity>1</Quantity>
+					<StandardCost>0.00</StandardCost>
+				</PartGroup>
+				<PartGroup>
+					<PartGroupCode>1623838</PartGroupCode>
+					<PartGroupDescription>Man 3 Ftn 3 Lvr OHG NON-DETENT
+					</PartGroupDescription>
+					<Quantity>1</Quantity>
+					<StandardCost>0.00</StandardCost>
+				</PartGroup>
+				<PartGroup>
+					<PartGroupCode>1623856</PartGroupCode>
+					<PartGroupDescription>VSM - MANUAL HYDRAULICS W/OHG
+					</PartGroupDescription>
+					<Quantity>1</Quantity>
+					<StandardCost>0.00</StandardCost>
+				</PartGroup>
+				<PartGroup>
+					<PartGroupCode>1635473</PartGroupCode>
+					<PartGroupDescription>STEER 28X9-15 SOLID SIT BERG
+					</PartGroupDescription>
+					<Quantity>1</Quantity>
+					<StandardCost>0.00</StandardCost>
+				</PartGroup>
+				<PartGroup>
+					<PartGroupCode>1651500</PartGroupCode>
+					<PartGroupDescription>Labels Capacity 5.0</PartGroupDescription>
+					<Quantity>1</Quantity>
+					<StandardCost>0.00</StandardCost>
+				</PartGroup>
+				<PartGroup>
+					<PartGroupCode>1653978</PartGroupCode>
+					<PartGroupDescription>Acc/Equip: Rear Drive Handle
+					</PartGroupDescription>
+					<Quantity>1</Quantity>
+					<StandardCost>0.00</StandardCost>
+				</PartGroup>
+				<PartGroup>
+					<PartGroupCode>1657964</PartGroupCode>
+					<PartGroupDescription>M/GRD-STD W/O H/H A/TUBE&amp;10DEG
+					</PartGroupDescription>
+					<Quantity>1</Quantity>
+					<StandardCost>0.00</StandardCost>
+				</PartGroup>
+				<PartGroup>
+					<PartGroupCode>1671938</PartGroupCode>
+					<PartGroupDescription>Air Intake-With Pre-Cleaner
+					</PartGroupDescription>
+					<Quantity>1</Quantity>
+					<StandardCost>0.00</StandardCost>
+				</PartGroup>
+				<PartGroup>
+					<PartGroupCode>1677773</PartGroupCode>
+					<PartGroupDescription>LABELS-HYSTER EUR</PartGroupDescription>
+					<Quantity>1</Quantity>
+					<StandardCost>0.00</StandardCost>
+				</PartGroup>
+				<PartGroup>
+					<PartGroupCode>1687315</PartGroupCode>
+					<PartGroupDescription>Ctrl valve: man 3 spool 80/120
+					</PartGroupDescription>
+					<Quantity>1</Quantity>
+					<StandardCost>0.00</StandardCost>
+				</PartGroup>
+				<PartGroup>
+					<PartGroupCode>1692629</PartGroupCode>
+					<PartGroupDescription>OVERHEAD GUARD-HIGH DSL (EUR)
+					</PartGroupDescription>
+					<Quantity>1</Quantity>
+					<StandardCost>0.00</StandardCost>
+				</PartGroup>
+				<PartGroup>
+					<PartGroupCode>1692694</PartGroupCode>
+					<PartGroupDescription>HYS LIT-ENG EUR-4047508 KUB-3.8L
+					</PartGroupDescription>
+					<Quantity>1</Quantity>
+					<StandardCost>0.00</StandardCost>
+				</PartGroup>
+				<PartGroup>
+					<PartGroupCode>1693331</PartGroupCode>
+					<PartGroupDescription>Labels - common to unit
+					</PartGroupDescription>
+					<Quantity>1</Quantity>
+					<StandardCost>0.00</StandardCost>
+				</PartGroup>
+				<PartGroup>
+					<PartGroupCode>1708929</PartGroupCode>
+					<PartGroupDescription>Electrical - common to unit
+					</PartGroupDescription>
+					<Quantity>1</Quantity>
+					<StandardCost>0.00</StandardCost>
+				</PartGroup>
+				<PartGroup>
+					<PartGroupCode>1715976</PartGroupCode>
+					<PartGroupDescription>SOFTWARE - COMMON TO UNIT
+					</PartGroupDescription>
+					<Quantity>1</Quantity>
+					<StandardCost>0.00</StandardCost>
+				</PartGroup>
+				<PartGroup>
+					<PartGroupCode>1717173</PartGroupCode>
+					<PartGroupDescription>COWL COMM TO UNIT 4-5.5T HYSTER
+					</PartGroupDescription>
+					<Quantity>1</Quantity>
+					<StandardCost>0.00</StandardCost>
+				</PartGroup>
+				<PartGroup>
+					<PartGroupCode>1717179</PartGroupCode>
+					<PartGroupDescription>RAD COMBI DSL</PartGroupDescription>
+					<Quantity>1</Quantity>
+					<StandardCost>0.00</StandardCost>
+				</PartGroup>
+				<PartGroup>
+					<PartGroupCode>1717182</PartGroupCode>
+					<PartGroupDescription>EXHAUST OVERHEAD DSL LWB
+					</PartGroupDescription>
+					<Quantity>1</Quantity>
+					<StandardCost>0.00</StandardCost>
+				</PartGroup>
+				<PartGroup>
+					<PartGroupCode>1717185</PartGroupCode>
+					<PartGroupDescription>COMMON TO DIESEL</PartGroupDescription>
+					<Quantity>1</Quantity>
+					<StandardCost>0.00</StandardCost>
+				</PartGroup>
+				<PartGroup>
+					<PartGroupCode>1717186</PartGroupCode>
+					<PartGroupDescription>TORQUE CONVERTOR KUBOTA DSL
+					</PartGroupDescription>
+					<Quantity>1</Quantity>
+					<StandardCost>0.00</StandardCost>
+				</PartGroup>
+				<PartGroup>
+					<PartGroupCode>1717252</PartGroupCode>
+					<PartGroupDescription>W/O ELECT MON (MECH AIR REST)
+					</PartGroupDescription>
+					<Quantity>1</Quantity>
+					<StandardCost>0.00</StandardCost>
+				</PartGroup>
+				<PartGroup>
+					<PartGroupCode>1718242</PartGroupCode>
+					<PartGroupDescription>SEAT-FULL SUSP VINYL(NON-SWIVEL)
+					</PartGroupDescription>
+					<Quantity>1</Quantity>
+					<StandardCost>0.00</StandardCost>
+				</PartGroup>
+				<PartGroup>
+					<PartGroupCode>1718248</PartGroupCode>
+					<PartGroupDescription>REQ'D EQUIP-W/O E-HYD F/SUSP
+					</PartGroupDescription>
+					<Quantity>1</Quantity>
+					<StandardCost>0.00</StandardCost>
+				</PartGroup>
+				<PartGroup>
+					<PartGroupCode>1718986</PartGroupCode>
+					<PartGroupDescription>WHLBASE-LWB 2100 DSL 4.5@600-5.5
+					</PartGroupDescription>
+					<Quantity>1</Quantity>
+					<StandardCost>0.00</StandardCost>
+				</PartGroup>
+				<PartGroup>
+					<PartGroupCode>1719158</PartGroupCode>
+					<PartGroupDescription>HYDG/Pump DSL 4.5/5.5(8801198)
+					</PartGroupDescription>
+					<Quantity>1</Quantity>
+					<StandardCost>0.00</StandardCost>
+				</PartGroup>
+				<PartGroup>
+					<PartGroupCode>1720725</PartGroupCode>
+					<PartGroupDescription>ENGINE KUBOTA 3.6L DSL T3
+					</PartGroupDescription>
+					<Quantity>1</Quantity>
+					<StandardCost>0.00</StandardCost>
+				</PartGroup>
+				<PartGroup>
+					<PartGroupCode>1720726</PartGroupCode>
+					<PartGroupDescription>DIR CNTL LEVER DSL W/ BASIC XMSN
+					</PartGroupDescription>
+					<Quantity>1</Quantity>
+					<StandardCost>0.00</StandardCost>
+				</PartGroup>
+				<PartGroup>
+					<PartGroupCode>1721427</PartGroupCode>
+					<PartGroupDescription>Harness:Man Hyd w/o Mono/FDC
+					</PartGroupDescription>
+					<Quantity>1</Quantity>
+					<StandardCost>0.00</StandardCost>
+				</PartGroup>
+				<PartGroup>
+					<PartGroupCode>1722597</PartGroupCode>
+					<PartGroupDescription>HOOD NON VENTED WITH OHG (EUR)
+					</PartGroupDescription>
+					<Quantity>1</Quantity>
+					<StandardCost>0.00</StandardCost>
+				</PartGroup>
+				<PartGroup>
+					<PartGroupCode>1722666</PartGroupCode>
+					<PartGroupDescription>EXH HEAT SHIELD NON-PAPER IND
+					</PartGroupDescription>
+					<Quantity>1</Quantity>
+					<StandardCost>0.00</StandardCost>
+				</PartGroup>
+				<PartGroup>
+					<PartGroupCode>1722942</PartGroupCode>
+					<PartGroupDescription>REQ EQU - MAN HYD W/CAB OR W/DSL
+					</PartGroupDescription>
+					<Quantity>1</Quantity>
+					<StandardCost>0.00</StandardCost>
+				</PartGroup>
+				<PartGroup>
+					<PartGroupCode>1722951</PartGroupCode>
+					<PartGroupDescription>F/PLATES &amp; COVERS COMMON HYSTER
+					</PartGroupDescription>
+					<Quantity>1</Quantity>
+					<StandardCost>0.00</StandardCost>
+				</PartGroup>
+				<PartGroup>
+					<PartGroupCode>1722954</PartGroupCode>
+					<PartGroupDescription>DANA WET BRAKE AXLE RATIO 13.7
+					</PartGroupDescription>
+					<Quantity>1</Quantity>
+					<StandardCost>0.00</StandardCost>
+				</PartGroup>
+				<PartGroup>
+					<PartGroupCode>1722959</PartGroupCode>
+					<PartGroupDescription>INCH/BRK-SINGLE PEDAL DANA WET
+					</PartGroupDescription>
+					<Quantity>1</Quantity>
+					<StandardCost>0.00</StandardCost>
+				</PartGroup>
+				<PartGroup>
+					<PartGroupCode>1722988</PartGroupCode>
+					<PartGroupDescription>MANUAL PARK BRAKE - DANA WBA
+					</PartGroupDescription>
+					<Quantity>1</Quantity>
+					<StandardCost>0.00</StandardCost>
+				</PartGroup>
+				<PartGroup>
+					<PartGroupCode>1722997</PartGroupCode>
+					<PartGroupDescription>XMSN - BASIC 2 SPEED</PartGroupDescription>
+					<Quantity>1</Quantity>
+					<StandardCost>0.00</StandardCost>
+				</PartGroup>
+				<PartGroup>
+					<PartGroupCode>4001036</PartGroupCode>
+					<PartGroupDescription>Hyd Sup+Ret Common To Unit
+					</PartGroupDescription>
+					<Quantity>1</Quantity>
+					<StandardCost>0.00</StandardCost>
+				</PartGroup>
+				<PartGroup>
+					<PartGroupCode>4056979</PartGroupCode>
+					<PartGroupDescription>HARNESS OPT -2 SPD XMSN WBA DANA
+					</PartGroupDescription>
+					<Quantity>1</Quantity>
+					<StandardCost>0.00</StandardCost>
+				</PartGroup>
+				<PartGroup>
+					<PartGroupCode>4057298</PartGroupCode>
+					<PartGroupDescription>LWB KUBOTA 3.6L RADIATOR BAFFLES
+					</PartGroupDescription>
+					<Quantity>1</Quantity>
+					<StandardCost>0.00</StandardCost>
+				</PartGroup>
+			</PartGroups>
+			<Reshipped>N</Reshipped>
+			<SeriesBU>056</SeriesBU>
+			<BuildPlant>049</BuildPlant>
+			<ComponentSerialUpdated>N</ComponentSerialUpdated>
+			<DivisionCode>056</DivisionCode>
+		</InventorySync>
+	</DataArea>
+</ins:InstallBaseSync>

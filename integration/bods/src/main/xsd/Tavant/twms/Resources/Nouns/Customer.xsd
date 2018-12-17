@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="http://www.tavant.com/oagis" xmlns="http://www.tavant.com/oagis" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:oa="http://www.openapplications.org/oagis/9" elementFormDefault="qualified" attributeFormDefault="unqualified">
+  <xs:include schemaLocation="../Fields.xsd"/>
+  <xs:element name="Customer" type="Customer">
+    <xs:annotation>
+      <xs:documentation>This elements represents a customer.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="Customer">
+    <xs:sequence>
+      <xs:element name="CustomerName" type="xs:string"/>
+      <xs:element name="CustomerId" type="xs:token"/>
+      <xs:element name="Status" type="xs:string"/>
+      <xs:element name="CompanyType" type="xs:string"/>
+      <xs:element name="Currency" type="xs:token"/>
+      <xs:element name="PrimaryShipToAddress" type="Address"/>
+      <xs:element name="ShipToAddress" type="Address"/>
+	  <xs:element name="ShipToAddress" type="Address"/>      
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

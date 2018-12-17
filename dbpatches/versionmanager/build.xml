@@ -1,0 +1,29 @@
+<project basedir="." default="ExecuteVersionManager" name="Execute version manager.">
+<property file="vm.properties"/>
+<target name="ExecuteVersionManager" description="Execute version manager.">
+        <echo message="The path from where class12.zip will be picked up ${vm.oracle.path}"></echo>
+        <echo message="The url for the  oracle instance ${vm.jdbcurl}"></echo>
+        <echo message="The patches will be picked up from oracle instance ${vm.patches.path}"></echo>
+        <java jar="${vm.path}" fork="true">
+                <arg value="-u"/>
+                <arg value="main"/>
+                <arg value="${vm.jdbcurl}"/>
+                <arg value="-i"/>
+                <arg value="${vm.patches.path}"/>
+                <arg value="-d"/>
+                <arg value="${vm.oracle.path}"/>                
+                <arg value="-p"/>
+                <arg value="main"/>
+                <arg value="app_user"/>
+                <arg value="${twms_owner_user_password}"></arg>                                
+                <arg value="-p"/>
+		<arg value="main"/>
+		<arg value="twms_owner"/>
+                <arg value="${twms_owner_user_password}"></arg>                
+                <arg value="-p"/>
+	        <arg value="main"/>
+		<arg value="twms_user"/>
+                <arg value="${twms_owner_user_password}"></arg>                
+    </java>
+  </target>
+</project>

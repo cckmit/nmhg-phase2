@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Inventory xmlns="http://www.tavant.com/oagis" xmlns:oa="http://www.openapplications.org/oagis/9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <SerialNumber>LX3742</SerialNumber>
+    <ItemNumber>MC-COUGAR-50-HZ-1</ItemNumber>
+    <Type>RETAIL</Type>
+    <ConditionType>NEW</ConditionType>
+    <RegistrationDate>2005-01-06</RegistrationDate>
+    <DeliveryDate>2005-01-01</DeliveryDate>
+    <InventoryTransaction>
+        <InvoiceDate>2005-01-06</InvoiceDate>
+        <InvoiceNumber>IN-1</InvoiceNumber>
+        <SalesOrderNumber>SO-1</SalesOrderNumber>
+        <TransactionDate>2005-01-06</TransactionDate>
+        <Seller>
+			<Type>OEM</Type>
+			<Id>OEM</Id>
+		</Seller>
+        <Buyer>
+			<Type>Dealer</Type>
+			<Id>COMP-123</Id>
+        </Buyer>
+    </InventoryTransaction>
+</Inventory>

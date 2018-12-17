@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping SYSTEM
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <filter-def name="excludeInactive" condition="d_active = 1" />
+    <filter-def name="excludeMultiClaimAudit" condition="multi_claim_maintenance = 0" />
+    <filter-def name="excludeInactiveAddress" condition="address_active = 1" />
+</hibernate-mapping>

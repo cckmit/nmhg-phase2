@@ -1,0 +1,1 @@
+<#--just a blank ftl... it is needed when one of the opening or closing templates is not really needed-->

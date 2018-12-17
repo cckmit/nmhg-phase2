@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jboss-web>
+ <context-root>/</context-root>
+  	<resource-ref>
+        <res-ref-name>jdbc/twms-ds</res-ref-name>
+        <res-type>javax.sql.DataSource</res-type>
+        <jndi-name>java:jdbc/twms-ds</jndi-name>
+    </resource-ref>
+    <replication-config>
+             <replication-trigger>SET</replication-trigger>
+             <replication-granularity>SESSION</replication-granularity>
+             <replication-field-batch-mode>true</replication-field-batch-mode>
+     </replication-config>
+  </jboss-web>

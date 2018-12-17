@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping SYSTEM
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="tavant.twms.domain.catalog">
+  <query name="miscPartConfigForDealerAndPart">
+    <![CDATA[
+    	select miscItemConfigs from MiscellaneousItemCriteria miscCriteria 
+    	join miscCriteria.itemConfigs miscItemConfigs
+    	left outer join miscCriteria.dealerGroup specifiedDealerGroup,
+    	DealerGroup dealerGroup join dealerGroup.includedDealers dealerInGroup
+		where 
+		(miscCriteria.serviceProvider is null or miscCriteria.serviceProvider.id = :serviceProviderId) and
+		( specifiedDealerGroup is null  or 
+			  (  specifiedDealerGroup.nodeInfo.treeId=dealerGroup.nodeInfo.treeId and 
+			     specifiedDealerGroup.nodeInfo.lft <= dealerGroup.nodeInfo.lft and 
+			     dealerGroup.nodeInfo.rgt <= specifiedDealerGroup.nodeInfo.rgt and 
+			     :serviceProviderId = dealerInGroup
+		      ) 
+		  ) and miscItemConfigs.miscellaneousItem.partNumber = :miscPartNumber
+		  order by miscCriteria.relevanceScore desc
+    ]]>
+  </query>
+  <query name="miscPartConfigForPart">
+    <![CDATA[
+    	select miscItemConfigs from MiscellaneousItemCriteria miscCriteria 
+    	join miscCriteria.itemConfigs miscItemConfigs
+		where 
+		miscItemConfigs.miscellaneousItem.partNumber = :miscPartNumber
+		order by miscCriteria.relevanceScore desc
+    ]]>
+  </query>
+</hibernate-mapping>

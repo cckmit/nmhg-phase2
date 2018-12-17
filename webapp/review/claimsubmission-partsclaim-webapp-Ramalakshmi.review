@@ -1,0 +1,540 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Review id="claimsubmission-partsclaim-webapp">
+  <ReviewIssue id="G59G9S35">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-02-04 :: 16:44:22:961 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-02-04 :: 16:45:04:602 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ramalakshmi</ReviewerId>
+    <AssignedTo>Lavin</AssignedTo>
+    <ReviewTime>15</ReviewTime>
+    <File line="48">src/main/java/tavant/twms/domain/claim/OEMPartReplacedValidator.java</File>
+    <Type>item.type.label.missing</Type>
+    <Severity>item.severity.label.normal</Severity>
+    <Summary>Include the validation code that was removed</Summary>
+    <Description>Rather comment out and add a TO-DO to revisit later</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+    <ReworkTime></ReworkTime>
+  </ReviewIssue>
+  <ReviewIssue id="G59GJ7R9">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-02-04 :: 16:51:43:173 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-02-04 :: 16:52:46:420 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ramalakshmi</ReviewerId>
+    <AssignedTo>Lavin</AssignedTo>
+    <ReviewTime>15</ReviewTime>
+    <File line="557">src/main/java/tavant/twms/web/claim/ClaimsAction.java</File>
+    <Type>item.type.label.programLogic</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>Remove claim.getClaimCompetitorModel() == null check </Summary>
+    <Description>If claim.getClaimCompetitorModel() != null ----&gt; claimedItem.getItemReference().isSerialized() should be false</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+    <ReworkTime></ReworkTime>
+  </ReviewIssue>
+  <ReviewIssue id="G59I2W3H">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-02-04 :: 17:35:00:797 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-02-04 :: 17:35:29:844 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ramalakshmi</ReviewerId>
+    <AssignedTo>Lavin</AssignedTo>
+    <ReviewTime>5</ReviewTime>
+    <File line="761">src/main/java/tavant/twms/web/claim/ClaimsAction.java</File>
+    <Type>item.type.label.programLogic</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>We need an else loop to handle other BUs parts claim calculation</Summary>
+    <Description>We need an else loop to handle other BUs parts claim calculation</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+    <ReworkTime></ReworkTime>
+  </ReviewIssue>
+  <ReviewIssue id="G59I5IFC">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-02-04 :: 17:37:03:048 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-02-04 :: 17:37:34:861 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ramalakshmi</ReviewerId>
+    <AssignedTo>Lavin</AssignedTo>
+    <ReviewTime>15</ReviewTime>
+    <File line="1632">src/main/java/tavant/twms/web/claim/ClaimsAction.java</File>
+    <Type>item.type.label.programLogic</Type>
+    <Severity>item.severity.label.normal</Severity>
+    <Summary>validate method is not the place to set setSerialized(false)</Summary>
+    <Description>It should happen in save/submit</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+    <ReworkTime></ReworkTime>
+  </ReviewIssue>
+  <ReviewIssue id="G59IC4TF">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-02-04 :: 17:42:12:003 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-02-04 :: 17:44:29:676 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ramalakshmi</ReviewerId>
+    <AssignedTo>Lavin</AssignedTo>
+    <ReviewTime>15</ReviewTime>
+    <File line="1746">src/main/java/tavant/twms/web/claim/ClaimsAction.java</File>
+    <Type>item.type.label.other</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>Installation Date validation</Summary>
+    <Description>Will the system validate installationDate for competitor Model also? From the code written, it doesn't look like and ideally we should.</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+    <ReworkTime></ReworkTime>
+  </ReviewIssue>
+  <ReviewIssue id="G59IGZ21">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-02-04 :: 17:45:57:817 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-02-04 :: 17:46:29:958 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ramalakshmi</ReviewerId>
+    <AssignedTo>Lavin</AssignedTo>
+    <ReviewTime></ReviewTime>
+    <File line="1899">src/main/java/tavant/twms/web/claim/ClaimsAction.java</File>
+    <Type>item.type.label.irrelevant</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>We don't need the canPolicyBeComputed check as its implemented only for campaign claim</Summary>
+    <Description>We don't need the canPolicyBeComputed check as its implemented only for campaign claim</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+    <ReworkTime></ReworkTime>
+  </ReviewIssue>
+  <ReviewIssue id="G59IVMLH">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-02-04 :: 17:57:21:509 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-02-04 :: 18:50:42:720 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ramalakshmi</ReviewerId>
+    <AssignedTo>Lavin</AssignedTo>
+    <ReviewTime>15</ReviewTime>
+    <File line="1914">src/main/java/tavant/twms/web/claim/ClaimsAction.java</File>
+    <Type>item.type.label.programLogic</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>setClaimProcessedAs should be diffrent for Parts Claim</Summary>
+    <Description>if serialized part no coverage - VALID_ITEM_NO_WARRANTY
+if serialized part out of warranty - VALID_ITEM_OUT_OF_WARRANTY
+
+if non serialized part no coverage - VALID_ITEM_OUT_OF_WARRANTY
+</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+    <ReworkTime></ReworkTime>
+  </ReviewIssue>
+  <ReviewIssue id="G59KTABH">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-02-04 :: 18:51:31:517 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-02-04 :: 18:52:37:377 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ramalakshmi</ReviewerId>
+    <AssignedTo>Lavin</AssignedTo>
+    <ReviewTime>15</ReviewTime>
+    <File line="1998">src/main/java/tavant/twms/web/claim/ClaimsAction.java</File>
+    <Type>item.type.label.codingStandards</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>validateClaim API should not be setting setSerialized(false)</Summary>
+    <Description>validateClaim API should not be setting setSerialized(false)</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+    <ReworkTime></ReworkTime>
+  </ReviewIssue>
+  <ReviewIssue id="G59L53DO">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-02-04 :: 19:00:42:396 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-02-04 :: 19:02:00:427 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ramalakshmi</ReviewerId>
+    <AssignedTo>Lavin</AssignedTo>
+    <ReviewTime>15</ReviewTime>
+    <File line="4248">src/main/java/tavant/twms/web/claim/ClaimsAction.java</File>
+    <Type>item.type.label.codingStandards</Type>
+    <Severity>item.severity.label.normal</Severity>
+    <Summary>Setting setPartInstalled(false) should not happen from validateClaimForLaborDetail</Summary>
+    <Description>Setting setPartInstalled(false) should not happen from validateClaimForLaborDetail.Ideally on coming from Page 1/2 this should have been taken care through the hidden fields. </Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+    <ReworkTime></ReworkTime>
+  </ReviewIssue>
+  <ReviewIssue id="G59LD5RD">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-02-04 :: 19:06:58:729 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-02-04 :: 19:12:02:974 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ramalakshmi</ReviewerId>
+    <AssignedTo>Lavin</AssignedTo>
+    <ReviewTime>15</ReviewTime>
+    <File line="212">src/main/java/tavant/twms/web/claim/create/ClaimFormListingAction.java</File>
+    <Type>item.type.label.programLogic</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>Redundant STOCK logic</Summary>
+    <Description>We  don't need the logic of STOCK of major components as we have to show only major components with source MAJORCOMPONENTREGISTRATION
+which would have been delivered and in RETAIL always.</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+    <ReworkTime></ReworkTime>
+  </ReviewIssue>
+  <ReviewIssue id="G59LKO1M">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-02-04 :: 19:12:49:018 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-02-04 :: 19:13:14:251 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ramalakshmi</ReviewerId>
+    <AssignedTo>Lavin</AssignedTo>
+    <ReviewTime>15</ReviewTime>
+    <File line="36">src/main/java/tavant/twms/web/claim/create/NewPartsClaimAction.java</File>
+    <Type>item.type.label.suggestion</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>Can we get rid of COMPETITOR_MODEL constant in NewPartsClaimAction</Summary>
+    <Description></Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+    <ReworkTime></ReworkTime>
+  </ReviewIssue>
+  <ReviewIssue id="G59LMCLM">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-02-04 :: 19:14:07:498 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-02-04 :: 19:14:36:324 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ramalakshmi</ReviewerId>
+    <AssignedTo>Lavin</AssignedTo>
+    <ReviewTime>15</ReviewTime>
+    <File line="94">src/main/java/tavant/twms/web/claim/create/NewPartsClaimAction.java</File>
+    <Type>item.type.label.codingStandards</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>Rename method setCompetitorModelsForDialog to setCompetitorModels()</Summary>
+    <Description>Rename method setCompetitorModelsForDialog to setCompetitorModels()</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+    <ReworkTime></ReworkTime>
+  </ReviewIssue>
+  <ReviewIssue id="G59LNA4K">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-02-04 :: 19:14:50:948 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-02-04 :: 19:16:29:443 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ramalakshmi</ReviewerId>
+    <AssignedTo>Lavin</AssignedTo>
+    <ReviewTime>5</ReviewTime>
+    <File line="107">src/main/java/tavant/twms/web/claim/create/NewPartsClaimAction.java</File>
+    <Type>item.label.unset</Type>
+    <Severity>item.severity.label.major</Severity>
+    <Summary>Use converter</Summary>
+    <Description>Why do we need to iterate over the list of ClaimCompetitorModel to set it back on claim. Can't it be converted directly from form?</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+    <ReworkTime></ReworkTime>
+  </ReviewIssue>
+  <ReviewIssue id="G59LPVJP">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-02-04 :: 19:16:52:021 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-02-04 :: 19:17:11:755 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ramalakshmi</ReviewerId>
+    <AssignedTo>Lavin</AssignedTo>
+    <ReviewTime>2</ReviewTime>
+    <File line="131">src/main/java/tavant/twms/web/claim/create/NewPartsClaimAction.java</File>
+    <Type>item.type.label.codingStandards</Type>
+    <Severity>item.severity.label.trivial</Severity>
+    <Summary>Rename error.newClaim.partNumberrequired to error.newClaim.partNumberRequired</Summary>
+    <Description></Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+    <ReworkTime></ReworkTime>
+  </ReviewIssue>
+  <ReviewIssue id="G59LUA7E">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-02-04 :: 19:20:17:642 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-02-04 :: 19:20:50:501 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ramalakshmi</ReviewerId>
+    <AssignedTo>Lavin</AssignedTo>
+    <ReviewTime></ReviewTime>
+    <File line="81">src/main/java/tavant/twms/web/multipleinventorypicker/MultipleInventoryPickerAction.java</File>
+    <Type>item.type.label.other</Type>
+    <Severity>item.severity.label.trivial</Severity>
+    <Summary>Any reason why this was removed from line 81?</Summary>
+    <Description>Any reason why this was removed from line 81?</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+    <ReworkTime></ReworkTime>
+  </ReviewIssue>
+  <ReviewIssue id="G59LX2WS">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-02-04 :: 19:22:28:156 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-02-04 :: 19:23:01:515 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ramalakshmi</ReviewerId>
+    <AssignedTo>Lavin</AssignedTo>
+    <ReviewTime>5</ReviewTime>
+    <File line="233">src/main/java/tavant/twms/web/print/PrintClaimAction.java</File>
+    <Type>item.type.label.codingStandards</Type>
+    <Severity>item.severity.label.normal</Severity>
+    <Summary>Remove redundant variable/setter logic from PrintClaimAction &amp; PrintClaimObject</Summary>
+    <Description>Remove redundant variable/setter logic from PrintClaimAction &amp; PrintClaimObject</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+    <ReworkTime></ReworkTime>
+  </ReviewIssue>
+  <ReviewIssue id="G59M8YH6">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-02-04 :: 19:31:42:282 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-02-04 :: 19:32:10:954 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ramalakshmi</ReviewerId>
+    <AssignedTo>Lavin</AssignedTo>
+    <ReviewTime>5</ReviewTime>
+    <File line="288">src/main/java/tavant/twms/web/warranty/BaseManageWarrantyAction.java</File>
+    <Type>item.type.label.other</Type>
+    <Severity>item.severity.label.trivial</Severity>
+    <Summary>What is this method prepareInventoryItemComposition meant for?</Summary>
+    <Description></Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+    <ReworkTime></ReworkTime>
+  </ReviewIssue>
+  <ReviewIssue id="G59MTXGL">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-02-04 :: 19:48:00:741 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-02-04 :: 19:48:41:773 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ramalakshmi</ReviewerId>
+    <AssignedTo>Lavin</AssignedTo>
+    <ReviewTime>2</ReviewTime>
+    <File line="2717">src/main/resources/messages_en.properties</File>
+    <Type>item.type.label.suggestion</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>Change Not Installed on TK Unit to Not Installed on Thermo King TSA</Summary>
+    <Description>Change Not Installed on TK Unit to Not Installed on Thermo King TSA</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+    <ReworkTime></ReworkTime>
+  </ReviewIssue>
+  <ReviewIssue id="G59MVNHP">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-02-04 :: 19:49:21:133 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-02-04 :: 19:49:56:133 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ramalakshmi</ReviewerId>
+    <AssignedTo>Lavin</AssignedTo>
+    <ReviewTime></ReviewTime>
+    <File line="32">src/main/resources/messages_en.properties</File>
+    <Type>item.type.label.codingStandards</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>Where is this label used? FD shows Specify Model only.</Summary>
+    <Description>Where is this label used? FD shows Specify Model only.</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+    <ReworkTime></ReworkTime>
+  </ReviewIssue>
+  <ReviewIssue id="G59MXKR7">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-02-04 :: 19:50:50:899 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-02-04 :: 19:51:20:805 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ramalakshmi</ReviewerId>
+    <AssignedTo>Lavin</AssignedTo>
+    <ReviewTime>5</ReviewTime>
+    <File line="410">src/main/resources/struts/claims.xml</File>
+    <Type>item.type.label.codingStandards</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>Rename action list_maj_components to list_major_components</Summary>
+    <Description></Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+    <ReworkTime></ReworkTime>
+  </ReviewIssue>
+  <ReviewIssue id="G59N04PZ">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-02-04 :: 19:52:50:087 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-02-04 :: 19:53:54:447 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ramalakshmi</ReviewerId>
+    <AssignedTo>Lavin</AssignedTo>
+    <ReviewTime></ReviewTime>
+    <File line="59">src/main/resources/struts/warrantyProcess.xml</File>
+    <Type>item.type.label.usability</Type>
+    <Severity>item.label.unset</Severity>
+    <Summary>What is this method listApplicableParts doing in ManageWarrantyAction?</Summary>
+    <Description>And there is no such method too!</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+    <ReworkTime></ReworkTime>
+  </ReviewIssue>
+  <ReviewIssue id="G59NDPQ9">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-02-04 :: 20:03:23:841 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-02-04 :: 20:04:37:467 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ramalakshmi</ReviewerId>
+    <AssignedTo>Lavin</AssignedTo>
+    <ReviewTime>15</ReviewTime>
+    <File line="1">src/main/resources/tavant/twms/domain/claim/OEMPartReplaced-draftdetail-validation.xml</File>
+    <Type>item.type.label.programLogic</Type>
+    <Severity>item.severity.label.normal</Severity>
+    <Summary>Look into the removed validations from XML (OEMPartReplaced/PartsClaim). Ideally we should have see why the validation is failing and fix it</Summary>
+    <Description>Look into the removed validations from XML. Ideally we should have see why the validation is failing and fix it</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+    <ReworkTime></ReworkTime>
+  </ReviewIssue>
+  <ReviewIssue id="G59O4OBH">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-02-04 :: 20:24:21:725 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-02-04 :: 20:24:44:678 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ramalakshmi</ReviewerId>
+    <AssignedTo>Lavin</AssignedTo>
+    <ReviewTime>2</ReviewTime>
+    <File line="240">src/main/webapp/pages/secure/claims/forms/common/read/header.jsp</File>
+    <Type>item.type.label.programLogic</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>This label should be Part Serial Number</Summary>
+    <Description></Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+    <ReworkTime></ReworkTime>
+  </ReviewIssue>
+  <ReviewIssue id="G59O5ZLA">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-02-04 :: 20:25:22:990 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-02-04 :: 20:25:51:240 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ramalakshmi</ReviewerId>
+    <AssignedTo>Ramalakshmi</AssignedTo>
+    <ReviewTime>5</ReviewTime>
+    <File line="332">src/main/webapp/pages/secure/claims/forms/common/read/header.jsp</File>
+    <Type>item.type.label.codingStandards</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>Use only key/label from messages.properties.No hardcoding of labels in jsp</Summary>
+    <Description></Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+    <ReworkTime></ReworkTime>
+  </ReviewIssue>
+  <ReviewIssue id="G59OZ45P">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-02-04 :: 20:48:01:933 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-02-04 :: 20:48:29:630 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ramalakshmi</ReviewerId>
+    <AssignedTo>Lavin</AssignedTo>
+    <ReviewTime>5</ReviewTime>
+    <File line="62">src/main/webapp/pages/secure/claims/forms/common/write/failure.jsp</File>
+    <Type>item.type.label.programLogic</Type>
+    <Severity>item.severity.label.major</Severity>
+    <Summary>Causal Part default should happen on the same BU config used in the code</Summary>
+    <Description>Causal Part default should happen on the same BU config used in the code</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+    <ReworkTime></ReworkTime>
+  </ReviewIssue>
+  <ReviewIssue id="G5ALHQMO">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-02-05 :: 11:58:18:576 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-02-05 :: 11:58:46:529 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ramalakshmi</ReviewerId>
+    <AssignedTo>Lavin</AssignedTo>
+    <ReviewTime>5</ReviewTime>
+    <File line="332">src/main/webapp/pages/secure/claims/forms/common/read/header.jsp</File>
+    <Type>item.type.label.codingStandards</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>Avoid using direct text in JSP. Use keys from messages.properties only</Summary>
+    <Description>Avoid using direct text in JSP. Use keys from messages.properties only</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+    <ReworkTime></ReworkTime>
+  </ReviewIssue>
+  <ReviewIssue id="G5AO99NC">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-02-05 :: 13:15:42:168 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-02-05 :: 13:16:29:778 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ramalakshmi</ReviewerId>
+    <AssignedTo>Lavin</AssignedTo>
+    <ReviewTime>15</ReviewTime>
+    <File line="45">src/main/java/tavant/twms/web/claim/create/NewClaimAction.java</File>
+    <Type>item.type.label.codingStandards</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>Remove the constant from NewClaimAction and use LOVType only</Summary>
+    <Description>Rename method setCompetitorModelsForDialog to setCompetitorModels</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+    <ReworkTime></ReworkTime>
+  </ReviewIssue>
+  <ReviewIssue id="G5ASA6TJ">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-02-05 :: 15:08:23:623 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-02-05 :: 15:08:55:405 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ramalakshmi</ReviewerId>
+    <AssignedTo>Lavin</AssignedTo>
+    <ReviewTime>5</ReviewTime>
+    <File line="1897">src/main/java/tavant/twms/web/claim/ClaimsAction.java</File>
+    <Type>item.type.label.codingStandards</Type>
+    <Severity>item.severity.label.normal</Severity>
+    <Summary>Add a functional test case to test the policy computation for Parts claim</Summary>
+    <Description>Add a functional test case to test the policy computation for Parts claim</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+    <ReworkTime></ReworkTime>
+  </ReviewIssue>
+</Review>

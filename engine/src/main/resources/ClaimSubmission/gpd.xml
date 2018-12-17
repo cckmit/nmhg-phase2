@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process-diagram name="ClaimSubmission" width="853" height="417">
+  <node name="start" x="27" y="2" width="140" height="40">
+    <transition name="">
+      <label x="5" y="-10"/>
+    </transition>
+  </node>
+  <node name="isSMR" x="29" y="79" width="140" height="41">
+    <transition name="No">
+      <label x="-9" y="-7"/>
+    </transition>
+    <transition name="Yes">
+      <label x="5" y="-10"/>
+    </transition>
+  </node>
+  <node name="ClaimProcessingRulesCheck" x="227" y="80" width="194" height="40">
+    <transition name="Accept">
+      <label x="-18" y="-16"/>
+    </transition>
+    <transition name="Reject">
+      <label x="-13" y="-43"/>
+      <bendpoint w1="0" h1="112" w2="-137" h2="-4"/>
+    </transition>
+  </node>
+  <node name="ManualClaimAdjudication" x="361" y="196" width="201" height="40">
+    <transition name="Accept">
+      <label x="-8" y="-60"/>
+      <bendpoint w1="118" h1="-9" w2="2" h2="109"/>
+    </transition>
+    <transition name="Forward">
+      <label x="5" y="-10"/>
+    </transition>
+  </node>
+  <node name="Notify Payment" x="507" y="78" width="140" height="40">
+    <transition name="">
+      <label x="5" y="-10"/>
+    </transition>
+  </node>
+  <node name="end" x="712" y="83" width="140" height="40"/>
+  <node name="Respond to forwarded claim" x="366" y="325" width="188" height="40">
+    <transition name="Submit">
+      <label x="-21" y="-4"/>
+      <bendpoint w1="135" h1="0" w2="134" h2="129"/>
+      <bendpoint w1="133" h1="-124" w2="132" h2="5"/>
+    </transition>
+  </node>
+  <node name="Submit SMR Response" x="11" y="166" width="174" height="40">
+    <transition name="Reject">
+      <label x="5" y="-10"/>
+    </transition>
+    <transition name="Accept">
+      <label x="-5" y="-20"/>
+      <bendpoint w1="148" h1="-9" w2="-78" h2="77"/>
+    </transition>
+  </node>
+  <node name="Submit SMR Re-request" x="11" y="319" width="177" height="40">
+    <transition name="Re-Submit">
+      <label x="5" y="-10"/>
+      <bendpoint w1="130" h1="-4" w2="131" h2="149"/>
+      <bendpoint w1="129" h1="-146" w2="130" h2="7"/>
+    </transition>
+  </node>
+</process-diagram>

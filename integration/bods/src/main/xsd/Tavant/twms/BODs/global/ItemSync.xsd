@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://www.tavant.com/globalsync/itemsync" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.tavant.com/globalsync/itemsync" elementFormDefault="qualified">
+	<xs:include schemaLocation="../../Resources/Nouns/global/ApplicationAreaType.xsd"/>
+	<xs:element name="ClassCode">
+		<!--maxlength add-->
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="100"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="DataArea">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="ItemMaster" type="ItemMasterType" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Description">
+		<!--maxlength add-->
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="240"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="DivisionCode">
+		<!--maxlength add-->
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="240"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="Header">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="ItemId"/>
+				<!--Type : MACHINE,PARTS,ATTACHMENTS -->
+				<xs:element ref="Type"/>
+				<xs:element ref="Status" minOccurs="0"/>
+				<xs:element ref="UOM" minOccurs="0"/>
+				<xs:element ref="UnitPackaging" minOccurs="0"/>
+				<xs:element ref="Description" minOccurs="0"/>
+				<xs:element ref="UserArea" minOccurs="0"/>
+                <xs:element name="MarketingGroupCode" minOccurs="0">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:maxLength value="400"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+                <xs:element name="ServiceCategory" minOccurs="0">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:maxLength value="400"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Height" >
+		<!--maxlength add-->
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="4"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="Id">
+		<!--maxlength add-->
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="50"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="ItemClassCode">
+		<!--maxlength add-->
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="100"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="ItemId">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Id" minOccurs="0"/>
+                <xs:element name="BrandItemNumbers" type="BrandItemNumbersType" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+    <xs:complexType name="BrandItemNumbersType">
+        <xs:sequence>
+            <xs:element name="BrandItemNumber" type="BrandItemNumberType" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="BrandItemNumberType">
+        <xs:sequence>
+            <xs:element name="ItemNumber" type="xs:string" minOccurs="0"/>
+            <xs:element name="Brand"  minOccurs="0">
+            <xs:simpleType>
+	        <xs:restriction base="xs:string">
+		    <xs:maxLength value="30" />
+		      <xs:enumeration value="HYSTER" />
+		     <xs:enumeration value="YALE" />
+		      <xs:enumeration value="UTILEV" />
+		      <xs:enumeration value="">
+				<xs:annotation>
+					<xs:documentation>Blank</xs:documentation>
+				</xs:annotation>
+			  </xs:enumeration>
+	     </xs:restriction>
+         </xs:simpleType>
+         </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+	<xs:complexType name="ItemMasterType">
+		<xs:sequence>
+			<xs:element ref="Header"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Length">
+		<!--maxlength add-->
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="5"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="LongDescription">
+		<!--maxlength add-->
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="4000"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="ManufName">
+		<!--maxlength add-->
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="100"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="ModelCode">
+		<!--maxlength add-->
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="100"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="ModelCodeDescription">
+		<!--maxlength add-->
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="240"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="PDIFormName">
+		<!--maxlength add-->
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="100"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="SerialStatusEnabled">
+		<!--maxlength add-->
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="100"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="ServicePart">
+		<!--maxlength add-->
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="1"/>
+				<xs:enumeration value="Y"/>
+				<xs:enumeration value="N"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="ProductCode">
+		<!--maxlength add-->
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="100"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="ProductCodeDescription">
+		<!--maxlength add-->
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="240"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="ProductFamilyCode">
+		<!--maxlength add-->
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="100"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="Status">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Code" minOccurs="0">
+					<!--maxlength add-->
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+						<xs:maxLength value="30"/>
+						<xs:enumeration value="Active"/>
+						<xs:enumeration value="Inactive"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+    <xs:element name="SupersessionItem">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="ItemNumber" type="xs:string"/>
+                <xs:element  name="StartDate" type="xs:date"/>
+                <xs:element  name="EndDate" type="xs:date"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+	<xs:element name="SyncItemMaster">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="ApplicationArea" type="ApplicationAreaType"/>
+				<xs:element ref="DataArea"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Type">
+		<!--maxlength add-->
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="30"/>
+				<xs:enumeration value="MACHINE" />
+	            <xs:enumeration value="PART" />
+	            <xs:enumeration value="SUPPLIERPARTS" />
+	            <xs:enumeration value="OPTIONS" />
+	            <xs:enumeration value="SERIES" />
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="UOM" type="xs:string"/>
+	<xs:element name="UnitPackaging">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Width"/>
+				<xs:element ref="Height"/>
+				<xs:element ref="Length"/>
+				<xs:element name="WeightQuantity" type="xs:string" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="SuppliersType">
+		<xs:sequence>
+			<xs:element name="Supplier" type="SupplierType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SupplierType">
+		<xs:sequence>
+			<xs:element name="SupplierNumber">
+				<!--maxlength add-->
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="40"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="SupplierSiteCode" minOccurs="0">
+				<!--maxlength add-->
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="100"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="SupplierItemNumber">
+				<!--maxlength add-->
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="40"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+            <xs:element name="SupplierLocations" type="SupplierLocationsType"/>
+		</xs:sequence>
+	</xs:complexType>
+    <xs:complexType name="SupplierLocationsType">
+        <xs:sequence>
+            <xs:element name="SupplierLocation" type="SupplierLocationType" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="SupplierLocationType">
+        <xs:sequence>
+        <xs:element name="NMHGLocation">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:maxLength value="4"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:element>
+        <xs:element name="FromDate" type="xs:date" minOccurs="0"/>
+		<xs:element name="ToDate" type="xs:date" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+	<xs:complexType name="DescriptionsType">
+		<xs:sequence>
+			<xs:element name="Description" type="DescriptionType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DescriptionType">
+		<xs:sequence>
+			<xs:element name="DescriptionLanguage">
+				<!--maxlength add-->
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="5"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="ItemDescription">
+				<!--maxlength add-->
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="240"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="UserArea">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="LongDescription" minOccurs="0"/>
+				<xs:element ref="ProductCodeDescription" minOccurs="0"/>
+				<xs:element ref="ModelCodeDescription" minOccurs="0"/>
+				<xs:element ref="ManufName" minOccurs="0"/>
+				<xs:element ref="DivisionCode" minOccurs="0"/>
+				<xs:element ref="ItemClassCode" minOccurs="0"/>
+				<xs:element ref="ClassCode" minOccurs="0"/>
+				<xs:element ref="SupersessionItem" minOccurs="0"/>
+				<xs:element ref="ProductCode" minOccurs="0"/>
+				<xs:element ref="ProductFamilyCode" minOccurs="0"/>
+				<xs:element ref="ModelCode" minOccurs="0"/>
+				<xs:element ref="PDIFormName" minOccurs="0"/>
+				<!-- ServicePart : Y, N-->
+				<xs:element ref="ServicePart" minOccurs="0"/>
+				<xs:element ref="SerialStatusEnabled" minOccurs="0"/>
+				<xs:element name="Descriptions" type="DescriptionsType" minOccurs="0"/>
+				<xs:element name="Suppliers" type="SuppliersType" minOccurs="0"/>
+                <xs:element name="SpecialOptionStatus" type="xs:string" minOccurs="0"/>
+                <xs:element name="SpecialOptionStatusDesc" type="xs:string" minOccurs="0"/>
+                <xs:element name="DieselTier" minOccurs="0">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:maxLength value="30"/>
+                            <xs:enumeration value="A"/>
+                            <xs:enumeration value="B"/>
+                            <xs:enumeration value="C"/>
+                            <xs:enumeration value="E"/>
+                            <xs:enumeration value="">
+								<xs:annotation>
+									<xs:documentation>Blank</xs:documentation>
+								</xs:annotation>
+							</xs:enumeration>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+                <xs:element name="ModelPower" type="xs:string" minOccurs="0"/>
+                <xs:element name="ModelPowerDescr" type="xs:string" minOccurs="0"/>
+                <xs:element name="Brand" minOccurs="0">
+                <xs:simpleType>
+					<xs:restriction base="xs:string">
+	                 <xs:maxLength value="30" />
+	                 <xs:enumeration value="HYSTER" />
+	                 <xs:enumeration value="YALE" />
+	                <xs:enumeration value="UTILEV" />
+	                <xs:enumeration value="">
+						<xs:annotation>
+							<xs:documentation>Blank</xs:documentation>
+						</xs:annotation>
+					</xs:enumeration>
+                    </xs:restriction>
+				</xs:simpleType>
+				</xs:element>
+                <xs:element name="Company" type="xs:string" minOccurs="0"/>
+                <xs:element name="BuildPlant" type="xs:string" minOccurs="0"/>
+                <xs:element name="OppositeSeriesCode" type="xs:string" minOccurs="0"/>
+                <xs:element name="OptionDesignation" type="xs:string" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Width">
+		<!--maxlength add-->
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="10"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:simpleType name="uomtype">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="50"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

@@ -1,0 +1,36 @@
+
+Message: Please provide SCHEMA name or DBLINK name for creating synonyms
+
+Enter value for p_in_schema_name: 
+old   8:   P_IN_SCHEMA_NAME := '&&P_IN_SCHEMA_NAME';
+new   8:   P_IN_SCHEMA_NAME := '';
+Enter value for p_in_dblink_name: LINK_R6
+old   9:   P_IN_DBLINK_NAME := '&&P_IN_DBLINK_NAME';
+new   9:   P_IN_DBLINK_NAME := 'LINK_R6';
+
+'*********** Validation of Synonyms created for Schema Name or DBLink ***********'
+
+Number of valid tables:
+
+COUNT(SYNONYM_NAME)                                                             
+-------------------                                                             
+                446                                                             
+
+Number of Synonyms created for valid tables:
+
+COUNT_SYNONYMS DB_LINK                                                          
+-------------- ----------                                                       
+           446 LINK_R6.CH                                                       
+               EERS                                                             
+                                                                                
+
+Synonyms are not created for the below tables:
+
+'*********** End of Validation of Synonyms created for Schema Name or DBLink ***********'
+
+Message: Refer LOG_3_CREATE_AND_VALIDATE_SYNONYMS.log before proceeding.
+
+Message: Next process ==> Creating Staging Area with Staging Table and Constraints
+
+Message: Please Execute TAV_GIM_CREATE_STAGING_AREA.bat to create staging area.
+

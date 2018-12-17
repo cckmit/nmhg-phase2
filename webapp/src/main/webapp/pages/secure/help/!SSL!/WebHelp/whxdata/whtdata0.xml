@@ -1,0 +1,171 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<tocdata>
+<book name="Admin" >
+  <book name="Before you Begin" >
+    <item name="Introduction" url="Before_you_Begin/Introduction.htm" />
+    <item name="Copyright" url="Before_you_Begin/Copyright.htm" />
+    <item name="Before you Begin" url="Before_you_Begin/Before_you_Begin.htm" />
+    <item name="Common Application Features" url="Before_you_Begin/Common_Application_Features.htm" />
+  </book>
+  <book name="Warranty Admin" >
+    <item name="Warranty Admin" url="Warranty_Admin/Warranty_Admin.htm" />
+    <item name="Manage Business Configurations" url="Warranty_Admin/Manage_Business_Configurations.htm" />
+    <item name="Policy Definition" url="Warranty_Admin/Policy_Definition.htm" />
+    <book name="Manage Flat Rates" >
+      <item name="Flat Rates" url="Warranty_Admin/Flat_Rates.htm" />
+      <item name="Labor Rates" url="Warranty_Admin/Labor_Rates.htm" />
+      <item name="Travel Rates" url="Warranty_Admin/Travel_Rates.htm" />
+    </book>
+    <item name="Part Return Configuration" url="Warranty_Admin/Part_Return_Configuration.htm" />
+    <book name="Manage Claim Payment" >
+      <item name="Manage Claim Payment" url="Warranty_Admin/Manage_Claim_Payment.htm" />
+      <item name="Create Claim Payment Modifier" url="Warranty_Admin/Create_Claim_Payment_Modifier.htm" />
+      <item name="Payment Definition" url="Warranty_Admin/Configure_Claim_Payment_Modifier.htm" />
+    </book>
+    <book name="Manage Failure Structure" >
+      <item name="Failure Structure" url="Warranty_Admin/Failure_Structure.htm" />
+      <item name="Product Failure Hierarchy" url="Warranty_Admin/Product_Failure_Hierarchy.htm" />
+      <item name="List Fault Locations" url="Warranty_Admin/List_Fault_Codes.htm" />
+      <item name="List Service Procedures" url="Warranty_Admin/List_Service_Procedures.htm" />
+      <item name="Maintain Failure URL of Failure Detail" url="Warranty_Admin/Maintain_Failure_URL_of_Failure_Detail.htm" />
+    </book>
+    <book name="Manage Groups" >
+      <item name="Manage Groups" url="Warranty_Admin/Manage_Groups.htm" />
+      <item name="Item Groups" url="Warranty_Admin/Item_Groups.htm" />
+      <item name="Dealer Groups" url="Warranty_Admin/Dealer_Groups.htm" />
+      <item name="User Groups" url="Warranty_Admin/User_Groups.htm" />
+    </book>
+    <item name="Manage Business Rule Groups" url="Warranty_Admin/Manage_Business_Rule_Groups.htm" />
+    <item name="Business Rules" url="Warranty_Admin/Business_Rules.htm" />
+    <item name="Business Conditions" url="Warranty_Admin/Business_Conditions.htm" />
+    <item name="Manage User Availability" url="Warranty_Admin/Manage_User_Availability.htm" />
+    <book name="Field Modification" >
+      <item name="Field Modification" url="Warranty_Admin/Service_Campaign.htm" />
+      <item name="Related Field Modifications" url="Warranty_Admin/Related_Field_Modifications.htm" />
+    </book>
+    <item name="Manage Warehouses" url="Warranty_Admin/Warehouses.htm" />
+    <item name="List of Values" url="Warranty_Admin/List_of_Values.htm" />
+    <item name="Manage Alarm Code" url="Warranty_Admin/Manage_Alarm_Code.htm" />
+    <book name="Additional Attributes" >
+      <item name="Create/Update Attributes" url="Warranty_Admin/Create_Update_Attributes.htm" />
+      <item name="Associate/Dissociate Inventory Attributes" url="Warranty_Admin/Associate_Dissociate_Inventory_Attributes.htm" />
+      <item name="Associate/Dissociate Part Attributes" url="Warranty_Admin/Associate_Dissociate_Part_Attributes.htm" />
+    </book>
+    <item name="View Supplier" url="Warranty_Admin/View_Supplier.htm" />
+    <item name="View Labels" url="Warranty_Admin/View_Labels.htm" />
+    <item name="Manage Labor Split" url="Warranty_Admin/Manage_Labor_Split.htm" />
+    <item name="List Models" url="Warranty_Admin/List_Models.htm" />
+    <item name="UOM Mappings" url="Warranty_Admin/UOM_Mappings.htm" />
+    <item name="Miscellaneous Parts" url="Warranty_Admin/Manage_Miscellaneous_Parts.htm" />
+    <item name="Manage Custom Reports" url="Warranty_Admin/Manage_Custom_Reports.htm" />
+    <item name="Cost Category Configuration" url="Warranty_Admin/Cost_Category_Configuration.htm" />
+    <item name="Manage LOA Schemes" url="Warranty_Admin/Manage_LOA_Schemes.htm" />
+    <item name="Manage Additional Labour Eligibility" url="Warranty_Admin/Manage_Additional_Labour_Eligibility.htm" />
+    <item name="Manage Inclusive Job Codes" url="Warranty_Admin/Manage_Inclusive_Job_Codes.htm" />
+    <item name="Dealer Summary" url="Warranty_Admin/Dealer_Summary.htm" />
+  </book>
+  <book name="Claims" >
+    <book name="Claim Submission" >
+      <item name="Claim Submission" url="Claims/Claim_Submission.htm" />
+      <item name="Machine Claims" url="Claims/Machine_Claims.htm" />
+      <item name="Parts Claims" url="Claims/Parts_Claims_New.htm" />
+      <item name="Field Modification Claims" url="Claims/Field_Modification_Claims.htm" />
+    </book>
+    <item name="Claim Validation" url="Claims/Claim_Validation.htm" />
+    <item name="Claim Attributes" url="Claims/Claim_Attributes.htm" />
+    <item name="Processor Review" url="Claims/Processor_Review.htm" />
+    <book name="Claim Folders" >
+      <item name="Claim Folders" url="Claims/Claim_Folders.htm" />
+      <item name="Draft" url="Claims/Draft.htm" />
+      <item name="On Hold" url="Claims/On_Hold.htm" />
+      <item name="Advice Request" url="Claims/Advice_Request.htm" />
+      <item name="Forwarded" url="Claims/Request_for_Information.htm" />
+      <item name="Replies" url="Claims/Replies.htm" />
+      <item name="Appealed" url="Claims/Appealed.htm" />
+      <item name="Transferred" url="Claims/Transferred.htm" />
+      <item name="Service Manager Response" url="Claims/Service_Manager_Response.htm" />
+      <item name="Service Manager Review" url="Claims/Service_Manager_Review.htm" />
+      <item name="Transfer/Re-process" url="Claims/Transfer_Re-process.htm" />
+    </book>
+    <item name="Search Claims" url="Claims/Search_Claims.htm" />
+    <item name="Claim Details" url="Claims/Claim_Details.htm" />
+    <item name="Policy Details" url="Claims/Policy_Details.htm" />
+  </book>
+  <book name="Inventory" >
+    <item name="Inventory" url="Inventory/Inventory.htm" />
+    <item name="Stock" url="Inventory/Stock.htm" />
+    <item name="Retailed" url="Inventory/Retailed.htm" />
+    <item name="Equipment Details" url="Inventory/Equipment_Details.htm" />
+    <item name="Fleet Inventory Management" url="Inventory/Fleet_Inventory_Management_.htm" />
+    <item name="Dealer to Dealer Transfer" url="Inventory/Dealer_to_Dealer_Transfer.htm" />
+    <item name="Warranty Registration" url="Inventory/Warranty_Registration.htm" />
+    <item name="Equipment Transfer Report" url="Inventory/Equipment_Transfer_Report.htm" />
+    <item name="Retail Machine Transfer" url="Inventory/Retail_Machine_Transfer.htm" />
+    <item name="Scrap/Unscrap Inventories" url="Inventory/Scrap_Inventories.htm" />
+    <item name="Extended Warranty Purchase" url="Inventory/Extended_Warranty_Purchase.htm" />
+    <item name="Manage Warranty Coverage" url="Inventory/Manage_Warranty_Coverage.htm" />
+    <item name="GoodWill Warranty Extension" url="Inventory/GoodWill_Warranty_Extension.htm" />
+    <item name="Search Inventory" url="Inventory/Search_Inventory.htm" />
+  </book>
+  <book name="Field Modifications" >
+    <item name="Pending Campaigns" url="Field_Modifications/Pending_Campaigns.htm" />
+    <item name="Search Campaigns" url="Field_Modifications/Search_Campaigns.htm" />
+  </book>
+  <book name="Part Returns" >
+    <book name="Part Returns Folders" >
+      <item name="Part Return Folders" url="Part_Returns/Part_Return_Folders.htm" />
+      <item name="Due Parts" url="Part_Returns/Due_Parts.htm" />
+      <item name="Overdue Parts" url="Part_Returns/Overdue_Parts.htm" />
+      <item name="Shipment Generated" url="Part_Returns/Shipment_Generated.htm" />
+      <item name="Parts Shipped" url="Part_Returns/Parts_Shipped.htm" />
+    </book>
+    <item name="Shipment Tag" url="Part_Returns/Shipment_Tag.htm" />
+    <item name="Due Parts Receipt" url="Part_Returns/Due_Parts_Receipt.htm" />
+    <item name="Due Parts Inspection" url="Part_Returns/Due_Parts_Inspection.htm" />
+    <item name="Search Parts" url="Part_Returns/Search_Parts.htm" />
+  </book>
+  <book name="Parts Recovery" >
+    <item name="Awaiting Shipment" url="Parts_Recovery/Awaiting_Shipment.htm" />
+    <item name="Awaiting Shipment To WareHouse" url="Parts_Recovery/Awaiting_Shipment_To_WareHouse.htm" />
+    <item name="Part Not In Warehouse" url="Parts_Recovery/Part_Not_In_Warehouse.htm" />
+    <item name="Parts Recovery" url="Parts_Recovery/Parts_Recovery.htm" />
+    <item name="Search Parts" url="Parts_Recovery/Search_Parts.htm" />
+    <item name="Supplier Parts Claimed" url="Parts_Recovery/Supplier_Parts_Claimed.htm" />
+    <item name="Supplier Parts Shipped" url="Parts_Recovery/Supplier_Parts_Shipped.htm" />
+  </book>
+  <book name="Supplier Recovery" >
+    <item name="Supplier Recovery" url="Supplier_Recovery/Supplier_Recovery.htm" />
+    <item name="Claims Due for Recovery" url="Supplier_Recovery/Claims_Due_for_Recovery.htm" />
+    <item name="Claims Under Recovery" url="Supplier_Recovery/Claims_Under_Recovery.htm" />
+    <item name="Multi Claim Maintenance" url="Supplier_Recovery/Multi_Claim_Maintenance.htm" />
+    <item name="Pending Recovery Initiation" url="Supplier_Recovery/Pending_Recovery_Initiation.htm" />
+    <item name="Search Supplier Recovery Claims" url="Supplier_Recovery/Search_Supplier_Recovery_Claims.htm" />
+  </book>
+  <book name="Contract Admin" >
+    <item name="Maintain Supplier Contracts" url="Contract_Admin/Maintain_Supplier_Contracts.htm" />
+    <item name="Manage Suppliers" url="Contract_Admin/Manage_Suppliers.htm" />
+    <item name="View Part Source History" url="Contract_Admin/View_Part_Source_History.htm" />
+  </book>
+  <book name="Items" >
+    <item name="Search Items" url="Items/Search_Items.htm" />
+  </book>
+  <book name="Reports" >
+    <item name="Reports" url="Reports/Reports.htm" />
+    <item name="Vendor Recovery Report" url="Reports/Vendor_Recovery_Report.htm" />
+    <item name="Download Management" url="Reports/Download_Management.htm" />
+    <item name="Upload Management" url="Reports/Upload_Management.htm" />
+  </book>
+  <book name="Settings" >
+    <item name="Profile" url="Settings/Profile.htm" />
+    <item name="User Management" url="Settings/User_Management.htm" />
+    <item name="End Customer Management" url="Settings/End_Customer_Management.htm" />
+    <item name="Manage User BU Mapping" url="Settings/Manage_User_BU_Mapping.htm" />
+    <item name="Email Subscription" url="Settings/Email_Subscription.htm" />
+    <item name="Map Service Provider Business Unit" url="Settings/Map_Service_Provider_Business_Unit.htm" />
+  </book>
+  <book name="Accounts" >
+    <item name="Remote Interactions Logs" url="Accounts/Remote_Interactions_Logs.htm" />
+  </book>
+</book>
+
+</tocdata>

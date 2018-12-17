@@ -1,0 +1,139 @@
+/*Buttons....*/
+
+.reply_button {
+    background-image: url( ../../../image/replyIcon.gif );
+}
+.create_claim_button {
+   /* background-image: url( ../../../image/createIcon.gif );*/
+}
+.dueParts_claimbased_button, .overDueParts_claimbased_button,
+.claimDueParts_locationbased_button, .claimOverDueParts_locationbased_button {
+	background-image: url( ../../../image/createIcon.gif );
+}
+.new_warranty_registration_button {
+  /*  background-image: url( ../../../image/createIcon.gif );*/
+}
+
+.warranty_transfer_button {
+    /*background-image: url( ../../../image/createIcon.gif );*/
+}
+
+.create_expression_button {
+    background-image: url( ../../../image/createIcon.gif );
+}
+
+.create_domainrule_button {
+   /* background-image: url( ../../../image/createIcon.gif );*/
+}
+
+.create_rule_group_button {
+    background-image: url( ../../../image/createIcon.gif );
+}
+
+.change_rule_groups_priority_button {
+    background-image: url( ../../../image/createIcon.gif );
+}
+
+.print_button {
+    background-image: url( ../../../image/printIcon.gif );
+}
+.refresh_button {
+    background-image: url( ../../../image/refreshIcon.gif );
+}
+.delete_button {
+    background-image: url( ../../../image/deleteIconDisabled.gif );
+    cursor: default !important;
+}
+.delete_enabled_button {
+    background-image: url( ../../../image/deleteIcon.gif );
+	cursor: default !important;
+}
+.create_paymentDefinition_button {
+	/*background-image: url( ../../../image/createIcon.gif );*/
+}
+.create_policy_button {
+	background-image: url( ../../../image/createIcon.gif );
+}
+.show_search_param_button {
+	background-image: url( ../../../image/infoIcon.gif );
+}
+
+.show_search_query_button {
+	/*background-image: url( ../../../image/infoIcon.gif );*/
+}
+
+.download_to_excel_button {
+    background-image: url(../../../image/downloadExcel.gif);
+}
+
+.create_warehouse_button {
+	background-image: url( ../../../image/createIcon.gif );
+}
+
+.create_lov_button {
+	background-image: url( ../../../image/createIcon.gif );
+}
+
+.create_itemScheme_button	{
+/*	background-image: url(../../../image/createIcon.gif);*/
+}
+
+.create_userScheme_button	{
+	/*background-image: url(../../../image/createIcon.gif);*/
+}
+
+.create_dealerScheme_button	{
+	/*background-image: url(../../../image/createIcon.gif);*/
+}
+
+.manage_groups_button	{
+	/*background-image: url(../../../image/createIcon.gif);*/
+}
+
+.create_itemGroup_button	{
+	/*background-image: url(../../../image/createIcon.gif);*/
+}
+
+.create_userGroups_button	{
+	/*background-image: url(../../../image/createIcon.gif);*/
+}
+
+.create_dealerGroups_button	{
+	/*background-image: url(../../../image/createIcon.gif);*/
+}
+
+.addLabels_faultCode_button	{
+	background-image: url(../../../image/createIcon.gif);
+}
+
+.addLabels_policy_button	{
+	background-image: url(../../../image/createIcon.gif);
+}
+
+.addLabels_retailItems_button	{
+	/*background-image: url(../../../image/tag_grey.png);*/
+}
+
+.addValue_lov_button	{
+	background-image: url(../../../image/createIcon.gif);
+}
+
+.create_campaign_button {
+	background-image: url(../../../image/createIcon.gif);
+}
+
+.create_paymentDefinition_button	{
+	/*background-image: url(../../../image/createIcon.gif);*/
+}
+
+.create_paymentModifier_button	{
+    /*background-image: url( ../../../image/createIcon.gif );*/
+}
+
+.create_claim_button	{
+   /* background-image: url( ../../../image/createIcon.gif );*/
+  
+}
+.create_shipper_button {
+	background-image: url( ../../../image/createIcon.gif );
+}

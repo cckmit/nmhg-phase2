@@ -1,0 +1,80 @@
+.closeButton {
+    background: url( "../../../image/CloseRuleWizard.gif" );
+    width: 21px;
+    height: 17px;
+    display: block;
+    cursor: pointer;
+}
+
+.spacer {
+    padding-right: 15px;
+}
+
+span.validateError {
+    background-image: url( ../../../image/alerts.gif );
+    width: 20px;
+    height: 25px;
+    vertical-align: bottom;
+    background-repeat: no-repeat;
+    position: absolute;
+    margin-left: 3px; /* can't use padding since position is absolute */
+}
+
+.searchButton {
+		vertical-align:middle;
+		cursor:pointer;
+		width:18px;
+		overflow:visible;
+		background:url(../../../image/searchIcon.gif);
+		background-repeat:no-repeat;
+		background-position:center;
+}
+
+.warColHeader {
+color:#5577B4;
+text-decoration:none;
+padding-left:4px;
+line-height:18px;
+border: 1px solid #ffffff;
+text-align: left;
+background-color:#DCE9F7;
+font-size:9pt;
+}
+
+.tableDataAmount {
+		border:0;
+		text-align:right;
+		background-color:#F3FBFE;
+		color:#545454;
+		padding:2px;
+}
+
+.tableDataWhiteBg {
+		border:0;
+		padding-left:2px;
+		padding-right:2px;
+		text-align:left;
+		background-color:#F3FBFE;
+		color:#545454;
+		height:20px;
+}
+
+#individual_Search {
+		background-color:#F3FBFE;
+		margin-left:4px;
+		margin-right:2px;
+		width:99%;
+		padding:1px;
+		
+}
+
+a.Datalink {
+color:blue;
+text-decoration:underline;
+
+}
+
+#CustomerDialogContent {
+background:#F5F5F5;
+border:1px solid #C3C3C3 !important;
+}

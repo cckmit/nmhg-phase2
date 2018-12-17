@@ -1,0 +1,67 @@
+# The Tavant Database Patch catalog
+#
+# This file contains a sequential list of all the database patches along with logical database name.	
+# (both sql scripts and java programs) that must be run to properly
+# construct and maintain a database in conjunction with the version
+# of code represented by the current version of this file. Patch names
+# shall be relative to tavant/dbPatches
+#
+# Entries in this will look like this (but will be left-justfied):
+#    main/Patchyyyymmdd.[sql|java] tavant
+# or
+#    iri/Patchyyyymmdd.[sql|java] dba
+#
+#All entries in patchCatalog.txt would consist of both the patch name
+#followed by a 'logical' database/schema name (seperated by whitespace). This
+#would name no longer be optional.
+#Failure to provide a 'logical' db name for all patches is considered to be
+#an error.
+#Failure to define all 'logical' names in the external properties file is an
+#error.
+#  Ex)
+#    main/Patch20030402.sql tavant
+#    main/Patch20030403.sql dba
+#    main/Patch20030404.sql amc_staging
+
+PATCH_CUSTOM_REPORT_ESESA-493.sql main twms_owner
+PROC_UPLOAD_INSTALL_BASE_UPLOAD1218.sql main twms_owner
+TRIGGER_UPDATE_INV_HRSINSERVICE_1218.sql main twms_owner
+PATCH_ADD_HOURS_ON_MACHINE_INV_TXN.sql main twms_owner
+ALTER_SEQUENCE_I18NDOMAIN_RULE_TEXT.sql main twms_owner
+VIEW_VENDOR_RECOVERY_EXTRACT_1228.sql main twms_owner
+FUNCTION_GET_REPLACED_PARTS_1228.sql main twms_owner
+FUNCTION_GET_SERIAL_NUMBER_1228.sql main twms_owner
+FUNCTION_GET_MODEL_DESC_1228.sql main twms_owner
+EMAIL_ADDED_CREATEDON_DATE.sql main twms_owner
+PATCH_COST_PRICE_UPLOAD.sql main twms_owner
+PROC_UPLOAD_COST_PRICE_VALIDATION.sql main twms_owner
+PROC_UPLOAD_COST_PRICE_UPLOAD.sql main twms_owner
+FUNCTION_GET_JOB_CODE_DESC.sql main twms_owner
+FUNCTION_CONVERT_TO_CURRENCY.sql main twms_owner
+PATCH_FOR_BU_CONFIGS_HUSS-332.sql main twms_owner
+PATCH_UPLOAD_STATUS.sql main twms_owner
+PROC_UPLOAD_COST_PRICE_UPLOAD_4.3.3.0.sql main twms_owner
+PROC_UPLOAD_COST_PRICE_VALIDATION_4.3.3.0.sql main twms_owner
+VIEW_VENDOR_RECOVERY_EXTRACT_4.3.3.0.sql main twms_owner
+PATCH_JBPM_TSESA_259.sql main twms_owner
+# Just to commit for 4.3.4.0 , since these were already committed with a wrong revision no.
+UPDATE_SMR_REVIEW_ESESA_35_0218.sql main twms_owner
+PATCH_CONFIG_DEALER_PERFORM_RMT.sql main twms_owner
+PATCH_REDUCED_CVG.sql main twms_owner
+PATCH_EWP_TSESA_221.sql main twms_owner
+PATCH_BU_CONFIG_TSESA_221.sql main twms_owner
+PATCH_TO_POPULATE_REQUESTED_BY_TSESA-202.sql main twms_owner
+PATCH_TO_POPULATE_UPDATE_ON_TSESA-202.sql main twms_owner
+PATCH_CCI-1201.sql main twms_owner
+PATCH_TSESA-233.sql main twms_owner
+PROC_UPLOAD_COST_PRICE_VALIDATION_4.3.7.0.sql main twms_owner
+PATCH_ALTER_SYNC_TRACKER.sql main twms_owner
+PATCH_ALTER_SYNC_TRACKER_1.sql main twms_owner
+PATCH_POPULATE_BUSI_UNIT_INFO_TSESA-424.sql main twms_owner
+PATCH_SYNC_TRACKER_PERFORMANCE-TWMS4.3-815.sql main twms_owner
+PATCH_TO_POPULATE_BUSINESS_ID_ESESA-171.sql main twms_owner
+PATCH_BU_CONFIG_TSESA_330.sql main twms_owner
+SYNC_TYPE_TSESA-436.sql main twms_owner
+PATCH_USER_CREATION.sql main twms_owner
+HUSS-824_ADD_PAYMENT_INFO.sql main twms_owner
+TSESA-579_DOMAIN_RULE_MIGRATION.sql main twms_owner

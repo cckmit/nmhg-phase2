@@ -1,0 +1,61 @@
+[MAS SUPPORT]
+SupportMas_Prj=1
+[Target:WebHelp]
+SupportMas_Prj=1
+ResultFileName=!SSL!\WebHelp\Supplier.htm
+SSLayoutType=2
+CreateProjectTime=10:47, March 21, 2013
+CreateProjectUser=alka.arora
+SupportMas_MPJ=1
+ActionID For Generation=1002
+Remove Folder with prompt=1
+ViewFileName=!SSL!\WebHelp\Supplier.htm
+ResultStatus=0
+BuildTimeHi=30287347
+BuildTimeLow=1883281312
+[Target:WebHelp Pro]
+SupportMas_Prj=1
+ResultFileName=!SSL!\WebHelp_Pro\Supplier.htm
+SSLayoutType=32
+ServerProjectName=Supplier
+CreateProjectTime=
+CreateProjectUser=
+SupportMas_MPJ=1
+[Target:Microsoft HTML Help]
+ResultFileName=!SSL!\Microsoft_HTML_Help\Supplier.chm
+SSLayoutType=1
+CreateProjectTime=
+CreateProjectUser=
+SupportMas_MPJ=1
+[Target:FlashHelp]
+ResultFileName=!SSL!\FlashHelp\Supplier.htm
+SSLayoutType=2
+CreateProjectTime=
+CreateProjectUser=
+SupportMas_MPJ=1
+[Target:Printed Documentation]
+ResultFileName=!SSL!\Printed_Documentation\Supplier.doc
+SSLayoutType=7
+[Target:XML Output]
+ResultFileName=!SSL!\XML_Output\Supplier.xml
+SSLayoutType=8192
+[PreSingleSource]
+Html Help Project=D:\Alka_Backup\Projects\NACCO\Phase 1\Online Help\Supplier\Supplier.hhp
+Table Of Content=D:\Alka_Backup\Projects\NACCO\Phase 1\Online Help\Supplier\Supplier.hhc
+Index=D:\Alka_Backup\Projects\NACCO\Phase 1\Online Help\Supplier\Supplier_merged$.hhk
+See Also Index=D:\Alka_Backup\Projects\NACCO\Phase 1\Online Help\Supplier\Supplier.hha
+Browse Sequence=D:\Alka_Backup\Projects\NACCO\Phase 1\Online Help\Supplier\Supplier.brs
+Topic Properties=D:\Alka_Backup\Projects\NACCO\Phase 1\Online Help\Supplier\Supplier.trs
+Active Folders=D:\Alka_Backup\Projects\NACCO\Phase 1\Online Help\Supplier\Supplier.trf
+Baggage Files=D:\Alka_Backup\Projects\NACCO\Phase 1\Online Help\Supplier\Supplier.trb
+Skin List=D:\Alka_Backup\Projects\NACCO\Phase 1\Online Help\Supplier\Supplier.trk
+OriginalHhk=D:\Alka_Backup\Projects\NACCO\Phase 1\Online Help\Supplier\Supplier.hhk
+Active Layout Names=D:\Alka_Backup\Projects\NACCO\Phase 1\Online Help\Supplier\Supplier.trl
+Default Topic=D:\Alka_Backup\Projects\NACCO\Phase 1\Online Help\Supplier\Before_you_Begin\Introduction.htm
+Build Tags0=9353;Print | Online
+Build Tags=
+Build Expression=
+Language ID=1033
+Language Name=English
+Language=D:\Alka_Backup\Projects\NACCO\Phase 1\Online Help\Supplier\RoboHHRE.lng
+Stop List=D:\Alka_Backup\Projects\NACCO\Phase 1\Online Help\Supplier\Supplier.stp

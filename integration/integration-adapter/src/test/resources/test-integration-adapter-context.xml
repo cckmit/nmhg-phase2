@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+       http://www.springframework.org/schema/beans/spring-beans-2.0.xsd"
+       default-autowire="byName">
+
+   	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+    <bean id="integrationAdapterDataSetup" class="tavant.twms.infra.DataSetup">
+        <property name="seedDataResources">
+            <list value-type="java.lang.String">
+                <value>classpath:SyncTrackerData.xls</value>
+            </list>
+        </property>
+        <property name="populateData" value="true"/>
+    </bean>
+
+</beans>

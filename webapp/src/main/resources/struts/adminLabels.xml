@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+  <package name="manageLabel" extends="struts-twms-default">
+
+    <action name="manageLabels"
+      class="tavant.twms.web.admin.labels.ManageLabelsAction" method="showLabels">
+      <interceptor-ref name="adminTwmsParamsWithoutPrepare" />
+      <result name="success">pages/secure/admin/labels/labelTypes.jsp</result>
+    </action>
+    <action name="listLabelNames"
+      class="tavant.twms.web.admin.labels.ManageLabelsAction">
+      <interceptor-ref name="adminTwmsParamsWithoutPrepare" />
+      <result name="success">pages/secure/admin/labels/labelsInboxView.jsp</result>
+    </action>
+    <action name="labelsBody"
+      class="tavant.twms.web.admin.labels.ManageLabelsAction" method="tableBody">
+      <interceptor-ref name="adminTwmsParamsWithoutPrepare" />
+      <result name="success">pages/secure/home/json.jsp</result>
+    </action>
+    <action name="labelsPreview"
+      class="tavant.twms.web.admin.labels.ManageLabelsAction" method="getLabelDetails">
+      <interceptor-ref name="adminTwmsParamsWithoutPrepare" />
+      <result name="success">pages/secure/admin/labels/labelsInventoryPreview.jsp</result>
+      <result name="policylabels">pages/secure/admin/labels/labelsPolicyPreview.jsp</result>
+      <result name="supplierlabels">pages/secure/admin/labels/labelsSupplierPreview.jsp</result>
+      <result name="faultCodeDefnlabels">pages/secure/admin/labels/labelsFaultCodeDefnPreview.jsp</result>
+      <result name="jobcodelabels">pages/secure/admin/labels/labelsJobCodePreview.jsp</result>
+      <result name="modelLabels">pages/secure/admin/labels/labelsModelPreview.jsp</result>
+    </action>
+    
+     <action name="labelsDetail"
+      class="tavant.twms.web.admin.labels.ManageLabelsAction" method="getLabelDetails">
+      <interceptor-ref name="adminTwmsParamsWithoutPrepare" />
+      <result name="success">pages/secure/admin/labels/labelsInventoryPreview.jsp</result>
+      <result name="policylabels">pages/secure/admin/labels/labelsPolicyPreview.jsp</result>
+      <result name="supplierlabels">pages/secure/admin/labels/labelsSupplierPreview.jsp</result>
+      <result name="faultCodeDefnlabels">pages/secure/admin/labels/labelsFaultCodeDefnPreview.jsp</result>
+      <result name="jobcodelabels">pages/secure/admin/labels/labelsJobCodePreview.jsp</result>
+      <result name="modelLabels">pages/secure/admin/labels/labelsModelPreview.jsp</result>
+       <result name="campaignLabels">pages/secure/admin/labels/labelsCampaignPreview.jsp</result>
+        <result name="warehouseLabels">pages/secure/admin/labels/labelsWarehousePreview.jsp</result>
+    </action>
+    
+   </package>
+</struts>

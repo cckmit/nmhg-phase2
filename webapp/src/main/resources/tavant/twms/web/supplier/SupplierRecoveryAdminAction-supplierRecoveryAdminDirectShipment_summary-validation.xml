@@ -1,0 +1,13 @@
+<!DOCTYPE validators PUBLIC 
+    "-//Apache Struts//XWork Validator 1.0.2//EN"   
+    "http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+<validators>
+	<validator type="expression">
+		<param name="expression">shipOEMParts.size != 0</param>
+		<message>Select atleast one Part for Recovery</message>
+	</validator>
+	<validator type="expression">
+		<param name="expression">shipOEMParts.{? #this.supplierPartReturn.contract == null}.size == 0</param>
+		<message>Select Supplier  for all the Parts selected for Recovery</message>
+	</validator>
+</validators>

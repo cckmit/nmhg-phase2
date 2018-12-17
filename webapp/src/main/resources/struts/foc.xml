@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="foc" extends="struts-twms-default">
+
+	<action name="getFocWidget" class="tavant.twms.web.claim.FocClaim">
+		<interceptor-ref name="paramsPrepareWithoutValidation"/>
+			<result name="success">pages/secure/claims/foc/focClaim.jsp</result>
+			<result name="NO_ORDER">pages/secure/claims/foc/success.jsp </result>
+			<result name="SN_INVALID">pages/secure/claims/foc/success.jsp </result>        
+	</action>	
+	
+
+	<action name="submitFOCData" class="tavant.twms.web.claim.FocClaim" method="submit">
+		<interceptor-ref name="paramsPrepareWithoutValidation"/>
+			<result name="input">pages/secure/claims/foc/focClaim.jsp</result>        
+			<result name="success">pages/secure/claims/foc/success.jsp</result>
+			<result name="NO_ORDER">pages/secure/claims/foc/success.jsp </result>
+	</action>
+	
+ 
+   <!--       
+	<action name="fetchSerialNumberDetails" class="tavant.twms.web.claim.FocClaim" method="fetchSerialNumberDetails">
+		<interceptor-ref name="paramsPrepareWithoutValidation"/>
+			<result name="input">pages/secure/claims/foc/focClaim.jsp</result>        
+			<result name="success">pages/secure/claims/foc/focClaim.jsp</result>
+	</action>             
+    -->
+    
+    	
+	</package>
+</struts>	 
+	

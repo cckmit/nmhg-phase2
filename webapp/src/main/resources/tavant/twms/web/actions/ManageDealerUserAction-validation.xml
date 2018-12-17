@@ -1,0 +1,147 @@
+<!DOCTYPE validators PUBLIC 
+    "-//Apache Struts//XWork Validator 1.0.2//EN"   
+    "http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+<validators>
+
+	<field name="user.firstName">
+		<field-validator type="requiredstring" >
+	        <param name="trim">true</param>
+		    <message key="error.manageDealerUsers.firstName"/>
+		</field-validator>
+	</field>
+	
+	<field name="user.lastName">
+		<field-validator type="requiredstring">
+		    <param name="trim">true</param>		
+			<message key="error.manageDealerUsers.lastName"/>
+		</field-validator>
+	</field>
+	
+	<field name="user.password">
+		<!--<field-validator type="requiredstring">
+		    <param name="trim">true</param>		
+			<message key="error.manageDealerUsers.password.required"/>
+		</field-validator>
+		--><field-validator type="regex">
+		    <param name="expression">[[a-zA-Z0-9]$]+</param>
+		    <message key="error.manageDealerUsers.invalidPassword"/>
+		</field-validator>
+	</field>
+	
+	<!--<field name="confirmPassword">
+		<field-validator type="requiredstring">
+		    <param name="trim">true</param>		
+			<message key="error.manageDealerUsers.confirmPassword.required"/>
+		</field-validator>
+		<field-validator type="fieldexpression">
+		    <param name="expression"><![CDATA[confirmPassword.equals(user.getPassword())]]></param>
+		    <message key="error.manageDealerUsers.differentPasswords"/>
+		</field-validator>
+	</field>
+	
+	--><field name="user.name">
+		<field-validator type="requiredstring">
+		    <param name="trim">true</param>		
+			<message key="error.manageDealerUsers.login.required"/>
+		</field-validator>
+		<!--<field-validator type="regex">
+		    <param name="expression">[[a-zA-Z0-9]$]+</param>
+		    <message key="error.manageDealerUsers.invalidName"/>
+		</field-validator>-->
+	</field>
+
+	<field name="user.address.addressLine1">
+		<field-validator type="requiredstring">
+		    <param name="trim">true</param>		
+			<message key="error.manageDealerUsers.requiredAddress"/>
+		</field-validator>
+	</field>
+	<field name="user.address.country">
+		<field-validator type="requiredstring">
+		    <param name="trim">true</param>		
+			<message key="error.manageDealerUsers.requiredCountry"/>
+		</field-validator>
+	</field>
+	<field name="defaultLocale">
+		<field-validator type="requiredstring">
+		    <param name="trim">true</param>		
+			<message key="error.manageDealerUsers.requiredLocale"/>
+		</field-validator>
+	</field>
+	
+<!-- State, city and Zip are mandatory only for msa countries. Hence moving validation to action class 
+
+	<field name="stateCode">
+		<field-validator type="requiredstring">
+		    <param name="trim">true</param>		
+			<message key="error.manageDealerUsers.requiredStateCode"/>
+		</field-validator>
+	</field>
+-->
+	<field name="user.email">
+		<field-validator type="requiredstring">
+		    <param name="trim">true</param>		
+			<message key="error.manageDealerUsers.requiredEmail"/>
+		</field-validator>
+		<field-validator type="email">
+			<param name="trim">true</param>		
+			<message key="error.manageDealerUsers.invalidEmail"/>
+		</field-validator>
+	</field>
+	<!--
+	<field name="cityCode">
+		<field-validator type="requiredstring">
+		    <param name="trim">true</param>		
+			<message key="error.manageDealerUsers.requiredCityCode"/>
+		</field-validator>
+	</field> 
+	-->
+	<field name="user.address.phone">
+		<field-validator type="requiredstring">
+		    <param name="trim">true</param>		
+			<message key="error.manageDealerUsers.requiredPhone"/>
+		</field-validator>
+		<field-validator type="phone">
+			<param name="trim">true</param>		
+			<message key="error.manageDealerUsers.invalidPhone"/>
+		</field-validator>
+	</field>
+<!--	
+	<field name="zipCode">
+		<field-validator type="requiredstring">
+		    <param name="trim">true</param>		
+			<message key="error.manageDealerUsers.requiredzipCode"/>
+		</field-validator>
+	</field>
+-->
+	<field name="user.address.fax">
+		<field-validator type="phone">
+			<param name="trim">true</param>		
+			<message key="error.manageDealerUsers.invalidFax"/>
+		</field-validator>
+	</field>
+
+	<!--<field name="technicianDetails.serviceManagerPhone">
+		<field-validator type="phone">
+			<param name="trim">true</param>		
+			<message key="error.manageDealerUsers.serviceManagerPhone.invalid"/>
+		</field-validator>
+	</field>
+	<field name="technicianDetails.serviceManagerFax">
+		<field-validator type="phone">
+			<param name="trim">true</param>		
+			<message key="error.manageDealerUsers.serviceManagerFax.invalid"/>
+		</field-validator>
+	</field>
+	<field name="technicianDetails.serviceManagerEmail">
+		<field-validator type="email">
+			<param name="trim">true</param>		
+			<message key="error.manageDealerUsers.serviceManagerEmail.invalid"/>
+		</field-validator>
+	</field>
+	
+
+
+
+
+--></validators>

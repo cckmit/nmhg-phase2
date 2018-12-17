@@ -1,0 +1,70 @@
+--Purpose    : Address book clean up for pre migration.
+--Created On : 29-Apr-2011
+--Created By : Joseph tharakan
+
+
+DECLARE
+V_ID NUMBER;
+v_stat_no number;
+
+begin
+FOR EACH_REC IN
+(
+SELECT TYPE,BELONGS_TO,COUNT(*) FROM ADDRESS_BOOK GROUP BY TYPE, BELONGS_TO HAVING COUNT(*) > 1
+)
+LOOP
+
+V_ID := NULL;
+
+begin
+  SELECT ID
+  INTO V_ID
+  FROM
+  ADDRESS_BOOK 
+  where type = EACH_REC.type
+  AND nvl(BELONGS_TO,-99) = nvl(EACH_REC.BELONGS_TO,-99)
+  AND d_active = 1   --selecting active record if present
+  AND ROWNUM = 1;
+EXCEPTION
+WHEN NO_DATA_FOUND then
+  SELECT ID
+  INTO V_ID
+  FROM
+  ADDRESS_BOOK 
+  WHERE TYPE = EACH_REC.TYPE
+  AND nvl(BELONGS_TO,-99) = nvl(EACH_REC.BELONGS_TO,-99)
+  AND ROWNUM = 1;
+end;
+
+UPDATE ADDRESS_BOOK_ADDRESS_MAPPING 
+SET ADDRESS_BOOK_ID = V_ID
+WHERE
+ADDRESS_BOOK_ID IN
+(
+SELECT ID
+FROM
+ADDRESS_BOOK 
+WHERE TYPE = EACH_REC.TYPE
+AND nvl(BELONGS_TO,-99) = nvl(EACH_REC.BELONGS_TO,-99)
+);
+
+delete 
+FROM
+ADDRESS_BOOK 
+WHERE TYPE = EACH_REC.TYPE
+AND nvl(BELONGS_TO,-99) = nvl(EACH_REC.BELONGS_TO,-99)
+and id <> V_ID;
+
+commit;
+
+END LOOP;
+
+EXCEPTION 
+WHEN OTHERS THEN
+rollback;
+DBMS_OUTPUT.PUT_LINE('Update failed' || SQLERRM);
+raise;
+end;
+/
+commit
+/

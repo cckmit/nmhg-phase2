@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<assembly>
+  <formats>
+    <format>zip</format>
+  </formats>
+  <fileSets>
+    <fileSet>
+      <directory>src/main/resources</directory>
+      <outputDirectory>/</outputDirectory>
+    </fileSet>
+	<fileSet>
+	  <!-- In addition to the war we need to take a data dump and copy it -->
+      <directory>target</directory>
+      <outputDirectory>/twms/db/mysql/scripts</outputDirectory>
+	  <includes><include>*.sql</include></includes>
+    </fileSet>
+	<fileSet>
+	  <!-- 
+		Also copy the props file for dev, qa etc .
+		TODO: See if we can do that from env variable TWMS_HOME
+	  -->
+	  <directory>${basedir}/../etc</directory>
+      <outputDirectory>/twms/config</outputDirectory>
+	</fileSet>
+  </fileSets>
+  <dependencySets>
+    <dependencySet>
+      <outputDirectory>/twms</outputDirectory>
+	  <!-- Only twms.war is going to be copied here -->
+	  <outputFileNameMapping>twms.war</outputFileNameMapping>
+      <unpack>false</unpack>
+	  <scope>compile</scope>
+	  <excludes><exclude>*:jar:*</exclude></excludes>
+    </dependencySet>
+  </dependencySets>
+</assembly>

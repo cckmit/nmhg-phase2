@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<indexdata>
+<key name="Vendor Recovery Report" >
+  <topic name="Vendor Recovery Report" url="Reports/Vendor_Recovery_Report.htm" />
+</key>
+<key name="Warehouses" >
+  <topic name="Warehouses" url="Warranty_Admin/Warehouses.htm" />
+</key>
+<key name="Warranty Coverage" >
+  <topic name="Manage Warranty Coverage" url="Inventory/Manage_Warranty_Coverage.htm" />
+</key>
+<key name="Warranty Policies" >
+  <topic name="Policy Management" url="Warranty_Admin/Policy_Management.htm" />
+</key>
+<key name="Warranty Registration" >
+  <topic name="Warranty Registration" url="Inventory/Warranty_Registration.htm" />
+</key>
+
+</indexdata>

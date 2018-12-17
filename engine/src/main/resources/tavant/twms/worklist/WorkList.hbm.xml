@@ -1,0 +1,269 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+      "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+      "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+  <query name="countPartTasksForReceipt">
+    <![CDATA[
+     SELECT COUNT(distinct pr.oemPartReplaced) 
+     FROM TaskInstance ti ,BasePartReturn pr,Warehouse w, User u
+     WHERE ti.isOpen = true 
+     and ti.task.name = :taskName 
+     and ti.partReturnId = pr.id
+     and pr.returnLocation = w.location
+     and u in elements(w.recievers)
+     and u.name = :actorId
+    ]]>
+  </query>
+     
+  <query name="countPartTasksForInspection">
+    <![CDATA[
+     SELECT COUNT(distinct pr.oemPartReplaced) 
+     FROM TaskInstance ti ,BasePartReturn pr,Warehouse w, User u
+     WHERE ti.isOpen = true 
+     and ti.task.name = :taskName 
+     and ti.partReturnId = pr.id
+     and pr.returnLocation = w.location
+     and u in elements(w.inspectors)
+     and u.name = :actorId 
+    ]]>
+  </query>
+ 
+  <query name="countPartShipperShipmentsQuery">
+  	<![CDATA[
+		select COUNT(distinct supplierPartReturn.supplierShipment) from 
+		TaskInstance ti, SupplierPartReturn supplierPartReturn 
+		where ti.isOpen = true and ti.partReturnId = supplierPartReturn.id 
+		and ((supplierPartReturn.recoverablePart.oemPart in (select pr.oemPartReplaced from BasePartReturn pr,Warehouse w,User u
+			where pr.returnLocation=w.location 
+			and u.name= :actorId 
+			and u in elements(w.partShippers))) or ti.actorId = :actorId)
+		and ti.task.name= :taskName 
+	]]>
+  </query>
+  
+  <query name="countSupplierShipmentsQuery">
+  	<![CDATA[
+		select COUNT(distinct supplierPartReturn.supplierShipment) from 
+		TaskInstance ti, SupplierPartReturn supplierPartReturn, RecoveryClaim recoveryClaim 
+		where ti.isOpen = true and ti.partReturnId = supplierPartReturn.id 
+		and ti.claimId = recoveryClaim.id  
+		and ti.task.name= :taskName 
+		and ti.actorId = :actorId 
+	]]>
+  </query>
+  <!-- fix for NMHGSLMS-1020 -->
+    <query name="countAllSuppliersShipmentsQuery">
+  	<![CDATA[
+		select COUNT(distinct supplierPartReturn.supplierShipment) from 
+		TaskInstance ti, SupplierPartReturn supplierPartReturn, RecoveryClaim recoveryClaim 
+		where ti.isOpen = true and ti.partReturnId = supplierPartReturn.id 
+		and ti.claimId = recoveryClaim.id and ti.task.name= :taskName		
+	]]>
+  </query>
+  
+   <query name="countSRAPartsRecoveryRecoveryClaimsQuery">
+  	<![CDATA[
+		 select COUNT(distinct ti.claimId) from TaskInstance ti, RecoveryClaim recoveryClaim
+		 where ti.isOpen = true and
+		 ti.task.name = :taskName and
+		 ti.claimId = recoveryClaim.id and
+		 ti.actorId = :actorId 
+	]]>
+  </query>
+  
+  <query name="countSRAPartsRecoveryRecoveryClaimsQueryForMasterSupplier">
+  	<![CDATA[
+		 select COUNT(distinct ti.claimId) from TaskInstance ti, RecoveryClaim recoveryClaim
+		 where ti.isOpen = true and
+		 ti.task.name = :taskName and
+		 ti.claimId = recoveryClaim.id
+	]]>
+  </query>
+  
+   <query name="countTasksByTaskName">
+    <![CDATA[
+     SELECT COUNT(ti) 
+     FROM TaskInstance ti 
+     WHERE ti.isOpen = true 
+     AND ti.task.name = :taskName 
+     and ti.task.processDefinition.name = :processDefinition
+     AND ti.actorId = :actorId
+    ]]>
+  </query>
+  
+  <query name="taskInstanceForClaim">
+  	<![CDATA[
+  	 SELECT taskInstance
+     FROM TaskInstance taskInstance, Claim claim
+     where taskInstance.isOpen = true 
+	 and taskInstance.claimId = claim.id
+     and claim.id = :claimId
+     and taskInstance.name = :taskName
+    ]]>
+  </query>
+  
+  <query name="taskInstancesInForClaim">
+  	<![CDATA[
+  	 SELECT taskInstance
+     FROM TaskInstance taskInstance, Claim claim
+     where taskInstance.isOpen = true 
+     and taskInstance.claimId = claim.id
+     and claim.id = :claimId
+     and taskInstance.name in (:taskNames)
+    ]]>
+  </query>
+  
+  <query name="taskInstanceForRecClaim">
+  	<![CDATA[
+  	 SELECT taskInstance
+     FROM TaskInstance taskInstance, RecoveryClaim recClaim
+     where taskInstance.isOpen = true 
+     and taskInstance.claimId = recClaim.id
+     and recClaim.id = :recClaimId
+     and taskInstance.name = :taskName
+    ]]>
+  </query>
+  
+   <query name="taskInstanceForRecClaimInMultipleStates">
+  	<![CDATA[
+  	 SELECT taskInstance
+     FROM TaskInstance taskInstance, RecoveryClaim recClaim
+     where taskInstance.isOpen = true 
+     and taskInstance.claimId = recClaim.id
+     and recClaim.id = :recClaimId
+     and taskInstance.name IN(:taskNames)
+    ]]>
+  </query>
+  
+  <query name="openProcessorReviewTasksForClaim">
+    <![CDATA[
+     SELECT taskInstance
+     FROM TaskInstance taskInstance, Claim claim
+     where taskInstance.isOpen = true 
+     and taskInstance.claimId = claim.id
+     and claim.id = :claimId
+     and taskInstance.name = 'Processor Review'
+    ]]>
+  </query>
+
+  <query name="allOpenTaskInstancesForClaim">
+  	<![CDATA[
+  	 SELECT taskInstance
+     FROM TaskInstance taskInstance, Claim claim
+     where taskInstance.isOpen = true 
+     and taskInstance.claimId = claim.id
+     and claim.id = :claimId
+    ]]>
+  </query>
+  <query name="allTaskInstancesForClaim">
+  	<![CDATA[
+  	 SELECT taskInstance
+     FROM TaskInstance taskInstance, Claim claim
+     where taskInstance.claimId = claim.id 
+     and claim.id = :claimId
+    ]]>
+  </query>
+
+  <query name="allOpenTasksForClaimSubmission">
+  	<![CDATA[
+     SELECT taskInstance
+     FROM TaskInstance taskInstance, 
+     ModuleInstance mi, Claim claim, ProcessInstance pi
+     where taskInstance.isOpen = true
+     and taskInstance.taskMgmtInstance = mi
+     and taskInstance.claimId = claim.id
+     and mi.processInstance = pi.id
+     and pi.processDefinition.name = 'ClaimSubmission'
+     and claim.id = :claimId
+    ]]>
+  </query>
+
+
+    <query name="allClaimSubmissionOpenTaskInstancesForClaim">
+  	<![CDATA[
+     SELECT taskInstance
+     FROM TaskInstance taskInstance, 
+     ModuleInstance mi, Claim claim, ProcessInstance pi
+     where taskInstance.isOpen = true
+     and taskInstance.taskMgmtInstance = mi
+     and taskInstance.claimId = claim.id
+     and mi.processInstance = pi.id
+     and pi.processDefinition.version =  (SELECT MAX(version) FROM ProcessDefinition pd where pd.name='ClaimSubmission') 
+     and pi.processDefinition.name = 'ClaimSubmission'
+     and claim.id = :claimId
+    ]]>
+  </query>
+  
+   <query name="allClaimParticipants">
+  	<![CDATA[
+    	select distinct user
+     	from ClaimAudit audit join audit.updatedBy user
+     	where audit.forClaim.id = :claimId
+     		and user.name not in ('system','integration')
+    ]]>
+  </query>
+  
+  <query name="allActorsForClaim">
+  	<![CDATA[
+  	 SELECT user 
+  	 FROM User user 
+  	 WHERE user.name in (
+  	 SELECT taskInstance.actorId
+     FROM TaskInstance taskInstance, Claim claim
+     where taskInstance.claimId = claim.id
+     and claim.id = :claimId
+     )
+    ]]>
+  </query>
+
+   <query name="allCurrentActorsForClaim">
+  	<![CDATA[
+  	 SELECT user 
+  	 FROM User user 
+  	 WHERE user.name in (
+  	 SELECT taskInstance.actorId
+     FROM TaskInstance taskInstance, Claim claim
+     where taskInstance.claimId = claim.id
+     and claim.id = :claimId
+     and taskInstance.partReturnId is null 
+     and taskInstance.isOpen = true
+     )
+    ]]>
+  </query>
+  
+    <query name="allActorsForPartReturn">
+  	<![CDATA[
+  	 SELECT user 
+  	 FROM User user 
+  	 WHERE user.name in (
+  	 SELECT taskInstance.actorId
+     FROM TaskInstance taskInstance, PartReturn pr
+     where taskInstance.partReturnId = pr.id 
+     and pr.id = :partReturnId
+     )
+    ]]>
+  </query>
+
+  <query name="currentAssigneeForRecClaim">
+  	<![CDATA[
+  	 SELECT user 
+  	 FROM User user 
+  	 WHERE user.name in (
+  	 SELECT taskInstance.actorId
+     FROM TaskInstance taskInstance,
+     ModuleInstance mi, RecoveryClaim claim, ProcessInstance pi
+     where taskInstance.isOpen = true
+     and taskInstance.taskMgmtInstance = mi
+     and taskInstance.claimId = claim.id
+     and mi.processInstance = pi.id
+     and pi.processDefinition.name = 'SupplierRecovery'
+     and claim.id = :recClaimId
+  	 and taskInstance.task.name not in ('Awaiting Supplier Response','Accepted', 'Not For Recovery Request','Claims Sent To Supplier')
+     )
+    ]]>
+  </query>
+
+</hibernate-mapping>

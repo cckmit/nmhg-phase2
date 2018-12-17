@@ -1,0 +1,33 @@
+## Velocity Template.
+<BR>
+<B>Warranty Claim Credit Submission Task Status for ${buName}</B>
+<BR><BR>
+Start Date : ${startDate} <BR>
+End Date : ${endDate}
+
+#if (!$failedClaims.isEmpty())
+    <BR><BR>
+    <B>Failed Records:</B><BR>
+	#foreach($key in $failedClaims.keySet())
+        $key - $failedClaims.get($key)<BR>
+	#end
+#end
+
+#if (!$noResponseClaims.isEmpty())
+    <BR><BR>
+    <B>Following claims did not receive any response from Web Methods :</B><BR>
+    #foreach($noResponseClaim in $noResponseClaims)
+        $noResponseClaim<BR>
+    #end
+    <BR>Verify / Confirm if the request has reached the Web Methods or not ( In Sync Tracker record will be in IN_PROGRESS state).
+#end
+
+#if (!$successfulClaims.isEmpty())
+    <BR><BR>
+    <B>Successfully Processed Records:</B><BR>
+    #foreach ($successfulClaim in $successfulClaims)
+        $successfulClaim<BR>
+    #end
+#end
+<BR><BR>
+Please note that this email is an automated notification. Any reply to this email will not be received.

@@ -1,0 +1,88 @@
+<html>
+<!-- Sitemap 1.0 -->
+<object type="text/site properties">
+  <param name="SiteType" value="index">
+</object>
+<ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Policy Details">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Due Parts Inspection">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Due Parts Receipt">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Search Claims">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Claim Details">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Inventory">
+    <param name="Name" value="Search Inventory">
+    <param name="Local" value="Inventory\Search_Inventory.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Due Days">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Supply Recovery Admin">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Parts Recovery">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Claim Number">
+    <param name="Name" value="Shipment Tag">
+    <param name="Local" value="Parts_Recovery\Shipment_Tag.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Overdue Parts">
+    <param name="Name" value="Shipment Tag">
+    <param name="Local" value="Parts_Recovery\Shipment_Tag.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Due Parts">
+    <param name="Name" value="Shipment Tag">
+    <param name="Local" value="Parts_Recovery\Shipment_Tag.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Return Location">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Recovery Claim Number">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Part Number">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Shipment Generated">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Barcode">
+    <param name="Name" value="Barcode Feature and Search by Barcode">
+    <param name="Local" value="Parts_Recovery\Barcode_Feature_and_Search_by_Barcode.htm">
+    <param name="Name" value="Shipment Tag">
+    <param name="Local" value="Parts_Recovery\Shipment_Tag.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Print Shipment Tag">
+    <param name="Name" value="Shipment Tag">
+    <param name="Local" value="Parts_Recovery\Shipment_Tag.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Generate Shipment">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Shipment Details">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Work Order Number">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Profile">
+  </object>
+</ul>
+</html>

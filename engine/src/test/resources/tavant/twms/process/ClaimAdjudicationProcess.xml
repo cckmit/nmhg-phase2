@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process-definition name="ClaimAdjudicationProcess">
+	<start-state name="start">
+		<transition name="toProcessing"
+			to="IncompleteInformationChecks">
+		</transition>
+	</start-state>
+
+	<ruleNode name="IncompleteInformationChecks">
+		<transition name="" to="SetupChecks"/>
+		<ruleSet>IncompleteInformationChecks</ruleSet>
+		<input>
+			<variable>claim</variable>
+			<variable>claim.filedBy</variable>
+			<variable>claim.forDealer</variable>
+			<variable>claim.serviceInformation</variable>
+			<variable>claim.serviceInformation.serviceDetail</variable>
+			<variable>
+				claim.serviceInformation.serviceDetail.laborPerformed
+			</variable>
+			<variable>
+				claim.serviceInformation.serviceDetail.travelDetails
+			</variable>
+			<variable>
+				claim.serviceInformation.serviceDetail.oEMPartsReplaced
+			</variable>
+			<variable>
+				claim.serviceInformation.serviceDetail.nonOEMPartsReplaced
+			</variable>
+			<variable>claim.payment</variable>
+			<variable>claim.payment.paymentComponents</variable>
+		</input>
+	</ruleNode>
+
+	<ruleNode name="SetupChecks">
+		<transition name="" to="ValidityChecks"/>
+		<ruleSet>SetupChecks</ruleSet>
+		<input>
+			<variable>claim</variable>
+			<variable>claim.filedBy</variable>
+			<variable>claim.forDealer</variable>
+			<variable>claim.serviceInformation</variable>
+			<variable>claim.serviceInformation.serviceDetail</variable>
+			<variable>
+				claim.serviceInformation.serviceDetail.laborPerformed
+			</variable>
+			<variable>
+				claim.serviceInformation.serviceDetail.travelDetails
+			</variable>
+			<variable>
+				claim.serviceInformation.serviceDetail.oEMPartsReplaced
+			</variable>
+			<variable>
+				claim.serviceInformation.serviceDetail.nonOEMPartsReplaced
+			</variable>
+			<variable>claim.payment</variable>
+			<variable>claim.payment.paymentComponents</variable>
+		</input>
+	</ruleNode>
+
+	<ruleNode name="ValidityChecks">
+		<transition name="" to="ReviewChecks"/>
+		<ruleSet>ValidityChecks</ruleSet>
+		<input>
+			<variable>claim</variable>
+			<variable>claim.filedBy</variable>
+			<variable>claim.forDealer</variable>
+			<variable>claim.serviceInformation</variable>
+			<variable>claim.serviceInformation.serviceDetail</variable>
+			<variable>
+				claim.serviceInformation.serviceDetail.laborPerformed
+			</variable>
+			<variable>
+				claim.serviceInformation.serviceDetail.travelDetails
+			</variable>
+			<variable>
+				claim.serviceInformation.serviceDetail.oEMPartsReplaced
+			</variable>
+			<variable>
+				claim.serviceInformation.serviceDetail.nonOEMPartsReplaced
+			</variable>
+			<variable>claim.payment</variable>
+			<variable>claim.payment.paymentComponents</variable>
+		</input>
+	</ruleNode>
+
+	<ruleNode name="ReviewChecks">
+		<transition name="" to="isMachineOrAttachmentClaim"/>
+		<ruleSet>ReviewChecks</ruleSet>
+		<input>
+			<variable>claim</variable>
+			<variable>claim.filedBy</variable>
+			<variable>claim.forDealer</variable>
+			<variable>claim.serviceInformation</variable>
+			<variable>claim.serviceInformation.serviceDetail</variable>
+			<variable>
+				claim.serviceInformation.serviceDetail.laborPerformed
+			</variable>
+			<variable>
+				claim.serviceInformation.serviceDetail.travelDetails
+			</variable>
+			<variable>
+				claim.serviceInformation.serviceDetail.oEMPartsReplaced
+			</variable>
+			<variable>
+				claim.serviceInformation.serviceDetail.nonOEMPartsReplaced
+			</variable>
+			<variable>claim.payment</variable>
+			<variable>claim.payment.paymentComponents</variable>
+		</input>
+	</ruleNode>
+
+	<decision name="isMachineOrAttachmentClaim">
+		<transition name="No" to="HighValueClaimChecks"/>
+		<transition name="Yes" to="WarrantyOnlyChecks">
+			<condition>#{claim.type=="Machine" || claim.type=="Attachment"}</condition>
+		</transition>
+	</decision>
+
+	<ruleNode name="WarrantyOnlyChecks">
+		<transition name="" to="isInventoryItemRetailed"/>
+		<ruleSet>WarrantyChecks</ruleSet>
+		<input>
+			<variable>claim</variable>
+			<variable>claim.filedBy</variable>
+			<variable>claim.forDealer</variable>
+			<variable>claim.serviceInformation</variable>
+			<variable>claim.serviceInformation.serviceDetail</variable>
+			<variable>
+				claim.serviceInformation.serviceDetail.laborPerformed
+			</variable>
+			<variable>
+				claim.serviceInformation.serviceDetail.travelDetails
+			</variable>
+			<variable>
+				claim.serviceInformation.serviceDetail.oEMPartsReplaced
+			</variable>
+			<variable>
+				claim.serviceInformation.serviceDetail.nonOEMPartsReplaced
+			</variable>
+			<variable>claim.payment</variable>
+			<variable>claim.payment.paymentComponents</variable>
+		</input>
+	</ruleNode>
+
+	<decision name="isInventoryItemRetailed">
+		<transition name="No" to="isInventoryItemStocked"></transition>
+		<transition name="Yes" to="RetailedInventoryItemChecks">
+			<condition>#{claim.forItem.type.type=="RETAIL"}</condition>
+		</transition>
+	</decision>
+
+	<ruleNode name="RetailedInventoryItemChecks">
+		<transition name="" to="isInventoryItemStocked"/>
+		<ruleSet>RetailedInventoryItemChecks</ruleSet>
+		<input>
+			<variable>claim</variable>
+			<variable>claim.filedBy</variable>
+			<variable>claim.forDealer</variable>
+			<variable>claim.serviceInformation</variable>
+			<variable>claim.serviceInformation.serviceDetail</variable>
+			<variable>
+				claim.serviceInformation.serviceDetail.laborPerformed
+			</variable>
+			<variable>
+				claim.serviceInformation.serviceDetail.travelDetails
+			</variable>
+			<variable>
+				claim.serviceInformation.serviceDetail.oEMPartsReplaced
+			</variable>
+			<variable>
+				claim.serviceInformation.serviceDetail.nonOEMPartsReplaced
+			</variable>
+			<variable>claim.payment</variable>
+			<variable>claim.payment.paymentComponents</variable>
+		</input>
+	</ruleNode>
+
+	<decision name="isInventoryItemStocked">
+		<transition name="No" to="HighValueClaimChecks"></transition>
+		<transition name="Yes" to="StockedInventoryItemChecks">
+			<condition>#{claim.forItem.type.type=="STOCK"}</condition>
+		</transition>
+	</decision>
+
+	<ruleNode name="StockedInventoryItemChecks">
+		<transition name="" to="HighValueClaimChecks"/>
+		<ruleSet>StockedInventoryItemChecks</ruleSet>
+		<input>
+			<variable>claim</variable>
+			<variable>claim.filedBy</variable>
+			<variable>claim.forDealer</variable>
+			<variable>claim.serviceInformation</variable>
+			<variable>claim.serviceInformation.serviceDetail</variable>
+			<variable>
+				claim.serviceInformation.serviceDetail.laborPerformed
+			</variable>
+			<variable>
+				claim.serviceInformation.serviceDetail.travelDetails
+			</variable>
+			<variable>
+				claim.serviceInformation.serviceDetail.oEMPartsReplaced
+			</variable>
+			<variable>
+				claim.serviceInformation.serviceDetail.nonOEMPartsReplaced
+			</variable>
+			<variable>claim.payment</variable>
+			<variable>claim.payment.paymentComponents</variable>
+		</input>
+	</ruleNode>
+	
+	<ruleNode name="HighValueClaimChecks">
+		<transition name="" to="endAdjudicate"/>
+		<ruleSet>HighValueClaimChecks</ruleSet>
+		<input>
+			<variable>claim</variable>
+			<variable>claim.filedBy</variable>
+			<variable>claim.forDealer</variable>
+			<variable>claim.serviceInformation</variable>
+			<variable>claim.serviceInformation.serviceDetail</variable>
+			<variable>
+				claim.serviceInformation.serviceDetail.laborPerformed
+			</variable>
+			<variable>
+				claim.serviceInformation.serviceDetail.travelDetails
+			</variable>
+			<variable>
+				claim.serviceInformation.serviceDetail.oEMPartsReplaced
+			</variable>
+			<variable>
+				claim.serviceInformation.serviceDetail.nonOEMPartsReplaced
+			</variable>
+			<variable>claim.payment</variable>
+			<variable>claim.payment.paymentComponents</variable>
+		</input>
+	</ruleNode>
+	
+	<end-state name="endAdjudicate"/>
+</process-definition>

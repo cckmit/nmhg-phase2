@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<ftswdata>
+<key name="want"> 8,1,27,29,14,11,18,20,22,12,26, </key>
+<key name="warehous"> 22, </key>
+<key name="warning"> 8, </key>
+<key name="warrant"> 10, </key>
+<key name="warranty"> 0,6,7,8,1,23,27,15,4,10,25,11,18,20,22,26, </key>
+<key name="way"> 1,11,18,20,22, </key>
+<key name="web"> 0, </key>
+<key name="welcom"> 0, </key>
+<key name="well"> 1,22, </key>
+<key name="whenev"> 1, </key>
+<key name="wheth"> 2, </key>
+<key name="whil"> 6,8,15,10, </key>
+<key name="whom"> 6, </key>
+<key name="whos"> 11,22, </key>
+<key name="wild"> 1, </key>
+<key name="will"> 5,0,6,7,8,1,15,17,10,14,11,18,20,22,12, </key>
+<key name="window"> 8,1,15, </key>
+<key name="wis"> 1, </key>
+<key name="wish"> 1,14,11,18,20,22, </key>
+<key name="without"> 5,6,2,29,12, </key>
+<key name="word"> 1, </key>
+<key name="work"> 5,6,2,12, </key>
+<key name="would"> 4, </key>
+<key name="wr"> 15, </key>
+<key name="written"> 2, </key>
+<key name="y"> 4, </key>
+<key name="yet"> 22, </key>
+<key name="your"> 5,0,6,8,1,23,4,25,11,18,20,22,12,26, </key>
+<key name="yyyy"> 0, </key>
+<key name="zero"> 10, </key>
+<key name="zip"> 15,29, </key>
+
+</ftswdata>  

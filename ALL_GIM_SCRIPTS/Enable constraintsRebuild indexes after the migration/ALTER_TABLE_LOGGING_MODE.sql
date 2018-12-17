@@ -1,0 +1,27 @@
+DECLARE
+
+CURSOR cur_det_table_1
+IS
+SELECT A.TABLE_NAME FROM TAV_GIM_VALID_TABLES A  ORDER BY a.EXEC_ORDER;
+
+
+BEGIN 
+
+
+
+  FOR cur_det_table_rec_1 IN cur_det_table_1	LOOP
+		BEGIN
+	  EXECUTE IMMEDIATE 'ALTER TABLE ' || cur_det_table_rec_1.TABLE_NAME || ' LOGGING';
+    EXCEPTION
+		when OTHERS then
+		null;
+		END;
+	END LOOP;
+  
+  
+	
+EXCEPTION
+when OTHERS then
+DBMS_OUTPUT.PUT_LINE('0' || SQLERRM);
+END;
+/

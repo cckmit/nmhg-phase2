@@ -1,0 +1,532 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2012 rel. 2 sp1 (http://www.altova.com) by rohit (Bobcat) -->
+<xs:schema xmlns="http://www.tavant.com/globalsync/claimsync" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.tavant.com/globalsync/claimsync" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="../../Resources/Nouns/global/ApplicationAreaType.xsd"/>
+	<xs:element name="ClaimSync">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="ApplicationArea" type="ApplicationAreaType"/>
+				<xs:element name="DataArea" type="DataAreaType"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="DataAreaType">
+		<xs:sequence>
+			<xs:element name="Claim">
+				<xs:complexType>
+					<xs:sequence>
+						<!-- Dealer Number -->
+						<xs:element name="CustomerNumber" nillable="true">
+							<!--maxlength add-->
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:maxLength value="50"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<!--ClaimType : MACHINE,PARTS,ATTACHMENTS-->
+						<xs:element name="ClaimType" nillable="false">
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:maxLength value="50"/>
+									<xs:enumeration value="MACHINE"/>
+									<xs:enumeration value="PARTS"/>
+									<xs:enumeration value="FIELDMODIFICATION"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<!-- Claim State : STATE,ON_HOLD_FOR_PART_RETURN   ,DRAFT_DELETED,SERVICE_MANAGER_RESPONSE  ,ON_HOLD ,TRANSFERRED ,FORWARDED ,SERVICE_MANAGER_REVIEW ,REJECTED_PART_RETURN      ,REPLIES                   ,ACCEPTED_AND_CLOSED  ,PROCESSOR_REVIEW  ,WAITING_FOR_PART_RETURNS  ,DEACTIVATED ,ACCEPTED  ,APPROVED ,ADVICE_REQUEST ,APPEALED ,DENIED_AND_CLOSED  ,DRAFT ,PENDING_PAYMENT_SUBMISSION ,DELETED ,EXTERNAL_REPLIES  ,PENDING_PAYMENT_RESPONSE  ,REOPENED      
+	 -->
+						<xs:element name="ClaimState" nillable="false">
+							<!--maxlength add-->
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:maxLength value="100"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<!-- Claim Currency -->
+						<xs:element name="CurrencyCode" nillable="false">
+							<!--maxlength add-->
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:maxLength value="3"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<!-- Serial Number of the machine.-->
+						<xs:element name="InventorySerialNumber" nillable="true">
+							<!--maxlength add-->
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:maxLength value="40"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<!-- Model Number of the machine.-->
+						<xs:element name="InventoryModelNumber" nillable="true">
+							<!--maxlength add-->
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:maxLength value="50"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<!-- Item number of the machine-->
+						<xs:element name="InventoryItemNumber" nillable="true">
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:maxLength value="50"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<!-- Item number of the part for PARTS claim-->
+						<xs:element ref="PartItemNumber"/>
+						<!-- Serial number of the part for PARTS claim-->
+						<xs:element ref="PartSerialNumber"/>
+						<!--
+                                The possible claim types that can be derived based on data provided:
+                                a.ClaimType='MACHINE'
+                                                        1. If InventorySerialNumber - Machine Claim Serialized
+                                                        2. Else if InventoryModelNumber or InventoryItemNumbervalid - Machine Claim Non Serialized
+
+                                b.ClaimType='PARTS'
+                                                        1.PartItemNumber and (InventorySerialNumber) valid - Non Serialized Parts Claim hosted
+                                                                on serialized machine
+                                                        2.PartItemNumber and (InventoryModelNumber or InventoryItemNumber) valid - Non
+                                                                Serialized Parts Claim hosted on non serialized machine
+                                                        3.PartItemNumber - Non Serialized Parts Claim not hosted on a machine
+                                                        4.PartItemNumber, PartSerialNumber and (InventorySerial Number) valid - Serialized
+                                                           Parts Claim hosted on serialized machine
+                                                        5.PartItemNumber,PartSerialNumber and (InventoryModelNumber or InventoryItemNumber)
+                                                           valid - Serialized Parts Claim hosted on non serialized machine
+                                                        6.PartItemNumber,PartSerialNumber - Serialized Parts Claim not hosted on a machine
+
+                                c.ClaimType='CAMPAIGN'
+                                                1.InventorySerialNumber has to be valid
+                        -->
+						<!-- Customer ID  for non serialized claims.-->
+						<xs:element name="CustomerId" nillable="true">
+							<!--maxlength add-->
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:maxLength value="20"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<!-- Number of hours the machine has been in service.Mandatory for all claims except Parts not hosted on a machine -->
+						<xs:element name="HoursInService" type="xs:decimal" default="0.00" nillable="true"/>
+						<!-- Mandatory for all claims -->
+						<xs:element name="RepairDate" type="xs:date" nillable="false"/>
+						<!-- Mandatory for all claims except Field Modification-->
+						<xs:element name="FailureDate" type="xs:date" nillable="true" minOccurs="0" maxOccurs="1"/>
+						<!-- Mandatory for all claims -->
+						<xs:element name="SubmissionDate" type="xs:date" nillable="false"/>
+						<!-- Date of Part Installation. Mandatory for Parts claim hosted on serialized/non serialized machine-->
+						<xs:element name="InstallationDate" type="xs:date" nillable="true" minOccurs="0" maxOccurs="1"/>
+						<!-- Date of Purchase. Mandatory for Parts claim not hosted on a machine and    non serialized Machine claim-->
+						<xs:element name="PurchaseDate" type="xs:date" nillable="true" minOccurs="0" maxOccurs="1"/>
+						<!-- Total Labor Hours for Parts claim not installed or installed on a competitor model -->
+						<xs:element name="TotalLaborHours" type="xs:decimal" nillable="true"/>
+						<!-- Mandatory for all claims -->
+						<xs:element name="WorkOrderNumber" nillable="false">
+							<!--maxlength add-->
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:maxLength value="100"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<!-- Mandatory for all claim types except for FieldModification-->
+						<xs:element name="ConditionsFound" nillable="true">
+							<!--maxlength add-->
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:maxLength value="4000"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<!-- Mandatory for all claim types except for FieldModification-->
+						<xs:element name="WorkPerformed" nillable="true">
+							<!--maxlength add-->
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:maxLength value="4000"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<xs:element name="ProbableCause" nillable="true">
+							<!--maxlength add-->
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:maxLength value="4000"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<xs:element name="ClaimNotes" nillable="true">
+							<!--maxlength add-->
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:maxLength value="4000"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<!-- Site Number of the servicing location.Mandatory for all claims-->
+						<xs:element name="ServicingLocationSiteNumber" nillable="false">
+							<!--maxlength add-->
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:maxLength value="30"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<!-- Mandatory for Machine Claim. For Parts claim, this will be defaulted to the part number given in PartItemNumber tag -->
+						<xs:element name="CausalPart" nillable="true">
+							<!--maxlength add-->
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:maxLength value="30"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<!-- Mandatory for FieldModification Claim-->
+						<xs:element name="CampaignCode" nillable="true">
+							<!--maxlength add-->
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:maxLength value="30"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<!-- Mandatory for all claim types except for FieldModification and Parts claim not hosted on machine-->
+						<xs:element name="FaultLocation" nillable="true">
+							<!--maxlength add-->
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:maxLength value="30"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<xs:element name="FaultFound" nillable="true">
+							<!--maxlength add-->
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:maxLength value="30"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<xs:element name="FailureDetail" nillable="true">
+							<!--maxlength add-->
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:maxLength value="30"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<!-- Login Id of the technician.Mandatory for all claims-->
+						<xs:element name="TechnicianId" nillable="false">
+							<!--maxlength add-->
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:maxLength value="30"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<!-- Should be true for a SMR Claim-->
+						<xs:element name="SMRClaim" nillable="true">
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:maxLength value="1"/>
+									<xs:enumeration value="0"/>
+									<xs:enumeration value="1"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<!-- Reason for SMR.Mandatory for SMR claim-->
+						<xs:element name="ReasonForSMRClaim" nillable="true">
+							<!--maxlength add-->
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:maxLength value="100"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<!-- Invoice Number mandatory for non serialized Machine/Parts claim-->
+						<xs:element name="InvoiceNumber" nillable="true">
+							<!--maxlength add-->
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:maxLength value="30"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<!-- Mandatory for Parts claim hosted on a serialized machine -->
+						<xs:element name="HoursOnParts" type="xs:decimal" nillable="true" minOccurs="0" maxOccurs="1"/>
+						<!-- Distance travelled -->
+						<xs:element name="TravelByDistance" type="xs:decimal" nillable="true" minOccurs="0" maxOccurs="1"/>
+						<!-- Number of trips -->
+						<xs:element name="TravelByTrip" type="xs:integer" nillable="true" minOccurs="0" maxOccurs="1"/>
+						<!-- Number of hours spent in travelling -->
+						<xs:element name="TravelByHours" type="xs:decimal" nillable="true" minOccurs="0" maxOccurs="1"/>
+						<!-- Location travelled -->
+						<xs:element name="TravelLocation" nillable="true">
+							<!--maxlength add-->
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:maxLength value="400"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<!-- Start of  Miscellaneous Cost Categories for mentioning the amount for each -->
+						<xs:element name="AdditionalTravelHours" type="xs:decimal" nillable="true" minOccurs="0" maxOccurs="1"/>
+						<xs:element name="ItemFreightAndDuty" type="xs:decimal" nillable="true" minOccurs="0" maxOccurs="1"/>
+						<xs:element name="Meals" type="xs:decimal" nillable="true" minOccurs="0" maxOccurs="1"/>
+						<xs:element name="OtherFreightAndDuty" type="xs:decimal" nillable="true" minOccurs="0" maxOccurs="1"/>
+						<xs:element name="Others" type="xs:decimal" nillable="true" minOccurs="0" maxOccurs="1"/>
+						<xs:element name="LocalPurchase" type="xs:decimal" nillable="true" minOccurs="0" maxOccurs="1"/>
+						<xs:element name="Parking" type="xs:decimal" nillable="true" minOccurs="0" maxOccurs="1"/>
+						<xs:element name="PerDiem" type="xs:decimal" nillable="true" minOccurs="0" maxOccurs="1"/>
+						<xs:element name="RentalCharges" type="xs:decimal" nillable="true" minOccurs="0" maxOccurs="1"/>
+						<xs:element name="Tolls" type="xs:decimal" nillable="true" minOccurs="0" maxOccurs="1"/>
+						<!-- End of Miscellaneous Cost Categories -->
+						<!-- Information about replaced/installed OEM parts-->
+						<xs:element name="ComponentsReplaced" type="OEMPartsType" minOccurs="0" maxOccurs="unbounded"/>
+						<xs:element name="ReplacedNonOEMParts" type="ReplacedNonOEMPartsType"/>
+						<xs:element name="ServiceProcedures" type="ServiceProceduresType"/>
+						<!--Item Number and quantity of the miscellaneous parts replaced -->
+						<xs:element name="MiscellaneousParts" type="MiscellaneousPartsType"/>
+						<xs:element name="RuleFailures" type="RuleFailuresType"/>
+						<xs:element name="Payment" type="PaymentType"/>
+						<xs:element name="CreditMemos" type="CreditMemosType" nillable="true"/>
+						<xs:element name="ApplicablePolicy" nillable="true">
+							<!--maxlength add-->
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:maxLength value="100"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<xs:element name="ReviewResponsibility" nillable="true">
+							<!--maxlength add-->
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:maxLength value="100"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<xs:element name="InternalProcessingNotes" nillable="true">
+							<!--maxlength add-->
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:maxLength value="4000"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<xs:element name="CommentsToDealer" nillable="true">
+							<!--maxlength add-->
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:maxLength value="4000"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<xs:element name="AcceptanceReason" nillable="true">
+							<!--maxlength add-->
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:maxLength value="400"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<xs:element name="RejectionReason" nillable="true">
+							<!--maxlength add-->
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:maxLength value="400"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- Definition of common elements-->
+	<xs:element name="PartItemNumber" nillable="true">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="50"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="PartSerialNumber" nillable="true">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="50"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="PartQuantity" nillable="true">
+		<xs:simpleType>
+			<xs:restriction base="xs:int">
+				<xs:minInclusive value="1"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:complexType name="OEMPartsType">
+		<xs:sequence>
+			<xs:element name="OEMReplacedParts" type="PartInformation" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="OEMInstalledParts" type="PartInformation" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="PartInformation">
+		<xs:sequence>
+			<xs:element ref="PartItemNumber" minOccurs="1" maxOccurs="1"/>
+			<xs:element ref="PartSerialNumber" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="PartQuantity" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ReplacedNonOEMPartsType">
+		<xs:sequence>
+			<xs:element name="NonOEMPart" type="NonOEMPartType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="NonOEMPartType">
+		<xs:sequence>
+			<xs:element name="NonOEMPartDescription" nillable="false" minOccurs="0" maxOccurs="1">
+				<!--maxlength add-->
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="100"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="NonOEMPartPrice" type="xs:decimal" nillable="false" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="PartQuantity"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ServiceProceduresType">
+		<xs:sequence>
+			<xs:element name="ServiceProcedure" type="ServiceProcedure" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ServiceProcedure">
+		<xs:sequence>
+			<xs:element name="JobCode" nillable="false" maxOccurs="1">
+				<!--maxlength add-->
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="30"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="AdditionalLaborHours" type="xs:decimal" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="ReasonForAdditionalLaborHours" minOccurs="0" maxOccurs="1">
+				<!--maxlength add-->
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="400"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="StandardLaborTime" type="xs:decimal"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="MiscellaneousPartsType">
+		<xs:sequence>
+			<xs:element name="MiscellaneousPart" type="MiscellaneousPart" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="MiscellaneousPart">
+		<xs:sequence>
+			<xs:element ref="PartItemNumber" maxOccurs="1"/>
+			<xs:element ref="PartQuantity" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="RuleFailuresType">
+		<xs:sequence>
+			<xs:element name="RuleFailure" type="RuleFailure" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="RuleFailure">
+		<xs:sequence>
+			<xs:element name="RuleNumber" type="xs:integer" nillable="false" maxOccurs="1">
+				<!--maxlength add-->
+			</xs:element>
+			<xs:element name="FailureMessage" nillable="false" maxOccurs="1">
+				<!--maxlength add-->
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="4000"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="PaymentType">
+		<xs:sequence>
+			<xs:element name="LineItemGroup" nillable="false" minOccurs="0" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Name" nillable="false">
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:maxLength value="50"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<xs:element name="BaseAmount" type="xs:decimal" nillable="false"/>
+						<xs:element name="GroupAmount" type="xs:decimal" nillable="false"/>
+						<xs:element name="PercentageAcceptance" type="xs:decimal" nillable="false"/>
+						<xs:element name="AcceptedAmount" type="xs:decimal" nillable="false"/>
+						<xs:element name="AskedAmount" type="xs:decimal" nillable="false"/>
+						<xs:element name="LineItem" minOccurs="0" maxOccurs="unbounded">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="ModifierName" nillable="false">
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:maxLength value="100"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:element>
+									<xs:element name="ModifierLevel" type="xs:integer" nillable="false"/>
+									<xs:element name="ModifierAmount" type="xs:decimal" nillable="false"/>
+									<xs:element name="IsFlatRate" nillable="false">
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:enumeration value="0"/>
+												<xs:enumeration value="1"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:element>
+									<xs:element name="ModifierValue" type="xs:decimal" nillable="false"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CreditMemosType">
+		<xs:sequence>
+			<xs:element name="CreditMemo" type="CreditMemo" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CreditMemo">
+		<xs:sequence>
+			<xs:element name="MemoNumber" nillable="false">
+				<!--maxlength add-->
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="100"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="MemoDate" type="xs:date" nillable="false"/>
+			<xs:element name="TaxAmount" type="xs:decimal" nillable="false"/>
+			<xs:element name="PaidAmount" type="xs:decimal" nillable="false"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

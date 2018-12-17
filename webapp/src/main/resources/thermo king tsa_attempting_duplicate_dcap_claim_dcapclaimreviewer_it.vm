@@ -1,0 +1,16 @@
+Hi <b>${userName}</b>,<br/><br/> 
+
+Dealer Number  : <b>${dealerNumber}</b><br/>
+Dealer Name    : <b>${dealerName}</b><br/>
+Date Of Filed  : <b>${dateOfFiled}</b><br/>
+Claimed amount : <b>${claimedCurrency}</b> <b>${claimedAmount}</b><br/>
+Serial Number  : <b>${serialNumber}</b><br/>
+<br/><br/>
+ 
+
+You can sign-in to <a href="${url}">NMHG Warranty System</a> to view the equipment history.<br/><br/>
+
+Thank you.<br/><br/>
+
+
+This is an automated email, do not reply. You can un-subscribe this notification via the Email Subscription page under Settings on <a href="${url}">NMHG Warranty System</a>.

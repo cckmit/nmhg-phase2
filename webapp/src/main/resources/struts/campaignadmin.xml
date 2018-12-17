@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="campaignadmin" extends="struts-twms-default">
+		
+		<default-interceptor-ref name="paramsPrepare" />
+		
+		<action name="list_campaigns"
+            class="tavant.twms.web.admin.campaign.ListCampaignsAction">
+            <interceptor-ref name="adminParamsPrepare" />
+            <result>pages/secure/admin/campaign/campaignInboxView.jsp</result>
+        </action>
+        
+		<!-- Brings up the list of campaigns on the Service Campaign Page -->        
+        <action name="get_campaigns"
+            class="tavant.twms.web.admin.campaign.ListCampaignsAction"
+            method="tableBody">
+            <interceptor-ref name="adminParamsPrepare" />
+            <result>pages/secure/home/json.jsp</result>
+        </action>      
+       
+        
+        <!-- Brings up the preview details list of campaigns on the Service Campaign Page -->
+        <action name="preview_campaign"
+            class="tavant.twms.web.admin.campaign.PreviewCampaignAction">
+            <interceptor-ref name="adminParamsPrepare" />
+            <result>pages/secure/admin/campaign/read/campaign.jsp</result>
+        </action>
+        
+        <!-- Brings up the detailed view of the campaign / New campaign creation -->
+        <action name="initialize_campaign"
+			class="tavant.twms.web.admin.campaign.InitializeCampaignAction"
+			method="load">
+			<interceptor-ref name="adminParamsPrepareWithoutValidation" />
+			<result name="success">pages/secure/admin/campaign/initializeCampaign.jsp</result>
+			<result name="manageCampaign">pages/secure/admin/campaign/manageCampaign.jsp</result>
+		</action>
+        
+        <action name="get_service_procedure_json_for_campaign"
+            class="tavant.twms.web.admin.campaign.InitializeCampaignAction" method="getServiceProcedureTreeJSON">
+            <interceptor-ref name="paramsWithoutValidation"/>
+        </action>
+
+		 <!-- Internationalizes the campaign Description -->
+        <action name="internationalizeCampaignDescription"
+			class="tavant.twms.web.admin.campaign.InitializeCampaignAction"
+			method="load">
+			<interceptor-ref name="adminParamsPrepareWithoutValidation" />
+			<result name="success">pages/secure/admin/campaign/i18NCampaignDescription.jsp</result>
+			<result name="manageCampaign">pages/secure/admin/campaign/i18NCampaignDescription.jsp</result>
+		</action>
+		<action name="i18nNonOemDescription"
+			class="tavant.twms.web.admin.campaign.InitializeCampaignAction"
+			method="load">
+			<interceptor-ref name="adminParamsPrepareWithoutValidation" />
+			<result name="success">pages/secure/admin/campaign/i18nNonOemParts.jsp</result>
+			<result name="manageCampaign">pages/secure/admin/campaign/i18nNonOemParts.jsp</result>			
+		</action>
+		<action name="updateNonOemDescription"
+			class="tavant.twms.web.admin.campaign.InitializeCampaignAction"
+			method="load">
+			<interceptor-ref name="adminParamsPrepareWithoutValidation" />
+			<result name="success">pages/secure/admin/campaign/updateNonOemDescriptionMsg.jsp</result>
+			<result name="manageCampaign">pages/secure/admin/campaign/updateNonOemDescriptionMsg.jsp</result>
+		</action>
+		 <!-- Save Internationalizes the campaign Description -->
+		<action name="saveCampaignDescription"
+			class="tavant.twms.web.admin.campaign.InitializeCampaignAction"
+			method="saveCampaignDescription">
+			<interceptor-ref name="adminParamsPrepareWithoutValidation" />
+			<result name="input">pages/secure/admin/campaign/i18NCampaignDescription.jsp</result>
+			<result name="success">pages/secure/admin/campaign/i18NCampaignDescription.jsp</result>
+		</action>
+		
+		 <!-- Save Internationalizes the Non Oem Description -->
+		<action name="saveNonOemDescription"
+			class="tavant.twms.web.admin.campaign.InitializeCampaignAction"
+			method="saveNonOemDescription">
+			<interceptor-ref name="adminParamsPrepareWithoutValidation" />
+			<result name="input">pages/secure/admin/campaign/i18nNonOemParts.jsp</result>
+			<result name="success">pages/secure/admin/campaign/i18nNonOemParts.jsp</result>
+		</action>
+		<action name="updateI18nNonOemDescriptionMsg"
+			class="tavant.twms.web.admin.campaign.InitializeCampaignAction"
+			method="saveNonOemDescription">
+			<interceptor-ref name="adminParamsPrepareWithoutValidation" />
+			<result name="input">pages/secure/admin/campaign/updateNonOemDescriptionMsg.jsps</result>
+			<result name="success">pages/secure/admin/campaign/updateNonOemDescriptionMsg.jsp</result>
+		</action>
+        <!-- Submits for processing before saving a new campaign -->
+		<action name="process_campaign_criteria" 
+				class="tavant.twms.web.admin.campaign.InitializeCampaignAction"
+				method="process">
+			<interceptor-ref name="adminTwmsParamsPrepareRepeatTableParams" />	
+			<result name="input">pages/secure/admin/campaign/initializeCampaign.jsp</result>
+			<result type="chain">manage_service_details</result>
+		</action>
+		
+		<!-- Saves the new campaign for a 2 step entry. -->
+		<!-- On the Continue button click of the initializeCampaign.jsp -->
+		<action name="update_campaign_criteria"
+				class="tavant.twms.web.admin.campaign.InitializeCampaignAction"
+				method="update">
+			<interceptor-ref name="adminTwmsParamsPrepareRepeatTableParams" />
+			<result name="input">pages/secure/admin/campaign/initializeCampaign.jsp</result>
+			<result name="success">pages/secure/admin/campaign/manageCampaign.jsp</result>
+		</action>
+		
+		<action name="remove_items_from_campaign"
+				class="tavant.twms.web.admin.campaign.InitializeCampaignAction"
+				method="removeItems">
+			<interceptor-ref name="adminTwmsParamsPrepareRepeatTableParams" />
+			<result name="input">pages/secure/common/form/common/actionResults.jsp</result>
+			<result name="success">pages/secure/admin/campaign/campaignAssignemntCriteria.jsp</result>
+		</action>
+		
+		
+		<!-- Saves the new campaign for a draft. -->
+		<!-- On the Submit button click of the initializeCampaign.jsp -->
+		<action name="save_draft"
+				class="tavant.twms.web.admin.campaign.InitializeCampaignAction"
+				method="update">
+			<interceptor-ref name="adminTwmsParamsPrepareRepeatTableParams" />
+			<result name="input">pages/secure/admin/campaign/initializeCampaign.jsp</result>
+			<result>pages/secure/admin/campaign/campaignResult.jsp</result>
+		</action>
+		
+		<action name="save_for_previous"
+				class="tavant.twms.web.admin.campaign.SaveCampaignAction"
+				method="updateForPrevious">
+			<interceptor-ref name="adminTwmsParamsPrepareRepeatTableParams" />
+			<result name="success" type="chain">initialize_campaign</result>
+<!-- 			<result name="manageCampaign">pages/secure/admin/campaign/manageCampaign.jsp</result> -->
+		</action>
+		
+		<!-- Saves the new campaign for a 2 step entry. -->
+		<!-- On the Save button click of the manageCampaign.jsp -->
+		<action name="save_campaign"
+			class="tavant.twms.web.admin.campaign.SaveCampaignAction"
+			method="update">
+			<interceptor-ref name="adminTwmsParamsPrepareRepeatTableParams" />
+			<result name="input">pages/secure/admin/campaign/manageCampaign.jsp</result>
+			<result>pages/secure/admin/campaign/campaignResult.jsp</result>
+		</action>
+		
+		<action name="deactivate_campaign"
+			class="tavant.twms.web.admin.campaign.SaveCampaignAction"
+			method="deactivate">
+			<interceptor-ref name="adminTwmsParamsPrepareRepeatTableParams" />
+			<result name="input">pages/secure/admin/campaign/manageCampaign.jsp</result>
+			<result>pages/secure/admin/campaign/campaignResult.jsp</result>
+		</action>
+
+		<action name="activate_campaign"
+			class="tavant.twms.web.admin.campaign.SaveCampaignAction"
+			method="activate">
+			<interceptor-ref name="adminTwmsParamsPrepareRepeatTableParams" />
+			<result name="input">pages/secure/admin/campaign/manageCampaign.jsp</result>
+			<result>pages/secure/admin/campaign/campaignResult.jsp</result>
+		</action>
+
+		<!-- Deletes a campaign -->
+		<!-- On the Delete button click of the manageCampaign.jsp -->
+		<action name="delete_campaign"
+			class="tavant.twms.web.admin.campaign.SaveCampaignAction"
+			method="delete">
+			<interceptor-ref name="adminTwmsParamsPrepareRepeatTableParams" />
+			<result name="input">pages/secure/admin/campaign/manageCampaign.jsp</result>
+			<result>pages/secure/common/successFullRefresh.jsp</result>
+		</action>
+		
+		<!-- For OEM part auto completion. Fetches the item data -->
+		<action name="oem_part_details"
+			class="tavant.twms.web.admin.campaign.SaveCampaignAction"
+			method="getOEMPartDetails">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result>pages/secure/home/json.jsp</result>
+		</action>
+		
+		<action name="list_campaign_items"
+			class="tavant.twms.web.admin.campaign.InitializeCampaignAction"
+			method="listCampaignItems">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result>pages/secure/admin/campaign/read/campaignRangeItems.jsp</result>
+		</action>
+		
+		<action name="show_customer_information"
+			class="tavant.twms.web.admin.campaign.InitializeCampaignAction"
+			method="showCustomerInformation">
+			<result>pages/secure/admin/campaign/read/customerInformation.jsp</result>
+		</action>
+		
+		<action name="show_dealer_information"
+			class="tavant.twms.web.admin.campaign.InitializeCampaignAction"
+			method="showDealerInformation">
+			<result>pages/secure/admin/campaign/read/dealerInformation.jsp</result>
+		</action>
+		
+		<action name="assignCampaignForAllCampaignItems"
+			class="tavant.twms.web.admin.campaign.InitializeCampaignAction"
+			method="assignNotifications">
+			<param name="forAllCampaignItems">true</param>
+			<interceptor-ref name="adminTwmsParamsPrepareRepeatTableParams" />
+			<result name="input">pages/secure/admin/campaign/manageCampaign.jsp</result>
+			<result>pages/secure/admin/campaign/read/campaignNotificationsAssignment.jsp</result>
+		</action>
+
+		<action name="assignCampaignForNewCampaignItems"
+			class="tavant.twms.web.admin.campaign.InitializeCampaignAction"
+			method="assignNotifications">
+			<param name="forAllCampaignItems">false</param>
+			<interceptor-ref name="adminParamsPrepare" />
+			<result>pages/secure/admin/campaign/read/campaignNotificationsAssignment.jsp</result>
+		</action>
+		
+		<action name="delete_items_from_campaign"
+			class="tavant.twms.web.admin.campaign.InitializeCampaignAction"
+			method="removeItemsFromCampaign">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="input">pages/secure/admin/campaign/manageCampaign.jsp</result>
+			<result>pages/secure/common/form/common/actionResults.jsp</result>
+		</action>
+		
+
+        
+        <action name="download_template" class="tavant.twms.web.admin.campaign.FileDownloadAction">
+            <param name="inputPath">/pages/secure/admin/campaign/SerialNumbers.xls</param>
+            <result name="success" type="stream">
+                <param name="contentType">excel/ms-excel</param>
+                <param name="inputName">inputStream</param>
+                <param name="contentDisposition">filename="SerialNumbers.xls"</param>
+<!--                <param name="bufferSize">4096</param>-->
+            </result>
+        </action>
+        
+        <action name="list_part_return_locations"
+			class="tavant.twms.web.admin.campaign.InitializeCampaignAction"
+			method="listLocations">
+		 <interceptor-ref name="adminParamsPrepareWithoutValidation"/>
+		</action>
+		<action name="list_part_return_Locations_for_PRC"
+			class="tavant.twms.web.admin.campaign.InitializeCampaignAction"
+			method="listLocations">
+		 <interceptor-ref name="adminParamsPrepareWithoutValidation"/>
+		</action>
+		<!-- Campaign Items Search -->
+		<action name="campaignItemsSearch"
+			class="tavant.twms.web.search.CampaignItemsSearchAction"
+			method="setupSearchView">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">pages/secure/admin/campaign/search/campaignItemsSearch.jsp</result>
+		</action>
+		
+		<action name="campaignItemsSearchResult"
+			class="tavant.twms.web.search.CampaignItemsSearchAction">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">pages/secure/admin/campaign/search/campaignItemSearchInboxView.jsp</result>
+			<result name="input">pages/secure/admin/campaign/search/campaignItemsSearch.jsp</result>
+		</action>
+
+		<action name="campaignItemsSearchBody"
+			class="tavant.twms.web.search.CampaignItemsSearchAction"
+			method="tableBody">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result>pages/secure/home/json.jsp</result>
+		</action>
+
+		<action name="previewCampaignItemsSearch"
+			class="tavant.twms.web.search.CampaignItemsSearchAction"
+			method="preview">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">pages/secure/admin/campaign/search/campaignItemsPreview.jsp</result>
+		</action>
+
+		<action name="detailCampaignItemsSearch"
+			class="tavant.twms.web.search.CampaignItemsSearchAction"
+			method="detail">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">pages/secure/admin/campaign/search/campaignItemsPreview.jsp</result>
+		</action>
+		
+		<action name="saveCampaignItemChanges"
+			class="tavant.twms.web.search.CampaignItemsSearchAction"
+			method="saveStatusChange">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">pages/secure/common/successFullRefresh.jsp</result>
+			<result name="input">pages/secure/admin/campaign/search/campaignItemsPreview.jsp</result>
+		</action>
+		
+		<action name="exportToExcel"
+                class="tavant.twms.web.search.CampaignItemsSearchAction" method="downloadListingData" >
+                <interceptor-ref name="adminParamsPrepare" />
+         </action>
+         
+         <action name="exportAllCampaignNotification"
+                class="tavant.twms.web.admin.campaign.FileUploadAction" method="downloadListingData" >
+                <interceptor-ref name="adminParamsPrepare" />
+         </action>
+         
+         <action name="exportAdminDataToExcel"
+                                            class="tavant.twms.web.admin.campaign.ListCampaignsAction" method="downloadListingData" >        
+				<interceptor-ref name="adminParamsPrepare" />
+		 </action>
+		 
+         <action name="save_partial_campaign"
+		         class="tavant.twms.web.admin.campaign.InitializeCampaignAction"
+				  method="savePartialCampaign">
+			<interceptor-ref name="adminTwmsParamsPrepareRepeatTableParams" />
+			<result name="input">pages/secure/admin/campaign/initializeCampaign.jsp</result>
+			<result name="success">pages/secure/admin/campaign/initializeCampaign.jsp</result>
+	               </action>  
+	  
+	      <action name="view_pattern_example"
+				class="tavant.twms.web.admin.campaign.InitializeCampaignAction"
+				method="viewPatternExample">
+				<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">pages/secure/admin/campaign/howToSpecifyPattern.jsp</result>
+	      </action>    
+	      
+	      <action name="select_criteria_for_campaign_assignemnt"
+			class="tavant.twms.web.admin.campaign.InitializeCampaignAction"
+			method="selectCriteriaForCampaignNotification">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result>pages/secure/admin/campaign/campaignAssignemntCriteria.jsp</result>
+		 </action> 
+		 <action name="list_nationalAccountNames" class="tavant.twms.web.admin.campaign.InitializeCampaignAction" method="getNationalAccountNames">
+          <interceptor-ref name="adminParamsPrepareWithoutValidation" />
+    	  <result name="success">pages/secure/home/json.jsp</result>
+    	  <result name="input">pages/error.jsp</result>
+    </action> 
+     <action name="list_nationalAccountNumbers" class="tavant.twms.web.admin.campaign.InitializeCampaignAction" method="getNationalAccountNumber">
+          <interceptor-ref name="adminParamsPrepareWithoutValidation" />
+    	  <result name="success">pages/secure/home/json.jsp</result>
+    	  <result name="input">pages/error.jsp</result>
+    </action> 
+	
+		<action name="getCampaignOemRemovedInstalledPartTemplate"
+			class="tavant.twms.web.admin.campaign.InitializeCampaignAction" method="getCampaignOemRemovedInstalledPartTemplate">
+			<interceptor-ref name="paramsWithoutValidation"/>
+			<interceptor-ref name="staticParams">
+          	<param name="parse">true</param>
+          	<param name="overwrite">false</param>
+    		 </interceptor-ref>
+            <result name="success">pages/secure/admin/campaign/oemRemovedInstalledPartTemplate.jsp</result>
+		</action>
+		
+		<action name="getCampaignOemInstalledPartTemplate"
+			class="tavant.twms.web.admin.campaign.InitializeCampaignAction" method="getOemInstalledPartTemplate">
+			<interceptor-ref name="paramsWithoutValidation"/>
+			<interceptor-ref name="staticParams">
+          	<param name="parse">true</param>
+          	<param name="overwrite">false</param>
+    		 </interceptor-ref>
+            <result name="success">pages/secure/admin/campaign/campaignInstalledPartTemplate.jsp</result>
+		</action>
+		
+		<action name="getCampaignOemRemovedPartTemplate"
+			class="tavant.twms.web.admin.campaign.InitializeCampaignAction" method="getOemRemovedPartTemplate">
+			<interceptor-ref name="paramsWithoutValidation"/>
+			<interceptor-ref name="staticParams">
+          	<param name="parse">true</param>
+          	<param name="overwrite">false</param>
+    		 </interceptor-ref>
+            <result name="success">pages/secure/admin/campaign/campaignRemovedPartTemplate.jsp</result>
+		</action>
+				 
+    </package>
+</struts>

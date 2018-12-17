@@ -1,0 +1,78 @@
+.twmsActionResults {
+    border: 1px solid #EFEBF7;
+    width: 99%;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 11pt;
+}
+.twmsActionResultsSectionWrapper {
+    margin: 5px;
+    padding: 5px;
+}
+
+.twmsActionResultsWarnings {
+    color: #CC6600;
+    background: #F3FBFE;
+	border:1px solid #EFEBF7;
+}
+
+.twmsActionResultsWarnings .twmsActionResultActionHead {
+    background:url("../../../../../image/ui-ext/actionResult/warningsImg.gif") no-repeat;
+}
+
+.twmsActionResultsErrors {
+    color: #F00;
+    background: #F3FBFE;
+	border:1px solid #EFEBF7;
+}
+
+.twmsActionResultsErrors .twmsActionResultActionHead{
+    background:url("../../../../../image/ui-ext/actionResult/errorImg.gif") no-repeat;
+}
+
+.twmsActionResultsMessages {
+    color: #0A7700;
+    background: #F3FBFE;
+}
+
+.twmsActionResultsMessages .twmsActionResultActionHead {
+    background:url("../../../../../image/ui-ext/actionResult/addRow.gif") no-repeat;
+}
+
+.twmsActionResultsErrors, .twmsActionResultsWarnings, .twmsActionResultsMessages {
+    vertical-align: middle;
+    margin:5px;
+    border:1px solid #EFEBF7;
+}
+
+.twmsActionResultActionHead {
+    padding : 0 25px;
+    height: 16px;
+    line-height: 16px;
+    vertical-align : middle;
+    float: left;
+}
+.twmsActionResults ol {
+   padding-top: 2px;
+   display:table;
+   list-style-type: square;
+}
+.twmsActionResultsSectionWrapper hr {
+    display: block;
+    clear: both;
+    visibility: hidden;
+    margin: 0;
+}
+
+.dj_iequirks .twmsActionResults ol {
+   padding-top: 20px;
+   padding-left: 50px;
+   display:table;
+   list-style-type: square;
+}
+
+.dj_ie8 .twmsActionResults ol {
+   padding-top: 25px;
+   padding-left: 50px;
+   display:table;
+   list-style-type: square;
+}

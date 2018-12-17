@@ -1,0 +1,6 @@
+--PURPOSE    : PATCH TO alter TECHNICIAN_CERTIFICATION_SEQ 
+--AUTHOR     : Raghavendra
+--CREATED ON : 07-MAY-14
+
+alter sequence TECHNICIAN_CERTIFICATION_SEQ increment by 20
+/

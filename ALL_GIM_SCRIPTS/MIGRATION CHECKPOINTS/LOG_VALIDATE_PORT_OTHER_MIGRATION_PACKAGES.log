@@ -1,0 +1,47 @@
+
+'*********** Validation of Migration Packages ***********'
+
+
+OBJECT_NAME                    OBJECT_TYPE     LAST_DDL_TIME                    
+------------------------------ --------------- --------------------             
+STATUS               TIMESTAMP                                                  
+-------------------- --------------------                                       
+TAV_GIM_CLEANUP_UTILITIES      PACKAGE         25-FEB-11                        
+VALID                2011-02-25:13:21:29                                        
+                                                                                
+TAV_GIM_CLEANUP_UTILITIES      PACKAGE BODY    26-APR-11                        
+VALID                2011-04-26:18:46:33                                        
+                                                                                
+TAV_GIM_COMP_UNIQUE_SCENARIOS  PACKAGE         04-MAR-11                        
+VALID                2011-03-04:13:46:48                                        
+                                                                                
+TAV_GIM_COMP_UNIQUE_SCENARIOS  PACKAGE BODY    26-APR-11                        
+VALID                2011-04-26:18:46:33                                        
+                                                                                
+TAV_GIM_INITIAL_SETUP          PACKAGE         26-APR-11                        
+VALID                2011-04-26:17:51:19                                        
+                                                                                
+TAV_GIM_INITIAL_SETUP          PACKAGE BODY    26-APR-11                        
+VALID                2011-04-26:17:51:19                                        
+                                                                                
+TAV_GIM_PROCESS_MIGRATION      PACKAGE         31-MAR-11                        
+VALID                2011-03-31:21:18:58                                        
+                                                                                
+TAV_GIM_PROCESS_MIGRATION      PACKAGE BODY    26-APR-11                        
+VALID                2011-04-26:18:46:31                                        
+                                                                                
+TAV_GIM_UTILITIES              PACKAGE         18-MAR-11                        
+VALID                2011-03-18:13:00:55                                        
+                                                                                
+TAV_GIM_UTILITIES              PACKAGE BODY    26-APR-11                        
+VALID                2011-04-26:18:46:29                                        
+                                                                                
+
+'*********** End of Validation of Migration Packages ***********'
+
+Message: Refer LOG_VALIDATE_PORT_OTHER_MIGRATION_PACKAGES.log.log before proceeding.
+
+Message: Next process ==> Populate Staging Area
+
+Message: Please execute TAV_GIM_POPULATE_STAGING_AREA.sql to populate staging area.
+

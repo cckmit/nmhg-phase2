@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+    
+<struts>
+	<package name="jobcodeadmin" extends="struts-twms-default">
+		<!-- Actions for Job Code maintenance -->
+        <default-interceptor-ref name="adminTwmsParamsWithoutPrepare"/>
+
+        <action name="maintainFailureStructure"
+			class="tavant.twms.web.admin.jobcode.MaintainJobCodeAction">
+            <result name="success">
+				pages/secure/admin/jobcode/spTreeEditor.jsp
+			</result>
+		</action>
+
+		<action name="fetchFailureStructure"
+			class="tavant.twms.web.admin.jobcode.MaintainJobCodeAction"
+			method="fetchFailureStructure">
+            <interceptor-ref name="adminTwmsParamsPrepareParams"/>
+            <result name="success">
+                pages/secure/home/json.jsp
+            </result>
+        </action>
+
+        <action name="fetchAssemblyDefinitions"
+			class="tavant.twms.web.admin.jobcode.MaintainJobCodeAction"
+			method="fetchAssemblyDefinitions">
+            <result name="success">
+                pages/secure/home/json.jsp
+            </result>
+        </action>
+
+        <action name="fetchServiceProcedureDefinitions"
+			class="tavant.twms.web.admin.jobcode.MaintainJobCodeAction"
+			method="fetchActionDefinitions">
+            <result name="success">
+                pages/secure/home/json.jsp
+            </result>
+        </action>
+
+        <action name="createAssemblyDefinition"
+			class="tavant.twms.web.admin.jobcode.MaintainJobCodeAction"
+			method="createAssemblymDefinition">
+            <result name="success">
+                pages/secure/home/json.jsp
+            </result>
+        </action>
+
+        <action name="createServiceProcedureDefinition"
+			class="tavant.twms.web.admin.jobcode.MaintainJobCodeAction"
+			method="createActionDefinition">
+            <result name="success">
+                pages/secure/home/json.jsp
+            </result>
+        </action>
+
+        <action name="saveFailureStructure"
+			class="tavant.twms.web.admin.jobcode.MaintainJobCodeAction"
+			method="saveFailureStructure">
+            <interceptor-ref name="adminTwmsParamsPrepareParams"/>
+            <result name="success">
+                pages/secure/admin/jobcode/spTreeEditor.jsp
+            </result>
+            <result name="input">
+                pages/secure/admin/jobcode/spTreeEditor.jsp
+            </result>
+        </action>
+        
+        <!-- actions for job code listings -->
+        
+        <action name="list_job_code_defs"
+					class="tavant.twms.web.admin.jobcode.ListJobCodesAction">
+					<interceptor-ref name="adminParamsPrepare" />
+		      <result name="success">pages/secure/admin/jobcode/jobCodesInboxView.jsp</result>
+				</action>
+				
+				<action name="get_service_procedure_body"
+					class="tavant.twms.web.admin.jobcode.ListJobCodesAction"
+					method="tableBody">
+					<interceptor-ref name="adminParamsPrepare" />
+		      <result name="success">pages/secure/home/json.jsp</result>
+					<result name="input">error.jsp</result>
+				</action>
+				
+				<action name="export_job_codes_to_excel"
+					class="tavant.twms.web.admin.jobcode.ListJobCodesAction"
+					method="downloadListingData">
+					<interceptor-ref name="adminParamsPrepare" />
+				</action>
+				<!-- The 2 actions below will not be required after we get rid of the 
+											preview url in the inbox view.  -->
+				<action name="view_service_procedure_preview"
+					class="tavant.twms.web.admin.jobcode.ListJobCodesAction" method="showJobCode">
+					<interceptor-ref name="adminParamsPrepare" />			
+					<result name="success">pages/secure/admin/faultcode/faultCodeView.jsp</result>
+				</action>
+				
+				<action name="view_service_procedure_detail"
+					class="tavant.twms.web.admin.jobcode.ListJobCodesAction" method="showJobCode">
+					<interceptor-ref name="adminParamsPrepare" />			
+					<result name="success">pages/secure/admin/faultcode/faultCodeView.jsp</result>
+				</action>
+    </package>
+</struts>	

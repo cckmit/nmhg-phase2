@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="manageMinimumLaborRoundUp" extends="struts-twms-default">
+
+		<action name="manageMinimumLaborRoundUp"
+				class="tavant.twms.web.admin.minimumLaborRoundUp.ManageMinimumLaborRoundUpAction"  method="load"> 
+			<interceptor-ref name="adminTwmsParamsPrepareRepeatTableParams" />
+			<result name="success">pages/secure/admin/minimumLaborRoundUp/manageMinimumLaborRoundUp.jsp</result>
+			<result name="input">pages/secure/admin/minimumLaborRoundUp/manageMinimumLaborRoundUp.jsp</result>
+		</action>
+		
+		<action name="saveMinimumLaborRoundUp"
+			class="tavant.twms.web.admin.minimumLaborRoundUp.ManageMinimumLaborRoundUpAction" method="save">
+			<interceptor-ref name="adminTwmsParamsPrepareRepeatTableParams" />
+			<result name="success">pages/secure/common/successFullRefresh.jsp</result>
+			<result name="input">pages/secure/admin/minimumLaborRoundUp/manageMinimumLaborRoundUp.jsp</result>
+		</action>
+		
+	</package>
+</struts>

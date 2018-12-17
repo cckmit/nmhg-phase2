@@ -1,0 +1,40 @@
+<process-definition name="TaskBasedClaimStateProcess">
+
+  <start-state name="Start">
+    <transition name="" to="ProcessorReview">
+		<script>claim.setState(tavant.twms.domain.claim.ClaimState.MANUAL_REVIEW);</script>    
+    </transition>
+  </start-state>
+  
+  <task-node name="ProcessorReview">
+    <task name="Processor Review">          
+      <forms>
+        <inputForm>ProcessReview</inputForm>        
+      </forms>
+    </task>
+    <transition name="Next" to="SuperProcessorReview">
+		<script>claim.setState(tavant.twms.domain.claim.ClaimState.SUBMITTED);</script>    
+    </transition>
+  </task-node>
+  
+  <task-node name="SuperProcessorReview">
+    <task name="Super Processor Review">          
+      <forms>
+        <inputForm>SuperProcessReview</inputForm>        
+      </forms>      
+    </task>
+    <transition name="Accept" to="Cashier"/>
+  </task-node>
+  
+  <task-node name="Cashier">
+    <task name="Cashier">          
+      <forms>
+        <inputForm>CashPayout</inputForm>        
+      </forms>      
+    </task>
+    <transition name="Pay" to="End"/>
+  </task-node>
+  
+  <end-state name="End"/>
+  
+</process-definition>

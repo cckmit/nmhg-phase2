@@ -1,0 +1,16 @@
+<div dojoAttachPoint="domNode" class="${cssClass}">
+    <div dojoAttachPoint="linkNode" class="${searchLinkClass}">
+        ${searchLinkLabel}
+    </div>
+    <div id="dialogBoxContainer" style="display:none">
+        <div dojoType="twms.widget.Dialog" title="${searchTitle}" dojoAttachPoint="dialogNode"
+             class="multiInventorySearchPopup">
+                <div dojoType="dojox.layout.ContentPane" region="top" dojoAttachPoint="searchInputNode">
+                </div>
+                <div id="searchResultsNode" dojoAttachPoint="searchResultsNode" dojoType="dojox.layout.ContentPane"
+                     class ="multiInventorySearchResults" region="center">
+                </div>
+                <!--<div style="height: 30px;border-top: 2px solid brown"></div>-->
+        </div>
+    </div>
+</div>

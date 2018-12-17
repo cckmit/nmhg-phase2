@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="uom" extends="struts-twms-default">
+
+     <!-- Summary Table Actions -->
+	<action name="showMappedUoms"
+		  class="tavant.twms.web.uom.ListUoms" method="execute">
+		  <interceptor-ref name="paramsPrepareWithoutValidation"/>		  
+		  <result name="success">pages/secure/uom/uomInboxView.jsp</result>
+	</action>
+			
+	<action name="mappedUomsBody" class="tavant.twms.web.uom.ListUoms"
+			method="tableBody">
+           <interceptor-ref name="paramsPrepare" />
+		   <result name="success">pages/secure/home/json.jsp</result>		  
+	</action>
+	
+	<action name="uomMappingPreview" class="tavant.twms.web.uom.ManageUom"
+	  		method="showPreview">
+	   	 <interceptor-ref name="paramsPrepare" />
+	   	 <result name="success">pages/secure/uom/uomMappingPreview.jsp</result>
+	</action>
+	
+	<action name="uomMappingDetail" class="tavant.twms.web.uom.ManageUom"
+	 		method="showDetail">  	
+	     <interceptor-ref name="paramsPrepare" />
+	     <result name="success">pages/secure/uom/uomMappingDetail.jsp</result>	     
+	</action>
+	
+	<action name="downloadUomsToExcel" 	class="tavant.twms.web.uom.ListUoms" method="downloadListingData" />
+	<!-- End of Summary Table Actions -->
+	
+	
+	<action name="deleteUomMapping" class="tavant.twms.web.uom.ManageUom" method="deleteUom">
+	     <interceptor-ref name="paramsPrepare" />
+	     <result name="input">pages/secure/uom/uomMappingDetail.jsp</result>
+	     <result name="success">pages/secure/admin/success.jsp</result>	     	
+	</action>
+
+	<action name="updateUomMapping" class="tavant.twms.web.uom.ManageUom" method="updateUom">
+	     <interceptor-ref name="adminTwmsParamsPrepareRepeatTableParams" />
+	     <result name="input">pages/secure/uom/uomMappingDetail.jsp</result>
+	     <result name="success">pages/secure/admin/success.jsp</result>	     	
+	</action>
+
+
+	<action name="addUomMapping" class="tavant.twms.web.uom.ManageUom" method="addUom">
+	     <interceptor-ref name="adminParamsPrepare" />
+	     <result name="success">pages/secure/uom/uomAddMappings.jsp</result>	     	     
+	</action>
+
+	<action name="saveUomMapping" class="tavant.twms.web.uom.ManageUom" method="saveUom">
+	     <interceptor-ref name="adminTwmsParamsPrepareRepeatTableParams" />
+	     <result name="input">pages/secure/uom/uomAddMappings.jsp</result>
+	     <result name="success">pages/secure/admin/success.jsp</result>	     	
+	</action>
+
+
+	
+     
+	
+	</package>
+</struts>	 
+	

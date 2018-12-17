@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<fts>
+<chunkinfo url="whfwdata0.xml" first="001" last="battery"/>
+<chunkinfo url="whfwdata1.xml" first="be" last="correct"/>
+<chunkinfo url="whfwdata2.xml" first="correspond" last="eligibility"/>
+<chunkinfo url="whfwdata3.xml" first="eligibl" last="henc"/>
+<chunkinfo url="whfwdata4.xml" first="her" last="m"/>
+<chunkinfo url="whfwdata5.xml" first="m1" last="overall"/>
+<chunkinfo url="whfwdata6.xml" first="overdu" last="register"/>
+<chunkinfo url="whfwdata7.xml" first="registration" last="six"/>
+<chunkinfo url="whfwdata8.xml" first="small" last="updat"/>
+<chunkinfo url="whfwdata9.xml" first="upload" last="zip"/>
+
+<tchunkinfo first="0" last="117" url="whftdata0.xml" />
+<tchunkinfo first="118" last="146" url="whftdata1.xml" />
+
+</fts>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Never do a Ctrl+ Shift + F in this xml cos it screws up the CDATA format -->
+<process-definition name="ClaimSubmission">
+  <start-state name="start">
+    <transition name="" to="ClaimSubmit"></transition>
+  </start-state>
+
+  <task-node name="ClaimSubmit">
+    <task name="I submit a claim"></task>
+    <transition name="Submit" to="LimitCheck">
+      <script>claim.noOfResubmits = claim.noOfResubmits + 1</script>
+    </transition>
+  </task-node>
+
+  <decision name="LimitCheck">
+    <transition name="DoneEnough" to="ClaimSubmit">
+      <condition>#{claim.noOfResubmits > 2}</condition>
+    </transition>
+    <transition name="Allowed" to="ClaimApprove">
+      <condition><![CDATA[#{claim.noOfResubmits <= 2}]]></condition>
+    </transition>
+  </decision>
+
+  <task-node name="ClaimApprove">
+    <task name="My wish to approve/reject"></task>
+    <transition name="Approve" to="End"></transition>
+    <transition name="Reject" to="ClaimSubmit"></transition>
+  </task-node>
+</process-definition>

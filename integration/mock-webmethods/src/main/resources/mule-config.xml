@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mule-configuration SYSTEM  "mule-1.2-configuration.dtd">
+<mule-configuration id="mock-webmethods" version="1.0">
+
+	<environment-properties>
+		<file-properties location="${TWMS_HOME}/dev/mock-webmethods-mule.properties" />
+	</environment-properties>
+	<mule-environment-properties serverUrl="tcp://localhost:60506">
+		<threading-profile maxThreadsActive="1" />
+		<pooling-profile maxActive="1" />
+	</mule-environment-properties>
+
+	<container-context
+		className="org.mule.extras.spring.SpringContainerContext">
+		<properties>
+			<property name="configFile" value="webmethods-context.xml" />
+		</properties>
+	</container-context>
+
+	<connector name="movingFileConnector" className="org.mule.providers.file.FileConnector">
+		<properties>
+			<property name="pollingFrequency" value="10000" />
+			<property name="binaryMode" value="false" />
+		</properties>
+	</connector>
+
+    <connector name="creditSubmissionRequestFileConnector" className="org.mule.providers.file.FileConnector">
+		<properties>
+            <property name="outputPattern" value="CreditSubmit-${DATE}.xml" />
+			<property name="binaryMode" value="false" />
+		</properties>
+	</connector>
+
+	<connector name="creditNotifyResponseFileConnector" className="org.mule.providers.file.FileConnector">
+		<properties>
+			<property name="outputPattern" value="CreditNotification-Response-${DATE}.xml" />
+			<property name="binaryMode" value="false" />
+		</properties>
+	</connector>
+
+	<connector name="userSyncResponseFileConnector" className="org.mule.providers.file.FileConnector">
+		<properties>
+			<property name="outputPattern" value="UserSync-Response-${DATE}.xml" />
+			<property name="binaryMode" value="false" />
+		</properties>
+	</connector>
+
+	<connector name="itemSyncResponseFileConnector" className="org.mule.providers.file.FileConnector">
+		<properties>
+			<property name="outputPattern" value="ItemSync-Response-${DATE}.xml" />
+			<property name="binaryMode" value="false" />
+		</properties>
+	</connector>
+
+
+	<connector name="installBaseSyncResponseFileConnector"
+		className="org.mule.providers.file.FileConnector">
+		<properties>
+			<property name="outputPattern"
+				value="InstallBaseSync-Response-${DATE}.xml" />
+			<property name="binaryMode" value="false" />
+		</properties>
+	</connector>
+
+	<connector name="customerSyncResponseFileConnector" className="org.mule.providers.file.FileConnector">
+		<properties>
+			<property name="outputPattern" value="CustomerSync-Response-${DATE}.xml" />
+			<property name="binaryMode" value="false" />
+		</properties>
+	</connector>
+
+    <connector name="warrantyDebitRequestConnector" className="org.mule.providers.file.FileConnector">
+		<properties>
+            <property name="outputPattern" value="WarrantyDebitRequest-${DATE}.xml"/>
+			<property name="binaryMode" value="false" />
+		</properties>
+	</connector>
+
+    <transformers>
+        <transformer name="responseTransformer" className="com.tavant.clubcar.mockwebmethods.transformers.Transformer" />
+    </transformers>
+
+	<model name="webmethods">
+
+		<mule-descriptor name="ProcessCreditSubmit-WS"
+			implementation="remoteService">
+			<inbound-router>
+				<endpoint address="axis:${webmethods.url}"
+					synchronous="true" />
+			</inbound-router>
+			<outbound-router>
+				<router
+					className="org.mule.routing.outbound.ChainingRouter">
+					<endpoint
+						address="file:///${credit.submit.file.location}?connector=creditSubmissionRequestFileConnector" />
+				</router>
+			</outbound-router>
+		</mule-descriptor>
+
+		<!--Sync CreditNotification-->
+		<mule-descriptor name="ProcessCreditNotification-WS"
+			implementation="remoteService">
+			<inbound-router>
+				<endpoint
+					address="file:///${credit.notify.file.location}/request?connector=movingFileConnector&amp;moveToDirectory=${credit.notify.file.location}/sent">
+				</endpoint>
+			</inbound-router>
+			<outbound-router>
+				<router
+					className="org.mule.routing.outbound.ChainingRouter">
+					<endpoint
+						address="axis:${integration.server.url}/ProcessCreditNotification-WS?method=sync"
+						synchronous="true" />
+					<endpoint
+						address="file:///${credit.notify.file.location}/received?connector=creditNotifyResponseFileConnector" />
+				</router>
+			</outbound-router>
+		</mule-descriptor>
+
+		<!--Sync User  -->
+		<mule-descriptor name="SyncUser-WS"
+			implementation="remoteService">
+			<inbound-router>
+				<endpoint
+					address="file:///${user.sync.file.location}/request?connector=movingFileConnector&amp;moveToDirectory=${user.sync.file.location}/sent">
+				</endpoint>
+			</inbound-router>
+			<outbound-router>
+				<router
+					className="org.mule.routing.outbound.ChainingRouter">
+					<endpoint
+						address="axis:${integration.server.url}/SyncUser-WS?method=sync"
+						synchronous="true" />
+					<endpoint
+						address="file:///${user.sync.file.location}/received?connector=userSyncResponseFileConnector" />
+				</router>
+			</outbound-router>
+		</mule-descriptor>
+
+		<!--Sync Item  -->
+		<mule-descriptor name="SyncItem-WS"
+			implementation="remoteService">
+			<inbound-router>
+				<endpoint
+					address="file:///${item.sync.file.location}/request?connector=movingFileConnector&amp;moveToDirectory=${item.sync.file.location}/sent">
+				</endpoint>
+			</inbound-router>
+			<outbound-router>
+				<router
+					className="org.mule.routing.outbound.ChainingRouter">
+					<endpoint
+						address="axis:${integration.server.url}/SyncItem-WS?method=sync"
+						synchronous="true" />
+					<endpoint
+						address="file:///${item.sync.file.location}/received?connector=itemSyncResponseFileConnector" />
+				</router>
+			</outbound-router>
+		</mule-descriptor>
+
+        <mule-descriptor name="ProcessItem-WS"
+                implementation="remoteService"
+                responseTransformer="responseTransformer"
+                inboundEndpoint="axis:${webmethods.url}"
+                outboundEndpoint="file:///${item.sync.file.location}/response?connector=itemSyncResponseFileConnector" />
+
+		<!--Sync InstallBase -->
+		<mule-descriptor name="SyncInstallBase-WS"
+			implementation="remoteService">
+			<inbound-router>
+				<endpoint
+					address="file:///${installBase.sync.file.location}/request?connector=movingFileConnector&amp;moveToDirectory=${installBase.sync.file.location}/sent">
+				</endpoint>
+			</inbound-router>
+			<outbound-router>
+				<router
+					className="org.mule.routing.outbound.ChainingRouter">
+					<endpoint
+						address="axis:${integration.server.url}/SyncInstallBase-WS?method=sync"
+						synchronous="true" />
+					<endpoint
+						address="file:///${installBase.sync.file.location}/received?connector=installBaseSyncResponseFileConnector" />
+				</router>
+			</outbound-router>
+		</mule-descriptor>
+
+		<!--Sync Customer -->
+		<mule-descriptor name="SyncCustomer-WS"
+			implementation="remoteService">
+			<inbound-router>
+				<endpoint
+					address="file:///${customer.sync.file.location}/request?connector=movingFileConnector&amp;moveToDirectory=${customer.sync.file.location}/sent">
+				</endpoint>
+			</inbound-router>
+			<outbound-router>
+				<router
+					className="org.mule.routing.outbound.ChainingRouter">
+					<endpoint
+						address="axis:${integration.server.url}/SyncCustomer-WS?method=sync"
+						synchronous="true" />
+					<endpoint
+						address="file:///${customer.sync.file.location}/received?connector=customerSyncResponseFileConnector" />
+				</router>
+			</outbound-router>
+		</mule-descriptor>
+
+        <mule-descriptor name="ProcessWarrantyDebitRequest-WS"
+                implementation="remoteService"
+                responseTransformer="responseTransformer"
+                inboundEndpoint="axis:${webmethods.url}"
+                outboundEndpoint="file:///${warranty.debit.response.file.location}?connector=warrantyDebitRequestConnector" />
+
+	</model>
+</mule-configuration>

@@ -1,0 +1,12 @@
+--PURPOSE    : TO CHANGE FOREIGN KEY REFERENCE TO POINT TO ATTR_VALUE INSTEAD OF TECHNICIAN
+--AUTHOR     : PARTHASARATHY R
+--CREATED ON : 27-SEPT-2012
+
+begin 
+execute immediate 'alter table TECHNICIAN_CERTIFICATION drop constraint TECHNICIANCERT_TECHNICIAN_FK';
+exception when others then
+NULL;
+end
+/
+alter table TECHNICIAN_CERTIFICATION add constraint TECHNICIANCERT_ATTRVALUE_FK foreign key (technician) references ATTR_VALUE (ID)
+/

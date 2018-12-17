@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PriceFetch lang="en" evnironment="Test" revision="1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <ApplicationArea>
+        <Sender>
+            <Task>CCT_WINDCHILL</Task>
+            <LogicalId>TavantWMS</LogicalId>            	    
+            <ReferenceId>0001</ReferenceId>
+        </Sender>
+        <BODId>INT03</BODId>   
+        <InterfaceNumber></InterfaceNumber>
+        <CreationDateTime>2008-12-18T12:35:26</CreationDateTime>
+    </ApplicationArea>
+    <DataArea>
+    	<BUNAME>NMHG-US</BUName>
+        <PriceCheckRequest>            
+            <WarrantyType>STANDARD</WarrantyType>            
+            <DateOfRepair>2008-12-18</DateOfRepair>
+            <DealerNo>01-10</DealerNo>
+            <CurrencyCode>USD</CurrencyCode>
+            <ReplacedParts>
+		<!--Element LineItem, maxOccurs=unbounded-->
+                <LineItem>   
+                    <PartNumber>P100</PartNumber>
+                    <Quantity>1</Quantity>
+		    <ManufacturingLocation>BGN</ManufacturingLocation>
+		    <UOM>EACH</UOM>
+		    <DivisionCode>BGN12</DivisionCode>
+                </LineItem>            
+             </ReplacedParts>
+        </PriceCheckRequest>
+        <!--******************************************-->
+        <CostCheckRequest>            
+	            <WarrantyType>STANDARD</WarrantyType>            
+	            <DateOfRepair>2008-12-18</DateOfRepair>
+	            <SupplierNumber>123</SupplierNumber>
+	            <CurrencyCode>USD</CurrencyCode>
+	            <ReplacedParts>
+			<!--Element LineItem, maxOccurs=unbounded-->
+	                <LineItem>	                    
+	                    <PartNumber>P100</PartNumber>
+	                    <Quantity>1</Quantity>
+			    <ManufacturingLocation>BGN</ManufacturingLocation>
+			    <UOM>EACH</UOM>
+			    <DivisionCode>BGN12</DivisionCode>
+	                </LineItem>
+	            </ReplacedParts>
+        </CostCheckRequest> 
+    </DataArea>
+</PriceFetch>
+

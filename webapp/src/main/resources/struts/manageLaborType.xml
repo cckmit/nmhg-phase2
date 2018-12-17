@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="manageLaborType" extends="struts-twms-default">
+		<action name="manage_laborType"
+            class="tavant.twms.web.admin.laborType.ListLaborTypeAction">
+            <interceptor-ref name="adminParamsPrepare" />
+            <result>pages/secure/admin/laborType/laborTypeInboxView.jsp</result>
+        </action>		
+		<action name="get_laborType"
+            class="tavant.twms.web.admin.laborType.ListLaborTypeAction"
+            method="tableBody">
+            <interceptor-ref name="adminParamsPrepare" />
+            <result>pages/secure/home/json.jsp</result>
+        </action>
+        <action name="exportDataToExcel"
+            class="tavant.twms.web.admin.laborType.ListLaborTypeAction" method="downloadListingData" >        
+			<interceptor-ref name="adminParamsPrepare" />
+		 </action>
+        <action name="preview_laborType"
+            class="tavant.twms.web.admin.laborType.ListLaborTypeAction" method="preview">
+            <interceptor-ref name="adminParamsPrepare" />
+            <result>pages/secure/admin/laborType/previewLaborType.jsp</result>
+        </action>     
+        <action name="initialize_laborType"
+			class="tavant.twms.web.admin.laborType.ListLaborTypeAction" method="load">
+			<interceptor-ref name="adminParamsPrepare"/>
+			<result>pages/secure/admin/laborType/initializeLaborType.jsp</result>
+		</action>
+		<action name="create_labor_type"
+			class="tavant.twms.web.admin.laborType.ListLaborTypeAction" method="createLaborType">
+			<interceptor-ref name="adminTwmsParamsPrepareParams"/>
+			<result name="success">pages/secure/common/successFullRefresh.jsp</result>
+			<result name="input">pages/secure/admin/laborType/initializeLaborType.jsp</result>
+		</action>		
+		<action name="detail_laborType"
+			class="tavant.twms.web.admin.laborType.ListLaborTypeAction" method="detail">
+			<interceptor-ref name="adminTwmsParamsWithoutPrepare"/>
+			<result name="success">pages/secure/admin/laborType/laborTypeDetails.jsp</result>
+		</action>
+		<action name="update_laborType"
+			class="tavant.twms.web.admin.laborType.ListLaborTypeAction"	method="updateLaborType">
+			<interceptor-ref name="adminTwmsParamsPrepareParams"/>	
+			<result name="success">pages/secure/common/successFullRefresh.jsp</result>
+			<result name="input">pages/secure/admin/laborType/laborTypeDetails.jsp</result>			
+		</action>
+		<action name="delete_laborType"
+			class="tavant.twms.web.admin.laborType.ListLaborTypeAction"	method="deleteLaborType">
+			<interceptor-ref name="adminTwmsParamsWithoutPrepare"/>	
+			<result name="success">pages/secure/common/successFullRefresh.jsp</result>	
+		</action>
+	</package>
+</struts>

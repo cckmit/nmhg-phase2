@@ -1,0 +1,18 @@
+--Purpose    : Scripts for creating UPLOAD_MGT_META_DATA table, changes made as a part of request sent by Single Instance DEV Team
+--Created On : 16-Mar-2011
+--Created By : Kuldeep Patil
+--Impact     : None
+
+CREATE TABLE UPLOAD_MGT_META_DATA
+(
+	ID           NUMBER(19,0) PRIMARY KEY,
+	COLUMN_NAME  VARCHAR2(255 CHAR) NOT NULL ENABLE,
+	COLUMN_TYPE  VARCHAR2(255 CHAR) NOT NULL ENABLE,
+	COLUMN_ORDER NUMBER(9,0) NOT NULL ENABLE,
+	UPLOAD_MGT   NUMBER(19,0) NOT NULL ENABLE
+)
+/
+alter table UPLOAD_MGT_META_DATA add CONSTRAINT UPLOAD_MGT_META_DATA_FK FOREIGN KEY ("UPLOAD_MGT") REFERENCES UPLOAD_MGT ("ID")
+/
+commit
+/

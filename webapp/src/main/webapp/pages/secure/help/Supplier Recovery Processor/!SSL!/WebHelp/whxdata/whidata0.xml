@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<indexdata>
+<key name="Awaiting Shipment" >
+  <topic name="Part Not In Warehouse" url="Parts_Recovery/Part_Not_In_Warehouse.htm" />
+</key>
+<key name="Claim Details" >
+  <topic name="Claim Details" url="Claims/Claim_Details.htm" />
+</key>
+<key name="Claim History" >
+  <topic name="Claim Details" url="Claims/Claim_Details.htm" />
+</key>
+<key name="Claim Number" >
+  <topic name="Claim Details" url="Claims/Claim_Details.htm" />
+</key>
+<key name="Claims Due for Recovery" >
+  <topic name="Claims Due for Recovery" url="Supplier_Recovery/Claims_Due_for_Recovery.htm" />
+</key>
+<key name="Claims Under Recovery" >
+  <topic name="Claims Under Recovery" url="Supplier_Recovery/Claims_Under_Recovery.htm" />
+</key>
+<key name="Components Replaced" >
+  <topic name="Claim Details" url="Claims/Claim_Details.htm" />
+</key>
+<key name="Due Days" >
+  <topic name="Part Not In Warehouse" url="Parts_Recovery/Part_Not_In_Warehouse.htm" />
+</key>
+<key name="Failure Detail" >
+  <topic name="Claim Details" url="Claims/Claim_Details.htm" />
+</key>
+<key name="Failure Information" >
+  <topic name="Claim Details" url="Claims/Claim_Details.htm" />
+</key>
+<key name="Fault Location" >
+  <topic name="Claim Details" url="Claims/Claim_Details.htm" />
+</key>
+<key name="Job Code" >
+  <topic name="Claim Details" url="Claims/Claim_Details.htm" />
+</key>
+<key name="Manage Documents" >
+  <topic name="Claim Details" url="Claims/Claim_Details.htm" />
+</key>
+<key name="Memo Details" >
+  <topic name="Claim Details" url="Claims/Claim_Details.htm" />
+</key>
+<key name="Outside Parts" >
+  <topic name="Claim Details" url="Claims/Claim_Details.htm" />
+</key>
+<key name="Parts Recovery" >
+  <topic name="Parts Recovery" url="Parts_Recovery/Parts_Recovery.htm" />
+</key>
+<key name="Parts Replaced" >
+  <topic name="Claim Details" url="Claims/Claim_Details.htm" />
+</key>
+<key name="Policy Details" >
+  <topic name="Policy Details" url="Claims/Policy_Details.htm" />
+</key>
+<key name="Recovery Amount" >
+  <topic name="Claims Due for Recovery" url="Supplier_Recovery/Claims_Due_for_Recovery.htm" />
+  <topic name="Claims Under Recovery" url="Supplier_Recovery/Claims_Under_Recovery.htm" />
+</key>
+<key name="Recovery Claim" >
+  <topic name="Claims Due for Recovery" url="Supplier_Recovery/Claims_Due_for_Recovery.htm" />
+</key>
+<key name="Recovery Claim History" >
+  <topic name="Claims Under Recovery" url="Supplier_Recovery/Claims_Under_Recovery.htm" />
+</key>
+<key name="Recovery Claim Number" >
+  <topic name="Claims Due for Recovery" url="Supplier_Recovery/Claims_Due_for_Recovery.htm" />
+  <topic name="Claims Under Recovery" url="Supplier_Recovery/Claims_Under_Recovery.htm" />
+</key>
+<key name="Service Information" >
+  <topic name="Claim Details" url="Claims/Claim_Details.htm" />
+</key>
+<key name="Supply Recovery Admin" >
+  <topic name="Parts Recovery" url="Parts_Recovery/Parts_Recovery.htm" />
+</key>
+<key name="Upload Management" >
+  <topic name="Upload Management" url="Reports/Upload_Management.htm" />
+</key>
+
+</indexdata>

@@ -1,0 +1,38 @@
+<!DOCTYPE validators PUBLIC "-//Apache Struts//XWork Validator 1.0.2//EN"
+       "http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+<validators>
+    <field name="code">
+        <field-validator type="requiredstring" short-circuit="true">
+            <message key="error.campaign.campaignCodeRequired" />
+        </field-validator>
+    </field>
+    
+    <field name="campaignClass.code">
+        <field-validator type="requiredstring" short-circuit="true">
+            <message key="error.campaign.campaignClassRequired"/>
+        </field-validator>
+    </field>
+
+    <field name="fromDate">
+        <field-validator type="required" short-circuit="true">
+            <message key="error.campaign.startDateRequired"/>
+        </field-validator>
+    </field>
+    
+    <field name="tillDate">
+        <field-validator type="required" short-circuit="true">
+            <message key="error.campaign.endDateRequired"/>
+        </field-validator>
+
+        <field-validator type="fieldexpression" short-circuit="true">
+            <param name="expression"><![CDATA[!tillDate.isBefore(fromDate)]]></param>
+            <message key="error.campaign.invalidDuration"/>
+        </field-validator>
+    </field>
+    
+ 	<!--<field name="i18nCampaignTexts.description">
+        <field-validator type="requiredstring" short-circuit="true">
+            <message key="error.campaign.descriptionRequired"/>
+        </field-validator>
+    </field>-->     
+</validators>

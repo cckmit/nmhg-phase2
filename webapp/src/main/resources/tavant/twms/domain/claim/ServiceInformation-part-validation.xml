@@ -1,0 +1,28 @@
+<!DOCTYPE validators PUBLIC "-//Apache Struts//XWork Validator 1.0.2//EN"
+       "http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+<validators>
+    <field name="causalPart">
+        <field-validator type="required">
+            <message key="error.newClaim.causalPartNoRequired"/>
+        </field-validator>
+    </field>
+
+    <field name="causalBrandPart">
+        <field-validator type="required">
+            <message key="error.newClaim.causalBrandPartNoRequired"/>
+        </field-validator>
+    </field>
+
+    <validator type="serviceInformation">
+		<param name="expression">claim</param>
+		<message/>
+	</validator>
+	
+    <field name="serviceDetail">
+        <field-validator type="visitor">
+            <param name="appendPrefix">true</param>
+            <param name="context">part</param>
+            <message></message>
+        </field-validator>
+    </field>
+</validators>

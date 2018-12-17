@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+    
+<struts>
+   <package name="print" extends="struts-twms-default">
+       	 <result-types>
+    		<result-type name="jasper" class="tavant.twms.web.reports.JasperReportsResult"/>
+    	 </result-types>
+     	<action name="printClaim" class="tavant.twms.web.print.PrintClaimAction" method="printClaim">
+            <interceptor-ref name="paramsPrepare" />
+		    <param name="documentTitle">Claim Info</param>
+			<result name="success" type="jasper">
+				<param name="location">reports/claim.jasper</param>
+				<param name="dataSource">printClaimObject</param>
+				<param name="format">PDF</param>
+			</result>
+		</action>
+		<action name="printTransfer" class="tavant.twms.web.print.PrintTransferAction" method="printTransfer">
+            <interceptor-ref name="twmsParamsWithoutPrepare" />
+		    <param name="documentTitle">Delivery Report</param>
+			<result name="success" type="jasper">
+				<param name="location">reports/PDI.jasper</param>
+				<param name="dataSource">printTransferObject</param>
+				<param name="format">PDF</param>
+			</result>
+		</action>
+		<action name="printRecoveryClaim" class="tavant.twms.web.print.PrintRecoveryClaimAction" method="printRecoveryClaim">
+            <interceptor-ref name="twmsParamsWithoutPrepare" />
+		    <param name="documentTitle">Recovery Claim Info</param>
+			<result name="success" type="jasper">
+				<param name="location">reports/recoveryClaim.jasper</param>
+				<param name="dataSource">printRecoveryClaimObject</param>
+				<param name="format">PDF</param>
+			</result>
+		</action>
+
+		<action name="printRecoveryClaimForSupplier" class="tavant.twms.web.print.PrintRecoveryClaimAction" method="printRecoveryClaimForSupplier">
+            <interceptor-ref name="twmsParamsWithoutPrepare" />
+		    <param name="documentTitle">Recovery Claim Info</param>
+			<result name="success" type="jasper">
+				<param name="location">reports/recoveryClaimForSupplier.jasper</param>
+				<param name="dataSource">printRecoveryClaimObject</param>
+				<param name="format">PDF</param>
+			</result>
+		</action>        		
+  </package>
+</struts>

@@ -1,0 +1,8 @@
+<xb:config xmlns:xb="http://xml.apache.org/xmlbeans/2004/02/xbean/config">
+    <xb:namespace uri="http://www.tavant.com">
+        <xb:suffix>DTO</xb:suffix>
+    </xb:namespace>
+    <xb:namespace uri="http://www.tavant.com">
+        <xb:package>tavant.twms.web.uploadclaims.dto</xb:package>
+    </xb:namespace>
+</xb:config>

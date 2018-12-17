@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:p1="http://nmhg.com/ItemSynch_Response" name="MI_ItemSyncResponse_SLMS" targetNamespace="http://nmhg.com/ItemSynch_Response">
+    <wsdl:types>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://nmhg.com/ItemSynch_Response" targetNamespace="http://nmhg.com/ItemSynch_Response">
+            <xsd:element name="MT_ItemSyncResponse" type="ItemSyncResponse" />
+            <xsd:complexType name="ItemSyncResponse">
+                <xsd:sequence>
+                    <xsd:element name="ApplicationArea">
+                        <xsd:annotation>
+                            <xsd:appinfo source="http://sap.com/xi/TextID">
+                            7289f312716d11e2c7f7100ba93959d4
+                            </xsd:appinfo>
+                        </xsd:annotation>
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="Sender">
+                                    <xsd:annotation>
+                                        <xsd:appinfo source="http://sap.com/xi/TextID">
+                                        7289f313716d11e298c1100ba93959d4
+                                        </xsd:appinfo>
+                                    </xsd:annotation>
+                                    <xsd:complexType>
+                                        <xsd:sequence>
+                                            <xsd:element name="Task">
+                                                <xsd:annotation>
+                                                    <xsd:appinfo source="http://sap.com/xi/TextID">
+                                                    7289f314716d11e2a25e100ba93959d4
+                                                    </xsd:appinfo>
+                                                </xsd:annotation>
+                                                <xsd:simpleType>
+                                                    <xsd:restriction base="xsd:string">
+                                                        <xsd:maxLength value="50" />
+                                                    </xsd:restriction>
+                                                </xsd:simpleType>
+                                            </xsd:element>
+                                            <xsd:element name="LogicalId">
+                                                <xsd:annotation>
+                                                    <xsd:appinfo source="http://sap.com/xi/TextID">
+                                                    7289f315716d11e28c90100ba93959d4
+                                                    </xsd:appinfo>
+                                                </xsd:annotation>
+                                                <xsd:simpleType>
+                                                    <xsd:restriction base="xsd:string">
+                                                        <xsd:maxLength value="50" />
+                                                    </xsd:restriction>
+                                                </xsd:simpleType>
+                                            </xsd:element>
+                                            <xsd:element name="ReferenceId">
+                                                <xsd:annotation>
+                                                    <xsd:appinfo source="http://sap.com/xi/TextID">
+                                                    7289f316716d11e2cbf1100ba93959d4
+                                                    </xsd:appinfo>
+                                                </xsd:annotation>
+                                                <xsd:simpleType>
+                                                    <xsd:restriction base="xsd:string">
+                                                        <xsd:maxLength value="100" />
+                                                    </xsd:restriction>
+                                                </xsd:simpleType>
+                                            </xsd:element>
+                                        </xsd:sequence>
+                                    </xsd:complexType>
+                                </xsd:element>
+                                <xsd:element name="BODId">
+                                    <xsd:annotation>
+                                        <xsd:appinfo source="http://sap.com/xi/TextID">
+                                        7289f317716d11e29bf9100ba93959d4
+                                        </xsd:appinfo>
+                                    </xsd:annotation>
+                                    <xsd:simpleType>
+                                        <xsd:restriction base="xsd:string">
+                                            <xsd:maxLength value="50" />
+                                        </xsd:restriction>
+                                    </xsd:simpleType>
+                                </xsd:element>
+                                <xsd:element name="InterfaceNumber">
+                                    <xsd:annotation>
+                                        <xsd:appinfo source="http://sap.com/xi/TextID">
+                                        7289f318716d11e29d83100ba93959d4
+                                        </xsd:appinfo>
+                                    </xsd:annotation>
+                                    <xsd:simpleType>
+                                        <xsd:restriction base="xsd:string">
+                                            <xsd:maxLength value="50" />
+                                        </xsd:restriction>
+                                    </xsd:simpleType>
+                                </xsd:element>
+                                <xsd:element name="CreationDateTime" type="xsd:string" minOccurs="0">
+                                    <xsd:annotation>
+                                        <xsd:appinfo source="http://sap.com/xi/TextID">
+                                        7289f319716d11e28de3100ba93959d4
+                                        </xsd:appinfo>
+                                    </xsd:annotation>
+                                </xsd:element>
+                            </xsd:sequence>
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="Status">
+                        <xsd:annotation>
+                            <xsd:appinfo source="http://sap.com/xi/TextID">
+                            7289f31a716d11e2bf5e100ba93959d4
+                            </xsd:appinfo>
+                        </xsd:annotation>
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="code">
+                                    <xsd:annotation>
+                                        <xsd:appinfo source="http://sap.com/xi/TextID">
+                                        728a31ef716d11e2c97b100ba93959d4
+                                        </xsd:appinfo>
+                                    </xsd:annotation>
+                                    <xsd:simpleType>
+                                        <xsd:restriction base="xsd:string">
+                                            <xsd:enumeration value="SUCCESS" />
+                                            <xsd:enumeration value="FAILURE" />
+                                            <xsd:maxLength value="7" />
+                                        </xsd:restriction>
+                                    </xsd:simpleType>
+                                </xsd:element>
+                            </xsd:sequence>
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="ItemMasterResponse" maxOccurs="unbounded">
+                        <xsd:annotation>
+                            <xsd:appinfo source="http://sap.com/xi/TextID">
+                            728a31f0716d11e286a8100ba93959d4
+                            </xsd:appinfo>
+                        </xsd:annotation>
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="Status">
+                                    <xsd:annotation>
+                                        <xsd:appinfo source="http://sap.com/xi/TextID">
+                                        728a31f1716d11e285b0100ba93959d4
+                                        </xsd:appinfo>
+                                    </xsd:annotation>
+                                    <xsd:complexType>
+                                        <xsd:sequence>
+                                            <xsd:element name="code">
+                                                <xsd:annotation>
+                                                    <xsd:appinfo source="http://sap.com/xi/TextID">
+                                                    728a31f2716d11e2ba88100ba93959d4
+                                                    </xsd:appinfo>
+                                                </xsd:annotation>
+                                                <xsd:simpleType>
+                                                    <xsd:restriction base="xsd:string">
+                                                        <xsd:enumeration value="SUCCESS" />
+                                                        <xsd:enumeration value="FAILURE" />
+                                                        <xsd:maxLength value="7" />
+                                                    </xsd:restriction>
+                                                </xsd:simpleType>
+                                            </xsd:element>
+                                            <xsd:element name="Exceptions" minOccurs="0">
+                                                <xsd:annotation>
+                                                    <xsd:appinfo source="http://sap.com/xi/TextID">
+                                                    728a31f3716d11e2aa3f100ba93959d4
+                                                    </xsd:appinfo>
+                                                </xsd:annotation>
+                                                <xsd:complexType>
+                                                    <xsd:sequence>
+                                                        <xsd:element name="Error" minOccurs="0" maxOccurs="unbounded">
+                                                            <xsd:annotation>
+                                                                <xsd:appinfo source="http://sap.com/xi/TextID">
+                                                                728a31f4716d11e28e1b100ba93959d4
+                                                                </xsd:appinfo>
+                                                            </xsd:annotation>
+                                                            <xsd:complexType>
+                                                                <xsd:sequence>
+                                                                    <xsd:element name="errorCode" type="xsd:string">
+                                                                        <xsd:annotation>
+                                                                            <xsd:appinfo source="http://sap.com/xi/TextID">
+                                                                            728a31f5716d11e2a0e6100ba93959d4
+                                                                            </xsd:appinfo>
+                                                                        </xsd:annotation>
+                                                                    </xsd:element>
+                                                                    <xsd:element name="errorMessage" type="xsd:string">
+                                                                        <xsd:annotation>
+                                                                            <xsd:appinfo source="http://sap.com/xi/TextID">
+                                                                            728a31f6716d11e28fd0100ba93959d4
+                                                                            </xsd:appinfo>
+                                                                        </xsd:annotation>
+                                                                    </xsd:element>
+                                                                </xsd:sequence>
+                                                            </xsd:complexType>
+                                                        </xsd:element>
+                                                    </xsd:sequence>
+                                                </xsd:complexType>
+                                            </xsd:element>
+                                        </xsd:sequence>
+                                    </xsd:complexType>
+                                </xsd:element>
+                                <xsd:element name="ItemId" type="xsd:string">
+                                    <xsd:annotation>
+                                        <xsd:appinfo source="http://sap.com/xi/TextID">
+                                        728a31f7716d11e2a1ef100ba93959d4
+                                        </xsd:appinfo>
+                                    </xsd:annotation>
+                                </xsd:element>
+                            </xsd:sequence>
+                        </xsd:complexType>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:complexType>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="MT_ItemSyncResponse">
+        <wsdl:part name="MT_ItemSyncResponse" element="p1:MT_ItemSyncResponse" />
+    </wsdl:message>
+    <wsdl:portType name="MI_ItemSyncResponse_SLMS">
+        <wsdl:operation name="MI_ItemSyncResponse_SLMS">
+            <wsdl:input message="p1:MT_ItemSyncResponse" />
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="MI_ItemSyncResponse_SLMSBinding" type="p1:MI_ItemSyncResponse_SLMS">
+        <soap:binding xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+        <wsdl:operation name="MI_ItemSyncResponse_SLMS">
+            <soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://sap.com/xi/WebService/soap1.1" />
+            <wsdl:input>
+                <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal" />
+            </wsdl:input>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="MI_ItemSyncResponse_SLMSService">
+        <wsdl:port name="MI_ItemSyncResponse_SLMSPort" binding="p1:MI_ItemSyncResponse_SLMSBinding">
+            <soap:address xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" location="http://10.5.106.102:58100/XISOAPAdapter/MessageServlet?channel=SLMS:BS_DEV_SLMS:CC_ItemSync_Response_SLMS_to_NMHG_SND" />
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

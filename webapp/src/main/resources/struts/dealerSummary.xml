@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+    <package name="dealerSummary" extends="struts-twms-default">
+        <action name="show_dealer_summary"
+                class="tavant.twms.web.admin.DealerSummaryAction" method="showDealerSummaryPage">
+            <interceptor-ref name="paramsPrepare"/>
+            <result name="success">pages/secure/admin/dealerSummary.jsp</result>
+        </action>
+       
+        <action name="show_dealer_technician"
+                class="tavant.twms.web.admin.DealerSummaryAction" method="showTechnicianPage">
+            <interceptor-ref name="paramsPrepare"/>
+            <result name="success">pages/secure/admin/dealerTechnician.jsp</result>
+        </action>
+        
+       <action name="list_dealer_technician"
+        		class="tavant.twms.web.admin.DealerSummaryAction" method="showTechnicianDetailsPage">
+        	<interceptor-ref name="paramsPrepare"/>
+        	<result name="success">pages/secure/admin/technician.jsp</result>
+        </action>
+        <action name="show_technician_details"
+        		class="tavant.twms.web.admin.DealerSummaryAction" method="getTechnicianDetails">
+        	<interceptor-ref name="paramsPrepare"/>
+            <result name="success">pages/secure/admin/technicianDetails.jsp</result>
+        </action>
+        
+        <action name="list_dealer_numbers_dealer_summary" class="tavant.twms.web.admin.DealerSummaryAction"
+                method="getServiceProviderNumbers">
+            <interceptor-ref name="paramsPrepare"/>
+        </action>
+        <action name="list_dealer_names_dealer_summary" class="tavant.twms.web.admin.DealerSummaryAction"
+                method="getServiceProviderNames">
+            <interceptor-ref name="paramsPrepare"/>
+        </action>
+        <action name="list_dealer_hierachy_dealer_summary" class="tavant.twms.web.admin.DealerSummaryAction"
+                method="getDealerData">
+            <interceptor-ref name="paramsPrepare"/>
+            <result name="success">pages/secure/admin/dealerSummaryDetail.jsp</result>
+        </action>
+           <action name="update_certification_status" class="tavant.twms.web.admin.DealerSummaryAction"
+                method="updateCertificationStatus">
+            <interceptor-ref name="paramsPrepare"/>
+            <result name="success">pages/secure/admin/dealerSummary.jsp</result>
+            <result name="input">pages/secure/admin/dealerSummary.jsp</result>
+        </action>
+        <action name="update_shipment_address" class="tavant.twms.web.admin.DealerSummaryAction"
+                method="updateShipmentAddress">
+            <interceptor-ref name="paramsPrepare"/>
+            <result name="success">pages/secure/admin/dealerSummary.jsp</result>
+            <result name="input">pages/secure/admin/dealerSummary.jsp</result>
+        </action>
+        <action name="update_eligible_30day_ncr_classes" class="tavant.twms.web.admin.DealerSummaryAction"
+                method="updateEligible30DayNcrClasses">
+            <interceptor-ref name="paramsPrepare"/>
+            <result name="success">pages/secure/admin/dealerSummary.jsp</result>
+            <result name="input">pages/secure/admin/dealerSummary.jsp</result>
+        </action>
+        
+    </package>
+</struts>

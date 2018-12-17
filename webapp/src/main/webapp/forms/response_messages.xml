@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transitionMessages>
+  <messages>
+    <message transition="Delete Draft">Draft deleted successfully</message>
+    <message transition="Save Draft">Draft saved successfully</message>
+    <message transition="Delete">Claim deleted successfully</message>
+    <message transition="Reject">Claim {claim.id} has been rejected</message>
+    <message default="true">Claim successfully submitted</message>
+    <message transition="claimCreated">Claim {claim.id} has been successfully created</message>
+  </messages>  
+</transitionMessages>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd" default-autowire="byName">
+	
+	<bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+	    <property name="urlMap">
+	        <map>
+	            <entry key="/DealerIntegrationService">
+	                <ref bean="dealerIntegrationService"/>
+	            </entry>
+	        </map>
+	    </property>
+	</bean>
+
+	<bean id="dealerIntegrationService" class="org.codehaus.xfire.spring.remoting.XFireExporter">
+	    <property name="serviceFactory">
+	        <ref bean="xfire.serviceFactory"/>
+	    </property>
+	    <property name="xfire">
+	        <ref bean="xfire"/>
+	    </property>
+	    <property name="serviceBean">
+	        <ref bean="dealerIntegrationServiceProxy"/>
+	    </property>
+	    <property name="serviceClass">
+	        <value>tavant.twms.integration.layer.DealerIntegrationService</value>
+	    </property>
+	    <property name="inHandlers">
+        	<ref bean="dealerInterfaceAuthenticationHandler"/>
+	    </property>
+	</bean>
+</beans>

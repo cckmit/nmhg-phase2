@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<process-definition name="ClaimSubmission">
+
+  <start-state name="start">
+    <transition name="" to="ClaimDeny"></transition>
+  </start-state>
+
+  <task-node name="ClaimDeny">
+    <task name="CampaignClaimSubmission"></task>
+    <transition name="Deny" to="IsDealerNotificationNeeded"/>
+  </task-node>
+
+  <decision name="IsDealerNotificationNeeded">
+    <transition name="NotificationNotNeeded" to="End">
+    	<condition>#{claim.type!="Campaign"}</condition>
+    </transition>
+    <transition name="NotificationNeeded" to="NotifyDealer">
+      <condition>#{claim.type=="Campaign"}</condition>
+    </transition>
+  </decision>	
+
+  <serviceNode name="NotifyDealer">
+    <transition name="NotificationSent" to="End"/>
+    <beanName>campaignAssignmentService</beanName>
+    <methodName>sendDealerNotificationForClaimDenial</methodName>
+    <parameters>
+      <element>claim</element>
+    </parameters>
+    <postProcess></postProcess>
+  </serviceNode>
+  
+  <end-state name="End" />
+  
+</process-definition>

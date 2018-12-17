@@ -1,0 +1,32 @@
+<!DOCTYPE validators PUBLIC "-//Apache Struts//XWork Validator 1.0.2//EN"
+       "http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+<validators>
+
+     <validator type="expression" short-circuit="true">
+        <param name="expression">
+            <![CDATA[!isReportNameDuplicate()]]>
+        </param>
+        <message key="error.customReport.customReportNameDuplicate"/>
+    </validator>
+    
+    
+     <validator type="visitor">
+        <param name="fieldName">customReport</param>
+        <param name="appendPrefix">true</param>
+        <message/>
+    </validator>
+     <field name="customReport.sections">
+     <field-validator type="fieldexpression">
+        <param name="expression">
+            <![CDATA[isSectionValidationRequired()]]>
+        </param>
+        <message key="error.customReport.sectionsRequired"/>
+     </field-validator>
+     </field>
+     <validator type="visitor">
+        <param name="fieldName">customReport.sections</param>
+        <param name="appendPrefix">true</param>
+        <message/>
+    </validator>
+    
+</validators>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd"
+       default-autowire="byName">
+
+    <import resource="classpath:datasource-context.xml"/>
+
+    <bean id="namingStrategy" class="org.hibernate.cfg.ImprovedNamingStrategy" />
+
+    <bean id="transactionManager"
+          class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean id="activeMQConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+        <property name="brokerURL" value="tcp://localhost:61616"/>
+        <property name="redeliveryPolicy" ref="redeliveryPolicy"/>
+    </bean>
+
+    <bean id="redeliveryPolicy" class="org.apache.activemq.RedeliveryPolicy">
+        <!-- The delay after which the message gets redelivered -->
+        <property name="initialRedeliveryDelay" value="2000"/>
+        <!-- The number of times a message gets redelivered -->
+        <property name="maximumRedeliveries" value="3"/>
+        <!-- To enable exponential backoff -->
+        <property name="useExponentialBackOff" value="true"/>
+        <!-- This multiplier to use if exponential back off is enabled. In this case the message gets redelivered
+        after 5 seconds, 10 seconds, 20 seconds and so on till we reach the maximumRedeliveries limit -->
+        <property name="backOffMultiplier" value="2"/>
+    </bean>
+
+    <bean id="sessionFactory"
+          class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+        <property name="annotatedClasses">
+            <list merge="true">
+                <value>tavant.twms.integration.adapter.SyncTracker</value>
+                <value>tavant.twms.integration.adapter.SyncStatus</value>
+                <value>tavant.twms.integration.adapter.mockerp.Customer</value>
+                <value>tavant.twms.integration.adapter.mockerp.DealerRate</value>
+                <value>tavant.twms.integration.adapter.mockerp.InventoryItem</value>
+                <value>tavant.twms.integration.adapter.mockerp.Item</value>
+                <value>tavant.twms.integration.adapter.mockerp.ItemGroup</value>
+                <value>tavant.twms.integration.adapter.mockerp.ItemPrice</value>
+                <value>tavant.twms.integration.adapter.mockerp.User</value>
+            </list>
+        </property>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">${hibernate.dialect}</prop>
+                <prop key="hibernate.show_sql">${hibernate.show_sql}</prop>
+                <prop key="hibernate.format_sql">${hibernate.format_sql}</prop>
+                <prop key="hibernate.use_sql_comments">${hibernate.use_sql_comments}</prop>
+                <prop key="hibernate.generate_statistics">true</prop>
+                <prop key="hibernate.default_batch_fetch_size">25</prop>
+                <prop key="hibernate.cache.provider_class">
+                    org.hibernate.cache.HashtableCacheProvider
+                </prop>
+                <prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl}</prop>
+                <prop key="hibernate.bytecode.use_reflection_optimizer">false</prop>
+            </props>
+        </property>
+    </bean>
+
+    <!-- enable the configuration of transactional behavior based on annotations -->
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+
+    <bean id="syncInitiator" class="tavant.twms.integration.adapter.SyncInitiator"/>
+
+    <bean id="syncTrackerDAO" class="tavant.twms.integration.adapter.SyncTrackerDAOImpl">
+        <property name="maxResults">
+            <value>10</value>
+        </property>
+        <property name="failureCountThreshold">
+            <value>2</value>
+        </property>
+    </bean>
+
+    <!-- Checks for Duplicate Syncs  -->
+	<bean id="filterDuplicateSync" class="tavant.twms.integration.adapter.FilterDuplicateSync"/>
+
+    <bean id="syncResponseProcessor" class="tavant.twms.integration.adapter.SyncResponseProcessor"/>
+
+    <bean id="eventContext" class="tavant.twms.integration.adapter.mule.MuleEventContext"/>
+
+    <bean id="createCustomerBOD" class="tavant.twms.integration.adapter.mockerp.SyncCustomer"/>
+
+    <bean id="createDealerRateBOD" class="tavant.twms.integration.adapter.mockerp.SyncDealerRate"/>
+
+    <bean id="createInventoryBOD" class="tavant.twms.integration.adapter.mockerp.SyncInventory"/>
+
+    <bean id="createItemBOD" class="tavant.twms.integration.adapter.mockerp.SyncItem"/>
+
+    <bean id="createItemGroupBOD" class="tavant.twms.integration.adapter.mockerp.SyncItemGroup"/>
+
+    <bean id="createItemPriceBOD" class="tavant.twms.integration.adapter.mockerp.SyncItemPrice"/>
+
+    <bean id="createUserBOD" class="tavant.twms.integration.adapter.mockerp.SyncUser"/>
+
+    <bean id="genericDao" class="tavant.twms.integration.adapter.mockerp.GenericDao"/>
+
+</beans>

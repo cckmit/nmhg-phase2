@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <package name="customReports" extends="struts-twms-default">
+    
+  <!-- Listing actions -->
+          <action name="customReport"
+                class="tavant.twms.web.customReports.CustomReportListingAction">
+            <interceptor-ref name="adminTwmsParamsPrepareParams"/>
+            <result name="success">
+                pages/secure/admin/customReports/customReportInboxView.jsp
+            </result>
+        </action>
+        
+        <action name="customReport_detail"
+            class="tavant.twms.web.customReports.CustomReportListingAction" method="detail">
+            <interceptor-ref name="adminTwmsParamsPrepareParams" />
+            <result name="success">pages/secure/admin/customReports/failureReport.jsp</result>
+        </action>
+        
+        <action name="customReportBody"
+                class="tavant.twms.web.customReports.CustomReportListingAction" method="tableBody">
+            <interceptor-ref name="adminTwmsParamsPrepareParams"/>
+            <result name="success">pages/secure/home/json.jsp</result>
+            <result name="input">error.jsp</result>
+        </action>
+
+        <action name="customReport_preview"
+            class="tavant.twms.web.customReports.CustomReportListingAction" method="preview">
+            <interceptor-ref name="adminTwmsParamsPrepareParams" />
+            <result>pages/secure/admin/customReports/customReportPreview.jsp</result>
+        </action>
+        
+         <action name="exportReportsToExcel" class="tavant.twms.web.customReports.CustomReportListingAction"
+           method="downloadListingData" >
+            <interceptor-ref name="adminTwmsParamsPrepareParams"/>
+		</action>
+		
+		 <action name="new_custom_report"
+                class="tavant.twms.web.customReports.CustomReportListingAction" method="fetchNewPage">
+            <interceptor-ref name="adminTwmsParamsPrepareParams"/>
+            <result name="success">pages/secure/admin/customReports/failureReport.jsp</result>
+        </action>
+        
+         <action name = "list_itemsInItemGroup_forFailureReports"
+	           class="tavant.twms.web.admin.partreturns.AutoCompleteAction" method = "listItemsStartingWith" >
+	           <result name="success">pages/secure/home/json.jsp</result>
+           </action>
+           
+           <action name = "list_ItemGroupsForFailureReports"
+	           class="tavant.twms.web.admin.partreturns.AutoCompleteAction" method = "listItemGroupsForFailureReports" >
+	           <result name="success">pages/secure/home/json.jsp</result>
+           </action>
+           
+           <action name = "list_products_models"
+	           class="tavant.twms.web.customReports.CustomReportListingAction" method = "listOfProductsAndModels" >
+	           <result name="success">pages/secure/home/json.jsp</result>
+           </action>
+           
+             
+            <action name = "get_itemGroup_details"
+	           class="tavant.twms.web.customReports.CustomReportListingAction" method = "getItemGroupDetails" >
+	           <result name="success">pages/secure/home/json.jsp</result>
+           </action>
+        
+          <!-- Flow based action mappings-->
+
+        <action name="create_section"
+                class="tavant.twms.web.customReports.ManageCustomReportAction" method="saveCustomReport">
+            <interceptor-ref name="adminTwmsParamsPrepareRepeatTableParams"/>
+            <result name="success">pages/secure/admin/customReports/failureReport.jsp</result>
+            <result name="input">pages/secure/admin/customReports/failureReport.jsp</result>
+        </action>
+        
+         <action name="publish_report"
+                class="tavant.twms.web.customReports.ManageCustomReportAction" method="publishReport">
+            <interceptor-ref name="adminTwmsParamsPrepareRepeatTableParams"/>
+            <result name="success">pages/secure/admin/customReports/failureReport.jsp</result>
+            <result name="input">pages/secure/admin/customReports/failureReport.jsp</result>
+        </action>
+        
+              <action name = "add_question_to_Section"
+	           class="tavant.twms.web.customReports.ManageCustomReportAction" method = "addQuestionToSection" >
+	           <interceptor-ref name="adminTwmsParamsPrepareRepeatTableParams"></interceptor-ref>
+	            <param name="addNextQuestion">true</param>
+	               <result name="success">pages/secure/admin/customReports/common/newCreateQuestion.jsp</result>
+	               	<result name="input">pages/secure/admin/customReports/common/newCreateQuestion.jsp</result>
+           </action>
+           
+            <action name = "add_question_to_Section_andExit"
+	           class="tavant.twms.web.customReports.ManageCustomReportAction" method = "addQuestionToSection" >
+	            <interceptor-ref name="adminTwmsParamsPrepareRepeatTableParams"></interceptor-ref>
+	            <param name="addNextQuestion">false</param>
+	  				 <result name="success">pages/secure/common/successFullRefresh.jsp</result>
+	           		<result name="input">pages/secure/admin/customReports/common/newCreateQuestion.jsp</result>
+           </action>
+           
+           <!--  Action methods without validation -->
+           
+          <action name = "view_all_questions"
+	           class="tavant.twms.web.customReports.ManageCustomReportAction" method="viewAllQuestions" >
+	               <interceptor-ref name="paramsPrepareWithoutValidation"></interceptor-ref>
+	  				<result name="success">pages/secure/admin/customReports/common/viewAllQuestionsInReport.jsp</result>
+           </action>
+           
+        
+         <action name="add_question"
+                class="tavant.twms.web.customReports.ManageCustomReportAction" method="addQuestion">
+            <interceptor-ref name="paramsPrepareWithoutValidation"/>
+            <result name="success">pages/secure/admin/customReports/common/newCreateQuestion.jsp</result>
+        </action>
+        
+        <action name="update_question_order"
+                class="tavant.twms.web.customReports.ManageCustomReportAction" method="updateQuestionOrder">
+            <interceptor-ref name="adminParamsWithoutValidation" />
+             <result name="success">pages/secure/common/successFullRefresh.jsp</result>
+             <result name="input">pages/secure/admin/customReports/common/viewAllQuestionsInReport.jsp</result>
+        </action>
+           
+  
+        <!-- Might be needed later . -->
+        
+        <action name="internationalize_report"
+                class="tavant.twms.web.customReports.CustomReportListingAction" method="displayInternationalize">
+            <interceptor-ref name="twmsParamsWithoutPrepare"/>
+            <result name="success">pages/secure/admin/customReports/internationalize_report.jsp</result>
+        </action>
+
+        <action name="submit_internationalize_report"
+                class="tavant.twms.web.customReports.CustomReportListingAction" method="updateCustomReport">
+            <interceptor-ref name="adminTwmsParamsPrepareParams"/>
+            <result name="success">pages/secure/common/successListingRefresh.jsp</result>
+            <result name="input">pages/secure/admin/customReports/internationalize_report.jsp</result>
+        </action>
+            
+        <!-- Attachments related actions -->
+		<action name="show_attached_files" 
+		    class="tavant.twms.web.customReports.InventoryItemReportAnswerAction" method="showAttachments">
+		    <interceptor-ref name="paramsPrepare"/>
+		    <result name="success">pages/secure/inventory/reportAnswer/upload_attachments_for_reports.jsp</result>
+			<result name="input">pages/secure/inventory/reportAnswer/inventory_report_for_answer.jsp</result>
+		</action>
+    
+     <!-- InventoryItemAnswerAction xmls -->
+    
+        <action name="show_reports"
+                class="tavant.twms.web.customReports.InventoryItemReportAnswerAction" method="fetchReports">
+            <interceptor-ref name="paramsWithoutValidation"/>
+            <result name="success">pages/secure/inventory/reportAnswer/reports_for_inventory.jsp</result>
+        </action>
+
+        <action name="display_report"
+                class="tavant.twms.web.customReports.InventoryItemReportAnswerAction" method="displayReport">
+            <interceptor-ref name="paramsWithoutValidation"/>
+            <result name="success">pages/secure/inventory/reportAnswer/inventory_report_for_answer.jsp</result>
+            <result name="input">pages/secure/report/error.jsp</result>
+        </action>
+
+        <action name="submit_report_for_inventory"
+                class="tavant.twms.web.customReports.InventoryItemReportAnswerAction" method="submitReport">
+            <interceptor-ref name="twmsParamsWithoutPrepare"/>
+            <result name="input">pages/secure/inventory/reportAnswer/inventory_report_for_answer.jsp</result>
+            <result name="success">pages/secure/common/successListingRefresh.jsp</result>
+        </action>
+        
+        <action name="save_reports"
+                class="tavant.twms.web.customReports.InventoryItemReportAnswerAction" method="saveReport">
+            <interceptor-ref name="twmsParamsWithoutPrepare"/>
+            <result name="input">pages/secure/inventory/reportAnswer/inventory_report_for_answer.jsp</result>
+            <result name="success">pages/secure/inventory/reportAnswer/inventory_report_for_answer.jsp</result>
+        </action>
+        
+    </package>
+    
+</struts>

@@ -1,0 +1,225 @@
+<!doctype HTML public "-//W3C//DTD HTML 4.0 Frameset//EN">
+
+<html>
+
+<head>
+<title>Manage Labor Split</title>
+<meta http-equiv="content-type" content="text/html; charset=windows-1252">
+<meta name="generator" content="RoboHelp by eHelp Corporation www.ehelp.com">
+<link rel="stylesheet" href="../TWMS_ns_nc.css"><style>
+<!--
+body { background-image:url("../Texture_metal3.jpg"); }
+-->
+</style><style>
+<!--
+hr.whs1 { float:aligncenter; margin-top:0px; margin-bottom:3px; height:1px; color:#385f92; }
+img\005fwhs2 { border:none; width:15px; height:15px; float:none; border-style:none; }
+img\005fwhs3 { border:none; width:169px; height:21px; float:none; border-style:none; }
+-->
+</style><style>
+<!--
+div.WebHelpPopupMenu { position:absolute; left:0px; top:0px; z-index:4; visibility:hidden; }
+-->
+</style><script type="text/javascript"
+		language=JavaScript
+		title=WebHelpSplitCss><!--
+if (navigator.appName !="Netscape")
+{   document.write("<link rel='stylesheet' href='../TWMS.css'>");}
+//--></script>
+
+<script type="text/javascript"
+		language=JavaScript><!--
+if ((navigator.appName == "Netscape") && (parseInt(navigator.appVersion) == 4))
+{
+  var strNSS = "<style type='text/css'>";
+  strNSS += "hr.whs1 {margin-top:1pt; }";
+  strNSS +="</style>";
+  document.write(strNSS);
+}
+//--></script>
+
+<script type="text/javascript"
+		language=JavaScript
+		title=WebHelpInlineScript><!--
+function reDo() {
+  if (innerWidth != origWidth || innerHeight != origHeight)
+     location.reload();
+}
+if ((parseInt(navigator.appVersion) == 4) && (navigator.appName == "Netscape")) {
+	origWidth = innerWidth;
+	origHeight = innerHeight;
+	onresize = reDo;
+}
+onerror = null; 
+//--></script>
+
+<script type="text/javascript"
+		language=javascript1.2
+		src="../whmsg.js"></script>
+
+<script type="text/javascript"
+		language=javascript
+		src="../whver.js"></script>
+
+<script type="text/javascript"
+		language=javascript1.2
+		src="../whproxy.js"></script>
+
+<script type="text/javascript"
+		language=javascript1.2
+		src="../whutils.js"></script>
+
+<script type="text/javascript"
+		language=javascript1.2
+		src="../whtopic.js"></script>
+
+<style type="text/css">
+<!--
+img_whs1 { border:none; width:126px; height:19px; float:none; border-style:none; }
+-->
+</style><style type="text/css">
+<!--
+div.WebHelpPopupMenu { position:absolute; left:0px; top:0px; z-index:4; visibility:hidden; }
+-->
+</style><script type="text/javascript" language="javascript1.2" src="../whmsg.js"></script>
+<script type="text/javascript" language="javascript" src="../whver.js"></script>
+<script type="text/javascript" language="javascript1.2" src="../whproxy.js"></script>
+<script type="text/javascript" language="javascript1.2" src="../whutils.js"></script>
+<script type="text/javascript" language="javascript1.2" src="../whtopic.js"></script>
+</head>
+<body><script type="text/javascript" language="javascript1.2">
+<!--
+if (window.gbWhTopic)
+{
+	if (window.addTocInfo)
+	{
+	addTocInfo("Admin\nWarranty Admin\nManage Labor Split");
+addButton("show",BTN_TEXT,"Show","","","","",0,0,"","","");
+
+	}
+	if (window.writeBtnStyle)
+		writeBtnStyle();
+
+	if (window.writeIntopicBar)
+		writeIntopicBar(1);
+
+	if (window.setRelStartPage)
+	{
+	setRelStartPage("../Admin.htm");
+
+		autoSync(1);
+		sendSyncInfo();
+		sendAveInfoOut();
+	}
+}
+else
+	if (window.gbIE4)
+		document.location.reload();
+//-->
+</script>
+<h1 class=TW-ChapterName><script type="text/javascript"
+								language=JavaScript1.2><!-- 
+if( typeof( kadovInitEffects ) != 'function' ) kadovInitEffects = new Function();if( typeof( kadovInitTrigger ) != 'function' ) kadovInitTrigger = new Function();if( typeof( kadovFilePopupInit ) != 'function' ) kadovFilePopupInit = new Function();if( typeof( kadovTextPopupInit ) != 'function' ) kadovTextPopupInit = new Function();
+ //--></script></h1>
+
+<h1 class=TW-ChapterName>MANAGE LABOR SPLIT</h1>
+
+
+<hr class=whs1
+	style="height: 1px;
+			color: #385F92;
+			float: aligncenter;"
+	size=1
+	color=#385F92
+	align=center>
+
+
+<p class=TW-Body>Labor rates are set up by the Warranty Administrator for 
+ a dealer before the dealer can file a warranty claim. Thus, while filing 
+ of a warranty claim, the dealer mentions the servicing information in 
+ terms of the job code that was applied to the claim. The system fetches 
+ the pre-defined number of hours that was set up for this job code. In 
+ addition to the normal hours spent on the job, the dealer can specify 
+ any additional hours that were spent on the job. The claim amount will 
+ take these additional hours into account while calculating the cost of 
+ the claim. </p>
+
+<p class=TW-Body>Now, sometimes the repair/service may require labor to 
+ work beyond the normal working hours and hence eligible for overtime pay. 
+ These overtime charges need to be setup into the system as a part of the 
+ labor rate configuration. This division of labor hours is known as labor 
+ split.</p>
+
+<p class=TW-Body>&nbsp;</p>
+
+<p class=TW-Body>The labor split is an optional utility which can be enabled 
+ or disabled for a dealer. If enabled, the labor split field is displayed 
+ for the dealer under the <span style="font-style: italic;"><I>Service Information</I></span> 
+ section while filing the claim.</p>
+
+<p class=TW-BulletHeader>&nbsp;</p>
+
+<p class=TW-BulletHeader>To enable the labor split utility,</p>
+
+<ul>
+	
+	<li class=kadov-p-CTW-Bullet1><p class=TW-Bullet1>Click on <span style="font-weight: bold;"><B>Manage 
+ Business Configurations</B></span> tab under the <span style="font-weight: bold;"><B>Warranty 
+ Admin</B></span> tab on the left-hand pane.</p></li>
+	
+	<li class=kadov-p-CTW-Bullet1><p class=TW-Bullet1>Click on <span style="font-weight: bold;"><B>Claim 
+ Input Parameters</B></span> under <span style="font-weight: bold;"><B>Claims</B></span> 
+ section in the <span style="font-weight: bold;"><B>Manage Business Configurations</B></span> 
+ page.</p></li>
+	
+	<li class=kadov-p-CTW-Bullet1><p class=TW-Bullet1>Select the radio 
+ button ‘Yes’ for “<span style="font-weight: bold;"><B>Enable OverTime Labor 
+ Split</B></span>”.</p></li>
+	
+	<li class=kadov-p-CTW-Bullet1><p class=TW-Bullet1>Click <span style="font-weight: bold;"><B>Update</B></span>.</p></li>
+</ul>
+
+<p class=TW-Body>You can also create different labor splits as per your 
+ requirement. </p>
+
+<p class=TW-Body>&nbsp;</p>
+
+<p class=TW-BulletHeader>To create a labor split,</p>
+
+<ul>
+	
+	<li class=kadov-p-CTW-Bullet1><p class=TW-Bullet1>Click on <span style="font-weight: bold;"><B>Manage 
+ Labor Split</B></span> tab under the <span style="font-weight: bold;"><B>Warranty 
+ Admin</B></span> tab on the left-hand pane.</p></li>
+	
+	<li class=kadov-p-CTW-Bullet1><p class=TW-Bullet1>Click on <img src="../Images/Create_Labor_Split.jpg" x-maintain-ratio="TRUE" width="126px" height="19px" border="0" class="img_whs1"> &nbsp;button 
+ in the listing toolbar.</p></li>
+	
+	<li class=kadov-p-CTW-Bullet1><p class=TW-Bullet1>Enter the <span style="font-weight: bold;"><B>Labor 
+ Split Name</B></span> and rate under <span style="font-weight: bold;"><B>Multiplication 
+ Value</B></span>.</p></li>
+	
+	<li class=kadov-p-CTW-Bullet1><p class=TW-Bullet1>Click <span style="font-weight: bold;"><B>Submit</B></span>.</p></li>
+</ul>
+
+<p class=TW-Body>The new labor split will be listed on the <span style="font-weight: bold;"><B>Manage 
+ Labor Split</B></span> page. You can also edit the labor split by clicking 
+ on the required labor split listed on the <span style="font-weight: bold;"><B>Manage 
+ Labor Split</B></span> page. Once you update the <span style="font-weight: bold;"><B>Multiplication 
+ Value,</B></span> click <span style="font-weight: bold;"><B>Update</B></span> to 
+ save the new value.</p>
+
+<p class=TW-Body>Now, when you enter the overtime hours under Labor Split 
+ section and validate the claim, you will see a difference in amount being 
+ filed for standard and overtime hours.</p>
+
+&nbsp; 
+
+<script type="text/javascript" language="javascript1.2">
+<!--
+if (window.writeIntopicBar)
+	writeIntopicBar(0);
+//-->
+</script>
+</body>
+</html>

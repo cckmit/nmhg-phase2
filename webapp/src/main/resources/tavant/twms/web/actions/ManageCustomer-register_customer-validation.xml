@@ -1,0 +1,58 @@
+<!DOCTYPE validators PUBLIC 
+    "-//Apache Struts//XWork Validator 1.0.2//EN"   
+    "http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+<validators>
+	<field name="customer.addresses[0].addressLine1">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>		
+			<message key="error.customerRegistration.requiredAddress"/>
+		</field-validator>
+	</field>
+
+	<field name="customer.addresses[0].city">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>		
+			<message key="error.customerRegistration.requiredCity"/>
+		</field-validator>
+	</field>
+
+	<field name="customer.addresses[0].state">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>		
+			<message key="error.customerRegistration.requiredState"/>
+		</field-validator>
+	</field>
+
+	<field name="customer.addresses[0].zipCode">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>		
+			<message key="error.customerRegistration.requiredZipcode"/>
+		</field-validator>
+	</field>
+
+	<field name="customer.addresses[0].country">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>		
+			<message key="error.customerRegistration.requiredCountry"/>
+		</field-validator>
+	</field>
+
+	<field name="customer.password">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>		
+			<message key="empty.password"/>
+		</field-validator>
+	</field>
+	
+	<validator type="fieldexpression">
+		<param name="fieldName">password</param>
+		<param name="expression"><![CDATA[password.equals(customer.getPassword())]]></param>
+		<message key="different.passwords"/>
+	</validator>
+
+	<validator type="fieldexpression">
+		<param name="fieldName">customer.password</param>
+		<param name="expression"><![CDATA[password.equals(customer.getPassword())]]></param>
+		<message key="different.passwords"/>
+	</validator>
+</validators>

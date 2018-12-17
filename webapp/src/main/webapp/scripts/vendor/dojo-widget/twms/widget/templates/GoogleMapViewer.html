@@ -1,0 +1,12 @@
+<span class="googleMapViewerContainer">
+    <button class='googleMapViewerIcon' dojoAttachPoint="iconNode"></button>
+    <div style="display: none">
+        <div dojoType="twms.widget.Dialog" bgColor="#FFF" toggle="fade"
+             id="${id}_viewer" toggleDuration="250" title="${title}" dojoAttachPoint="viewerNode"
+             style="overflow-x: hidden;">
+                <div dojoType="twms.widget.GoogleMap" dojoAttachPoint="mapNode" mapWidth="100%"
+                     mapHeight="${viewerHeight}" id="${id}_map" allowScrollWheelZoom="true" allowMapTypeSelection="true"
+                     allowLargeMapControl="true"></div>
+        </div>
+    </div>
+</span>

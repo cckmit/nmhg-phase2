@@ -1,0 +1,24 @@
+<!DOCTYPE validators PUBLIC "-//Apache Struts//XWork Validator 1.0.2//EN"
+       "http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+<validators>
+	  
+	    <field name="loaLevel">
+			    <field-validator type="required" short-circuit="true">
+		            <message key="error.manageLAOScheme.invalidLOALevel" />
+		        </field-validator>
+		        <field-validator type="int" short-circuit="true">
+		            <message key="error.manageLAOScheme.invalidLOALevel"/>
+		        </field-validator>
+   		 </field>
+   		  <field name="name">
+		        <field-validator type="requiredstring" short-circuit="true">
+		            <message key="error.manageLAOScheme.loaLevelNameRequired"/>
+		        </field-validator>
+   		 </field>
+   		  <field name="loaUser.name">
+		       <field-validator type="requiredstring" short-circuit="true">
+		            <message key="error.manageLAOScheme.loaLevelLoginRequired"/>
+		        </field-validator>
+   		 </field>
+  		
+</validators>

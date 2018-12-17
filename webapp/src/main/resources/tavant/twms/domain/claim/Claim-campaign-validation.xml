@@ -1,0 +1,49 @@
+<!DOCTYPE validators PUBLIC "-//Apache Struts//XWork Validator 1.0.2//EN"
+       "http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+<validators>
+
+	<field name="serviceInformation">
+		<field-validator type="visitor">
+			<param name="appendPrefix">true</param>
+			<param name="context">campaign</param>
+			<message></message>
+		</field-validator>
+	</field>
+	<field name="payment">
+		<field-validator type="visitor">
+			<param name="appendPrefix">true</param>
+			<param name="context">campaign</param>
+			<message></message>
+		</field-validator>
+	</field>
+	<field name="repairStartDate">
+		<field-validator type="required" short-circuit="true">
+			<message key="error.newClaim.repairStartDateRequired" />
+		</field-validator>
+	</field>
+	<field name="repairDate">
+		<field-validator type="required" short-circuit="true">
+			<message key="error.newClaim.repairDateRequired" />
+		</field-validator>
+	</field>
+
+	<field name="filedOnDate">
+		<field-validator type="required" short-circuit="true">
+			<message key="error.newClaim.filedOnDateRequired" />
+		</field-validator>
+	</field>
+
+	<field name="servicingLocation">
+		<field-validator type="required" short-circuit="true">
+			<message key="error.newClaim.servicingLocationRequired" />
+		</field-validator>
+		<field-validator type="fieldexpression" short-circuit="true">
+			<param name="expression"><![CDATA[(claim.servicingLocation!=null)]]></param>
+			<message key="error.newClaim.servicingLocationRequired" />
+		</field-validator>
+		<field-validator type="fieldexpression" short-circuit="true">
+			<param name="expression"><![CDATA[(claim.servicingLocation.id!=null)]]></param>
+			<message key="error.newClaim.servicingLocationRequired" />
+		</field-validator>
+	</field>
+</validators>

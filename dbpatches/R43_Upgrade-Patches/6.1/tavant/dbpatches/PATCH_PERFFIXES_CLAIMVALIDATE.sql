@@ -1,0 +1,8 @@
+--PURPOSE    : Indexes for claim validate workflow
+--AUTHOR     : Ramalakshmi P
+--CREATED ON : 10-MAY-11
+
+CREATE INDEX INSTPART_IDX_NONOEM ON installed_parts(NON_OEM_PARTS_INSTALLED)
+/
+CREATE INDEX LABORSPL_IDX_SERVDETAIL ON labor_Split(SERVICE_DETAIL)
+/

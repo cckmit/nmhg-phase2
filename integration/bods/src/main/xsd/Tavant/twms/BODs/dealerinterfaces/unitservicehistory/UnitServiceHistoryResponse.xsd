@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://www.tavant.com/dealerinterfaces/unitservicehistory/unitservicehistoryresponse" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:unitServiceHistoryResp="http://www.tavant.com/dealerinterfaces/unitservicehistory/unitservicehistoryresponse" targetNamespace="http://www.tavant.com/dealerinterfaces/unitservicehistory/unitservicehistoryresponse" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="UnitServiceHistoryResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<!-- A string that indicates if the operation was SUCESS or ERROR -->
+				<xs:element name="Status" type="xs:string" nillable="false"/>
+				<!-- URL of Tavant application -->
+				<xs:element name="TWMSURL" type="xs:string" minOccurs="1" maxOccurs="1" nillable="false"/> 
+				<!-- Details about the unit -->
+				<xs:element name="InventoryItem" type="InventoryItem" nillable="true"/>
+				<!-- List of business/system error codes and messages -->
+				<xs:element name="ErrorCodes" type="ErrorCodesType" nillable="true"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="ErrorCodesType">
+		<xs:sequence>
+			<xs:element name="EachErrorCode" type="EachErrorCode" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="EachErrorCode">
+		<xs:sequence>
+			<xs:element name="errorCode" type="xs:string"/>
+			<xs:element name="errorMessage" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>	
+   
+  <xs:complexType name="InventoryItem">
+    <xs:sequence>
+      <!-- Serial number of the unit -->
+      <xs:element name="SerialNumber" type="xs:string" minOccurs="1" maxOccurs="1" nillable="false"/>
+      <!-- Business Unit Name of the unit -->
+      <xs:element name="BusinessUnitName" type="xs:string" minOccurs="1" maxOccurs="1" nillable="false"/>
+      <!-- Product Type of the unit -->
+      <xs:element name="ProductType" type="xs:string"  minOccurs="1" maxOccurs="1" nillable="false"/>
+      <!-- Manufacturing Site of the unit -->
+      <xs:element name="ManufacturingSite" type="xs:string"  minOccurs="0" maxOccurs="1" nillable="true"/>      
+      <!-- Product of the unit -->
+      <xs:element name="Product" type="xs:string" minOccurs="1" maxOccurs="1" nillable="false"/>
+      <!-- Model of the unit -->
+      <xs:element name="ModelNumber" type="xs:string" minOccurs="1" maxOccurs="1" nillable="false"/>
+      <!-- Shipment Date of the unit -->
+      <xs:element name="ShipmentDate" type="xs:date" minOccurs="1" maxOccurs="1" nillable="false"/>
+      <!-- Item Number of the unit -->
+      <xs:element name="ItemNumber" type="xs:string" minOccurs="1" maxOccurs="1" nillable="false"/>
+      <!-- This will be populated in case of Major Component. This gives the serial number of the machine on which major component is hosted -->
+      <xs:element name="InstalledOnUnit" type="xs:string" minOccurs="1" maxOccurs="1" nillable="true"/>
+      <!-- Date of Delivery the unit -->
+      <xs:element name="DateofDelivery" type="xs:date" minOccurs="1" maxOccurs="1" nillable="true"/>
+      <!-- Description of the item of the unit -->
+      <xs:element name="ItemDescription" type="xs:string" minOccurs="1" maxOccurs="1" nillable="false"/>
+      <!-- Condition of the item. Possible values are NEW, REFURBHISED, PREOWNED, SCRAP-->
+      <xs:element name="ItemCondition" type="xs:string" minOccurs="1" maxOccurs="1" nillable="false"/>
+      <!-- Warranty Start Date of the unit -->
+      <xs:element name="WarrantyStartDate" type="xs:date" minOccurs="1" maxOccurs="1" nillable="true"/>
+      <!-- Warranty End Date of the unit -->
+      <xs:element name="WarrantyEndDate" type="xs:date" minOccurs="1" maxOccurs="1" nillable="true"/>
+      <!-- Hours In Service of the unit -->
+      <xs:element name="HoursInService" type="xs:integer" minOccurs="1" maxOccurs="1" nillable="false"/>
+      <!-- Sales Order Number of the unit -->
+      <xs:element name="SalesOrderNumber" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <!-- Invoice Number of the unit -->
+      <xs:element name="InvoiceNumber" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <!-- Ownership of the unit Possible values are First Owner, Pre Owned -->
+      <xs:element name="Ownership" type="xs:string" minOccurs="1" maxOccurs="1" nillable="false"/>
+      <!-- Operator of the unit given at the time of registration -->
+      <xs:element name="Operator" type="xs:string" minOccurs="1" maxOccurs="1" nillable="true"/>
+      <!-- Installing Dealer of the unit given at the time of registration -->
+      <xs:element name="InstallingDealer" type="xs:string" minOccurs="1" maxOccurs="1" nillable="true"/>
+      <!-- OEM of the unit given at the time of registration -->
+      <xs:element name="OEM" type="xs:string" minOccurs="1" maxOccurs="1" nillable="true"/>
+      <!-- Date Of Installation of the unit given at the time of registration -->
+      <xs:element name="DateOfInstallation" type="xs:date" minOccurs="1" maxOccurs="1" nillable="true"/>
+      <!-- Truck Number of the unit  -->      
+      <xs:element name="TruckNumber" type="xs:string" minOccurs="1" maxOccurs="1" nillable="true"/>
+      <!-- Equipment/VIN Id of the unit -->
+      <xs:element name="EquipmentVINID" type="xs:string" minOccurs="1" maxOccurs="1" nillable="true"/>
+      <!-- Details about retailing dealer of the unit-->
+      <xs:element name="RetailingDealer" type="ServiceProvider" minOccurs="1" maxOccurs="1" nillable="true"/>
+      <!-- Details about current owner of the unit-->
+      <xs:element name="OwnerInformation" type="OwnerInformation" minOccurs="1" maxOccurs="1" nillable="true"/>
+      <!-- Information about transactions performed on the unit -->
+      <xs:element name="TransactionHistory" >
+	      <xs:complexType >
+			<xs:sequence>
+				<xs:element name="TransactionDetails" type="InventoryTransaction"  maxOccurs="unbounded" />
+			</xs:sequence>
+	      </xs:complexType>
+      </xs:element>
+      <!-- Information about claims filed on the unit-->
+      <xs:element name="ClaimHistory" >
+	      <xs:complexType >
+			<xs:sequence>
+				<xs:element name="ClaimDetails" type="Claim" maxOccurs="unbounded" />
+			</xs:sequence>
+	      </xs:complexType>
+      </xs:element>
+      <!-- Information about claims filed on the unit-->
+      <xs:element name="DcapClaimHistory" >
+	      <xs:complexType >
+			<xs:sequence>
+				<xs:element name="DcapClaimDetails" type="DcapClaim" maxOccurs="unbounded" />
+			</xs:sequence>
+	      </xs:complexType>
+      </xs:element>
+      <!-- Information about pending field modifications on the unit -->
+      <xs:element name="FieldModification" >
+	      <xs:complexType >
+			<xs:sequence>
+				<xs:element name="FieldModificationDetails" type="FieldModification"  maxOccurs="unbounded" />
+			</xs:sequence>
+	      </xs:complexType>
+      </xs:element>
+      <!-- Information about warranty coverages available on the unit -->
+      <xs:element name="WarrantyCoverages">
+	      <xs:complexType>
+			<xs:sequence>
+				<xs:element name="WarrantyCoverageDetails" type="WarrantyCoverage"  maxOccurs="unbounded" />
+			</xs:sequence>
+	      </xs:complexType>
+      </xs:element>
+      <!-- Information about major compoenents contained on the unit. This will not be included for a major component itself -->
+      <xs:element name="MajorComponents">
+	      <xs:complexType>
+			<xs:sequence>
+				<xs:element name="MajorComponentDetails" type="MajorComponent"  maxOccurs="unbounded" />
+			</xs:sequence>
+	      </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+ 
+  <xs:complexType name="ServiceProvider">
+                <xs:sequence>
+                        <xs:element name="ServiceProviderNumber" type="xs:string"  />
+                        <xs:element ref="Name"  />
+                        <xs:element ref="Type" /> <!-- Type of the service provider. Possible values are  INTERCOMPANY,DEALERSHIP,DIRECTCUSTOMER,ORIGINALEQUIPMANUFACTURER, NATIONALACCOUNT-->
+                        <xs:element name="Address" type="AddressInformation"  />
+                </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="OwnerInformation">
+                <xs:sequence>
+                        <xs:element ref="Name"  />
+                        <xs:element ref="Type" />
+                        <xs:element name="Address" type="AddressInformation" />
+                </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="AddressInformation">
+                <xs:sequence>
+                        <xs:element name="Address" type="xs:string" />
+                        <xs:element name="City" type="xs:string"  />
+                        <xs:element name="State" type="xs:string"  />
+                        <xs:element name="Zipcode" type="xs:string"  />
+                        <xs:element name="Country" type="xs:string" />
+                </xs:sequence>
+    </xs:complexType>
+   <xs:complexType name="InventoryTransaction">
+                <xs:sequence>
+                        <xs:element name="TransactionDate" type="xs:date"  />
+                        <xs:element name="FromCompany" type="xs:string"  />
+                        <xs:element name="ToCompany" type="xs:string"  />
+                        <xs:element name="CustomerType" type="xs:string" />
+                        <xs:element name="TransactionType" type="xs:string" />
+                        <xs:element name="InvoiceNumber" type="xs:string"  />
+                </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Claim">
+                <xs:sequence>
+                        <xs:element name="ClaimNumber" type="xs:string"  />
+                        <xs:element name="DateOfClaim" type="xs:date" />
+                        <xs:element name="Status" type="xs:string"  />
+                        <xs:element name="FailureDate" type="xs:date"  />
+                        <xs:element name="IRPartsReplaced" type="xs:string"  />
+                        <xs:element name="HoursInService" type="xs:decimal" />
+                        <xs:element name="FaultLocation" type="xs:string"  />
+                        <xs:element name="TotalAmountCredited" type="xs:decimal" />
+                </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DcapClaim">
+                <xs:sequence>
+                        <xs:element name="ClaimNumber" type="xs:string"  />
+                        <xs:element name="DateOfClaim" type="xs:date" />
+                        <xs:element name="ClaimType" type="xs:string"  />
+                        <xs:element name="Status" type="xs:string"  />
+                        <xs:element name="ClaimedAmount" type="xs:decimal" />
+                        <xs:element name="Currency" type="xs:string"  />
+                </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="FieldModification">
+                <xs:sequence>
+                        <xs:element name="FieldModificationCode" type="xs:string"  />
+                        <xs:element name="FieldModificationClass" type="xs:string" />
+                        <xs:element name="EndDate" type="xs:date" />
+                        <xs:element name="Status" type="xs:string"/>                        
+                        <xs:element name="Description" type="xs:string" />
+                </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="WarrantyCoverage">
+                <xs:sequence>
+                        <xs:element name="PolicyCode" type="xs:string"  />
+                        <xs:element name="PolicyName" type="xs:string" />
+                        <xs:element name="Type" type="xs:string"/>
+                        <xs:element name="StartDate" type="xs:date"  />
+                        <xs:element name="EndDate" type="xs:date" />
+                        <xs:element name="MonthsCoveredFromDateOfDelivery" type="xs:integer"  />
+                        <xs:element name="HoursCovered" type="xs:integer"  />
+                        <xs:element name="Status" type="xs:string"  />
+                        <xs:element name="Comments" type="xs:string"  />
+                        <xs:element name="PurchaseOrderNumber" type="xs:string"  />
+                        <xs:element name="PurchaseDate" type="xs:date"  />
+                        <xs:element name="TermsAndConditions" type="xs:string"/>
+                </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MajorComponent">
+                <xs:sequence>
+                        <xs:element name="SerialNumber" type="xs:string"  />
+                        <xs:element name="PartNumber" type="xs:string"  />
+                        <xs:element name="Description" type="xs:string" />
+                        <xs:element name="InstallDate" type="xs:date" />
+                        <xs:element name="WarrantyStartDate" type="xs:date"  />
+                        <xs:element name="WarrantyEndDate" type="xs:date"  />
+                </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Name" type="xs:string"/>
+  <xs:element name="Type" type="xs:string"/>	
+</xs:schema>

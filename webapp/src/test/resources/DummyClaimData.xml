@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taskView xmlns:xhtml="http://www.w3.org/1999/xhtml"
+	xmlns:xf="http://www.w3.org/2002/xforms"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns:xxi="http://orbeon.org/oxf/xml/xinclude"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:xxforms="http://orbeon.org/oxf/xml/xforms"
+	xmlns:xlink="http://www.w3.org/1999/xlink"
+	xmlns:ev="http://www.w3.org/2001/xml-events"
+	xmlns:xf_0="http://www.w3.org/2002/xforms"
+	xlns="http://www.tavant.com/2006/TWMS">
+	<task />
+	<claim>
+		<id />
+		<type>Machine</type>
+		<partSerialNoAvailable>false</partSerialNoAvailable>
+
+
+		<itemReference>
+			<serialized>true</serialized>
+			<referredItem>
+				<make />
+
+
+
+			</referredItem>
+			<referredInventoryItem>
+				<serialNumber>CA2549</serialNumber>
+				<machineItemNumber />
+				<registrationDate />
+				<deliveryDate />
+				<ofType>
+					<make />
+					<model />
+					<number />
+					<description />
+				</ofType>
+				<ownedBy>
+					<name />
+					<address>
+						<addressLine1 />
+						<addressLine2 />
+						<city />
+						<state />
+						<country />
+						<zipCode />
+					</address>
+				</ownedBy>
+			</referredInventoryItem>
+		</itemReference>
+
+		<partInventoryItem />
+
+
+
+		<partItem>
+			<make />
+			<model />
+
+			<description />
+		</partItem>
+
+		<failureDate>2006-11-16</failureDate>
+		<repairDate />
+		<hoursInService />
+		<filedOnDate />
+		<state>
+			<state />
+		</state>
+		<applicablePolicy>
+			<code />
+			<description />
+			<serviceHoursCovered />
+			<monthsCoveredFromRegistration />
+		</applicablePolicy>
+		<serviceInformation>
+			<faultCode />
+			<causalPart>
+				<number />
+			</causalPart>
+			<faultFound />
+			<causedBy />
+			<serviceDetail>
+				<laborPerformed>
+					<laborDetail>
+						<jobPerformed>
+							<jobCode />
+							<expectedNumberOfHours>
+								0
+							</expectedNumberOfHours>
+						</jobPerformed>
+						<hoursSpent>0</hoursSpent>
+					</laborDetail>
+				</laborPerformed>
+				<OEMPartsReplaced>
+					<OEMPartReplaced>
+						<itemReference>
+							<serialized>false</serialized>
+							<referredItem>
+								<number />
+								<description />
+							</referredItem>
+							<referredInventoryItem>
+
+								<ofType>
+									<number />
+									<description />
+								</ofType>
+							</referredInventoryItem>
+						</itemReference>
+						<pricePerUnit>
+							<amount>0.00</amount>
+							<currency>USD</currency>
+						</pricePerUnit>
+						<numberOfUnits>0</numberOfUnits>
+						<totalAmount>0</totalAmount>
+					</OEMPartReplaced>
+				</OEMPartsReplaced>
+				<nonOEMPartsReplaced>
+					<nonOEMPartReplaced>
+						<number />
+						<description />
+						<pricePerUnit>
+							<amount>0.00</amount>
+							<currency>USD</currency>
+						</pricePerUnit>
+						<numberOfUnits>0</numberOfUnits>
+						<nonOEMTotalAmount>0</nonOEMTotalAmount>
+					</nonOEMPartReplaced>
+				</nonOEMPartsReplaced>
+				<travelDetails>
+					<hours />
+					<distance />
+					<trips />
+					<location />
+				</travelDetails>
+			</serviceDetail>
+		</serviceInformation>
+		<serviceManagerRequest>false</serviceManagerRequest>
+		<filedBy>
+			<name />
+			<address>
+				<addressLine1 />
+				<addressLine2 />
+				<city />
+				<state />
+				<country />
+				<zipCode />
+			</address>
+		</filedBy>
+		<forDealer>
+			<name />
+			<address>
+				<addressLine1 />
+				<addressLine2 />
+				<city />
+				<state />
+				<country />
+				<zipCode />
+			</address>
+		</forDealer>
+		<probableCause />
+		<workPerformed />
+		<otherComments />
+		<conditionFound />
+		<payment>
+			<lineItemGroups>
+				<lineItemGroup>
+					<name />
+					<percentageAcceptance>0.0</percentageAcceptance>
+					<groupTotal>0.0</groupTotal>
+					<acceptedTotal>0.0</acceptedTotal>
+					<lineItems>
+						<lineItem>
+							<name />
+							<value>0.0</value>
+						</lineItem>
+					</lineItems>
+				</lineItemGroup>
+			</lineItemGroups>
+		</payment>
+		<coverage>
+			<startDate />
+			<endDate />
+		</coverage>
+		<ruleFailures>
+			<ruleFailure>
+				<id />
+				<failedRules>
+					<string />
+				</failedRules>
+				<failedRuleSet>
+					<name />
+				</failedRuleSet>
+			</ruleFailure>
+		</ruleFailures>
+	</claim>
+	<warningMessages>
+		<string />
+	</warningMessages>
+	<errorMessages>
+		<string />
+	</errorMessages>
+	<takenTransition />
+	<transferTo />
+	<taskName />
+	<transitions>
+		<string />
+	</transitions>
+</taskView>

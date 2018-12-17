@@ -1,0 +1,54 @@
+## The Tavant Database Patch catalog
+##
+## This file contains a sequential list of all the database patches along with logical database name.	
+## (both sql scripts and java programs) that must be run to properly
+## construct and maintain a database in conjunction with the version
+## of code represented by the current version of this file. Patch names
+## shall be relative to tavant/dbPatches
+##
+## Entries in this will look like this (but will be left-justfied):
+##    main/Patchyyyymmdd.[sql|java] tavant
+## or
+##    iri/Patchyyyymmdd.[sql|java] dba
+##
+##All entries in patchCatalog.txt would consist of both the patch name
+##followed by a 'logical' database/schema name (seperated by whitespace). This
+##would name no longer be optional.
+##Failure to provide a 'logical' db name for all patches is considered to be
+##an error.
+##Failure to define all 'logical' names in the external properties file is an
+##error.
+##  Ex)
+##
+## Here are some guidelines on how to create db patches. 
+## Please follow this strictly to avoid unnecessary issues when applying db patches via version manager.
+## 1. The .sql extension should be in lower case (never use .SQL)
+## 2. There should not be a ; (semicolon) after a sql statement.
+## 3. There should be / (forward slash) in the next line after every sql statement.
+## 4. There should not be any space or tab before or after the / (forward slash).
+## 
+## There is a sample patch file PATCH_TEST_VM.sql in versionmanager folder.
+## Also make sure none of these patches are applied manually on any database except DEV.
+
+PATCH_ADD_CONSTRAINT_BU_USER_MAPPING.sql main twms_owner
+PATCH_CONS_LAST_UPDT_BY.sql main twms_owner
+PATCH_CONS_MODEL_CAT_INV_DCAP_DET.sql main twms_owner
+##PATCH_INVOICE_INSTALLED_PARTS.sql main twms_owner  
+PATCH_LABOR_SPLIT_REASON_LENGTH.sql main twms_owner
+PATCH_STAGE_TABLES_CREATION.sql main twms_owner
+PATCH_STAGE_TABLES_CONSTRAINTS.sql main twms_owner
+##PATCH_SYNC_TYPE.sql main twms_owner  --already present in latest dump
+PATCH_UNIQUE_CONSTRAINT_INVENTORY_ITEM.sql main twms_owner
+##PATCH_UPLOAD_MGT_META_DATA.sql main twms_owner --already present in latest dump
+PATCH_VIEW_VENDOR_RECOVERY_EXTRACT.sql main twms_owner
+##PATCH_BUGFIX-TWMS4.3U-341.sql main twms_owner  --moved to 6.1 folder
+PATCH_TWMS4.3U-380-PART-1.sql main twms_owner
+PATCH_I18NLOV_TEXT_ADD_CONS_LOV.sql main twms_owner
+PATCH_DISABLE_SHIPMENT_TRIG.sql main twms_owner
+PATCH+TO+UPDATE+DISPLAY+VALUE+FOR+config_param_option.sql main twms_owner
+EXCEPTION_CLEANUP_60.sql main twms_owner
+PATCH_ADD_FK_PRICE_MATRIX.sql main twms_owner
+PATCH_DROP_TRIGGER_TWMS4.3U-550.sql main twms_owner
+ADD_FK_FAILED_RULE.sql main twms_owner
+PATCH_to_mark_index_UNUSABLE.sql main twms_owner
+Patch_to_update_org_user_logins_R6.sql main twms_owner

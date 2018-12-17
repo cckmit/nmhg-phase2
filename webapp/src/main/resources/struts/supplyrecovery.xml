@@ -1,0 +1,1740 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+    
+<struts>
+	<package name="supplyrecovery" extends="struts-twms-default">
+		
+		<!-- Supplier Recovery Admin Direct Shipment -->
+		<action name="supplierRecoveryAdminDirectShipment" 
+    		class="tavant.twms.web.supplier.SupplierRecoveryAdminAction">
+			<result name="success">pages/secure/supplier/supplier_recovery_inbox_view.jsp</result>
+    	</action>
+		
+		<action name="supplierRecoveryAdminDirectShipment_table_body" 
+    		class="tavant.twms.web.supplier.SupplierRecoveryAdminAction" 
+    		method="tableBody">
+			<interceptor-ref name="paramsPrepareWithoutValidation" />
+      		<result name="success">pages/secure/home/json.jsp</result>
+			<result name="input">pages/error.jsp</result>		
+    		<param name="taskName">Shipment from Dealer</param>
+    	</action>
+    	
+    	<action name="supplierRecoveryAdminDirectShipment_preview" 
+    		class="tavant.twms.web.supplier.SupplierRecoveryAdminAction" 
+    		method="preview">
+    		<interceptor-ref name="supplierParamsPrepareWithoutValidation" />
+    		<param name="taskName">Shipment from Dealer</param>
+    		<result name="success">
+				pages/secure/supplier/preview/sra.jsp
+			</result>
+    	</action>
+    	
+    	<action name="supplierRecoveryAdminDirectShipment_detail" 
+    		class="tavant.twms.web.supplier.SupplierRecoveryAdminAction" 
+    		method="detail">
+    		<interceptor-ref name="supplierParamsPrepareWithoutValidation" />
+    		<param name="taskName">Shipment from Dealer</param>
+    		<result name="success">
+				pages/secure/supplier/sradetail.jsp
+			</result>
+			<result name="input">pages/secure/admin/supplier/sraReviewResponse.jsp</result>
+    	</action>
+    	
+    	 <action name="selectedRecClaims"
+            class="tavant.twms.web.claim.MultiRecoveryClaimMaintenanceAction" method="setClaimsForMaintenance">
+            <interceptor-ref name="twmsParamsPrepareParams" />
+            <result name="success">pages/secure/claims/multipleClaimMaintenance/selectedRecoveryAttributes.jsp</result>
+            <result name="input">pages/secure/claims/multipleClaimMaintenance/recClaimSearchResult.jsp</result>
+        </action>
+        <action name="updateRecClaimsForMaintenance"
+            class="tavant.twms.web.claim.MultiRecoveryClaimMaintenanceAction" method="updateClaimsForMaintenance">
+            <interceptor-ref name="paramsPrepareWithoutValidation" />
+            <result name="success">pages/secure/common/successFullRefresh.jsp</result>
+            <result name="input">pages/secure/claims/multipleClaimMaintenance/selectedRecoveryAttributes.jsp</result>
+        </action>
+    	
+    	
+    	<action name="sraComponentDetail" 
+    		class="tavant.twms.web.supplier.SupplierRecoveryAdminAction" 
+    		method="getComponentDetail">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+    		<param name="taskName">Shipment from Dealer</param>
+    		<result name="success">
+				pages/secure/supplier/detail/sra_component_detail.jsp
+			</result>
+    	</action>
+    	
+    	<action name="sraContractDetail" 
+    		class="tavant.twms.web.supplier.SupplierRecoveryAdminAction" 
+    		method="getSupplierContractDetails">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+    		<param name="taskName">Shipment from Dealer</param>
+    		<result name="success">pages/secure/home/json.jsp</result>
+    	</action>
+    	
+    	<action name="supplierRecoveryAdminDirectShipment_summary" 
+    		class="tavant.twms.web.supplier.SupplierRecoveryAdminAction" 
+    		method="summary">
+    		<interceptor-ref name="twmsParamsPrepareParams" />
+    		<param name="taskName">Shipment from Dealer</param>
+    		<result name="success">
+				pages/secure/supplier/srasummary.jsp
+			</result>
+    		<result name="input">
+				pages/secure/supplier/sradetail.jsp
+			</result>
+    	</action>
+		
+    	<action name="supplierRecoveryAdminDirectShipment_submit" 
+    		class="tavant.twms.web.supplier.SupplierRecoveryAdminAction" 
+    		method="submit">
+    		<interceptor-ref name="twmsParamsPrepareParams" />
+    		<param name="taskName">Shipment from Dealer</param>
+    		<result name="success">
+				pages/secure/supplier/partsshipped.jsp
+			</result>
+			<result name="input">pages/secure/supplier/sradetail.jsp</result>
+    	</action>
+    	
+		<!-- Supplier Recovery Admin Action -->
+    	<action name="supplierRecoveryAdmin" 
+    		class="tavant.twms.web.supplier.SupplierRecoveryAdminAction">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+			<result name="success">pages/secure/supplier/supplier_recovery_inbox_view.jsp</result>
+    	</action>
+		
+		<action name="supplierRecoveryAdmin_table_body" 
+    		class="tavant.twms.web.supplier.SupplierRecoveryAdminAction" 
+    		method="tableBody">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+    		<param name="taskName">For Recovery</param>
+      		<result name="success">pages/secure/home/json.jsp</result>
+			<result name="input">pages/error.jsp</result>	
+    	</action>
+    	
+    	<action name="supplierRecoveryAdmin_preview" 
+    		class="tavant.twms.web.supplier.SupplierRecoveryAdminAction" 
+    		method="preview">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+    		<param name="taskName">For Recovery</param>
+    		<result name="success">
+				pages/secure/supplier/preview/sra.jsp
+			</result>
+    	</action>
+    	
+    	<action name="supplierRecoveryAdmin_detail" 
+    		class="tavant.twms.web.supplier.SupplierRecoveryAdminAction" 
+    		method="detail">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+    		<param name="taskName">For Recovery</param>
+    		<result name="input">pages/secure/admin/supplier/sraReviewResponse.jsp</result>
+    		<result name="success">
+				pages/secure/supplier/sradetail.jsp
+			</result>
+    	</action>
+    	
+    	<action name="supplierRecoveryAdmin_summary" 
+    		class="tavant.twms.web.supplier.SupplierRecoveryAdminAction" 
+    		method="summary">
+    		<interceptor-ref name="twmsParamsPrepareParams" />
+    		<param name="taskName">For Recovery</param>
+    		<result name="success">
+				pages/secure/supplier/srasummary.jsp
+			</result>
+    		<result name="input">
+				pages/secure/supplier/sradetail.jsp
+			</result>
+    	</action>
+		
+    	<action name="supplierRecoveryAdmin_submit" 
+    		class="tavant.twms.web.supplier.SupplierRecoveryAdminAction" 
+    		method="submit">
+    		<interceptor-ref name="twmsParamsPrepareParams" />
+    		<param name="taskName">For Recovery</param>
+    		<result name="success">
+				pages/secure/supplier/partsshipped.jsp
+			</result>
+			<result name="input">
+				pages/secure/supplier/sradetail.jsp
+			</result>
+    	</action>
+    	<!-- Supplier Recovery Admin Transferred -->
+    	<action name="supplierRecoveryAdminTransferred" 
+    		class="tavant.twms.web.supplier.SupplierRecoveryAdminAction">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+			<result name="success">pages/secure/supplier/supplier_recovery_inbox_view.jsp</result>
+    	</action>
+		
+		<action name="supplierRecoveryAdminTransferred_table_body" 
+    		class="tavant.twms.web.supplier.SupplierRecoveryAdminAction" 
+    		method="tableBody">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+    		<param name="taskName">Transferred</param>
+      		<result name="success">pages/secure/home/json.jsp</result>
+			<result name="input">pages/error.jsp</result>	
+    	</action>
+    	
+    	<action name="supplierRecoveryAdminTransferred_preview" 
+    		class="tavant.twms.web.supplier.SupplierRecoveryAdminAction" 
+    		method="preview">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+    		<param name="taskName">Transferred</param>
+    		<result name="success">
+				pages/secure/supplier/preview/sra.jsp
+			</result>
+    	</action>
+    	
+    	<action name="supplierRecoveryAdminTransferred_detail" 
+    		class="tavant.twms.web.supplier.SupplierRecoveryAdminAction" 
+    		method="detail">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+    		<param name="taskName">Transferred</param>
+    		<result name="success">
+				pages/secure/supplier/sradetail.jsp
+			</result>
+			<result name="input">pages/secure/admin/supplier/sraReviewResponse.jsp</result>
+    	</action>
+		
+    	<action name="supplierRecoveryAdminTransferred_submit" 
+    		class="tavant.twms.web.supplier.SupplierRecoveryAdminAction" 
+    		method="submit">
+    		<interceptor-ref name="twmsParamsPrepareParams" />
+    		<param name="taskName">Transferred</param>
+    		<result name="success">
+				pages/secure/supplier/partsshipped.jsp
+			</result>
+			<result name="input">
+				pages/secure/supplier/sradetail.jsp
+			</result>
+    	</action>
+
+       <action name="supplierRecoveryAdminTransferred_exportToExcel" 
+    		class="tavant.twms.web.supplier.SupplierRecoveryAdminAction" 
+    		method="downloadListingData">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+    		<param name="taskName">Transferred</param>
+    	</action>    
+		
+		<!-- Supplier Recovery Admin On Hold -->
+		<action name="supplierRecoveryAdminOnHold" 
+    		class="tavant.twms.web.supplier.SupplierRecoveryAdminAction">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+			<result name="success">pages/secure/supplier/supplier_recovery_inbox_view.jsp</result>
+    	</action>
+		
+		<action name="supplierRecoveryAdminOnHold_table_body" 
+    		class="tavant.twms.web.supplier.SupplierRecoveryAdminAction" 
+    		method="tableBody">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+    		<param name="taskName">On Hold</param>
+      		<result name="success">pages/secure/home/json.jsp</result>
+			<result name="input">pages/error.jsp</result>	
+    	</action>
+    	
+    	<action name="supplierRecoveryAdminOnHold_preview" 
+    		class="tavant.twms.web.supplier.SupplierRecoveryAdminAction" 
+    		method="preview">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+    		<param name="taskName">On Hold</param>
+    		<result name="success">
+				pages/secure/supplier/preview/sra.jsp
+			</result>
+    	</action>
+    	
+    	<action name="supplierRecoveryAdminOnHold_detail" 
+    		class="tavant.twms.web.supplier.SupplierRecoveryAdminAction" 
+    		method="detail">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+    		<param name="taskName">On Hold</param>
+    		<result name="success">
+				pages/secure/supplier/sradetail.jsp
+			</result>
+			<result name="input">pages/secure/admin/supplier/sraReviewResponse.jsp</result>
+    	</action>
+    	
+    	<action name="supplierRecoveryAdminOnHold_summary" 
+    		class="tavant.twms.web.supplier.SupplierRecoveryAdminAction" 
+    		method="summary">
+    		<interceptor-ref name="twmsParamsPrepareParams" />
+    		<param name="taskName">On Hold</param>
+    		<result name="success">
+				pages/secure/supplier/srasummary.jsp
+			</result>
+    		<result name="input">
+				pages/secure/supplier/sradetail.jsp
+			</result>
+    	</action>
+		
+    	<action name="supplierRecoveryAdminOnHold_submit" 
+    		class="tavant.twms.web.supplier.SupplierRecoveryAdminAction" 
+    		method="submit">
+    		<interceptor-ref name="twmsParamsPrepareRepeatTableParams" />
+    		<param name="taskName">On Hold</param>
+    		<result name="success">
+				pages/secure/supplier/partsshipped.jsp
+			</result>
+			<result name="input">
+				pages/secure/supplier/sradetail.jsp
+			</result>
+    	</action>
+		<!-- Supplier Recovery Admin Claims sent to partshipper-->
+    	<action name="claimsSentToShipper" 
+    		class="tavant.twms.web.supplier.SupplierRecoveryAdminAction">
+			<interceptor-ref name="paramsPrepareWithoutValidation" />
+			<result name="success">pages/secure/supplier/supplier_recovery_inbox_view.jsp</result>
+    	</action>
+		
+		<action name="claimsSentToShipper_table_body" 
+    		class="tavant.twms.web.supplier.SupplierRecoveryAdminAction" 
+    		method="tableBody">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+    		<param name="taskName">Awaiting Shipment</param>
+      		<result name="success">pages/secure/home/json.jsp</result>
+			<result name="input">pages/error.jsp</result>	
+    	</action>
+    	
+    	<action name="claimsSentToShipper_preview" 
+    		class="tavant.twms.web.supplier.SupplierRecoveryAdminAction" 
+    		method="preview">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+    		<param name="taskName">Awaiting Shipment</param>
+    		<result name="success">
+				pages/secure/supplier/preview/sra.jsp
+			</result>
+    	</action>		
+    	<action name="claimsSentToShipper_detail" 
+    		class="tavant.twms.web.supplier.SupplierRecoveryAdminAction" 
+    		method="detail">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+    		<param name="taskName">Awaiting Shipment</param>
+    		<result name="success">
+				pages/secure/admin/supplier/sra_claims_sentto_partshipper.jsp
+			</result>
+			<result name="input">pages/secure/admin/supplier/sraReviewResponse.jsp</result>
+    	</action>		
+		
+		<!-- Supplier Recovery Admin Claims sent to Supplier-->
+    	<action name="claimsSentToSupplier" 
+    		class="tavant.twms.web.supplier.SupplierRecoveryAdminAction">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+			<result name="success">pages/secure/supplier/supplier_recovery_inbox_view.jsp</result>
+    	</action>
+		
+		<action name="claimsSentToSupplier_table_body" 
+    		class="tavant.twms.web.supplier.SupplierRecoveryAdminAction" 
+    		method="tableBody">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+    		<param name="taskName">Awaiting Supplier Response</param>
+      		<result name="success">pages/secure/home/json.jsp</result>
+			<result name="input">pages/error.jsp</result>	
+    	</action>
+    	
+    	<action name="claimsSentToSupplier_preview" 
+    		class="tavant.twms.web.supplier.SupplierRecoveryAdminAction" 
+    		method="preview">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+    		<param name="taskName">Awaiting Supplier Response</param>
+    		<result name="success">
+				pages/secure/supplier/preview/sra.jsp
+			</result>
+    	</action>		
+    	<action name="claimsSentToSupplier_detail" 
+    		class="tavant.twms.web.supplier.SupplierRecoveryAdminAction" 
+    		method="detail">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+    		<param name="taskName">Awaiting Supplier Response</param>
+    		<result name="success">
+				pages/secure/admin/supplier/sra_claims_sentto_partshipper.jsp
+			</result>
+			<result name="input">pages/secure/admin/supplier/sraReviewResponse.jsp</result>
+    	</action>		
+		
+		<!--  Part Shipper Generate Shipment Action -->
+		<action name="partShipperGenerateShipment" 
+    		class="tavant.twms.web.supplier.PartShipperGenerateShipmentAction">
+			<result name="success">pages/secure/supplier/supplier_recovery_inbox_view.jsp</result>
+    	</action>
+    	
+    	<action name="partShipperGenerateShipment_table_body" 
+    		class="tavant.twms.web.supplier.PartShipperGenerateShipmentAction" 
+    		method="tableBody">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+    		<param name="taskName">Supplier Parts Claimed</param>
+      		<result name="success">pages/secure/home/json.jsp</result>
+			<result name="input">pages/error.jsp</result>	
+    	</action>
+    	
+    	<action name="partShipperGenerateShipment_preview" 
+    		class="tavant.twms.web.supplier.PartShipperGenerateShipmentAction" 
+    		method="preview">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+    		<param name="taskName">Supplier Parts Claimed</param>
+    		<result name="success">
+				pages/secure/supplier/partshipper-partsclaimed.jsp
+			</result>
+    	</action>
+    	
+    	<action name="partShipperGenerateShipment_detail" 
+    		class="tavant.twms.web.supplier.PartShipperGenerateShipmentAction" 
+    		method="preview">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+    		<param name="taskName">Supplier Parts Claimed</param>
+    		<result name="success">
+				pages/secure/supplier/partshipper-partsclaimed.jsp
+			</result>
+			<result name="input">pages/secure/admin/supplier/sraReviewResponse.jsp</result>
+    	</action>
+    	
+    	<action name="partShipperGenerateShipment_submit" 
+    		class="tavant.twms.web.supplier.PartShipperGenerateShipmentAction" 
+    		method="submit">
+    		<interceptor-ref name="twmsParamsPrepareParams" />
+    		<param name="taskName">Supplier Parts Claimed</param>
+    		<result name="input">
+                pages/secure/supplier/partshipper-partsclaimed.jsp
+            </result>
+    		<result name="success">
+				pages/secure/supplier/partsshipper-response.jsp
+			</result>
+    	</action>
+    	
+    	<action name="generate_bulk_shipment" 
+    		class="tavant.twms.web.supplier.PartShipperGenerateShipmentAction" 
+    		method="bulkShipmentGenerate">
+    		<param name="taskName">Supplier Parts Claimed</param>
+    		<result name="success">pages/secure/home/json.jsp</result>
+    	</action>
+    	
+    	<!-- Routed To NMHG -->
+    	<action name="routedToNMHG"
+    		class="tavant.twms.web.supplier.RoutedToNMHGAction">
+			<result name="success">pages/secure/supplier/supplier_recovery_inbox_view.jsp</result>
+    	</action>
+    	
+    	<action name="routedToNMHG_table_body" 
+    		class="tavant.twms.web.supplier.RoutedToNMHGAction" 
+    		method="tableBody">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+    		<param name="taskName">Routed to NMHG</param>
+      		<result name="success">pages/secure/home/json.jsp</result>
+			<result name="input">pages/error.jsp</result>	
+    	</action>
+    	
+    	<action name="routedToNMHG_exportToExcel" 
+    		class="tavant.twms.web.supplier.RoutedToNMHGAction"
+    		method="downloadListingData">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+    		<param name="taskName">Routed to NMHG</param>
+    		<param name="folderName">Routed to NMHG</param>
+    	</action>
+    	
+    	<action name="routedToNMHG_detail" 
+    		class="tavant.twms.web.supplier.RoutedToNMHGAction" 
+    		method="detail">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+    		<param name="taskName">Routed to NMHG</param>
+    		<result name="success">pages/secure/supplier/detail/routedToNMHG_detail.jsp</result>
+    	</action>
+    	
+    	<action name="routedToNMHG_submit" 
+    		class="tavant.twms.web.supplier.RoutedToNMHGAction" 
+    		method="submit">
+    		<interceptor-ref name="twmsParamsPrepareParams" />
+    		<param name="taskName">Routed to NMHG</param>
+    		<result name="input">
+                pages/secure/supplier/detail/routedToNMHG_detail.jsp
+            </result>
+    		<result name="success">
+				pages/secure/supplier/routedToNMHG-response.jsp
+			</result>
+    	</action>
+    	
+		<!--  Part Shipper parts shipped Tag Action -->
+		    	
+		<action name="partShipperPartsShipped" 
+    		class="tavant.twms.web.supplier.PartsShipperPartsShippedAction">
+			<result name="success">pages/secure/supplier/supplier_recovery_inbox_view.jsp</result>
+    	</action>
+		
+		<action name="partShipperPartsShipped_table_body" 
+    		class="tavant.twms.web.supplier.PartsShipperPartsShippedAction" method="tableBody">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+    		<param name="taskName">Supplier Parts Shipped</param>
+			<result name="success">pages/secure/home/json.jsp</result>
+			<result name="input">pages/error.jsp</result>	
+    	</action>
+		
+		<action name="partShipperPartsShipped_preview" 
+    		class="tavant.twms.web.supplier.PartsShipperPartsShippedAction" method="preview">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+    		<param name="taskName">Supplier Parts Shipped</param>
+			<result name="success">pages/secure/supplier/partShipper_partsShipped.jsp</result>
+    	</action>
+		<action name="partShipperPartsShipped_detail" 
+    		class="tavant.twms.web.supplier.PartsShipperPartsShippedAction" method="detail">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+    		<param name="taskName">Supplier Parts Shipped</param>
+			<result name="success">pages/secure/supplier/partShipper_partsShipped.jsp</result>
+			<result name="input">pages/secure/admin/supplier/sraReviewResponse.jsp</result>
+    	</action>
+    	<action name="update_contact_person" 
+    		class="tavant.twms.web.supplier.PartsShipperPartsShippedAction" method="updateContactPerson">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+    		<param name="taskName">Supplier Parts Shipped</param>
+			<result name="success">pages/secure/supplier/partShipper_partsShipped.jsp</result>
+			<result name="input">pages/secure/supplier/partShipper_partsShipped.jsp</result>
+    	</action>
+				
+		<!--  Part Shipper Update Tag Action -->
+		
+		<action name="partShipperUpdateTag" 
+    		class="tavant.twms.web.supplier.PartShipperUpdateTagAction">
+			<result name="success">pages/secure/supplier/supplier_recovery_inbox_view.jsp</result>
+    	</action>
+    	
+    	<action name="partShipperUpdateTag_table_body" 
+    		class="tavant.twms.web.supplier.PartShipperUpdateTagAction" 
+    		method="tableBody">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+    		<param name="taskName">Supplier Shipment Generated</param>
+      		<result name="success">pages/secure/home/json.jsp</result>
+			<result name="input">pages/error.jsp</result>	
+    	</action>
+    	
+    	<action name="partShipperUpdateTag_preview" 
+    		class="tavant.twms.web.supplier.PartShipperUpdateTagAction" 
+    		method="preview">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+    		<param name="taskName">Supplier Shipment Generated</param>
+    		<result name="success">
+				pages/secure/supplier/partshipper-shipmentgenerated.jsp
+			</result>
+            <result name="recoveryClaimView">
+                pages/secure/supplier/partshipper-shipmentgenerated-reclaim-view.jsp
+            </result>
+    	</action>
+    	
+    	<action name="partShipperUpdateTag_detail" 
+    		class="tavant.twms.web.supplier.PartShipperUpdateTagAction" 
+    		method="preview">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+    		<param name="taskName">Supplier Shipment Generated</param>
+    		<result name="success">
+				pages/secure/supplier/partshipper-shipmentgenerated.jsp
+			</result>
+            <result name="recoveryClaimView">
+                pages/secure/supplier/partshipper-shipmentgenerated-reclaim-view.jsp
+            </result>
+			<result name="input">pages/secure/admin/supplier/sraReviewResponse.jsp</result>
+    	</action>
+
+    	<action name="partShipperUpdateTag_shipmentTag" 
+    		class="tavant.twms.web.supplier.PartShipperUpdateTagAction" 
+    		method="shipmentTag">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+    		<param name="taskName">Supplier Shipment Generated</param>
+    		<result name="success">
+				pages/secure/supplier/partshipper-shipmenttag.jsp
+			</result>
+    	</action>
+
+        <action name="partShipperUpdateTag_shipmentTag_shipped"
+                class="tavant.twms.web.supplier.PartShipperUpdateTagAction"
+                method="shipmentTag">
+            <interceptor-ref name="paramsPrepareWithoutValidation" />
+            <param name="taskName">Supplier Parts Shipped</param>
+            <result name="success">
+                pages/secure/supplier/partshipper-shipmenttag.jsp
+            </result>
+        </action>
+    	
+    	<action name="partShipperUpdateTag_removePart" 
+    		class="tavant.twms.web.supplier.PartShipperUpdateTagAction" 
+    		method="removePart">
+    		<interceptor-ref name="twmsParamsPrepareParams" />
+    		<param name="taskName">Supplier Shipment Generated</param>
+    		<result name="success">
+				pages/secure/supplier/partshipper-shipmentgenerated.jsp
+			</result>
+    		<result name="input">
+				pages/secure/supplier/partshipper-shipmentgenerated.jsp
+			</result>
+    	</action>
+
+    	<action name="partShipperUpdateTag_addNewPart" 
+    		class="tavant.twms.web.supplier.PartShipperUpdateTagAction" 
+    		method="addNewPart">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+    		<param name="taskName">Supplier Parts Claimed</param>
+    		<result name="success">
+				pages/secure/supplier/partshipper-additionalParts.jsp
+			</result>
+    	</action>
+
+    	<action name="partShipperUpdateTag_addNewPartsToShipment" 
+    		class="tavant.twms.web.supplier.PartShipperUpdateTagAction" 
+    		method="addNewPartsToShipment">
+    		<interceptor-ref name="twmsParamsPrepareParams" />
+    		<param name="taskName">Supplier Shipment Generated</param>
+    		<result name="success" >
+    		  pages/secure/supplier/partshipper-shipmentgenerated.jsp
+			</result>
+			<result name="input">pages/error.jsp</result>	
+    	</action>
+
+    	<action name="partShipperUpdateTag_submit" 
+    		class="tavant.twms.web.supplier.PartShipperUpdateTagAction" 
+    		method="submit">
+    		<interceptor-ref name="twmsParamsPrepareParams" />
+    		<param name="taskName">Supplier Shipment Generated</param>
+    		<result name="success">
+				pages/secure/common/successFullRefresh.jsp
+			</result>
+    		<result name="input">
+				pages/secure/supplier/partshipper-shipmentgenerated.jsp
+			</result>
+    	</action>
+
+        <action name="partShipperUpdateTag_reclaimView_submit"
+                class="tavant.twms.web.supplier.PartShipperUpdateTagAction"
+                method="submitReclaimView">
+            <interceptor-ref name="twmsParamsPrepareParams" />
+            <param name="taskName">Supplier Shipment Generated</param>
+            <result name="success">
+                pages/secure/common/successFullRefresh.jsp
+            </result>
+            <result name="input">
+                pages/secure/supplier/partshipper-shipmentgenerated-reclaim-view.jsp
+            </result>
+        </action>
+    	
+		<!--  Part Shipper Ship Parts Action -->
+		
+		<action name="partShipperShipParts" 
+    		class="tavant.twms.web.supplier.PartShipperShipPartsAction">
+			<result name="success">pages/secure/supplier/supplier_recovery_inbox_view.jsp</result>
+    	</action>
+    	
+    	<action name="partShipperShipParts_table_body" 
+    		class="tavant.twms.web.supplier.PartShipperShipPartsAction" method="tableBody">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+    		<param name="taskName">Parts Shipped</param>
+      		<result name="success">pages/secure/home/json.jsp</result>
+			<result name="input">pages/error.jsp</result>	
+    	</action>
+    	
+    	<action name="partShipperShipParts_preview" 
+    		class="tavant.twms.web.supplier.PartShipperShipPartsAction" 
+    		method="preview">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+    		<param name="taskName">Parts Shipped</param>
+    		<result name="success">
+				pages/secure/supplier/supplier-part.jsp
+			</result>
+    	</action>
+    	
+    	<action name="partShipperShipParts_detail" 
+    		class="tavant.twms.web.supplier.PartShipperShipPartsAction" 
+    		method="submit">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+    		<param name="taskName">Parts Shipped</param>
+    		<result name="success">
+				pages/secure/supplier/supplier-part.jsp
+			</result>
+			<result name="input">pages/secure/admin/supplier/sraReviewResponse.jsp</result>
+    	</action>
+    	<!-- PartShipper generate dueparts action  -->
+    	<action name="partShipperGenerateDuePart" 
+    		class="tavant.twms.web.supplier.PartShipperGenerateDuePartAction">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+			<result name="success">pages/secure/supplier/supplier_recovery_inbox_view.jsp</result>
+    	</action>
+    	
+		<action name="partShipperGenerateDuePart_table_body" 
+    		class="tavant.twms.web.supplier.PartShipperGenerateDuePartAction" method="tableBody">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+    		<param name="taskName">Part Not In Warehouse</param>
+      		<result name="success">pages/secure/home/json.jsp</result>
+			<result name="input">pages/error.jsp</result>	
+    	</action>
+    	
+    	<action name="partShipperGenerateDuePart_preview" 
+    		class="tavant.twms.web.supplier.PartShipperGenerateDuePartAction" 
+    		method="preview">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+    		<param name="taskName">Part Not In Warehouse</param>
+      		<result name="success">pages/secure/supplier/shipper-duePart.jsp</result>
+			<result name="input">pages/error.jsp</result>	
+    	</action>
+    	
+    	<action name="partShipperGenerateDuePart_detail" 
+    		class="tavant.twms.web.supplier.PartShipperGenerateDuePartAction" 
+    		method="preview">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+    		<param name="taskName">Part Not In Warehouse</param>
+      		<result name="success">pages/secure/supplier/shipper-duePart.jsp</result>
+			<result name="input">pages/error.jsp</result>	
+    	</action>
+    	
+    	<action name="partShipperGenerateDuePart_submit" 
+    		class="tavant.twms.web.supplier.PartShipperGenerateDuePartAction" 
+    		method="submit">
+    		<interceptor-ref name="twmsParamsPrepareParams" />
+    		<param name="taskName">Part Not In Warehouse</param>
+    		<result name="input">pages/secure/supplier/shipper-duePart.jsp</result>
+    		 <result name="success">pages/secure/partreturns/partreturnresponse.jsp</result>
+      </action>
+    	
+    	<!-- PartShipper awaiting shipment action  -->
+    	<action name="partShipperAwaitingShipment" 
+    		class="tavant.twms.web.supplier.PartShipperGenerateDuePartAction">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+			<result name="success">pages/secure/supplier/supplier_recovery_inbox_view.jsp</result>
+    	</action>
+    	
+		<action name="partShipperAwaitingShipment_table_body" 
+    		class="tavant.twms.web.supplier.PartShipperGenerateDuePartAction" method="tableBody">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+    		<param name="taskName">Awaiting Shipment To WareHouse</param>
+      		<result name="success">pages/secure/home/json.jsp</result>
+			<result name="input">pages/error.jsp</result>	
+    	</action>
+    	
+    	<action name="partShipperAwaitingShipment_preview" 
+    		class="tavant.twms.web.supplier.PartShipperGenerateDuePartAction" 
+    		method="preview">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+    		<param name="taskName">Awaiting Shipment To WareHouse</param>
+      		<result name="success">pages/secure/supplier/shipper-awaitingDuePart.jsp</result>
+			<result name="input">pages/error.jsp</result>	
+    	</action>
+    	
+    	<action name="partShipperAwaitingShipment_detail" 
+    		class="tavant.twms.web.supplier.PartShipperGenerateDuePartAction" 
+    		method="preview">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+    		<param name="taskName">Awaiting Shipment To WareHouse</param>
+      		<result name="success">pages/secure/supplier/shipper-awaitingDuePart.jsp</result>
+			<result name="input">pages/error.jsp</result>	
+    	</action>
+    	    	
+		<!-- Supplier Action -->
+		<action name="supplierRecovery" 
+      		class="tavant.twms.web.supplier.SupplierAction">
+            <interceptor-ref name="paramsPrepareWithoutValidation" />
+            <param name="inboxViewType">recoveryClaim</param>
+			<param name="switchButtonActionName">supplierRecovery_partView</param>
+			<param name="switchButtonTabLabel">title.supplierRecovery.partView</param>
+			<result name="success">pages/secure/supplier/supplier_recovery_inbox_view.jsp</result>
+ 	  	</action>
+    	
+    	<action name="supplierRecovery_table_body" 
+    		class="tavant.twms.web.supplier.SupplierAction" 
+    		method="tableBody">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+    		<param name="taskName">New</param>
+      		<result name="success">pages/secure/home/json.jsp</result>
+			<result name="input">pages/error.jsp</result>	
+    	</action>
+    	
+    	<action name="supplierRecovery_preview" 
+    		class="tavant.twms.web.supplier.SupplierAction" 
+    		method="preview">
+    		<interceptor-ref name="supplierParamsPrepareWithoutValidation" />
+    		<param name="taskName">New</param>
+    		<result name="success">
+				pages/secure/supplier/preview/sra.jsp
+			</result>
+    	</action>
+    	
+    	<action name="supplierRecovery_detail" 
+    		class="tavant.twms.web.supplier.SupplierAction" 
+    		method="detail">
+    		<interceptor-ref name="supplierParamsPrepareWithoutValidation" />
+    		<param name="taskName">New</param>
+    		<result name="success">
+				pages/secure/supplier/sradetail.jsp
+			</result>
+			<result name="input">pages/secure/admin/supplier/sraReviewResponse.jsp</result>
+    	</action>
+    	
+    	<!-- CR TKTSA-817  -->
+    	 <action name="supplierRecovery_partView"
+			class="tavant.twms.web.supplier.SupplierRecoveryAdminAction">
+    	    <interceptor-ref name="paramsPrepareWithoutValidation" />
+			<param name="inboxViewType">part</param>
+			<param name="taskName">New</param>	
+		    <param name="folderName">New_part</param>
+			<param name="actionUrl">supplierRecovery</param>
+			<param name="switchButtonActionName">supplierRecovery_claimView</param>			
+			<param name="switchButtonTabLabel">title.supplierRecovery.recoveryClaimView</param>
+			<result name="success">pages/secure/supplier/supplier_recovery_inbox_view.jsp</result>
+		</action>
+		
+		<action name="supplierRecovery_claimView"
+			class="tavant.twms.web.supplier.SupplierRecoveryAdminAction">
+			<interceptor-ref name="paramsPrepareWithoutValidation" />
+			<param name="inboxViewType">recoveryClaim</param>
+			<param name="taskName">New</param>
+		    <param name="folderName">New_part</param>
+			<param name="actionUrl">supplierRecovery</param>
+			<param name="switchButtonActionName">supplierRecovery_partView</param>			
+			<param name="switchButtonTabLabel">title.supplierRecovery.partView</param>
+			<result name="success">pages/secure/supplier/supplier_recovery_inbox_view.jsp</result>
+		</action>
+		
+		 <action name="supplierRecovery_partView_exportToExcel" 
+    		class="tavant.twms.web.supplier.SupplierRecoveryAdminAction"
+    		method="downloadListingData">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+    		<param name="taskName">New</param>
+    		<param name="folderName">New_part</param>
+			<param name="inboxViewType">part</param>
+    	</action>    
+    	
+		<action name="supplierRecovery_partView_table_body"
+			class="tavant.twms.web.supplier.SupplierRecoveryAdminAction" method="tableBody">
+			<interceptor-ref name="paramsPrepareWithoutValidation" />
+			<param name="inboxViewType">part</param>
+			<param name="taskName">New</param>			
+			<param name="actionUrl">supplierRecovery</param>
+			<param name="switchButtonActionName">supplierRecovery_claimView</param>			
+			<param name="switchButtonTabLabel">title.supplierRecovery.recoveryClaimView</param>
+			<result name="success">pages/secure/home/json.jsp</result>
+			<result name="input">pages/error.jsp</result>	
+		</action>
+		
+		
+    	<action name="supplierRecovery_partView_detail" 
+    		class="tavant.twms.web.supplier.SupplierAction" 
+    		method="detailForClaim">
+    		<interceptor-ref name="supplierParamsWithoutValidation" />
+    		<param name="taskName">New</param>
+    		<param name="actionUrl">supplierRecovery</param>
+    		<result name="success">
+				pages/secure/supplier/sradetail.jsp
+			</result>
+			<result name="input">pages/secure/admin/supplier/sraReviewResponse.jsp</result>
+    	</action>
+    	
+    	<action name="supplierRecovery_partView_preview" 
+    		class="tavant.twms.web.supplier.SupplierRecoveryAdminAction" 
+    		method="preview">
+    		<interceptor-ref name="supplierParamsPrepareWithoutValidation" />
+    		<param name="taskName">New</param>
+    		<param name="folderName">New_part</param>
+    		<result name="success">
+				pages/secure/supplier/preview/sra.jsp
+			</result>
+    	</action>   	
+    	<!--CR TKTSA-817  -->
+
+    	<action name="supplierRecovery_getRecoveryAmount" 
+    		class="tavant.twms.web.supplier.SupplierAction" 
+    		method="getRecoveryAmount">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+    		<param name="taskName">New</param>
+    		<result name="success">
+				pages/secure/supplier/supplier-recoveryamount.jsp
+			</result>
+    	</action>
+    	
+    	<action name="supplierRecovery_submit" 
+    		class="tavant.twms.web.supplier.SupplierAction" 
+    		method="submitPreview">
+    		<interceptor-ref name="twmsParamsPrepareParams" />
+    		<param name="taskName">New</param>
+    		<result name="input">pages/secure/supplier/sradetail.jsp</result>
+    		<result name="success">pages/secure/supplier/supplierresponse.jsp</result>
+    	</action>
+    	
+    	<action name="onHoldForPartReturn" 
+      		class="tavant.twms.web.supplier.SupplierAction">
+            <interceptor-ref name="paramsPrepareWithoutValidation" />
+            <param name="inboxViewType">recoveryClaim</param>
+			<param name="switchButtonActionName">supplierRecovery_partView</param>
+			<param name="switchButtonTabLabel">title.supplierRecovery.partView</param>
+			<result name="success">pages/secure/supplier/supplier_recovery_inbox_view.jsp</result>
+ 	  	</action>
+ 	  	
+ 	  	<action name="onHoldForPartReturn_table_body"
+    		class="tavant.twms.web.supplier.SupplierAction" 
+    		method="tableBody">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+    		<param name="taskName">On Hold For Part Return</param>
+      		<result name="success">pages/secure/home/json.jsp</result>
+			<result name="input">pages/error.jsp</result>	
+    	</action>
+    	
+    	<action name="onHoldForPartReturn_detail" 
+    		class="tavant.twms.web.supplier.SupplierAction" 
+    		method="detail">
+    		<interceptor-ref name="supplierParamsPrepareWithoutValidation" />
+    		<param name="taskName">On Hold For Part Return</param>
+    		<result name="success">
+				pages/secure/supplier/sradetail.jsp
+			</result>
+			<result name="input">pages/secure/admin/supplier/sraReviewResponse.jsp</result>
+    	</action>
+    	
+    	<action name="onHoldForPartReturn_exportToExcel" 
+    		class="tavant.twms.web.supplier.SupplierRecoveryAdminAction"
+    		method="downloadListingData">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+    		<param name="taskName">On Hold For Part Return</param>
+    		<param name="folderName">On Hold For Part Return</param>
+    	</action>
+      
+            	
+    	<!-- Supplier Recovery Disputed Action 
+    	<action name="supplierRecoveryDisputed" 
+    		class="tavant.twms.web.supplier.SupplierAction">
+			<result name="success">pages/secure/supplier/supplier_recovery_inbox_view.jsp</result>
+    	</action>
+    	
+    	<action name="supplierRecoveryDisputed_table_body" 
+    		class="tavant.twms.web.supplier.SupplierAction" 
+    		method="tableBody">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+    		<param name="taskName">Disputed</param>
+      		<result name="success">pages/secure/home/json.jsp</result>
+			<result name="input">pages/error.jsp</result>	
+    	</action>
+    	
+    	<action name="supplierRecoveryDisputed_preview" 
+    		class="tavant.twms.web.supplier.SupplierAction" 
+    		method="preview">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+    		<param name="taskName">Disputed</param>
+    		<result name="success">
+				pages/secure/supplier/preview/sra.jsp
+			</result>
+    	</action>
+    	
+    	<action name="supplierRecoveryDisputed_detail" 
+    		class="tavant.twms.web.supplier.SupplierAction" 
+    		method="detail">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+    		<param name="taskName">Disputed</param>
+    		<result name="success">
+				pages/secure/admin/supplier/sra_claims_sentto_partshipper.jsp
+			</result>
+    	</action>
+    	
+    	<action name="supplierRecoveryDisputed_getRecoveryAmount" 
+    		class="tavant.twms.web.supplier.SupplierAction" 
+    		method="getRecoveryAmount">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+    		<param name="taskName">Disputed</param>
+    		<result name="success">
+				pages/secure/supplier/supplier-recoveryamount.jsp
+			</result>
+    	</action>-->
+    	
+    	<!-- Supplier Recovery In Progress Action -->
+    	<action name="supplierRecoveryDisputed" 
+    		class="tavant.twms.web.supplier.SupplierAction">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+			<result name="success">pages/secure/supplier/supplier_recovery_inbox_view.jsp</result>
+    	</action>
+    	
+    	<action name="supplierRecoveryDisputed_table_body" 
+    		class="tavant.twms.web.supplier.SupplierAction" 
+    		method="tableBody">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+    		<param name="taskName">Disputed</param>
+      		<result name="success">pages/secure/home/json.jsp</result>
+			<result name="input">pages/error.jsp</result>	
+    	</action>
+    	
+    	<action name="supplierRecoveryDisputed_preview" 
+    		class="tavant.twms.web.supplier.SupplierAction" 
+    		method="preview">
+    		<interceptor-ref name="supplierParamsPrepareWithoutValidation" />
+    		<param name="taskName">Disputed</param>
+    		<result name="success">
+				pages/secure/supplier/preview/sra.jsp
+			</result>
+    	</action>
+    	
+    	<action name="supplierRecoveryDisputed_detail" 
+    		class="tavant.twms.web.supplier.SupplierAction" 
+    		method="detail">
+    		<interceptor-ref name="supplierParamsPrepareWithoutValidation" />
+    		<param name="taskName">Disputed</param>
+    		<result name="success">
+				pages/secure/supplier/sradetail.jsp
+			</result>
+			<result name="input">pages/secure/admin/supplier/sraReviewResponse.jsp</result>
+    	</action>
+    	
+    	<action name="supplierRecoveryDisputed_getRecoveryAmount"
+    		class="tavant.twms.web.supplier.SupplierAction"
+    		method="getRecoveryAmount">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+    		<param name="taskName">Disputed</param>
+    		<result name="success">
+				pages/secure/supplier/supplier-recoveryamount.jsp
+			</result>
+    	</action>
+    	
+    	<action name="supplierRecoveryDisputed_submit" 
+    		class="tavant.twms.web.supplier.SupplierAction" 
+    		method="submitPreview">
+    		<interceptor-ref name="twmsParamsPrepareParams" />
+    		<param name="taskName">Disputed</param>
+    		<result name="input">pages/secure/supplier/sradetail.jsp</result>
+    		<result name="success">pages/secure/supplier/supplierresponse.jsp</result>
+    	</action>
+    	
+    	<!-- Supplier Confirm Part Returns -->
+    	<action name="supplierPartReceipt" 
+    		class="tavant.twms.web.supplier.SupplierPartReceiptAction">
+			<result name="success">pages/secure/supplier/supplier_recovery_inbox_view.jsp</result>
+    	</action>
+    	
+    	<action name="supplierPartReceipt_table_body" 
+    		class="tavant.twms.web.supplier.SupplierPartReceiptAction" 
+    		method="tableBody">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+    		<param name="taskName">Confirm Part Returns</param>
+      		<result name="success">pages/secure/home/json.jsp</result>
+			<result name="input">pages/error.jsp</result>	
+    	</action>
+    	
+    	<action name="supplierPartReceipt_preview" 
+    		class="tavant.twms.web.supplier.SupplierPartReceiptAction" 
+    		method="preview">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+    		<param name="taskName">Confirm Part Returns</param>
+    		<result name="success">
+				pages/secure/supplier/supplier-part.jsp
+			</result>
+    	</action>
+    	
+    	<action name="supplierPartReceipt_detail" 
+    		class="tavant.twms.web.supplier.SupplierPartReceiptAction" 
+    		method="preview">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+    		<param name="taskName">Confirm Part Returns</param>
+    		<result name="success">
+				pages/secure/supplier/supplier-part.jsp
+			</result>
+			<result name="input">pages/secure/admin/supplier/sraReviewResponse.jsp</result>
+    	</action>
+    	
+    	<action name="supplierPartReceipt_submit" 
+    		class="tavant.twms.web.supplier.SupplierPartReceiptAction" 
+    		method="submitPreview">
+    		<interceptor-ref name="twmsParamsPrepareParams" />
+    		<param name="taskName">Confirm Part Returns</param>
+    		<result name="input">pages/secure/supplier/supplier-part.jsp</result>
+    		<result name="success">pages/secure/supplier/supplierresponse.jsp</result>    	
+    	</action>
+    	
+    	<!-- Supplier Recovery Admin Review Action -->
+    	<action name="supplierRecoveryAdminReview" 
+    		class="tavant.twms.web.supplier.SupplierRecoveryAdminReviewAction">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+			<result name="success">pages/secure/supplier/supplier_recovery_inbox_view.jsp</result>
+    	</action>
+
+		<action name="supplierRecoveryAdminReview_table_body" 
+    		class="tavant.twms.web.supplier.SupplierRecoveryAdminReviewAction" 
+    		method="tableBody">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+    		<param name="taskName">Supplier Response</param>
+    		<result name="success">pages/secure/home/json.jsp</result>
+			<result name="input">pages/error.jsp</result>	
+    	</action>
+    	
+      	<action name="supplierRecoveryAdminReview_preview" 
+    		class="tavant.twms.web.supplier.SupplierRecoveryAdminReviewAction" 
+    		method="preview">
+    		<interceptor-ref name="supplierParamsPrepareWithoutValidation" />
+    		<param name="taskName">Supplier Response</param>
+    		<result name="success">
+				pages/secure/supplier/preview/sra.jsp
+			</result>
+    	</action>
+    	
+    	<action name="supplierRecoveryAdminReview_detail" 
+    		class="tavant.twms.web.supplier.SupplierRecoveryAdminReviewAction" 
+    		method="detail">
+    		<interceptor-ref name="supplierParamsPrepareWithoutValidation" />
+    		<param name="taskName">Supplier Response</param>
+    		<result name="success">
+				pages/secure/admin/supplier/sraReviewDetail.jsp
+			</result>
+			<result name="input">pages/secure/admin/supplier/sraReviewResponse.jsp</result>
+    	</action>
+    	
+    	<action name="supplierRecoveryAdminReview_submit" 
+    		class="tavant.twms.web.supplier.SupplierRecoveryAdminReviewAction" 
+    		method="submit">
+    		<interceptor-ref name="twmsParamsPrepareParams" />
+    		<param name="taskName">Supplier Response</param>
+            <param name="actionUrl">supplierRecoveryAdminReview_submit</param>
+    		<result name="success">pages/secure/admin/supplier/sraReviewResponse.jsp</result>
+    		<result name="input">pages/secure/admin/supplier/sraReviewDetail.jsp</result>
+    	</action>
+		<!-- Export to excel -->
+    	<action name="supplierRecoveryAdminDirectShipment_exportToExcel" 
+    		class="tavant.twms.web.supplier.SupplierRecoveryAdminAction" 
+    		method="downloadListingData">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+    		<param name="taskName">Shipment from Dealer</param>
+    	</action>
+    	
+    	<action name="supplierRecoveryAdmin_exportToExcel" 
+    		class="tavant.twms.web.supplier.SupplierRecoveryAdminAction">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+    		<param name="taskName">For Recovery</param>
+    	</action>
+    	<action name="supplierRecoveryAdminReview_exportToExcel" 
+    		class="tavant.twms.web.supplier.SupplierRecoveryAdminReviewAction">
+    		<param name="taskName">For Recovery</param>
+    		
+			<result name="success">pages/secure/supplier/supplier_recovery_inbox_view.jsp</result>
+    	</action>
+
+		<action name="supplierRecoveryAdminDirectShipment_exportToExcel" 
+    		class="tavant.twms.web.supplier.SupplierRecoveryAdminAction"
+    		method="downloadListingData">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+    		<param name="taskName">Shipment from Dealer</param>
+    	</action>
+    	
+    	<action name="supplierRecoveryAdmin_exportToExcel" 
+    		class="tavant.twms.web.supplier.SupplierRecoveryAdminAction"
+    		method="downloadListingData">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+    		<param name="taskName">For Recovery</param>
+	    	</action>
+
+			<action name="claimsSentToShipper_exportToExcel" 
+    		class="tavant.twms.web.supplier.SupplierRecoveryAdminAction"
+    		method="downloadListingData">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+    		<param name="taskName">Awaiting Shipment</param>
+    	</action>
+
+    	<action name="claimsSentToSupplier_exportToExcel" 
+    		class="tavant.twms.web.supplier.SupplierRecoveryAdminAction"
+    		method="downloadListingData">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+    		<param name="taskName">Awaiting Supplier Response</param>
+    	</action>
+		
+		<action name="partShipperGenerateShipment_exportToExcel" 
+    		class="tavant.twms.web.supplier.PartShipperGenerateShipmentAction"
+    		method="downloadListingData">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+    		<param name="taskName">Supplier Parts Claimed</param>
+    	</action>
+    	
+		<action name="partShipperPartsShipped_exportToExcel" 
+    		class="tavant.twms.web.supplier.PartsShipperPartsShippedAction"
+    		method="downloadListingData">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+    		<param name="taskName">Supplier Parts Shipped</param>
+    	</action>
+		
+		<action name="partShipperUpdateTag_exportToExcel" 
+    		class="tavant.twms.web.supplier.PartShipperUpdateTagAction"
+    		method="downloadListingData">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+    		<param name="taskName">Supplier Shipment Generated</param>
+    	</action>
+    	
+		<action name="partShipperShipParts_exportToExcel" 
+    		class="tavant.twms.web.supplier.PartShipperShipPartsAction"
+    		method="downloadListingData">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+    		<param name="taskName">Parts Shipped</param>
+    	</action>
+    	
+		<action name="supplierRecovery_exportToExcel" 
+    		class="tavant.twms.web.supplier.SupplierAction"
+    		method="downloadListingData">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+    		<param name="taskName">For Recovery</param>
+    	</action>
+    	
+    	<action name="supplierRecoveryDisputed_exportToExcel" 
+    		class="tavant.twms.web.supplier.SupplierAction"
+    		method="downloadListingData">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+    		<param name="taskName">Disputed</param>
+    	</action>
+    	
+    	<action name="supplierRecoveryInProgress_exportToExcel" 
+    		class="tavant.twms.web.supplier.SupplierAction"
+    		method="downloadListingData">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+    		<param name="taskName">In Progress</param>
+    	</action>
+    	
+    	<action name="supplierRecoveryAdminReview_exportToExcel" 
+    		class="tavant.twms.web.supplier.SupplierRecoveryAdminReviewAction"
+    		method="downloadListingData">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+    		<param name="taskName">Supplier Response</param>
+    	</action>
+    	<action name="claimsAccepted_exportToExcel" 
+    		class="tavant.twms.web.supplier.SupplierAction"
+    		method="downloadListingData">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+    		<param name="taskName">Accepted</param>
+    	</action>
+    	
+    	<action name="supplierRecoveryAdminOnHold_exportToExcel" 
+    		class="tavant.twms.web.supplier.SupplierAction"
+    		method="downloadListingData">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+    		<param name="taskName">On Hold</param>
+    	</action>
+    	
+    	<action name="partShipperAwaitingShipment_exportToExcel" 
+    		class="tavant.twms.web.supplier.SupplierAction"
+    		method="downloadListingData">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+    		<param name="taskName">Awaiting Shipment To WareHouse</param>
+    	</action>
+    	
+    	<action name="notForRecoveryRequested_exportToExcel" 
+    		class="tavant.twms.web.supplier.SupplierAction"
+    		method="downloadListingData">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+    		<param name="taskName">Not For Recovery Request</param>
+    	</action>
+    	
+    	<action name="notForRecoveryResponse_exportToExcel" 
+    		class="tavant.twms.web.supplier.SupplierAction"
+    		method="downloadListingData">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+    		<param name="taskName">Not For Recovery Response</param>
+    	</action>  		
+    	
+    	<action name="partShipperGenerateDuePart_exportToExcel" 
+    		class="tavant.twms.web.supplier.SupplierAction"
+    		method="downloadListingData">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+    		<param name="taskName">Part Not In Warehouse</param>
+    	</action>
+    	
+    	<action name="supplierRecoveryAdminReopened_exportToExcel" 
+    		class="tavant.twms.web.supplier.SupplierAction"
+    		method="downloadListingData">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+    		<param name="taskName">Reopened</param>
+    	</action>
+    	
+    	<action name="supplierPartReceipt_exportToExcel" 
+    		class="tavant.twms.web.supplier.SupplierPartReceiptAction"
+    		method="downloadListingData">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+    		<param name="taskName">Confirm Part Returns</param>
+    	</action>
+    	
+    	<action name="supplierRecoveryReopened_exportToExcel" 
+    		class="tavant.twms.web.supplier.SupplierAction"
+    		method="downloadListingData">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+    		<param name="taskName">Reopened Claims</param>
+    	</action>
+    	
+    	<action name="claimsDebited_exportToExcel" 
+    		class="tavant.twms.web.supplier.SupplierAction"
+    		method="downloadListingData">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+    		<param name="taskName">Debited</param>
+    	</action> 
+        
+        <!-- Not for Recovery Requested-->
+      <action name="notForRecoveryRequested" 
+        class="tavant.twms.web.supplier.SupplierRecoveryAdminAction">
+      <interceptor-ref name="paramsPrepareWithoutValidation" />
+      <result name="success">pages/secure/supplier/supplier_recovery_inbox_view.jsp</result>
+      </action>
+    
+    <action name="notForRecoveryRequested_table_body" 
+        class="tavant.twms.web.supplier.SupplierRecoveryAdminAction" 
+        method="tableBody">
+        <interceptor-ref name="paramsPrepareWithoutValidation" />
+        <param name="taskName">Not For Recovery Request</param>
+          <result name="success">pages/secure/home/json.jsp</result>
+      <result name="input">pages/error.jsp</result> 
+      </action>
+      
+      <action name="notForRecoveryRequested_preview" 
+        class="tavant.twms.web.supplier.SupplierRecoveryAdminAction" 
+        method="preview">
+        <interceptor-ref name="supplierParamsPrepareWithoutValidation" />
+        <param name="taskName">Not For Recovery Request</param>
+        <result name="success">
+        pages/secure/supplier/preview/sra.jsp
+      </result>
+      </action>   
+      <action name="notForRecoveryRequested_detail" 
+        class="tavant.twms.web.supplier.SupplierRecoveryAdminAction" 
+        method="detail">
+        <interceptor-ref name="supplierParamsPrepareWithoutValidation" />
+        <param name="taskName">Not For Recovery Request</param>
+        <result name="success">
+          pages/secure/admin/supplier/sra_claims_sentto_partshipper.jsp
+      </result>
+      <result name="input">pages/secure/admin/supplier/sraReviewResponse.jsp</result>
+      </action>
+      
+      <!-- Not for Recovery Response -->
+      <action name="notForRecoveryResponse" 
+    		class="tavant.twms.web.supplier.SupplierRecoveryAdminReviewAction">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+			<result name="success">pages/secure/supplier/supplier_recovery_inbox_view.jsp</result>
+    	</action>
+
+		<action name="notForRecoveryResponse_table_body" 
+    		class="tavant.twms.web.supplier.SupplierRecoveryAdminReviewAction" 
+    		method="tableBody">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+    		<param name="taskName">Not For Recovery Response</param>
+    		<result name="success">pages/secure/home/json.jsp</result>
+			<result name="input">pages/error.jsp</result>	
+    	</action>
+    	
+      	<action name="notForRecoveryResponse_preview" 
+    		class="tavant.twms.web.supplier.SupplierRecoveryAdminReviewAction" 
+    		method="preview">
+    		<interceptor-ref name="supplierParamsPrepareWithoutValidation" />
+    		<param name="taskName">Not For Recovery Response</param>
+    		<result name="success">
+				pages/secure/supplier/preview/sra.jsp
+			</result>
+    	</action>
+    	
+    	<action name="notForRecoveryResponse_detail" 
+    		class="tavant.twms.web.supplier.SupplierRecoveryAdminReviewAction" 
+    		method="detail">
+    		<interceptor-ref name="supplierParamsPrepareWithoutValidation" />
+    		<param name="taskName">Not For Recovery Response</param>
+    		<result name="success">
+				pages/secure/supplier/sradetail.jsp
+			</result>
+			<result name="input">pages/secure/admin/supplier/sraReviewResponse.jsp</result>
+    	</action>
+    	
+    	<action name="notForRecoveryResponse_submit" 
+    		class="tavant.twms.web.supplier.SupplierRecoveryAdminReviewAction" 
+    		method="submit">
+    		<interceptor-ref name="twmsParamsPrepareParams" />
+    		<param name="taskName">Not For Recovery Response</param>
+            <param name="actionUrl">notForRecoveryResponse_submit</param>
+    		<result name="success">pages/secure/admin/supplier/sraReviewResponse.jsp</result>
+    		<result name="input">pages/secure/admin/supplier/sraReviewDetail.jsp</result>
+    	</action>
+      
+      <!-- Not For Recovery Start-->
+      
+        <action name="warrantyProcessorSRAction" 
+          class="tavant.twms.web.supplier.WarrantyProcessorSRAction">
+        <result name="success">pages/secure/supplier/supplier_recovery_inbox_view.jsp</result>
+        </action>
+      
+         <action name="warrantyProcessorSRAction_table_body" 
+        class="tavant.twms.web.supplier.WarrantyProcessorSRAction" 
+        method="tableBody">
+          <interceptor-ref name="paramsPrepareWithoutValidation" />
+          <param name="taskName">Not For Recovery</param>
+            <result name="success">pages/secure/home/json.jsp</result>
+        <result name="input">pages/error.jsp</result> 
+        </action>
+        
+        <action name="warrantyProcessorSRAction_preview" 
+          class="tavant.twms.web.supplier.WarrantyProcessorSRAction" 
+          method="preview">
+          <interceptor-ref name="paramsPrepareWithoutValidation" />
+          <param name="taskName">Not For Recovery</param>
+          <result name="success">
+          pages/secure/supplier/preview/sra.jsp
+        </result>
+        </action>
+        
+        <action name="warrantyProcessorSRAction_detail" 
+          class="tavant.twms.web.supplier.WarrantyProcessorSRAction" 
+          method="detail">
+          <interceptor-ref name="paramsPrepareWithoutValidation" />
+          <param name="taskName">Not For Recovery</param>
+          <result name="success">
+          pages/secure/supplier/sradetail.jsp
+        </result>
+        <result name="input">pages/secure/admin/supplier/sraReviewResponse.jsp</result>
+        </action>
+        
+        <action name="warrantyProcessorSRAction_getRecoveryAmount" 
+          class="tavant.twms.web.supplier.WarrantyProcessorSRAction" 
+          method="getRecoveryAmount">
+          <interceptor-ref name="paramsPrepareWithoutValidation" />
+          <param name="taskName">Not For Recovery</param>
+          <result name="success">
+          pages/secure/supplier/supplier-recoveryamount.jsp
+        </result>
+        </action>
+        
+        <action name="warrantyProcessorSRAction_submit" 
+          class="tavant.twms.web.supplier.WarrantyProcessorSRAction" 
+          method="submitPreview">
+          <interceptor-ref name="twmsParamsPrepareParams" />
+          <param name="taskName">Not For Recovery</param>
+          <result name="input">pages/secure/supplier/sradetail.jsp</result>
+          <result name="success">pages/secure/supplier/supplierresponse.jsp</result>
+        </action> 
+        
+        <action name="warrantyProcessorSRAction_exportToExcel" 
+    		class="tavant.twms.web.supplier.SupplierAction"
+    		method="downloadListingData">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+    		<param name="taskName">Not For Recovery</param>
+    	</action>    
+        <!-- Not For Recovery End-->
+        
+        <!-- Supplier Accepted-->
+    	<action name="claimsAccepted" 
+    		class="tavant.twms.web.supplier.SupplierRecoveryAdminAction">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+			<result name="success">pages/secure/supplier/supplier_recovery_inbox_view.jsp</result>
+    	</action>
+		
+		<action name="claimsAccepted_table_body" 
+    		class="tavant.twms.web.supplier.SupplierRecoveryAdminAction" 
+    		method="tableBody">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+    		<param name="taskName">Supplier Accepted</param>
+      		<result name="success">pages/secure/home/json.jsp</result>
+			<result name="input">pages/error.jsp</result>	
+    	</action>
+    	
+    	<action name="claimsAccepted_preview" 
+    		class="tavant.twms.web.supplier.SupplierRecoveryAdminAction" 
+    		method="preview">
+    		<interceptor-ref name="supplierParamsPrepareWithoutValidation" />
+    		<param name="taskName">Supplier Accepted</param>
+    		<result name="success">
+				pages/secure/supplier/preview/sra.jsp
+			</result>
+    	</action>		
+    	<action name="claimsAccepted_detail" 
+    		class="tavant.twms.web.supplier.SupplierRecoveryAdminAction" 
+    		method="detail">
+    		<interceptor-ref name="supplierParamsPrepareWithoutValidation" />
+    		<param name="taskName">Supplier Accepted</param>
+    		<result name="success">
+				pages/secure/admin/supplier/sra_claims_sentto_partshipper.jsp
+			</result>
+			<result name="input">pages/secure/admin/supplier/sraReviewResponse.jsp</result>
+    	</action>
+    	
+    	<!-- Debitted-->
+    	<action name="claimsDebited" 
+    		class="tavant.twms.web.supplier.SupplierRecoveryAdminAction">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+			<result name="success">pages/secure/supplier/supplier_recovery_inbox_view.jsp</result>
+    	</action>
+		
+		<action name="claimsDebited_table_body" 
+    		class="tavant.twms.web.supplier.SupplierRecoveryAdminAction" 
+    		method="tableBody">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+    		<param name="taskName">Debited</param>
+      		<result name="success">pages/secure/home/json.jsp</result>
+			<result name="input">pages/error.jsp</result>	
+    	</action>
+    	
+    	<action name="claimsDebited_preview" 
+    		class="tavant.twms.web.supplier.SupplierRecoveryAdminAction" 
+    		method="preview">
+    		<interceptor-ref name="supplierParamsPrepareWithoutValidation" />
+    		<param name="taskName">Debited</param>
+    		<result name="success">
+				pages/secure/supplier/preview/sra.jsp
+			</result>
+    	</action>		
+    	<action name="claimsDebited_detail" 
+    		class="tavant.twms.web.supplier.SupplierRecoveryAdminAction" 
+    		method="detail">
+    		<interceptor-ref name="supplierParamsPrepareWithoutValidation" />
+    		<param name="taskName">Debited</param>
+    		<result name="success">
+				pages/secure/admin/supplier/sra_claims_sentto_partshipper.jsp
+			</result>
+			<result name="input">pages/secure/admin/supplier/sraReviewResponse.jsp</result>
+    	</action>
+    	<!-- Reopening -->
+    	<action name="claimsReopen" 
+    		class="tavant.twms.web.supplier.SupplierRecoveryAdminAction" 
+    		method="reopen">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+    		<param name="taskName">Closed</param>
+    		<result name="input">pages/secure/admin/supplier/sra_claims_sentto_partshipper.jsp</result>
+          	<result name="success">pages/secure/supplier/supplierresponse.jsp</result>
+    	</action>
+    	<!-- ReOpened -->
+    	<action name="supplierRecoveryAdminReopened" 
+    		class="tavant.twms.web.supplier.SupplierRecoveryAdminAction">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+			<result name="success">pages/secure/supplier/supplier_recovery_inbox_view.jsp</result>
+    	</action>
+		
+		<action name="supplierRecoveryAdminReopened_table_body" 
+    		class="tavant.twms.web.supplier.SupplierRecoveryAdminAction" 
+    		method="tableBody">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+    		<param name="taskName">Reopened</param>
+      		<result name="success">pages/secure/home/json.jsp</result>
+			<result name="input">pages/error.jsp</result>	
+    	</action>
+    	
+    	<action name="supplierRecoveryAdminReopened_preview" 
+    		class="tavant.twms.web.supplier.SupplierRecoveryAdminAction" 
+    		method="preview">
+    		<interceptor-ref name="supplierParamsPrepareWithoutValidation" />
+    		<param name="taskName">Reopened</param>
+    		<result name="success">
+				pages/secure/supplier/preview/sra.jsp
+			</result>
+    	</action>		
+    	<action name="supplierRecoveryAdminReopened_detail" 
+    		class="tavant.twms.web.supplier.SupplierRecoveryAdminAction" 
+    		method="detail">
+    		<interceptor-ref name="supplierParamsPrepareWithoutValidation" />
+    		<param name="taskName">Reopened</param>
+    		<result name="success">
+				pages/secure/supplier/sradetail.jsp
+			</result>
+			<result name="input">pages/secure/admin/supplier/sraReviewResponse.jsp</result>
+    	</action>
+    	<action name="supplierRecoveryAdminReopened_submit" 
+          class="tavant.twms.web.supplier.SupplierRecoveryAdminAction" 
+          method="submit">
+          <interceptor-ref name="twmsParamsPrepareParams" />
+          <param name="taskName">Reopened</param>
+          <result name="input">pages/secure/supplier/sradetail.jsp</result>
+          <result name="success">pages/secure/supplier/supplierresponse.jsp</result>
+        </action> 
+        
+        <!-- Supplier Reopened Action -->
+		<action name="supplierRecoveryReopened" 
+    		class="tavant.twms.web.supplier.SupplierAction">
+    		<interceptor-ref name="supplierParamsPrepareWithoutValidation" />
+			<result name="success">pages/secure/supplier/supplier_recovery_inbox_view.jsp</result>
+    	</action>
+    	
+    	<action name="supplierRecoveryReopened_table_body" 
+    		class="tavant.twms.web.supplier.SupplierAction" 
+    		method="tableBody">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+    		<param name="taskName">Reopened Claims</param>
+      		<result name="success">pages/secure/home/json.jsp</result>
+			<result name="input">pages/error.jsp</result>	
+    	</action>
+    	
+    	<action name="supplierRecoveryReopened_preview" 
+    		class="tavant.twms.web.supplier.SupplierAction" 
+    		method="preview">
+    		<interceptor-ref name="supplierParamsPrepareWithoutValidation" />
+    		<param name="taskName">Reopened Claims</param>
+    		<result name="success">
+				pages/secure/supplier/preview/sra.jsp
+			</result>
+    	</action>
+    	
+    	<action name="supplierRecoveryReopened_detail" 
+    		class="tavant.twms.web.supplier.SupplierAction" 
+    		method="detail">
+    		<interceptor-ref name="supplierParamsPrepareWithoutValidation" />
+    		<param name="taskName">Reopened Claims</param>
+    		<result name="success">
+				pages/secure/supplier/sradetail.jsp
+			</result>
+			<result name="input">pages/secure/admin/supplier/sraReviewResponse.jsp</result>
+    	</action>
+    	
+    	<action name="supplierRecoveryReopened_getRecoveryAmount" 
+    		class="tavant.twms.web.supplier.SupplierAction" 
+    		method="getRecoveryAmount">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+    		<param name="taskName">Reopened Claims</param>
+    		<result name="success">
+				pages/secure/supplier/supplier-recoveryamount.jsp
+			</result>
+    	</action>
+    	
+    	<action name="supplierRecoveryReopened_submit" 
+    		class="tavant.twms.web.supplier.SupplierAction" 
+    		method="submitPreview">
+    		<interceptor-ref name="twmsParamsPrepareParams" />
+    		<param name="taskName">Reopened Claims</param>
+    		<result name="input">pages/secure/supplier/sradetail.jsp</result>
+    		<result name="success">pages/secure/supplier/supplierresponse.jsp</result>
+    	</action>
+    	
+    	<action name="get_carrierDetails" 
+    		class="tavant.twms.web.supplier.SupplierAction" 
+    		method="getCarrierInfo">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+    		<result name="success">pages/secure/home/json.jsp</result>
+			<result name="input">pages/error.jsp</result>	
+    	</action>
+		
+	    <!-- Ready For Debit-->
+    	<action name="readyForOfflineDebit" 
+    		class="tavant.twms.web.supplier.SupplierRecoveryAdminAction">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+			<result name="success">pages/secure/supplier/supplier_recovery_inbox_view.jsp</result>
+    	</action>
+		
+		<action name="readyForOfflineDebit_table_body" 
+    		class="tavant.twms.web.supplier.SupplierRecoveryAdminAction" 
+    		method="tableBody">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+    		<param name="taskName">Ready For Debit</param>
+      		<result name="success">pages/secure/home/json.jsp</result>
+			<result name="input">pages/error.jsp</result>	
+    	</action>
+    	
+    	<action name="readyForOfflineDebit_preview" 
+    		class="tavant.twms.web.supplier.SupplierRecoveryAdminAction" 
+    		method="preview">
+    		<interceptor-ref name="supplierParamsPrepareWithoutValidation" />
+    		<param name="taskName">Ready For Debit</param>
+    		<result name="success">
+				pages/secure/supplier/preview/sra.jsp
+			</result>
+    	</action>		
+    	<action name="readyForOfflineDebit_detail" 
+    		class="tavant.twms.web.supplier.SupplierRecoveryAdminAction" 
+    		method="detail">
+    		<interceptor-ref name="supplierParamsPrepareWithoutValidation" />
+    		<param name="taskName">Ready For Debit</param>
+    		<result name="success">
+				pages/secure/admin/supplier/ready_for_debit_detail.jsp
+			</result>
+			<result name="input">pages/secure/admin/supplier/sraReviewResponse.jsp</result>
+    	</action>
+		
+		<action name="readyForOfflineDebit_submit" 
+    		class="tavant.twms.web.supplier.SupplierRecoveryAdminAction" 
+    		method="debitSupplierRecoveryClaim">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+    		<param name="taskName">Ready For Debit</param>
+    		<result name="success">pages/secure/supplier/supplierresponse.jsp</result>
+            <result name="input">pages/secure/supplier/supplierresponse.jsp</result>
+    		<result name="db-memo-invalid-input" type="chain">
+    			<param name="actionName">readyForOfflineDebit_detail</param>
+    		</result>
+    	</action>
+    	
+		<action name="readyForOfflineDebit_exportToExcel" 
+    		class="tavant.twms.web.supplier.SupplierAction"
+    		method="downloadListingData">
+    		<interceptor-ref name="paramsPrepareWithoutValidation" />
+    		<param name="taskName">Ready For Debit</param>
+    	</action>
+    	
+    	<!-- For TK Supplier Recovery -->
+    	
+    		
+		<action name="specify_supplier_contract"
+			class="tavant.twms.web.supplier.SpecifySupplierRecoveryAction" 
+			method="prepareSelectedContracts">
+			<interceptor-ref name="paramsPrepareWithoutValidation"/>
+			<result name="success">
+				pages/secure/partreturns/specify_supplier_contract.jsp
+			</result>
+			<result name="error">
+				pages/secure/partreturns/specifySupplierContractResponse.jsp
+			</result>
+		</action>
+    	
+    	<action name="suppliercontract_submit"
+			    class="tavant.twms.web.supplier.SpecifySupplierRecoveryAction"
+			    method="submitRecoveryInfo">
+			<interceptor-ref name="twmsParamsPrepareParams"/>
+			<result name="input">
+				pages/secure/partreturns/specify_supplier_contract.jsp
+			</result>
+			<result name="success">
+				pages/secure/partreturns/specifySupplierContractResponse.jsp
+			</result>
+		</action>
+		
+		<action name="initiate_Suppplier_Recovery" 
+				class="tavant.twms.web.supplier.SpecifySupplierRecoveryAction"
+				method="initiateRecoveryClaims">
+		<interceptor-ref name="twmsParamsPrepareParams"/>
+		<result name="input">
+				pages/secure/partreturns/adjust_recovery_claims.jsp
+		</result>
+		<result name="success">
+				pages/secure/partreturns/specifySupplierContractResponse.jsp
+		</result>
+				
+		</action>
+		
+		
+		<action name="adjust_recovery_claims" class="tavant.twms.web.supplier.SpecifySupplierRecoveryAction"
+		method="adjustRecoveryClaims">
+			<interceptor-ref name="twmsParamsPrepareParams"/>
+			<result name="input">
+				pages/secure/partreturns/specify_supplier_contract.jsp
+			</result>
+			<result name="success">
+				pages/secure/partreturns/adjust_recovery_claims.jsp
+			</result>
+		</action>
+		
+		
+		<action name="end_recovery_flow" class="tavant.twms.web.supplier.SpecifySupplierRecoveryAction"
+		method="endRecoveryFlow">
+			<interceptor-ref name="twmsParamsPrepareParams"/>
+			<result name="input">
+				pages/secure/partreturns/specify_supplier_contract.jsp
+			</result>
+			<result name="success">
+				pages/secure/partreturns/specifySupplierContractResponse.jsp
+			</result>		
+		</action>
+		
+		<action name="move_claim_to_pending_recovery_initiation" class="tavant.twms.web.supplier.SpecifySupplierRecoveryAction"
+		method="moveClaimToPendingRecoveryInitiation">
+			<interceptor-ref name="twmsParamsPrepareParams"/>
+			<result name="success">
+				pages/secure/partreturns/specifySupplierContractResponse.jsp
+			</result>		
+		</action>
+
+        <action name="list_supplierLocations"
+                class="tavant.twms.web.supplier.PartShipperGenerateShipmentAction" method="listSupplierLocations">
+            <interceptor-ref name="adminParamsPrepareWithoutValidation"/>
+            <result name="success">pages/secure/home/json.jsp</result>
+        </action>
+
+        <action name="displayShippingAddress"
+                class="tavant.twms.web.supplier.PartShipperGenerateShipmentAction" method="shippingAddress">
+            <interceptor-ref name="adminParamsPrepareWithoutValidation"/>
+            <result name="success">pages/secure/supplier/preview/shippingAddressDetails.jsp</result>
+        </action>
+
+        <action name="display_supplier_based_on_contract"
+                class="tavant.twms.web.supplier.FetchSupplierDetail"
+                method="getSupplierDetails">
+            <result name="success">
+                pages/secure/partreturns/Supplier_details.jsp
+            </result>
+        </action>
+
+    </package>
+</struts>	

@@ -1,0 +1,166 @@
+.official .dijitDialog {
+  width: 50%;
+}
+
+.dialogContentPane {
+  overflow-y: hidden;
+  padding-bottom: 5px;
+}
+
+.treeTable {
+  width: 98%;
+}
+
+.treeTableCommon {
+  font-size: 7pt;
+  border-collapse: collapse;
+  /*table-layout: fixed;*/
+}
+
+td.indentable {
+   padding-left: 30px; 
+}
+
+.dialogContentPane th, .dialogContentPane td {
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 10px 2px 2px 0;
+}
+
+.treeTableHead {
+  background-color: #DCE9F7;
+}
+
+.dummyColumn {
+  height: 0px;
+
+}
+
+.treeTable th, .treeTable td {
+  border: 1px solid #EFEBF7;
+}
+
+td.dottedRightBorder, th.dottedRightBorder {
+  border-right: 1px dotted #EFEBF7;
+    width: 1%;
+}
+
+td.dottedLeftBorder, th.dottedLeftBorder {
+  border-left: 1px dotted #EFEBF7;
+}
+
+.spTable {
+  border-collapse: collapse;
+}
+
+.spTable td {
+  border: none;
+}
+
+/*Column specific layout[for dummy cols]*/
+.asmLabelColumn {
+  width: 30%;
+}
+
+.asmAdditionColumn, .spAdditionColumn, .dropRowColumn {
+  width: 1%;
+}
+
+.spLabelColumn {
+  width: 20%;
+}
+
+.labourHrsColumn {
+  width: 30px;
+}
+
+.forCampaignsColumn {
+  width: 14px;
+}
+
+.treadBucketColumn {
+  width: 20%;
+}
+
+.lastUpdateColumn {
+  width: 80px;
+}
+
+.addAsmChild, .addSpChild, .dropRow {
+  margin: 2px 1px 2px 3px;
+}
+
+.forCampaigns {
+  margin: 2px;
+}
+
+.unfoldButton, .foldButton, .dummyFoldButton {
+  vertical-align: middle;
+  margin-right: 2px;
+}
+
+.asmDefHolder {
+  vertical-align: middle;
+}
+
+td.hilightable.hovered {
+  background-color: #F3FBFE;
+}
+
+tr.hilightRow {
+  background-color: #F3FBFE;
+}
+
+td.hilightable {
+  background-color: #F3FBFE;
+}
+
+tr.invalidRow td {
+  background-color: #FFEECC !important;
+  border:1px solid #CCCCCC !important;
+}
+
+li.errorMessage {
+  list-style-image: url( ../../../image/dot.gif );
+  font-size: 7pt;
+}
+
+ol.errorToolTip {
+  margin-left: 20px;
+}
+.colHeader {
+font-family:Arial, Helvetica, sans-serif;
+font-size:9pt;
+color:#5577B4;
+text-align:left;
+text-decoration:none;
+background-color:#DCE9F7;
+padding-left:4px;
+font-weight:700;
+border:1px solid #EFEBF7;
+}
+.borderForTable{
+border:1px solid #EFEBF7;
+}
+.borderForTable tr th{
+	border:1px solid #ffffff;
+}
+.borderForTable tr td{
+border:1px solid #EFEBF7;
+}
+.grid {
+font-family:Arial, Helvetica, sans-serif;
+font-size:9pt;
+width:97%;
+background:#F3FBFE;
+padding-top:10px;
+}
+
+table.grid tbody tr td  {
+padding-top:5px;
+padding-bottom:5px;
+padding-left:5px;
+background:#F3FBFE;
+font-size:9pt;
+font-family:Arial, Helvetica, sans-serif;
+}

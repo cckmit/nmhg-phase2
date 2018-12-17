@@ -1,0 +1,174 @@
+<!DOCTYPE validators PUBLIC "-//Apache Struts//XWork Validator 1.0.2//EN"
+        "http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+<validators>
+    <field name="policyDefinition.code">
+        <field-validator type="requiredstring" short-circuit="true">
+            <message key="error.managePolicy.policyCodeRequired"/>
+        </field-validator>
+    </field>
+
+	<field name="policyDefinition.description">
+		<field-validator type="requiredstring">
+			<message key="error.managePolicy.policyNameRequired" />
+		</field-validator>
+	</field>
+
+    <validator type="expression">
+            <param name="expression"><![CDATA[(policyDefinition.availability.duration.fromDate!=null)]]></param>
+            <message key="error.managePolicy.policyFromDateRequired"/>
+    </validator>
+
+    <validator type="expression">
+            <param name="expression"><![CDATA[(policyDefinition.availability.duration.tillDate!=null)]]></param>
+            <message key="error.managePolicy.policyTillDateRequired"/>
+    </validator>
+
+    <validator type="expression">
+            <param name="expression"><![CDATA[((policyDefinition.availability.duration.fromDate==null
+            || policyDefinition.availability.duration.tillDate==null) || (policyDefinition.availability.duration.fromDate!=null
+            && policyDefinition.availability.duration.tillDate!=null
+            && policyDefinition.availability.duration.tillDate.isAfter(policyDefinition.availability.duration.fromDate)))]]></param>
+            <message key="error.managePolicy.activeFormDateBeforeActiveTill"/>
+    </validator>
+
+    <validator type="expression">
+            <param name="expression"><![CDATA[(policyDefinition.warrantyType!=null)]]></param>
+            <message key="error.managePolicy.warrantyTypeRequired"/>
+    </validator>
+
+    <validator type="expression">
+            <param name="expression"><![CDATA[((policyDefinition.warrantyType==null)
+            || (policyDefinition.warrantyType!=null
+            && policyDefinition.warrantyType.type.equals('POLICY'))
+            || (policyDefinition.warrantyType!=null
+            && !policyDefinition.warrantyType.type.equals('POLICY')
+            && policyDefinition.coverageTerms.serviceHoursCovered!=null
+            && policyDefinition.coverageTerms.serviceHoursCovered.intValue()>0))]]></param>
+            <message key="error.managePolicy.hoursInServiceRequired"/>
+    </validator>
+
+    <validator type="expression">
+            <param name="expression"><![CDATA[((policyDefinition.warrantyType==null)
+            || (policyDefinition.warrantyType!=null
+            && policyDefinition.warrantyType.type.equals('POLICY')) 
+            || (policyDefinition.warrantyType!=null
+            && !policyDefinition.warrantyType.type.equals('POLICY')
+            && policyDefinition.coverageTerms.monthsCoveredFromDelivery!=null
+            && policyDefinition.coverageTerms.monthsCoveredFromDelivery.intValue()>0))]]></param>
+            <message key="error.managePolicy.deliveryMonthsRequired"/>
+    </validator>
+    
+    <!-- <validator type="expression">
+            <param name="expression"><![CDATA[((policyDefinition.warrantyType==null)
+            || (policyDefinition.warrantyType!=null
+            && policyDefinition.warrantyType.type.equals('GOODWILL')) 
+            || (policyDefinition.warrantyType!=null
+            && !policyDefinition.warrantyType.type.equals('GOODWILL')
+            && policyDefinition.coverageTerms.monthsCoveredFromBuildDate!=null
+            && policyDefinition.coverageTerms.monthsCoveredFromBuildDate.intValue()>0))]]></param>
+            <message key="error.managePolicy.buildMonthsRequired"/>
+    </validator> -->
+
+    <validator type="expression">
+            <param name="expression"><![CDATA[((policyDefinition.warrantyType==null)
+            || (policyDefinition.warrantyType!=null
+            && (policyDefinition.warrantyType.type.equals('POLICY')
+                || policyDefinition.warrantyType.type.equals('STANDARD')))
+            || (policyDefinition.warrantyType!=null
+            && policyDefinition.warrantyType.type.equals('EXTENDED')
+            && policyDefinition.coverageTerms.monthsFromShipmentForEWP!=null
+            && policyDefinition.coverageTerms.monthsFromShipmentForEWP.intValue()>0))]]></param>
+            <message key="error.managePolicy.shipmentMonthsRequiredForEWP"/>
+    </validator>
+
+    <validator type="expression">
+             <param name="expression"><![CDATA[((policyDefinition.warrantyType==null)
+            || (policyDefinition.warrantyType!=null
+            && (policyDefinition.warrantyType.type.equals('POLICY')
+                || policyDefinition.warrantyType.type.equals('STANDARD')))
+            || (policyDefinition.warrantyType!=null
+            && policyDefinition.warrantyType.type.equals('EXTENDED')
+            && policyDefinition.coverageTerms.monthsFromDeliveryForEWP!=null
+            && policyDefinition.coverageTerms.monthsFromDeliveryForEWP.intValue()>0))]]></param>
+            <message key="error.managePolicy.deliveryMonthsRequiredForEWP"/>
+    </validator>
+
+    <validator type="expression">
+            <param name="expression"><![CDATA[((policyDefinition.coverageTerms.monthsCoveredFromShipment==null
+            || policyDefinition.coverageTerms.monthsCoveredFromDelivery==null)
+            || (policyDefinition.coverageTerms.monthsCoveredFromShipment!=null
+            && policyDefinition.coverageTerms.monthsCoveredFromDelivery!=null
+            && policyDefinition.coverageTerms.monthsCoveredFromDelivery<=policyDefinition.coverageTerms.monthsCoveredFromShipment))]]></param>
+            <message key="error.managePolicy.invalidDuration"/>
+    </validator>
+
+    <validator type="expression">
+            <param name="expression"><![CDATA[((policyDefinition.coverageTerms.monthsFromShipmentForEWP==null
+            || policyDefinition.coverageTerms.monthsFromDeliveryForEWP==null)
+            || (policyDefinition.coverageTerms.monthsFromShipmentForEWP!=null
+            && policyDefinition.coverageTerms.monthsFromDeliveryForEWP!=null
+            && policyDefinition.coverageTerms.monthsFromDeliveryForEWP<=policyDefinition.coverageTerms.monthsFromShipmentForEWP))]]></param>
+            <message key="error.managePolicy.invalidDurationForEWP"/>
+    </validator>
+
+	<validator type="expression">
+            <param name="expression"><![CDATA[(policyDefinition.warrantyType==null
+            || !policyDefinition.warrantyType.type.equals('EXTENDED')
+            || policyDefinition.coverageTerms.monthsFromDeliveryForEWP==null
+            || policyDefinition.coverageTerms.minMonthsFromDeliveryForEWP==null
+            || policyDefinition.coverageTerms.monthsFromDeliveryForEWP>policyDefinition.coverageTerms.minMonthsFromDeliveryForEWP)]]></param>
+            <message key="error.managePolicy.invalidStartPeriodForEWP"/>
+    </validator>
+
+    <validator type="expression">
+            <param name="expression"><![CDATA[((!policyDefinition.transferDetails.transferable)
+            || (policyDefinition.transferDetails.transferable
+            && policyDefinition.transferDetails.windowPeriod==null )
+            ||(policyDefinition.transferDetails.transferable
+            && policyDefinition.transferDetails.windowPeriod!=null
+            && policyDefinition.transferDetails.windowPeriod.longValue()>0))]]></param>
+            <message key="error.managePolicy.invalidWindowPeriod"/>
+    </validator>
+    
+     <!-- <validator type="expression">
+            <param name="expression"><![CDATA[!((policyDefinition.transferDetails.transferable)
+            && (policyDefinition.coverageTerms.monthsCoveredFromOriginalDeliveryDate==null)&&
+            (policyDefinition.warrantyType!=null
+            && !policyDefinition.warrantyType.type.equals('GOODWILL')))
+           ]]></param>
+            <message key="error.managePolicy.OriginalDeliveryDate"/>
+    </validator> -->
+
+    <validator type="expression">
+            <param name="expression"><![CDATA[((!policyDefinition.transferDetails.transferable) 
+            || (policyDefinition.transferDetails.transferable
+            && policyDefinition.transferDetails.maxTransfer==null)
+            || (policyDefinition.transferDetails.transferable
+            && policyDefinition.transferDetails.maxTransfer!=null
+            && policyDefinition.transferDetails.maxTransfer.longValue()>0))]]></param>
+            <message key="error.managePolicy.maxTransferOfCoverage"/>
+    </validator>
+
+    <validator type="expression">
+            <param name="expression"><![CDATA[(selectedProducts.size!=0)]]></param>
+            <message key="error.managePolicy.slectedProductsEmpty"/>
+    </validator>
+
+    <validator type="expression">
+            <param name="expression"><![CDATA[(selectedCustomerTypes.size!=0)]]></param>
+            <message key="error.managePolicy.selectedCustomerTypesEmpty"/>
+    </validator>
+
+    <validator type="expression">
+            <param name="expression"><![CDATA[(policyDefinition.availability.itemConditions.size!=0)]]></param>
+            <message key="error.managePolicy.itemConditionsEmpty"/>
+    </validator>
+
+    <validator type="expression">
+            <param name="expression"><![CDATA[((policyDefinition.id!=null)
+            || (policyDefinition.id==null
+            && policyDefinition.priority.longValue()>0))]]></param>
+            <message key="error.managePolicy.priority"/>
+    </validator>
+
+</validators>

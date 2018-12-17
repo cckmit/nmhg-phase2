@@ -1,0 +1,567 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <package name="struts-twms-default" extends="struts-default">
+		<interceptors>
+			<interceptor name="persistenceExceptionTranslator"
+				class="tavant.twms.web.PersistenceExceptionTranslatingInterceptor">
+			</interceptor>
+			
+			<interceptor name="warrantyAdminBusinessUnitInterceptor"
+			 	 class="tavant.twms.interceptor.WarrantyAdminBusinessUnitInterceptor">
+			</interceptor>
+			
+			<interceptor name="twmsFileUpload"
+                         class="tavant.twms.interceptor.TwmsFileUploadInterceptor" />
+
+            <interceptor name="trimListByElementId"
+                         class="tavant.twms.interceptor.TrimListByElementIdInterceptor" />
+
+			<interceptor name="buLabelsLocaleInterceptor"
+			 	 class="tavant.twms.interceptor.BUSpecificLabelsLocaleInterceptor">
+			</interceptor>
+			
+			<interceptor name="repeatTable"
+				class="tavant.twms.interceptor.RepeatTableInterceptor" />
+				
+			<interceptor name="warrantyAdminBU" class="tavant.twms.interceptor.BusinessUnitInterceptor" />
+
+            <interceptor name="exception"
+                class="tavant.twms.interceptor.ExceptionLoggingInterceptor" />
+
+            <interceptor-stack name="login-stack">                
+                <interceptor-ref name="exception"/>
+                <interceptor-ref name="alias"/>
+                <interceptor-ref name="servletConfig"/>
+                <interceptor-ref name="prepare"/>
+                <interceptor-ref name="chain"/>                
+                <interceptor-ref name="scopedModelDriven"/>
+                <interceptor-ref name="modelDriven"/>
+                <interceptor-ref name="staticParams"/>
+                <interceptor-ref name="params">
+                	<param name="excludeParams">dojo\..*</param>
+                </interceptor-ref>
+                <interceptor-ref name="trimListByElementId" />
+                <interceptor-ref name="validation">
+                    <param name="excludeMethods">input,back,cancel,browse</param>
+                </interceptor-ref>
+            </interceptor-stack>
+
+
+			<!-- Defaulting to this stack to avoid the profile and debug interceptors -->
+			<interceptor-stack name="twms-default-stack">                
+                <interceptor-ref name="exception"/>
+                <interceptor-ref name="alias"/>
+                <interceptor-ref name="servletConfig"/>
+                <interceptor-ref name="buLabelsLocaleInterceptor"/>
+                <interceptor-ref name="prepare"/>
+                <interceptor-ref name="chain"/>                
+                <interceptor-ref name="scopedModelDriven"/>
+                <interceptor-ref name="modelDriven"/>
+                <interceptor-ref name="twmsFileUpload"/>
+                <interceptor-ref name="checkbox"/>
+                <interceptor-ref name="staticParams"/>
+                <interceptor-ref name="params">
+                	<param name="excludeParams">dojo\..*</param>
+                </interceptor-ref>
+                <interceptor-ref name="trimListByElementId" />
+                <interceptor-ref name="conversionError"/>
+                <interceptor-ref name="validation">
+                    <param name="excludeMethods">input,back,cancel,browse</param>
+                </interceptor-ref>
+                <interceptor-ref name="workflow">
+                    <param name="excludeMethods">input,back,cancel,browse</param>
+                </interceptor-ref>
+            </interceptor-stack>
+
+			<interceptor-stack name="twmsParamsPrepareParams">
+				<interceptor-ref name="exception" />
+				<interceptor-ref name="alias" />
+				<interceptor-ref name="staticParams" />				
+				<interceptor-ref name="params" />
+				<interceptor-ref name="servletConfig" />				
+				<interceptor-ref name="prepare" />
+				<interceptor-ref name="buLabelsLocaleInterceptor"/>
+				<interceptor-ref name="chain" />
+				<interceptor-ref name="modelDriven" />
+				<interceptor-ref name="twmsFileUpload" />				
+				<interceptor-ref name="params" />
+                <interceptor-ref name="trimListByElementId" />
+				<interceptor-ref name="servletConfig" />
+				<interceptor-ref name="conversionError" />
+				<interceptor-ref name="validation">
+					<param name="excludeMethods">
+						input,back,cancel
+					</param>
+				</interceptor-ref>
+				<interceptor-ref name="workflow">
+					<param name="excludeMethods">
+						input,back,cancel
+					</param>
+				</interceptor-ref>
+				<interceptor-ref name="persistenceExceptionTranslator" />
+			</interceptor-stack>
+			
+			<interceptor-stack name="adminTwmsParamsPrepareParams">
+                <interceptor-ref name="warrantyAdminBusinessUnitInterceptor" />
+                <interceptor-ref name="exception" />
+				<interceptor-ref name="alias" />
+				<interceptor-ref name="params" />
+				<interceptor-ref name="servletConfig" />
+				<interceptor-ref name="buLabelsLocaleInterceptor"/>
+				<interceptor-ref name="prepare" />
+				<interceptor-ref name="chain" />
+				<interceptor-ref name="modelDriven" />
+				<interceptor-ref name="twmsFileUpload" />				
+				<interceptor-ref name="staticParams" />
+				<interceptor-ref name="params" />
+                <interceptor-ref name="trimListByElementId" />
+				<interceptor-ref name="servletConfig" />
+				<interceptor-ref name="conversionError" />
+				<interceptor-ref name="validation">
+					<param name="excludeMethods">
+						input,back,cancel
+					</param>
+				</interceptor-ref>
+				<interceptor-ref name="workflow">
+					<param name="excludeMethods">
+						input,back,cancel
+					</param>
+				</interceptor-ref>
+				<interceptor-ref name="persistenceExceptionTranslator" />
+			</interceptor-stack>
+
+			<interceptor-stack name="twmsParamsWithoutPrepare">
+				<interceptor-ref name="exception" />
+				<interceptor-ref name="alias" />
+				<interceptor-ref name="servletConfig" />				
+				<interceptor-ref name="buLabelsLocaleInterceptor"/>
+				<interceptor-ref name="chain" />
+				<interceptor-ref name="modelDriven" />
+				<interceptor-ref name="twmsFileUpload" />
+				<interceptor-ref name="staticParams" />
+				<interceptor-ref name="params" />
+                <interceptor-ref name="trimListByElementId" />
+				<interceptor-ref name="servletConfig" />
+				<interceptor-ref name="conversionError" />
+				<interceptor-ref name="validation">
+					<param name="excludeMethods">
+						input,back,cancel
+					</param>
+				</interceptor-ref>
+				<interceptor-ref name="workflow">
+					<param name="excludeMethods">
+						input,back,cancel
+					</param>
+				</interceptor-ref>
+				<interceptor-ref name="persistenceExceptionTranslator" />
+			</interceptor-stack>
+			
+			<interceptor-stack name="adminTwmsParamsWithoutPrepare">
+                <interceptor-ref name="warrantyAdminBusinessUnitInterceptor" />
+                <interceptor-ref name="exception" />
+				<interceptor-ref name="alias" />
+				<interceptor-ref name="servletConfig" />				
+				<interceptor-ref name="buLabelsLocaleInterceptor"/>
+				<interceptor-ref name="chain" />
+				<interceptor-ref name="modelDriven" />
+				<interceptor-ref name="twmsFileUpload" />
+				<interceptor-ref name="staticParams" />
+				<interceptor-ref name="params" />
+                <interceptor-ref name="trimListByElementId" />
+				<interceptor-ref name="servletConfig" />
+				<interceptor-ref name="conversionError" />
+				<interceptor-ref name="validation">
+					<param name="excludeMethods">
+						input,back,cancel
+					</param>
+				</interceptor-ref>
+				<interceptor-ref name="workflow">
+					<param name="excludeMethods">
+						input,back,cancel
+					</param>
+				</interceptor-ref>
+				<interceptor-ref name="persistenceExceptionTranslator" />
+			</interceptor-stack>
+			<interceptor-stack name="adminTwmsParamsWithoutPrepareAndValidate">
+                <interceptor-ref name="exception" />
+				<interceptor-ref name="alias" />
+				<interceptor-ref name="servletConfig" />				
+				<interceptor-ref name="buLabelsLocaleInterceptor"/>
+				<interceptor-ref name="chain" />
+				<interceptor-ref name="modelDriven" />
+				<interceptor-ref name="twmsFileUpload" />
+				<interceptor-ref name="staticParams" />
+				<interceptor-ref name="params" />
+                <interceptor-ref name="trimListByElementId" />
+				<interceptor-ref name="servletConfig" />
+				<interceptor-ref name="conversionError" />
+				<interceptor-ref name="workflow">
+					<param name="excludeMethods">
+						input,back,cancel
+					</param>
+				</interceptor-ref>
+				<interceptor-ref name="persistenceExceptionTranslator" />
+			</interceptor-stack>
+
+			<interceptor-stack name="paramsPrepare">
+				<interceptor-ref name="exception" />
+				<interceptor-ref name="alias" />
+				<interceptor-ref name="buLabelsLocaleInterceptor"/>
+				<interceptor-ref name="params" />
+				<interceptor-ref name="servletConfig" />
+				<interceptor-ref name="prepare" />
+				<interceptor-ref name="buLabelsLocaleInterceptor"/>
+				<interceptor-ref name="conversionError" />
+				<interceptor-ref name="persistenceExceptionTranslator" />
+			</interceptor-stack>
+			
+			<interceptor-stack name="adminParamsPrepare">
+                <interceptor-ref name="warrantyAdminBusinessUnitInterceptor" />
+                <interceptor-ref name="exception" />
+				<interceptor-ref name="alias" />
+				<interceptor-ref name="buLabelsLocaleInterceptor"/>
+				<interceptor-ref name="params" />
+				<interceptor-ref name="servletConfig" />
+				<interceptor-ref name="prepare" />
+				<interceptor-ref name="conversionError" />
+				<interceptor-ref name="persistenceExceptionTranslator" />
+			</interceptor-stack>
+
+			<interceptor-stack name="supplierParamsPrepareWithoutValidation">
+				<interceptor-ref name="exception" />
+				<interceptor-ref name="alias" />
+				<interceptor-ref name="staticParams" />				
+				<interceptor-ref name="params" />
+				<interceptor-ref name="servletConfig" />				
+				<interceptor-ref name="prepare" />
+				<interceptor-ref name="buLabelsLocaleInterceptor"/>
+				<interceptor-ref name="chain" />
+				<interceptor-ref name="modelDriven" />
+				<interceptor-ref name="twmsFileUpload" />
+				<interceptor-ref name="params" />
+                <interceptor-ref name="trimListByElementId" />
+				<interceptor-ref name="servletConfig" />
+				<interceptor-ref name="conversionError" />
+				<interceptor-ref name="persistenceExceptionTranslator" />
+			</interceptor-stack>
+			
+			<interceptor name="copyErrors" class="tavant.twms.web.search.CopyErrorsInterceptor"/>
+			<interceptor-stack name="defaultPlusErrors">
+                <interceptor-ref name="copyErrors"/>
+               
+            </interceptor-stack>
+			
+			<interceptor-stack name="supplierParamsWithoutValidation">
+				<interceptor-ref name="exception" />
+				<interceptor-ref name="alias" />
+				<interceptor-ref name="staticParams" />				
+				<interceptor-ref name="params" />
+				<interceptor-ref name="servletConfig" />				
+				<interceptor-ref name="buLabelsLocaleInterceptor"/>
+				<interceptor-ref name="chain" />
+				<interceptor-ref name="modelDriven" />
+				<interceptor-ref name="twmsFileUpload" />
+				<interceptor-ref name="params" />
+                <interceptor-ref name="trimListByElementId" />
+				<interceptor-ref name="servletConfig" />
+				<interceptor-ref name="conversionError" />
+				<interceptor-ref name="persistenceExceptionTranslator" />
+			</interceptor-stack>
+			
+
+			<interceptor-stack name="paramsPrepareWithoutValidation">
+				<interceptor-ref name="exception" />
+				<interceptor-ref name="alias" />
+				<interceptor-ref name="staticParams" />
+				<interceptor-ref name="params" />
+				<interceptor-ref name="servletConfig" />
+				<interceptor-ref name="buLabelsLocaleInterceptor"/>
+				<interceptor-ref name="prepare" />
+				<interceptor-ref name="buLabelsLocaleInterceptor"/>
+				<interceptor-ref name="chain" />
+				<interceptor-ref name="modelDriven" />
+				<interceptor-ref name="twmsFileUpload" />
+				<interceptor-ref name="params" />
+                <interceptor-ref name="trimListByElementId" />
+				<interceptor-ref name="servletConfig" />
+				<interceptor-ref name="conversionError" />
+				<interceptor-ref name="persistenceExceptionTranslator" />
+			</interceptor-stack>
+
+			<interceptor-stack name="adminParamsPrepareWithoutValidation">
+				<interceptor-ref name="warrantyAdminBusinessUnitInterceptor" />
+				<interceptor-ref name="exception" />
+				<interceptor-ref name="alias" />				
+				<interceptor-ref name="staticParams" />				
+				<interceptor-ref name="buLabelsLocaleInterceptor"/>
+				<interceptor-ref name="params" />
+				<interceptor-ref name="servletConfig" />				
+				<interceptor-ref name="prepare" />
+				<interceptor-ref name="buLabelsLocaleInterceptor"/>
+				<interceptor-ref name="chain" />
+				<interceptor-ref name="modelDriven" />
+				<interceptor-ref name="twmsFileUpload" />
+				<interceptor-ref name="params" />
+                <interceptor-ref name="trimListByElementId" />
+				<interceptor-ref name="servletConfig" />
+				<interceptor-ref name="conversionError" />
+				<interceptor-ref name="persistenceExceptionTranslator" />				
+			</interceptor-stack>
+			
+			<interceptor-stack name="paramsWithoutValidation">
+				<interceptor-ref name="exception" />
+				<interceptor-ref name="alias" />
+				<interceptor-ref name="buLabelsLocaleInterceptor"/>
+				<interceptor-ref name="params" />
+				<interceptor-ref name="servletConfig" />
+				<interceptor-ref name="conversionError" />
+				<interceptor-ref name="persistenceExceptionTranslator" />
+			</interceptor-stack>
+
+			<interceptor-stack name="adminParamsWithoutValidation">
+                <interceptor-ref name="warrantyAdminBusinessUnitInterceptor" />
+                <interceptor-ref name="exception" />
+				<interceptor-ref name="alias" />
+				<interceptor-ref name="buLabelsLocaleInterceptor"/>
+				<interceptor-ref name="params" />
+				<interceptor-ref name="servletConfig" />
+				<interceptor-ref name="conversionError" />
+				<interceptor-ref name="persistenceExceptionTranslator" />
+			</interceptor-stack>
+			
+			<!-- Interceptor stack with RepeatTable interceptor extends twmsParamsPrepareParams stack -->
+			<interceptor-stack
+				name="twmsParamsPrepareRepeatTableParams">
+				<interceptor-ref name="exception" />
+				<interceptor-ref name="alias" />				
+				<interceptor-ref name="servletConfig" />
+				<interceptor-ref name="params">
+					<param name="excludeParams">dojo\..*</param>
+				</interceptor-ref>
+				<interceptor-ref name="buLabelsLocaleInterceptor"/>
+				<interceptor-ref name="prepare" />
+				<interceptor-ref name="buLabelsLocaleInterceptor"/>
+				<interceptor-ref name="chain" />				
+				<interceptor-ref name="scopedModelDriven" />
+				<interceptor-ref name="modelDriven" />
+				<interceptor-ref name="twmsFileUpload" />
+				<interceptor-ref name="checkbox" />
+				<interceptor-ref name="staticParams" />
+				<interceptor-ref name="params">
+					<param name="excludeParams">dojo\..*</param>
+				</interceptor-ref>
+                <interceptor-ref name="trimListByElementId" />
+				<interceptor-ref name="repeatTable" />
+				<interceptor-ref name="conversionError" />
+				<interceptor-ref name="validation">
+					<param name="excludeMethods">
+						input,back,cancel,browse
+					</param>
+				</interceptor-ref>
+				<interceptor-ref name="workflow">
+					<param name="excludeMethods">
+						input,back,cancel,browse
+					</param>
+				</interceptor-ref>
+				<interceptor-ref name="persistenceExceptionTranslator" />
+			</interceptor-stack>
+			
+			<interceptor-stack
+				name="twmsParamsPrepareRepeatTableParamsCheckBox">
+				<interceptor-ref name="exception" />
+				<interceptor-ref name="alias" />				
+				<interceptor-ref name="servletConfig" />
+				<interceptor-ref name="params">
+					<param name="excludeParams">dojo\..*</param>
+				</interceptor-ref>
+				<interceptor-ref name="buLabelsLocaleInterceptor"/>
+				<interceptor-ref name="prepare" />
+				<interceptor-ref name="buLabelsLocaleInterceptor"/>
+				<interceptor-ref name="chain" />				
+				<interceptor-ref name="scopedModelDriven" />
+				<interceptor-ref name="modelDriven" />
+				<interceptor-ref name="twmsFileUpload" />
+				<interceptor-ref name="checkbox" >
+				<param name="uncheckedValue">-1</param>
+				</interceptor-ref>
+				<interceptor-ref name="staticParams" />
+				<interceptor-ref name="params">
+					<param name="excludeParams">dojo\..*</param>
+				</interceptor-ref>
+                <interceptor-ref name="trimListByElementId" />
+				<interceptor-ref name="repeatTable" />
+				<interceptor-ref name="conversionError" />
+				<interceptor-ref name="validation">
+					<param name="excludeMethods">
+						input,back,cancel,browse
+					</param>
+				</interceptor-ref>
+				<interceptor-ref name="workflow">
+					<param name="excludeMethods">
+						input,back,cancel,browse
+					</param>
+				</interceptor-ref>
+				<interceptor-ref name="persistenceExceptionTranslator" />
+			</interceptor-stack>
+			<interceptor-stack
+				name="twmsparamsprepareRepeatTablewithoutCheckBox">
+				<interceptor-ref name="exception" />
+				<interceptor-ref name="alias" />				
+				<interceptor-ref name="servletConfig" />
+				<interceptor-ref name="params">
+					<param name="excludeParams">dojo\..*</param>
+				</interceptor-ref>
+				<interceptor-ref name="buLabelsLocaleInterceptor"/>
+				<interceptor-ref name="prepare" />
+				<interceptor-ref name="buLabelsLocaleInterceptor"/>
+				<interceptor-ref name="chain" />				
+				<interceptor-ref name="scopedModelDriven" />
+				<interceptor-ref name="modelDriven" />
+				<interceptor-ref name="twmsFileUpload" />				
+				<interceptor-ref name="staticParams" />
+				<interceptor-ref name="params">
+					<param name="excludeParams">dojo\..*</param>
+				</interceptor-ref>
+                <interceptor-ref name="trimListByElementId" />
+				<interceptor-ref name="repeatTable" />
+				<interceptor-ref name="conversionError" />
+				<interceptor-ref name="validation">
+					<param name="excludeMethods">
+						input,back,cancel,browse
+					</param>
+				</interceptor-ref>
+				<interceptor-ref name="workflow">
+					<param name="excludeMethods">
+						input,back,cancel,browse
+					</param>
+				</interceptor-ref>
+				<interceptor-ref name="persistenceExceptionTranslator" />
+			</interceptor-stack>
+			<interceptor-stack
+				name="adminTwmsParamsPrepareRepeatTableParams">
+                <interceptor-ref name="warrantyAdminBusinessUnitInterceptor" />
+                <interceptor-ref name="exception" />
+				<interceptor-ref name="alias" />								
+				<interceptor-ref name="servletConfig" />
+				<interceptor-ref name="params">
+					<param name="excludeParams">dojo\..*</param>
+				</interceptor-ref>
+				<interceptor-ref name="buLabelsLocaleInterceptor"/>
+				<interceptor-ref name="prepare" />
+				<interceptor-ref name="chain" />				
+				<interceptor-ref name="scopedModelDriven" />
+				<interceptor-ref name="modelDriven" />
+				<interceptor-ref name="twmsFileUpload" />
+				<interceptor-ref name="checkbox" />
+				<interceptor-ref name="staticParams" />
+				<interceptor-ref name="params">
+					<param name="excludeParams">dojo\..*</param>
+				</interceptor-ref>
+                <interceptor-ref name="trimListByElementId" />
+				<interceptor-ref name="repeatTable" />
+				<interceptor-ref name="conversionError" />
+				<interceptor-ref name="validation">
+					<param name="excludeMethods">
+						input,back,cancel,browse
+					</param>
+				</interceptor-ref>
+				<interceptor-ref name="workflow">
+					<param name="excludeMethods">
+						input,back,cancel,browse
+					</param>
+				</interceptor-ref>
+				<interceptor-ref name="persistenceExceptionTranslator" />
+			</interceptor-stack>
+			
+			<interceptor-stack
+				name="twmsParamsPrepareRepeatTableParamsWithoutValidation">
+				<interceptor-ref name="exception" />
+				<interceptor-ref name="alias" />				
+				<interceptor-ref name="servletConfig" />
+				<interceptor-ref name="params">
+					<param name="excludeParams">dojo\..*</param>
+				</interceptor-ref>
+				<interceptor-ref name="buLabelsLocaleInterceptor"/>
+				<interceptor-ref name="prepare" />	
+				<interceptor-ref name="buLabelsLocaleInterceptor"/>			
+				<interceptor-ref name="chain" />				
+				<interceptor-ref name="scopedModelDriven" />
+				<interceptor-ref name="modelDriven" />
+				<interceptor-ref name="twmsFileUpload" />
+				<interceptor-ref name="checkbox" />
+				<interceptor-ref name="staticParams" />
+				<interceptor-ref name="params">
+					<param name="excludeParams">dojo\..*</param>
+				</interceptor-ref>
+                <interceptor-ref name="trimListByElementId" />
+				<interceptor-ref name="repeatTable" />
+				<interceptor-ref name="conversionError" />
+				<interceptor-ref name="persistenceExceptionTranslator" />
+			</interceptor-stack>
+			
+			<interceptor-stack
+				name="prepareInterceptorWithoutParams">
+				<interceptor-ref name="exception" />
+				<interceptor-ref name="alias" />				
+				<interceptor-ref name="servletConfig" />
+				<interceptor-ref name="buLabelsLocaleInterceptor"/>
+				<interceptor-ref name="prepare" />	
+				<interceptor-ref name="buLabelsLocaleInterceptor"/>			
+				<interceptor-ref name="chain" />				
+				<interceptor-ref name="conversionError" />
+				<interceptor-ref name="persistenceExceptionTranslator" />
+			</interceptor-stack>
+			
+			
+			
+			
+			<interceptor-stack name="twmsParamsPrepareParamsForPartReturn">
+				<interceptor-ref name="exception" />
+				<interceptor-ref name="alias" />				
+				<interceptor-ref name="params" />
+				<interceptor-ref name="servletConfig" />
+				<interceptor-ref name="buLabelsLocaleInterceptor"/>
+				<interceptor-ref name="prepare" />
+				<interceptor-ref name="chain" />
+				<interceptor-ref name="modelDriven" />
+				<interceptor-ref name="twmsFileUpload" />
+				<interceptor-ref name="checkbox"/>
+				<interceptor-ref name="staticParams" />
+				<interceptor-ref name="params" />
+                <interceptor-ref name="trimListByElementId" />
+				<interceptor-ref name="servletConfig" />
+				<interceptor-ref name="conversionError" />
+				<interceptor-ref name="validation">
+					<param name="excludeMethods">
+						input,back,cancel
+					</param>
+				</interceptor-ref>
+				<interceptor-ref name="workflow">
+					<param name="excludeMethods">
+						input,back,cancel
+					</param>
+				</interceptor-ref>
+				<interceptor-ref name="persistenceExceptionTranslator" />
+			</interceptor-stack>
+		</interceptors>
+
+		<default-interceptor-ref name="twms-default-stack" />
+
+		<global-results>
+			<result name="anyException">/pages/error.jsp</result>
+			<result name="jbpmDelegationException">/pages/jbpmDelegationException.jsp</result>
+		</global-results>
+
+		<global-exception-mappings>
+			<exception-mapping exception="java.lang.Exception"
+				result="anyException" />				
+			<exception-mapping exception="java.lang.IllegalStateException"
+				result="jbpmDelegationException" />	
+		</global-exception-mappings>
+	</package>
+</struts>

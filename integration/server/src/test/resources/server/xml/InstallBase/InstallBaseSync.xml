@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<InstallBaseSync>
+    <ApplicationArea>
+        <Sender>
+            <LogicalId>CCTORACLEAPPS</LogicalId>
+            <Task>TavantWMS</Task>
+            <ReferenceId>3410079</ReferenceId>
+        </Sender>
+        <BODId>BOD058</BODId>
+        <InterfaceNumber>INT029</InterfaceNumber>
+        <CreationDateTime>2009-09-02T17:15:11-05:00</CreationDateTime>
+    </ApplicationArea>
+    <DataArea>
+        <InventorySync>
+            <SyncType>MACHINE SALE</SyncType>
+            <ShipFromNumber></ShipFromNumber>
+            <ShipFromLocation></ShipFromLocation>
+            <ShipToNumber>2059</ShipToNumber>
+            <ShipToLocation>2059</ShipToLocation>
+            <InventoryDetail>
+                <ItemNumber>600055</ItemNumber>
+                <SerialNumber>RKK2010030802</SerialNumber>
+                <BuildDate>20100308000000</BuildDate>
+                <ManufacturingSite>LSV</ManufacturingSite>
+                <InventoryBOM>
+                    <Component>
+                        <PartNumber>417032</PartNumber>
+                        <PartSerialNumber>RKK2010030801P</PartSerialNumber>
+                    </Component>
+                    <Component>
+                        <PartNumber>417033</PartNumber>
+                        <PartSerialNumber>RKK2010030802P</PartSerialNumber>
+                    </Component>
+                </InventoryBOM>
+            </InventoryDetail>
+            <SalesOrderNumber>10587131</SalesOrderNumber>
+            <SalesOrderLineNumber>1</SalesOrderLineNumber>
+            <InvoiceNumber>9598000668</InvoiceNumber>
+            <InvoiceDate>2009-08-28T00:00:00-00:00</InvoiceDate>
+            <ShipFromOrgCode>TSA Warehouse</ShipFromOrgCode>
+            <DeliveryDateTime>2009-08-28T00:00:00-00:00</DeliveryDateTime>
+            <DivisionCode>Thermo King TSA</DivisionCode>
+        </InventorySync>
+    </DataArea>
+</InstallBaseSync>

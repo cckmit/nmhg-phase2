@@ -1,0 +1,334 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<indexdata>
+<key name="Additional Labor" >
+  <topic name="Manage Additional Labour Eligibility" url="Warranty_Admin/Manage_Additional_Labour_Eligibility.htm" />
+</key>
+<key name="Address Book" >
+  <topic name="Address Book" url="Inventory/Address_Book.htm" />
+</key>
+<key name="Advice Request" >
+  <topic name="Advice Request" url="Claims/Advice_Request.htm" />
+</key>
+<key name="Alarm Codes" >
+  <topic name="Manage Alarm Code" url="Warranty_Admin/Manage_Alarm_Code.htm" />
+</key>
+<key name="Appealed" >
+  <topic name="Appealed" url="Claims/Appealed.htm" />
+</key>
+<key name="Apply Label" >
+  <topic name="View Labels" url="Warranty_Admin/View_Labels.htm" />
+</key>
+<key name="Attributes" >
+  <topic name="Associate/Dissociate Inventory Attributes" url="Warranty_Admin/Associate_Dissociate_Inventory_Attributes.htm" />
+  <topic name="Associate/Dissociate Part Attributes" url="Warranty_Admin/Associate_Dissociate_Part_Attributes.htm" />
+  <topic name="Create/Update Attributes" url="Warranty_Admin/Create_Update_Attributes.htm" />
+</key>
+<key name="Awaiting Shipment" >
+  <topic name="Awaiting Shipment" url="Parts_Recovery/Awaiting_Shipment.htm" />
+</key>
+<key name="Barcode" >
+  <topic name="Barcode Feature and Search by Barcode" url="Part_Returns/Barcode_Feature_and_Search_by_Barcode.htm" />
+</key>
+<key name="Business Conditions" >
+  <topic name="Business Conditions" url="Warranty_Admin/Business_Conditions.htm" />
+</key>
+<key name="Business Configurations" >
+  <topic name="Manage Business Configurations" url="Warranty_Admin/Manage_Business_Configurations.htm" />
+</key>
+<key name="Business Rule Groups" >
+  <topic name="Manage Business Rule Groups" url="Warranty_Admin/Manage_Business_Rule_Groups.htm" />
+</key>
+<key name="Claim Attributes" >
+  <topic name="Claim Attributes" url="Claims/Claim_Attributes.htm" />
+</key>
+<key name="Claim Details" >
+  <topic name="Claim Details" url="Claims/Claim_Details.htm" />
+</key>
+<key name="Claim Failure Reports" >
+  <topic name="Claim Failure Reports" url="Claims/Claim_Failure_Reports.htm" />
+</key>
+<key name="Claim Submission" >
+  <topic name="Claim Submission" url="Claims/Claim_Submission.htm" />
+</key>
+<key name="Claims" >
+  <topic name="Claim Details" url="Claims/Claim_Details.htm" />
+  <topic name="Claim Submission" url="Claims/Claim_Submission.htm" />
+  <topic name="Claim Validation" url="Claims/Claim_Validation.htm" />
+</key>
+<key name="Claims Due for Recovery" >
+  <topic name="Claims Due for Recovery" url="Supplier_Recovery/Claims_Due_for_Recovery.htm" />
+</key>
+<key name="Claims Under Recovery" >
+  <topic name="Claims Under Recovery" url="Supplier_Recovery/Claims_Under_Recovery.htm" />
+</key>
+<key name="Commercial Policy" >
+  <topic name="Field Modification Claims" url="Claims/Field_Modification_Claims.htm" />
+  <topic name="Non-serialized part with Part installed on Competitor Model" url="Claims/Non-serialized_part_with_Part_installed_on_Competitor_Model.htm" />
+  <topic name="Non-serialized part with Part installed on non-serialized host machine" url="Claims/Non-serialized_part_with_Part_installed_on_non-serialized_host_machine.htm" />
+  <topic name="Non-serialized part with Part installed on serialized host machine" url="Claims/Non-serialized_part_with_Part_installed_on_serialized_host_machine.htm" />
+  <topic name="Serialized part with Part installed on Competitor Model" url="Claims/Serialized_part_with_Part_installed_on_Competitor_Model.htm" />
+  <topic name="Serialized part with Part installed on non-serialized host machine" url="Claims/Serialized_part_with_Part_installed_on_non-serialized_host_machine.htm" />
+  <topic name="Serialized part with Part installed on serialized host machine" url="Claims/Serialized_part_with_Part_installed_on_serialized_host_machine.htm" />
+</key>
+<key name="Components Replaced" >
+  <topic name="Claim Details" url="Claims/Claim_Details.htm" />
+</key>
+<key name="Configure Miscellaneous Parts" >
+  <topic name="Miscellaneous Parts" url="Warranty_Admin/Manage_Miscellaneous_Parts.htm" />
+</key>
+<key name="Cost Category Configuration" >
+  <topic name="Cost Category Configuration" url="Warranty_Admin/Cost_Category_Configuration.htm" />
+</key>
+<key name="Custom Reports" >
+  <topic name="Manage Custom Reports" url="Warranty_Admin/Manage_Custom_Reports.htm" />
+</key>
+<key name="Dealer Groups" >
+  <topic name="Dealer Groups" url="Warranty_Admin/Dealer_Groups.htm" />
+</key>
+<key name="Dealer Transfer" >
+  <topic name="Dealer to Dealer Transfer" url="Inventory/Dealer_to_Dealer_Transfer.htm" />
+</key>
+<key name="Download Management" >
+  <topic name="Download Management" url="Reports/Download_Management.htm" />
+</key>
+<key name="Draft Claim" >
+  <topic name="Draft" url="Claims/Draft.htm" />
+</key>
+<key name="Due Parts" >
+  <topic name="Due Parts" url="Part_Returns/Due_Parts.htm" />
+</key>
+<key name="Due parts Inspection" >
+  <topic name="Due Parts Inspection" url="Part_Returns/Due_Parts_Inspection.htm" />
+</key>
+<key name="Due Parts Receipt" >
+  <topic name="Due Parts Receipt" url="Part_Returns/Due_Parts_Receipt.htm" />
+</key>
+<key name="Email Subscription" >
+  <topic name="Email Subscription" url="Settings/Email_Subscription.htm" />
+</key>
+<key name="End Customer Management" >
+  <topic name="End Customer Management" url="Settings/End_Customer_Management.htm" />
+</key>
+<key name="Equipment" >
+  <topic name="Equipment Details" url="Inventory/Equipment_Details.htm" />
+</key>
+<key name="Equipment Transfer" >
+  <topic name="Equipment Transfer Report" url="Inventory/Equipment_Transfer_Report.htm" />
+</key>
+<key name="Extended Warranty Purchase" >
+  <topic name="Extended Warranty Purchase" url="Inventory/Extended_Warranty_Purchase.htm" />
+</key>
+<key name="Failure Information" >
+  <topic name="Claim Details" url="Claims/Claim_Details.htm" />
+</key>
+<key name="Field Modification" >
+  <topic name="Field Modification" url="Warranty_Admin/Service_Campaign.htm" />
+  <topic name="Field Modification Claims" url="Claims/Field_Modification_Claims.htm" />
+  <topic name="Related Field Modifications" url="Warranty_Admin/Related_Field_Modifications.htm" />
+</key>
+<key name="Flat Rates" >
+  <topic name="Flat Rates" url="Warranty_Admin/Flat_Rates.htm" />
+</key>
+<key name="Fleet Inventory Management" >
+  <topic name="Fleet Inventory Management" url="Inventory/Fleet_Inventory_Management_.htm" />
+  <topic name="GoodWill Warranty Extension" url="Inventory/GoodWill_Warranty_Extension.htm" />
+</key>
+<key name="GoodWill Warranty Extension" >
+  <topic name="GoodWill Warranty Extension" url="Inventory/GoodWill_Warranty_Extension.htm" />
+</key>
+<key name="Inventory" >
+  <topic name="Inventory" url="Inventory/Inventory.htm" />
+  <topic name="Search Inventory" url="Inventory/Search_Inventory.htm" />
+</key>
+<key name="Item Groups" >
+  <topic name="Item Groups" url="Warranty_Admin/Item_Groups.htm" />
+</key>
+<key name="Items" >
+  <topic name="Search Items" url="Items/Search_Items.htm" />
+</key>
+<key name="Job Codes" >
+  <topic name="Claim Details" url="Claims/Claim_Details.htm" />
+  <topic name="Manage Inclusive Job Codes" url="Warranty_Admin/Manage_Inclusive_Job_Codes.htm" />
+</key>
+<key name="Labels" >
+  <topic name="View Labels" url="Warranty_Admin/View_Labels.htm" />
+</key>
+<key name="Labor Rates" >
+  <topic name="Labor Rates" url="Warranty_Admin/Labor_Rates.htm" />
+</key>
+<key name="Labor Split" >
+  <topic name="Manage Labor Split" url="Warranty_Admin/Manage_Labor_Split.htm" />
+</key>
+<key name="List Models" >
+  <topic name="List Models" url="Warranty_Admin/List_Models.htm" />
+</key>
+<key name="List Service Procedures" >
+  <topic name="List Service Procedures" url="Warranty_Admin/List_Service_Procedures.htm" />
+</key>
+<key name="LOA Schemes" >
+  <topic name="Manage LOA Schemes" url="Warranty_Admin/Manage_LOA_Schemes.htm" />
+</key>
+<key name="Major Components" >
+  <topic name="Major Component Registration" url="Claims/Major_Component_Registration.htm" />
+</key>
+<key name="Manage Documents" >
+  <topic name="Claim Details" url="Claims/Claim_Details.htm" />
+</key>
+<key name="Manage Failure Structure" >
+  <topic name="Failure Structure" url="Warranty_Admin/Failure_Structure.htm" />
+</key>
+<key name="Manage Groups" >
+  <topic name="Manage Groups" url="Warranty_Admin/Manage_Groups.htm" />
+</key>
+<key name="Map Service Provider Business Unit" >
+  <topic name="Map Service Provider Business Unit" url="Settings/Map_Service_Provider_Business_Unit.htm" />
+</key>
+<key name="Merge End Customer" >
+  <topic name="End Customer Management" url="Settings/End_Customer_Management.htm" />
+</key>
+<key name="Miscellaneous Parts" >
+  <topic name="Miscellaneous Parts" url="Warranty_Admin/Manage_Miscellaneous_Parts.htm" />
+</key>
+<key name="Multi Claim Maintenance" >
+  <topic name="Multi Claim Maintenance" url="Supplier_Recovery/Multi_Claim_Maintenance.htm" />
+</key>
+<key name="On Hold" >
+  <topic name="On Hold" url="Claims/On_Hold.htm" />
+</key>
+<key name="Overdue Parts" >
+  <topic name="Overdue Parts" url="Part_Returns/Overdue_Parts.htm" />
+</key>
+<key name="Part Return Configurations" >
+  <topic name="Part Return Configuration" url="Warranty_Admin/Part_Return_Configuration.htm" />
+</key>
+<key name="Part Returns" >
+  <topic name="Part Return Folders" url="Part_Returns/Part_Return_Folders.htm" />
+</key>
+<key name="Part Source History" >
+  <topic name="View Part Source History" url="Contract_Admin/View_Part_Source_History.htm" />
+</key>
+<key name="Parts Recovery" >
+  <topic name="Parts Recovery" url="Parts_Recovery/Parts_Recovery.htm" />
+</key>
+<key name="Payment Definitions" >
+  <topic name="Policy Definition" url="Warranty_Admin/Policy_Definition.htm" />
+</key>
+<key name="Pending Field Modifications" >
+  <topic name="Pending Campaigns" url="Field_Product_Improvement/Pending_Campaigns.htm" />
+</key>
+<key name="Pending Recovery Initiation" >
+  <topic name="Pending Recovery Initiation" url="Supplier_Recovery/Pending_Recovery_Initiation.htm" />
+</key>
+<key name="Policy Code" >
+  <topic name="Policy Details" url="Claims/Policy_Details.htm" />
+</key>
+<key name="Policy Details" >
+  <topic name="Policy Details" url="Claims/Policy_Details.htm" />
+</key>
+<key name="Policy Management" >
+  <topic name="Policy Management" url="Warranty_Admin/Policy_Management.htm" />
+</key>
+<key name="Re-prioritization of Business Rule Groups" >
+  <topic name="Manage Business Rule Groups" url="Warranty_Admin/Manage_Business_Rule_Groups.htm" />
+</key>
+<key name="Recovery Claim Number" >
+  <topic name="Awaiting Shipment" url="Parts_Recovery/Awaiting_Shipment.htm" />
+  <topic name="Awaiting Shipment To WareHouse" url="Parts_Recovery/Awaiting_Shipment_To_WareHouse.htm" />
+  <topic name="Supplier Parts Claimed" url="Parts_Recovery/Supplier_Parts_Claimed.htm" />
+</key>
+<key name="Related Field Modifications" >
+  <topic name="Related Field Modifications" url="Warranty_Admin/Related_Field_Modifications.htm" />
+</key>
+<key name="Replies" >
+  <topic name="Replies" url="Claims/Replies.htm" />
+</key>
+<key name="Request for Information" >
+  <topic name="Request for Information" url="Claims/Request_for_Information.htm" />
+</key>
+<key name="Retail Machine Transfer" >
+  <topic name="Retail Machine Transfer" url="Inventory/Retail_Machine_Transfer.htm" />
+</key>
+<key name="Retailed Inventory" >
+  <topic name="Inventory" url="Inventory/Inventory.htm" />
+  <topic name="Retailed" url="Inventory/Retailed.htm" />
+  <topic name="Search Inventory" url="Inventory/Search_Inventory.htm" />
+</key>
+<key name="Schemas" >
+  <topic name="Dealer Groups" url="Warranty_Admin/Dealer_Groups.htm" />
+  <topic name="Item Groups" url="Warranty_Admin/Item_Groups.htm" />
+  <topic name="User Groups" url="Warranty_Admin/User_Groups.htm" />
+</key>
+<key name="Scrap Inventories" >
+  <topic name="Scrap/Unscrap Inventories" url="Inventory/Scrap_Inventories.htm" />
+</key>
+<key name="Service Information" >
+  <topic name="Claim Details" url="Claims/Claim_Details.htm" />
+</key>
+<key name="Service Procedures" >
+  <topic name="List Service Procedures" url="Warranty_Admin/List_Service_Procedures.htm" />
+</key>
+<key name="Shipment Details" >
+  <topic name="Shipment Generated" url="Part_Returns/Shipment_Generated.htm" />
+</key>
+<key name="Shipment Generated" >
+  <topic name="Shipment Generated" url="Part_Returns/Shipment_Generated.htm" />
+</key>
+<key name="Shipment Tag" >
+  <topic name="Due Parts" url="Part_Returns/Due_Parts.htm" />
+  <topic name="Shipment Generated" url="Part_Returns/Shipment_Generated.htm" />
+</key>
+<key name="SMR" >
+  <topic name="Service Manager Response" url="Claims/Service_Manager_Response.htm" />
+</key>
+<key name="Stand-Alone Parts" >
+  <topic name="Major Component Registration" url="Claims/Major_Component_Registration.htm" />
+</key>
+<key name="Stock Inventory" >
+  <topic name="Inventory" url="Inventory/Inventory.htm" />
+  <topic name="Search Inventory" url="Inventory/Search_Inventory.htm" />
+</key>
+<key name="Supplier" >
+  <topic name="Manage Suppliers" url="Contract_Admin/Manage_Suppliers.htm" />
+  <topic name="View Supplier" url="Warranty_Admin/View_Supplier.htm" />
+</key>
+<key name="Supplier Contracts" >
+  <topic name="Maintain Supplier Contracts" url="Contract_Admin/Maintain_Supplier_Contracts.htm" />
+</key>
+<key name="Supplier Recovery" >
+  <topic name="Search Supplier Recovery Claims" url="Supplier_Recovery/Search_Supplier_Recovery_Claims.htm" />
+</key>
+<key name="Transfer" >
+  <topic name="Transfer/Re-process" url="Claims/Transfer_Re-process.htm" />
+</key>
+<key name="Travel Rates" >
+  <topic name="Travel Rates" url="Warranty_Admin/Travel_Rates.htm" />
+</key>
+<key name="Un-Scrap Inventories" >
+  <topic name="Scrap/Unscrap Inventories" url="Inventory/Scrap_Inventories.htm" />
+</key>
+<key name="Unit Serial Number" >
+  <topic name="Major Component Registration" url="Claims/Major_Component_Registration.htm" />
+</key>
+<key name="UOM" >
+  <topic name="UOM Mappings" url="Warranty_Admin/UOM_Mappings.htm" />
+</key>
+<key name="Upload Management" >
+  <topic name="Upload Management" url="Reports/Upload_Management.htm" />
+</key>
+<key name="User Availability" >
+  <topic name="Manage User Availability" url="Warranty_Admin/Manage_User_Availability.htm" />
+</key>
+<key name="User BU Mapping" >
+  <topic name="Manage User BU Mapping" url="Settings/Manage_User_BU_Mapping.htm" />
+</key>
+<key name="User Groups" >
+  <topic name="User Groups" url="Warranty_Admin/User_Groups.htm" />
+</key>
+<key name="User Management" >
+  <topic name="User Management" url="Settings/User_Management.htm" />
+</key>
+<key name="Validate" >
+  <topic name="Claim Validation" url="Claims/Claim_Validation.htm" />
+</key>
+
+</indexdata>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping SYSTEM
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="tavant.twms.domain.claim.payment.definition.modifiers">
+  <sql-query name="criteriaBasedValue">
+    <return alias="criteria_based_value" class="CriteriaBasedValue" />
+    <![CDATA[
+         select 
+          {criteria_based_value.*} from criteria_based_value 
+        where 
+          criteria_based_value.for_payment_variable=:variableId and 
+          
+    ]]>
+  </sql-query>
+</hibernate-mapping>

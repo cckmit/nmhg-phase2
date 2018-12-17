@@ -1,0 +1,20 @@
+Hi ${userName},<br/><br/> 
+
+Following Recovery claim/s was requested to be returned to NMHG but marked Cannot Ship by the Supplier
+<br/><br/>
+
+Supplier's (${supplierName})<br/><br/>
+
+Recovery Claim Number: ${recoveryClaimNumber}<br/><br/>
+
+Supplier Details:<br/><br/>
+Supplier Name: ${supplierName}<br/>
+Supplier Number: ${supplierNumber}<br/>
+Date on which recovery claim was requested to be returned to NMHG : ${returnDate}<br/>
+Date supplier indicated part did not ship as requested ${notifyDate}<br/><br/>
+
+You can sign-in to <a href="${url}">NMHG Warranty System</a> to respond to the claim.<br/><br/>
+
+Thank you.<br/><br/>
+
+Please note that this email is an automated notification. Any reply to this email will not be received.

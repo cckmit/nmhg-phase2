@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="miscellaneousParts.xml" extends="struts-twms-default">
+
+	<!-- Start of Summary Table Actions -->
+	<action name="showMiscellaneousParts"
+		  class="tavant.twms.web.admin.miscellaneousParts.ManageMiscellaneousParts">
+      	 <interceptor-ref name="adminParamsPrepareWithoutValidation" />	
+		  <result name="success">pages/secure/admin/miscellaneousParts/miscellaneousPartInboxView.jsp</result>
+	</action>
+			
+	<action name="miscellaneousPartBody" class="tavant.twms.web.admin.miscellaneousParts.ManageMiscellaneousParts"
+			method="tableBody">
+      	 <interceptor-ref name="adminParamsPrepare" />	
+		   <result name="success">pages/secure/home/json.jsp</result>		  
+	</action>
+	
+	<action name="miscellaneousPartDetail" class="tavant.twms.web.admin.miscellaneousParts.ManageMiscellaneousParts"
+	 		method="detail">  	
+      	 <interceptor-ref name="adminParamsPrepare" />	
+	     <result name="success">pages/secure/admin/miscellaneousParts/miscellaneousPartDetail.jsp</result>	     
+	</action>
+	
+	<action name="miscellaneousPartPreview" class="tavant.twms.web.admin.miscellaneousParts.ManageMiscellaneousParts"
+	 		method="detail">  	
+      	 <interceptor-ref name="adminParamsPrepare" />	
+	     <result name="success">pages/secure/admin/miscellaneousParts/miscellaneousPartPreview.jsp</result>	     
+	</action>	
+	
+	<action name="export_miscpart_to_excel" 	class="tavant.twms.web.admin.miscellaneousParts.ManageMiscellaneousParts" 
+			method="downloadListingData">
+		<interceptor-ref name="adminParamsPrepareWithoutValidation"/>
+	</action>
+	<!-- End of Summary Table Actions -->
+     
+    <action name="createMiscellaneousParts" class="tavant.twms.web.admin.miscellaneousParts.ManageMiscellaneousParts"  
+      method="createMiscellaneousParts">
+      	<interceptor-ref name="adminParamsPrepare" />	
+    	<result name="success">pages/secure/admin/miscellaneousParts/createMiscellaneousParts.jsp</result>
+    </action> 
+
+    <action name="saveMiscellaneousParts" class="tavant.twms.web.admin.miscellaneousParts.ManageMiscellaneousParts"  
+      method="saveMiscellaneousParts">
+      	<interceptor-ref name="adminParamsPrepare" />	
+	    <result name="input">pages/secure/admin/miscellaneousParts/createMiscellaneousParts.jsp</result>
+    	<result name="success">pages/secure/admin/success.jsp</result>
+    </action>    
+    
+    <action name="updateMiscellaneousPart" class="tavant.twms.web.admin.miscellaneousParts.ManageMiscellaneousParts"  
+      method="updateMiscellaneousPart">
+      	<interceptor-ref name="adminParamsPrepare" />	
+	    <result name="input">pages/secure/admin/miscellaneousParts/miscellaneousPartDetail.jsp</result>
+    	<result name="success">pages/secure/admin/success.jsp</result>
+    </action>
+    
+	 <action name="list_miscellaneousItems"
+		class="tavant.twms.web.admin.partreturns.AutoCompleteAction" method="listMiscellaneousItems">
+		<interceptor-ref name="adminParamsPrepare" />		
+	</action>
+
+	 <action name="addMiscellaneousPartConfiguration"
+		class="tavant.twms.web.admin.miscellaneousParts.ManageMiscellaneousPartsConfiguration" method="create" >
+		<interceptor-ref name="adminTwmsParamsPrepareRepeatTableParams" />
+		<result name="success">pages/secure/admin/miscellaneousParts/createMiscellaneousPartConfiguration.jsp</result>
+	</action>
+	
+	<action name="saveMiscellaneousPartConfiguration"
+		class="tavant.twms.web.admin.miscellaneousParts.ManageMiscellaneousPartsConfiguration" method="saveConfiguration" >
+  		<interceptor-ref name="adminTwmsParamsPrepareRepeatTableParams" />
+		<result name="input">pages/secure/admin/miscellaneousParts/createMiscellaneousPartConfiguration.jsp</result>
+		<result name="success">pages/secure/admin/success.jsp</result>
+	</action>
+
+	<action name="updateMiscellaneousPartConfiguration"
+		class="tavant.twms.web.admin.miscellaneousParts.ManageMiscellaneousPartsConfiguration" method="updateConfiguration" >
+		<interceptor-ref name="adminTwmsParamsPrepareRepeatTableParams" />
+		<result name="input">pages/secure/admin/miscellaneousParts/miscellaneousPartsConfigDetail.jsp</result>
+		<result name="success">pages/secure/admin/success.jsp</result>
+	</action>    
+    
+	<action name="activateMiscellaneousPartConfiguration"
+		class="tavant.twms.web.admin.miscellaneousParts.ManageMiscellaneousPartsConfiguration" method="toggleActiveConfiguration" >
+		<interceptor-ref name="adminTwmsParamsPrepareRepeatTableParams" />
+		<result name="input">pages/secure/admin/miscellaneousParts/miscellaneousPartsConfigDetail.jsp</result>
+		<result name="success">pages/secure/admin/success.jsp</result>
+	</action>    
+         <!-- Summary Table Actions -->
+	<action name="showMiscellaneousPartsConfigurations"
+		  class="tavant.twms.web.admin.miscellaneousParts.ManageMiscellaneousPartsConfiguration" method="execute">
+		  <interceptor-ref name="adminParamsPrepareWithoutValidation"/>		  
+		  <result name="success">pages/secure/admin/miscellaneousParts/miscellaneousPartsConfigInboxView.jsp</result>
+	</action>
+			
+	<action name="miscellaneousPartsConfigurationBody" class="tavant.twms.web.admin.miscellaneousParts.ManageMiscellaneousPartsConfiguration"
+			method="tableBody">
+           <interceptor-ref name="adminParamsPrepareWithoutValidation" />
+		   <result name="success">pages/secure/home/json.jsp</result>		  
+	</action>
+	
+	<action name="miscellaneousPartsConfigurationPreview" class="tavant.twms.web.admin.miscellaneousParts.ManageMiscellaneousPartsConfiguration"
+	  		method="showPreview">
+	   	 <interceptor-ref name="paramsPrepare" />
+	   	 <result name="success">pages/secure/admin/miscellaneousParts/miscellaneousPartsConfigPreview.jsp</result>
+	</action>
+	
+	<action name="list_description_for_misc_part" class="tavant.twms.web.admin.miscellaneousParts.ManageMiscellaneousPartsConfiguration"
+	  		method="getMiscPartDescription">
+	   	 <interceptor-ref name="adminParamsWithoutValidation" />
+	   	 <result name="success">pages/secure/home/json.jsp</result>
+	</action>	
+	
+	
+	<action name="miscellaneousPartsConfigurationDetail" class="tavant.twms.web.admin.miscellaneousParts.ManageMiscellaneousPartsConfiguration"
+	 		method="showDetail">  	
+	     <interceptor-ref name="paramsPrepare" />
+	     <result name="success">pages/secure/admin/miscellaneousParts/miscellaneousPartsConfigDetail.jsp</result>	     
+	     <result name="input">pages/error.jsp</result>	     
+	</action>
+
+	
+	<action name="downloadMiscCriteriaToExcel" 	class="tavant.twms.web.admin.miscellaneousParts.ManageMiscellaneousPartsConfiguration" method="downloadListingData">
+		<interceptor-ref name="adminParamsPrepareWithoutValidation"/>
+	</action>
+	<!-- End of Summary Table Actions -->
+     
+	
+	</package>
+</struts>	 
+	

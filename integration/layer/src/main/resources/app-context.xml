@@ -1,0 +1,484 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd"
+	default-autowire="byName">
+
+	<!-- components definitions -->
+	<bean id="hibernateTemplate"
+		class="org.springframework.orm.hibernate3.HibernateTemplate" />
+	<bean id="transactionTemplate"
+		class="org.springframework.transaction.support.TransactionTemplate" />
+		
+    <bean id="dealerInterfaceAuthenticationHandler"
+		class="tavant.twms.integration.layer.authentication.dealerinterfaces.DealerInterfaceAuthenticationHandler" />
+		
+	<bean id="claimSubmissionProcessor"
+		class="tavant.twms.integration.layer.component.global.dealerinterfaces.claimsubmission.ClaimSubmissionProcessor" />
+
+	<bean id="focSync"
+		class="tavant.twms.integration.layer.component.global.FocSync" />		
+	<bean id="unitServiceHistoryHandler"
+		class="tavant.twms.integration.layer.component.global.dealerinterfaces.unitservicehistory.UnitServiceHistoryHandler" />	
+	<bean id="globalItemSync"
+		class="tavant.twms.integration.layer.component.global.GlobalItemSync" />
+	<bean id="globalInstallBaseSync" 
+		class="tavant.twms.integration.layer.component.global.GlobalInstallBaseSync"/>
+	<bean id ="claimSubmissionTransformer"
+		class="tavant.twms.integration.layer.transformer.global.dealerinterfaces.claimsubmission.ClaimSubmissionTransformer"/>
+	<bean id ="travelDetailsCalculator"
+		class="tavant.twms.integration.layer.transformer.global.dealerinterfaces.claimsubmission.TravelDetailsCalculator"/>
+	<bean id ="batchClaimCostCategoryConfigurationDetails"
+		class="tavant.twms.integration.layer.transformer.global.dealerinterfaces.claimsubmission.BatchClaimCostCategoryConfigurationDetails"/>
+    <bean id="failureCodeSync"
+            class="tavant.twms.integration.layer.component.global.FailureCodeSync"/>
+    <!-- Noor : Adding GlobalCustomerSycn -->
+	<bean id="globalCustomerSync"
+		class="tavant.twms.integration.layer.component.global.GlobalCustomerSync" />
+    <bean id="bookingsValidator"
+          class="tavant.twms.integration.layer.component.global.InstallBase.BookingsValidator" />
+          
+          <bean id="installBaseValidator"
+          class="tavant.twms.integration.layer.component.global.InstallBase.InstallBaseValidator" />
+
+    <bean id="claimSubmissionHandler"
+		class="tavant.twms.integration.layer.component.global.dealerinterfaces.claimsubmission.ClaimSubmissionHandler"/>
+		
+   <bean id="claimSubmssionValidator"
+		class="tavant.twms.integration.layer.component.global.dealerinterfaces.claimsubmission.ClaimSubmssionValidator"/>
+
+	
+	<bean id="unitWarrantyRegistrationHandler"
+		class="tavant.twms.integration.layer.component.global.dealerinterfaces.unitwarrantyregistration.UnitWarrantyRegistrationHandler" />
+	
+	<bean id="unitWarrantyRegistrationTransformer"
+		class="tavant.twms.integration.layer.transformer.global.dealerinterfaces.unitwarrantyregistration.UnitWarrantyRegistrationTransformer" />
+	
+	<bean id="unitWarrantyRegistrationProcessor"
+		class="tavant.twms.integration.layer.component.global.dealerinterfaces.unitwarrantyregistration.UnitWarrantyRegistrationProcessor" />	
+		
+	<bean id ="registerMajorComponentTransformer"
+		class="tavant.twms.integration.layer.transformer.global.dealerinterfaces.registermajorcomponent.RegisterMajorComponentTransformer"/>
+		
+	<bean id="registerMajorComponentHandler"
+		class="tavant.twms.integration.layer.component.global.dealerinterfaces.registermajorcomponent.RegisterMajorComponentHandler"/>
+		
+	<bean id="syncOEMXReference"
+		class="tavant.twms.integration.layer.component.SyncOEMXReference" />
+
+	<bean id="processExtWarrantyPriceCheck"
+		class="tavant.twms.integration.layer.component.ProcessExtWarrantyPriceCheck" />
+	<bean id="processExtWarrantyDebitSubmission"
+		class="tavant.twms.integration.layer.component.ProcessExtWarrantyDebitSubmission" />
+	<bean id="processExtWarrantyDebitNotification"
+		class="tavant.twms.integration.layer.component.ProcessExtWarrantyDebitNotification" />
+	<bean id="processGlobalSupplierDebitNotification"
+		class="tavant.twms.integration.layer.component.global.ProcessGlobalSupplierDebitNotification" />
+	<bean id="processGlobalCreditNotification"
+		class="tavant.twms.integration.layer.component.global.ProcessGlobalCreditNotification" />
+	<bean id="processGlobalClaim"
+		class="tavant.twms.integration.layer.component.global.ProcessGlobalClaim" />
+	<bean id="processItalyClaimNotification"
+		class="tavant.twms.integration.layer.component.global.ProcessItalyClaimNotification" />
+	<bean id="processGlobalSupplierDebitSubmission"
+		class="tavant.twms.integration.layer.component.global.ProcessGlobalSupplierDebitSubmission" />	
+	<bean id="processGlobalExtWarrantyPurchaseNotification"
+		class="tavant.twms.integration.layer.component.global.ProcessGlobalExtWarrantyPurchaseNotification" />
+	<bean id="processGlobalPriceCheck"
+		class="tavant.twms.integration.layer.component.global.ProcessGlobalPriceCheck" />
+		
+   <bean id="globalSyncUser"
+		class="tavant.twms.integration.layer.component.global.GlobalSyncUser" />	
+	<bean id="globalTechnicianSync"
+		class="tavant.twms.integration.layer.component.global.GlobalTechnicianSync" />	
+		
+	<bean id="globalDealerBatchClaimSync"
+		class="tavant.twms.integration.layer.component.global.GlobalDealerBatchClaimSync" />	
+		
+		<bean id="globalBookingsInboundSync"
+		class="tavant.twms.integration.layer.component.global.GlobalBookingsInboundSync" />		
+		
+			<bean id="globalBookingsOutboundSync"
+		class="tavant.twms.integration.layer.component.global.GlobalBookingsOutboundSync" />						
+
+	<bean id="draftClaimPostUploadActivity" 
+		class="tavant.twms.integration.layer.quartz.jobs.DraftClaimPostUploadActivity" />
+
+	<bean id="currencyConvertor"
+		class="tavant.twms.integration.layer.util.CurrencyConvertor" />
+	<bean id="processGlobalExchangeRate"
+		class="tavant.twms.integration.layer.component.global.ProcessGlobalExchangeRate" />
+
+	<!-- transformer definitions -->
+	<bean id="syncResponseTransformer"
+		class="tavant.twms.integration.layer.transformer.SyncResponseTransformer" />
+	<bean id="serverResponseTransformer"
+		class="tavant.twms.integration.layer.transformer.ServerResponseTransformer" />
+	<bean id="extWarrantyPriceCheckResponseTransformer"
+		class="tavant.twms.integration.layer.transformer.ExtWarrantyPriceCheckResponseTransformer" />
+	<bean id="extWarrantyPriceCheckRequestTransformer"
+		class="tavant.twms.integration.layer.transformer.ExtWarrantyPriceCheckRequestTransformer" />
+	<bean id="oemXRefTransformer"
+		class="tavant.twms.integration.layer.transformer.SyncOEMXRefTransformer" />
+	<bean id="extWarrantyDebitNotificationTransformer"
+		class="tavant.twms.integration.layer.transformer.ExtWarrantyDebitNotificationTransformer" />
+	<bean id="globalPriceCheckResponseTransformer"
+		class="tavant.twms.integration.layer.transformer.global.GlobalPriceCheckResponseTransformer" />
+	<bean id="syncGlobalPriceCheckResponseTransformer"
+		class="tavant.twms.integration.layer.transformer.global.GlobalPriceCheckResponseTransformer" />
+	<bean id="focClaimTransformer"
+			class="tavant.twms.integration.layer.transformer.global.FocClaimTransformer" />
+			
+	<bean id="unitServiceHistoryTransformer"
+		class="tavant.twms.integration.layer.transformer.global.dealerinterfaces.unitservicehistory.UnitServiceHistoryTransformer" />
+	
+	<bean id="dealerInterfaceErrorConstants"
+                class="tavant.twms.integration.layer.constants.DealerInterfaceErrorConstants" />
+                
+    <bean id="itemSyncInterfaceErrorConstants"
+                class="tavant.twms.integration.layer.constants.ItemSyncInterfaceErrorConstants" />
+    <bean id="installBaseSyncInterfaceErrorConstants"
+                class="tavant.twms.integration.layer.constants.InstallBaseSyncInterfaceErrorConstants" />	
+    <bean id="userSyncSyncInterfaceErrorConstants"
+                class="tavant.twms.integration.layer.constants.UserSyncSyncInterfaceErrorConstants" />	
+    <bean id="bookingsInterfaceErrorConstants"
+                class="tavant.twms.integration.layer.constants.BookingsInterfaceErrorConstants" />	
+   <bean id="exchangeRateErrorConstants"
+                class="tavant.twms.integration.layer.constants.ExchangeRateErrorConstants" />			
+	
+	 <bean id="creditInterfaceErrorConstants"
+                class="tavant.twms.integration.layer.constants.CreditInterfaceErrorConstants" />
+	
+	<!--Outgoing calls from TWMS are made through integration bridge.-->
+	<bean id="integrationBridge"
+		class="tavant.twms.integration.layer.IntegrationBridgeImpl" />
+
+	<bean id="integrationServiceInterceptor"
+		class="tavant.twms.integration.layer.interceptor.IntegrationServiceInterceptor" />
+
+	<bean id="commonSyncProcessor"
+		class="tavant.twms.integration.layer.component.global.CommonSyncProcessor" />
+
+	<bean id="integrationService"
+		class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="proxyInterfaces">
+			<value>
+				tavant.twms.integration.layer.IntegrationService
+			</value>
+		</property>
+		<property name="interceptorNames">
+			<list>
+				<value>integrationServiceInterceptor</value>
+			</list>
+		</property>
+		<property name="target">
+			<bean id="integrationServiceImpl"
+				class="tavant.twms.integration.layer.IntegrationServiceImpl" />
+		</property>
+	</bean>
+
+	<!-- Used by Dozer -->
+	<bean id="mapper" class="net.sf.dozer.util.mapping.DozerBeanMapper"
+		scope="singleton">
+		<property name="mappingFiles">
+			<list>
+				<value>integration-dozer-mapping.xml</value>
+			</list>
+		</property>
+	</bean>
+	<bean id="integrationPropertiesBean"
+		class="tavant.twms.integration.layer.IntegrationPropertiesBean">
+		<property name="creditSubmitEnabled"
+			value="${processclaim.paymentservice.enabled}" />
+		<property name="priceCheckEnabled"
+			value="${pricecheck.externalservice.enabled}" />
+		<property name="priceCheckURL"
+			value="${priceCheck.webservice.url}" />
+		<property name="extWarrantyPriceCheckEnabled"
+			value="${extWarranty.pricecheck.enabled}" />
+		<property name="extWarrantyDebitSubmitEnabled"
+			value="${extWarranty.debitSubmission.enabled}" />
+		<property name="supplierDebitSubmitEnabled"
+			value="${supplier.debitSubmission.enabled}" />
+		<property name="extWarrantyPriceCheckURL"
+			value="${extWarranty.pricecheck.webservice.url}" />
+		<property name="extWarrantyDebitSubmitURL"
+			value="${extWarranty.debitSubmission.webservice.url}" />
+		<property name="supplierDebitSubmitURL"
+			value="${supplier.debitSubmission.webservice.url}" />
+		<property name="logicalId" value="${logicalId}" />
+		<property name="task" value="${task}" />
+		<property name="buName" value="${BUName}" />
+		
+		<property name="namespace" value="${wmNamespace}" /> 
+		<property name="ewSubmitMethod" value="${extWrntySubmitMethod}" />
+		<property name="ewSubmitInParam" value="${extWrntySubmitInParam}" />
+		<property name="ewSubmitOutParam" value="${extWrntySubmitOutParam}" />
+		
+		<property name="supplierDebitMethod" value="${supplierDebitMethod}" />
+		<property name="supplierDebitInParam" value="${supplierDebitInParam}" />
+		<property name="supplierDebitOutParam" value="${supplierDebitOutParam}" />
+		
+		<property name="priceChkMethod" value="${priceChkMethod}" />
+		<property name="priceChkInParam" value="${priceChkInParam}" />
+		<property name="priceChkOutParam" value="${priceChkOutParam}" />
+		
+		<property name="ewPriceChkMethod" value="${extWrntyPriceChkMethod}" />
+		<property name="ewPriceChkInParam" value="${extWrntyPriceChkInParam}" />
+		<property name="ewPriceChkOutParam" value="${extWrntyPriceChkOutParam}" />
+		
+		<!-- Added for Global Integration -->
+		<property name="logicalIdForTWMS" value="${twms.tavantwms}" />
+		<property name="taskIdForTWMS" value="${integration.backend.erp}" />
+		<property name="twmsToIntegrationServerURL" value="${twms.integration.server.url}" />
+		<property name="integrationServerMethod" value="${integrationServerMethod}" />
+		<property name="webmethodsUserName" value="${webservices.username}" />
+		<property name="webmethodsPassword" value="${webservices.password}" />		
+		<property name="logicalIdForItalyClaimNotification" value="${logicalIdForItalyClaimNotification}" />
+		<property name="bodIdForItalyClaimNotification" value="${bodIdForItalyClaimNotification}" />
+		<property name="taskIdForItalyClaimNotification" value="${taskIdForItalyClaimNotification}" />
+		<property name="logicalIdForCreditSubmission" value="${logicalIdForCreditSubmission}" />
+		<property name="taskIdForCreditSubmission" value="${taskIdForCreditSubmission}" />
+		<property name="bodIdForCreditSubmission" value="${bodIdForCreditSubmission}" />
+		<property name="interfaceNumberForCreditSubmission" value="${interfaceNumberForCreditSubmission}" />
+		<property name="logicalIdForPriceFetch" value="${logicalIdForPriceFetch}" />
+		<property name="bodIdIdForPriceFetch" value="${bodIdIdForPriceFetch}" />
+		<property name="taskIdForPriceFetch" value="${taskIdIdForPriceFetch}" />
+		<property name="priceFetchAciton" value="${pricecheck.webservice.action}" />
+	</bean>
+
+
+    <bean id="jbpmTimerProcessor" class="tavant.twms.jbpm.infra.JbpmScheduler"/>
+
+    <bean id="jbpmTimerJobTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail" ref="jbpmTimerJobDetail"/>
+        <property name="cronExpression" value="${jbpmTimerJobCronExpression}"/>
+    </bean>
+
+    <bean id="jbpmTimerJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject" ref="jbpmTimerProcessor"/>
+        <property name="targetMethod" value="executeTimers"/>
+        <property name="concurrent" value="false" />
+    </bean>
+
+	<bean id="draftClaimUploadJobTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="draftClaimUploadJobDetail" />
+		<property name="cronExpression" value="${draftClmUldJobCronExpression}"/>
+	</bean>
+
+	<bean id="draftClaimUploadJobDetail"
+		class="org.springframework.scheduling.quartz.JobDetailBean">
+		<property name="jobClass" value="tavant.twms.integration.layer.quartz.jobs.DraftClaimUploadJob" />
+		<property name="jobDataAsMap">
+            <map>
+				<entry key="maxNoOfRetries" value="${draftClaimUploadMaxRetries}"/>
+			</map>
+		</property>
+	</bean>
+	
+	<bean id="dataUploadJobTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="dataUploadJobDetail" />
+		<property name="cronExpression" value="${dataUploadJobCronExpression}"/>
+	</bean>
+	
+	<bean id="dataUploadJobDetail"
+		class="org.springframework.scheduling.quartz.JobDetailBean">
+		<property name="jobClass" value="tavant.twms.integration.layer.quartz.jobs.UploadDataJob" />
+		<property name="jobDataAsMap">
+            <map>
+				<entry key="maxNoOfRetries" value="${dataUploadMaxRetries}"/>
+			</map>
+		</property>
+	</bean>
+	<!-- Techncian configurations -->
+	<bean id ="certificateService" class="tavant.twms.domain.orgmodel.CertificateServiceImpl"/>
+	<bean id="coreCertificationRepository" class="tavant.twms.domain.orgmodel.CoreCertificationRepositoryImpl" />
+   	<bean id="seriesCertificationRepository" class="tavant.twms.domain.orgmodel.SeriesCertificationRepositoryImpl" />
+   	<!-- end -->
+	<bean id="installBaseSyncRetryTaskTrigger"
+		class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="installBaseSyncRetryTaskDetail" />
+		<property name="cronExpression" value="${installBaseSyncRetryCronExpression}" />
+	</bean>
+	
+	<!-- <bean id="itemSyncTaskDetail"
+		class="org.springframework.scheduling.quartz.JobDetailBean">
+		<property name="jobClass" value="tavant.twms.integration.layer.quartz.jobs.ItemSyncTask"/>
+		<property name="jobDataAsMap">
+            <map>
+				<entry key="maxNoOfRetries" value="${itemSyncMaxRetries}"/>
+			</map>
+		</property>		
+	</bean> -->
+	
+	<bean id="itemSyncRetryTaskDetail"
+		class="org.springframework.scheduling.quartz.JobDetailBean">
+		<property name="jobClass" value="tavant.twms.integration.layer.quartz.jobs.ItemSyncRetryTask"/>
+		<property name="jobDataAsMap">
+            <map>
+				<entry key="maxNoOfRetries" value="${retryTaskSyncMaxRetries}"/>
+			</map>
+		</property>		
+	</bean>
+	
+	  <bean id="installBaseSyncRetryTaskDetail"
+		class="org.springframework.scheduling.quartz.JobDetailBean">
+		<property name="jobClass" value="tavant.twms.integration.layer.quartz.jobs.InstallBaseSyncRetryTask"/>
+		<property name="jobDataAsMap">
+            <map>
+				<entry key="maxNoOfRetries" value="${retryTaskSyncMaxRetries}"/>
+			</map>
+		</property>		
+	</bean>
+	
+	<bean id="supplierDebitSubmissionTrigger"
+		class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="supplierDebitJobDetail" />
+		<property name="cronExpression" value="${supplierDebitSubmissionCronExpression}" />
+	</bean>
+
+	<bean id="supplierDebitJobDetail"
+		class="org.springframework.scheduling.quartz.JobDetailBean">
+		<property name="jobClass" value="tavant.twms.integration.layer.quartz.jobs.SupplierDebitSubmissionJob"/>
+		<property name="jobDataAsMap">
+            <map>
+				<entry key="maxNoOfRetries" value="${supDebitMaxRetries}"/>
+			</map>
+		</property>		
+	</bean>
+	
+	<bean id="ewDebitSubmissionTrigger"
+		class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="ewDebitJobDetail" />
+		<property name="cronExpression" value="${ewDebitSubmissionCronExpression}"/>
+	</bean>
+
+	<bean id="ewDebitJobDetail"
+		class="org.springframework.scheduling.quartz.JobDetailBean">
+		<property name="jobClass" value="tavant.twms.integration.layer.quartz.jobs.ExtendedWarrantyDebitSubmissionJob"/>
+		<property name="jobDataAsMap">
+            <map>
+				<entry key="maxNoOfRetries" value="${extWrntyDebitMaxRetries}"/>
+			</map>
+		</property>
+	</bean>
+	
+	<bean id="supportAutomationTaskTrigger"
+		class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="supportAutomationTaskDetail" />
+		<property name="cronExpression" value="${supportTaskCronExpression}"/>
+	</bean>
+
+	<bean id="supportAutomationTaskDetail"
+		class="org.springframework.scheduling.quartz.JobDetailBean">
+		<property name="jobClass" value="tavant.twms.integration.layer.quartz.jobs.SupportAutomationTask"/>
+	</bean>
+
+	<bean id="buildClaimXml"
+		class="tavant.twms.integration.layer.component.BuildClaimXml" />
+
+	<bean id="authenticationHandler"
+		class="tavant.twms.integration.layer.authentication.AuthenticationHandler" />
+
+	<bean id="supportAutomationTaskService"
+			class="tavant.twms.domain.upload.SupportAutomationTaskServiceImpl" />
+
+	<bean id="dealerIntegrationServiceProxy"
+		class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="proxyInterfaces">
+			<value>
+				tavant.twms.integration.layer.DealerIntegrationService
+			</value>
+		</property>
+		<property name="target">
+			<bean id="dealerIntegrationServiceImpl"
+				class="tavant.twms.integration.layer.DealerIntegrationServiceImpl" />
+		</property>
+	</bean>
+		
+    <bean id="uploadSyncInterfaceErrorConstants"
+        class="tavant.twms.integration.layer.constants.UploadSyncInterfaceErrorConstants" />
+	<bean id="uploadService" 
+		class="tavant.twms.integration.layer.upload.UploadService" />
+    <bean id="customerSyncService" 
+		class="tavant.twms.integration.layer.customer.CustomerSyncService" >
+		 <property name="emeaMasterSupplier" value="${emeaMasterSupplierLogin}"/>
+		 <property name="amerMasterSupplier" value="${amerMasterSupplierLogin}"/>
+		</bean>
+	<bean id="customerSyncTransformer" 
+		class="tavant.twms.integration.layer.customer.sync.CustomerSyncTransformer" />
+	<bean id="customerUploadTransformer" 
+		class="tavant.twms.integration.layer.customer.upload.CustomerUploadTransformer" />
+	<bean id="customerValidator" 
+		class="tavant.twms.integration.layer.customer.CustomerValidator" />
+    <bean id="failureCodeSyncService"
+		class="tavant.twms.integration.layer.failurecode.FailureCodeSyncService" />
+	<bean id="failureCodeSyncTransformer"
+		class="tavant.twms.integration.layer.failurecode.sync.FailureCodeSyncTransformer" />
+	<bean id="failureCodeValidator"
+		class="tavant.twms.integration.layer.failurecode.FailureCodeValidator" />
+		<!-- webservice template configurations statrs here -->
+
+    <bean id="messageFactory" class="org.springframework.ws.soap.saaj.SaajSoapMessageFactory">
+        <property name="messageFactory">
+            <bean class="com.sun.xml.internal.messaging.saaj.soap.ver1_1.SOAPMessageFactory1_1Impl"/>
+        </property>    
+    </bean>
+
+    <!--<bean id="webServiceTemplate" class="org.springframework.ws.client.core.WebServiceTemplate">-->
+    <bean id="customWebServiceTemplate" class="tavant.twms.integration.layer.CustomWebServiceTemplate" >
+        <constructor-arg ref="messageFactory"/>
+        <property name="messageSender">
+            <bean class="org.springframework.ws.transport.http.CommonsHttpMessageSender">
+                <property name="credentials">
+                    <bean class="org.apache.commons.httpclient.UsernamePasswordCredentials">
+                        <constructor-arg value="${pricefetchServiceUsername}"/>
+                        <constructor-arg value="${pricefecthSerivicePassword}"/>
+                    </bean>
+                </property>
+            </bean>
+        </property>
+        <property name="interceptors">
+            <list>
+                <ref local="xwsSecurityInterceptor"/>
+            </list>
+        </property>
+    </bean>
+
+    <!--<bean id="customWebServiceTemplate" class="tavant.twms.integration.layer.CustomWebServiceTemplate" />-->
+
+	<bean id="xwsSecurityInterceptor"
+          class="org.springframework.ws.soap.security.xwss.XwsSecurityInterceptor">
+        <property name="policyConfiguration" value="classpath:securityPolicy.xml"/>
+       <property name="callbackHandlers">
+            <list>
+                <ref bean="callbackHandler"/>
+            </list>
+        </property> 
+    </bean>
+    
+   <!--  <bean id="callbackHandler" class="tavant.twms.integration.server.quartz.job.PriceFetchCallbackHandler">
+         <property name="username" value="sign.in@tavant.com"></property>
+         <property name="password" value="F5phUXub"></property>
+            <props>
+                <prop key="mojo">F5phUXub</prop>
+                <prop key="user"></prop>
+            </props>
+        </property> 
+    </bean> -->
+    <bean id="callbackHandler" class="org.springframework.ws.soap.security.xwss.callback.SimplePasswordValidationCallbackHandler">
+         <property name="users">
+            <props>
+                <prop key="mojo">F5phUXub</prop>
+                <prop key="user">sign.in@tavant.com</prop>
+            </props>
+        </property> 
+    </bean>
+    <!-- end here -->
+    <bean id="googleMapDistanceCalculater" class="tavant.twms.integration.layer.util.GoogleMapDistanceCalculater" >
+        <property name="clientId" value="${googleMapsAPI.business.clientId}" /> 
+        <property name="cryptoKey" value="${googleMapsAPI.business.cryptoKey}" />        
+    </bean> 
+    
+</beans>

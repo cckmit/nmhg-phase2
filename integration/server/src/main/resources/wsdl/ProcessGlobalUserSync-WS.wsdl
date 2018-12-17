@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://external.server.integration.twms.tavant" 
+                  xmlns:impl="http://external.server.integration.twms.tavant" 
+                  xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" 
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
+                  xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" 
+                  xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <wsdl:message name="syncRequest">
+        <wsdl:part name="in0" type="xsd:string"/>
+    </wsdl:message>
+    <wsdl:message name="syncResponse">
+        <wsdl:part name="syncReturn" type="xsd:string"/>
+    </wsdl:message>
+    <wsdl:portType name="ProcessGlobalUserSync">
+        <wsdl:operation name="sync" parameterOrder="in0">
+            <wsdl:input message="impl:syncRequest" name="syncRequest"/>
+            <wsdl:output message="impl:syncResponse" name="syncResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="ProcessGlobalUserSync-WSSoapBinding" type="impl:ProcessGlobalUserSync">
+        <wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="sync">
+            <wsdlsoap:operation soapAction=""/>
+            <wsdl:input name="syncRequest">
+                <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://external.server.integration.twms.tavant" use="encoded"/>
+            </wsdl:input>
+            <wsdl:output name="syncResponse">
+                <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://external.server.integration.twms.tavant" use="encoded"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="ProcessGlobalUserSync-WS">
+        <wsdl:port binding="impl:ProcessGlobalUserSync-WSSoapBinding" name="ProcessGlobalUserSync-WS">
+            <wsdlsoap:address location="http://server:9090/services/integration/ProcessGlobalUserSync-WS"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

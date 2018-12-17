@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="http://www.tavant.com/extwarranty"
+	xmlns="http://www.tavant.com/extwarranty"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include
+		schemaLocation="../Resources/Nouns/ExtWarrantyApplicationAreaType.xsd" />
+	<xs:include
+		schemaLocation="../Resources/Nouns/ExtWarrantyPlans.xsd" />		
+
+	<xs:element name="ProcessIriInvoice">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="ApplicationArea"
+					type="ApplicationAreaType" />
+				<xs:element name="DataArea"
+					type="ExtWarrantyDebitSubmissionDataAreaType" />
+			</xs:sequence>
+			<xs:attribute name="lang" type="xs:string" use="required" />
+			<xs:attribute name="evnironment" type="xs:string"
+				use="required" />
+			<xs:attribute name="revision" type="xs:decimal"
+				use="required" />
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="ExtWarrantyDebitSubmissionDataAreaType">
+		<xs:sequence>
+			<xs:element name="IriInvoice" type="IRInvoiceType" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="IRInvoiceType">
+		<xs:sequence>
+			<xs:element name="DealerNumber" type="xs:string" />
+			<xs:element name="UserItemType" type="xs:string" />
+			<xs:element name="ItemNumber" type="xs:string" />
+			<xs:element name="SerialNumber" type="xs:string" />
+			<xs:element name="Description" type="xs:string" />
+			<xs:element name="PurchaseDate" type="xs:date" />
+			<xs:element name="PlansList" type="PlansListType"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

@@ -1,0 +1,461 @@
+<?xml version="1.0" encoding="UTF-8"  ?>
+<!-- Created with iReport - A designer for JasperReports -->
+<!DOCTYPE jasperReport PUBLIC "//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+<jasperReport
+		 name="claimPaymentDisplay"
+		 columnCount="1"
+		 printOrder="Vertical"
+		 orientation="Portrait"
+		 pageWidth="850"
+		 pageHeight="1400"
+		 columnWidth="790"
+		 columnSpacing="0"
+		 leftMargin="30"
+		 rightMargin="30"
+		 topMargin="20"
+		 bottomMargin="20"
+		 whenNoDataType="NoPages"
+		 isTitleNewPage="false"
+		 isSummaryNewPage="false">
+	<property name="ireport.zoom" value="1.948717100000007" />
+	<property name="ireport.x" value="0" />
+	<property name="ireport.y" value="0" />
+	<property name="ireport.scriptlethandling" value="0" />
+	<property name="ireport.encoding" value="UTF-8" />
+	<import value="java.util.*" />
+	<import value="net.sf.jasperreports.engine.*" />
+	<import value="net.sf.jasperreports.engine.data.*" />
+
+	<parameter name="reportDirectory" isForPrompting="true" class="java.io.File">
+		<defaultValueExpression ><![CDATA[$P{reportDirectory}]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_DIR" isForPrompting="true" class="java.lang.String">
+		<defaultValueExpression ><![CDATA[".\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="stateMondate_Enabled" isForPrompting="true" class="java.lang.String"/>
+	<parameter name="warranty_Amount" isForPrompting="true" class="java.lang.String"/>
+	<parameter name="cp_Amount" isForPrompting="true" class="java.lang.String"/>
+	<parameter name="internalUser.toString()" isForPrompting="false" class="java.lang.String">
+		<defaultValueExpression ><![CDATA[$F{internalUser.toString()}]]></defaultValueExpression>
+	</parameter>
+	<parameter name="claim.state.state" isForPrompting="false" class="java.lang.String">
+		<defaultValueExpression ><![CDATA[$F{claim.state.state}]]></defaultValueExpression>
+	</parameter>
+	<parameter name="claim.payment.stateMandateActive" isForPrompting="false" class="java.lang.Boolean">
+		<defaultValueExpression ><![CDATA[$F{claim.payment.stateMandateActive}]]></defaultValueExpression>
+	</parameter>
+	<parameter name="claim.isGoodWillPolicy()" isForPrompting="false" class="java.lang.Boolean">
+		<defaultValueExpression ><![CDATA[$F{claim.isGoodWillPolicy()}]]></defaultValueExpression>
+	</parameter>
+
+	<field name="name" class="java.lang.String"/>
+	<field name="value.toString()" class="java.lang.String"/>
+	<field name="cpValue.toString()" class="java.lang.String"/>
+	<field name="bold.toString()" class="java.lang.String"/>
+	<field name="newLine.toString()" class="java.lang.String"/>
+	<field name="firstLine.toString()" class="java.lang.String"/>
+	<field name="claimedValue.toString()" class="java.lang.String"/>
+	<field name="advisorEnabled.toString()" class="java.lang.String"/>
+	<field name="askedQtyHrs.toString()" class="java.lang.String"/>
+	<field name="acceptedQtyHrs.toString()" class="java.lang.String"/>
+	<field name="percentageAcceptance.toString()" class="java.lang.String"/>
+	<field name="currencyCode.toString()" class="java.lang.String"/>
+	<field name="stateMondateAmount.toString()" class="java.lang.String"/>
+	<field name="reviwedAmount.toString()" class="java.lang.String"/>
+	<field name="totalAcceptStateMdtChkbox.toString()" class="java.lang.String"/>
+	<field name="totalAcceptanceChkbox.toString()" class="java.lang.String"/>
+	<field name="totalClaimAmountCheckBox.toString()" class="java.lang.String"/>
+	<field name="stateMondateEnabled.toString()" class="java.lang.String"/>
+	<field name="internalUser.toString()" class="java.lang.String"/>
+	<field name="claim.getStateMandate()" class="java.lang.Object"/>
+	<field name="claim.isGoodWillPolicy()" class="java.lang.Boolean"/>
+	<field name="claim.state.state" class="java.lang.String"/>
+	<field name="claim.payment.stateMandateActive" class="java.lang.Boolean"/>
+
+		<background>
+			<band height="2"  isSplitAllowed="true" >
+			</band>
+		</background>
+		<title>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</title>
+		<pageHeader>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</pageHeader>
+		<columnHeader>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</columnHeader>
+		<detail>
+			<band height="30"  isSplitAllowed="true" >
+				<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						mode="Transparent"
+						x="607"
+						y="0"
+						width="75"
+						height="30"
+						key="textField-2"
+						positionType="Float"
+						isRemoveLineWhenBlank="true">
+							<printWhenExpression><![CDATA[$F{bold.toString()}=="false"&&($P{claim.state.state}.equalsIgnoreCase("Accepted and Closed")||$P{claim.state.state}.equalsIgnoreCase("Denied and Closed")||$P{claim.state.state}.equalsIgnoreCase("Closed")||$P{internalUser.toString()}=="true")?Boolean.TRUE:Boolean.FALSE]]></printWhenExpression>
+						</reportElement>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle" lineSpacing="Single">
+						<font pdfFontName="Helvetica" isBold="false"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{currencyCode.toString()}==null ?"":$F{currencyCode.toString()}+$F{reviwedAmount.toString()}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						mode="Transparent"
+						x="20"
+						y="0"
+						width="150"
+						height="30"
+						key="textField-3"
+						positionType="Float"
+						isRemoveLineWhenBlank="true">
+							<printWhenExpression><![CDATA[$F{bold.toString()}=="true"? Boolean.TRUE : Boolean.FALSE]]></printWhenExpression>
+						</reportElement>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle" lineSpacing="Single">
+						<font pdfFontName="Helvetica-Bold" isBold="true"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{name}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						mode="Transparent"
+						x="355"
+						y="0"
+						width="70"
+						height="30"
+						key="textField-6"
+						positionType="Float"
+						isRemoveLineWhenBlank="true">
+							<printWhenExpression><![CDATA[$F{bold.toString()}=="false"&&($P{claim.state.state}.equalsIgnoreCase("Accepted and Closed")||$P{claim.state.state}.equalsIgnoreCase("Denied and Closed")||$P{claim.state.state}.equalsIgnoreCase("Closed")||$P{internalUser.toString()}=="true")?Boolean.TRUE:Boolean.FALSE]]></printWhenExpression>
+						</reportElement>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle" lineSpacing="Single">
+						<font pdfFontName="Helvetica" isBold="false"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{currencyCode.toString()}==null ?"":$F{currencyCode.toString()}+$F{claimedValue.toString()}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						mode="Transparent"
+						x="215"
+						y="0"
+						width="65"
+						height="30"
+						key="textField"
+						positionType="Float"
+						isRemoveLineWhenBlank="true">
+							<printWhenExpression><![CDATA[$F{bold.toString()}=="true"&&($P{claim.state.state}.equalsIgnoreCase("Accepted and Closed")||$P{claim.state.state}.equalsIgnoreCase("Denied and Closed")||$P{claim.state.state}.equalsIgnoreCase("Closed")||$P{internalUser.toString()}=="true")?Boolean.TRUE:Boolean.FALSE]]></printWhenExpression>
+						</reportElement>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle" lineSpacing="Single">
+						<font pdfFontName="Helvetica-Bold" isBold="true"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{askedQtyHrs.toString()}==null ?"":$F{askedQtyHrs.toString()}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						mode="Transparent"
+						x="280"
+						y="0"
+						width="75"
+						height="30"
+						key="textField-10"
+						positionType="Float"
+						isRemoveLineWhenBlank="true">
+							<printWhenExpression><![CDATA[$F{bold.toString()}=="false"&&($P{claim.state.state}.equalsIgnoreCase("Accepted and Closed")||$P{claim.state.state}.equalsIgnoreCase("Denied and Closed")||$P{claim.state.state}.equalsIgnoreCase("Closed")||$P{internalUser.toString()}=="true")?Boolean.TRUE:Boolean.FALSE]]></printWhenExpression>
+						</reportElement>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle" lineSpacing="Single">
+						<font pdfFontName="Helvetica" isBold="false"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{currencyCode.toString()}==null?"":$F{currencyCode.toString()}+$F{claimedValue.toString()}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						mode="Transparent"
+						x="512"
+						y="0"
+						width="75"
+						height="30"
+						key="textField-11"
+						positionType="Float"
+						isRemoveLineWhenBlank="true">
+							<printWhenExpression><![CDATA[$F{bold.toString()}=="false"&&($P{claim.state.state}.equalsIgnoreCase("Accepted and Closed")||$P{claim.state.state}.equalsIgnoreCase("Denied and Closed")||$P{claim.state.state}.equalsIgnoreCase("Closed")||$P{internalUser.toString()}=="true")?Boolean.TRUE:Boolean.FALSE]]></printWhenExpression>
+						</reportElement>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle" lineSpacing="Single">
+						<font pdfFontName="Helvetica" isBold="false"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{percentageAcceptance.toString()}==null ?"":$F{percentageAcceptance.toString()}+"%"]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						mode="Transparent"
+						x="440"
+						y="0"
+						width="50"
+						height="30"
+						key="textField-12"
+						positionType="Float"
+						isRemoveLineWhenBlank="true">
+							<printWhenExpression><![CDATA[$F{bold.toString()}=="true"&&($P{claim.state.state}.equalsIgnoreCase("Accepted and Closed")||$P{claim.state.state}.equalsIgnoreCase("Denied and Closed")||$P{claim.state.state}.equalsIgnoreCase("Closed")||$P{internalUser.toString()}=="true")?Boolean.TRUE:Boolean.FALSE]]></printWhenExpression>
+						</reportElement>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+						<font pdfFontName="Helvetica-Bold" isBold="true"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{askedQtyHrs.toString()}==null ?"":$F{askedQtyHrs.toString()}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						mode="Transparent"
+						x="280"
+						y="0"
+						width="75"
+						height="30"
+						key="textField-13"
+						positionType="Float"
+						isRemoveLineWhenBlank="true">
+							<printWhenExpression><![CDATA[$F{bold.toString()}=="true"&&($P{claim.state.state}.equalsIgnoreCase("Accepted and Closed")||$P{claim.state.state}.equalsIgnoreCase("Denied and Closed")||$P{claim.state.state}.equalsIgnoreCase("Closed")||$P{internalUser.toString()}=="true")?Boolean.TRUE:Boolean.FALSE]]></printWhenExpression>
+						</reportElement>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle" lineSpacing="Single">
+						<font pdfFontName="Helvetica-Bold" isBold="true"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{currencyCode.toString()}==null?"":$F{currencyCode.toString()}+$F{claimedValue.toString()}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						mode="Transparent"
+						x="355"
+						y="0"
+						width="70"
+						height="30"
+						key="textField-14"
+						positionType="Float"
+						isRemoveLineWhenBlank="true">
+							<printWhenExpression><![CDATA[$F{bold.toString()}=="true"&&($P{claim.state.state}.equalsIgnoreCase("Accepted and Closed")||$P{claim.state.state}.equalsIgnoreCase("Denied and Closed")||$P{claim.state.state}.equalsIgnoreCase("Closed")||$P{internalUser.toString()}=="true")?Boolean.TRUE:Boolean.FALSE]]></printWhenExpression>
+						</reportElement>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle" lineSpacing="Single">
+						<font pdfFontName="Helvetica-Bold" isBold="true"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{currencyCode.toString()}==null ?"":$F{currencyCode.toString()}+$F{value.toString()}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						mode="Transparent"
+						x="0"
+						y="0"
+						width="150"
+						height="30"
+						key="textField-15"
+						positionType="Float"
+						isRemoveLineWhenBlank="true">
+							<printWhenExpression><![CDATA[$F{bold.toString()}=="false" ? Boolean.TRUE : Boolean.FALSE]]></printWhenExpression>
+						</reportElement>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle" lineSpacing="Single">
+						<font pdfFontName="Helvetica" isBold="false"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{name}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						mode="Transparent"
+						x="215"
+						y="0"
+						width="65"
+						height="30"
+						key="textField-16"
+						positionType="Float"
+						isRemoveLineWhenBlank="true">
+							<printWhenExpression><![CDATA[$F{bold.toString()}=="false"&&($P{claim.state.state}.equalsIgnoreCase("Accepted and Closed")||$P{claim.state.state}.equalsIgnoreCase("Denied and Closed")||$P{claim.state.state}.equalsIgnoreCase("Closed")||$P{internalUser.toString()}=="true")?Boolean.TRUE:Boolean.FALSE]]></printWhenExpression>
+						</reportElement>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle" lineSpacing="Single">
+						<font pdfFontName="Helvetica" isBold="false"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{askedQtyHrs.toString()}==null ?"":$F{askedQtyHrs.toString()}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						mode="Transparent"
+						x="440"
+						y="0"
+						width="50"
+						height="30"
+						key="textField-17"
+						positionType="Float"
+						isRemoveLineWhenBlank="true">
+							<printWhenExpression><![CDATA[$F{bold.toString()}=="false"&&($P{claim.state.state}.equalsIgnoreCase("Accepted and Closed")||$P{claim.state.state}.equalsIgnoreCase("Denied and Closed")||$P{claim.state.state}.equalsIgnoreCase("Closed")||$P{internalUser.toString()}=="true")?Boolean.TRUE:Boolean.FALSE]]></printWhenExpression>
+						</reportElement>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+						<font pdfFontName="Helvetica" isBold="false"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{askedQtyHrs.toString()}==null ?"":$F{askedQtyHrs.toString()}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						mode="Transparent"
+						x="512"
+						y="0"
+						width="75"
+						height="30"
+						key="textField-18"
+						positionType="Float"
+						isRemoveLineWhenBlank="true">
+							<printWhenExpression><![CDATA[$F{bold.toString()}=="true"&&($P{claim.state.state}.equalsIgnoreCase("Accepted and Closed")||$P{claim.state.state}.equalsIgnoreCase("Denied and Closed")||$P{claim.state.state}.equalsIgnoreCase("Closed")||$P{internalUser.toString()}=="true")?Boolean.TRUE:Boolean.FALSE]]></printWhenExpression>
+						</reportElement>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle" lineSpacing="Single">
+						<font pdfFontName="Helvetica-Bold" isBold="true"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{percentageAcceptance.toString()}==null ?" ":($F{percentageAcceptance.toString()}+"%")]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						mode="Transparent"
+						x="607"
+						y="0"
+						width="75"
+						height="30"
+						key="textField-19"
+						positionType="Float"
+						isRemoveLineWhenBlank="true">
+							<printWhenExpression><![CDATA[$F{bold.toString()}=="true"&&($P{claim.state.state}.equalsIgnoreCase("Accepted and Closed")||$P{claim.state.state}.equalsIgnoreCase("Denied and Closed")||$P{claim.state.state}.equalsIgnoreCase("Closed")||$P{internalUser.toString()}=="true")?Boolean.TRUE:Boolean.FALSE]]></printWhenExpression>
+						</reportElement>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle" lineSpacing="Single">
+						<font pdfFontName="Helvetica-Bold" isBold="true"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{currencyCode.toString()}==null ?"":$F{currencyCode.toString()}+$F{reviwedAmount.toString()}]]></textFieldExpression>
+				</textField>
+				<line direction="BottomUp">
+					<reportElement
+						mode="Transparent"
+						x="20"
+						y="29"
+						width="640"
+						height="0"
+						key="line-1"
+						positionType="Float"
+						isRemoveLineWhenBlank="true">
+							<printWhenExpression><![CDATA[$F{bold.toString()}=="true"&&$F{newLine.toString()}=="true"?Boolean.TRUE:Boolean.FALSE]]></printWhenExpression>
+						</reportElement>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<image  evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						mode="Transparent"
+						x="592"
+						y="14"
+						width="8"
+						height="8"
+						key="image-2"
+						positionType="Float"
+						isRemoveLineWhenBlank="true">
+							<printWhenExpression><![CDATA[$F{totalClaimAmountCheckBox.toString()}.trim().equals("Total Claim Amount")&&$P{internalUser.toString()}=="true"?Boolean.TRUE :Boolean.FALSE]]></printWhenExpression>
+						</reportElement>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<graphicElement stretchType="NoStretch"/>
+					<imageExpression class="java.lang.String"><![CDATA[$F{totalClaimAmountCheckBox.toString()}.trim().equals("Total Claim Amount")&&$F{totalAcceptanceChkbox.toString()}=="true"?$P{reportDirectory}.getCanonicalPath() + java.io.File.separator + "checkedcheckBox.jpg" :$P{reportDirectory}.getCanonicalPath() + java.io.File.separator + "checkbox.PNG"]]></imageExpression>
+				</image>
+				<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						mode="Transparent"
+						x="580"
+						y="0"
+						width="70"
+						height="30"
+						key="textField-26"
+						positionType="Float"
+						isRemoveLineWhenBlank="true">
+							<printWhenExpression><![CDATA[$P{internalUser.toString()}=="false"&&$F{bold.toString()}=="true"&&(!($P{claim.state.state}.equalsIgnoreCase("Accepted and Closed")||$P{claim.state.state}.equalsIgnoreCase("Denied and Closed")||$P{claim.state.state}.equalsIgnoreCase("Closed")))?Boolean.TRUE:Boolean.FALSE]]></printWhenExpression>
+						</reportElement>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle" lineSpacing="Single">
+						<font pdfFontName="Helvetica" isBold="false"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{currencyCode.toString()}==null ?"":$F{currencyCode.toString()}+$F{value.toString()}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						mode="Transparent"
+						x="380"
+						y="0"
+						width="65"
+						height="30"
+						key="textField-27"
+						positionType="Float"
+						isRemoveLineWhenBlank="true">
+							<printWhenExpression><![CDATA[$P{internalUser.toString()}=="false"&&$F{bold.toString()}=="false"&&(!($P{claim.state.state}.equalsIgnoreCase("Accepted and Closed")||$P{claim.state.state}.equalsIgnoreCase("Denied and Closed")||$P{claim.state.state}.equalsIgnoreCase("Closed")))?Boolean.TRUE:Boolean.FALSE]]></printWhenExpression>
+						</reportElement>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle" lineSpacing="Single">
+						<font pdfFontName="Helvetica" isBold="false"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{askedQtyHrs.toString()}==null ?"":$F{askedQtyHrs.toString()}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						mode="Transparent"
+						x="380"
+						y="0"
+						width="65"
+						height="30"
+						key="textField-28"
+						positionType="Float"
+						isRemoveLineWhenBlank="true">
+							<printWhenExpression><![CDATA[$P{internalUser.toString()}=="false"&&$F{bold.toString()}=="true"&&(!($P{claim.state.state}.equalsIgnoreCase("Accepted and Closed")||$P{claim.state.state}.equalsIgnoreCase("Denied and Closed")||$P{claim.state.state}.equalsIgnoreCase("Closed")))?Boolean.TRUE:Boolean.FALSE]]></printWhenExpression>
+						</reportElement>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle" lineSpacing="Single">
+						<font pdfFontName="Helvetica" isBold="false"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{askedQtyHrs.toString()}==null ?"":$F{askedQtyHrs.toString()}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						mode="Transparent"
+						x="580"
+						y="0"
+						width="70"
+						height="30"
+						key="textField-29"
+						positionType="Float"
+						isRemoveLineWhenBlank="true">
+							<printWhenExpression><![CDATA[$P{internalUser.toString()}=="false"&&$F{bold.toString()}=="false"&&(!($P{claim.state.state}.equalsIgnoreCase("Accepted and Closed")||$P{claim.state.state}.equalsIgnoreCase("Denied and Closed")||$P{claim.state.state}.equalsIgnoreCase("Closed")))?Boolean.TRUE:Boolean.FALSE]]></printWhenExpression>
+						</reportElement>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle" lineSpacing="Single">
+						<font pdfFontName="Helvetica" isBold="false"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{currencyCode.toString()}==null ?"":$F{currencyCode.toString()}+$F{value.toString()}]]></textFieldExpression>
+				</textField>
+			</band>
+		</detail>
+		<columnFooter>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</columnFooter>
+		<pageFooter>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</pageFooter>
+		<summary>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</summary>
+</jasperReport>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+    <appender name="FILE" class="org.apache.log4j.RollingFileAppender">
+        <param name="File" value="target/warranty.log"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%-5p %c %x: %m%n"/>
+        </layout>
+    </appender>
+
+    <appender name="SQL" class="org.apache.log4j.RollingFileAppender">
+        <param name="File" value="target/sql.log"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%m;"/>
+        </layout>
+    </appender>
+
+    <logger name="tavant.twms" additivity="false">
+        <level value="ERROR"/>
+        <appender-ref ref="FILE"/>
+    </logger>
+
+    <!--<logger name="org.hibernate.SQL" additivity="false">
+        <level value="DEBUG"/>
+        <appender-ref ref="SQL"/>
+    </logger>
+
+    <logger name="org.hibernate.type" additivity="false">
+        <level value="DEBUG"/>
+        <appender-ref ref="SQL"/>
+    </logger>-->
+
+    <root>
+        <level value="ERROR"/>
+        <appender-ref ref="FILE"/>
+    </root>
+
+</log4j:configuration>

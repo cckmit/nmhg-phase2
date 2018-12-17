@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<SyncInvoice>
+  <ApplicationArea>
+    <Sender>
+      <LogicalId>ESAORACLEAPPS</LogicalId>
+      <Task>TavantWMS</Task>
+      <ReferenceId>SEA-1100000002539_B</ReferenceId>
+    </Sender>
+    <CreationDateTime>2009-06-04T10:43:38-05:00</CreationDateTime>
+    <BODId>BOD011</BODId>
+    <InterfaceNumber>INT051</InterfaceNumber>
+  </ApplicationArea>
+  <DataArea>
+    <Invoice>
+      <Header>
+        <DocumentIds>
+          <DocumentId>
+            <Id>9990003139</Id>
+          </DocumentId>
+        </DocumentIds>
+        <DocumentDateTime>2009-05-29</DocumentDateTime>
+        <TotalAmount>-420.00</TotalAmount>
+        <UserArea>
+          <ClaimNumber>SEA-1100000002539_B</ClaimNumber>
+        </UserArea>
+      </Header>
+      <Line>
+        <TotalAmount currency="EUR"/>
+        <Tax>
+          <TaxAmount>0</TaxAmount>
+        </Tax>
+      </Line>
+    </Invoice>
+  </DataArea>
+</SyncInvoice>

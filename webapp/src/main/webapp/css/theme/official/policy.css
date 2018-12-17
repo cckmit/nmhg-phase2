@@ -1,0 +1,138 @@
+@IMPORT url("../../scripts/jscalendar/calendar-brown.css");
+
+html,body {
+background:#EEEEEE;
+font-family:Verdana, Arial, Helvetica, sans-serif;
+font-size:8pt;
+height:100%;
+width:100%;
+overflow:hidden;
+margin:0;
+padding:0;
+}
+
+body .dojoTabPaneWrapper {
+border-top:none;
+border-right:none;
+border-left:none;
+border-bottom:1px solid #D1D1D1;
+background:#FFF;
+}
+
+body .dojoTabLabels-bottom {
+margin-left:15px;
+margin-bottom:5px;
+}
+
+body .dojoTabPaneTab {
+margin-left:1px;
+}
+
+body .dojoTabLabels-bottom .dojoTabPaneTab {
+background:#EEEEEE;
+border:1px solid #D1D1D1;
+}
+
+body .dojoTabLabels-bottom .dojoTabPaneTab span {
+background:#EEEEEE;
+}
+
+body .dojoTabLabels-bottom .dojoTabPaneTab .current {
+background:#FFF;
+font-weight:700;
+border-bottom:1px solid #D1D1D1;
+border-left:1px solid #D1D1D1;
+}
+
+body .dojoTabLabels-bottom .dojoTabPaneTab .current span {
+background:#FFF;
+color:#555555;
+}
+
+.bodyText {
+color:#000;
+}
+
+.bodyImportantText {
+color:#555555;
+}
+
+.tabesets_Databottom {
+border-right:#C3C3C3 1px solid;
+border-bottom:#BBBBBB 1px solid;
+padding-left:2px;
+padding-right:2px;
+color:#000;
+background-color:#fff;
+}
+
+.label,.content {
+width:100%;
+}
+
+.label {
+padding-left:10px;
+margin-top:10px;
+height:20px;
+vertical-align:middle;
+color:#545454;
+font-weight:700;
+cursor:pointer;
+}
+
+.labelBold {
+margin-top:10px;
+height:20px;
+vertical-align:middle;
+color:#545454;
+font-weight:700;
+font-size:9pt;
+}
+
+.content {
+overflow:hidden;
+}
+
+.section {
+width:98%;
+border:1px solid #CCCCCC;
+background-color:#FCFCFC;
+margin:0.35%;
+}
+
+.section_title {
+border:4px #636363;
+background-color:#777777;
+padding:0.5%;
+}
+
+table tr {
+font-size:85%;
+text-transform:capitalize;
+}
+
+table tr input {
+height:1%;
+font-size:95%;
+}
+
+table tr option {
+font-size:15px;
+height:15px;
+}
+
+.required {
+font-size:small;
+background:#FCC;
+border:1px solid #F99;
+}
+
+.tabesets,.tabesetsSec {
+border-right:#C3C3C3 1px solid;
+border-top:#BBBBBB 1px solid;
+border-bottom:#BBBBBB 1px solid;
+padding-left:2px;
+padding-right:2px;
+color:#636363;
+background-color:#EEEEEE;
+}

@@ -1,0 +1,734 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process-definition name="SupplierRecovery">
+
+  <swimlane name="dealer">
+    <assignment
+      class="tavant.twms.jbpm.assignment.ExpressionAssignmentHandler">
+      <expression>actor=ognl{recoveryClaim.claim.filedBy.name}</expression>
+    </assignment>
+  </swimlane>
+  
+  <swimlane name="recoveryProcessor">
+    <assignment
+      class="tavant.twms.jbpm.assignment.RuleBasedAssignmentHandler">
+      <ruleSet>RecoveryProcessorAssignment</ruleSet>
+      <variables>
+        <variable>recoveryClaim</variable>
+      </variables>
+    </assignment>
+  </swimlane>
+
+  <swimlane name="supplier">
+    <assignment
+      class="tavant.twms.jbpm.assignment.ExpressionAssignmentHandler">
+      <expression>actor=ognl{recoveryClaim.supplierUserForRecoveryClaim.name}</expression>
+    </assignment>
+  </swimlane>
+  
+  
+  <swimlane name="processor">
+    <assignment
+      class="tavant.twms.jbpm.assignment.RuleBasedAssignmentHandler">
+      <ruleSet>ProcessorAssignment</ruleSet>
+      <variables>
+        <variable>recoveryClaim.claim</variable>
+      </variables>
+    </assignment>
+  </swimlane>
+  
+  <start-state name="Start">
+    <transition name="checkIfAutoCloseApplies" to="checkAutoClose"></transition>
+    <transition name="Reopen" to="Reopen">
+    	<script>recoveryClaim.setRecoveryClaimState(tavant.twms.domain.claim.RecoveryClaimState.REOPENED)</script>
+    </transition>
+  </start-state>
+  
+  <serviceNode name="checkAutoClose">
+    <beanName>recoveryClaimService</beanName>
+    <methodName>checkAutoClose</methodName>
+    <parameters>
+      <variable>recoveryClaim</variable>
+    </parameters>
+    <outputName>autoCloseRequired</outputName>
+    <transition name="toIsAutoCloseReqd" to="IsAutoCloseReqd"/>
+  </serviceNode>
+  
+   <decision name="IsAutoCloseReqd">
+    <transition name="Yes" to="Closed Claims">
+      <condition>#{autoCloseRequired == true}</condition>
+      <script>recoveryClaim.setRecoveryClaimState(tavant.twms.domain.claim.RecoveryClaimState.AUTO_CLOSED);</script>
+    </transition>
+    <transition name="No" to="CheckManualProcessing">
+      <condition>#{autoCloseRequired == false}</condition>
+    </transition>
+  </decision>
+  
+  
+  <decision name="CheckManualProcessing">
+    <transition name="Yes" to="Supplier Recovery Admin">
+      <condition>#{recoveryClaim.contract.sraReviewRequired == true}</condition>
+    </transition>
+    <transition name="No" to="SupplierFork">
+      <condition>#{recoveryClaim.contract.sraReviewRequired == false}</condition>
+      <script>recoveryClaim.setRecoveryClaimState(tavant.twms.domain.claim.RecoveryClaimState.IN_RECOVERY)</script>
+    </transition>
+  </decision>
+
+  <task-node name="Supplier Recovery Admin">
+    <task name="For Recovery" swimlane="recoveryProcessor">
+      <forms>
+        <actionUrl>supplierRecoveryAdmin</actionUrl>
+    </forms>
+    </task>
+    <transition name="Send To Supplier" to="SupplierFork">
+      <script>recoveryClaim.setRecoveryClaimState(tavant.twms.domain.claim.RecoveryClaimState.IN_RECOVERY)</script>
+    </transition>
+    <transition name="On Hold" to="On Hold">
+      <script>recoveryClaim.setRecoveryClaimState(tavant.twms.domain.claim.RecoveryClaimState.ON_HOLD)</script>
+    </transition>
+    <transition name="Closed Recovered" to="End">
+      <script>recoveryClaim.setRecoveryClaimState(tavant.twms.domain.claim.RecoveryClaimState.CLOSED_RECOVERED)</script>
+    </transition>
+    <transition name="Cannot Recover" to="Closed Claims">
+      <script>recoveryClaim.setRecoveryClaimState(tavant.twms.domain.claim.RecoveryClaimState.CLOSED_UNRECOVERED)</script>
+    </transition>
+    <transition name="Not For Recovery" to="NotForRecoveryFork">
+      <script>recoveryClaim.setRecoveryClaimState(tavant.twms.domain.claim.RecoveryClaimState.NOT_FOR_RECOVERY_REQUESTED)</script>
+    </transition>   
+    <transition name="Accept" to="SuppplierAcceptEndFork">
+      <script>recoveryClaim.setRecoveryClaimState(tavant.twms.domain.claim.RecoveryClaimState.READY_FOR_DEBIT)</script>
+    </transition>
+    <transition name="Wnty Claim Reopened" to="End">
+      <script>recoveryClaim.setRecoveryClaimState(tavant.twms.domain.claim.RecoveryClaimState.WNTY_CLAIM_REOPENED)</script>
+    </transition>
+    <transition name="Transfer" to="Claims Transferred to User">
+      <script>recoveryClaim.setRecoveryClaimState(tavant.twms.domain.claim.RecoveryClaimState.TRANSFERRED)</script>
+    </transition>
+  </task-node>
+  
+  <task-node name="Claims Transferred to User">
+    <task name="Transferred" swimlane="recoveryProcessor">
+    	<forms>
+        	<actionUrl>supplierRecoveryAdminTransferred</actionUrl>
+    	</forms>
+    </task>
+    <transition name="Send To Supplier" to="SupplierFork">
+      <script>recoveryClaim.setRecoveryClaimState(tavant.twms.domain.claim.RecoveryClaimState.IN_RECOVERY)</script>
+    </transition>
+    <transition name="On Hold" to="On Hold">
+      <script>recoveryClaim.setRecoveryClaimState(tavant.twms.domain.claim.RecoveryClaimState.ON_HOLD)</script>
+    </transition>
+    <transition name="Closed Recovered" to="End">
+      <script>recoveryClaim.setRecoveryClaimState(tavant.twms.domain.claim.RecoveryClaimState.CLOSED_RECOVERED)</script>
+    </transition>
+    <transition name="Cannot Recover" to="Closed Claims">
+      <script>recoveryClaim.setRecoveryClaimState(tavant.twms.domain.claim.RecoveryClaimState.CLOSED_UNRECOVERED)</script>
+    </transition>
+    <transition name="Not For Recovery" to="NotForRecoveryFork">
+      <script>recoveryClaim.setRecoveryClaimState(tavant.twms.domain.claim.RecoveryClaimState.NOT_FOR_RECOVERY_REQUESTED)</script>
+    </transition>   
+    <transition name="Accept" to="SuppplierAcceptEndFork">
+      <script>recoveryClaim.setRecoveryClaimState(tavant.twms.domain.claim.RecoveryClaimState.READY_FOR_DEBIT)</script>
+    </transition>
+    <transition name="Wnty Claim Reopened" to="End">
+      <script>recoveryClaim.setRecoveryClaimState(tavant.twms.domain.claim.RecoveryClaimState.WNTY_CLAIM_REOPENED)</script>
+    </transition>
+    <transition name="Transfer" to="Claims Transferred to User">
+     <script>recoveryClaim.setRecoveryClaimState(tavant.twms.domain.claim.RecoveryClaimState.TRANSFERRED)</script>
+    </transition>
+  </task-node>
+  
+  <fork name="NotForRecoveryFork">
+    <transition name="goToNotForRecoveryRequest" to="NotForRecoveryRequest"/>
+    <transition name="toWarrantyAdmin" to="Warranty Admin" />
+  </fork>
+  
+  <task-node name="NotForRecoveryRequest">
+    <task name="Not For Recovery Request" swimlane="recoveryProcessor">
+      <forms>
+        <actionUrl>notForRecoveryRequested</actionUrl>
+    </forms>
+    </task>
+    <transition name="NotForRecoveryRequested" to="End">
+    </transition>
+  </task-node>
+  
+  <task-node name="Warranty Admin">
+    <task name="Not For Recovery" swimlane="processor">
+      <forms>
+        <actionUrl>warrantyProcessorSRAction</actionUrl>
+    </forms>
+    </task>
+    <transition name="Accept" to="WarrantyAcceptEndFork">
+      <script>recoveryClaim.setRecoveryClaimState(tavant.twms.domain.claim.RecoveryClaimState.CLOSED_UNRECOVERED)</script>
+    </transition>
+    <transition name="Reject" to="WarrantyRejectEndFork">
+      <script>recoveryClaim.setRecoveryClaimState(tavant.twms.domain.claim.RecoveryClaimState.NOT_FOR_RECOVERY_DISPUTED)</script>
+    </transition>
+  </task-node>
+   
+   <end-tasks-join name="WarrantyRejectEndFork" task-name-to-end="Not For Recovery Request">
+    <transition name="toWarrantyAdminDispute" to="WarrantyAdminDispute">
+    </transition>
+  </end-tasks-join>
+  
+  <end-tasks-join name="WarrantyAcceptEndFork" task-name-to-end="Not For Recovery Request">
+    <transition name="toEnd" to="Closed Claims">
+    </transition>
+  </end-tasks-join>
+   
+   <task-node name="WarrantyAdminDispute">
+    <task name="Not For Recovery Response" swimlane="recoveryProcessor">
+      <forms>
+        <actionUrl>notForRecoveryResponse</actionUrl>
+    </forms>
+    </task>
+    <transition name="Send To Supplier" to="SupplierRecoveryAdminReviewFork">
+      <script>recoveryClaim.setRecoveryClaimState(tavant.twms.domain.claim.RecoveryClaimState.IN_RECOVERY)</script>
+    </transition>
+    <transition name="On Hold" to="On Hold">
+      <script>recoveryClaim.setRecoveryClaimState(tavant.twms.domain.claim.RecoveryClaimState.REVIEW_ON_HOLD)</script>
+    </transition>
+    <transition name="Closed Recovered" to="End">
+      <script>recoveryClaim.setRecoveryClaimState(tavant.twms.domain.claim.RecoveryClaimState.CLOSED_RECOVERED)</script>
+    </transition>
+    <transition name="Cannot Recover" to="Closed Claims">
+      <script>recoveryClaim.setRecoveryClaimState(tavant.twms.domain.claim.RecoveryClaimState.CLOSED_UNRECOVERED)</script>
+    </transition>
+    <transition name="Not For Recovery" to="NotForRecoveryFork">
+      <script>recoveryClaim.setRecoveryClaimState(tavant.twms.domain.claim.RecoveryClaimState.NOT_FOR_RECOVERY_REQUESTED)</script>
+    </transition>
+    <transition name="Accept" to="SuppplierAcceptEndFork">
+      <script>recoveryClaim.setRecoveryClaimState(tavant.twms.domain.claim.RecoveryClaimState.READY_FOR_DEBIT)</script>
+    </transition>
+     <transition name="Transfer" to="Claims Transferred to User">
+	  <script>recoveryClaim.setRecoveryClaimState(tavant.twms.domain.claim.RecoveryClaimState.TRANSFERRED)</script>
+    </transition>
+  </task-node>
+   
+  <task-node name="On Hold">
+    <task name="On Hold" swimlane="recoveryProcessor">
+      <forms>
+        <actionUrl>supplierRecoveryAdminOnHold</actionUrl>
+    </forms>
+    </task>
+    <transition name="Send To Supplier" to="CheckClaimState"/>
+    <transition name="On Hold" to="On Hold"/>
+    <transition name="Closed Recovered" to="End">
+      <script>recoveryClaim.setRecoveryClaimState(tavant.twms.domain.claim.RecoveryClaimState.CLOSED_RECOVERED)</script>
+    </transition>
+    <transition name="Cannot Recover" to="Closed Claims">
+      <script>recoveryClaim.setRecoveryClaimState(tavant.twms.domain.claim.RecoveryClaimState.CLOSED_UNRECOVERED)</script>
+    </transition>
+    <transition name="Not For Recovery" to="NotForRecoveryFork">
+      <script>recoveryClaim.setRecoveryClaimState(tavant.twms.domain.claim.RecoveryClaimState.NOT_FOR_RECOVERY_REQUESTED)</script>
+    </transition>
+    <transition name="Accept" to="SuppplierAcceptEndFork">
+      <script>recoveryClaim.setRecoveryClaimState(tavant.twms.domain.claim.RecoveryClaimState.READY_FOR_DEBIT)</script>
+    </transition>
+    <transition name="Transfer" to="Claims Transferred to User">
+	  <script>recoveryClaim.setRecoveryClaimState(tavant.twms.domain.claim.RecoveryClaimState.TRANSFERRED)</script>
+    </transition>
+  	</task-node>
+  	
+  	<decision name="CheckClaimState">
+    <transition name="Yes" to="SupplierFork">
+      <condition>#{recoveryClaim.recoveryClaimState.state == "On Hold"}</condition>
+      <script>recoveryClaim.setRecoveryClaimState(tavant.twms.domain.claim.RecoveryClaimState.IN_RECOVERY)</script>
+    </transition>
+    <transition name="Reopened" to="SupplierRecoveryAdminReopenedFork">
+      <condition>#{recoveryClaim.recoveryClaimState.state == "Reopen On Hold"}</condition>
+    </transition>
+    <transition name="Disputed" to="SupplierRecoveryAdminReviewFork">
+      <condition>#{recoveryClaim.recoveryClaimState.state == "Review On Hold"}</condition>
+    </transition>
+  </decision>
+  
+  <task-node name="Supplier Recovery Admin Accept">
+    <task name="Supplier Accepted" swimlane="recoveryProcessor">
+      <forms>
+        <actionUrl>claimsAccepted</actionUrl>
+    </forms>
+    </task>
+    <transition name="toEnd" to="End"></transition>
+  </task-node>
+  
+  <task-node name="Supplier Recovery Admin Reject">
+    <task name="Supplier Response" swimlane="recoveryProcessor">
+      <forms>
+        <actionUrl>supplierRecoveryAdminReview</actionUrl>
+    </forms>
+    </task>
+    <transition name="Send To Supplier" to="SupplierRecoveryAdminReviewFork">
+    </transition>
+    <transition name="On Hold" to="On Hold">
+      <script>recoveryClaim.setRecoveryClaimState(tavant.twms.domain.claim.RecoveryClaimState.REVIEW_ON_HOLD)</script>
+    </transition>
+    <transition name="Closed Recovered" to="End">
+      <script>recoveryClaim.setRecoveryClaimState(tavant.twms.domain.claim.RecoveryClaimState.CLOSED_RECOVERED)</script>
+    </transition>
+    <transition name="Cannot Recover" to="Closed Claims">
+      <script>recoveryClaim.setRecoveryClaimState(tavant.twms.domain.claim.RecoveryClaimState.CLOSED_UNRECOVERED)</script>
+    </transition>
+    <transition name="Not For Recovery" to="NotForRecoveryFork">
+      <script>recoveryClaim.setRecoveryClaimState(tavant.twms.domain.claim.RecoveryClaimState.NOT_FOR_RECOVERY_REQUESTED)</script>
+    </transition>
+    <transition name="Accept" to="SuppplierAcceptEndFork">
+      <script>recoveryClaim.setRecoveryClaimState(tavant.twms.domain.claim.RecoveryClaimState.READY_FOR_DEBIT)</script>
+    </transition>
+    <transition name="AutoDebit" to="CheckAutoDebit">
+      <script>recoveryClaim.setRecoveryClaimState(tavant.twms.domain.claim.RecoveryClaimState.DISPUTED_AND_AUTO_DEBITTED)</script>
+    </transition>
+    <transition name="Transfer" to="Claims Transferred to User">
+	  <script>recoveryClaim.setRecoveryClaimState(tavant.twms.domain.claim.RecoveryClaimState.TRANSFERRED)</script>
+    </transition>
+    <transition name="toEnd" to="End">
+        <script>recoveryClaim.setRecoveryClaimState(tavant.twms.domain.claim.RecoveryClaimState.CLOSED_UNRECOVERED)</script>
+    </transition>
+  </task-node>
+  
+  <end-tasks-join name="AutoDebit End Join" task-name-to-end="Awaiting Supplier Response">
+  <transition name="toEnd" to="CheckAmount"/>
+  </end-tasks-join>
+      
+	<fork name="SupplierRecoveryAdminReviewFork">
+  	<transition name="Claims Sent To Supplier" to="Claims Sent To Supplier" >
+  	 <script>recoveryClaim.setRecoveryClaimState(tavant.twms.domain.claim.RecoveryClaimState.IN_RECOVERY)</script>
+  	</transition>
+ 	 <transition name="In Progress Supplier Claims" to="Disputed Claims" />
+ 	 <transition name="toSupplierResponseScheduler" to="SupplierResponseScheduler" />
+	</fork>
+
+  
+  <task-node name="Claims Sent To Supplier">
+    <task name="Awaiting Supplier Response" swimlane="recoveryProcessor">
+      <forms>
+        <actionUrl>claimsSentToSupplier</actionUrl>
+    </forms>
+    </task>
+    <transition name="Claims Sent" to="End">
+    </transition>
+  </task-node>
+  
+  <task-node name="Accepted Claims for Supplier">
+    <task name="Accepted" swimlane="supplier">
+      <forms>
+        <actionUrl>claimsAccepted</actionUrl>
+    </forms>
+    </task>
+    <transition name="Claims Debited" to="End">
+    </transition>
+  </task-node>
+
+     
+  <fork name="SupplierFork">
+    <transition name="Claims Sent To Supplier" to="Claims Sent To Supplier">
+     </transition>
+    <transition name="toSupplierContract" to="Supplier Contract" />
+    <transition name="toSupplierResponseScheduler" to="SupplierResponseScheduler" />
+  </fork>
+  
+  <task-node name="SupplierResponseScheduler">
+  	<task name="SupplierResponseScheduler">
+      <timer duedate="20 business hours" >
+      	  <action class="tavant.twms.jbpm.action.TaskInstanceEndAction">
+          <transition>toAutoAccept</transition>
+        </action>	
+      </timer>
+      <event type="timer-create">
+        <action class="tavant.twms.jbpm.action.SupplierResponseAction" />
+      </event>
+     </task>
+     <transition name="toEnd" to="End">
+     	<cancel-timer name="SupplierResponseScheduler"/>
+     </transition>
+     <transition name="toAutoAccept" to="responseSchedulerEndFork">
+     	<cancel-timer name="SupplierResponseScheduler"/>
+     </transition>
+  </task-node>
+  
+  <end-tasks-join name="responseSchedulerEndFork" task-name-to-end="New,Disputed">
+  <transition name="toEnd" to="End"/>
+  </end-tasks-join>
+  
+  <fork name="SupplierAutoAcceptEnd">
+    <transition name="toSupplierResponseEndJoin" to="SupplierResponseEndJoin" />
+    <transition name="toWaitForDebit" to="CheckAmount" />
+  </fork>
+  
+  <end-tasks-join name="SupplierResponseEndJoin" task-name-to-end="Awaiting Supplier Response">
+  <transition name="toEnd" to="End"/>
+  </end-tasks-join>
+  
+
+  
+    <task-node name="Supplier Contract">
+    <task name="New" swimlane="supplier">
+        <timer duedate="20 business hours">
+            <action class="tavant.twms.jbpm.action.TaskInstanceEndAction">
+                <transition>toAutoDispute</transition>
+            </action>
+        </timer>
+        <event type="timer-create">
+            <action class="tavant.twms.jbpm.action.SupplierDisputeAction" />
+        </event>
+      <forms>
+        <actionUrl>supplierRecovery</actionUrl>
+    </forms>
+    </task>
+    <transition name="toEnd" to="UpdatePayment">
+      <script>recoveryClaim.setRecoveryClaimState(tavant.twms.domain.claim.RecoveryClaimState.NO_RESPONSE_AND_AUTO_DEBITTED)</script>
+    </transition>
+     <transition name="On Hold For Part Return" to="On Hold For Part Return">
+    <script>recoveryClaim.setRecoveryClaimState(tavant.twms.domain.claim.RecoveryClaimState.ON_HOLD_FOR_PART_RETURN)</script>
+    </transition>
+                <transition name="Accept" to="SuppplierAcceptEndFork">
+    <script>recoveryClaim.setRecoveryClaimState(tavant.twms.domain.claim.RecoveryClaimState.READY_FOR_DEBIT)</script>
+    </transition>
+    <transition name="Reject" to="SuppplierRejectEndFork">
+      <script>recoveryClaim.setRecoveryClaimState(tavant.twms.domain.claim.RecoveryClaimState.REJECTED)</script>
+    </transition>
+    <transition name="Wnty Claim Reopened" to="SupplierEndFork">
+      <script>recoveryClaim.setRecoveryClaimState(tavant.twms.domain.claim.RecoveryClaimState.WNTY_CLAIM_REOPENED)</script>
+    </transition>
+      <transition name="toAutoDispute" to="initialOrFinalResponsePeriod"></transition>
+  </task-node>
+
+  
+  <task-node name="On Hold For Part Return">
+  	<task name="On Hold For Part Return" swimlane="supplier">
+        <timer duedate="20 business hours">
+            <action class="tavant.twms.jbpm.action.TaskInstanceEndAction">
+                <transition>toAutoDispute</transition>
+            </action>
+        </timer>
+        <event type="timer-create">
+            <action class="tavant.twms.jbpm.action.SupplierDisputeAction" />
+        </event>
+      <forms>
+        <actionUrl>onHoldForPartReturn</actionUrl>
+    </forms>
+    </task>   
+  	<transition name="toEnd" to="UpdatePayment">
+      	<script>recoveryClaim.setRecoveryClaimState(tavant.twms.domain.claim.RecoveryClaimState.NO_RESPONSE_AND_AUTO_DEBITTED)</script>
+    </transition>
+    <transition name="On Hold For Part Return" to="On Hold For Part Return">
+    	<script>recoveryClaim.setRecoveryClaimState(tavant.twms.domain.claim.RecoveryClaimState.ON_HOLD_FOR_PART_RETURN)</script>
+    </transition>
+  	<transition name="Accept" to="SuppplierAcceptEndFork">
+    	<script>recoveryClaim.setRecoveryClaimState(tavant.twms.domain.claim.RecoveryClaimState.READY_FOR_DEBIT)</script>
+    </transition>
+    <transition name="Reject" to="SuppplierRejectEndFork">
+    	<script>recoveryClaim.setRecoveryClaimState(tavant.twms.domain.claim.RecoveryClaimState.REJECTED)</script>
+    </transition>
+    <transition name="Wnty Claim Reopened" to="SupplierEndFork">
+    	<script>recoveryClaim.setRecoveryClaimState(tavant.twms.domain.claim.RecoveryClaimState.WNTY_CLAIM_REOPENED)</script>
+    </transition>
+    <transition name="toAutoDispute" to="initialOrFinalResponsePeriod"></transition>
+  </task-node>
+  <serviceNode name="UpdatePayment">
+    <beanName>recoveryClaimService</beanName>
+    <methodName>updatePayment</methodName>
+    <parameters>
+      <variable>recoveryClaim</variable>
+    </parameters>
+    <transition name="toCheckRecoveryClaimState" to="checkRecoveryClaimState"/>
+  </serviceNode>
+  
+  <decision name="checkRecoveryClaimState">
+    <transition name="NoResponse" to="SupplierAutoAcceptEnd">
+       <condition>#{recoveryClaim.recoveryClaimState.state == "No Response Auto Debited"}</condition>
+    </transition>
+    <transition name="AutoDebitted" to="AutoDebit End Join">
+     <condition>#{recoveryClaim.recoveryClaimState.state == "Disputed and Auto Debited"}</condition>
+    </transition>
+  </decision>
+  
+  <fork name="SupplierRecoveryAdminReopenedFork">
+  	<transition name="Claims Sent To Supplier" to="Claims Sent To Supplier" >
+	<script>recoveryClaim.setRecoveryClaimState(tavant.twms.domain.claim.RecoveryClaimState.IN_RECOVERY)</script>
+  	</transition>
+ 	 <transition name="Reopened Supplier Claims" to="Reopened Claims" />
+	</fork>
+  
+  <task-node name="Reopened Claims">
+    <task name="Reopened Claims" swimlane="supplier">
+        <timer duedate="20 business hours">
+            <action class="tavant.twms.jbpm.action.TaskInstanceEndAction">
+                <transition>toAutoDispute</transition>
+            </action>
+        </timer>
+        <event type="timer-create">
+            <action class="tavant.twms.jbpm.action.SupplierDisputeAction" />
+        </event>
+      <forms>
+        <actionUrl>supplierRecoveryReopened</actionUrl>
+    </forms>
+    </task>
+    <transition name="toEnd" to="SupplierAutoAcceptEnd">
+      <script>recoveryClaim.setRecoveryClaimState(tavant.twms.domain.claim.RecoveryClaimState.NO_RESPONSE_AND_AUTO_DEBITTED)</script>
+   </transition>
+  <transition name="Accept" to="SuppplierAcceptEndFork">
+    <script>recoveryClaim.setRecoveryClaimState(tavant.twms.domain.claim.RecoveryClaimState.READY_FOR_DEBIT)</script>
+    </transition>
+    <transition name="Reject" to="SuppplierRejectEndFork">
+      <script>recoveryClaim.setRecoveryClaimState(tavant.twms.domain.claim.RecoveryClaimState.REJECTED)</script>
+    </transition>
+    <transition name="toAutoDispute" to="initialOrFinalResponsePeriod"></transition>
+  </task-node>
+  
+  <decision name="CheckAutoDebit">
+    <transition name="Yes" to="UpdatePayment">
+      <condition>#{recoveryClaim.contract.autoDebitEnabled== true}</condition>
+    </transition>
+    <transition name="No" to="On Hold">
+      <condition>#{recoveryClaim.contract.autoDebitEnabled== false}</condition>
+    </transition>
+  </decision>
+  
+  <end-tasks-join name="SupplierEndFork" task-name-to-end="Awaiting Supplier Response,SupplierResponseScheduler">
+	  <transition name="toEnd" to="End"></transition>
+  </end-tasks-join>
+  
+  <end-tasks-join name="SuppplierAcceptEndFork" task-name-to-end="Awaiting Supplier Response,SupplierResponseScheduler">
+  	<transition name="toAdminReview" to="SuppplierAcceptFork"></transition>
+  </end-tasks-join>
+  
+  <end-tasks-join name="SuppplierRejectEndFork" task-name-to-end="Awaiting Supplier Response,SupplierResponseScheduler">
+  <transition name="toAdminReview" to="SupplierRejectFork"></transition>
+  </end-tasks-join>
+
+  <fork name="SuppplierAcceptFork">
+    <transition name="goToAcceptedOfSRA" to="Supplier Recovery Admin Accept"/>
+    <transition name="goToAcceptedOfSupplier" to="Accepted Claims for Supplier"/>
+    <transition name="waitForDebit" to="CheckAmount"/>
+  </fork>
+  
+  <fork name="SupplierRejectFork">
+  <transition name="Supplier Reject" to="Supplier Recovery Admin Reject" />
+  </fork>
+
+
+  <task-node name="Disputed Claims">
+    <task name="Disputed" swimlane="supplier">
+        <timer duedate="20 business hours">
+            <action class="tavant.twms.jbpm.action.TaskInstanceEndAction">
+                <transition>toAutoDispute</transition>
+            </action>
+        </timer>
+        <event type="timer-create">
+            <action class="tavant.twms.jbpm.action.SupplierDisputeAction" />
+        </event>
+      <forms>
+        <actionUrl>supplierRecoveryDisputed</actionUrl>
+    </forms>
+    </task>
+   <transition name="toEnd" to="SupplierAutoAcceptEnd">
+      <script>recoveryClaim.setRecoveryClaimState(tavant.twms.domain.claim.RecoveryClaimState.NO_RESPONSE_AND_AUTO_DEBITTED)</script>
+   </transition>
+  <transition name="Accept" to="SuppplierAcceptEndFork">
+    <script>recoveryClaim.setRecoveryClaimState(tavant.twms.domain.claim.RecoveryClaimState.READY_FOR_DEBIT)</script>
+    </transition>
+    <transition name="Reject" to="SuppplierRejectEndFork">
+      <script>recoveryClaim.setRecoveryClaimState(tavant.twms.domain.claim.RecoveryClaimState.REJECTED)</script>
+    </transition>
+    <transition name="AutoDebit" to="CheckAutoDebit">
+      <script>recoveryClaim.setRecoveryClaimState(tavant.twms.domain.claim.RecoveryClaimState.DISPUTED_AND_AUTO_DEBITTED)</script>
+    </transition>
+    <transition name="toAutoDispute" to="initialOrFinalResponsePeriod"></transition>
+  </task-node>
+	<serviceNode name="NotifyDebit">
+	    <transition name="goToWaitForDebit" to="Wait For Debit"/>
+	    <beanName>paymentAsyncService</beanName>
+	    <methodName>startSupplierRecoveryAsyncPayment</methodName>
+	    <parameters>
+	      <element>recoveryClaim</element>
+	    </parameters>
+  </serviceNode>
+
+    <decision name="initialOrFinalResponsePeriod">
+        <transition name="toAutoDisputeFinal" to="SuppplierRejectEndFork">
+            <condition>#{recoveryClaim.partShippedByDealer == true}</condition>
+            <script>
+                recoveryClaim.setRecoveryClaimState(tavant.twms.domain.claim.RecoveryClaimState.AUTO_DISPUTED_FINAL_RESPONSE)
+            </script>
+        </transition>
+        <transition name="toAutoDisputeInitial" to="SuppplierRejectEndFork">
+            <condition>#{recoveryClaim.partShippedByDealer == false}</condition>
+            <script>
+                recoveryClaim.setRecoveryClaimState(tavant.twms.domain.claim.RecoveryClaimState.AUTO_DISPUTED_INITIAL_RESPONSE)
+            </script>
+        </transition>
+    </decision>
+
+  <decision name="IsDebitOfflineEnabled">
+    <transition name="goToNotifyDebit" to="NotifyDebit">
+        <condition>#{recoveryClaim.contract.offlineDebitEnabled == false}</condition>
+    </transition>
+    <transition name="goToReadyForDebit" to="ReadyForDebit">
+      <condition>#{recoveryClaim.contract.offlineDebitEnabled == true}</condition>
+    </transition>
+  </decision>
+
+<task-node name="ReadyForDebit">
+    <task name="Ready For Debit" swimlane="recoveryProcessor">
+		<forms>
+			<actionUrl>readyForOfflineDebit</actionUrl>
+		</forms>
+	</task>
+	<transition name="goToCheckOfflineDebitState" to="CheckOfflineDebitState"/>
+ </task-node>
+ 
+  <decision name="CheckOfflineDebitState">
+    <transition name="OfflineAccepted" to="Closed Debited">
+	    <condition>#{recoveryClaim.recoveryClaimState.state == "Ready for Debit"}</condition>
+		<script>recoveryClaim.setRecoveryClaimState(tavant.twms.domain.claim.RecoveryClaimState.DEBITTED_AND_CLOSED)</script>
+    </transition>
+    <transition name="OfflineNoResponseAutoDebited" to="Closed Fork">
+        <condition>#{recoveryClaim.recoveryClaimState.state == "No Response Auto Debited"}</condition>
+        <script>recoveryClaim.setRecoveryClaimState(tavant.twms.domain.claim.RecoveryClaimState.NO_RESPONSE_AND_AUTO_DEBITTED_CLOSED)</script>
+    </transition>
+    <transition name="OfflineDisputeAutoDebited" to="Closed Debited">
+      <condition>#{recoveryClaim.recoveryClaimState.state == "Disputed and Auto Debited"}</condition>
+      <script>recoveryClaim.setRecoveryClaimState(tavant.twms.domain.claim.RecoveryClaimState.DISPUTED_AND_AUTO_DEBITTED_CLOSED)</script>
+    </transition>
+  </decision>
+
+  <task-node name="Wait For Debit">
+  	<task name="WaitForDebit"/>
+     <transition name="GoToCheckDebitState" to="CheckDebitState">
+     </transition>
+  </task-node>
+   
+   <decision name="CheckAmount">
+    <transition name="AmountGreaterThanZero" to="IsDebitOfflineEnabled">
+    <condition>#{recoveryClaim.recoveryAmountZero == false}</condition>
+    </transition>
+    <transition name="AmountZero" to="ClosedZeroAmtRecovery">
+      <condition>#{recoveryClaim.recoveryAmountZero == true}</condition>
+      <script>recoveryClaim.setRecoveryClaimState(tavant.twms.domain.claim.RecoveryClaimState.NO_AMOUNT_TO_RECOVER_CLOSED)</script>
+    </transition>
+  </decision>
+  
+  <end-tasks-join name="ClosedZeroAmtRecovery" task-name-to-end="Supplier Accepted,Accepted">
+	  <transition name="closeZeroUSDClaims" to="Closed Claims"/>
+  </end-tasks-join>
+  
+  <decision name="CheckDebitState">
+    <transition name="Accepted" to="Closed Debited">
+    <condition>#{recoveryClaim.recoveryClaimState.state == "Wait for Debit"}</condition>
+    <script>recoveryClaim.setRecoveryClaimState(tavant.twms.domain.claim.RecoveryClaimState.DEBITTED_AND_CLOSED)</script>
+    </transition>
+     <transition name="NoResponseAutoDebited" to="Closed Debited">
+      <condition>#{recoveryClaim.recoveryClaimState.state == "Wait Auto Debit For No Response"}</condition>
+      <script>recoveryClaim.setRecoveryClaimState(tavant.twms.domain.claim.RecoveryClaimState.NO_RESPONSE_AND_AUTO_DEBITTED_CLOSED)</script>
+      </transition>
+      <transition name="DisputeAutoDebited" to="Closed Debited">
+      <condition>#{recoveryClaim.recoveryClaimState.state == "Wait Auto Debit for Disputed"}</condition>
+      <script>recoveryClaim.setRecoveryClaimState(tavant.twms.domain.claim.RecoveryClaimState.DISPUTED_AND_AUTO_DEBITTED_CLOSED)</script>
+      </transition>
+  </decision>
+  
+  <end-tasks-join name="Closed Debited" task-name-to-end="Supplier Accepted,Accepted">
+	  <transition name="toClose" to="Closed Fork"/>
+  </end-tasks-join>
+  
+  <fork name="Closed Fork">
+	  <transition name="closeClaim" to="Closed Claims"></transition>
+	  <transition name="showDebited" to="DebitedFork"></transition>
+  </fork>
+  
+  <fork name="DebitedFork">
+  <transition name ="showDebited" to="Debited"/>
+  <transition name ="showDebitScheduler" to="DebitScheduler"/>
+  </fork>
+  
+  <task-node name="DebitScheduler">
+  	<task name="DebitScheduler">
+      <timer duedate="48 business hours" >
+      	  <action class="tavant.twms.jbpm.action.TaskInstanceEndAction">
+          <transition>Remove Debited</transition>
+        </action>	
+      </timer>
+      <event type="timer-create">
+        <action class="tavant.twms.jbpm.action.DebitedRecClaimRemovalAction" />
+      </event>
+     </task>
+     <transition name="Remove Debited" to="DebitedEndJoin">
+     	<cancel-timer name="DebitScheduler"/>
+     </transition> 
+  </task-node>
+  
+  <task-node name="Debited">
+    <task name="Debited" swimlane="supplier">
+      <forms>
+        <actionUrl>claimsDebited</actionUrl>
+    </forms>
+    </task>
+    <transition name="toEnd" to="End">
+    </transition>
+  </task-node>
+  
+  
+  <end-tasks-join name = "DebitedEndJoin" task-name-to-end="Debited">
+  <transition name="toEnd" to="End"/>
+  </end-tasks-join>
+  
+	<task-node name="Closed Claims">
+    	<task name="Closed" >
+    </task>
+  <transition name="Reopen" to="ReopenEndJoin">
+    <script>recoveryClaim.setRecoveryClaimState(tavant.twms.domain.claim.RecoveryClaimState.REOPENED)</script>
+    </transition>
+   <transition name="Reject" to="ReopenBySupplierEndJoin">
+    <script>recoveryClaim.setRecoveryClaimState(tavant.twms.domain.claim.RecoveryClaimState.REJECTED)</script>
+    </transition>
+    <transition name="toEnd" to="End">
+       <script>recoveryClaim.setRecoveryClaimState(tavant.twms.domain.claim.RecoveryClaimState.CLOSED_UNRECOVERED)</script>
+    </transition>
+  </task-node>
+  
+  <end-tasks-join name = "ReopenEndJoin" task-name-to-end="Debited,DebitScheduler">
+  <transition name="toReopen" to="Reopen"/>
+  </end-tasks-join>
+  
+  <end-tasks-join name = "ReopenBySupplierEndJoin" task-name-to-end="Debited,DebitScheduler">
+  <transition name="toReopen" to="SupplierRejectFork"/>
+  </end-tasks-join>
+  
+   
+  <task-node name="Reopen">
+    <task name="Reopened" swimlane="recoveryProcessor">
+      <forms>
+        <actionUrl>supplierRecoveryAdminReopened</actionUrl>
+    </forms>
+    </task>
+    <transition name="Send To Supplier" to="SupplierRecoveryAdminReopenedFork"/>
+    <transition name="On Hold" to="On Hold">
+    	<script>recoveryClaim.setRecoveryClaimState(tavant.twms.domain.claim.RecoveryClaimState.REOPENED_ON_HOLD)</script>
+    </transition>
+    <transition name="Closed Recovered" to="End">
+      <script>recoveryClaim.setRecoveryClaimState(tavant.twms.domain.claim.RecoveryClaimState.CLOSED_RECOVERED)</script>
+    </transition>
+    <transition name="Cannot Recover" to="Closed Claims">
+      <script>recoveryClaim.setRecoveryClaimState(tavant.twms.domain.claim.RecoveryClaimState.CLOSED_UNRECOVERED)</script>
+    </transition>
+    <transition name="Not For Recovery" to="NotForRecoveryFork">
+      <script>recoveryClaim.setRecoveryClaimState(tavant.twms.domain.claim.RecoveryClaimState.NOT_FOR_RECOVERY_REQUESTED)</script>
+    </transition>
+    <transition name="Accept" to="SuppplierAcceptEndFork">
+      <script>recoveryClaim.setRecoveryClaimState(tavant.twms.domain.claim.RecoveryClaimState.READY_FOR_DEBIT)</script>
+    </transition>
+    <transition name="Transfer" to="Claims Transferred to User">
+	  <script>recoveryClaim.setRecoveryClaimState(tavant.twms.domain.claim.RecoveryClaimState.TRANSFERRED)</script>
+    </transition>
+  	</task-node>
+  
+  
+  
+   
+  <end-state name="End"></end-state>
+
+
+</process-definition>

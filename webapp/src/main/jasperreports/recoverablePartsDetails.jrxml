@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE jasperReport PUBLIC "-//JasperReports//DTD JasperReport//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+
+<jasperReport name="recoverablePartsDetails" pageWidth="800" pageHeight="500" columnWidth="760" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.1000000000000005"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="ireport.scriptlethandling" value="0"/>
+	<property name="ireport.encoding" value="UTF-8"/>
+	<import value="net.sf.jasperreports.engine.*"/>
+	<import value="java.util.*"/>
+	<import value="net.sf.jasperreports.engine.data.*"/>
+	<parameter name="SUPPLIER_ROLE" class="java.lang.String"/>
+	<parameter name="SUPPLIER_VIEW" class="java.lang.Boolean"/>
+	<field name="oemPart.itemReference.referredItem.number" class="java.lang.String"/>
+	<field name="supplierItem.number" class="java.lang.String"/>
+	<field name="quantity.toString()" class="java.lang.String"/>
+	<field name="supplierPartReturns[0].supplierShipment.trackingId" class="java.lang.String"/>
+	<field name="supplierPartReturns[0].rgaNumber" class="java.lang.String"/>
+	<field name="supplierPartReturns[0].carrier.name" class="java.lang.String"/>
+	<field name="recoveryClaim.contract.supplier.name" class="java.lang.String"/>
+	<field name="supplierPartReturns[0].returnLocation" class="java.lang.String"/>
+	<field name="supplierReturnNeeded.toString()" class="java.lang.String"/>
+	<field name="oemPart.itemReference.unserializedItem.description" class="java.lang.String"/>
+	<field name="recoveryClaim.contract.name" class="java.lang.String"/>
+	<field name="supplierItem.description" class="java.lang.String"/>
+	<field name="oemPart.itemReference.referredItem.getDescriptionForPrint()" class="java.lang.String"/>
+	<field name="oemPart.dateCode" class="java.lang.String"/>
+	<field name="oemPart.serialNumber" class="java.lang.String"/>
+	<field name="supplierItem.ownedBy.name" class="java.lang.String"/>
+	<field name="recoveryClaim.contract.supplier.supplierNumber" class="java.lang.String"/>
+	<field name="oemPart.itemReference.referredItem.serialNumber" class="java.lang.String"/>
+	<field name="oemPart.costPricePerUnit.toString()" class="java.lang.String"/>
+	<field name="field1" class="java.lang.String"/>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band/>
+	</title>
+	<pageHeader>
+		<band/>
+	</pageHeader>
+	<columnHeader>
+		<band/>
+	</columnHeader>
+	<detail>
+		<band height="28">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="false" hyperlinkType="None">
+				<reportElement key="textField" x="77" y="2" width="65" height="20"/>
+				<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{oemPart.itemReference.referredItem.number}!=null?$F{oemPart.itemReference.referredItem.number}:"--"]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false" hyperlinkType="None">
+				<reportElement key="textField" x="158" y="2" width="40" height="20"/>
+				<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{quantity.toString()}!=null?$F{quantity.toString()}:"--"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="false" hyperlinkType="None">
+				<reportElement key="textField" x="678" y="2" width="56" height="20"/>
+				<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{supplierPartReturns[0].rgaNumber}!=null?$F{supplierPartReturns[0].rgaNumber}:"--"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="false" hyperlinkType="None">
+				<reportElement key="textField" x="329" y="2" width="94" height="20">
+					<printWhenExpression><![CDATA[!$P{SUPPLIER_VIEW}]]></printWhenExpression>
+				</reportElement>
+				<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{supplierItem.ownedBy.name}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="false" hyperlinkType="None">
+				<reportElement key="textField" x="205" y="2" width="70" height="20"/>
+				<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{oemPart.itemReference.referredItem.getDescriptionForPrint()}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="false" hyperlinkType="None">
+				<reportElement key="textField" x="426" y="3" width="83" height="20"/>
+				<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{oemPart.serialNumber}!=null?$F{oemPart.serialNumber}:"--"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="false" hyperlinkType="None">
+				<reportElement key="textField" x="518" y="3" width="60" height="20"/>
+				<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{oemPart.dateCode}==null ?"--":$F{oemPart.dateCode}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="false" hyperlinkType="None">
+				<reportElement key="textField" x="599" y="3" width="70" height="20"/>
+				<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{oemPart.costPricePerUnit.toString()}!=null?$F{oemPart.costPricePerUnit.toString()}:"--"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true" hyperlinkType="None">
+				<reportElement key="textField" x="2" y="3" width="65" height="20"/>
+				<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{supplierItem.number}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band/>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

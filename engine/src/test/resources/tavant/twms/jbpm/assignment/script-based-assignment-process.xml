@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process-definition xmlns="" name="ScriptAssignment">
+	<swimlane name="receiver">
+		<assignment
+			class="tavant.twms.jbpm.assignment.ScriptAssignmentHandler">
+			<beanName>mailMessage</beanName>
+			<methodName>getFrom</methodName>
+		</assignment>
+	</swimlane>
+	<start-state name="Start">
+		<transition name="" to="TaskNode1" />
+	</start-state>
+	<end-state name="End"></end-state>
+	<task-node name="TaskNode1">
+		<task name="ScriptAssignmentTask" swimlane="receiver"></task>
+		<transition name="" to="End" />
+	</task-node>
+
+</process-definition>

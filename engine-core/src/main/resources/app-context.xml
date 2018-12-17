@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+  default-autowire="byName">
+
+	<bean name="Engine-Core.hbm.xmls" class="java.util.HashMap">
+		<constructor-arg>
+			<map key-type="java.lang.Integer" value-type="java.lang.String">
+     <entry key="1" value="tavant/twms/worklist/BaseWorkList.hbm.xml" />
+
+     <!-- This set of hbms has to be kept in sync with hibernate.cfg.xml with every JBPM upgrade -->
+     <!-- ############################################ -->
+  <!-- # mapping files with external dependencies # -->
+  <!-- ############################################ -->
+
+  <!-- following mapping file has a dependendy on   -->
+  <!-- 'bsh-{version}.jar'.                         -->
+  <!-- uncomment this if you don't have bsh on your -->
+  <!-- classpath.  you won't be able to use the     -->
+  <!-- script element in process definition files   -->
+   <entry key="2" value="org/jbpm/graph/action/Script.hbm.xml" />
+
+<!-- Do not include JBPM identity stuff -->
+     <!-- ###################### -->
+  <!-- # jbpm mapping files # -->
+  <!-- ###################### -->
+
+  <!-- hql queries and type defs -->
+  <entry key="4" value="org/jbpm/db/hibernate.queries.hbm.xml" />
+
+  <!-- graph.def mapping files -->
+  <entry key="5" value="org/jbpm/graph/def/ProcessDefinition.hbm.xml" />
+  <entry key="6" value="org/jbpm/graph/def/Node.hbm.xml" />
+  <entry key="7" value="org/jbpm/graph/def/Transition.hbm.xml" />
+  <entry key="8" value="org/jbpm/graph/def/Event.hbm.xml" />
+  <entry key="9" value="org/jbpm/graph/def/Action.hbm.xml" />
+  <entry key="10" value="org/jbpm/graph/def/SuperState.hbm.xml" />
+  <entry key="11" value="org/jbpm/graph/def/ExceptionHandler.hbm.xml" />
+  <entry key="12" value="org/jbpm/instantiation/Delegation.hbm.xml" />
+
+  <!-- graph.node mapping files -->
+  <entry key="13" value="org/jbpm/graph/node/StartState.hbm.xml" />
+  <entry key="14" value="org/jbpm/graph/node/EndState.hbm.xml" />
+  <entry key="15" value="org/jbpm/graph/node/ProcessState.hbm.xml" />
+  <entry key="16" value="org/jbpm/graph/node/Decision.hbm.xml" />
+  <entry key="17" value="org/jbpm/graph/node/Fork.hbm.xml" />
+  <entry key="18" value="org/jbpm/graph/node/Join.hbm.xml" />
+  <entry key="19" value="org/jbpm/graph/node/State.hbm.xml" />
+  <entry key="20" value="org/jbpm/graph/node/TaskNode.hbm.xml" />
+
+  <!-- context.def mapping files -->
+  <entry key="21" value="org/jbpm/context/def/ContextDefinition.hbm.xml" />
+  <entry key="22" value="org/jbpm/context/def/VariableAccess.hbm.xml" />
+
+  <!-- taskmgmt.def mapping files -->
+  <entry key="23" value="org/jbpm/taskmgmt/def/TaskMgmtDefinition.hbm.xml" />
+  <entry key="24" value="org/jbpm/taskmgmt/def/Swimlane.hbm.xml" />
+  <entry key="25" value="org/jbpm/taskmgmt/def/Task.hbm.xml" />
+  <entry key="26" value="org/jbpm/taskmgmt/def/TaskController.hbm.xml" />
+
+  <!-- module.def mapping files -->
+  <entry key="27" value="org/jbpm/module/def/ModuleDefinition.hbm.xml" />
+
+  <!-- bytes mapping files -->
+  <entry key="28" value="org/jbpm/bytes/ByteArray.hbm.xml" />
+
+  <!-- file.def mapping files -->
+  <entry key="29" value="org/jbpm/file/def/FileDefinition.hbm.xml" />
+
+  <!-- scheduler.def mapping files -->
+  <entry key="30" value="org/jbpm/scheduler/def/CreateTimerAction.hbm.xml" />
+  <entry key="31" value="org/jbpm/scheduler/def/CancelTimerAction.hbm.xml" />
+
+  <!-- graph.exe mapping files -->
+  <entry key="32" value="org/jbpm/graph/exe/Comment.hbm.xml" />
+  <entry key="33" value="org/jbpm/graph/exe/ProcessInstance.hbm.xml" />
+  <entry key="34" value="org/jbpm/graph/exe/Token.hbm.xml" />
+  <entry key="35" value="org/jbpm/graph/exe/RuntimeAction.hbm.xml" />
+
+  <!-- module.exe mapping files -->
+  <entry key="36" value="org/jbpm/module/exe/ModuleInstance.hbm.xml" />
+
+  <!-- context.exe mapping files -->
+  <entry key="37" value="org/jbpm/context/exe/ContextInstance.hbm.xml" />
+  <entry key="38" value="org/jbpm/context/exe/TokenVariableMap.hbm.xml" />
+  <entry key="39" value="org/jbpm/context/exe/VariableInstance.hbm.xml" />
+  <entry key="40" value="org/jbpm/context/exe/variableinstance/ByteArrayInstance.hbm.xml" />
+  <entry key="41" value="org/jbpm/context/exe/variableinstance/DateInstance.hbm.xml" />
+  <entry key="42" value="org/jbpm/context/exe/variableinstance/DoubleInstance.hbm.xml" />
+  <entry key="43" value="org/jbpm/context/exe/variableinstance/HibernateLongInstance.hbm.xml" />
+  <entry key="44" value="org/jbpm/context/exe/variableinstance/HibernateStringInstance.hbm.xml" />
+  <entry key="45" value="org/jbpm/context/exe/variableinstance/LongInstance.hbm.xml" />
+  <entry key="46" value="org/jbpm/context/exe/variableinstance/NullInstance.hbm.xml" />
+  <entry key="47" value="org/jbpm/context/exe/variableinstance/StringInstance.hbm.xml" />
+
+  <!-- msg.db mapping files -->
+  <entry key="48" value="org/jbpm/msg/Message.hbm.xml" />
+  <entry key="49" value="org/jbpm/msg/db/TextMessage.hbm.xml" />
+  <entry key="50" value="org/jbpm/command/ExecuteActionCommand.hbm.xml" />
+  <entry key="51" value="org/jbpm/command/ExecuteNodeCommand.hbm.xml" />
+  <entry key="52" value="org/jbpm/command/SignalCommand.hbm.xml" />
+  <entry key="53" value="org/jbpm/command/TaskInstanceEndCommand.hbm.xml" />
+
+  <!-- taskmgmt.exe mapping files -->
+  <entry key="54" value="org/jbpm/taskmgmt/exe/TaskMgmtInstance.hbm.xml" />
+  <entry key="55" value="org/jbpm/taskmgmt/exe/TaskInstance.hbm.xml" />
+  <entry key="56" value="org/jbpm/taskmgmt/exe/PooledActor.hbm.xml" />
+  <entry key="57" value="org/jbpm/taskmgmt/exe/SwimlaneInstance.hbm.xml" />
+
+  <!-- scheduler.exe mapping files -->
+  <entry key="58" value="org/jbpm/scheduler/exe/Timer.hbm.xml" />
+
+  <!-- logging mapping files -->
+  <entry key="59" value="org/jbpm/logging/log/ProcessLog.hbm.xml" />
+  <entry key="60" value="org/jbpm/logging/log/MessageLog.hbm.xml" />
+  <entry key="61" value="org/jbpm/logging/log/CompositeLog.hbm.xml" />
+  <entry key="62" value="org/jbpm/graph/log/ActionLog.hbm.xml" />
+  <entry key="63" value="org/jbpm/graph/log/NodeLog.hbm.xml" />
+  <entry key="64" value="org/jbpm/graph/log/ProcessInstanceCreateLog.hbm.xml" />
+  <entry key="65" value="org/jbpm/graph/log/ProcessInstanceEndLog.hbm.xml" />
+  <entry key="66" value="org/jbpm/graph/log/ProcessStateLog.hbm.xml" />
+  <entry key="67" value="org/jbpm/graph/log/SignalLog.hbm.xml" />
+  <entry key="68" value="org/jbpm/graph/log/TokenCreateLog.hbm.xml" />
+  <entry key="69" value="org/jbpm/graph/log/TokenEndLog.hbm.xml" />
+  <entry key="70" value="org/jbpm/graph/log/TransitionLog.hbm.xml" />
+  <entry key="71" value="org/jbpm/context/log/VariableLog.hbm.xml" />
+  <entry key="72" value="org/jbpm/context/log/VariableCreateLog.hbm.xml" />
+  <entry key="73" value="org/jbpm/context/log/VariableDeleteLog.hbm.xml" />
+  <entry key="74" value="org/jbpm/context/log/VariableUpdateLog.hbm.xml" />
+  <entry key="75" value="org/jbpm/context/log/variableinstance/ByteArrayUpdateLog.hbm.xml" />
+  <entry key="76" value="org/jbpm/context/log/variableinstance/DateUpdateLog.hbm.xml" />
+  <entry key="77" value="org/jbpm/context/log/variableinstance/DoubleUpdateLog.hbm.xml" />
+  <entry key="78" value="org/jbpm/context/log/variableinstance/HibernateLongUpdateLog.hbm.xml" />
+  <entry key="79" value="org/jbpm/context/log/variableinstance/HibernateStringUpdateLog.hbm.xml" />
+  <entry key="80" value="org/jbpm/context/log/variableinstance/LongUpdateLog.hbm.xml" />
+  <entry key="81" value="org/jbpm/context/log/variableinstance/StringUpdateLog.hbm.xml" />
+  <entry key="82" value="org/jbpm/taskmgmt/log/TaskLog.hbm.xml" />
+  <entry key="83" value="org/jbpm/taskmgmt/log/TaskCreateLog.hbm.xml" />
+  <entry key="84" value="org/jbpm/taskmgmt/log/TaskAssignLog.hbm.xml" />
+  <entry key="85" value="org/jbpm/taskmgmt/log/TaskEndLog.hbm.xml" />
+  <entry key="86" value="org/jbpm/taskmgmt/log/SwimlaneLog.hbm.xml" />
+  <entry key="87" value="org/jbpm/taskmgmt/log/SwimlaneCreateLog.hbm.xml" />
+  <entry key="88" value="org/jbpm/taskmgmt/log/SwimlaneAssignLog.hbm.xml" />
+
+  <!-- Tavant Engine custom nodes -->
+  <entry key="89" value="tavant/twms/jbpm/nodes/FormTaskNode.hbm.xml" />
+  <entry key="90" value="tavant/twms/jbpm/nodes/ServiceNode.hbm.xml" />
+  <entry key="91" value="tavant/twms/jbpm/nodes/fork/ForkNode.hbm.xml" />
+  <entry key="92" value="tavant/twms/jbpm/nodes/EndTasksJoin.hbm.xml" />
+  <entry key="93" value="tavant/twms/jbpm/nodes/SingleTokenJoin.hbm.xml" />
+  <entry key="94" value="tavant/twms/jbpm/nodes/CloneTokenNode.hbm.xml" />
+            </map>
+		</constructor-arg>
+	</bean>
+
+  <bean id="hibernateTemplate"
+    class="org.springframework.orm.hibernate3.HibernateTemplate" />
+  <bean id="jdbcTemplate"
+    class="org.springframework.jdbc.core.JdbcTemplate" />  
+  <bean id="jbpmTemplate"
+    class="org.springmodules.workflow.jbpm31.JbpmTemplate" />
+
+  <bean id="loadBalancingDao" class="tavant.twms.jbpm.assignment.LoadBalancingDao"/>
+  <bean id="loadBalancingService" class="tavant.twms.jbpm.assignment.LoadBalancingServiceImpl"/>
+
+  <bean id="processDefinitionService"
+    class="tavant.twms.process.ProcessDefinitionServiceImpl" />
+  <bean id="processService"
+    class="tavant.twms.process.ProcessServiceImpl" />
+</beans>

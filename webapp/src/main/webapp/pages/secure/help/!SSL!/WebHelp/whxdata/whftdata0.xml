@@ -1,0 +1,122 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<ftstdata>
+<topic name="Index" url="Accounts/index.htm" />
+<topic name="Remote Interactions Logs" url="Accounts/Remote_Interactions_Logs.htm" />
+<topic name="Before you Begin" url="Before_you_Begin/Before_you_Begin.htm" />
+<topic name="Common Application Features" url="Before_you_Begin/Common_Application_Features.htm" />
+<topic name="Copyright" url="Before_you_Begin/Copyright.htm" />
+<topic name="index" url="Before_you_Begin/index.htm" />
+<topic name="Introduction" url="Before_you_Begin/Introduction.htm" />
+<topic name="Advice Request" url="Claims/Advice_Request.htm" />
+<topic name="Appealed" url="Claims/Appealed.htm" />
+<topic name="Claim Attributes" url="Claims/Claim_Attributes.htm" />
+<topic name="Claim Details" url="Claims/Claim_Details.htm" />
+<topic name="Claim Failure Reports" url="Claims/Claim_Failure_Reports.htm" />
+<topic name="Claim Folders" url="Claims/Claim_Folders.htm" />
+<topic name="Claim Submission" url="Claims/Claim_Submission.htm" />
+<topic name="Claim Validation" url="Claims/Claim_Validation.htm" />
+<topic name="Draft" url="Claims/Draft.htm" />
+<topic name="Field Modification Claims" url="Claims/Field_Modification_Claims.htm" />
+<topic name="Index" url="Claims/index.htm" />
+<topic name="Machine Claims" url="Claims/Machine_Claims.htm" />
+<topic name="Major Component Registration" url="Claims/Major_Component_Registration.htm" />
+<topic name="Non-serialized part with Part installed on Competitor Model" url="Claims/Non-serialized_part_with_Part_installed_on_Competitor_Model.htm" />
+<topic name="Non-serialized part with Part installed on non-serialized host machine" url="Claims/Non-serialized_part_with_Part_installed_on_non-serialized_host_machine.htm" />
+<topic name="Non-serialized part with Part installed on serialized host machine" url="Claims/Non-serialized_part_with_Part_installed_on_serialized_host_machine.htm" />
+<topic name="On Hold" url="Claims/On_Hold.htm" />
+<topic name="Parts Claims" url="Claims/Parts_Claims_New.htm" />
+<topic name="Policy Details" url="Claims/Policy_Details.htm" />
+<topic name="Processor Review" url="Claims/Processor_Review.htm" />
+<topic name="Replies" url="Claims/Replies.htm" />
+<topic name="Request for Information" url="Claims/Request_for_Information.htm" />
+<topic name="Search Claims" url="Claims/Search_Claims.htm" />
+<topic name="Serialized part with Part installed on Competitor Model" url="Claims/Serialized_part_with_Part_installed_on_Competitor_Model.htm" />
+<topic name="Serialized Part with Part installed on Non-serialized host machine" url="Claims/Serialized_part_with_Part_installed_on_non-serialized_host_machine.htm" />
+<topic name="Serialized part with Part installed on serialized host machine" url="Claims/Serialized_part_with_Part_installed_on_serialized_host_machine.htm" />
+<topic name="Service Manager Response" url="Claims/Service_Manager_Response.htm" />
+<topic name="Service Manager Review" url="Claims/Service_Manager_Review.htm" />
+<topic name="Transfer/Re-process" url="Claims/Transfer_Re-process.htm" />
+<topic name="Transferred" url="Claims/Transferred.htm" />
+<topic name="Index" url="Contract_Admin/index.htm" />
+<topic name="Maintain Supplier Contracts" url="Contract_Admin/Maintain_Supplier_Contracts.htm" />
+<topic name="Manage Suppliers" url="Contract_Admin/Manage_Suppliers.htm" />
+<topic name="View Part Source History" url="Contract_Admin/View_Part_Source_History.htm" />
+<topic name="Index" url="Field_Modifications/index.htm" />
+<topic name="Pending Campaigns" url="Field_Modifications/Pending_Campaigns.htm" />
+<topic name="Search Campaigns" url="Field_Modifications/Search_Campaigns.htm" />
+<topic name="Address Book" url="Inventory/Address_Book.htm" />
+<topic name="Dealer to Dealer Transfer" url="Inventory/Dealer_to_Dealer_Transfer.htm" />
+<topic name="Equipment Details" url="Inventory/Equipment_Details.htm" />
+<topic name="Equipment Transfer Report" url="Inventory/Equipment_Transfer_Report.htm" />
+<topic name="Extended Warranty Purchase" url="Inventory/Extended_Warranty_Purchase.htm" />
+<topic name="Fleet Inventory Management" url="Inventory/Fleet_Inventory_Management_.htm" />
+<topic name="GoodWill Warranty Extension" url="Inventory/GoodWill_Warranty_Extension.htm" />
+<topic name="Index" url="Inventory/index.htm" />
+<topic name="Inventory" url="Inventory/Inventory.htm" />
+<topic name="Manage Warranty Coverage" url="Inventory/Manage_Warranty_Coverage.htm" />
+<topic name="Retail Machine Transfer" url="Inventory/Retail_Machine_Transfer.htm" />
+<topic name="Retailed" url="Inventory/Retailed.htm" />
+<topic name="Scrap/Unscrap Inventories" url="Inventory/Scrap_Inventories.htm" />
+<topic name="Search Inventory" url="Inventory/Search_Inventory.htm" />
+<topic name="Stock" url="Inventory/Stock.htm" />
+<topic name="Warranty Registration" url="Inventory/Warranty_Registration.htm" />
+<topic name="Index" url="Items/index.htm" />
+<topic name="Search Items" url="Items/Search_Items.htm" />
+<topic name="Barcode Feature and Search by Barcode" url="Part_Returns/Barcode_Feature_and_Search_by_Barcode.htm" />
+<topic name="Configuring_Part_Return_List_visibility_to_dealers_per_BU" url="Part_Returns/Configuring_Part_Return_List_visibility_to_dealers_per_BU.htm" />
+<topic name="Due Parts" url="Part_Returns/Due_Parts.htm" />
+<topic name="Due Parts Inspection" url="Part_Returns/Due_Parts_Inspection.htm" />
+<topic name="Due Parts Receipt" url="Part_Returns/Due_Parts_Receipt.htm" />
+<topic name="Index" url="Part_Returns/index.htm" />
+<topic name="Overdue Parts" url="Part_Returns/Overdue_Parts.htm" />
+<topic name="Part Return Folders" url="Part_Returns/Part_Return_Folders.htm" />
+<topic name="Parts Shipped" url="Part_Returns/Parts_Shipped.htm" />
+<topic name="Search Parts" url="Part_Returns/Search_Parts.htm" />
+<topic name="Shipment Generated" url="Part_Returns/Shipment_Generated.htm" />
+<topic name="Shipment Tag" url="Part_Returns/Shipment_Tag.htm" />
+<topic name="Awaiting Shipment" url="Parts_Recovery/Awaiting_Shipment.htm" />
+<topic name="Awaiting Shipment To WareHouse" url="Parts_Recovery/Awaiting_Shipment_To_WareHouse.htm" />
+<topic name="Index" url="Parts_Recovery/index.htm" />
+<topic name="Part Not In Warehouse" url="Parts_Recovery/Part_Not_In_Warehouse.htm" />
+<topic name="Parts Recovery" url="Parts_Recovery/Parts_Recovery.htm" />
+<topic name="Search Parts" url="Parts_Recovery/Search_Parts.htm" />
+<topic name="Supplier Parts Claimed" url="Parts_Recovery/Supplier_Parts_Claimed.htm" />
+<topic name="Supplier Parts Shipped" url="Parts_Recovery/Supplier_Parts_Shipped.htm" />
+<topic name="Download Management" url="Reports/Download_Management.htm" />
+<topic name="Index" url="Reports/index.htm" />
+<topic name="Reports" url="Reports/Reports.htm" />
+<topic name="Upload Management" url="Reports/Upload_Management.htm" />
+<topic name="Vendor Recovery Report" url="Reports/Vendor_Recovery_Report.htm" />
+<topic name="Email Subscription" url="Settings/Email_Subscription.htm" />
+<topic name="End Customer Management" url="Settings/End_Customer_Management.htm" />
+<topic name="Index" url="Settings/index.htm" />
+<topic name="Manage User BU Mapping" url="Settings/Manage_User_BU_Mapping.htm" />
+<topic name="Map Service Provider Business Unit" url="Settings/Map_Service_Provider_Business_Unit.htm" />
+<topic name="Profile" url="Settings/Profile.htm" />
+<topic name="User Management" url="Settings/User_Management.htm" />
+<topic name="Claims Due for Recovery" url="Supplier_Recovery/Claims_Due_for_Recovery.htm" />
+<topic name="Claims Under Recovery" url="Supplier_Recovery/Claims_Under_Recovery.htm" />
+<topic name="Index" url="Supplier_Recovery/index.htm" />
+<topic name="Multi Claim Maintenance" url="Supplier_Recovery/Multi_Claim_Maintenance.htm" />
+<topic name="Pending Recovery Initiation" url="Supplier_Recovery/Pending_Recovery_Initiation.htm" />
+<topic name="Search Supplier Recovery Claims" url="Supplier_Recovery/Search_Supplier_Recovery_Claims.htm" />
+<topic name="Supplier Recovery" url="Supplier_Recovery/Supplier_Recovery.htm" />
+<topic name="Add Question" url="Warranty_Admin/Add_Question.htm" />
+<topic name="Associate/Dissociate Inventory Attributes" url="Warranty_Admin/Associate_Dissociate_Inventory_Attributes.htm" />
+<topic name="Associate/Dissociate Part Attributes" url="Warranty_Admin/Associate_Dissociate_Part_Attributes.htm" />
+<topic name="Business Conditions" url="Warranty_Admin/Business_Conditions.htm" />
+<topic name="Business Rules" url="Warranty_Admin/Business_Rules.htm" />
+<topic name="Payment Definition" url="Warranty_Admin/Configure_Claim_Payment_Modifier.htm" />
+<topic name="Cost Category Configuration" url="Warranty_Admin/Cost_Category_Configuration.htm" />
+<topic name="Create Claim Payment Modifier" url="Warranty_Admin/Create_Claim_Payment_Modifier.htm" />
+<topic name="Create/Update Attributes" url="Warranty_Admin/Create_Update_Attributes.htm" />
+<topic name="Dealer Groups" url="Warranty_Admin/Dealer_Groups.htm" />
+<topic name="Dealer Summary" url="Warranty_Admin/Dealer_Summary.htm" />
+<topic name="Failure Structure" url="Warranty_Admin/Failure_Structure.htm" />
+<topic name="Flat Rates" url="Warranty_Admin/Flat_Rates.htm" />
+<topic name="Index" url="Warranty_Admin/index.htm" />
+<topic name="Item Groups" url="Warranty_Admin/Item_Groups.htm" />
+<topic name="Labor Rates" url="Warranty_Admin/Labor_Rates.htm" />
+<topic name="List Fault Locations" url="Warranty_Admin/List_Fault_Locations.htm" />
+
+</ftstdata>  

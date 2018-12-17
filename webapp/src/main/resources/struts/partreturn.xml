@@ -1,0 +1,1331 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+    
+<struts>
+	<package name="partreturn" extends="struts-twms-default">
+	
+		<default-interceptor-ref name="paramsPrepareWithoutValidation" />
+	
+		<!-- Parts Return Common Action (Do not have one action classes serving common page.. Kannan)-->
+		<action name="dueParts"
+			class="tavant.twms.web.partsreturn.DuePartsReturnAction">
+			<!--param name="viewButton">dueParts_claimbased</param-->
+			<param name="switchButtonActionName">claimBased_dueParts</param>
+			<param name="switchButtonTabLabel">title.dueParts.claimView</param>			
+			<result name="success">pages/secure/partreturns/partsReturnInboxView.jsp</result>
+		</action>
+		
+		<action name="OverdueParts"
+			class="tavant.twms.web.partsreturn.DuePartsReturnAction">
+            <param name="switchButtonActionName">claimBased_overDueParts</param>
+            <param name="switchButtonTabLabel">title.overdueParts.claimView</param>
+			<result name="success">pages/secure/partreturns/partsReturnInboxView.jsp</result>
+		</action>
+	
+		
+		<action name="duePartsShipped"
+			class="tavant.twms.web.partsreturn.ShipmentGeneratedAction">
+            <param name="actionUrl">duePartsShipped</param>
+            <param name="taskName">Parts Shipped</param>
+            <param name="switchButtonActionName">wpraView_duePartsShipped</param>
+            <param name="switchButtonTabLabel">title.partShipped.wpraView</param>
+			<result name="success">pages/secure/partreturns/partsReturnInboxView.jsp</result>
+		</action>
+		
+		<action name="thirdPartyDueParts"
+			class="tavant.twms.web.partsreturn.DuePartsReturnAction">
+            <param name="switchButtonActionName">claimBased_dueParts_thirdParty</param>
+			<param name="switchButtonTabLabel">title.thirdPartyDueParts.claimView</param>			
+			<result name="success">pages/secure/partreturns/partsReturnInboxView.jsp</result>
+		</action>
+		
+		<action name="shipmentGenerated"
+                         class="tavant.twms.web.partsreturn.ShipmentGeneratedAction">
+        <param name="taskName">Shipment Generated</param>
+        <param name="switchButtonActionName">wpraView_shipmentGenerated</param>
+        <param name="switchButtonTabLabel">title.shipmentGenerated.wpraView</param>
+        <result name="success">pages/secure/partreturns/partsReturnInboxView.jsp</result>
+    </action>
+		
+		<action name="duePartsReceipt"
+			class="tavant.twms.web.partsreturn.DuePartsReceiptAction">
+			<param name="inboxViewType">claim</param>
+			<param name="switchButtonActionName">shipmentBased_duePartsReceipt</param>
+			<param name="switchButtonTabLabel">title.duePartsReceipt.shipmentView</param>
+			<result name="success">pages/secure/partreturns/partsReturnInboxView.jsp</result>
+		</action>
+		
+		<action name="shipmentBased_duePartsReceipt"
+			class="tavant.twms.web.partsreturn.DuePartsReceiptAction">
+			<param name="inboxViewType">shipment</param>
+			<param name="taskName">Due Parts Receipt</param>
+			<param name="actionUrl">duePartsReceipt</param>
+			<param name="switchButtonActionName">claimBased_duePartsReceipt</param>			
+			<param name="switchButtonTabLabel">title.duePartsReceipt.claimView</param>
+			<result name="success">pages/secure/partreturns/partsReturnInboxView.jsp</result>
+		</action>
+		
+		<action name="claimBased_duePartsReceipt"
+			class="tavant.twms.web.partsreturn.DuePartsReceiptAction">
+			<param name="inboxViewType">claim</param>
+			<param name="taskName">Due Parts Receipt</param>
+			<param name="actionUrl">duePartsReceipt</param>
+			<param name="switchButtonActionName">shipmentBased_duePartsReceipt</param>			
+			<param name="switchButtonTabLabel">title.duePartsReceipt.shipmentView</param>
+			<result name="success">pages/secure/partreturns/partsReturnInboxView.jsp</result>
+		</action>	
+
+       <!-- Due Parts Return Action -->
+		<action name="dueParts_table_body"
+			class="tavant.twms.web.partsreturn.DuePartsReturnAction" method="tableBody">
+			<param name="taskName">Due Parts</param>
+			<result name="success">pages/secure/home/json.jsp</result>
+		</action>
+		
+		<!-- Due Parts Detail Page -->
+		<action name="dueParts_detail"
+			class="tavant.twms.web.partsreturn.DuePartsReturnAction" method="showPreview">
+            <param name="taskName">Due Parts</param>
+			<result name="success">pages/secure/partreturns/dueparts_in_locatons_detail.jsp</result>
+		</action>
+
+		<action name="dueParts_preview"
+			class="tavant.twms.web.partsreturn.DuePartsReturnAction" method="showPreview">
+            <param name="taskName">Due Parts</param>
+			<result name="success">pages/secure/partreturns/dueparts_in_locatons_preview.jsp</result>
+		</action>
+		<action name="dueParts_generateShipment"
+			class="tavant.twms.web.partsreturn.DuePartsReturnAction" method="submitPreview">
+			<interceptor-ref name="twmsParamsPrepareRepeatTableParams" />
+			<param name="transitionTaken">Generate Shipment</param>
+            <param name="taskName">Due Parts</param>
+			<result name="input">pages/secure/partreturns/dueparts_in_locatons_detail.jsp</result>			
+			<result name="success">pages/secure/partreturns/partreturnresponse.jsp</result>						
+		</action>
+		
+		<!-- Third Party Due Parts Return Action -->
+		<action name="thirdPartyDueParts_table_body"
+			class="tavant.twms.web.partsreturn.DuePartsReturnAction" method="tableBody">
+			<param name="taskName">Third Party Due Parts</param>
+			<result name="success">pages/secure/home/json.jsp</result>
+		</action>
+		
+		<!-- Third Party Due Parts Detail Page -->
+		<action name="thirdPartyDueParts_detail"
+			class="tavant.twms.web.partsreturn.DuePartsReturnAction" method="showPreview">
+            <param name="taskName">Third Party Due Parts</param>
+			<result name="success">pages/secure/partreturns/dueparts_in_locatons_detail.jsp</result>
+		</action>
+		<action name="thirdPartyDueParts_preview"
+			class="tavant.twms.web.partsreturn.DuePartsReturnAction" method="showPreview">
+            <param name="taskName">Third Party Due Parts</param>
+			<result name="success">pages/secure/partreturns/dueparts_in_locatons_preview.jsp</result>
+		</action>
+		<action name="thirdPartyDueParts_generateShipment"
+			class="tavant.twms.web.partsreturn.DuePartsReturnAction" method="submitPreview">
+			<interceptor-ref name="twmsParamsPrepareRepeatTableParams" />
+			<param name="transitionTaken">Generate Shipment</param>
+            <param name="taskName">Third Party Due Parts</param>
+			<result name="input">pages/secure/partreturns/dueparts_in_locatons_detail.jsp</result>			
+			<result name="success">pages/secure/partreturns/partreturnresponse.jsp</result>						
+		</action>
+						
+		<!-- Overdue Parts Return Action -->		
+		<action name="OverdueParts_table_body"
+			class="tavant.twms.web.partsreturn.DuePartsReturnAction" method="tableBody">
+			<param name="taskName">Overdue Parts</param>
+			<result name="success">pages/secure/home/json.jsp</result>
+		</action>
+		
+		<!-- Added for OverDue Parts Detail page -->
+		<action name="OverdueParts_detail"
+			class="tavant.twms.web.partsreturn.DuePartsReturnAction" method="showPreview">
+			<param name="taskName">Overdue Parts</param>
+			<result name="success">pages/secure/partreturns/dueparts_in_locatons_detail.jsp</result>
+		</action>
+		<action name="OverdueParts_preview"
+			class="tavant.twms.web.partsreturn.DuePartsReturnAction" method="showPreview">
+			<param name="taskName">Overdue Parts</param>
+			<result name="success">pages/secure/partreturns/dueparts_in_locatons_preview.jsp</result>
+		</action>
+		<action name="OverdueParts_generateShipment"
+			class="tavant.twms.web.partsreturn.DuePartsReturnAction" method="submitPreview">
+			<interceptor-ref name="twmsParamsPrepareParamsForPartReturn" />
+			<param name="transitionTaken">Generate Shipment</param>
+            <param name="taskName">Overdue Parts</param>
+			<result name="input">pages/secure/partreturns/dueparts_in_locatons_detail.jsp</result>			
+			<result name="success">pages/secure/partreturns/partreturnresponse.jsp</result>						
+		</action>
+	
+		<action name="partreturns_displayForPrint"
+			class="tavant.twms.web.partsreturn.ShipmentGeneratedAction" 
+                method="fetchNewShipmentForTagPrint">
+			<param name="taskName">Shipment Generated</param>
+			<!--<result name="success">
+				pages/secure/partreturns/popups/print_location_popup.jsp
+			</result>-->
+		</action>
+
+		<!-- Claim based Due Parts Return Action -->
+		<action name="claimBased_dueParts"
+			class="tavant.twms.web.partsreturn.ClaimBasedPartReturnAction">
+			<param name="taskName">Due Parts</param>
+			<param name="actionUrl">claimDueParts</param>
+			<param name="switchButtonActionName">locationBased_dueParts</param>			
+			<param name="switchButtonTabLabel">title.dueParts.locationView</param>
+			<result name="success">pages/secure/partreturns/partsReturnInboxView.jsp</result>
+		</action>
+		
+		<action name="claimBased_overDueParts"
+			class="tavant.twms.web.partsreturn.ClaimBasedPartReturnAction">
+			<param name="taskName">Overdue Parts</param>
+			<param name="actionUrl">claimOverDueParts</param>
+			<param name="switchButtonActionName">locationBased_OverDueParts</param>
+			<param name="switchButtonTabLabel">title.overdueParts.locationView</param>
+			<result name="success">pages/secure/partreturns/partsReturnInboxView.jsp</result>
+		</action>
+		<action name="claimBased_dueParts_thirdParty"
+			class="tavant.twms.web.partsreturn.ClaimBasedPartReturnAction">
+			<param name="taskName">Third Party Due Parts</param>
+			<param name="actionUrl">thirdPartyClaimDueParts</param>
+			<param name="switchButtonActionName">locationBased_dueParts_thirdParty</param>
+			<param name="switchButtonTabLabel">title.thirdPartyDueParts.locationView</param>
+			<result name="success">pages/secure/partreturns/partsReturnInboxView.jsp</result>
+		</action>
+
+		<action name="locationBased_dueParts"
+			class="tavant.twms.web.partsreturn.DuePartsReturnAction">
+			<param name="taskName">Due Parts</param>
+			<param name="actionUrl">dueParts</param>
+			<param name="switchButtonActionName">claimBased_dueParts</param>
+			<param name="switchButtonTabLabel">title.dueParts.claimView</param>			
+			<result name="success">pages/secure/partreturns/partsReturnInboxView.jsp</result>
+		</action>
+		
+		<action name="locationBased_dueParts_thirdParty"
+			class="tavant.twms.web.partsreturn.DuePartsReturnAction">
+			<param name="taskName">Third Party Due Parts</param>
+			<param name="actionUrl">thirdPartyDueParts</param>
+			<param name="switchButtonActionName">claimBased_dueParts_thirdParty</param>
+			<param name="switchButtonTabLabel">title.thirdPartyDueParts.claimView</param>			
+			<result name="success">pages/secure/partreturns/partsReturnInboxView.jsp</result>
+		</action>
+		
+		<action name="locationBased_OverDueParts"
+			class="tavant.twms.web.partsreturn.DuePartsReturnAction">
+			<param name="taskName">Overdue Parts</param>
+			<param name="actionUrl">OverdueParts</param>
+            <param name="switchButtonActionName">claimBased_overDueParts</param>
+            <param name="switchButtonTabLabel">title.overdueParts.claimView</param>
+			<result name="success">pages/secure/partreturns/partsReturnInboxView.jsp</result>
+		</action>
+		<!-- Claim based  -->
+		
+		<action name="claimDueParts_table_body"
+			class="tavant.twms.web.partsreturn.ClaimBasedPartReturnAction" method="tableBody">
+			<param name="taskName">Due Parts</param>
+			<result name="success">pages/secure/home/json.jsp</result>
+		</action>
+		
+		<!-- Added for Detail Page of Due Parts -->
+		<action name="claimDueParts_detail"
+			class="tavant.twms.web.partsreturn.ClaimBasedPartReturnAction" method="showPreview">
+            <param name="taskName">Due Parts</param>
+			<result name="success">pages/secure/partreturns/dueparts_in_claims_detail.jsp</result>
+		</action>
+		<action name="claimDueParts_preview"
+			class="tavant.twms.web.partsreturn.ClaimBasedPartReturnAction" method="showPreview">
+            <param name="taskName">Due Parts</param>
+			<result name="success">pages/secure/partreturns/dueparts_in_claims.jsp</result>
+		</action>
+		<action name="claimDueParts_generateShipment"
+			class="tavant.twms.web.partsreturn.ClaimBasedPartReturnAction" method="submitPreview">
+			<interceptor-ref name="twmsParamsPrepareParamsForPartReturn" />
+			<param name="transitionTaken">Generate Shipment</param>
+            <param name="taskName">Due Parts</param>
+			<result name="input">pages/secure/partreturns/dueparts_in_claims_detail.jsp</result>
+			<result name="success">pages/secure/partreturns/partreturnresponse.jsp</result>						
+		</action>
+		
+		<!--  Third Party Claim based -->
+		
+		<action name="thirdPartyClaimDueParts_table_body"
+			class="tavant.twms.web.partsreturn.ClaimBasedPartReturnAction" method="tableBody">
+			<param name="taskName">Third Party Due Parts</param>
+			<result name="success">pages/secure/home/json.jsp</result>
+		</action>
+		
+		<!-- Added for Detail Page of Due Parts -->
+		<action name="thirdPartyClaimDueParts_detail"
+			class="tavant.twms.web.partsreturn.ClaimBasedPartReturnAction" method="showPreview">
+            <param name="taskName">Third Party Due Parts</param>
+			<result name="success">pages/secure/partreturns/dueparts_in_claims_detail.jsp</result>
+		</action>
+		<action name="thirdPartyClaimDueParts_preview"
+			class="tavant.twms.web.partsreturn.ClaimBasedPartReturnAction" method="showPreview">
+            <param name="taskName">Third Party Due Parts</param>
+			<result name="success">pages/secure/partreturns/dueparts_in_claims.jsp</result>
+		</action>
+		<action name="thirdPartyClaimDueParts_generateShipment"
+			class="tavant.twms.web.partsreturn.ClaimBasedPartReturnAction" method="submitPreview">
+			<interceptor-ref name="twmsParamsPrepareParamsForPartReturn" />
+			<param name="transitionTaken">Generate Shipment</param>
+            <param name="taskName">Third Party Due Parts</param>
+			<result name="input">pages/secure/partreturns/dueparts_in_claims_detail.jsp</result>
+			<result name="success">pages/secure/partreturns/partreturnresponse.jsp</result>						
+		</action>
+		
+		<action name="claimOverDueParts_table_body"
+			class="tavant.twms.web.partsreturn.ClaimBasedPartReturnAction" method="tableBody">
+			<param name="taskName">Overdue Parts</param>
+			<result name="success">pages/secure/home/json.jsp</result>
+		</action>
+		<action name="claimOverDueParts_preview"
+			class="tavant.twms.web.partsreturn.ClaimBasedPartReturnAction" method="showPreview">
+            <param name="taskName">Overdue Parts</param>
+			<result name="success">pages/secure/partreturns/dueparts_in_claims.jsp</result>
+		</action>
+		<action name="claimOverDueParts_detail"
+			class="tavant.twms.web.partsreturn.ClaimBasedPartReturnAction" method="showPreview">
+            <param name="taskName">Overdue Parts</param>
+			<result name="success">pages/secure/partreturns/dueparts_in_claims_detail.jsp</result>
+		</action>
+		
+		<action name="claimOverDueParts_generateShipment"
+			class="tavant.twms.web.partsreturn.ClaimBasedPartReturnAction" method="submitPreview">
+			<interceptor-ref name="twmsParamsPrepareParamsForPartReturn" />
+			<param name="transitionTaken">Generate Shipment</param>
+            <param name="taskName">Overdue Parts</param>
+			<result name="input">pages/secure/partreturns/dueparts_in_claims_detail.jsp</result>
+			<result name="success">pages/secure/partreturns/partreturnresponse.jsp</result>
+		</action>
+
+
+    	<!-- Shipment Generated Action -->
+		<action name="shipmentGenerated_table_body"
+			class="tavant.twms.web.partsreturn.ShipmentGeneratedAction"
+			method="tableBody">
+			<param name="taskName">Shipment Generated</param>
+			<result name="success">pages/secure/home/json.jsp</result>
+	   </action>
+		
+		<action name="shipmentGenerated_detail"
+			class="tavant.twms.web.partsreturn.ShipmentGeneratedAction"
+			method="showPreview">
+            <param name="taskName">Shipment Generated</param>
+			<result name="success">pages/secure/partreturns/shipment_generated.jsp</result>
+		</action>	
+		<action name="shipmentGenerated_preview"
+			class="tavant.twms.web.partsreturn.ShipmentGeneratedAction"
+			method="showPreview">
+            <param name="taskName">Shipment Generated</param>
+			<result name="success">pages/secure/partreturns/shipment_generatedPreview.jsp</result>
+		</action>
+		<action name="shipmentgenerated_removepart"
+			class="tavant.twms.web.partsreturn.ShipmentGeneratedAction"
+			method="removeParts">
+			<interceptor-ref name="twmsParamsPrepareParamsForPartReturn" />
+            <param name="taskName">Shipment Generated</param>
+			<param name="transitionTaken">Remove Part</param>	
+            <result name="input">pages/secure/partreturns/shipment_generated.jsp</result>
+            <result name="success" type="chain">shipmentGenerated_detail</result>		
+		</action>
+		<action name="shipmentgenerated_submit"
+			class="tavant.twms.web.partsreturn.ShipmentGeneratedAction"
+			method="shipParts">			
+			<interceptor-ref name="twmsParamsPrepareParamsForPartReturn" />
+            <param name="taskName">Shipment Generated</param>
+			<param name="transitionTaken">Submit</param>
+            <result name="input">pages/secure/partreturns/shipment_generated.jsp</result>
+            <result name="success">pages/secure/partreturns/shipment_generated_success.jsp</result>			
+		</action>
+		<action name="shipmentgenerated_addpart"
+			class="tavant.twms.web.partsreturn.ShipmentGeneratedAction"
+			method="fetchAllDueAndOverdueParts">						
+            <!-- The taskName param has the Due Parts and Overdue Parts task names - the IN clause string for the query.  -->
+            <param name="taskName">'Due Parts', 'Overdue Parts'</param>
+            <result name="success">pages/secure/partreturns/addPart.jsp</result>			
+            <result name="input">pages/secure/partreturns/shipment_generated.jsp</result>  <!-- Need to handle add part failure  -->
+		</action>
+		<action name="shipmentgenerated_addpartToShipment"
+			class="tavant.twms.web.partsreturn.ShipmentGeneratedAction"
+			method="addParts">				
+			<interceptor-ref name="twmsParamsPrepareParamsForPartReturn" />	
+			 <param name="taskName">Shipment Generated</param>	            
+            <param name="transitionTaken">Generate Shipment</param>
+            <result name="success" type="chain">shipmentGenerated_detail</result> 
+            <result name="input">pages/secure/partreturns/shipment_generated.jsp</result> 
+		</action>
+		
+		<!-- Due Part Received Action -->
+		<action name="duePartsReceipt_table_body"
+			class="tavant.twms.web.partsreturn.DuePartsReceiptAction"
+			method="tableBody">
+			<param name="taskName">Due Parts Receipt</param>
+			<result name="success">pages/secure/home/json.jsp</result>
+		</action>
+		<action name="duePartsReceipt_detail"
+			class="tavant.twms.web.partsreturn.DuePartsReceiptAction"
+			method="showPreview">
+			<param name="taskName">Due Parts Receipt</param>
+			<result name="success">pages/secure/partreturns/receipt_detail.jsp</result>
+		</action>
+		<action name="duePartsReceipt_preview"
+			class="tavant.twms.web.partsreturn.DuePartsReceiptAction"
+			method="showPreview">
+			<param name="taskName">Due Parts Receipt</param>
+			<result name="success">
+				pages/secure/partreturns/receipt.jsp
+			</result>
+		</action>		
+		<action name="duepartsreceived_submit"
+			class="tavant.twms.web.partsreturn.DuePartsReceiptAction"
+			method="submitTasks">
+			<interceptor-ref name="twmsParamsPrepareParamsForPartReturn" />
+            <param name="taskName">Due Parts Receipt</param>
+            <param name="transitionTaken">Received Due Parts</param>
+			<result name="input">pages/secure/partreturns/receipt_detail.jsp</result>
+			<result name="success">
+				pages/secure/partreturns/partreturnresponse.jsp
+			</result>
+		</action>
+		
+		<!--Parts Shipped Action. Don't need a separate action for this.-->
+		<action name="duePartsShipped_table_body"
+			class="tavant.twms.web.partsreturn.ShipmentGeneratedAction"
+			method="tableBody">
+			<param name="taskName">Parts Shipped</param>
+			<result name="success">pages/secure/home/json.jsp</result>
+		</action>
+		
+		<!-- Added for Parts Shipped Detail -->
+		<action name="duePartsShipped_detail"
+			class="tavant.twms.web.partsreturn.ShipmentGeneratedAction"
+			method="showPreview">
+			<param name="taskName">Parts Shipped</param>
+			<result name="success">
+				pages/secure/partreturns/shipped_detail.jsp
+			</result>
+		</action>
+		
+		<action name="duePartsShipped_preview"
+			class="tavant.twms.web.partsreturn.ShipmentGeneratedAction"
+			method="showPreview">
+			<param name="taskName">Parts Shipped</param>
+			<result name="success">
+				pages/secure/partreturns/shipped.jsp
+			</result>
+		</action>		
+		
+		<!-- Due Part Inspection Action -->
+		
+		<action name="duePartsInspection"
+			class="tavant.twms.web.partsreturn.PartReturnInboxAction">
+			 <param name="inboxViewType">claim</param>
+			<param name="switchButtonActionName">shipmentBased_duePartsInspection</param>
+			<param name="switchButtonTabLabel">title.duePartsInspection.shipmentView</param>
+			<result name="success">pages/secure/partreturns/partsReturnInboxView.jsp</result>
+		</action>
+		
+		<action name="shipmentBased_duePartsInspection"
+			class="tavant.twms.web.partsreturn.PartReturnInboxAction">
+			<param name="inboxViewType">shipment</param>
+			<param name="taskName">Due Parts Inspection</param>
+			<param name="actionUrl">duePartsInspection</param>
+			<param name="switchButtonActionName">claimBased_duePartsInspection</param>			
+			<param name="switchButtonTabLabel">title.duePartsInspection.claimView</param>
+			<result name="success">pages/secure/partreturns/partsReturnInboxView.jsp</result>
+		</action>
+		
+		<action name="claimBased_duePartsInspection"
+			class="tavant.twms.web.partsreturn.PartReturnInboxAction">
+			<param name="inboxViewType">claim</param>
+			<param name="taskName">Due Parts Inspection</param>
+			<param name="actionUrl">duePartsInspection</param>
+			<param name="switchButtonActionName">shipmentBased_duePartsInspection</param>			
+			<param name="switchButtonTabLabel">title.duePartsReceipt.shipmentView</param>
+			<result name="success">pages/secure/partreturns/partsReturnInboxView.jsp</result>
+		</action>	
+		
+		<action name="duePartsInspection_table_body"
+			class="tavant.twms.web.partsreturn.DuePartsInspectionAction"
+			method="tableBody">
+			<param name="taskName">Due Parts Inspection</param>
+			<result name="success">pages/secure/home/json.jsp</result>
+		</action>
+		<action name="duePartsInspection_detail"
+			class="tavant.twms.web.partsreturn.DuePartsInspectionAction"
+			method="showPreview">
+			<param name="taskName">Due Parts Inspection</param>
+			<result name="success">
+				pages/secure/partreturns/inspection_detail.jsp
+			</result>
+		</action>
+		<action name="duePartsInspection_preview"
+			class="tavant.twms.web.partsreturn.DuePartsInspectionAction"
+			method="showPreview">
+			<param name="taskName">Due Parts Inspection</param>
+			<result name="success">
+				pages/secure/partreturns/inspection.jsp
+			</result>
+		</action>
+		<action name="duepartsinspection_submit"
+			class="tavant.twms.web.partsreturn.DuePartsInspectionAction"
+			method="submitTasks">
+			<interceptor-ref name="twmsParamsPrepareParamsForPartReturn" />
+			<param name="taskName">Due Parts Inspection</param>			
+			<result name="input">pages/secure/partreturns/inspection_detail.jsp</result>
+			<result name="success">
+				pages/secure/partreturns/partreturnresponse.jsp
+			</result>
+		</action>
+		
+		
+		
+		<!-- The rest of the export to excel action names are generated dynamically -->
+		<action name="exportduePartsToExcel"
+			class="tavant.twms.web.partsreturn.DuePartsReturnAction"
+			method="downloadListingData">
+			<param name="taskName">Due Parts</param>			
+		</action>
+        <action name="exportOverduePartsToExcel"
+			class="tavant.twms.web.partsreturn.DuePartsReturnAction"
+			method="downloadListingData">
+			<param name="taskName">Overdue Parts</param>			
+		</action>
+	    <action name="exportclaimDuePartsToExcel"
+			class="tavant.twms.web.partsreturn.ClaimBasedPartReturnAction"
+			method="downloadListingData">
+			<param name="taskName">Due Parts</param>			
+		</action>	
+        <action name="exportclaimOverDuePartsToExcel"
+			class="tavant.twms.web.partsreturn.ClaimBasedPartReturnAction"
+			method="downloadListingData">
+			<param name="taskName">Overdue Parts</param>			
+		</action>				
+	    <action name="exportshipmentGeneratedToExcel"
+			class="tavant.twms.web.partsreturn.ShipmentGeneratedAction"
+			method="downloadListingData">
+			<param name="taskName">Shipment Generated</param>			
+		</action>	
+        <action name="exportduePartsReceiptToExcel"
+			class="tavant.twms.web.partsreturn.DuePartsReceiptAction"
+			method="downloadListingData">
+			<param name="taskName">Due Parts Receipt</param>			
+		</action>	
+	    <action name="exportduePartsShippedToExcel"
+			class="tavant.twms.web.partsreturn.ShipmentGeneratedAction"
+			method="downloadListingData">
+			<param name="taskName">Parts Shipped</param>			
+		</action>	
+        <action name="exportduePartsInspectionToExcel"
+			class="tavant.twms.web.partsreturn.DuePartsInspectionAction"
+			method="downloadListingData">
+			<param name="taskName">Due Parts Inspection</param>			
+		</action>	
+		 <!--Thermoking-->
+         <action name="list_required_part_returns_for_dealer"
+			class="tavant.twms.web.admin.partreturns.ListRequiredPartsReturnAction">
+			<result name="success">pages/secure/admin/partreturns/partReturnDealerInboxView.jsp</result>
+		 </action>
+		 
+		 <action name="get_dealer_part_return_definition_body"
+			class="tavant.twms.web.admin.partreturns.ListRequiredPartsReturnAction" method="tableBody">
+			<result name="success">pages/secure/home/json.jsp</result>
+		 </action> 
+		 
+		 <action name="export_part_return_dealer_config_to_excel"
+			class="tavant.twms.web.admin.partreturns.ListRequiredPartsReturnAction"
+			method="downloadListingData">
+			<interceptor-ref name="adminParamsPrepare" />
+		</action>
+		 
+		<!-- Part return back to dealer -->
+
+        <!-- Rejected claims parts details inbox for dealer -->
+        <action name="rejectedParts"
+			class="tavant.twms.web.partsreturn.DealerRequestedPartsReturnAction">
+            <param name="actionUrl">rejectedParts</param>
+            <param name="taskName">Rejected Parts</param>
+			<result name="success">pages/secure/partreturns/partsReturnInboxView.jsp</result>
+		</action>
+
+        <action name="rejectedParts_table_body"
+			class="tavant.twms.web.partsreturn.DealerRequestedPartsReturnAction" method="tableBody">
+            <param name="actionUrl">rejectedParts</param>
+			<param name="taskName">Rejected Parts</param>
+			<result name="success">pages/secure/home/json.jsp</result>
+		</action>
+
+         <action name="rejectedParts_detail"
+			class="tavant.twms.web.partsreturn.DealerRequestedPartsReturnAction" method="showPreview">
+            <param name="actionUrl">rejectedParts</param>
+            <param name="taskName">Rejected Parts</param>
+			<result name="success">pages/secure/partreturns/rejectedParts_detail.jsp</result>
+		 </action>
+
+         <action name="rejectedParts_preview"
+			class="tavant.twms.web.partsreturn.DealerRequestedPartsReturnAction" method="showPreview">
+            <param name="actionUrl">rejectedParts</param>
+            <param name="taskName">Rejected Parts</param>
+			<result name="success">pages/secure/partreturns/rejectedParts_detail.jsp</result>
+		 </action>
+         <!-- Rejected claims parts details inbox for dealer End -->
+        <action name="removePartReturnTaskForDealer"
+			  class="tavant.twms.web.partsreturn.DealerRequestedPartsReturnAction" method="removeFromInbox">
+			  <param name="transitionTaken">Request Rejected Part</param>
+              <param name="taskName">Rejected Parts</param>
+			  <result name="input">pages/secure/partreturns/rejectedParts_detail.jsp</result>
+			  <result name="success">pages/secure/partreturns/partreturnresponse.jsp</result>
+		 </action>
+         <!-- Request button action: move part from dealer inbox to Part shipper inbox -->
+
+         <action name="partReturnRequestToPartShipper"
+			  class="tavant.twms.web.partsreturn.DealerRequestedPartsReturnAction" method="initiateReturnRequest">
+			  <interceptor-ref name="twmsParamsPrepareParamsForPartReturn" />
+			  <param name="transitionTaken">Request Rejected Part</param>
+              <param name="taskName">Rejected Parts</param>
+			  <result name="input">pages/secure/partreturns/rejectedParts_detail.jsp</result>
+			  <result name="success">pages/secure/partreturns/partreturnresponse.jsp</result>
+		 </action>
+         <!-- Transition end -->
+
+        <!-- Part shipper Dealer Requested Parts inbox Location View-->
+         <action name="dealerRequestedPart"
+			class="tavant.twms.web.partsreturn.PartShipperDuePartForDealerAction">
+			<param name="switchButtonActionName">claimBased_dealerRequestedPart</param>
+            <param name="actionUrl">dealerRequestedPart</param>
+			<param name="switchButtonTabLabel">title.dealerRequestedParts.claimView</param>
+			<result name="success">pages/secure/partreturns/partsReturnInboxView.jsp</result>
+		</action>
+
+        <action name="dealerRequestedPart_table_body"
+			class="tavant.twms.web.partsreturn.PartShipperDuePartForDealerAction" method="tableBody">
+            <param name="actionUrl">dealerRequestedPart</param>
+			<param name="taskName">Dealer Requested Part</param>
+			<result name="success">pages/secure/home/json.jsp</result>
+		</action>
+
+        <action name="dealerRequestedPart_detail"
+			class="tavant.twms.web.partsreturn.PartShipperDuePartForDealerAction" method="showPreview">
+            <param name="actionUrl">dealerRequestedPart</param>
+            <param name="taskName">Dealer Requested Part</param>
+			<result name="success">pages/secure/partreturns/partshipper_dueparts_detailsPage.jsp</result>
+		</action>
+
+        <action name="dealerRequestedPart_preview"
+			class="tavant.twms.web.partsreturn.PartShipperDuePartForDealerAction" method="showPreview">
+            <param name="actionUrl">dealerRequestedPart</param>
+            <param name="taskName">Dealer Requested Part</param>
+			<result name="success">pages/secure/partreturns/partshipper_dueparts_detailsPage.jsp</result>
+		</action>
+
+        <!-- Part shipper Dealer Requested Parts inbox Location View End-->
+
+        <!-- Part shipper Dealer Requested Parts inbox Claim View-->
+        <action name="claimBased_dealerRequestedPart"
+			class="tavant.twms.web.partsreturn.ClaimBasedPartShipperDuePartForDealerAction">
+            <param name="actionUrl">claimBased_dealerRequestedPart</param>
+            <param name="switchButtonActionName">locationbased_dealerRequestedPart</param>
+            <param name="switchButtonTabLabel">title.dealerRequestedParts.claimView</param>
+			<result name="success">pages/secure/partreturns/partsReturnInboxView.jsp</result>
+		</action>
+
+        <action name="locationbased_dealerRequestedPart"
+			class="tavant.twms.web.partsreturn.PartShipperDuePartForDealerAction">
+			<param name="taskName">Dealer Requested Part</param>
+			<param name="actionUrl">dealerRequestedPart</param>
+			<param name="switchButtonActionName">claimBased_dealerRequestedPart</param>
+			<param name="switchButtonTabLabel">title.dealerRequestedParts.claimView</param>
+			<result name="success">pages/secure/partreturns/partsReturnInboxView.jsp</result>
+		</action>
+
+        <action name="claimBased_dealerRequestedPart_table_body"
+			class="tavant.twms.web.partsreturn.ClaimBasedPartShipperDuePartForDealerAction" method="tableBody">
+            <param name="actionUrl">claimBased_dealerRequestedPart</param>
+			<param name="taskName">Dealer Requested Part</param>
+			<result name="success">pages/secure/home/json.jsp</result>
+		</action>
+
+        <action name="claimBased_dealerRequestedPart_detail"
+			class="tavant.twms.web.partsreturn.ClaimBasedPartShipperDuePartForDealerAction" method="showPreview">
+            <param name="actionUrl">claimBased_dealerRequestedPart</param>
+            <param name="taskName">Dealer Requested Part</param>
+            <result name="input">pages/secure/partreturns/claimbased_partshipper_dueparts_detailsPage.jsp</result>
+			<result name="success">pages/secure/partreturns/claimbased_partshipper_dueparts_detailsPage.jsp</result>
+		</action>
+
+        <action name="claimBased_dealerRequestedPart_preview"
+			class="tavant.twms.web.partsreturn.ClaimBasedPartShipperDuePartForDealerAction" method="showPreview">
+            <param name="actionUrl">claimBased_dealerRequestedPart</param>
+            <param name="taskName">Dealer Requested Part</param>
+            <result name="input">pages/secure/partreturns/claimbased_partshipper_dueparts_detailsPage.jsp</result>
+			<result name="success">pages/secure/partreturns/claimbased_partshipper_dueparts_detailsPage.jsp</result>
+		</action>
+        <!-- Part shipper Dealer Requested Parts inbox Claim View End-->
+        <!-- shippment Generate actions -->
+        <action name="generateShipmentForDealeraction"
+			class="tavant.twms.web.partsreturn.PartShipperDuePartForDealerAction" method="generateShipmentForDealer">
+            <interceptor-ref name="twmsParamsPrepareParamsForPartReturn" />
+            <param name="transitionTaken">Generate Shipment For Dealer</param>
+            <param name="taskName">Dealer Requested Part</param>
+            <result name="input">pages/secure/partreturns/partshipper_dueparts_detailsPage.jsp</result>
+			<result name="success">pages/secure/partreturns/partshipper_generateshipment_response.jsp</result>
+		</action>
+
+        <action name="claimbased_generateShipmentForDealeraction"
+			class="tavant.twms.web.partsreturn.ClaimBasedPartShipperDuePartForDealerAction" method="generateShipmentForDealer">
+            <interceptor-ref name="twmsParamsPrepareParamsForPartReturn" />
+            <param name="transitionTaken">Generate Shipment For Dealer</param>
+            <param name="taskName">Dealer Requested Part</param>
+            <result name="input">pages/secure/partreturns/claimbased_partshipper_dueparts_detailsPage.jsp</result>
+			<result name="success">pages/secure/partreturns/partshipper_generateshipment_response.jsp</result>
+		</action>
+
+        <!-- Shippment Generate actions ends -->
+
+         <action name="generateShipmentForDealer"
+			class="tavant.twms.web.partsreturn.ShipmentGeneratedAction">
+            <result name="input">pages/secure/partreturns/partsReturnInboxView.jsp</result>
+			<result name="success">pages/secure/partreturns/partsReturnInboxView.jsp</result>
+		</action>
+
+        <action name="generateShipmentForDealer_table_body"
+			class="tavant.twms.web.partsreturn.ShipmentGeneratedAction"
+			method="tableBody">
+			<param name="taskName">Shipment Generated For Dealer</param>
+			<result name="success">pages/secure/home/json.jsp</result>
+	   </action>
+
+		<action name="generateShipmentForDealer_detail"
+			class="tavant.twms.web.partsreturn.ShipmentGeneratedAction"
+			method="showPreview">
+            <param name="taskName">Shipment Generated For Dealer</param>
+            <result name="input">pages/secure/partreturns/shipment_generated.jsp</result>
+			<result name="success">pages/secure/partreturns/shipment_generated.jsp</result>
+		</action>
+		<action name="generateShipmentForDealer_preview"
+			class="tavant.twms.web.partsreturn.ShipmentGeneratedAction"
+			method="showPreview">
+            <param name="taskName">Shipment Generated For Dealer</param>
+			<result name="success">pages/secure/partreturns/shipment_generatedPreview.jsp</result>
+		</action>
+        <action name="generateShipmentForDealer_submit"
+			class="tavant.twms.web.partsreturn.ShipmentGeneratedAction"
+			method="shipParts">
+			<interceptor-ref name="twmsParamsPrepareParamsForPartReturn" />
+            <param name="taskName">Shipment Generated For Dealer</param>
+			<param name="transitionTaken">SubmitShipment</param>
+            <result name="input">pages/secure/partreturns/shipment_generated.jsp</result>
+            <result name="success">pages/secure/partreturns/partreturnresponse.jsp</result>
+		</action>
+
+        <action name="partreturns_displayForPrint_for_dealer"
+			class="tavant.twms.web.partsreturn.ShipmentGeneratedAction"
+                method="fetchNewShipmentForTagPrint">
+			<param name="taskName">Shipment Generated For Dealer</param>
+			<result name="success">
+				pages/secure/partreturns/popups/print_dealer_location_popup.jsp
+			</result>
+		</action>
+
+        <!-- Part shipped inbox -->
+        <action name="dealerRequestedPartsShipped"
+			class="tavant.twms.web.partsreturn.ShipmentGeneratedAction">
+            <param name="taskName">Dealer Requested Parts Shipped</param>
+			<result name="success">pages/secure/partreturns/partsReturnInboxView.jsp</result>
+		</action>
+
+        <action name="dealerRequestedPartsShipped_table_body"
+			class="tavant.twms.web.partsreturn.ShipmentGeneratedAction"
+			method="tableBody">
+			<param name="taskName">Dealer Requested Parts Shipped</param>
+			<result name="success">pages/secure/home/json.jsp</result>
+		</action>
+
+		<action name="dealerRequestedPartsShipped_detail"
+			class="tavant.twms.web.partsreturn.ShipmentGeneratedAction"
+			method="showPreview">
+			<param name="taskName">Dealer Requested Parts Shipped</param>
+			<result name="success">
+				pages/secure/partreturns/shipped_detail.jsp
+			</result>
+		</action>
+		<action name="dealerRequestedPartsShipped_preview"
+			class="tavant.twms.web.partsreturn.ShipmentGeneratedAction"
+			method="showPreview">
+			<param name="taskName">Dealer Requested Parts Shipped</param>
+			<result name="success">
+				pages/secure/partreturns/shipped.jsp
+			</result>
+		</action>
+        <!-- Dealer Part Receipt inbox -->
+        <action name="dealerRequestedPartsReceipt"
+			class="tavant.twms.web.partsreturn.ShipmentGeneratedAction">
+            <param name="taskName">Claimed Parts Receipt</param>
+			<result name="success">pages/secure/partreturns/partsReturnInboxView.jsp</result>
+		</action>
+
+        <action name="dealerRequestedPartsReceipt_table_body"
+			class="tavant.twms.web.partsreturn.ShipmentGeneratedAction"
+			method="tableBody">
+			<param name="taskName">Claimed Parts Receipt</param>
+			<result name="success">pages/secure/home/json.jsp</result>
+		</action>
+
+		<action name="dealerRequestedPartsReceipt_detail"
+			class="tavant.twms.web.partsreturn.ShipmentGeneratedAction"
+			method="showPreview">
+			<param name="taskName">Claimed Parts Receipt</param>
+			<result name="success">
+				pages/secure/partreturns/shipped.jsp
+			</result>
+		</action>
+		<action name="dealerRequestedPartsReceipt_preview"
+			class="tavant.twms.web.partsreturn.ShipmentGeneratedAction"
+			method="showPreview">
+			<param name="taskName">Claimed Parts Receipt</param>
+			<result name="success">
+				pages/secure/partreturns/shipped.jsp
+			</result>
+		</action>
+
+        <action name="claimedPartReceipt_submit"
+                class="tavant.twms.web.partsreturn.ShipmentGeneratedAction"
+                method="claimedPartReceipt">
+            <param name="taskName">Claimed Parts Receipt</param>
+            <result name="success">
+                pages/secure/partreturns/partreturnresponse.jsp
+            </result>
+            <result name="input">pages/secure/partreturns/shipped.jsp</result>
+        </action>
+
+        <!-- WPRA inbox for processor -->
+
+         <action name="requiredPartsFromDealer"
+			class="tavant.twms.web.partsreturn.RequiredPartsFromDealerInboxAction">
+			<param name="switchButtonActionName">claimBased_requiredPartsFromDealer</param>
+            <param name="actionUrl">requiredPartsFromDealer</param>
+			<param name="switchButtonTabLabel">title.requiredPartsFromDealer.locationView</param>
+			<result name="success">pages/secure/partreturns/partsReturnInboxView.jsp</result>
+		</action>
+
+        <action name="requiredPartsFromDealer_table_body"
+			class="tavant.twms.web.partsreturn.RequiredPartsFromDealerInboxAction" method="tableBody">
+            <param name="actionUrl">requiredPartsFromDealer</param>
+			<param name="taskName">Required Parts From Dealer</param>
+			<result name="success">pages/secure/home/json.jsp</result>
+		</action>
+
+        <action name="requiredPartsFromDealer_detail"
+			class="tavant.twms.web.partsreturn.RequiredPartsFromDealerInboxAction" method="showPreview">
+            <param name="actionUrl">requiredPartsFromDealer</param>
+            <param name="taskName">Required Parts From Dealer</param>
+			<result name="success">pages/secure/partreturns/requiredpartsfromdealers_detail.jsp</result>
+		</action>
+
+        <action name="requiredPartsFromDealer_preview"
+			class="tavant.twms.web.partsreturn.RequiredPartsFromDealerInboxAction" method="showPreview">
+            <param name="actionUrl">requiredPartsFromDealer</param>
+            <param name="taskName">Required Parts From Dealer</param>
+			<result name="success">pages/secure/partreturns/requiredpartsfromdealers_detail.jsp</result>
+		</action>
+
+         <action name="claimBased_requiredPartsFromDealer"
+			class="tavant.twms.web.partsreturn.ClaimBasedRequiredPartsFromDealerInboxAction">
+            <param name="actionUrl">claimBased_requiredPartsFromDealer</param>
+            <param name="switchButtonActionName">locationbased_requiredPartsFromDealer</param>
+            <param name="switchButtonTabLabel">title.requiredPartsFromDealer.claimView</param>
+			<result name="success">pages/secure/partreturns/partsReturnInboxView.jsp</result>
+		</action>
+
+        <action name="locationbased_requiredPartsFromDealer"
+			class="tavant.twms.web.partsreturn.RequiredPartsFromDealerInboxAction">
+			<param name="taskName">Required Parts From Dealer</param>
+			<param name="actionUrl">requiredPartsFromDealer</param>
+			<param name="switchButtonActionName">claimBased_requiredPartsFromDealer</param>
+			<param name="switchButtonTabLabel">title.requiredPartsFromDealer.locationView</param>
+			<result name="success">pages/secure/partreturns/partsReturnInboxView.jsp</result>
+		</action>
+
+        <action name="claimBased_requiredPartsFromDealer_table_body"
+			class="tavant.twms.web.partsreturn.ClaimBasedRequiredPartsFromDealerInboxAction" method="tableBody">
+			<param name="taskName">Required Parts From Dealer</param>
+			<result name="success">pages/secure/home/json.jsp</result>
+		</action>
+
+        <action name="claimBased_requiredPartsFromDealer_detail"
+			class="tavant.twms.web.partsreturn.ClaimBasedRequiredPartsFromDealerInboxAction" method="showPreview">
+            <param name="taskName">Required Parts From Dealer</param>
+            <result name="input">pages/secure/partreturns/claim_requiredpartsfromdealer.jsp</result>
+			<result name="success">pages/secure/partreturns/claim_requiredpartsfromdealer.jsp</result>
+		</action>
+
+        <action name="claimBased_requiredPartsFromDealer_preview"
+			class="tavant.twms.web.partsreturn.ClaimBasedRequiredPartsFromDealerInboxAction" method="showPreview">
+            <param name="taskName">Required Parts From Dealer</param>
+            <result name="input">pages/secure/partreturns/claim_requiredpartsfromdealer.jsp</result>
+			<result name="success">pages/secure/partreturns/claim_requiredpartsfromdealer.jsp</result>
+		</action>
+
+         <action name="generateWpra"
+			class="tavant.twms.web.partsreturn.RequiredPartsFromDealerInboxAction" method="generateWpraForDealerBasedOnReturnLocation">
+            <interceptor-ref name="twmsParamsPrepareParamsForPartReturn" />
+            <param name="transitionTaken">moveToWPRAGeneratedForPartsFork</param>
+            <param name="taskName">Required Parts From Dealer</param>
+            <result name="input">pages/secure/partreturns/requiredpartsfromdealers_detail.jsp</result>
+			<result name="success">pages/secure/partreturns/partreturnresponse.jsp</result>
+		</action>
+
+        <action name="claimBasedGenerateWpra"
+			class="tavant.twms.web.partsreturn.ClaimBasedRequiredPartsFromDealerInboxAction" method="generateWpraForDealerBasedOnReturnLocation">
+            <interceptor-ref name="twmsParamsPrepareParamsForPartReturn" />
+            <param name="transitionTaken">moveToWPRAGeneratedForPartsFork</param>
+            <param name="taskName">Required Parts From Dealer</param>
+            <result name="input">pages/secure/partreturns/claim_requiredpartsfromdealer.jsp</result>
+			<result name="success">pages/secure/partreturns/partreturnresponse.jsp</result>
+		</action>
+
+        <action name="removePartFromWpra"
+			class="tavant.twms.web.partsreturn.RequiredPartsFromDealerInboxAction" method="removeFromWpra">
+            <interceptor-ref name="twmsParamsPrepareParamsForPartReturn" />
+            <param name="taskName">Required Parts From Dealer</param>
+            <result name="input">pages/secure/partreturns/requiredpartsfromdealers_detail.jsp</result>
+			<result name="success">pages/secure/partreturns/partreturnresponse.jsp</result>
+		</action>
+
+        <action name="claimBasedRemovePartFromWpra"
+			class="tavant.twms.web.partsreturn.ClaimBasedRequiredPartsFromDealerInboxAction" method="removeFromWpra">
+            <interceptor-ref name="twmsParamsPrepareParamsForPartReturn" />
+            <param name="taskName">Required Parts From Dealer</param>
+            <result name="input">pages/secure/partreturns/claim_requiredpartsfromdealer.jsp</result>
+			<result name="success">pages/secure/partreturns/partreturnresponse.jsp</result>
+		</action>
+
+        <!-- Prepare Due Parts Inbox for Dealer Read only -->
+
+        <action name="dealerPrepareDuePartInbox"
+			class="tavant.twms.web.partsreturn.PrePareDuePartsInboxAction">
+			<param name="switchButtonActionName">claimBased_dealerPrepareDuePartInbox</param>
+            <param name="actionUrl">dealerPrepareDuePartInbox</param>
+			<param name="switchButtonTabLabel">title.prepareDueParts.claimView</param>
+			<result name="success">pages/secure/partreturns/partsReturnInboxView.jsp</result>
+		</action>
+
+        <action name="dealerPrepareDuePartInbox_table_body"
+			class="tavant.twms.web.partsreturn.PrePareDuePartsInboxAction" method="tableBody">
+            <param name="actionUrl">dealerPrepareDuePartInbox</param>
+			<param name="taskName">Prepare Due Parts</param>
+			<result name="success">pages/secure/home/json.jsp</result>
+		</action>
+
+        <action name="dealerPrepareDuePartInbox_detail"
+			class="tavant.twms.web.partsreturn.PrePareDuePartsInboxAction" method="showPreview">
+            <param name="actionUrl">dealerPrepareDuePartInbox</param>
+            <param name="taskName">Prepare Due Parts</param>
+            <result name="input">pages/secure/partreturns/preparedueparts.jsp</result>
+			<result name="success">pages/secure/partreturns/preparedueparts.jsp</result>
+		</action>
+
+        <action name="dealerPrepareDuePartInbox_preview"
+			class="tavant.twms.web.partsreturn.PrePareDuePartsInboxAction" method="showPreview">
+            <param name="actionUrl">dealerPrepareDuePartInbox</param>
+            <param name="taskName">Prepare Due Parts</param>
+            <result name="input">pages/secure/partreturns/preparedueparts.jsp</result>
+			<result name="success">pages/secure/partreturns/preparedueparts.jsp</result>
+		</action>
+
+         <action name="claimBased_dealerPrepareDuePartInbox"
+			class="tavant.twms.web.partsreturn.ClaimBasedPrepareDuePartsInboxAction">
+            <param name="actionUrl">claimBased_dealerPrepareDuePartInbox</param>
+            <param name="switchButtonActionName">locationbased_dealerPrepareDuePartInbox</param>
+            <param name="switchButtonTabLabel">title.prepareDueParts.locationView</param>
+			<result name="success">pages/secure/partreturns/partsReturnInboxView.jsp</result>
+		</action>
+
+        <action name="locationbased_dealerPrepareDuePartInbox"
+			class="tavant.twms.web.partsreturn.PrePareDuePartsInboxAction">
+			<param name="taskName">Prepare Due Parts</param>
+			<param name="actionUrl">dealerPrepareDuePartInbox</param>
+			<param name="switchButtonActionName">claimBased_dealerPrepareDuePartInbox</param>
+			<param name="switchButtonTabLabel">title.prepareDueParts.claimView</param>
+			<result name="success">pages/secure/partreturns/partsReturnInboxView.jsp</result>
+		</action>
+
+        <action name="claimBased_dealerPrepareDuePartInbox_table_body"
+			class="tavant.twms.web.partsreturn.ClaimBasedPrepareDuePartsInboxAction" method="tableBody">
+			<param name="taskName">Prepare Due Parts</param>
+			<result name="success">pages/secure/home/json.jsp</result>
+		</action>
+
+        <action name="claimBased_dealerPrepareDuePartInbox_detail"
+			class="tavant.twms.web.partsreturn.ClaimBasedPrepareDuePartsInboxAction" method="showPreview">
+            <param name="taskName">Prepare Due Parts</param>
+            <result name="input">pages/secure/partreturns/preparedueparts.jsp</result>
+			<result name="success">pages/secure/partreturns/preparedueparts.jsp</result>
+		</action>
+
+        <action name="claimBased_dealerPrepareDuePartInbox_preview"
+			class="tavant.twms.web.partsreturn.ClaimBasedPrepareDuePartsInboxAction" method="showPreview">
+            <param name="taskName">Prepare Due Parts</param>
+            <result name="input">pages/secure/partreturns/preparedueparts.jsp</result>
+			<result name="success">pages/secure/partreturns/preparedueparts.jsp</result>
+		</action>
+
+        <!-- WPRA Generated For Parts Inbox For Processor -->
+
+        <action name="wpraGeneratedForParts"
+                   class="tavant.twms.web.partsreturn.WpraGeneratedForPartsInboxAction">
+                   <param name="actionUrl">wpraGeneratedForParts</param>
+                   <result name="success">pages/secure/partreturns/partsReturnInboxView.jsp</result>
+               </action>
+
+               <action name="wpraGeneratedForParts_table_body"
+                   class="tavant.twms.web.partsreturn.WpraGeneratedForPartsInboxAction" method="tableBody">
+                   <param name="actionUrl">wpraGeneratedForParts</param>
+                   <param name="taskName">WPRA Generated For Parts</param>
+                   <result name="success">pages/secure/home/json.jsp</result>
+               </action>
+
+               <action name="wpraGeneratedForParts_detail"
+                   class="tavant.twms.web.partsreturn.WpraGeneratedForPartsInboxAction" method="showPreview">
+                   <param name="actionUrl">wpraGeneratedForParts</param>
+                   <param name="taskName">WPRA Generated For Parts</param>
+                   <result name="input">pages/secure/partreturns/generatedwpradetailpage.jsp</result>
+                   <result name="success">pages/secure/partreturns/generatedwpradetailpage.jsp</result>
+               </action>
+
+               <action name="wpraGeneratedForParts_preview"
+                   class="tavant.twms.web.partsreturn.WpraGeneratedForPartsInboxAction" method="showPreview">
+                   <param name="actionUrl">wpraGeneratedForParts</param>
+                   <param name="taskName">WPRA Generated For Parts</param>
+                   <result name="input">pages/secure/partreturns/generatedwpradetailpage.jsp</result>
+                   <result name="success">pages/secure/partreturns/generatedwpradetailpage.jsp</result>
+               </action>
+
+               <action name="cancelPartReturnAfterWpraGeneration"
+                   class="tavant.twms.web.partsreturn.WpraGeneratedForPartsInboxAction" method="cancelAllReturnProcess">
+                   <interceptor-ref name="twmsParamsPrepareParamsForPartReturn" />
+                   <param name="actionUrl">wpraGeneratedForParts</param>
+                   <param name="taskName">WPRA Generated For Parts</param>
+                   <result name="input">pages/secure/partreturns/generatedwpradetailpage.jsp</result>
+                   <result name="success">pages/secure/partreturns/partreturnresponse.jsp</result>
+               </action>
+
+        <!-- Excel data for dealer Requested part inbox -->
+
+        <action name="exportdealerRequestedPartToExcel"
+                class="tavant.twms.web.partsreturn.PartShipperDuePartForDealerAction"
+                method="downloadListingData">
+            <param name="taskName">Dealer Requested Part</param>
+        </action>
+
+        <!-- Excel data for shipment generated for dealer requested part -->
+        <action name="exportgenerateShipmentForDealerToExcel"
+                class="tavant.twms.web.partsreturn.ShipmentGeneratedAction"
+                method="downloadListingData">
+            <param name="taskName">Shipment Generated For Dealer</param>
+        </action>
+
+        <!-- Excel data for dealer requested part shipped-->
+
+        <action name="exportdealerRequestedPartsShippedToExcel"
+                class="tavant.twms.web.partsreturn.ShipmentGeneratedAction"
+                method="downloadListingData">
+            <param name="taskName">Dealer Requested Parts Shipped</param>
+        </action>
+
+        <action name="exportwpraGeneratedForPartsToExcel"
+                class="tavant.twms.web.partsreturn.WpraGeneratedForPartsInboxAction"
+                method="downloadListingData">
+            <param name="taskName">WPRA Generated For Parts</param>
+        </action>
+
+        <action name="exportrequiredPartsFromDealerToExcel"
+                class="tavant.twms.web.partsreturn.RequiredPartsFromDealerInboxAction"
+                method="downloadListingData">
+            <param name="taskName">Required Parts From Dealer</param>
+        </action>
+
+        <action name="exportclaimBased_requiredPartsFromDealerToExcel"
+                class="tavant.twms.web.partsreturn.ClaimBasedRequiredPartsFromDealerInboxAction"
+                method="downloadListingData">
+            <param name="taskName">Required Parts From Dealer</param>
+        </action>
+
+        <!-- Deale side -->
+        <!-- Prepare Due part -->
+        <action name="exportdealerPrepareDuePartInboxToExcel"
+                class="tavant.twms.web.partsreturn.PrePareDuePartsInboxAction"
+                method="downloadListingData">
+            <param name="taskName">Prepare Due Parts</param>
+        </action>
+        <!-- rejected part -->
+        <action name="exportrejectedPartsToExcel"
+                class="tavant.twms.web.partsreturn.DealerRequestedPartsReturnAction"
+                method="downloadListingData">
+            <param name="taskName">Rejected Parts</param>
+        </action>
+        <!-- claimed part receipt -->
+        <action name="exportdealerRequestedPartsReceiptToExcel"
+                class="tavant.twms.web.partsreturn.ShipmentGeneratedAction"
+                method="downloadListingData">
+            <param name="taskName">Claimed Parts Receipt</param>
+        </action>
+
+        <!-- Supplier Part Return Process -->
+        <action name="supplierPartReceiptFromDealer"
+                class="tavant.twms.web.partsreturn.SupplierPartReceiptInboxAction">
+            <result name="success">pages/secure/partreturns/partsReturnInboxView.jsp</result>
+        </action>
+
+        <action name="supplierPartReceiptFromDealer_table_body"
+                class="tavant.twms.web.partsreturn.SupplierPartReceiptInboxAction"
+                method="tableBody">
+            <param name="taskName">Confirm Dealer Part Returns</param>
+            <result name="success">pages/secure/home/json.jsp</result>
+        </action>
+
+        <action name="supplierPartReceiptFromDealer_detail"
+                class="tavant.twms.web.partsreturn.SupplierPartReceiptInboxAction"
+                method="showPreview">
+            <param name="taskName">Confirm Dealer Part Returns</param>
+            <result name="success">
+                pages/secure/partreturns/supplierpartreceipt.jsp
+            </result>
+        </action>
+        <action name="supplierPartReceiptFromDealer_preview"
+                class="tavant.twms.web.partsreturn.SupplierPartReceiptInboxAction"
+                method="showPreview">
+            <param name="taskName">Confirm Dealer Part Returns</param>
+            <result name="success">
+                pages/secure/partreturns/supplierpartreceipt.jsp
+            </result>
+        </action>
+        <action name="supplierPartReceiptInbox_submit"
+                class="tavant.twms.web.partsreturn.SupplierPartReceiptInboxAction"
+                method="partReceipt">
+            <interceptor-ref name="twmsParamsPrepareParams" />
+            <param name="taskName">Confirm Dealer Part Returns</param>
+            <result name="input">pages/secure/partreturns/supplierpartreceipt.jsp</result>
+            <result name="success">pages/secure/supplier/supplierresponse.jsp</result>
+        </action>
+
+        <!-- Excel sheet download for Supplier -->
+        <action name="exportsupplierPartReceiptFromDealerToExcel"
+                class="tavant.twms.web.partsreturn.SupplierPartReceiptInboxAction"
+                method="downloadListingData">
+            <param name="taskName">Confirm Dealer Part Returns</param>
+        </action>
+
+        <!-- WPRA view for shipment generated inbox for dealer -->
+        <action name="wpraView_shipmentGenerated"
+                class="tavant.twms.web.partsreturn.ShipmentGeneratedWpraViewAction">
+            <param name="actionUrl">wpraView_shipmentGenerated</param>
+            <param name="taskName">Shipment Generated</param>
+            <!-- Updated for SLMSPROD-790 -->
+            <!-- <param name="switchButtonActionName">shipmentGenerated</param>
+            <param name="switchButtonTabLabel">title.shipmentGenerated.shipmentView</param> -->
+            <result name="success">pages/secure/partreturns/partsReturnInboxView.jsp</result>
+        </action>
+
+        <!--<action name="shipmentBased_shipmentGenerated"
+                class="tavant.twms.web.partsreturn.PrePareDuePartsInboxAction">
+            <param name="taskName">Shipment Generated</param>
+            <param name="actionUrl">shipmentBased_shipmentGenerated</param>
+            <param name="switchButtonActionName">wpraView_shipmentGenerated</param>
+            <param name="switchButtonTabLabel">title.shipmentGenerated.wpraView</param>
+            <result name="success">pages/secure/partreturns/partsReturnInboxView.jsp</result>
+        </action>-->
+
+
+        <action name="wpraView_shipmentGenerated_table_body"
+                class="tavant.twms.web.partsreturn.ShipmentGeneratedWpraViewAction"
+                method="tableBody">
+            <param name="taskName">Shipment Generated</param>
+            <result name="success">pages/secure/home/json.jsp</result>
+        </action>
+
+        <action name="wpraView_shipmentGenerated_detail"
+                class="tavant.twms.web.partsreturn.ShipmentGeneratedWpraViewAction"
+                method="showPreview">
+            <param name="taskName">Shipment Generated</param>
+            <result name="input">pages/secure/partreturns/shipment_generated_wpra_view.jsp</result>
+            <result name="success">pages/secure/partreturns/shipment_generated_wpra_view.jsp</result>
+        </action>
+
+        <action name="wpraView_shipmentGenerated_preview"
+                class="tavant.twms.web.partsreturn.ShipmentGeneratedWpraViewAction"
+                method="showPreview">
+            <param name="taskName">Shipment Generated</param>
+            <result name="success">pages/secure/partreturns/shipment_generatedPreview.jsp</result>
+        </action>
+
+        <action name="wpraView_shipmentGenerated_submit"
+                class="tavant.twms.web.partsreturn.ShipmentGeneratedWpraViewAction"
+                method="shipParts">
+            <interceptor-ref name="twmsParamsPrepareParamsForPartReturn" />
+            <param name="taskName">Shipment Generated</param>
+            <param name="transitionTaken">SubmitShipment</param>
+            <result name="input">pages/secure/partreturns/shipment_generated_wpra_view.jsp</result>
+            <result name="success">pages/secure/partreturns/partreturnresponse.jsp</result>
+        </action>
+
+        <action name="exportwpraView_shipmentGeneratedToExcel"
+                class="tavant.twms.web.partsreturn.ShipmentGeneratedWpraViewAction"
+                method="downloadListingData">
+            <param name="taskName">Shipment Generated</param>
+        </action>
+
+        <!--<action name="wpraView_shipmentgenerated_removepart"
+                class="tavant.twms.web.partsreturn.ShipmentGeneratedWpraViewAction"
+                method="removeParts">
+            <interceptor-ref name="twmsParamsPrepareParamsForPartReturn" />
+            <param name="taskName">Shipment Generated</param>
+            <param name="transitionTaken">Remove Part</param>
+            <result name="input">pages/secure/partreturns/shipment_generated_wpra_view.jsp</result>
+            <result name="success" type="chain">shipmentGenerated_detail</result>
+        </action>-->
+
+        <action name="wpraView_shipmentgenerated_submit"
+                class="tavant.twms.web.partsreturn.ShipmentGeneratedWpraViewAction"
+                method="shipParts">
+            <interceptor-ref name="twmsParamsPrepareParamsForPartReturn" />
+            <param name="taskName">Shipment Generated</param>
+            <param name="transitionTaken">Submit</param>
+            <result name="input">pages/secure/partreturns/shipment_generated_wpra_view.jsp</result>
+            <result name="success">pages/secure/partreturns/shipment_generated_wpra_success.jsp</result>
+        </action>
+
+        <!--<action name="wpraView_shipmentgenerated_addpart"
+                class="tavant.twms.web.partsreturn.ShipmentGeneratedWpraViewAction"
+                method="fetchAllDueAndOverdueParts">
+            &lt;!&ndash; The taskName param has the Due Parts and Overdue Parts task names - the IN clause string for the query.  &ndash;&gt;
+            <param name="taskName">'Due Parts', 'Overdue Parts'</param>
+            <result name="success">pages/secure/partreturns/addPart.jsp</result>
+            <result name="input">pages/secure/partreturns/shipment_generated.jsp</result>  &lt;!&ndash; Need to handle add part failure  &ndash;&gt;
+        </action>
+
+        <action name="wpraView_shipmentgenerated_addpartToShipment"
+                class="tavant.twms.web.partsreturn.ShipmentGeneratedWpraViewAction"
+                method="addParts">
+            <interceptor-ref name="twmsParamsPrepareParamsForPartReturn" />
+            <param name="taskName">Shipment Generated</param>
+            <param name="transitionTaken">Generate Shipment</param>
+            <result name="success" type="chain">wpraView_shipmentGenerated_detail</result>
+            <result name="input">pages/secure/partreturns/shipment_generated_wpra_view.jsp</result>
+        </action>-->
+
+        <action name="provideCEVATrackingInfo"
+                class="tavant.twms.web.partsreturn.CEVATrackingInfo">
+            <param name="actionUrl">provideCEVATrackingInfo</param>
+            <param name="taskName">CEVA Tracking</param>
+            <result name="success">pages/secure/partreturns/partsReturnInboxView.jsp</result>
+        </action>
+
+        <action name="provideCEVATrackingInfo_table_body"
+                class="tavant.twms.web.partsreturn.CEVATrackingInfo"
+                method="tableBody">
+            <param name="taskName">CEVA Tracking</param>
+            <result name="success">pages/secure/home/json.jsp</result>
+        </action>
+
+        <action name="provideCEVATrackingInfo_detail"
+                class="tavant.twms.web.partsreturn.CEVATrackingInfo"
+                method="showPreview">
+            <param name="taskName">CEVA Tracking</param>
+            <result name="input">pages/secure/partreturns/ceva_tracking_info.jsp</result>
+            <result name="success">pages/secure/partreturns/ceva_tracking_info.jsp</result>
+        </action>
+
+        <action name="provideCEVATrackingInfo_preview"
+                class="tavant.twms.web.partsreturn.CEVATrackingInfo"
+                method="showPreview">
+            <param name="taskName">CEVA Tracking</param>
+            <result name="success">pages/secure/partreturns/ceva_tracking_info.jsp</result>
+        </action>
+
+        <action name="cevaTracking_submit"
+                class="tavant.twms.web.partsreturn.CEVATrackingInfo"
+                method="submitCevaTrackingInfo">
+            <interceptor-ref name="twmsParamsPrepareParamsForPartReturn" />
+            <param name="taskName">CEVA Tracking</param>
+            <param name="transitionTaken">Submit</param>
+            <result name="input">pages/secure/partreturns/ceva_tracking_info.jsp</result>
+            <result name="success">pages/secure/partreturns/partreturnresponse.jsp</result>
+        </action>
+
+        <action name="cevaTracking_cancel"
+                class="tavant.twms.web.partsreturn.CEVATrackingInfo"
+                method="cancelReturnProcess">
+            <param name="taskName">CEVA Tracking</param>
+            <param name="transitionTaken">Cancel</param>
+            <result name="input">pages/secure/partreturns/ceva_tracking_info.jsp</result>
+            <result name="success">pages/secure/partreturns/partreturnresponse.jsp</result>
+        </action>
+
+        <!-- To Do excel download for ceva tracking info-->
+        <action name="exportprovideCEVATrackingInfoToExcel"
+                class="tavant.twms.web.partsreturn.CEVATrackingInfo"
+                method="downloadListingData">
+            <param name="taskName">CEVA Tracking</param>
+        </action>
+
+        <!-- Wpra View for part shipped Inbox -->
+        <action name="wpraView_duePartsShipped"
+                class="tavant.twms.web.partsreturn.ShipmentGeneratedWpraViewAction">
+            <param name="actionUrl">wpraView_duePartsShipped</param>
+            <param name="taskName">Parts Shipped</param>
+            <param name="switchButtonActionName">duePartsShipped</param>
+            <param name="switchButtonTabLabel">title.partShipped.shipmentView</param>
+            <result name="success">pages/secure/partreturns/partsReturnInboxView.jsp</result>
+        </action>
+
+        <action name="wpraView_duePartsShipped_table_body"
+                class="tavant.twms.web.partsreturn.ShipmentGeneratedWpraViewAction"
+                method="tableBody">
+            <param name="taskName">Parts Shipped</param>
+            <result name="success">pages/secure/home/json.jsp</result>
+        </action>
+
+        <action name="wpraView_duePartsShipped_detail"
+                class="tavant.twms.web.partsreturn.ShipmentGeneratedWpraViewAction"
+                method="showPreview">
+            <param name="taskName">Parts Shipped</param>
+            <result name="input">pages/secure/partreturns/shipped_detail_wpra_view.jsp</result>
+            <result name="success">pages/secure/partreturns/shipped_detail_wpra_view.jsp</result>
+        </action>
+
+        <action name="wpraView_duePartsShipped_preview"
+                class="tavant.twms.web.partsreturn.ShipmentGeneratedWpraViewAction"
+                method="showPreview">
+            <param name="taskName">Parts Shipped</param>
+            <result name="success">pages/secure/partreturns/shipped_detail_wpra_view.jsp</result>
+        </action>
+
+        <action name="exportwpraView_duePartsShippedToExcel"
+                class="tavant.twms.web.partsreturn.ShipmentGeneratedWpraViewAction"
+                method="downloadListingData">
+            <param name="taskName">Parts Shipped</param>
+        </action>
+
+        <action name="partreturns_displayForPrint_wpraView"
+                class="tavant.twms.web.partsreturn.ShipmentGeneratedWpraViewAction"
+                method="fetchShipmentForTagForWpra">
+            <param name="taskName">Part Shipped</param>
+            <!--<result name="success">
+                   pages/secure/partreturns/popups/print_location_popup.jsp
+               </result>-->
+        </action>
+        
+        <action name="partreturns_displayForPrintShipmentGenerated_wpraView"
+                class="tavant.twms.web.partsreturn.ShipmentGeneratedWpraViewAction"
+                method="fetchShipmentForTagForWpra">
+            <param name="taskName">Shipment Generated</param>
+       </action>
+
+	</package>
+</struts>	

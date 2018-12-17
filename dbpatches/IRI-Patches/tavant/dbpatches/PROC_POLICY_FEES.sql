@@ -1,0 +1,31 @@
+--Purpose    : To populate values in Policy Definition Values for existing Policy Definition
+--Author     : chandrakant
+--Created On : 11-Feb-08
+
+
+CREATE OR REPLACE PROCEDURE INSERT_POLICY_FEES AS
+CURSOR pd IS
+SELECT ID, AMOUNT, CURRENCY, TRANSFER_FEE_CURR,
+TRANSFER_FEE_AMT, TRANSFERABLE FROM POLICY_DEFINITION;
+CURSOR cer IS 
+SELECT FROM_CURRENCY FROM CURRENCY_EXCHANGE_RATE;
+BEGIN
+	 FOR pd_rec IN pd LOOP 
+	 	 FOR cer_rec IN cer LOOP
+				IF pd_rec.CURRENCY = cer_rec.FROM_CURRENCY THEN
+					INSERT INTO POLICY_FEES VALUES (POLICY_FEES_SEQ.nextval,
+					pd_rec.AMOUNT,cer_rec.FROM_CURRENCY,pd_rec.ID,nvl(pd_rec.TRANSFERABLE,0));
+				ELSE
+					INSERT INTO POLICY_FEES VALUES (POLICY_FEES_SEQ.nextval, 
+					0,cer_rec.FROM_CURRENCY,pd_rec.ID,nvl(pd_rec.TRANSFERABLE,0));
+				END IF;
+ 		END LOOP;
+	END LOOP;
+	COMMIT;
+END;
+/
+BEGIN
+INSERT_POLICY_FEES();
+END;
+/
+

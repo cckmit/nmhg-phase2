@@ -1,0 +1,35 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+
+<head>
+<script type="text/javascript" src="../scripts/vendor/dojo-widget/dojo/dojo.js"></script>
+<script type="text/javascript" src="CheckBoxListControl.js"></script>
+</head>
+
+<body>
+<table>
+	<tr>
+		<td><input type="checkbox" id="masterCheckBox"></td>
+		<script>
+			var globalCheckBox = dojo.byId("masterCheckBox");
+			var multiCheckBoxControl = new CheckBoxListControl(globalCheckBox);
+		</script>
+		<td>This is the master checkbox</td>
+	</tr>
+	<tr>
+		<td><input type="checkbox" id="slaveCheckBox[1]"></td>
+		<td>Slave Checkbox [1]</td>
+		<script>
+			multiCheckBoxControl.addListElement(dojo.byId("slaveCheckBox[1]"));
+		</script>		
+	</tr>
+	<tr>
+		<td><input type="checkbox" id="slaveCheckBox[2]"></td>
+		<td>Slave Checkbox [2]</td>
+		<script>
+			multiCheckBoxControl.addListElement(dojo.byId("slaveCheckBox[2]"));
+		</script>		
+	</tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<functionalareas xmlns="http://www.tavant.com/twms/security/resource"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.tavant.com/twms/security/resource
+			http://www.tavant.com/twms/security/resource">
+	<functionalarea name="partrecoverymanagement" defaultpolicy="none">
+
+	<!-- Resources for update or Read Only -->
+	
+		<resource type="ui" value="partsRecoveryPartsRecoveryTab" operation="OR">
+			<permissions>partsRecovery:partsRecoveryPartsRecoveryTab:update,partsRecovery:partsRecoveryPartsRecoveryTab:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="partsRecoveryAwaitingShipment" operation="OR">
+			<permissions>partsRecovery:partsRecoveryAwaitingShipment:update,partsRecovery:partsRecoveryAwaitingShipment:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="partsRecoveryAwaitingShipmentToWarehouse" operation="OR">
+			<permissions>partsRecovery:partsRecoveryAwaitingShipmentToWarehouse:update,partsRecovery:partsRecoveryAwaitingShipmentToWarehouse:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="partsRecoveryAwaitingShipmenttoSupplier" operation="OR">
+			<permissions>partsRecovery:partsRecoveryAwaitingShipmenttoSupplier:update,partsRecovery:partsRecoveryAwaitingShipmenttoSupplier:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="partsRecoverySupplierPartsShipped" operation="OR">
+			<permissions>partsRecovery:partsRecoverySupplierPartsShipped:update,partsRecovery:partsRecoverySupplierPartsShipped:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="partsRecoveryShipmentGenerated" operation="OR">
+			<permissions>partsRecovery:partsRecoveryShipmentGenerated:update,partsRecovery:partsRecoveryShipmentGenerated:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="partsRecoveryPredefinedSearch" operation="OR">
+			<permissions>partsRecovery:partsRecoveryPredefinedSearch:update,partsRecovery:partsRecoveryPredefinedSearch:view
+			</permissions>
+		</resource>
+	
+	<!-- Resources for Read Only-->
+	
+		<resource type="ui" value="partsRecoveryPartsRecoveryTabReadOnlyView">
+			<permissions>partsRecovery:partsRecoveryPartsRecoveryTab:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="partsRecoveryAwaitingShipmentReadOnlyView">
+			<permissions>partsRecovery:partsRecoveryAwaitingShipment:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="partsRecoveryAwaitingShipmentToWarehouseReadOnlyView">
+			<permissions>partsRecovery:partsRecoveryAwaitingShipmentToWarehouse:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="partsRecoveryAwaitingShipmenttoSupplierReadOnlyView">
+			<permissions>partsRecovery:partsRecoveryAwaitingShipmenttoSupplier:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="partsRecoverySupplierPartsShippedReadOnlyView">
+			<permissions>partsRecovery:partsRecoverySupplierPartsShipped:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="partsRecoveryShipmentGeneratedReadOnlyView">
+			<permissions>partsRecovery:partsRecoveryShipmentGenerated:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="partsRecoveryPredefinedSearchReadOnlyView">
+			<permissions>partsRecovery:partsRecoveryPredefinedSearch:view
+			</permissions>
+		</resource>
+
+        
+	</functionalarea>
+
+</functionalareas>

@@ -1,0 +1,28 @@
+<!--
+<!DOCTYPE validators PUBLIC
+    "-//Apache Struts//XWork Validator 1.0.2//EN"   
+    "http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+<validators>  
+   <field name="carrierId">
+    <field-validator type="required">
+      <message>Carrier is required</message>
+    </field-validator>
+  </field>
+  <field name="shipmentCalenderDate">
+  	<field-validator type="fieldexpression">
+      <param name="expression"><![CDATA[!(shipmentCalenderDate == null)]]></param>
+      <message>Shipment Date is required</message>
+	</field-validator>
+  </field>
+  <field name="trackingNumber">
+    <field-validator type="requiredstring">
+      <message>Tracking Number is required</message>
+    </field-validator>
+  </field>
+  <field name="loadType">
+      <field-validator type="fieldexpression">
+          <param name="expression"><![CDATA[!(loadType == "")]]></param>
+          <message>Load type is required</message>
+      </field-validator>
+    </field>
+</validators>-->

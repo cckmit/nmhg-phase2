@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<rhpml majorversion="1" minorversion="0">
+	<folders>
+		<folder>
+			<name>Before_you_Begin</name>
+		</folder>
+		<folder>
+			<name>Parts_Recovery</name>
+		</folder>
+		<folder>
+			<name>Settings</name>
+		</folder>
+		<folder>
+			<name>Items</name>
+		</folder>
+		<folder>
+			<name>Part_Returns</name>
+		</folder>
+		<folder>
+			<name>Claims</name>
+		</folder>
+		<folder>
+			<name>Inventory</name>
+		</folder>
+		<folder>
+			<name>Reports</name>
+		</folder>
+	</folders>
+	<topics>
+		<topic>
+			<name>due_parts.htm</name>
+			<comments></comments>
+			<frameset>0</frameset>
+		</topic>
+	</topics>
+</rhpml>

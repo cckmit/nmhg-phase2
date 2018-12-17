@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ExtendedWarrantyPriceCheckResponse xmlns="http://www.tavant.com/extwarranty">
+		<Status>
+  			<code>SUCCESS</code>
+  			<errorMessage></errorMessage> 
+		</Status>
+		<DealerNo>10099</DealerNo>
+		<Plans>
+			<LineItem>
+				<PlanCode>S48</PlanCode>
+				<PlanItemNumber>145</PlanItemNumber>
+				<Amount CurrencyCode ='USD'>200</Amount>
+			</LineItem>
+			<LineItem>
+				<PlanCode>S50</PlanCode>
+				<PlanItemNumber>212</PlanItemNumber>
+				<Amount CurrencyCode ='USD'>300</Amount>
+			</LineItem>
+		</Plans>
+</ExtendedWarrantyPriceCheckResponse>

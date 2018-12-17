@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process-definition xmlns="" name="WorkListItemTest">
+
+  <swimlane name="processor">
+    <assignment actor-id="Jim" />
+  </swimlane>
+  
+  <start-state name="Start">
+    <transition name="" to="TaskNode1"/>
+  </start-state>
+  
+  <task-node name="TaskNode1">
+    <task name="Processor Review" swimlane="processor"/>
+    <transition name="t1" to="TaskNode2"/>
+  </task-node>
+  
+  <task-node name="TaskNode2">
+    <task name="Task2" swimlane="processor"/>
+    <transition name="t2" to="End"/>
+  </task-node>
+  
+  <end-state name="End"/>
+</process-definition>

@@ -1,0 +1,92 @@
+<!--
+Integration is simple following are the steps done in Integration Server.
+1. Inbound web service gateway listens to any web services requests, places the payload to an inbound channel
+2. Service Activator kicks in, picking the message from this channel and invokes IntegrationService (configured through Spring Http invoker)
+3. Intercept Messages on Outbound gateway, and forward request to Web app for processing, after massaging the input XML as per webapp's requirement
+4. Interceptor logs request / response from webapp in Sync_tracker
+5. Reply back to caller with the response.
+-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:integration="http://www.springframework.org/schema/integration"
+       xmlns:si-ws="http://www.springframework.org/schema/integration/ws"
+       xsi:schemaLocation="
+    http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd
+    http://www.springframework.org/schema/integration
+    http://www.springframework.org/schema/integration/spring-integration-2.1.xsd
+    http://www.springframework.org/schema/integration/ws
+    http://www.springframework.org/schema/integration/ws/spring-integration-ws-2.1.xsd">
+
+    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="location" value="file:${TWMS_HOME}/${TWMS_ENV_MODE}/integration-server.properties"/>
+        <property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE"/>
+    </bean>
+
+    <!-- Annotation Scanning root -->
+    <context:component-scan base-package="tavant.twms.integration.server.sync.inbound"/>
+    <integration:annotation-config />
+
+    <bean id="endpointMapping" class="org.springframework.ws.server.endpoint.mapping.PayloadRootAnnotationMethodEndpointMapping" />
+
+    <!-- Webservice inbound gateway	-->
+    <si-ws:inbound-gateway id="inboundWSGateway" request-channel="inboundChannel"  />
+
+    <!-- Required channels -->
+    <integration:channel id="inboundChannel" />
+
+    <!-- All WSDLs go here.. -->
+    <bean id="ProcessGlobalCreditNotification-WS" class="org.springframework.ws.wsdl.wsdl11.SimpleWsdl11Definition">
+        <property  name="wsdl" value="classpath:wsdl/ProcessGlobalCreditNotification-WS.wsdl"/>
+    </bean>
+
+    <bean id="ProcessGlobalCustomerSync-WS" class="org.springframework.ws.wsdl.wsdl11.SimpleWsdl11Definition">
+        <property  name="wsdl" value="classpath:wsdl/ProcessGlobalCustomerSync-WS.wsdl"/>
+    </bean>
+
+    <bean id="ProcessGlobalExchangeRate-WS" class="org.springframework.ws.wsdl.wsdl11.SimpleWsdl11Definition">
+        <property  name="wsdl" value="classpath:wsdl/ProcessGlobalExchangeRate-WS.wsdl"/>
+    </bean>
+
+    <bean id="processGlobalExtWarrantyPurchaseNotification" class="org.springframework.ws.wsdl.wsdl11.SimpleWsdl11Definition">
+        <property  name="wsdl" value="classpath:wsdl/processGlobalExtWarrantyPurchaseNotification.wsdl"/>
+    </bean>
+
+    <bean id="ProcessGlobalInstallBaseSync-WS" class="org.springframework.ws.wsdl.wsdl11.SimpleWsdl11Definition">
+        <property  name="wsdl" value="classpath:wsdl/ProcessGlobalInstallBaseSync-WS.wsdl"/>
+    </bean>
+
+    <bean id="ProcessGlobalItemSync-WS" class="org.springframework.ws.wsdl.wsdl11.SimpleWsdl11Definition">
+        <property  name="wsdl" value="classpath:wsdl/ProcessGlobalItemSync-WS.wsdl"/>
+    </bean>
+
+    <bean id="ProcessGlobalSupplierDebitNotification-WS" class="org.springframework.ws.wsdl.wsdl11.SimpleWsdl11Definition">
+        <property  name="wsdl" value="classpath:wsdl/ProcessGlobalSupplierDebitNotification-WS.wsdl"/>
+    </bean>
+
+    <bean id="ProcessGlobalUserSync-WS" class="org.springframework.ws.wsdl.wsdl11.SimpleWsdl11Definition">
+        <property  name="wsdl" value="classpath:wsdl/ProcessGlobalUserSync-WS.wsdl"/>
+    </bean>
+
+    <bean id="ProcessFailureCodesSync-WS" class="org.springframework.ws.wsdl.wsdl11.SimpleWsdl11Definition">
+        <property  name="wsdl" value="classpath:wsdl/ProcessFailureCodesSync-WS.wsdl"/>
+    </bean>
+    
+    <bean id="ProcessGlobalTechnicianInformation-WS" class="org.springframework.ws.wsdl.wsdl11.SimpleWsdl11Definition">
+        <property  name="wsdl" value="classpath:wsdl/ProcessGlobalTechnicianInformation-WS.wsdl"/>
+    </bean>
+    
+     <bean id="ProcessGlobalDealerBatchClaim-WS" class="org.springframework.ws.wsdl.wsdl11.SimpleWsdl11Definition">
+        <property  name="wsdl" value="classpath:wsdl/ProcessGlobalDealerBatchClaim-WS.wsdl"/>
+    </bean>
+    
+       <bean id="ProcessGlobalBookingSync-WS" class="org.springframework.ws.wsdl.wsdl11.SimpleWsdl11Definition">
+        <property  name="wsdl" value="classpath:wsdl/ProcessGlobalBookingSync-WS.wsdl"/>
+    </bean>
+    
+
+</beans>
+

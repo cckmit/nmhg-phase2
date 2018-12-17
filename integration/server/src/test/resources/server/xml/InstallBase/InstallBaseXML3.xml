@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<InstallBaseSync>
+  <ApplicationArea>
+    <Sender>
+      <LogicalId>ESAORACLEAPPS</LogicalId>
+      <Task>TavantWMS</Task>
+      <ReferenceId>2167028</ReferenceId>
+    </Sender>
+    <BODId>BOD058</BODId>
+    <InterfaceNumber>INT029</InterfaceNumber>
+    <CreationDateTime>2009-01-23T18:52:58-05:00</CreationDateTime>
+  </ApplicationArea>
+  <DataArea>
+    <InventorySync>
+      <SyncType>MACHINE SALE</SyncType>
+      <ShipFromNumber></ShipFromNumber>
+      <ShipFromLocation></ShipFromLocation>
+      <ShipToNumber>117965</ShipToNumber>
+      <ShipToLocation>69720</ShipToLocation>
+      <InventoryDetail>
+        <ItemNumber>00480</ItemNumber>
+        <SerialNumber>2211698</SerialNumber>
+        <BuildDate></BuildDate>
+        <AdditionalAttributes>
+          <AdditionalAttribute>
+            <Name>EngineSerialNumber</Name>
+            <value></value>
+          </AdditionalAttribute>
+        </AdditionalAttributes>
+        <ManufacturingSite></ManufacturingSite>
+      </InventoryDetail>
+      <SalesOrderNumber>10425915</SalesOrderNumber>
+      <SalesOrderLineNumber>1</SalesOrderLineNumber>
+      <InvoiceNumber>8811002175</InvoiceNumber>
+      <InvoiceDate>2008-05-13T00:00:00-00:00</InvoiceDate>
+      <ShipFromOrgCode>CZU</ShipFromOrgCode>
+      <DeliveryDateTime>2008-05-13T00:00:00-00:00</DeliveryDateTime>
+    </InventorySync>
+  </DataArea>
+</InstallBaseSync>

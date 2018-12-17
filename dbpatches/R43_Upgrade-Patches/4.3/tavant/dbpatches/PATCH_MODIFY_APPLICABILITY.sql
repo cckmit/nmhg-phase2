@@ -1,0 +1,50 @@
+--Purpose    : Added scripts for Applicability, changes made as a part of 4.3 upgrade 
+--Created On : 11-Oct-2010
+--Created By : Kuldeep Patil
+--Impact     : None
+
+--ALTER TABLE CUST_REPORT_APP_PART DROP COLUMN APPLICABILITY
+--/
+-- Kuldeep - This column is removed from the table creation scripts in PATCH_CREATE_CUSTOMREPORT_APPLICABLE_PRT.sql DB Patch
+CREATE TABLE APPLICABILITY
+  (
+    TYPE    VARCHAR2(255 CHAR) NOT NULL ENABLE PRIMARY KEY,
+    VERSION NUMBER(10,0) NOT NULL ENABLE,
+    D_CREATED_ON DATE,
+    D_INTERNAL_COMMENTS VARCHAR2(255 CHAR),
+    D_UPDATED_ON DATE,
+    D_LAST_UPDATED_BY NUMBER(19,0) REFERENCES ORG_USER(ID),
+    D_CREATED_TIME TIMESTAMP (6),
+    D_UPDATED_TIME TIMESTAMP (6),
+    D_ACTIVE NUMBER(1,0) DEFAULT 1
+    )
+/
+INSERT INTO APPLICABILITY VALUES('Causal Part',1,sysdate,'4.3 Upgrade',sysdate,null,SYSDATE,SYSDATE,1)
+/
+INSERT INTO APPLICABILITY VALUES('Removed Part',1,sysdate,'4.3 Upgrade',sysdate,null,SYSDATE,SYSDATE,1)
+/
+INSERT INTO APPLICABILITY VALUES('Installed Part',1,sysdate,'4.3 Upgrade',sysdate,null,SYSDATE,SYSDATE,1)
+/
+CREATE TABLE applicability_types_in_part
+  (
+    cust_rep_app_part  NUMBER(19,0) NOT NULL ENABLE REFERENCES CUST_REPORT_APP_PART(ID),
+    applicability VARCHAR2(255 BYTE) NOT NULL ENABLE
+  )
+/
+ CREATE SEQUENCE CUST_REPORT_INSTRUCTION  MINVALUE 20 MAXVALUE 999999999999999999999999999  
+ INCREMENT BY 20 START WITH 20   CACHE 20   NOORDER NOCYCLE 
+/
+declare
+cursor CONS
+is
+select constraint_name from USER_CONS_COLUMNS 
+where table_name = 'REPORT_FORM_ANSWER_OPTION' and column_name = 'ANS_ORDER';
+BEGIN
+FOR CON in CONS LOOP
+	EXECUTE IMMEDIATE 'ALTER table REPORT_FORM_ANSWER_OPTION drop constraint ' || CON.CONSTRAINT_NAME;
+END LOOP;
+END;
+/
+COMMIT
+/
+

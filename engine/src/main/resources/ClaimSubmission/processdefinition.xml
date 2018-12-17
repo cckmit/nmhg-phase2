@@ -1,0 +1,1189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process-definition name="ClaimSubmission">
+
+  <!-- Swimlane Definition starts here -->
+  <swimlane name="processor">
+    <assignment
+      class="tavant.twms.jbpm.assignment.RuleBasedAssignmentHandler">
+      <ruleSet>ProcessorAssignment</ruleSet>
+      <variables>
+        <variable>claim</variable>
+      </variables>
+    </assignment>
+  </swimlane>
+
+  <swimlane name="dsm">
+    <assignment
+      class="tavant.twms.jbpm.assignment.RuleBasedAssignmentHandler">
+      <ruleSet>DsmAssignment</ruleSet>
+      <variables>
+        <variable>claim</variable>
+        <variable>claim.forDealer</variable>
+        <variable>claim.forDealer.address</variable>
+      </variables>
+    </assignment>
+  </swimlane>
+  
+  <swimlane name="dsmAdvisor">
+    <assignment
+      class="tavant.twms.jbpm.assignment.ExpressionAssignmentHandler">
+      <expression>actor=ognl{dsmAdvisor}</expression>
+    </assignment>
+  </swimlane>
+  
+  <swimlane name="cpAdvisor">
+    <assignment
+      class="tavant.twms.jbpm.assignment.ExpressionAssignmentHandler">
+      <expression>actor=ognl{cpAdvisor}</expression>
+    </assignment>
+  </swimlane>
+
+  <swimlane name="dealer">
+    <assignment
+      class="tavant.twms.jbpm.assignment.ExpressionAssignmentHandler">
+        <expression>actor=ognl{claim.filedBy.userType.equals("ENTERPRISE USER") ? filedBy.belongsToOrganizations[0].id : filedBy.name}</expression>
+    </assignment>
+  </swimlane>
+  
+  <swimlane name="baserole">
+    <assignment
+      class="tavant.twms.jbpm.assignment.ExpressionAssignmentHandler">
+      <expression>actor=ognl{claim.filedBy.userType.equals("ENTERPRISE USER") ? filedBy.belongsToOrganizations[0].id : filedBy.name}</expression>
+    </assignment>
+  </swimlane>
+
+  <swimlane name="viewFOCClaims">
+    <assignment
+      class="tavant.twms.jbpm.assignment.ExpressionAssignmentHandler">
+        <expression>actor=ognl{claim.filedBy.userType.equals("ENTERPRISE USER") ? filedBy.belongsToOrganizations[0].id : filedBy.name}</expression>
+    </assignment>
+  </swimlane>
+
+  <!-- Swimlane Definition ends here -->
+
+  <start-state name="Start">
+    <transition name="Draft" to="IsFocClaim">      
+    </transition>
+	<transition name="Submit Claim" to="generateClaimNumber">
+    </transition>
+    <transition name="Reopen" to="ProcessorReview">
+  		<script>
+  			claim.setState(tavant.twms.domain.claim.ClaimState.REOPENED);
+  		</script>
+  	</transition>
+  	<transition name="Appeals" to="ProcessAppeal">
+  		<script>
+  			claim.setState(tavant.twms.domain.claim.ClaimState.APPEALED);
+  		</script>
+  	</transition>
+ </start-state>
+ 
+  <decision name="IsFocClaim">
+    <transition name="Yes" to="TriggerPartReturns">
+      <condition>#{claim.foc}</condition>
+      <script>claim.setState(tavant.twms.domain.claim.ClaimState.DRAFT)</script>
+    </transition>
+    <transition name="No" to="DraftClaim">
+      <condition>#{!claim.foc}</condition>  	
+      <script>claim.setState(tavant.twms.domain.claim.ClaimState.DRAFT)</script>
+    </transition>    
+  </decision>
+ 
+ <task-node name="DraftClaim">
+    <task name="Draft Claim" swimlane="baserole">
+      <forms>
+        <inputForm>draft_claim</inputForm>
+      </forms>
+    </task>
+    <transition name="Submit Claim" to="isFailureReportCompleted"/>
+    <transition name="Save Draft" to="DraftClaim" />
+    <transition name="Delete Draft" to="IsCampaignClaim">
+      <script>
+        claim.setState(tavant.twms.domain.claim.ClaimState.DRAFT_DELETED);
+       </script>
+    </transition> 
+  </task-node>
+  
+ <task-node name="WaitingForLabor">
+    <task name="WaitingForLabor" swimlane="viewFOCClaims">
+      <forms>
+        <inputForm>draft_claim</inputForm>
+      </forms>
+    </task>
+    <transition name="Submit Claim" to="isFailureReportCompleted"/>
+  </task-node>
+  
+  <decision name="IsCampaignClaim">
+      <transition name="No" to="End"/>
+      <transition name="Yes" to="sendNotificationBack">
+      <condition>#{claim.type.type=="Campaign"}</condition>
+    </transition>          
+  </decision>
+  
+  <serviceNode name="sendNotificationBack">
+    <beanName>campaignService</beanName>
+    <methodName>deleteDraftCampaignClaim</methodName>
+    <parameters>
+      <variable>claim</variable>
+    </parameters>
+    <transition name="FlowEnds" to="End"/>
+  </serviceNode>
+  
+  <serviceNode name="generateClaimNumber">
+    <beanName>claimNumberPatternService</beanName>
+    <methodName>generateNextClaimNumber</methodName>
+    <parameters>
+      <variable>claim</variable>
+    </parameters>
+    <postProcess>claim.setClaimNumber(result)</postProcess>
+    <transition name="checkIfSMRRequested" to="IsServiceManagerReviewRequested" />
+  </serviceNode>
+
+  <serviceNode name="isFailureReportCompleted">
+    <beanName>claimService</beanName>
+    <methodName>isAnyFailureReportPendingOnClaim</methodName>
+    <parameters>
+      <variable>claim</variable>
+    </parameters>
+    <postProcess>claim.setFailureReportPending(result)</postProcess>
+    <transition name="Check Pending Failure Report" to="isFailureReportPending"/>
+  </serviceNode>
+
+  <decision name="isFailureReportPending">
+    <transition name="SubmitClaim" to="generateClaimNumber">
+      <condition>#{!claim.failureReportPending and claim.state.state=="draft"}</condition>
+    </transition>
+    <transition name="MoveToRepliesInbox" to="JoinAfterForwarded">
+      <condition>#{!claim.failureReportPending and claim.state.state=="Forwarded" and claim.latestAudit.updatedBy.name!="system"}</condition>
+       <script>
+        claim.setState(tavant.twms.domain.claim.ClaimState.EXTERNAL_REPLIES);
+      </script>
+      </transition>
+    <transition name="goToClaimRules" to="ClaimAutoAdjudication">
+      <condition>#{!claim.failureReportPending and claim.state.state=="Forwarded" and claim.latestAudit.updatedBy.name=="system"}</condition>
+    </transition>
+    <transition name="goToUpdatePartReturnInformation" to="UpdatePartReturnInformation">
+      <condition>#{!claim.failureReportPending and claim.state.state=="Service Manager Response"}</condition>
+      <script>
+        claim.setState(tavant.twms.domain.claim.ClaimState.SUBMITTED);
+      </script>
+    </transition>
+    <transition name="Yes" to="MoveClaimToClaimFailureReportsInbox">
+       <condition>#{claim.failureReportPending}</condition>
+    </transition>
+  </decision>
+
+  <task-node name="MoveClaimToClaimFailureReportsInbox">
+    <task name="Claim Failure Reports" swimlane="dealer">
+      <forms>
+        <inputForm>claim_failure_report</inputForm>
+      </forms>
+    </task>
+    <transition name="Delete Draft Claim" to="IsCampaignClaim">
+      <script>
+        claim.setState(tavant.twms.domain.claim.ClaimState.DRAFT_DELETED);
+       </script>
+    </transition>
+    <transition name="Delete" to="End">
+      <script>
+        claim.setState(tavant.twms.domain.claim.ClaimState.DELETED);
+      </script>
+    </transition>
+    <transition name="Submit" to="submitClaim"/>
+  </task-node>
+
+  <decision name="submitClaim">
+    <transition name="Submit Claim" to="generateClaimNumber">
+      <condition>#{claim.state.state=="draft"}</condition>
+    </transition>
+    <transition name="Send To Replies" to="JoinAfterForwarded">
+       <condition>#{claim.state.state=="Forwarded"}</condition>
+       <script>
+        claim.setState(tavant.twms.domain.claim.ClaimState.EXTERNAL_REPLIES);
+      </script>
+    </transition>
+    <transition name="Submit SMR Claim" to="UpdatePartReturnInformation">
+      <condition>#{claim.state.state=="Service Manager Response"}</condition>
+    </transition>
+  </decision>
+
+  <decision name="IsServiceManagerReviewRequested">
+    <transition name="No" to="UpdatePartReturnInformation">
+      <script>
+        claim.setState(tavant.twms.domain.claim.ClaimState.SUBMITTED);
+      </script>
+    </transition>
+    <transition name="Yes" to="ServiceManagerReview">
+      <condition>#{claim.serviceManagerRequest}</condition>
+      <script>claim.setState(tavant.twms.domain.claim.ClaimState.SERVICE_MANAGER_REVIEW);
+      </script>
+    </transition>
+  </decision>
+
+  <task-node name="ServiceManagerReview">
+    <task name="Service Manager Review" swimlane="dsm">
+      <forms>
+        <inputForm>service_manager_review</inputForm>
+      </forms>
+    </task>
+    <transition name="Reject" to="ServiceManagerResponse">
+      <script>
+        claim.serviceManagerAccepted = false;
+        claim.setState(tavant.twms.domain.claim.ClaimState.SERVICE_MANAGER_RESPONSE);
+      </script>
+    </transition>
+    <transition name="Accept" to="isFailureReportCompleted">
+      <script>
+        claim.serviceManagerAccepted = true;
+        claim.setState(tavant.twms.domain.claim.ClaimState.SERVICE_MANAGER_RESPONSE);
+      </script>
+    </transition>
+    <transition name="Transfer" to="ServiceManagerReview">
+        <script>
+        claim.setState(tavant.twms.domain.claim.ClaimState.SERVICE_MANAGER_REVIEW);
+      </script>
+    </transition>
+  </task-node>
+
+  <task-node name="ServiceManagerResponse">
+    <task name="Service Manager Response" swimlane="dealer">
+      <forms>
+        <inputForm>service_manager_response</inputForm>
+      </forms>
+    </task>
+    <transition name="Re-requests for SMR" to="ServiceManagerReview">
+      <script>
+        claim.setState(tavant.twms.domain.claim.ClaimState.SERVICE_MANAGER_REVIEW);
+      </script>
+    </transition>
+    <transition name="Delete" to="End">
+      <script>
+        claim.setState(tavant.twms.domain.claim.ClaimState.DELETED);
+      </script>
+    </transition>
+  </task-node>
+
+  <serviceNode name="UpdatePartReturnInformation">
+    <beanName>partReturnService</beanName>
+    <methodName>updatePartReturnsForClaim</methodName>
+    <parameters>
+      <variable>claim</variable>
+      <variable>null</variable>
+    </parameters>
+    <transition name="goToClaimAutoAdjudication" to="ClaimAutoAdjudication"/>
+  </serviceNode>
+  
+  <serviceNode name="ClaimAutoAdjudication">
+    <beanName>ruleAdministrationService</beanName>
+    <methodName>executeClaimAutoProcessingRules</methodName>
+    <parameters>
+      <variable>claim</variable>
+    </parameters>
+    <outputName>claimState</outputName>
+    <transition name="checkIfReviewNeeded" to="IsProcessorReviewNeeded"/>
+  </serviceNode>
+
+  <decision name="IsProcessorReviewNeeded">
+    <transition name="ForwardDealer" to="Forwarded">
+      <condition>#{claimState=="Forwarded"}</condition>
+      <script>
+        claim.setInternalComment("Processing Engine"); 
+        claim.setState(tavant.twms.domain.claim.ClaimState.FORWARDED);
+      </script>
+    </transition>
+    <transition name="Accept" to="AutoAcceptedClaimPostActivities">
+      <condition>#{claimState==null and isPartCorrected=="false"}</condition>
+      <script>
+        claim.setInternalComment("Processing Engine");      
+        claim.setState(tavant.twms.domain.claim.ClaimState.ACCEPTED);
+        claim.setProcessedAutomatically();
+      </script>
+    </transition>
+   <transition name="AcceptAfterPartCorrection" to="AutoAcceptedClaimPostActivities">
+      <condition>#{claimState==null and isPartCorrected == "true"}</condition>
+      <script>
+        claim.setInternalComment("Processing Engine executed again because Part has been modified");
+        claim.setState(tavant.twms.domain.claim.ClaimState.ACCEPTED);
+        claim.setProcessedAutomatically();
+      </script>
+    </transition>
+    <transition name="ManualReview" to="ProcessorReview">
+      <condition>#{claimState=="manual review"}</condition>
+      <script>
+        claim.setInternalComment("Processing Engine");      
+        claim.setState(tavant.twms.domain.claim.ClaimState.PROCESSOR_REVIEW);
+      </script>
+    </transition>
+    <transition name="DenyClaim" to="DebitPaymentOnDenial">
+      <condition>#{claimState=="rejected"}</condition>
+      <script>
+        claim.setInternalComment("Auto Denied");      
+    	claim.setState(tavant.twms.domain.claim.ClaimState.DENIED);
+    	isClaimDenied = true;
+    	claim.setProcessedAutomatically();
+      </script>
+    </transition>
+    <transition name="PutClaimOnHold" to="TriggerPartReturns">
+      <condition>#{claimState=="on hold"}</condition>
+      <script>
+        claim.setInternalComment("Processing Engine");      
+        claim.setState(tavant.twms.domain.claim.ClaimState.ON_HOLD);
+      </script>
+    </transition>
+    <transition name="PutClaimOnHoldForPartReturn" to="TriggerPartReturns">
+      <condition>#{claimState=="on hold for part return"}</condition>
+      <script>
+        claim.setInternalComment("Processing Engine");       
+        claim.setState(tavant.twms.domain.claim.ClaimState.ON_HOLD_FOR_PART_RETURN);
+      </script>
+    </transition>
+  </decision>
+  		
+  <serviceNode name="AutoAcceptedClaimPostActivities">
+    <beanName>claimService</beanName>
+    <methodName>autoAcceptedClaimPostActivities</methodName>
+    <parameters>
+      <variable>claim</variable>
+      <variable>isPartCorrected</variable>
+    </parameters>
+    <transition name="gotoTriggerPartReturns" to="TriggerPartReturns" />
+  </serviceNode>		
+
+ <!-- <decision name="TriggerPartReturns">
+      <transition name="ProceedForReturnWithoutWPRA" to="TriggerPartReturnsWithoutWPRA">
+          <condition>#{isThroughWPRA == "false"}</condition>
+      </transition>
+      &lt;!&ndash;<transition name="ReferPorcessorReview" to="ProcessorReview">&ndash;&gt;
+      <transition name="skipPartReturnAndContinue" to="ContinueAfterPartReturns" >
+  	      <condition>#{isThroughWPRA == "true"}</condition>
+  	      &lt;!&ndash;<script>
+                claim.setState(tavant.twms.domain.claim.ClaimState.PROCESSOR_REVIEW);
+                claim.setInternalComment("Claim marked for Manual Review");
+          </script>&ndash;&gt;
+  	  </transition>
+  </decision>-->
+
+  <serviceNode name="TriggerPartReturns">
+    <beanName>partReturnProcessingService</beanName>
+    <methodName>startPartReturnProcessForAllParts</methodName>
+    <parameters>
+      <variable>claim</variable>
+    </parameters>
+    <transition name="goToContinueAfterPartReturns" to="ContinueAfterPartReturns" />
+  </serviceNode>
+  	  
+  <decision name="ContinueAfterPartReturns">
+    <transition name="ProceedForPaymentCheck" to="WaitForPartReturnsCompletion">
+  		<condition>#{claim.state.state=="Accepted"}</condition>
+  	</transition>
+  	<transition name="goToWaitForPartReturnsCompletion" to="WaitForPartReturnsCompletion">
+  		<condition>#{claim.state.state=="Waiting For Part Returns"}</condition>
+  	</transition>
+  	<transition name="ReferPorcessorReview" to="ProcessorReview">
+  		<condition>#{claim.state.state=="New"}</condition>
+  		<script>claim.setState(tavant.twms.domain.claim.ClaimState.PROCESSOR_REVIEW);</script>
+  	</transition>
+  	<transition name="PutClaimOnHold" to="OnHold">
+  		<condition>#{claim.state.state=="In Progress"}</condition>
+  	</transition>
+  	<transition name="PutClaimOnHoldForPartReturn" to="OnHoldForPartReturn">
+  		<condition>#{claim.state.state=="on hold for part return"}</condition>
+  	</transition>
+  	<transition name="PutInWaitingForLabor" to="WaitingForLabor">
+  		<condition>#{claim.state.state=="draft"}</condition>
+  	</transition>
+  </decision>
+
+  <fork name="ForkForAdviceRequest">
+    <transition name="Advice Request" to="AdviceRequest" />
+    <transition name="Forwarded Internally" to="ForwardedInternally" />
+  </fork>
+
+  <task-node name="AdviceRequest">
+    <task name="Advice Request" swimlane="dsmAdvisor">
+      <forms>
+        <inputForm>advice_request</inputForm>
+      </forms>
+    </task>
+    <transition name="Advice" to="JoinAfterAdviceRequest"/>
+  </task-node>
+  
+  <fork name="ForkForCPReview">
+    <transition name="CP Review" to="CPReview" />
+    <transition name="Forwarded Internally" to="ForwardedInternally" />
+  </fork>
+
+  <task-node name="CPReview">
+    <task name="CP Review" swimlane="cpAdvisor">
+      <forms>
+        <inputForm>review_request</inputForm>
+      </forms>
+    </task>
+    <transition name="Review" to="JoinAfterAdviceRequest"/>
+    <transition name="Transfer" to="CPReview">
+      <script>
+        claim.setState(tavant.twms.domain.claim.ClaimState.CP_TRANSFER);
+      </script>
+    </transition>
+  </task-node>
+
+  	
+  <task-node name="ForwardedInternally">
+    <task name="Forwarded Internally" swimlane="processor">
+      <timer duedate="20 business hours" >
+      	  <action class="tavant.twms.jbpm.action.TaskInstanceEndAction">
+          <transition>TimeoutAfterForwardedInternally</transition>
+        </action>	
+      </timer>
+      <event type="timer-create">
+        <action class="tavant.twms.jbpm.action.ForwardedClaimsAutoReplyAction" />
+      </event>
+      <forms>
+        <inputForm>processor_forwarded</inputForm>
+      </forms>
+    </task>
+    <transition name="JoinAfterForwardedInternally" to="JoinAfterAdviceRequest"/>
+    <transition name="TimeoutAfterForwardedInternally" to="JoinAfterAdviceRequest">
+      <script>
+        claim.setInternalComment("Auto Reply");
+      </script>
+    </transition>
+  </task-node>
+
+  <single-token-join name="JoinAfterAdviceRequest">
+    <transition name="goToReplies" to="Replies">
+      <script>
+        claim.setState(tavant.twms.domain.claim.ClaimState.REPLIES);
+      </script>
+    </transition>
+  </single-token-join>
+
+  <!-- The Task ProcessorReview, OnHold and Replies are all tasks of a processor
+    where she can do the same operations on the claim. Different tasks are used
+    just for group/organizing her tasks better.So we are using the same form
+    processor_review for each of those states to avoid duplication-->
+    
+  <task-node name="ProcessorReview">
+    <task name="Processor Review" swimlane="processor">
+      <forms>
+        <inputForm>processor_review</inputForm>
+      </forms>
+    </task>
+    <transition name="Accept" to="WaitForPartReturnsCompletion">
+      <script>
+        claim.setState(tavant.twms.domain.claim.ClaimState.ACCEPTED);
+      </script>
+    </transition>
+    <transition name="Deny" to="DebitPaymentOnDenial">
+      <script>
+        isClaimDenied = true;
+    	claim.setState(tavant.twms.domain.claim.ClaimState.DENIED);
+      </script>
+    </transition>
+    <transition name="System Accept" to="NotifyPayment"/>      
+    <transition name="Re-process" to="ClaimAutoAdjudication">
+      <script>claim.getRuleFailures().clear()</script>
+    </transition>
+    <transition name="Hold" to="OnHold">
+      <script>
+        claim.setState(tavant.twms.domain.claim.ClaimState.ON_HOLD);
+      </script>
+    </transition>
+    <transition name="Forward to Dealer" to="ForkForForwarded">
+      <script>
+        claim.setState(tavant.twms.domain.claim.ClaimState.FORWARDED);
+      </script>
+    </transition>
+    <transition name="Transfer" to="Transferred">
+      <script>
+        claim.setState(tavant.twms.domain.claim.ClaimState.TRANSFERRED);
+      </script>
+    </transition>
+     <transition name="ApproveAndTransferToNextUser" to="PendingAuthorization">
+      <script>
+        claim.setState(tavant.twms.domain.claim.ClaimState.APPROVED);
+      </script>
+    </transition>
+    
+    <transition name="Seek Advice" to="ForkForAdviceRequest">
+      <script>
+        claim.setState(tavant.twms.domain.claim.ClaimState.ADVICE_REQUEST);
+      </script>
+    </transition>
+    <transition name="MoveToShippedNotReceivedInbox" to="MoveClaimToPartsShippedNotreceivedInbox"/>
+    <transition name="Seek Review" to="ForkForCPReview">
+      <script>
+        claim.setState(tavant.twms.domain.claim.ClaimState.CP_REVIEW);
+      </script>
+    </transition>
+  </task-node>
+    
+  <task-node name="RejectedPartReturn">
+    <task name="Rejected Part Return" swimlane="processor">
+      <forms>
+        <inputForm>processor_review</inputForm>
+      </forms>
+    </task>
+    <transition name="Accept" to="WaitForPartReturnsCompletion">
+      <script>
+        claim.setState(tavant.twms.domain.claim.ClaimState.REACCEPTED);
+      </script>
+    </transition>
+    <transition name="Deny" to="DebitPaymentOnDenial">
+      <script>
+        isClaimDenied = true;
+    	claim.setState(tavant.twms.domain.claim.ClaimState.DENIED);
+      </script>
+    </transition>
+    <transition name="Re-process" to="ClaimAutoAdjudication">
+      <script>claim.getRuleFailures().clear()</script>
+    </transition>
+    <transition name="Hold" to="OnHold">
+      <script>
+        claim.setState(tavant.twms.domain.claim.ClaimState.ON_HOLD);
+      </script>
+    </transition>
+    <transition name="Forward to Dealer" to="ForkForForwarded">
+      <script>
+        claim.setState(tavant.twms.domain.claim.ClaimState.FORWARDED);
+      </script>
+    </transition>
+    <transition name="Transfer" to="Transferred">
+      <script>
+        claim.setState(tavant.twms.domain.claim.ClaimState.TRANSFERRED);
+      </script>
+    </transition>
+    <transition name="Seek Advice" to="ForkForAdviceRequest">
+      <script>
+        claim.setState(tavant.twms.domain.claim.ClaimState.ADVICE_REQUEST);
+      </script>
+    </transition>
+    <transition name="MoveToShippedNotReceivedInbox" to="MoveClaimToPartsShippedNotreceivedInbox"/>
+    <transition name="Seek Review" to="ForkForCPReview">
+      <script>
+        claim.setState(tavant.twms.domain.claim.ClaimState.CP_REVIEW);
+      </script>
+    </transition>
+  </task-node>
+  
+  <task-node name="ProcessAppeal">
+    <task name="Appeals" swimlane="processor">
+      <forms>
+        <inputForm>processor_review</inputForm>
+      </forms>
+    </task>
+    <transition name="Accept" to="WaitForPartReturnsCompletion">
+      <script>
+        claim.setState(tavant.twms.domain.claim.ClaimState.ACCEPTED);
+      </script>
+    </transition>
+    <transition name="Deny" to="DebitPaymentOnDenial">
+      <script>
+      	isClaimDenied = true;
+    	claim.setState(tavant.twms.domain.claim.ClaimState.DENIED);
+      </script>
+    </transition>
+    <transition name="Re-process" to="ClaimAutoAdjudication">
+      <script>claim.getRuleFailures().clear()</script>
+    </transition>
+    <transition name="Hold" to="OnHold">
+      <script>
+        claim.setState(tavant.twms.domain.claim.ClaimState.ON_HOLD);
+      </script>
+    </transition>
+    <transition name="Forward to Dealer" to="ForkForForwarded">
+      <script>
+        claim.setState(tavant.twms.domain.claim.ClaimState.FORWARDED);
+      </script>
+    </transition>
+    <transition name="Transfer" to="Transferred">
+      <script>
+        claim.setState(tavant.twms.domain.claim.ClaimState.TRANSFERRED);
+      </script>
+    </transition>
+    <transition name="ApproveAndTransferToNextUser" to="PendingAuthorization">
+      <script>
+        claim.setState(tavant.twms.domain.claim.ClaimState.APPROVED);
+      </script>
+    </transition>
+    <transition name="Seek Advice" to="ForkForAdviceRequest">
+      <script>
+        claim.setState(tavant.twms.domain.claim.ClaimState.ADVICE_REQUEST);
+      </script>
+    </transition>
+    <transition name="MoveToShippedNotReceivedInbox" to="MoveClaimToPartsShippedNotreceivedInbox"/>
+    <transition name="Seek Review" to="ForkForCPReview">
+      <script>
+        claim.setState(tavant.twms.domain.claim.ClaimState.CP_REVIEW);
+      </script>
+    </transition>
+  </task-node>
+
+  <task-node name="OnHold">
+    <task name="On Hold" swimlane="processor">
+      <forms>
+        <inputForm>processor_review</inputForm>
+      </forms>
+    </task>
+    <transition name="Accept" to="WaitForPartReturnsCompletion">
+      <script>
+        claim.setState(tavant.twms.domain.claim.ClaimState.ACCEPTED);
+      </script>
+    </transition>
+    <transition name="Hold" to="OnHold">
+      <script>
+        claim.setState(tavant.twms.domain.claim.ClaimState.ON_HOLD);
+      </script>
+    </transition>
+    <transition name="Deny" to="DebitPaymentOnDenial">
+      <script>
+      	isClaimDenied = true;
+        claim.setState(tavant.twms.domain.claim.ClaimState.DENIED);
+      </script>
+    </transition>
+    <transition name="Re-process" to="ClaimAutoAdjudication">
+      <script>claim.getRuleFailures().clear()</script>
+    </transition>
+    <transition name="Forward to Dealer" to="ForkForForwarded">
+      <script>
+        claim.setState(tavant.twms.domain.claim.ClaimState.FORWARDED);
+      </script>
+    </transition>
+    <transition name="Transfer" to="Transferred">
+      <script>
+        claim.setState(tavant.twms.domain.claim.ClaimState.TRANSFERRED);
+      </script>
+    </transition>
+     <transition name="ApproveAndTransferToNextUser" to="PendingAuthorization">
+      <script>
+        claim.setState(tavant.twms.domain.claim.ClaimState.APPROVED);
+      </script>
+    </transition>
+    <transition name="Seek Advice" to="ForkForAdviceRequest">
+      <script>
+        claim.setState(tavant.twms.domain.claim.ClaimState.ADVICE_REQUEST);
+      </script>
+    </transition>
+    <transition name="MoveToShippedNotReceivedInbox" to="MoveClaimToPartsShippedNotreceivedInbox"/>
+    <transition name="Seek Review" to="ForkForCPReview">
+      <script>
+        claim.setState(tavant.twms.domain.claim.ClaimState.CP_REVIEW);
+      </script>
+    </transition>
+  </task-node>
+  
+  <task-node name="OnHoldForPartReturn">
+    <task name="On Hold For Part Return" swimlane="processor">
+      <forms>
+        <inputForm>processor_review</inputForm>
+      </forms>
+    </task>
+    <transition name="Accept" to="WaitForPartReturnsCompletion">
+      <script>
+        claim.setState(tavant.twms.domain.claim.ClaimState.ACCEPTED);
+      </script>
+    </transition>
+    <transition name="toProcessorReview" to="ProcessorReview">
+      <script>
+        claim.setState(tavant.twms.domain.claim.ClaimState.PROCESSOR_REVIEW);
+      </script>
+    </transition>
+    <transition name="Hold" to="OnHold">
+      <script>
+        claim.setState(tavant.twms.domain.claim.ClaimState.ON_HOLD);
+      </script>
+    </transition>
+    <transition name="Deny" to="DebitPaymentOnDenial">
+      <script>
+      	isClaimDenied = true;
+        claim.setState(tavant.twms.domain.claim.ClaimState.DENIED);
+      </script>
+    </transition>
+    <transition name="Re-process" to="ClaimAutoAdjudication">
+      <script>claim.getRuleFailures().clear()</script>
+    </transition>
+    <transition name="Forward to Dealer" to="ForkForForwarded">
+      <script>
+        claim.setState(tavant.twms.domain.claim.ClaimState.FORWARDED);
+      </script>
+    </transition>
+    <transition name="Transfer" to="Transferred">
+      <script>
+        claim.setState(tavant.twms.domain.claim.ClaimState.TRANSFERRED);
+      </script>
+    </transition>
+     <transition name="ApproveAndTransferToNextUser" to="PendingAuthorization">
+      <script>
+        claim.setState(tavant.twms.domain.claim.ClaimState.APPROVED);
+      </script>
+    </transition>    
+    <transition name="Seek Advice" to="ForkForAdviceRequest">
+      <script>
+        claim.setState(tavant.twms.domain.claim.ClaimState.ADVICE_REQUEST);
+      </script>
+    </transition>
+    <transition name="MoveToShippedNotReceivedInbox" to="MoveClaimToPartsShippedNotreceivedInbox"/>
+    <transition name="Seek Review" to="ForkForCPReview">
+      <script>
+        claim.setState(tavant.twms.domain.claim.ClaimState.CP_REVIEW);
+      </script>
+    </transition>
+  </task-node>
+
+  <task-node name="Replies">
+    <task name="Replies" swimlane="processor">
+      <forms>
+        <inputForm>processor_review</inputForm>
+      </forms>
+    </task>
+    <transition name="Accept" to="WaitForPartReturnsCompletion">
+      <script>
+        claim.setState(tavant.twms.domain.claim.ClaimState.ACCEPTED);
+      </script>
+    </transition>
+    <transition name="Deny" to="DebitPaymentOnDenial">
+      <script>
+      	isClaimDenied = true;
+        claim.setState(tavant.twms.domain.claim.ClaimState.DENIED);
+      </script>
+    </transition>
+    <transition name="Re-process" to="ClaimAutoAdjudication">
+      <script>claim.getRuleFailures().clear()</script>
+    </transition>
+    <transition name="Hold" to="OnHold">
+      <script>
+        claim.setState(tavant.twms.domain.claim.ClaimState.ON_HOLD);
+      </script>
+    </transition>
+    <transition name="Forward to Dealer" to="ForkForForwarded">
+      <script>
+        claim.setState(tavant.twms.domain.claim.ClaimState.FORWARDED);
+      </script>
+    </transition>
+    <transition name="Transfer" to="Transferred">
+      <script>
+        claim.setState(tavant.twms.domain.claim.ClaimState.TRANSFERRED);
+      </script>
+    </transition>
+    <transition name="Seek Advice" to="ForkForAdviceRequest">
+      <script>
+        claim.setState(tavant.twms.domain.claim.ClaimState.ADVICE_REQUEST);
+      </script>
+    </transition>
+    <transition name="ApproveAndTransferToNextUser" to="PendingAuthorization">
+      <script>
+        claim.setState(tavant.twms.domain.claim.ClaimState.APPROVED);
+      </script>
+    </transition>
+    <transition name="MoveToShippedNotReceivedInbox" to="MoveClaimToPartsShippedNotreceivedInbox"/>
+    <transition name="Seek Review" to="ForkForCPReview">
+      <script>
+        claim.setState(tavant.twms.domain.claim.ClaimState.CP_REVIEW);
+      </script>
+    </transition>
+  </task-node>
+
+  <task-node name="Transferred">
+    <task name="Transferred" swimlane="processor">
+      <forms>
+        <inputForm>processor_review</inputForm>
+      </forms>
+    </task>
+    <transition name="Accept" to="WaitForPartReturnsCompletion">
+      <script>
+        claim.setState(tavant.twms.domain.claim.ClaimState.ACCEPTED);
+      </script>
+    </transition>
+    <transition name="Deny" to="DebitPaymentOnDenial">
+      <script>
+      	isClaimDenied = true;
+        claim.setState(tavant.twms.domain.claim.ClaimState.DENIED);
+      </script>
+    </transition>
+    <transition name="Re-process" to="ClaimAutoAdjudication">
+      <script>claim.getRuleFailures().clear()</script>
+    </transition>
+    <transition name="Hold" to="OnHold">
+      <script>
+        claim.setState(tavant.twms.domain.claim.ClaimState.ON_HOLD);
+      </script>
+    </transition>
+    <transition name="Forward to Dealer" to="ForkForForwarded">
+      <script>
+        claim.setState(tavant.twms.domain.claim.ClaimState.FORWARDED);
+      </script>
+    </transition>
+    <transition name="Transfer" to="Transferred">
+      <script>
+        claim.setState(tavant.twms.domain.claim.ClaimState.TRANSFERRED);
+      </script>
+    </transition>
+     <transition name="ApproveAndTransferToNextUser" to="PendingAuthorization">
+      <script>
+        claim.setState(tavant.twms.domain.claim.ClaimState.APPROVED);
+      </script>
+    </transition>
+    <transition name="Seek Advice" to="ForkForAdviceRequest">
+      <script>
+        claim.setState(tavant.twms.domain.claim.ClaimState.ADVICE_REQUEST);
+      </script>
+    </transition>
+    <transition name="MoveToShippedNotReceivedInbox" to="MoveClaimToPartsShippedNotreceivedInbox"/>
+    <transition name="Seek Review" to="ForkForCPReview">
+	   <script>
+	      claim.setState(tavant.twms.domain.claim.ClaimState.CP_REVIEW);
+	   </script>
+    </transition>
+  </task-node>
+  
+  <task-node name="PendingAuthorization">
+    <task name="Pending Authorization" swimlane="processor">
+      <forms>
+        <inputForm>processor_review</inputForm>
+      </forms>
+    </task>
+    <transition name="Accept" to="WaitForPartReturnsCompletion">
+      <script>
+        claim.setState(tavant.twms.domain.claim.ClaimState.ACCEPTED);
+      </script>
+    </transition>
+    <transition name="Deny" to="DebitPaymentOnDenial">
+      <script>
+      	isClaimDenied = true;
+        claim.setState(tavant.twms.domain.claim.ClaimState.DENIED);
+      </script>
+    </transition>
+    <transition name="Re-process" to="ClaimAutoAdjudication">
+      <script>claim.getRuleFailures().clear()</script>
+    </transition>
+    <transition name="Hold" to="OnHold">
+      <script>
+        claim.setState(tavant.twms.domain.claim.ClaimState.ON_HOLD);
+      </script>
+    </transition>
+    <transition name="Forward to Dealer" to="ForkForForwarded">
+      <script>
+        claim.setState(tavant.twms.domain.claim.ClaimState.FORWARDED);
+      </script>
+    </transition>
+    <transition name="Transfer" to="Transferred">
+      <script>
+        claim.setState(tavant.twms.domain.claim.ClaimState.TRANSFERRED);
+      </script>
+    </transition>
+     <transition name="ApproveAndTransferToNextUser" to="PendingAuthorization">
+      <script>
+        claim.setState(tavant.twms.domain.claim.ClaimState.APPROVED);
+      </script>
+    </transition>
+    
+    <transition name="Seek Advice" to="ForkForAdviceRequest">
+      <script>
+        claim.setState(tavant.twms.domain.claim.ClaimState.ADVICE_REQUEST);
+      </script>
+    </transition>
+    <transition name="MoveToShippedNotReceivedInbox" to="MoveClaimToPartsShippedNotreceivedInbox"/>
+    <transition name="Seek Review" to="ForkForCPReview">
+	   <script>
+	      claim.setState(tavant.twms.domain.claim.ClaimState.CP_REVIEW);
+	   </script>
+    </transition>
+  </task-node>
+  
+  <!-- Incase of campaign claims notification needs to be sent back to the
+  	   dealer on claim denial.
+   -->
+  <decision name="IsDealerNotificationNeeded">
+    <transition name="NotificationNotNeeded" to="IsPaymentNotificationNeeded">
+    	<condition>#{claim.type.type!="Campaign"}</condition>
+    </transition>
+    <transition name="NotificationNeeded" to="NotifyDealer">
+      <condition>#{claim.type.type=="Campaign"}</condition>
+    </transition>
+  </decision>
+
+  <serviceNode name="NotifyDealer">
+    <transition name="NotificationSent" to="IsPaymentNotificationNeeded"/>
+    <beanName>campaignAssignmentService</beanName>
+    <methodName>sendDealerNotificationForClaimDenial</methodName>
+    <parameters>
+      <element>claim</element>
+    </parameters>
+    <postProcess></postProcess>
+  </serviceNode>
+
+  <!-- End of Processor Tasks -->
+
+  <fork name="ForkForForwarded">
+    <transition name="Forward" to="Forwarded" />
+    <transition name="Forwarded Externally" to="ForwardedExternally" />
+  </fork>
+
+  <task-node name="Forwarded">
+    <task name="Forwarded" swimlane="dealer">
+      <forms>
+        <inputForm>forwarded</inputForm>
+      </forms>
+    </task>
+    <transition name="Submit" to="isFailureReportCompleted"/>
+    <transition name="DenyOnNoReply" to="JoinAfterForwarded">
+    	<script>
+	        isClaimDenied = true;
+	    	claim.setState(tavant.twms.domain.claim.ClaimState.DENIED);
+	    </script>
+    </transition>
+  </task-node>
+	
+  <task-node name="ForwardedExternally">
+		<task name="Forwarded Externally" swimlane="processor">
+			<forms>
+                 <inputForm>processor_forwarded</inputForm>
+            </forms>
+		</task>
+		<transition name="JoinAfterForwardedExternally" to="JoinAfterForwarded"/>
+  </task-node>
+
+  <single-token-join name="JoinAfterForwarded">
+    <transition name="checkForRepliesOrDeny" to="RepliesOrDeny"/>
+  </single-token-join>
+  
+  <decision name="RepliesOrDeny">
+  	<transition name="startDenialProcess" to="DebitPaymentOnDenial">
+  		<condition>#{claim.state.state=="Denied"}</condition>
+  	</transition>
+    <transition name="goToReplies" to="Replies">
+  		<condition>#{!(claim.state.state=="Denied")}</condition>
+  	</transition>
+  </decision>
+
+    <decision name="IsPaymentNotificationNeeded">
+        <transition name="proceedWithNotification" to="NotifyPayment">
+            <condition>#{claim.forDealer.submitCreditBooleanVal and claim.payment.paymentToBeMade == true and !claim.warrantyOrder}</condition>
+        </transition>
+        <transition name="goToClose" to="End">
+            <condition>#{(!(claim.payment.isPaymentToBeMade) or claim.warrantyOrder) and claim.state.state=="Denied"}</condition>
+            <script>claim.setState(tavant.twms.domain.claim.ClaimState.DENIED_AND_CLOSED);</script>
+        </transition>
+        <transition name="goToAcceptAndClose" to="IsReopenNeeded">
+            <condition>#{(!(claim.payment.isPaymentToBeMade) or claim.warrantyOrder) and claim.state.state!="Denied"}</condition>
+            <script>claim.setState(tavant.twms.domain.claim.ClaimState.ACCEPTED_AND_CLOSED);</script>
+        </transition>
+
+        <transition name="goToPaidAndClose" to="PaidNClosed">
+            <condition>#{!claim.forDealer.submitCreditBooleanVal}</condition>
+        </transition>
+    </decision>
+  
+  <serviceNode name="PaidNClosed">
+    <transition name="goToEndPayment" to="IsReopenNeeded"/>
+    <beanName>paymentAsyncService</beanName>
+    <methodName>startCreditMemoPayment</methodName>
+    <parameters>
+      <variable>claim</variable>
+    </parameters>
+  </serviceNode>
+
+  <decision name="IsReopenNeeded">
+    <handler class="tavant.twms.jbpm.decision.claim.IsReopenNeeded" />
+    <transition name="Yes" to="ReopenClaim" />
+    <transition name="No" to="CheckSupplierRecovery" />
+  </decision>
+  
+  <serviceNode name="NotifyPayment">
+    <transition name="goToWaitForPaymentResponse" to="WaitForPaymentResponse">
+      <script>
+      		claim.setInternalComment("Credit Submission");
+      		claim.setState(tavant.twms.domain.claim.ClaimState.PENDING_PAYMENT_SUBMISSION);
+      </script>
+    </transition>
+    <beanName>paymentAsyncService</beanName>
+    <methodName>startAsyncPayment</methodName>
+    <parameters>
+      <element>claim</element>
+    </parameters>
+  </serviceNode>
+
+  <serviceNode name="ReopenClaim">
+    <transition name="goToNotifyPayment" to="IsPaymentNotificationNeeded"/>
+    <beanName>claimProcessService</beanName>
+    <methodName>reopenClaim</methodName>
+    <parameters>
+      <variable>claim</variable>
+    </parameters>
+  </serviceNode>
+
+  <task-node name="WaitForPaymentResponse">
+    <task name="PaymentWaitTask">
+      <event type="task-create">
+        <script>
+          claim.setAssignToUser(null);
+        </script>
+      </event>
+    </task>
+    <transition name="goToIsReopenNeeded" to="IsReopenNeeded"/>
+  	<transition name="Deny" to="DebitPaymentOnDenial">
+    <script>
+	        isClaimDenied = true;
+	    	claim.setState(tavant.twms.domain.claim.ClaimState.DENIED);
+	</script>
+	</transition>
+ <transition name="editClaim" to="ProcessorReview">
+      <script>
+        claim.setInternalComment("Re-Processed");
+        claim.setState(tavant.twms.domain.claim.ClaimState.PROCESSOR_REVIEW);
+       </script>
+  </transition> 
+  </task-node>
+
+  <decision name="CheckSupplierRecovery">
+    <handler class="tavant.twms.jbpm.decision.supplier.recovery.IsRecoverable" />
+    <transition name="Yes" to="CheckRecoveryInitiation" />
+    <transition name="No" to="End" />
+  </decision>
+
+  <decision name="CheckRecoveryInitiation">
+    <handler class="tavant.twms.jbpm.decision.supplier.recovery.CanAutoInitiateRecovery" />
+    <transition name="Yes" to="AutoInitiateRecoveryWorkflows" />
+    <transition name="No" to="End" />
+    <script>
+          claim.setPendingRecovery(true);
+    </script>
+  </decision>
+
+  <serviceNode name="AutoInitiateRecoveryWorkflows">
+    <beanName>partReturnProcessingService</beanName>
+    <methodName>autoStartRecoveryProcess</methodName>
+    <parameters>
+      <variable>claim</variable>
+    </parameters>
+    <transition name="goToEnd" to="End" />
+  </serviceNode>
+
+  <!-- Incase a processor denies a claim on reopening/resubmission,
+  	   the earlier payment made to the dealer,if any, should be debited 
+   -->
+  <serviceNode name="DebitPaymentOnDenial">
+  	<beanName>paymentService</beanName>
+  	<methodName>calculatePaymentForDeniedClaim</methodName>
+  	<parameters>
+      <variable>claim</variable>
+    </parameters>
+    <postProcess>claim.setPayment(result)</postProcess>
+    <transition name="goToEndAllPartTasksForClaim" to="EndAllPartTasksForClaim"/>
+  </serviceNode>
+  
+  <serviceNode name="EndAllPartTasksForClaim">
+  	<beanName>partReturnProcessingService</beanName>
+  	<methodName>endAllPartTasksForClaim</methodName>
+  	<parameters>
+      <variable>claim</variable>
+    </parameters>
+    <transition name="goToIsDealerNotificationNeeded" to="IsDealerNotificationNeeded"/>
+  </serviceNode>
+  
+  <!-- Part Returns Flow Modifications -->
+  <task-node name="WaitForPartReturnsCompletion">
+  	<task name="PartsReturnScheduler">
+      <event type="task-create">
+        <script>
+          claim.setAssignToUser(null);
+        </script>
+      </event>
+      <timer duedate="1 seconds" repeat="5 minutes">
+      	  <action class="tavant.twms.jbpm.action.PartsReturnSchedulerAction">	
+          	<transition>goToNotifyPayment</transition>
+          </action> 	
+      </timer>
+     </task>
+     <transition name="goToNotifyPayment" to="IsPaymentNotificationNeeded">
+     	<cancel-timer name="PartsReturnScheduler"/>
+     	<script>
+     		claim.setBomUpdationNeeded(claim.getBusinessUnitInfo().getName().equals("Thermo King TSA"));
+     	</script>
+     </transition> 
+     <transition name="goToRejectedPartsInbox" to="RejectedPartReturn"/>
+     <transition name="Deny" to="DebitPaymentOnDenial">	
+      <script>
+        isClaimDenied = true;
+    	claim.setState(tavant.twms.domain.claim.ClaimState.DENIED);
+      </script>
+    </transition>
+     <transition name="MoveToShippedNotReceivedInbox" to="MoveClaimToPartsShippedNotreceivedInbox"/>
+     <transition name="goToRuleExecutionDueToPartCorrection" to="ClaimAutoAdjudication">
+        <script>claim.getRuleFailures().clear()</script>
+        <cancel-timer name="PartsReturnScheduler"/>
+     </transition>
+     <transition name="sendForManualReview" to="ProcessorReview"> 
+        <script>claim.setState(tavant.twms.domain.claim.ClaimState.PROCESSOR_REVIEW);</script>
+      	<cancel-timer name="PartsReturnScheduler"/>
+     </transition>	
+     <transition name="editClaim" to="ProcessorReview">
+      <script>
+        claim.setInternalComment("Re-Processed");
+        claim.setState(tavant.twms.domain.claim.ClaimState.PROCESSOR_REVIEW);
+       </script>
+       <cancel-timer name="PartsReturnScheduler"/>
+  </transition> 
+  </task-node>
+
+   <task-node name="MoveClaimToPartsShippedNotreceivedInbox">
+        <task name="Part Shipped Not Received" swimlane="processor">
+          <forms>
+            <inputForm>processor_review</inputForm>
+          </forms>
+        </task>
+        <transition name="Accept" to="WaitForPartReturnsCompletion">
+          <script>
+            claim.setState(tavant.twms.domain.claim.ClaimState.WAITING_FOR_PART_RETURNS);
+            claim.setPrtShpNtrcvd(java.lang.Boolean.FALSE);
+          </script>
+        </transition>
+        <transition name="Deny" to="DebitPaymentOnDenial">
+          <script>
+            claim.setPrtShpNtrcvd(java.lang.Boolean.FALSE);
+            claim.setState(tavant.twms.domain.claim.ClaimState.DENIED);
+          </script>
+        </transition>
+        <transition name="Re-process" to="ClaimAutoAdjudication">
+          <script>claim.getRuleFailures().clear()</script>
+        </transition>
+        <transition name="Hold" to="OnHold">
+          <script>
+            claim.setState(tavant.twms.domain.claim.ClaimState.ON_HOLD);
+            claim.setPrtShpNtrcvd(java.lang.Boolean.FALSE);
+          </script>
+        </transition>
+        <transition name="Forward to Dealer" to="ForkForForwarded">
+          <script>
+            claim.setState(tavant.twms.domain.claim.ClaimState.FORWARDED);
+            claim.setPrtShpNtrcvd(java.lang.Boolean.FALSE);
+          </script>
+        </transition>
+        <transition name="Transfer" to="Transferred">
+          <script>
+            claim.setState(tavant.twms.domain.claim.ClaimState.TRANSFERRED);
+            claim.setPrtShpNtrcvd(java.lang.Boolean.FALSE);
+          </script>
+        </transition>
+        <transition name="Seek Advice" to="ForkForAdviceRequest">
+          <script>
+            claim.setState(tavant.twms.domain.claim.ClaimState.ADVICE_REQUEST);
+            claim.setPrtShpNtrcvd(java.lang.Boolean.FALSE);
+          </script>
+        </transition>
+        <transition name="Seek Review" to="ForkForCPReview">
+	      <script>
+	        claim.setState(tavant.twms.domain.claim.ClaimState.CP_REVIEW);
+	      </script>
+    	</transition>
+      </task-node>
+
+  <end-state name="End">
+      <event type="node-enter">
+          <script>
+              claim.setAssignToUser(null);
+          </script>
+      </event>
+  </end-state>
+</process-definition>

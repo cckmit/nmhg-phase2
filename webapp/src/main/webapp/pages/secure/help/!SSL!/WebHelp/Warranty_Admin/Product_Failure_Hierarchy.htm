@@ -1,0 +1,452 @@
+<!doctype HTML public "-//W3C//DTD HTML 4.0 Frameset//EN">
+
+<html>
+
+<head>
+<title>Product Failure Hierarchy</title>
+<meta http-equiv="content-type" content="text/html; charset=windows-1252">
+<meta name="generator" content="RoboHelp by eHelp Corporation www.ehelp.com">
+<link rel="stylesheet" href="../TWMS_ns_nc.css"><style>
+<!--
+body { background-image:url("../Texture_metal3.jpg"); }
+-->
+</style><style>
+<!--
+hr.whs1 { float:aligncenter; margin-top:0px; margin-bottom:3px; height:1px; color:#385f92; }
+img\005fwhs2 { border:none; width:18px; height:18px; float:none; }
+img\005fwhs3 { border:none; width:20px; height:20px; float:none; border-style:none; }
+img\005fwhs4 { border:none; width:15px; height:15px; float:none; border-style:none; }
+img\005fwhs5 { border:none; width:15px; height:14px; float:none; border-style:none; }
+img\005fwhs6 { border:none; width:14px; height:12px; float:none; border-style:none; }
+-->
+</style><style>
+<!--
+div.WebHelpPopupMenu { position:absolute; left:0px; top:0px; z-index:4; visibility:hidden; }
+-->
+</style><script type="text/javascript"
+		language=JavaScript
+		title=WebHelpSplitCss><!--
+if (navigator.appName !="Netscape")
+{   document.write("<link rel='stylesheet' href='../TWMS.css'>");}
+//--></script>
+
+<script type="text/javascript"
+		language=JavaScript><!--
+if ((navigator.appName == "Netscape") && (parseInt(navigator.appVersion) == 4))
+{
+  var strNSS = "<style type='text/css'>";
+  strNSS += "hr.whs1 {margin-top:1pt; }";
+  strNSS +="</style>";
+  document.write(strNSS);
+}
+//--></script>
+
+<script type="text/javascript"
+		language=JavaScript
+		title=WebHelpInlineScript><!--
+function reDo() {
+  if (innerWidth != origWidth || innerHeight != origHeight)
+     location.reload();
+}
+if ((parseInt(navigator.appVersion) == 4) && (navigator.appName == "Netscape")) {
+	origWidth = innerWidth;
+	origHeight = innerHeight;
+	onresize = reDo;
+}
+onerror = null; 
+//--></script>
+
+<script type="text/javascript"
+		language=javascript1.2
+		src="../whmsg.js"></script>
+
+<script type="text/javascript"
+		language=javascript
+		src="../whver.js"></script>
+
+<script type="text/javascript"
+		language=javascript1.2
+		src="../whproxy.js"></script>
+
+<script type="text/javascript"
+		language=javascript1.2
+		src="../whutils.js"></script>
+
+<script type="text/javascript"
+		language=javascript1.2
+		src="../whtopic.js"></script>
+
+<style type="text/css">
+<!--
+img_whs1 { border:none; width:52px; height:15px; float:none; border-style:none; }
+img_whs2 { border:none; width:13px; height:10px; float:none; border-style:none; }
+-->
+</style><style type="text/css">
+<!--
+div.WebHelpPopupMenu { position:absolute; left:0px; top:0px; z-index:4; visibility:hidden; }
+-->
+</style><script type="text/javascript" language="javascript1.2" src="../whmsg.js"></script>
+<script type="text/javascript" language="javascript" src="../whver.js"></script>
+<script type="text/javascript" language="javascript1.2" src="../whproxy.js"></script>
+<script type="text/javascript" language="javascript1.2" src="../whutils.js"></script>
+<script type="text/javascript" language="javascript1.2" src="../whtopic.js"></script>
+</head>
+<body><script type="text/javascript" language="javascript1.2">
+<!--
+if (window.gbWhTopic)
+{
+	if (window.addTocInfo)
+	{
+	addTocInfo("Admin\nWarranty Admin\nManage Failure Structure\nProduct Failure Hierarchy");
+addButton("show",BTN_TEXT,"Show","","","","",0,0,"","","");
+
+	}
+	if (window.writeBtnStyle)
+		writeBtnStyle();
+
+	if (window.writeIntopicBar)
+		writeIntopicBar(1);
+
+	if (window.setRelStartPage)
+	{
+	setRelStartPage("../Admin.htm");
+
+		autoSync(1);
+		sendSyncInfo();
+		sendAveInfoOut();
+	}
+}
+else
+	if (window.gbIE4)
+		document.location.reload();
+//-->
+</script>
+<h1 class=TW-ChapterName><script type="text/javascript"
+								language=JavaScript1.2><!-- 
+if( typeof( kadovInitEffects ) != 'function' ) kadovInitEffects = new Function();if( typeof( kadovInitTrigger ) != 'function' ) kadovInitTrigger = new Function();if( typeof( kadovFilePopupInit ) != 'function' ) kadovFilePopupInit = new Function();if( typeof( kadovTextPopupInit ) != 'function' ) kadovTextPopupInit = new Function();
+ //--></script></h1>
+
+<h1 class=TW-ChapterName>Product Failure Hierarchy</h1>
+
+
+<hr class=whs1
+	style="height: 1px;
+			color: #385F92;
+			float: aligncenter;"
+	size=1
+	color=#385F92
+	align=center>
+
+
+<p class=TW-Body
+	style="font-size: 8pt;
+			font-family: Verdana, sans-serif;
+			margin-top: 0px;
+			margin-bottom: 3px;
+			line-height: 150%;">Failure hierarchy is a tree structure which 
+ allows easy identification of the exact location of failure in an equipment. 
+ A failure hierarchy is uniquely defined for a particular model of the 
+ equipment. It lists each component of the equipment in a manner which 
+ allows easy mapping of job codes. You can also assign a tread bucket to 
+ each component. </p>
+
+<p class=TW-Body>&nbsp;</p>
+
+<p class=TW-Body>The hierarchy resembles a folder-like structure which 
+ indicates the relationships between the assemblies that make up that product. 
+ For example, a product could consist of the following setup (part of):</p>
+
+<p class=TW-Body>• Electrical (<span style="font-weight: bold;"><B><b>E1</b></B></span>)</p>
+
+<p class=TW-Body
+	style="margin-left: 48px;">o Engine (<span style="font-weight: bold;"><B><b>001</b></B></span>)</p>
+
+<p class=TW-Body
+	style="margin-left: 96px;">- Alternator (<span style="font-weight: bold;"><B><b>005</b></B></span>)</p>
+
+<p class=TW-Body
+	style="margin-left: 96px;">- Battery (<span style="font-weight: bold;"><B><b>010</b></B></span>)</p>
+
+<p class=TW-Body
+	style="margin-left: 96px;">- Fuse (<span style="font-weight: bold;"><B><b>034</b></B></span>)</p>
+
+<p class=TW-Body
+	style="margin-left: 48px;">o Controller (<span style="font-weight: bold;"><B><b>023</b></B></span>)</p>
+
+<p class=TW-Body
+	style="margin-left: 96px;">- Tilt Frame (<span style="font-weight: bold;"><B><b>048</b></B></span>)</p>
+
+<p class=TW-Body>• Hydraulic (<span style="font-weight: bold;"><B><b>H1</b></B></span>)</p>
+
+<p class=TW-Body
+	style="margin-left: 48px;">o Brake (<span style="font-weight: bold;"><B><b>092</b></B></span>)</p>
+
+<p class=TW-Body
+	style="margin-left: 96px;">- Pedal (<span style="font-weight: bold;"><B><b>167</b></B></span>)</p>
+
+<p class=TW-Body
+	style="margin-left: 96px;">- Part Brake Lever (<span style="font-weight: bold;"><B><b>267</b></B></span>)</p>
+
+<p class=TW-Body
+	style="margin-left: 48px;">o Cylinder (<span style="font-weight: bold;"><B><b>082</b></B></span>)</p>
+
+<p class=TW-Body
+	style="margin-left: 96px;">- Steering (<span style="font-weight: bold;"><B><b>278</b></B></span>)</p>
+
+<p class=TW-Body
+	style="margin-left: 96px;">- Tilt Frame (<span style="font-weight: bold;"><B><b>475</b></B></span>)</p>
+
+<p class=TW-Body>• Hydrostatic (<span style="font-weight: bold;"><B><b>H2</b></B></span>)</p>
+
+<p class=TW-Body
+	style="margin-left: 48px;">o Motor (<span style="font-weight: bold;"><B><b>057</b></B></span>)</p>
+
+<p class=TW-Body
+	style="margin-left: 48px;">o Pump (<span style="font-weight: bold;"><B><b>037</b></B></span>)</p>
+
+<p class=TW-Body
+	style="margin-left: 96px;">- Mount (<span style="font-weight: bold;"><B><b>193</b></B></span>)</p>
+
+<p class=TW-Body>&nbsp;</p>
+
+<p class=TW-Body>The above setup indicates that this product is made up 
+ of the structure as indicated above and if there is a fault in Brake Pedal, 
+ the fault location would be “<span style="font-style: italic;"><I><i>Hydraulic 
+ – Brake – Pedal</i></I></span>” / <span style="font-weight: bold;"><B><b>H1</b></B></span> 
+ – <span style="font-weight: bold;"><B><b>092</b></B></span> – <span style="font-weight: bold;"><B><b>167</b></B></span>. 
+ By using this code, the exact location of the fault can be indicated.</p>
+
+<p class=TW-Body>&nbsp;</p>
+
+<p class=TW-Body>The <span>Warranty Management application </span>allows 
+ you to define the failure hierarchy for each model of the equipment. You 
+ can also define job codes for each component of the equipment. You can 
+ create and maintain failure hierarchy and job codes in an easy and efficient 
+ manner.</p>
+
+<p class=TW-Body>&nbsp;</p>
+
+<p class=TW-Body>To view the failure structure page,</p>
+
+<ul>
+	
+	<li class=kadov-p-CTW-Bullet1><p class=TW-Bullet1>Click on the <span 
+ style="font-weight: bold;"><B><b>Product Failure Structure </b></B></span>link 
+ in the <span style="font-style: italic;"><I><i>Warranty Admin</i></I></span> 
+ section under the <span style="font-style: italic;"><I><i>Folder</i></I></span> 
+ column on your <span style="font-weight: bold; font-style: italic;"><I><B><i><b>Home</b></i></B></I></span> 
+ page.</p></li>
+	
+	<li class=kadov-p-CTW-Bullet1><p class=TW-Bullet1>Click on the <span 
+ style="font-weight: bold;"><B><b>Warranty Admin</b></B></span> tab on your left-hand 
+ pane. All folders under this tab are shown. Click on the <span style="font-weight: bold;"><B><b>Manage 
+ Failure Structure</b></B></span> folder. All links under this folder are shown. 
+ Click on the <span style="font-weight: bold;"><B><b>Product Failure Structure 
+ </b></B></span>link.</p></li>
+</ul>
+
+<p class=TW-Body>Either of the above actions takes you to the <span style="font-weight: bold; font-style: italic;"><I><B><i><b>Product 
+ Failure Hierarchy </b></i></B></I></span>page. &nbsp;On the right-hand pane, you 
+ can see the <span style="font-style: italic;"><I><i>Failure Hierarchy </i></I></span>table 
+ which allows you to create the failure hierarchy tree. </p>
+
+<p class=TW-Body>&nbsp;</p>
+
+<p class=TW-BulletHeader>To create a failure hierarchy:</p>
+
+<ul>
+	
+	<li class=kadov-p-CTW-Bullet1><p class=TW-Bullet1>On the <span style="font-weight: bold; font-style: italic;"><I><B><i><b>Product 
+ Failure Hierarchy</b></i></B></I></span> page, use the <span style="font-weight: bold;"><B><b>Model 
+ </b></B></span>drop down option to select a model for which you want to create 
+ the failure hierarchy. This drop-down option lists all models of all equipments 
+ manufactured by the OEM.</p></li>
+	
+	<li class=kadov-p-CTW-Bullet1><p class=TW-Bullet1>In the first column, 
+ you can add a system or an attachment name.</p></li>
+	
+	<li class=kadov-p-CTW-Bullet2><p class=TW-Bullet2>Click on the <img src="../Images/add_row_button.gif" x-maintain-ratio="TRUE" width="52px" height="15px" border="0" class="img_whs1"> icon alongside the first column header. A new row appears.</p></li>
+	
+	<li class=kadov-p-CTW-Bullet2><p class=TW-Bullet2>Click on the second 
+ cell in this row. A drop down option appears. Use this drop down option 
+ to select a system name. You can also manually enter a system name in 
+ this field.</p></li>
+	
+	<li class=kadov-p-CTW-Bullet2><p class=TW-Bullet2>When you create a 
+ new system name, the <span style="font-weight: bold; font-style: italic;"><I><B><i><b>Create 
+ New Definition</b></i></B></I></span> pop-up window appears, requesting you to 
+ authenticate the new system. Click <span style="font-weight: bold;"><B><b>Create</b></B></span> 
+ to add the new system name to the existing drop down. To discard the new 
+ system, click <span style="font-weight: bold;"><B><b>Cancel</b></B></span>.</p></li>
+	
+	<li class=kadov-p-CTW-Bullet2><p class=TW-Bullet2>A code is associated 
+ with each system name. This alphabetical code is auto-generated by the 
+ system.</p></li>
+	
+	<li class=kadov-p-CTW-Bullet2><p class=TW-Bullet2>You can add child 
+ nodes, consisting of sub-systems, to each system in the hierarchy. To 
+ add a child node, click on the <img src="../Images/add_row_button.gif" x-maintain-ratio="TRUE" width="52px" height="15px" border="0" class="img_whs1"> icon in the first column, 
+ corresponding to the parent system. A new row appears.</p></li>
+	
+	<li class=kadov-p-CTW-Bullet2><p class=TW-Bullet2>Click on the second 
+ cell in this row. A drop down field appears. Use this drop down option 
+ to select a sub-system. You can also manually enter a sub-system name 
+ in this field.</p></li>
+	
+	<li class=kadov-p-CTW-Bullet2><p class=TW-Bullet2>A code is associated 
+ with each sub-system. This 3-digit numerical code is auto-generated by 
+ the system.</p></li>
+	
+	<li class=kadov-p-CTW-Bullet2><p class=TW-Bullet2>You can create child 
+ nodes under each sub-system by clicking the <img src="../Images/add_row_button.gif" x-maintain-ratio="TRUE" width="52px" height="15px" border="0" class="img_whs1"> icon corresponding 
+ to that sub-system.</p></li>
+	
+	<li class=kadov-p-CTW-Bullet2><p class=TW-Bullet2>The Warranty Management 
+ application allows you to span this tree structure to four levels.</p></li>
+</ul>
+
+<ul>
+	
+	<li class=kadov-p-CTW-Bullet1><p class=TW-Bullet1><span><b style="font-weight: bold;">Job</b></span> 
+ column: You can add a service procedure to each system or its sub-system.</p></li>
+	
+	<li class=kadov-p-CTW-Bullet2><p class=TW-Bullet2>To add a service 
+ procedure to a system/sub-system, click on the <img src="../Images/add_row_button.gif" x-maintain-ratio="TRUE" width="52px" height="15px" border="0" class="img_whs1"> icon in the 
+ <span style="font-weight: bold;"><B><b>Job</b></B></span> column, corresponding 
+ to that system/sub-system. A new row appears.</p></li>
+	
+	<li class=kadov-p-CTW-Bullet2><p class=TW-Bullet2>Click on the fourth 
+ cell in this row. A drop down field appears. Use this drop down option 
+ to select a service procedure. You can also manually enter a service procedure 
+ in this field.</p></li>
+	
+	<li class=kadov-p-CTW-Bullet2><p class=TW-Bullet2>When you create a 
+ new service procedure, the <span style="font-weight: bold; font-style: italic;"><I><B><i><b>Create 
+ New Definition</b></i></B></I></span> pop-up window appears, requesting you to 
+ authenticate the new service. Click <span style="font-weight: bold;"><B><b>Create</b></B></span> 
+ to add the new service procedure to the existing drop down. To discard 
+ the new service procedure, click <span style="font-weight: bold;"><B><b>Cancel</b></B></span>.</p></li>
+	
+	<li class=kadov-p-CTW-Bullet2><p class=TW-Bullet2>A code is associated 
+ with each service procedure. This alphabetical code is auto-generated 
+ by the system.</p></li>
+	
+	<li class=kadov-p-CTW-Bullet2><p class=TW-Bullet2><span><b style="font-weight: bold;">For 
+ Campaigns: </b></span>Check this check box to associate a service procedure 
+ to a campaign.</p></li>
+	
+	<li class=kadov-p-CTW-Bullet2><p class=TW-Bullet2><span><b style="font-weight: bold;">Labor 
+ Hours:</b></span> Enter the number of hours required to perform this service 
+ procedure.</p></li>
+	
+	<li class=kadov-p-CTW-Bullet2><p class=TW-Bullet2>You can add multiple 
+ service procedures for each system/sub-system.</p></li>
+</ul>
+
+<ul>
+	
+	<li class=kadov-p-CTW-Bullet1><p class=TW-Bullet1><b>Tread </b>column: 
+ You can associate any system to an appropriate tread bucket, provided 
+ you have defined a service procedure for that system/sub-system. To associate 
+ a system/sub-system to a tread bucket, click on the <span style="font-style: italic;"><I><i>Tread</i></I></span> 
+ cell corresponding to the system/sub-system. A drop down field appears. 
+ Use this drop down option to select a tread bucket for the system/sub-system. 
+ The <span style="font-weight: bold;"><B><b>Last Updated</b></B></span> column 
+ reflects the last date when the tread bucket was updated.</p></li>
+	
+	<li class=kadov-p-CTW-Bullet1><p class=TW-Bullet1>To delete a row click 
+ the <img src="../Images/delete_row.gif" x-maintain-ratio="TRUE" width="13px" height="10px" border="0" class="img_whs2"> icon corresponding to that row.</p></li>
+	
+	<li class=kadov-p-CTW-Bullet1><p class=TW-Bullet1>If you want to close 
+ this page without saving any details entered by you, click <span style="font-weight: bold;"><B><b>Cancel</b></B></span>.</p></li>
+	
+	<li class=kadov-p-CTW-Bullet1><p class=TW-Bullet1>Click <span style="font-weight: bold;"><B><b>Save</b></B></span>. 
+ A success message is shown indicating the new hierarchy is saved.</p></li>
+</ul>
+
+
+<hr class=whs1
+	style="height: 1px;
+			color: #385F92;
+			float: aligncenter;"
+	size=1
+	color=#385F92
+	align=center>
+
+
+<p class=TW-Body><span class=TW-Note
+						style="x-text-underline: off; /*begin!kadov{{*/ text-decoration: none; /*}}end!kadov*/ "><script type="text/javascript" language="JavaScript"><!--
+if ((navigator.appName == "Netscape") && (parseInt(navigator.appVersion) <= 4)) 
+{  if (parseInt(navigator.appVersion) != 2) document.write("<img src='../i_blue_sm.jpg' x-maintain-ratio='TRUE' class='img_whs4' width='15' height='15' border='0'>");}
+else
+{   document.write("<img src='../i_blue_sm.jpg' x-maintain-ratio='TRUE' class='img_whs4' style='width: 15px;     height: 15px;     border-style: none;     border-style: none;' width='15' height='15' border='0'>");}
+//--></script><noscript><img src='../i_blue_sm.jpg' x-maintain-ratio='TRUE' class='img_whs4' style='width: 15px;     height: 15px;     border-style: none;     border-style: none;' width='15' height='15' border='0'></noscript></span><span class=TW-Note>Note:</span><span style="font-weight: bold;"> 
+ <B></B></span>The following points hold good while creating a hierarchy:</p>
+
+<ul>
+	
+	<li class=kadov-p-CTW-Bullet1><p class=TW-Bullet1>Every sub-system 
+ must have at least one service procedure associated with it. If a system 
+ has no child nodes, then at least one service procedure must be associated 
+ with that system.</p></li>
+	
+	<li class=kadov-p-CTW-Bullet1><p class=TW-Bullet1>Click on the <script type="text/javascript" language="JavaScript"><!--
+if ((navigator.appName == "Netscape") && (parseInt(navigator.appVersion) <= 4)) 
+{  if (parseInt(navigator.appVersion) != 2) document.write("<img src='../Images/Colapse.JPG' x-maintain-ratio='TRUE' class='img_whs5' width='15' height='14' border='0'>");}
+else
+{   document.write("<img src='../Images/Colapse.JPG' x-maintain-ratio='TRUE' class='img_whs5' style='width: 15px;     height: 14px;     border-style: none;     border-style: none;' width='15' height='14' border='0'>");}
+//--></script><noscript><img src='../Images/Colapse.JPG' x-maintain-ratio='TRUE' class='img_whs5' style='width: 15px;     height: 14px;     border-style: none;     border-style: none;' width='15' height='14' border='0'></noscript> icon corresponding to a system, &nbsp;to hide the sub-systems, 
+ service procedures and treads associated with the system. To show the 
+ hidden details, click on the <script type="text/javascript" language="JavaScript"><!--
+if ((navigator.appName == "Netscape") && (parseInt(navigator.appVersion) <= 4)) 
+{  if (parseInt(navigator.appVersion) != 2) document.write("<img src='../Images/Expand.JPG' x-maintain-ratio='TRUE' class='img_whs6' width='14' height='12' border='0'>");}
+else
+{   document.write("<img src='../Images/Expand.JPG' x-maintain-ratio='TRUE' class='img_whs6' style='width: 14px;             height: 12px;             border-style: none;             border-style: none;' width='14' height='12' border='0'>");}
+//--></script><noscript><img src='../Images/Expand.JPG' x-maintain-ratio='TRUE' class='img_whs6' style='width: 14px;             height: 12px;             border-style: none;             border-style: none;' width='14' height='12' border='0'></noscript> icon.</p></li>
+</ul>
+
+
+<hr class=whs1
+	style="height: 1px;
+			color: #385F92;
+			float: aligncenter;"
+	size=1
+	color=#385F92
+	align=center>
+
+
+<p class=TW-Body>You can also edit an existing failure hierarchy for a 
+ model. </p>
+
+<p class=TW-Body>&nbsp;</p>
+
+<p class=TW-BulletHeader>To edit a failure hierarchy,</p>
+
+<ul>
+	
+	<li class=kadov-p-CTW-Bullet1><p class=TW-Bullet1>Select the model 
+ whose failure hierarchy you want to edit, from the <span style="font-weight: bold;"><B><b>Model</b></B></span> 
+ drop-down.</p></li>
+	
+	<li class=kadov-p-CTW-Bullet1><p class=TW-Bullet1>The page refreshes 
+ to display the failure structure created by you.</p></li>
+	
+	<li class=kadov-p-CTW-Bullet1><p class=TW-Bullet1>Make any changes 
+ you wish to the structure.</p></li>
+	
+	<li class=kadov-p-CTW-Bullet1><p class=TW-Bullet1>Click <span style="font-weight: bold;"><B><b>Cancel</b></B></span> 
+ if you wish to close this page without saving any changes made by you.</p></li>
+	
+	<li class=kadov-p-CTW-Bullet1><p class=TW-Bullet1>Click <span style="font-weight: bold;"><B><b>Save</b></B></span> 
+ to save the changes made by you. A success message is shown indicating 
+ the changes made by you are saved.</p></li>
+</ul>
+
+<script type="text/javascript" language="javascript1.2">
+<!--
+if (window.writeIntopicBar)
+	writeIntopicBar(0);
+//-->
+</script>
+</body>
+</html>

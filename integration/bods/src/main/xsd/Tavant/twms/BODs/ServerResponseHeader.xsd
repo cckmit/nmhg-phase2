@@ -1,0 +1,54 @@
+<xs:schema targetNamespace="http://www.tavant.com/oagis"
+	xmlns="http://www.tavant.com/oagis"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="ServerResponseHeader">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="UniqueIdentifier" />
+				<xs:element ref="ErrorType" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ErrorType" type="xs:string" />
+	<xs:element name="UniqueIdentifier">
+		<xs:complexType>
+			<xs:sequence>
+			    <xs:element name="Sender" type="SenderType" />
+			     <xs:element ref="BODId" />
+			    <xs:element ref="InterfaceNumber"/>
+			    <xs:element ref="CreationDateTime" />
+				<xs:element name="Name" type="xs:string" />
+				<xs:element name="Value" type="xs:string" />
+                <xs:element name="businessUnitName" type="xs:string" />
+                <xs:element ref="BusinessUnits"  />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	 <xs:element name="BusinessUnits">
+	    <xs:complexType>
+		 <xs:sequence>
+			<xs:element name="BUName"  maxOccurs="unbounded">
+			 <xs:simpleType>
+				<xs:restriction base="xs:string">
+				 <xs:maxLength value="40"/>
+				</xs:restriction>
+			 </xs:simpleType>
+			</xs:element> 				
+		  </xs:sequence>
+	     </xs:complexType>
+       </xs:element>
+       <xs:complexType name="SenderType">
+		<xs:sequence>
+			<xs:element ref="Task" />
+			<xs:element ref="LogicalId" />
+			<xs:element ref="ReferenceId"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Task" type="xs:string"/>
+	<xs:element name="LogicalId" type="xs:string"/>
+	<xs:element name="ReferenceId" type="xs:string"/>
+	<xs:element name="BODId" type="xs:string"/>
+	<xs:element name="InterfaceNumber" type="xs:string"/>
+	<xs:element name="CreationDateTime" type="xs:string" nillable="true"/>
+</xs:schema>

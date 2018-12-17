@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping SYSTEM
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="tavant.twms.domain.claim.payment">
+  
+  <query name="paymentModifierApplicableForClaim">
+        <![CDATA[
+    select criteriaBasedValue from
+    	tavant.twms.domain.claim.payment.definition.modifiers.CriteriaBasedValue criteriaBasedValue join criteriaBasedValue.parent paymentModifier join
+    	paymentModifier.forPaymentVariable paymentVariable left outer join
+    	paymentModifier.forCriteria.dealerCriterion.dealerGroup specifiedDealerGroup,
+    	tavant.twms.domain.orgmodel.DealerGroup dealerGroup join dealerGroup.includedDealers dealerInGroup 
+    where paymentModifier.d.active=1 
+    and (paymentModifier.forCriteria.dealerCriterion.dealer is null or paymentModifier.forCriteria.dealerCriterion.dealer=:dealer )
+    and (specifiedDealerGroup is null  or
+        (specifiedDealerGroup.nodeInfo.treeId=dealerGroup.nodeInfo.treeId and
+         specifiedDealerGroup.nodeInfo.lft <= dealerGroup.nodeInfo.lft and 
+         dealerGroup.nodeInfo.rgt <= specifiedDealerGroup.nodeInfo.rgt and 
+         :dealer = dealerInGroup)) 
+    and paymentVariable.businessUnitInfo in (:buName)
+    and (paymentModifier.servicingLocation is null or paymentModifier.servicingLocation=:servicingLocation)
+    and (paymentModifier.forCriteria.claimType is null or paymentModifier.forCriteria.claimType='ALL' or paymentModifier.forCriteria.claimType=:claimType)
+    and (paymentModifier.forCriteria.warrantyType is null or paymentModifier.forCriteria.warrantyType=:warrantyType)
+    and (paymentModifier.forCriteria.productType is null or paymentModifier.forCriteria.productType=:productType)
+    and (paymentModifier.customerType is null or paymentModifier.customerType ='ALL' or paymentModifier.customerType=:customerType)
+    and paymentModifier.forPaymentVariable = :forPaymentVariable
+    and criteriaBasedValue.duration.fromDate <= :asOfDate
+    and criteriaBasedValue.duration.tillDate >= :asOfDate
+    order by paymentModifier.forCriteria.relevanceScore desc
+     ]]>
+    </query>
+    
+</hibernate-mapping>

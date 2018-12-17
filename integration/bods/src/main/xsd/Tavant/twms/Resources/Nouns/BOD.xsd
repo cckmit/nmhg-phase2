@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://www.tavant.com/oagis"
+           xmlns="http://www.tavant.com/oagis"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:oa="http://www.openapplications.org/oagis/9"
+           elementFormDefault="qualified"
+           attributeFormDefault="unqualified">
+    <xs:include schemaLocation="../Fields.xsd"/>
+                              
+	<xs:element name="BOD" type="BOD">
+		<xs:annotation>
+			<xs:documentation>An item is an virtual entity that represents a class of manufactured equipment. It is a categorization of all similar physical equipment manufactured into one.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="BOD">
+		<xs:sequence>
+            <xs:element ref="BusinessId"/>
+            <xs:element name="Successful" type="xs:boolean">
+                <xs:annotation>
+                    <xs:documentation>Indicates if this business entity was synced successfully</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Exception" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>Exception message if this business entity was not synced successfully</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+	</xs:complexType>
+</xs:schema>

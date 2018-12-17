@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <package name="usergroupsadmin" extends="struts-twms-default">
+
+        <!-- Actions for admin User group management. -->
+        <action name="show_user_schemes"
+                class="tavant.twms.web.admin.groups.user.ListUserSchemes">
+            <interceptor-ref name="adminParamsPrepare"/>
+            <result name="success">pages/secure/admin/groups/user/userSchemeInboxView.jsp</result>
+        </action>
+
+        <action name="get_user_schemes_body"
+                class="tavant.twms.web.admin.groups.user.ListUserSchemes"
+                method="tableBody">
+            <interceptor-ref name="adminParamsPrepare"/>
+            <result name="success">pages/secure/home/json.jsp</result>
+        </action>
+
+        <action name="export_user_scheme_to_excel"
+                class="tavant.twms.web.admin.groups.user.ListUserSchemes"
+                method="downloadListingData">
+            <interceptor-ref name="adminParamsPrepare"/>
+        </action>
+
+        <action name="show_user_groups"
+                class="tavant.twms.web.admin.groups.user.ManageUserSchemes"
+                method="showGroups">
+            <interceptor-ref name="adminParamsPrepare"/>
+            <result name="success">
+                pages/secure/admin/groups/user/showSchemes.jsp
+            </result>
+        </action>
+
+        <action name="create_user_scheme"
+                class="tavant.twms.web.admin.groups.user.ManageUserSchemes"
+                method="createScheme">
+            <interceptor-ref name="adminParamsPrepare"/>
+            <result name="success">
+                pages/secure/admin/groups/user/showSchemes.jsp
+            </result>
+        </action>
+
+        <action name="save_user_scheme"
+                class="tavant.twms.web.admin.groups.user.ManageUserSchemes"
+                method="saveScheme">
+            <interceptor-ref name="adminTwmsParamsPrepareParams"/>
+            <result name="success">
+                pages/secure/admin/groups/user/showSchemes.jsp
+            </result>
+            <result name="input">
+                pages/secure/admin/groups/user/showSchemes.jsp
+            </result>
+        </action>
+
+        <!-- Actions for managing User Groups within a User Scheme -->
+
+        <action name="list_user_groups"
+                class="tavant.twms.web.admin.groups.user.ListUserGroups">
+            <interceptor-ref name="adminParamsPrepare"/>
+            <result name="success">pages/secure/admin/groups/user/userGroupsInboxView.jsp</result>
+        </action>
+
+        <action name="get_user_groups_body"
+                class="tavant.twms.web.admin.groups.user.ListUserGroups"
+                method="tableBody">
+            <interceptor-ref name="adminParamsPrepare"/>
+            <result name="success">pages/secure/home/json.jsp</result>
+        </action>
+
+        <action name="export_user_group_to_excel"
+                class="tavant.twms.web.admin.groups.user.ListUserGroups"
+                method="downloadListingData">
+            <interceptor-ref name="adminParamsPrepare"/>
+        </action>
+
+        <action name="view_user_group_preview"
+                class="tavant.twms.web.admin.groups.user.ManageUserGroups"
+                method="showGroup">
+            <interceptor-ref name="adminParamsPrepare"/>
+            <result name="user">
+                pages/secure/admin/groups/user/showGroup.jsp
+            </result>
+            <result name="group">
+                pages/secure/admin/groups/user/showGroup.jsp
+            </result>
+        </action>
+
+        <action name="view_user_group"
+                class="tavant.twms.web.admin.groups.user.ManageUserGroups"
+                method="showGroup">
+            <interceptor-ref name="adminParamsPrepare"/>
+            <result name="user">
+                pages/secure/admin/groups/user/manageUser.jsp
+            </result>
+            <result name="group">
+                pages/secure/admin/groups/user/manageGroup.jsp
+            </result>
+        </action>
+
+        <!--  Actions for Creation of UserGroup -->
+        <action name="create_user_group"
+                class="tavant.twms.web.admin.groups.user.CreateUserGroup"
+                method="setUpForCreate">
+            <interceptor-ref name="adminParamsPrepare"/>
+            <result name="success">
+                pages/secure/admin/groups/user/createUserGroup.jsp
+            </result>
+        </action>
+
+        <action name="save_user_group"
+                class="tavant.twms.web.admin.groups.user.CreateUserGroup"
+                method="save">
+            <interceptor-ref name="adminTwmsParamsPrepareParams"/>
+            <result name="input">
+                pages/secure/admin/groups/user/createUserGroup.jsp
+            </result>
+        </action>
+
+        <action name="manage_user_group"
+                class="tavant.twms.web.admin.groups.user.ManageUserGroup"
+                method="manage">
+            <interceptor-ref name="adminParamsPrepare"/>
+            <result name="success">
+                pages/secure/admin/groups/user/manageGroup.jsp
+            </result>
+        </action>
+
+        <action name="manage_user"
+                class="tavant.twms.web.admin.groups.user.ManageUser"
+                method="manage">
+            <interceptor-ref name="adminParamsPrepare"/>
+            <result name="success">
+                pages/secure/admin/groups/user/manageUser.jsp
+            </result>
+        </action>
+
+        <action name="search_users_for_usergroup"
+                class="tavant.twms.web.admin.groups.user.ManageUser"
+                method="search">
+            <interceptor-ref name="adminTwmsParamsPrepareParams"/>
+            <result name="input">
+                pages/secure/admin/groups/user/error.jsp
+            </result>
+            <result name="success">
+                pages/secure/admin/groups/user/selectUsers.jsp
+            </result>
+        </action>
+
+        <action name="search_groups_for_usergroup"
+                class="tavant.twms.web.admin.groups.user.ManageUserGroup"
+                method="search">
+            <interceptor-ref name="adminTwmsParamsPrepareParams"/>
+            <result name="input">
+                pages/secure/admin/groups/user/error.jsp
+            </result>
+            <result name="success">
+                pages/secure/admin/groups/user/selectGroups.jsp
+            </result>
+        </action>
+
+        <action name="add_users_to_usergroup"
+                class="tavant.twms.web.admin.groups.user.ManageUser"
+                method="add">
+            <interceptor-ref name="adminParamsPrepare"/>
+            <result name="success">
+                pages/secure/admin/groups/user/manageUser.jsp
+            </result>
+        </action>
+
+        <action name="add_groups_to_usergroup"
+                class="tavant.twms.web.admin.groups.user.ManageUserGroup"
+                method="add">
+            <interceptor-ref name="adminParamsPrepare"/>
+            <result name="success">
+                pages/secure/admin/groups/user/manageGroup.jsp
+            </result>
+        </action>
+
+        <action name="save_user"
+                class="tavant.twms.web.admin.groups.user.ManageUser"
+                method="save">
+            <interceptor-ref name="adminTwmsParamsPrepareParams"/>
+            <result name="success">
+                pages/secure/admin/groups/user/success.jsp
+            </result>
+            <result name="input">
+                pages/secure/admin/groups/user/manageUser.jsp
+            </result>
+        </action>
+
+        <action name="save_usergroup"
+                class="tavant.twms.web.admin.groups.user.ManageUserGroup"
+                method="save">
+            <interceptor-ref name="adminTwmsParamsPrepareParams"/>
+            <result name="success">
+                pages/secure/admin/groups/user/success.jsp
+            </result>
+            <result name="input">
+                pages/secure/admin/groups/user/manageGroup.jsp
+            </result>
+        </action>
+
+        <action name="roles_to_userPreview" class="tavant.twms.web.admin.groups.user.ManageUser"
+                method="previewRolesToUser">
+            <interceptor-ref name="adminParamsPrepare"/>
+            <result name="success">pages/secure/admin/groups/user/assignedRolesPreview.jsp</result>
+        </action>
+
+        <action name="showRoles_to_user" class="tavant.twms.web.admin.groups.user.ManageUser"
+                method="showRolesToUser">
+            <interceptor-ref name="adminParamsPrepare"/>
+            <result name="success">pages/secure/admin/groups/user/assignRolesToUser.jsp</result>
+        </action>
+
+        <action name="showUserDetails" class="tavant.twms.web.admin.groups.user.ManageUser"
+                method="showUser">
+            <interceptor-ref name="adminParamsPrepare"/>
+            <result name="success">pages/secure/admin/groups/user/searchUserResult.jsp</result>
+        </action>
+
+        <action name="updateUserRoles" class="tavant.twms.web.admin.groups.user.ManageUser"
+                method="updateUserRoles">
+            <interceptor-ref name="adminParamsPrepare"/>
+            <result name="input">pages/secure/admin/groups/user/assignRolesToUser.jsp</result>
+        </action>
+
+        <action name="vendor_addresses" class="tavant.twms.web.admin.groups.user.ManageVendorAddresses">
+           <result name="success">pages/secure/admin/groups/user/selectVendor.jsp</result>
+        </action>
+
+        <action name="supplier_address_detail"
+                class="tavant.twms.web.admin.groups.user.ManageVendorAddresses"
+                method="detail">
+            <interceptor-ref name="adminParamsPrepareWithoutValidation" />
+            <result name="success">
+                pages/secure/admin/groups/user/vendorAddressDetails.jsp
+            </result>
+        </action>
+
+        <action name="getAddresssDetail"
+                class="tavant.twms.web.admin.groups.user.ManageVendorAddresses"
+                method="addressDetail">
+            <interceptor-ref name="adminParamsPrepareWithoutValidation" />
+            <result name="success">
+                pages/secure/admin/groups/user/edit_vendor_address.jsp
+            </result>
+        </action>
+
+        <action name="updateSupplierAddress"
+                class="tavant.twms.web.admin.groups.user.ManageVendorAddresses"
+                method="updateAddress">
+            <result name="input">
+                pages/secure/admin/groups/user/vendorAddressDetails.jsp
+            </result>
+            <result name="success">
+                pages/secure/admin/groups/user/vendorAddressDetails.jsp
+            </result>
+        </action>
+
+        <action name="populateFormForNewSupplierSite"
+                class="tavant.twms.web.admin.groups.user.ManageVendorAddresses" method="populateForm">
+            <result name="input">
+                pages/secure/admin/groups/user/new_vendor_address.jsp
+            </result>
+            <result name="success">
+                pages/secure/admin/groups/user/new_vendor_address.jsp
+            </result>
+        </action>
+
+        <action name="createNewSupplierAddress"
+                class="tavant.twms.web.admin.groups.user.ManageVendorAddresses" method="createNewSupplierAddress">
+            <result name="input">
+                pages/secure/admin/groups/user/vendorAddressDetails.jsp
+            </result>
+            <result name="success">
+                pages/secure/admin/groups/user/vendorAddressDetails.jsp
+            </result>
+        </action>
+
+    </package>
+</struts>

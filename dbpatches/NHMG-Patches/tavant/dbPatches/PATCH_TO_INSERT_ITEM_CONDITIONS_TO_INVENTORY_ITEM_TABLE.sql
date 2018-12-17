@@ -1,0 +1,34 @@
+-- Patch to insert PREMIUM_RENTAL ITEM Condition values into INVENTORY_ITEM_CONDITION
+-- Author: PRACHER PANCHOLI
+-- Created On : 10-12-12
+
+
+
+INSERT
+INTO INVENTORY_ITEM_CONDITION
+(
+ITEM_CONDITION,
+VERSION,
+D_CREATED_ON,
+D_INTERNAL_COMMENTS,
+D_UPDATED_ON,
+D_LAST_UPDATED_BY,
+D_CREATED_TIME,
+D_UPDATED_TIME,
+D_ACTIVE
+)
+VALUES
+(
+'PREMIUM_RENTAL',
+1,
+sysdate,
+'NMHG TWMS',
+sysdate,
+null,
+systimestamp,
+systimestamp,
+1
+)
+/
+commit
+/

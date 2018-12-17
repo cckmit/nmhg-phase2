@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE jasperReport PUBLIC "-//JasperReports//DTD JasperReport//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+
+<jasperReport name="claimedItem" pageWidth="800" pageHeight="800" columnWidth="735" leftMargin="30" rightMargin="30" topMargin="20" bottomMargin="20">
+	<property name="ireport.scriptlethandling" value="0"/>
+	<property name="ireport.encoding" value="UTF-8"/>
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<import value="java.math.*"/>
+	<import value="net.sf.jasperreports.engine.*"/>
+	<import value="java.util.*"/>
+	<import value="net.sf.jasperreports.engine.data.*"/>
+	<field name="recoveryClaimNumber" class="java.lang.String"/>
+	<field name="recoveryClaimState.state" class="java.lang.String"/>
+	<field name="currentAssignee" class="java.lang.String"/>
+	<field name="&apos;Debited and Closed&apos;.equalsIgnoreCase(recoveryClaimState.state).toString()" class="java.lang.String"/>
+	<field name="&apos;Closed Unrecovered&apos;.equalsIgnoreCase(recoveryClaimState.state).toString()" class="java.lang.String"/>
+	<field name="currentAssignee.length()" class="java.lang.Integer"/>
+	<field name="documentNumber" class="java.lang.String"/>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band/>
+	</title>
+	<pageHeader>
+		<band/>
+	</pageHeader>
+	<columnHeader>
+		<band/>
+	</columnHeader>
+	<detail>
+		<band height="31">
+			<textField isBlankWhenNull="false" hyperlinkType="None">
+				<reportElement key="" positionType="Float" mode="Transparent" x="3" y="6" width="174" height="20" isRemoveLineWhenBlank="true"/>
+				<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+				<textElement>
+					<font size="10" isBold="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{recoveryClaimNumber}!=null?$F{documentNumber}!=null?$F{recoveryClaimNumber}.concat("-").concat($F{documentNumber}):$F{recoveryClaimNumber}:"--"]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false" hyperlinkType="None">
+				<reportElement key="" positionType="Float" mode="Transparent" x="398" y="6" width="132" height="20" isRemoveLineWhenBlank="true"/>
+				<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+				<textElement>
+					<font size="10" isBold="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{recoveryClaimState.state}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false" hyperlinkType="None">
+				<reportElement key="" positionType="Float" mode="Transparent" x="218" y="6" width="144" height="20" isRemoveLineWhenBlank="true"/>
+				<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+				<textElement>
+					<font size="10" isBold="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{currentAssignee.length()}>1 && $F{'Debited and Closed'.equalsIgnoreCase(recoveryClaimState.state).toString()}!="true" && $F{'Closed Unrecovered'.equalsIgnoreCase(recoveryClaimState.state).toString()}!="true" ? $F{currentAssignee}:"--"]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band/>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

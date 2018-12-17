@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SyncInvoice xmlns="http://www.tavant.com/globalsync/warrantyclaimcreditnotification">
+  <ApplicationArea>
+    <Sender>
+      <LogicalId>SAP</LogicalId>
+      <Task>TavantWMS</Task>
+      <ReferenceId>W-20015396_C</ReferenceId>
+    </Sender>
+    <CreationDateTime>2008-03-14T11:15:03-08:00</CreationDateTime>
+    <BODId>BOD011_USINT0629</BODId>
+    <InterfaceNumber>USINT0629</InterfaceNumber>
+  </ApplicationArea>
+  <DataArea>
+    <Invoice>
+      <Header>
+	    <UserArea>
+          <ClaimNumber>10312088</ClaimNumber>
+        </UserArea>
+        <DocumentIds>
+          <DocumentId>
+            <Id>133</Id>
+          </DocumentId>
+        </DocumentIds>
+		<TotalAmount currency="USD">-603.92</TotalAmount>
+        <DocumentDateTime>2011-01-16-05:00</DocumentDateTime>              
+      </Header>
+      <Line>
+	    <Tax>
+          <TaxAmount>0</TaxAmount>
+        </Tax>       
+      </Line>
+    </Invoice>
+  </DataArea>
+</SyncInvoice>

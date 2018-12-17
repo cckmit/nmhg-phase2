@@ -1,0 +1,20 @@
+<xs:schema targetNamespace="http://www.tavant.com/extwarranty"
+	xmlns="http://www.tavant.com/extwarranty"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:oa="http://www.openapplications.org/oagis/9"
+	elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:complexType name="PlansListType">
+		<xs:sequence>
+			<xs:element name="Plan" type="PlanType"
+				maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="PlanType">
+		<xs:sequence>
+			<xs:element name="PlanCode" type="xs:string" />
+			<xs:element name="PlanItemNumber" type="xs:string" />
+			<xs:element name="Amount" type="xs:decimal" />
+			<xs:element name="TaxAmount" type="xs:decimal" />
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>	

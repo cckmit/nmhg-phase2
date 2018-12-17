@@ -1,0 +1,61 @@
+[MAS SUPPORT]
+SupportMas_Prj=1
+[Target:WebHelp]
+SupportMas_Prj=1
+ResultFileName=!SSL!\WebHelp\SRA.htm
+SSLayoutType=2
+CreateProjectTime=14:19, August 30, 2011
+CreateProjectUser=jyoti.patwal
+SupportMas_MPJ=1
+ActionID For Generation=1002
+Remove Folder with prompt=1
+ViewFileName=!SSL!\WebHelp\SRA.htm
+ResultStatus=0
+BuildTimeHi=30172913
+BuildTimeLow=-1187528854
+[Target:WebHelp Pro]
+SupportMas_Prj=1
+ResultFileName=!SSL!\WebHelp_Pro\SRA.htm
+SSLayoutType=32
+ServerProjectName=SRA
+CreateProjectTime=
+CreateProjectUser=
+SupportMas_MPJ=1
+[Target:Microsoft HTML Help]
+ResultFileName=!SSL!\Microsoft_HTML_Help\SRA.chm
+SSLayoutType=1
+CreateProjectTime=
+CreateProjectUser=
+SupportMas_MPJ=1
+[Target:FlashHelp]
+ResultFileName=!SSL!\FlashHelp\SRA.htm
+SSLayoutType=2
+CreateProjectTime=
+CreateProjectUser=
+SupportMas_MPJ=1
+[Target:Printed Documentation]
+ResultFileName=!SSL!\Printed_Documentation\SRA.doc
+SSLayoutType=7
+[Target:XML Output]
+ResultFileName=!SSL!\XML_Output\SRA.xml
+SSLayoutType=8192
+[PreSingleSource]
+Html Help Project=D:\Jyoti\Final IR Project\SRA\SRA.hhp
+Table Of Content=D:\Jyoti\Final IR Project\SRA\SRA.hhc
+Index=D:\Jyoti\Final IR Project\SRA\SRA_merged$.hhk
+See Also Index=D:\Jyoti\Final IR Project\SRA\SRA.hha
+Browse Sequence=D:\Jyoti\Final IR Project\SRA\SRA.brs
+Topic Properties=D:\Jyoti\Final IR Project\SRA\SRA.trs
+Active Folders=D:\Jyoti\Final IR Project\SRA\SRA.trf
+Baggage Files=D:\Jyoti\Final IR Project\SRA\SRA.trb
+Skin List=D:\Jyoti\Final IR Project\SRA\SRA.trk
+OriginalHhk=D:\Jyoti\Final IR Project\SRA\SRA.hhk
+Active Layout Names=D:\Jyoti\Final IR Project\SRA\SRA.trl
+Default Topic=D:\Jyoti\Final IR Project\SRA\Before_you_Begin\common_application_features.htm
+Build Tags0=7374;Print | Online
+Build Tags=
+Build Expression=
+Language ID=1033
+Language Name=English
+Language=D:\Jyoti\Final IR Project\SRA\RoboHHRE.lng
+Stop List=D:\Jyoti\Final IR Project\SRA\SRA.stp

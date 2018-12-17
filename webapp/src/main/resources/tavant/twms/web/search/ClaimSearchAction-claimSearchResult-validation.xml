@@ -1,0 +1,31 @@
+<!DOCTYPE validators PUBLIC
+    "-//Apache Struts//XWork Validator 1.0.2//EN"
+    "http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+<validators>
+
+	<field name="claimSearchCriteria.claimId">
+        <field-validator type="long" >
+            <param name="min">1</param>            
+            <message key="error.invalidClaimNumber"/>
+		</field-validator>
+	</field>
+
+    <field name="claimSearchCriteria.startDate">
+		<field-validator type="date">
+			<message key="error.invalidStartDate"/>
+		</field-validator>
+	</field>
+
+	<field name="claimSearchCriteria.endDate">
+		<field-validator type="date">
+			<message key="error.invalidEndDate"/>
+		</field-validator>
+	</field>
+
+	<validator type="dateRange" >
+		<param name="startDateField">claimSearchCriteria.startDate</param>
+		<param name="endDateField">claimSearchCriteria.endDate</param>
+		<message key="error.invalidDateRange" />
+	</validator>
+
+</validators>

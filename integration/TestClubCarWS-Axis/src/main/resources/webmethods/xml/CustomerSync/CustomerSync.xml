@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomerSyncRequest>
+	<Customer>
+		<CustomerName> </CustomerName> <!-- Company Name -->
+		<CustomerId> </CustomerId>  <!-- CompanyId on Remote System -->
+		<Status></Status> <!-- Profile Status -->
+		<CompanyType></CompanyType> <!-- DEALER or SUPPLIER-->
+		<CustomerCategory></CustomerCategory> <!-- Company Type -->
+		<Currency></Currency> <!-- Default Currency -->
+		<PrimaryShipToAddress>
+			<FirstName></FirstName>
+			<MiddleName></MiddleName>
+			<LastName></LastName>
+			<AddressLine1> </AddressLine1>
+			<AddressLine2> </AddressLine2>
+			<AddressLine3> </AddressLine3>
+			<AddressLine4> </AddressLine4>
+			<AddressIdOnRemoteSystem> </AddressIdOnRemoteSystem>
+			<City></City>
+			<State></State>
+			<Country></Country>
+			<ZipCode></ZipCode>
+			<ZipExtension></ZipExtension>
+			<Phone></Phone>
+			<Fax></Fax>
+			<Email></Email>
+		</PrimaryShipToAddress>
+		<ShipToAddress>
+			<FirstName> </FirstName>
+			<MiddleName></MiddleName>
+			<LastName></LastName>
+			<AddressLine1> </AddressLine1>
+			<AddressLine2> </AddressLine2>
+			<AddressLine3> </AddressLine3>
+			<AddressLine4> </AddressLine4>
+			<AddressIdOnRemoteSystem> </AddressIdOnRemoteSystem>
+			<City></City>
+			<State></State>
+			<Country></Country>
+			<ZipCode></ZipCode>
+			<ZipExtension></ZipExtension>
+			<Phone></Phone>
+			<Fax></Fax>
+			<Email></Email>
+		</ShipToAddress>
+		<ShipToAddress>
+			<FirstName> </FirstName>
+			<MiddleName></MiddleName>
+			<LastName></LastName>
+			<AddressLine1> </AddressLine1>
+			<AddressLine2> </AddressLine2>
+			<AddressLine3> </AddressLine3>
+			<AddressLine4> </AddressLine4>
+			<AddressIdOnRemoteSystem> </AddressIdOnRemoteSystem>
+			<City></City>
+			<State></State>
+			<Country></Country>
+			<ZipCode></ZipCode>
+			<ZipExtension></ZipExtension>
+			<Phone></Phone>
+			<Fax></Fax>
+			<Email></Email>
+		</ShipToAddress>
+	</Customer>
+</CustomerSyncRequest>

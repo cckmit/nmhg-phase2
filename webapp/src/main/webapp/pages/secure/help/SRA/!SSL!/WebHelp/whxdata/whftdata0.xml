@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<ftstdata>
+<topic name="Before you Begin" url="Before_you_Begin/Before_you_Begin.htm" />
+<topic name="Common Application Features" url="Before_you_Begin/common_application_features.htm" />
+<topic name="Copyright" url="Before_you_Begin/Copyright.htm" />
+<topic name="Index" url="Before_you_Begin/index.htm" />
+<topic name="Introduction" url="Before_you_Begin/Introduction.htm" />
+<topic name="Claim Details" url="Claims/Claim_Details.htm" />
+<topic name="Index" url="Claims/index.htm" />
+<topic name="Policy Details" url="Claims/Policy_Details.htm" />
+<topic name="Search Claims" url="Claims/Search_Claims.htm" />
+<topic name="Business Conditions" url="Contract_Admin/Business_Conditions.htm" />
+<topic name="Business Rules" url="Contract_Admin/Business_Rules.htm" />
+<topic name="Index" url="Contract_Admin/index.htm" />
+<topic name="Maintain Supplier Contracts" url="Contract_Admin/Maintain_Supplier_Contracts.htm" />
+<topic name="Manage Suppliers" url="Contract_Admin/Manage_Suppliers.htm" />
+<topic name="User Groups" url="Contract_Admin/User_Groups.htm" />
+<topic name="View Part Source History" url="Contract_Admin/View_Part_Source_History.htm" />
+<topic name="View Supplier" url="Contract_Admin/View_Supplier.htm" />
+<topic name="Index" url="Field_Modifications/index.htm" />
+<topic name="Search Campaigns" url="Field_Modifications/Search_Campaigns.htm" />
+<topic name="Equipment Details" url="Inventory/Equipment_Details.htm" />
+<topic name="Index" url="Inventory/index.htm" />
+<topic name="Inventory" url="Inventory/Inventory.htm" />
+<topic name="Search Inventory" url="Inventory/Search_Inventory.htm" />
+<topic name="Index" url="Items/index.htm" />
+<topic name="Search Items" url="Items/Search_Items.htm" />
+<topic name="Index" url="Part_Returns/index.htm" />
+<topic name="Search Parts" url="Part_Returns/Search_Parts.htm" />
+<topic name="Awaiting Shipment" url="Parts_Recovery/Awaiting_Shipment.htm" />
+<topic name="Awaiting Shipment To Warehouse" url="Parts_Recovery/Awaiting_Shipment_To_Warehouse.htm" />
+<topic name="Barcode Feature and Search by Barcode" url="Parts_Recovery/Barcode_Feature_and_Search_by_Barcode.htm" />
+<topic name="Index" url="Parts_Recovery/index.htm" />
+<topic name="Part Not In Warehouse" url="Parts_Recovery/Part_Not_In_Warehouse.htm" />
+<topic name="Parts Recovery" url="Parts_Recovery/Parts_Recovery.htm" />
+<topic name="Search Parts" url="Parts_Recovery/Search_Parts.htm" />
+<topic name="Shipment Generated" url="Parts_Recovery/Shipment_Generated.htm" />
+<topic name="Shipment Tag" url="Parts_Recovery/Shipment_Tag.htm" />
+<topic name="Supplier Parts Claimed" url="Parts_Recovery/Supplier_Parts_Claimed.htm" />
+<topic name="Supplier Parts Shipped" url="Parts_Recovery/Supplier_Parts_Shipped.htm" />
+<topic name="Download Management" url="Reports/Download_Management.htm" />
+<topic name="Index" url="Reports/index.htm" />
+<topic name="Reports" url="Reports/Reports.htm" />
+<topic name="Upload Management" url="Reports/Upload_Management.htm" />
+<topic name="Vendor Recovery Report" url="Reports/Vendor_Recovery_Report.htm" />
+<topic name="Email Subscription" url="Settings/Email_Subscription.htm" />
+<topic name="Index" url="Settings/index.htm" />
+<topic name="Manage User BU Mapping" url="Settings/Manage_User_BU_Mapping.htm" />
+<topic name="Map Service Provider Business Unit" url="Settings/Map_Service_Provider_Business_Unit.htm" />
+<topic name="Profile" url="Settings/Profile.htm" />
+<topic name="Claims Due for Recovery" url="Supplier_Recovery/Claims_Due_for_Recovery.htm" />
+<topic name="Claims Under Recovery" url="Supplier_Recovery/Claims_Under_Recovery.htm" />
+<topic name="Index" url="Supplier_Recovery/index.htm" />
+<topic name="Multi Claim Maintenance" url="Supplier_Recovery/Multi_Claim_Maintenance.htm" />
+<topic name="Pending Recovery Initiation" url="Supplier_Recovery/Pending_Recovery_Initiation.htm" />
+<topic name="Search Supplier Recovery Claims" url="Supplier_Recovery/Search_Supplier_Recovery_Claims.htm" />
+<topic name="Supplier Recovery Folders" url="Supplier_Recovery/Supplier_Recovery_Folders.htm" />
+
+</ftstdata>  

@@ -1,0 +1,17 @@
+#created on: Aug 29, 2006
+package tavant.twms.rules.test
+
+import tavant.twms.domain.claim.Claim; 
+import java.util.Map;
+import com.domainlanguage.timeutil.Clock; 
+import tavant.twms.domain.watchlist.WatchListService;
+
+global Map resultMap;
+global WatchListService watchListService;
+
+rule "Failure Date can't be a future date" 
+	when
+		claim : Claim(fd : failureDate -> (fd.isBefore(Clock.today())))
+	then 
+		resultMap.put("valid",Boolean.TRUE); 
+end

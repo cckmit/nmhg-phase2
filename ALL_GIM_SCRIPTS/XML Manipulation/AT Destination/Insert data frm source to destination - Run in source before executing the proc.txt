@@ -1,0 +1,54 @@
+------------Inserting Data------------
+
+INSERT INTO claim_audit_temp@DLKTKPRD31(id,xml_src_data,filed_on_date) 
+SELECT a.id,a.prev_claim_snapshot_string as xml_src_data, b.filed_on_date
+  	FROM claim_audit a,claim b
+	  WHERE b.id = a.for_claim	  	  
+    AND b.filed_on_date > TO_DATE('06AUG2009')
+    AND ROWNUM <= 25000;
+
+commit;
+
+INSERT INTO party_array_table@DLKTKPRD31(ID,OLD_43_ID)
+SELECT id,old_43_id FROM TG_PARTY;
+
+commit;
+
+INSERT INTO org_user_array_table@DLKTKPRD31(ID,OLD_43_ID)
+SELECT ID,OLD_43_ID FROM TG_ORG_USER;
+
+commit;
+
+INSERT INTO cost_category_array_table@DLKTKPRD31(ID,OLD_43_ID)
+SELECT ID,OLD_43_ID FROM TG_COST_CATEGORY;
+
+COMMIT;
+
+
+set serveroutput on
+DECLARE
+  P_IN_ID_START_RANGE NUMBER;
+  P_IN_ID_END_RANGE NUMBER;
+begin
+
+dbms_output.put_line('Started string updation' || systimestamp);
+  P_IN_ID_START_RANGE := 1;
+  P_IN_ID_END_RANGE := 1;
+
+  TAV_GIM_PROCESS_CLAIM_AUD_XML.PROCESS_CLAIM_AUDIT_XML_STR(
+    P_IN_ID_START_RANGE => P_IN_ID_START_RANGE,
+    P_IN_ID_END_RANGE => P_IN_ID_END_RANGE
+  );
+dbms_output.put_line('Ended string updation' || systimestamp);
+dbms_output.put_line('Started id updation' || systimestamp);
+
+    TAV_GIM_PROCESS_CLAIM_AUD_XML.PROCESS_CLAIM_AUDIT_JOB_CHILD(
+    P_IN_ID_START_RANGE => P_IN_ID_START_RANGE,
+    P_IN_ID_END_RANGE => P_IN_ID_END_RANGE
+  );
+
+dbms_output.put_line('Ended id updation' || systimestamp);
+
+END;
+
+/

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping SYSTEM
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="tavant.twms.domain.customReports">
+
+  
+  
+   <query name="customReportFindConflictingPartsQuery">
+    <![CDATA[
+    	select customReport as customReport,applicableParts as custRepAppPart,
+    	item as item,itemInGroup as itemInGroup
+    	from CustomReport customReport
+    	join customReport.applicableParts applicableParts 
+    	left outer join applicableParts.itemCriterion.item item
+    	left outer join applicableParts.itemCriterion.itemGroup itemGroup 
+    	left outer join itemGroup.includedItems itemInGroup 
+		where 
+		customReport in (:customReports)
+		and 
+		(
+			(item is not null and  item in  (:items) ) or
+			(itemInGroup is not null and itemInGroup in (:items))
+		)
+		
+    ]]>
+  </query>
+  
+   <query name="customReportFindConflictingPartGroupsQuery">
+    <![CDATA[
+    	select customReport as customReport ,applicableParts as custRepAppPart,
+    	itemGroup as itemGroup from CustomReport customReport
+    	join customReport.applicableParts applicableParts
+    	join applicableParts.itemCriterion.item item,
+    	ItemGroup itemGroup join itemGroup.includedItems item1     	
+      	where 
+      	customReport in (:customReports)
+      	and itemGroup in (:itemGroups)
+      	and item1 = item
+    ]]>
+  </query>
+</hibernate-mapping>

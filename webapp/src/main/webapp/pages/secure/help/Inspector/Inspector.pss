@@ -1,0 +1,61 @@
+[MAS SUPPORT]
+SupportMas_Prj=1
+[Target:WebHelp]
+SupportMas_Prj=1
+ResultFileName=!SSL!\WebHelp\Inspector.htm
+SSLayoutType=2
+CreateProjectTime=11:09, February 26, 2013
+CreateProjectUser=alka.arora
+SupportMas_MPJ=1
+ActionID For Generation=1001
+Remove Folder with prompt=1
+ViewFileName=!SSL!\WebHelp\Inspector.htm
+ResultStatus=0
+BuildTimeHi=30282723
+BuildTimeLow=-349332238
+[Target:WebHelp Pro]
+SupportMas_Prj=1
+ResultFileName=!SSL!\WebHelp_Pro\Inspector.htm
+SSLayoutType=32
+ServerProjectName=Inspector
+CreateProjectTime=
+CreateProjectUser=
+SupportMas_MPJ=1
+[Target:Microsoft HTML Help]
+ResultFileName=!SSL!\Microsoft_HTML_Help\Inspector.chm
+SSLayoutType=1
+CreateProjectTime=
+CreateProjectUser=
+SupportMas_MPJ=1
+[Target:FlashHelp]
+ResultFileName=!SSL!\FlashHelp\Inspector.htm
+SSLayoutType=2
+CreateProjectTime=
+CreateProjectUser=
+SupportMas_MPJ=1
+[Target:Printed Documentation]
+ResultFileName=!SSL!\Printed_Documentation\Inspector.doc
+SSLayoutType=7
+[Target:XML Output]
+ResultFileName=!SSL!\XML_Output\Inspector.xml
+SSLayoutType=8192
+[PreSingleSource]
+Html Help Project=D:\Alka_Backup\Projects\NACCO\Phase 1\Online Help\Inspector\Inspector.hhp
+Table Of Content=D:\Alka_Backup\Projects\NACCO\Phase 1\Online Help\Inspector\Inspector.hhc
+Index=D:\Alka_Backup\Projects\NACCO\Phase 1\Online Help\Inspector\Inspector_merged$.hhk
+See Also Index=D:\Alka_Backup\Projects\NACCO\Phase 1\Online Help\Inspector\Inspector.hha
+Browse Sequence=D:\Alka_Backup\Projects\NACCO\Phase 1\Online Help\Inspector\Inspector.brs
+Topic Properties=D:\Alka_Backup\Projects\NACCO\Phase 1\Online Help\Inspector\Inspector.trs
+Active Folders=D:\Alka_Backup\Projects\NACCO\Phase 1\Online Help\Inspector\Inspector.trf
+Baggage Files=D:\Alka_Backup\Projects\NACCO\Phase 1\Online Help\Inspector\Inspector.trb
+Skin List=D:\Alka_Backup\Projects\NACCO\Phase 1\Online Help\Inspector\Inspector.trk
+OriginalHhk=D:\Alka_Backup\Projects\NACCO\Phase 1\Online Help\Inspector\Inspector.hhk
+Active Layout Names=D:\Alka_Backup\Projects\NACCO\Phase 1\Online Help\Inspector\Inspector.trl
+Default Topic=D:\Alka_Backup\Projects\NACCO\Phase 1\Online Help\Inspector\Before_you_Begin\Copyright.htm
+Build Tags0=5081;Print | Online
+Build Tags=
+Build Expression=
+Language ID=1033
+Language Name=English
+Language=D:\Alka_Backup\Projects\NACCO\Phase 1\Online Help\Inspector\RoboHHRE.lng
+Stop List=D:\Alka_Backup\Projects\NACCO\Phase 1\Online Help\Inspector\Inspector.stp

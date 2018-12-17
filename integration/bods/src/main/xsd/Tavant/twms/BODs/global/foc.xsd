@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="http://www.tavant.com/globalsync/foc"
+	xmlns="http://www.tavant.com/globalsync/foc"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	elementFormDefault="qualified" >
+	<xs:include schemaLocation="../../Resources/Nouns/global/ApplicationAreaType.xsd" />
+	<xs:element name="foc">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element name="ApplicationArea" type="ApplicationAreaType" />
+					<xs:element name="DataArea" type="DataAreaType" />
+				</xs:sequence>
+			</xs:complexType>
+	</xs:element>
+	<xs:element name="serialNumber" type="xs:string" />
+	<xs:element name="workOrderNumber" type="xs:string" />	
+	<xs:element name="causalPartNumber" type="xs:string" />	
+	<xs:element name="failureFound" type="xs:string" />		
+	<xs:element name="companyName" type="xs:string" />
+	<xs:element name="companyId" type="xs:string" />
+	<xs:element name="failureDate" type="xs:date" />
+	<xs:element name="repairDate" type="xs:date" />
+	<xs:element name="causedBy" type="xs:string" />
+	<xs:element name="faultCode" type="xs:string" />	
+	<xs:element name="orderNo" type="xs:string" />	
+	<xs:element name="partnumber" type="xs:string" />
+	<xs:element name="description" type="xs:string" />	
+	<xs:element name="price" type="xs:string" />        
+	<xs:element name="serviceProviderNo" type="xs:string" />
+	<xs:element name="serviceProviderType" type="xs:string" />
+    <xs:element name="isInstalled" type="xs:boolean" />        
+    <xs:element name="quantity" type="xs:integer" />
+        
+        <xs:complexType name="DataAreaType">
+           <xs:sequence>
+		<xs:element ref="serialNumber" />
+		<xs:element ref="workOrderNumber" />	
+		<xs:element ref="causalPartNumber" />	
+		<xs:element ref="companyName" />
+		<xs:element ref="companyId" />
+		<xs:element ref="failureDate" />
+		<xs:element ref="repairDate" />
+		<xs:element ref="failureFound" />
+		<xs:element ref="causedBy" />
+		<xs:element ref="faultCode" />
+		<xs:element ref="orderNo" />
+		<xs:element ref="serviceProviderNo" />
+		<xs:element ref="serviceProviderType" />
+		<xs:element name="replacedPartConfigs" type="replacedPartConfiguration" maxOccurs="unbounded" />           
+           </xs:sequence>
+        </xs:complexType>
+        
+	<xs:complexType name="replacedPartConfiguration">
+		<xs:sequence>
+			<xs:element name="hussmannReplacedParts" type="hussmannPart" maxOccurs="unbounded" />
+			<xs:element name="hussmannInstalledParts" type="hussmannPart" maxOccurs="unbounded" />			
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="hussmannPart">
+		<xs:sequence>
+		<xs:element ref="partnumber" />		
+		<xs:element ref="description" />
+		<xs:element ref="price" />
+		<xs:element ref="quantity" />
+		</xs:sequence>
+        </xs:complexType>
+
+</xs:schema>
+	

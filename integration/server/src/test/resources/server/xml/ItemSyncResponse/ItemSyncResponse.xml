@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ItemSyncResponse xmlns="http://www.tavant.com/globalsync/itemsyncresponse">
+    <ApplicationArea>
+        <Sender>
+            <Task>CCT_MONT-MAPICS</Task>
+            <LogicalId>TavantWMS</LogicalId>
+            <ReferenceId>ITEM_SYNC_TAVANT_MAPICS-0-2009-01-16T13:07:06.236Z</ReferenceId>
+        </Sender>
+        <BODId>ITEM_SYNC_TAVANT_MAPICS-0-2009-01-16T13:07:06.236Z</BODId>
+        <InterfaceNumber>ItemSync</InterfaceNumber>
+        <CreationDateTime>2009-01-16T13:07:06.236Z</CreationDateTime>
+    </ApplicationArea>
+    <Status>
+        <code>SUCCESS</code>
+    </Status>
+    <ItemMasterResponse>
+        <Status>
+            <code>SUCCESS</code>
+        </Status>
+        <ItemId>978654MTY</ItemId>
+    </ItemMasterResponse>
+    <ItemMasterResponse>
+        <Status>
+            <code>SUCCESS</code>
+        </Status>
+        <ItemId>978653MTY</ItemId>
+    </ItemMasterResponse>
+</ItemSyncResponse>

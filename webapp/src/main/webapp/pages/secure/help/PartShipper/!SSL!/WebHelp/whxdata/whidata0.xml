@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<indexdata>
+<key name="Barcode" >
+  <topic name="Barcode Feature and Search by Barcode" url="Parts_Recovery/Barcode_Feature_and_Search_by_Barcode.htm" />
+  <topic name="Shipment Tag" url="Parts_Recovery/Shipment_Tag.htm" />
+</key>
+<key name="Claim Number" >
+  <topic name="Shipment Tag" url="Parts_Recovery/Shipment_Tag.htm" />
+</key>
+<key name="Due Parts" >
+  <topic name="Shipment Tag" url="Parts_Recovery/Shipment_Tag.htm" />
+</key>
+<key name="Inventory" >
+  <topic name="Search Inventory" url="Inventory/Search_Inventory.htm" />
+</key>
+<key name="Overdue Parts" >
+  <topic name="Shipment Tag" url="Parts_Recovery/Shipment_Tag.htm" />
+</key>
+<key name="Print Shipment Tag" >
+  <topic name="Shipment Tag" url="Parts_Recovery/Shipment_Tag.htm" />
+</key>
+
+</indexdata>

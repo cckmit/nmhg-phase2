@@ -1,0 +1,37 @@
+<!DOCTYPE validators PUBLIC 
+    "-//Apache Struts//XWork Validator 1.0.2//EN"   
+    "http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+<validators>
+  <validator type="expression">
+    <param name="expression">entries.size > 0</param>
+    <message key="error.manageRates.moreConfigRequired" />
+  </validator>
+
+  <validator type="expression">
+    <param name="expression">entries.{? #this.duration == null}.size == 0</param>
+    <message key="error.manageRates.durationNotSpecified" />
+  </validator>
+
+  <validator type="expression">
+    <param name="expression">
+      entries.{? #this.duration != null and #this.duration.fromDate == null}.size == 0
+    </param>
+    <message key="error.manageRates.startDateNotSpecified" />
+  </validator>
+
+  <validator type="expression">
+    <param name="expression">
+      entries.{? #this.duration != null and #this.duration.tillDate == null}.size == 0
+    </param>
+    <message key="error.manageRates.endDateNotSpecified" />
+  </validator>
+
+  <validator type="expression">
+    <param name="expression">
+    <![CDATA[
+      entries.{? #this.value == null }.size == 0
+    ]]>
+    </param>
+    <message key="error.manageRates.percentageNotSpecified" />
+  </validator>
+</validators>

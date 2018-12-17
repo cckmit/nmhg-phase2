@@ -1,0 +1,20 @@
+<!DOCTYPE validators PUBLIC "-//Apache Struts//XWork Validator 1.0.2//EN"
+       "http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+<validators>
+  
+    <field name="answerOption">
+        <field-validator type="requiredstring" short-circuit="true">
+            <message key="error.customReport.answerTextMandatory" />
+        </field-validator>
+    </field>
+    
+     <field name="attachment">
+     <field-validator type="fieldexpression">
+        <param name="expression">
+            <![CDATA[isDocumentImage()]]>
+        </param>
+        <message key="error.customReport.documentISNotImage"/>
+     </field-validator>
+     </field>
+     
+</validators>

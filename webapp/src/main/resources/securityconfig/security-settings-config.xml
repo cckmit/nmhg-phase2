@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<functionalareas xmlns="http://www.tavant.com/twms/security/resource"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.tavant.com/twms/security/resource
+			http://www.tavant.com/twms/security/resource">
+	<functionalarea name="settings" defaultpolicy="none">
+
+	<!-- Resources for update or Read Only -->
+	
+		<resource type="ui" value="settingsSettingsTab" operation="OR">
+			<permissions>settings:settingsSettingsTab:update,settings:settingsSettingsTab:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="settingsProfile" operation="OR">
+			<permissions>settings:settingsProfile:update,settings:settingsProfile:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="settingsUserManagement" operation="OR">
+			<permissions>settings:settingsUserManagement:update,settings:settingsUserManagement:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="settingsCreateUser" operation="OR">
+			<permissions>settings:settingsCreateUser:update,settings:settingsCreateUser:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="settingsUpdateUser" operation="OR">
+			<permissions>settings:settingsUpdateUser:update,settings:settingsUpdateUser:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="settingsSeriesReftoCertification" operation="OR">
+			<permissions>settings:settingsSeriesReftoCertification:update,settings:settingsSeriesReftoCertification:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="settingsCreateInternalUser" operation="OR">
+			<permissions>settings:settingsCreateInternalUser:update,settings:settingsCreateInternalUser:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="settingsUpdateInternalUser" operation="OR">
+			<permissions>settings:settingsUpdateInternalUser:update,settings:settingsUpdateInternalUser:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="settingsManageUserBusinessUnitMapping" operation="OR">
+			<permissions>settings:settingsManageUserBusinessUnitMapping:update,settings:settingsManageUserBusinessUnitMapping:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="settingsEmailSubscription" operation="OR">
+			<permissions>settings:settingsEmailSubscription:update,settings:settingsEmailSubscription:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="settingsMapServiceProviderBusinessUnit" operation="OR">
+			<permissions>settings:settingsMapServiceProviderBusinessUnit:update,settings:settingsMapServiceProviderBusinessUnit:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="settingsMapSupplierBusinessUnit" operation="OR">
+			<permissions>settings:settingsMapSupplierBusinessUnit:update,settings:settingsMapSupplierBusinessUnit:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="settingsManageRoles" operation="OR">
+			<permissions>settings:settingsManageRoles:update,settings:settingsManageRoles:view
+			</permissions>
+		</resource>
+	
+	<!-- Resources for Read Only-->
+	
+		<resource type="ui" value="settingsSettingsTabReadOnlyView">
+			<permissions>settings:settingsSettingsTab:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="settingsProfileReadOnlyView">
+			<permissions>settings:settingsProfile:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="settingsUserManagementReadOnlyView">
+			<permissions>settings:settingsUserManagement:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="settingsCreateUserReadOnlyView">
+			<permissions>settings:settingsCreateUser:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="settingsUpdateUserReadOnlyView">
+			<permissions>settings:settingsUpdateUser:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="settingsSeriesReftoCertificationReadOnlyView">
+			<permissions>settings:settingsSeriesReftoCertification:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="settingsCreateInternalUserReadOnlyView">
+			<permissions>settings:settingsCreateInternalUser:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="settingsUpdateInternalUserReadOnlyView">
+			<permissions>settings:settingsUpdateInternalUser:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="settingsManageUserBusinessUnitMappingReadOnlyView">
+			<permissions>settings:settingsManageUserBusinessUnitMapping:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="settingsEmailSubscriptionReadOnlyView">
+			<permissions>settings:settingsEmailSubscription:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="settingsMapServiceProviderBusinessUnitReadOnlyView">
+			<permissions>settings:settingsMapServiceProviderBusinessUnit:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="settingsMapSupplierBusinessUnitReadOnlyView">
+			<permissions>settings:settingsMapSupplierBusinessUnit:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="settingsManageRolesReadOnlyView">
+			<permissions>settings:settingsManageRoles:view
+			</permissions>
+		</resource>
+        
+	</functionalarea>
+
+</functionalareas>

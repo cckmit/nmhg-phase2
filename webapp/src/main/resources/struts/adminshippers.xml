@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="adminshippers" extends="struts-twms-default">
+		<action name="list_shippers"
+			class="tavant.twms.web.admin.shippers.ListShippers">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">pages/secure/admin/shippers/shipperInboxView.jsp</result>
+		</action>
+
+		<action name="get_shipper_body"
+			class="tavant.twms.web.admin.shippers.ListShippers"
+			method="tableBody">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">pages/secure/home/json.jsp</result>
+		</action>
+		
+		<action name="export_shipper_to_excel"
+			class="tavant.twms.web.admin.shippers.ListShippers"
+			method="downloadListingData">
+			<interceptor-ref name="adminParamsPrepare" />
+		</action>
+		
+		<action name="view_shipper_preview"
+			class="tavant.twms.web.admin.shippers.ManageShippers" method="viewShipper">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">pages/secure/admin/shippers/previewShipper.jsp</result>
+		</action>
+		
+		<action name="create_shipper"
+			class="tavant.twms.web.admin.shippers.ManageShippers" method="createShipper">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">pages/secure/admin/shippers/createShipper.jsp</result>
+		</action>
+
+		<action name="manage_shipper"
+			class="tavant.twms.web.admin.shippers.ManageShippers" method="viewShipper">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">pages/secure/admin/shippers/updateShipper.jsp</result>
+		</action>
+		
+		<action name="update_shipper"
+			class="tavant.twms.web.admin.shippers.ManageShippers"
+			method="updateShipper">
+			<interceptor-ref name="adminTwmsParamsPrepareRepeatTableParams" />
+			<result name="success">pages/secure/admin/success.jsp</result>
+			<result name="input">
+				pages/secure/admin/shippers/updateShipper.jsp
+			</result>
+		</action>
+		
+		<action name="save_shipper"
+			class="tavant.twms.web.admin.shippers.ManageShippers" method="saveShipper">
+			<interceptor-ref name="adminTwmsParamsPrepareRepeatTableParams" />
+			<result name="success">pages/secure/admin/success.jsp</result>
+			<result name="input">pages/secure/admin/shippers/createShipper.jsp</result>
+		</action>
+
+		<action name="delete_shipper"
+			class="tavant.twms.web.admin.shippers.ManageShippers"
+			method="deleteShipper">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">pages/secure/admin/success.jsp</result>
+		</action>
+	</package>
+</struts>

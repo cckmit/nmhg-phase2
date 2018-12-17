@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mappings SYSTEM "E:\Software\dozer-2.4\xdocs\dtd\dozerbeanmapping.dtd">
+<mappings>
+		 <configuration>
+    		<custom-converters> <!-- these are always bi-directional -->
+      			<converter type="tavant.twms.integration.layer.component.global.CustomCurrencyConverter" >
+        			<class-a>java.lang.String</class-a>
+        			<class-b>java.util.Currency</class-b>
+      			</converter>
+    		 </custom-converters>     
+ 		 </configuration>
+	<!-- <mapping>
+		<class-a>tavant.twms.domain.catalog.Item</class-a>
+		<class-b>tavant.oagis.ItemDTO</class-b>
+		Other fields get mapped by their names.
+		<field>
+			<a>number</a>
+			<b>itemNumber</b>
+		</field>
+		<field>
+			<a>description</a>
+			<b>itemDescription</b>
+		</field>
+		<field>
+			<a>make</a>
+			<b>manufName</b>
+		</field>
+	</mapping> -->
+
+	<!-- <mapping>
+		<class-a>tavant.twms.domain.orgmodel.User</class-a>
+		<class-b>tavant.oagis.UserDTO</class-b>
+		Other fields get mapped by their names.
+		<field>
+			<a>name</a>
+			<b>login</b>
+		</field>
+		<field-exclude>
+			<a>password</a>
+			<b>password</b>
+		</field-exclude>		
+	</mapping>
+
+	<mapping>
+		<class-a>tavant.oagis.AddressDTO</class-a>
+		<class-b>tavant.twms.domain.orgmodel.Address</class-b>
+		Other fields get mapped by their names.
+		<field>
+			<a>Fax</a>
+			<b>secondaryPhone</b>
+		</field>
+	</mapping>
+
+
+	<mapping>
+		<class-a>tavant.twms.domain.orgmodel.Party</class-a>
+		<class-b>tavant.oagis.CustomerDTO</class-b>
+		Other fields get mapped by their names.
+		<field>
+			<a>name</a>
+			<b>CustomerName</b>
+		</field>
+		<field-exclude>
+			<a>belongsToOrganization</a>
+			<b>dealerNumber</b>
+		</field-exclude>
+		<field-exclude>
+			<a>preferredCurrency</a>
+			<b>currency</b>
+		</field-exclude>
+	</mapping> -->
+	
+	<mapping>
+            <class-a>tavant.globalsync.customersync.CustomerTypeDTO</class-a>
+            <class-b>tavant.twms.domain.orgmodel.Dealership</class-b>
+
+            <field>
+                <a>CustomerNumber</a>
+                <b>dealerNumber</b>
+            </field>
+
+            <field>
+                <a>CustomerNumber</a>
+                <b>serviceProviderNumber</b>
+            </field>
+
+            <field>
+                <a>CustomerName</a>
+                <b>name</b>
+            </field>
+
+            <field>
+                <a>PrimaryContactPerson.FirstName</a>
+                <b>primaryContactpersonFstName</b>
+            </field>
+
+            <field>
+                <a>PrimaryContactPerson.LastName</a>
+                <b>primaryContactpersonLstName</b>
+            </field>
+
+            <field>
+                <a>PrimaryShipToAddress.SiteNumber</a>
+                <b>SiteNumber</b>
+            </field>
+
+            <field custom-converter="tavant.twms.integration.layer.component.global.CustomCurrencyConverter">
+            <a>Currency</a>
+            <b>preferredCurrency</b>
+            </field>
+  	</mapping>
+	
+	
+	<mapping>
+		<class-a>tavant.globalsync.customersync.CustomerTypeDTO</class-a>
+		<class-b>tavant.twms.domain.orgmodel.ServiceProvider</class-b>
+		
+		<field>
+			<a>CustomerNumber</a>
+			<b>serviceProviderNumber</b>
+		</field>
+	</mapping>
+	
+	<mapping>
+		<class-a>tavant.globalsync.customersync.CustomerTypeDTO</class-a>
+		<class-b>tavant.twms.domain.orgmodel.Organization</class-b>
+		<field>
+			<a>CustomerName</a>
+			<b>name</b>
+		</field>
+
+
+		<field map-id="address">
+    		 <a>PrimaryShipToAddress</a>
+    		 <b>address</b>
+     		 <b-hint>tavant.twms.domain.orgmodel.Address</b-hint>
+   		</field>
+
+   		<field custom-converter="tavant.twms.integration.layer.component.global.CustomCurrencyConverter">
+   		<a>currency</a>
+		<b>preferredCurrency</b> 		
+   		</field>
+   		
+	</mapping>
+	
+	<mapping>
+		<class-a>tavant.globalsync.customersync.CustomerTypeDTO</class-a>
+		<class-b>tavant.twms.domain.orgmodel.Supplier</class-b>
+		<field>
+			<a>CustomerNumber</a>
+			<b>supplierNumber</b>
+		</field>
+		<field>
+			<a>CustomerName</a>
+			<b>name</b>
+		</field>
+        <field custom-converter="tavant.twms.integration.layer.component.global.CustomCurrencyConverter">
+   		<a>Currency</a>
+		<b>preferredCurrency</b>
+   		</field>	
+   		<field>
+          <a>PrimaryContactPerson.FirstName</a>
+          <b>firstName</b>
+         </field>
+
+        <field>
+         <a>PrimaryContactPerson.LastName</a>
+         <b>lastName</b>
+        </field>
+	</mapping>
+	
+	<mapping>
+		<class-a>tavant.globalsync.customersync.CustomerTypeDTO</class-a>
+		<class-b>tavant.twms.domain.orgmodel.OriginalEquipManufacturer</class-b>
+		
+		<field>
+			<a>CustomerNumber</a>
+			<b>orgEquipManufNumber</b>
+		</field>		
+		
+	</mapping>
+	
+	
+	<mapping>
+		<class-a>tavant.globalsync.customersync.CustomerTypeDTO</class-a>
+		<class-b>tavant.twms.domain.orgmodel.DirectCustomer</class-b>		
+		<field>
+			<a>CustomerNumber</a>
+			<b>directCustomerNumber</b>
+		</field>		
+		
+	</mapping>
+	
+	<mapping>
+		<class-a>tavant.globalsync.customersync.CustomerTypeDTO</class-a>
+		<class-b>tavant.twms.domain.orgmodel.InterCompany</class-b>		
+		<field>
+			<a>CustomerNumber</a>
+			<b>interCompanyNumber</b>
+		</field>		
+		
+	</mapping>
+	
+	<mapping>
+		<class-a>tavant.globalsync.customersync.CustomerTypeDTO</class-a>
+		<class-b>tavant.twms.domain.orgmodel.NationalAccount</class-b>		
+		<field>
+			<a>CustomerNumber</a>
+			<b>nationalAccountNumber</b>
+		</field>		
+		
+	</mapping>
+	
+	<mapping map-id="address">
+  		<class-a>tavant.globalsync.customersync.AddressTypeDTO</class-a>
+ 		<class-b>tavant.twms.domain.orgmodel.Address</class-b>
+ 		<field>
+ 		<a>ZipExtension</a>
+		<b>zipcodeExtension</b>
+		</field>
+		<field>
+	 		<a>SicCode</a>
+			<b>sicCode</b>
+		</field>
+  	</mapping>
+  	
+  	<mapping map-id="org_address">
+  		<class-a>tavant.globalsync.customersync.AddressTypeDTO</class-a>
+ 		<class-b>tavant.twms.domain.orgmodel.OrganizationAddress</class-b>
+ 		<field>
+ 		<a>ZipExtension</a>
+		<b>zipcodeExtension</b>
+		</field>
+		<field>
+	 		<a>SicCode</a>
+			<b>sicCode</b>
+		</field>
+  	</mapping>	
+  	
+  			
+		
+		<!-- Customer Mapping for Upload -->
+		
+		
+	<mapping>
+		<class-a>tavant.twms.domain.upload.CustomerStaging</class-a>
+		<class-b>tavant.twms.domain.orgmodel.Dealership</class-b>
+		
+		<field>
+			<a>customerNumber</a>
+			<b>dealerNumber</b>
+		</field>		
+		
+		<field>
+			<a>firstName</a>
+			<b>primaryContactpersonFstName</b>
+		</field>
+		
+		<field>
+			<a>lastName</a>
+			<b>primaryContactpersonLstName</b>
+		</field>
+		
+		<field>
+			<a>dealerSite</a>
+			<b>SiteNumber</b>
+		</field>
+		
+		<field-exclude>
+			<a>id</a>
+			<b>id</b>
+		</field-exclude>
+		
+	</mapping>
+	
+	<mapping>
+		<class-a>tavant.twms.domain.upload.CustomerStaging</class-a>
+		<class-b>tavant.twms.domain.orgmodel.Address</class-b>
+		<field-exclude>
+			<a>id</a>
+			<b>id</b>
+		</field-exclude>	
+	</mapping>
+	
+	
+	<mapping>
+		<class-a>tavant.twms.domain.upload.CustomerStaging</class-a>
+		<class-b>tavant.twms.domain.orgmodel.ServiceProvider</class-b>
+		
+		<field>
+			<a>customerNumber</a>
+			<b>serviceProviderNumber</b>
+		</field>
+		
+		<field>
+			<a>dealerSite</a>
+			<b>siteNumber</b>
+		</field>
+		
+		<field>
+			<a>customerType</a>
+			<b>companyType</b>
+		</field>
+		
+		<field-exclude>
+			<a>id</a>
+			<b>id</b>
+		</field-exclude>	
+   		
+	</mapping>
+	
+	<mapping>
+		<class-a>tavant.twms.domain.upload.CustomerStaging</class-a>
+		<class-b>tavant.twms.domain.orgmodel.Organization</class-b>
+		<field>
+			<a>customerName</a>
+			<b>name</b>
+		</field>
+		
+		<field>
+			<a>classification</a>
+			<b>customerClassification</b>
+		</field>
+		
+		
+		<field custom-converter="tavant.twms.integration.layer.component.global.CustomCurrencyConverter">
+   		<a>currency</a>
+		<b>preferredCurrency</b> 		
+   		</field>
+   		
+		<field-exclude>
+			<a>id</a>
+			<b>id</b>
+		</field-exclude>
+		
+		</mapping>
+		
+	<mapping>
+		<class-a>tavant.twms.domain.upload.CustomerStaging</class-a>
+		<class-b>tavant.twms.domain.orgmodel.Supplier</class-b>
+		<field>
+			<a>CustomerNumber</a>
+			<b>supplierNumber</b>
+		</field>		   		
+	</mapping>
+		
+		
+
+</mappings>

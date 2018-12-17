@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="dealertodealertransfer" extends="struts-twms-default">
+		<!-- Dealer to Dealer Transfer Related actions -->
+		<action name="show_dealertodealer_transfer"
+			class="tavant.twms.web.warranty.DealertoDealerTransfer" method="show">
+			<interceptor-ref name="paramsPrepareWithoutValidation"/>
+			<result name="success">pages/secure/warranty/dealertodealer/dealertodealertransfer.jsp</result>			
+		</action>
+		<action name="show_D2D_transfer_inventory"
+			class="tavant.twms.web.warranty.DealertoDealerTransfer" method="showInventorySelection">
+			<interceptor-ref name="paramsPrepareWithoutValidation"/>
+			<result name="success">pages/secure/warranty/dealertodealer/dealertodealertransfer.jsp</result>
+			<result name="input">pages/secure/inventory/machineScrapped.jsp</result>			
+		</action>
+		<action name="searchInventories_D2D"
+			class="tavant.twms.web.warranty.DealertoDealerTransfer" method="searchInventories">
+			<interceptor-ref name="paramsPrepareWithoutValidation" />
+            <result name="input">pages/secure/multipleInventoryPicker/searchError.jsp</result>
+            <result name="success">pages/secure/multipleInventoryPicker/multipleInventorySearchResults.jsp</result>
+		</action>
+        <action name="handle_inventory_selection_D2D"
+			class="tavant.twms.web.warranty.DealertoDealerTransfer" method="handleInventorySelection">
+			<interceptor-ref name="paramsPrepareWithoutValidation" />
+			<result name="success">pages/secure/warranty/dealertodealer/d2d_equipment_info.jsp</result>
+		</action>
+		<action name="setSelectedInventoriesForD2D" 
+			class="tavant.twms.web.warranty.DealertoDealerTransfer" method="setSelectedInvsForD2D"> 
+			<interceptor-ref name="twmsParamsWithoutPrepare" />
+			<result name="success">pages/secure/warranty/dealertodealer/selectedInventoriesForD2Dinfo.jsp</result>
+			<result name="input">pages/secure/warranty/dealertodealer/d2d_equipment_info.jsp</result>
+		</action>		
+		<action name="search_dealers_for_D2D"
+			class="tavant.twms.web.warranty.DealertoDealerTransfer" method="searchCompanies">
+			<interceptor-ref name="paramsPrepareWithoutValidation" />
+			<result name="success">pages/secure/warranty/dealertodealer/dealerSearchResult.jsp</result>
+		</action>
+		<action name="showD2DConfirmation"
+			class="tavant.twms.web.warranty.DealertoDealerTransfer" method="showD2DConfirmation">
+			<interceptor-ref name="twmsParamsWithoutPrepare" />
+			<result name="success">pages/secure/warranty/dealertodealer/confirmD2DTransfer.jsp</result>
+			<result name="input">pages/secure/warranty/dealertodealer/dealerSearchResult.jsp</result>
+		</action> 
+		<action name="performD2D"
+			class="tavant.twms.web.warranty.DealertoDealerTransfer" method="performD2D">
+			<interceptor-ref name="paramsPrepareWithoutValidation" />
+			<result name="success">pages/secure/common/successListingRefresh.jsp</result>
+			<result name="input">pages/secure/warranty/dealertodealer/dealertodealertransfer.jsp</result>
+		</action>
+		
+	</package>
+</struts>

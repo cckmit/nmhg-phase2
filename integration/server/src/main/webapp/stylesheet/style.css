@@ -1,0 +1,205 @@
+table.header {
+	width: 100%;
+	padding: 0;
+}
+
+td.header {
+	background-color: #E3D8C2;
+	font-family: Arial;
+	font-size: 10pt;
+}
+/*
+td.headerRight {
+	background: url(../claimprocess/image/header_bg_brown_small.bmp);
+	font-family: Arial;
+	font-size: 10pt;
+}
+
+td.headerLeft {
+	background: url(../claimprocess/image/header_bg_brown_small.bmp);
+	font-family: Arial;
+	font-size: 10pt;
+}
+*/
+td.footer {
+	background-color: #F8F3EA;
+	font-family: Arial;
+	font-size: 10pt;
+	color: grey;
+}
+
+td.filterMenu {
+	background-color: #DED0B7;
+	width: 100%;
+}
+
+table.main {
+	width: 100%;
+}
+
+table.menu {
+	width: 100%;
+	height: 100%;
+}
+
+table.list {
+	width: 100%;
+}
+
+td.menuTopBar {
+	width: 100%;
+	background-color: #F8F3EA;
+	height: 20px;
+}
+
+td.menuHeaderClaims {
+	background: url(../claimprocess/image/menu_claims_down.bmp);
+	color: black;
+	valign: top;
+	width: 100%;
+	height: 33px;
+	font-family: Arial;
+	font-weight: bold;
+	font-size: 10pt;
+}
+
+td.menuHeaderSettings {
+	background: url(../claimprocess/image/menu_settings_up.bmp);
+	color: black;
+	valign: top;
+	width: 100%;
+	height: 33px;
+	font-family: Arial;
+	font-weight: bold;
+	font-size: 10pt;
+}
+
+td.menuDivider {
+	background: url(../claimprocess/image/menu_divider.bmp);
+}
+
+td.menuSpacer {
+	width: 100%;
+	height: 100%;
+	background-color: #F8F3EA;
+}
+
+td.contentHeader {
+	background-color: #F8F3EA;
+	color: black;
+	valign: top;
+	height: 23px;
+	font-family: Arial;
+	font-size: 10pt;
+}
+
+td.contentLinks {
+	background-color: #F8F3EA;
+	color: black;
+	valign: top;
+	height: 23px;
+	font-family: Arial;
+	font-size: 10pt;
+	width: 100%;
+}
+
+td.contentTableHeader {
+	background-color: #F8F3EA;
+	width: 20%;
+	font-family: Arial;
+	font-weight: bold;
+	font-size: 8pt;
+}
+/*
+td.header {
+	font-family: Arial;
+	font-weight: bold;
+	font-size: 10pt;
+}
+*/
+td.label {
+	font-family: Arial;
+	font-size: 10pt;
+}
+
+td.seperator {
+	font-family: Arial;
+	font-weight: bold;
+	font-size: 10pt;
+	height: 10px;
+}
+
+td.menu {
+	width: 100%;
+	height:100%;
+	background-color: #F8F3EA;	
+}
+
+td.menuContent {
+	background-color: #FFFFFF;
+}
+
+td.content {
+	width: 100%;
+}
+/*
+input.submitButton {
+	background-image: url(../claimprocess/image/filter_button.bmp);
+}
+*/
+a:link {
+	color: #737373;
+	font-family: Arial;
+	font-size: 9pt;
+	text-decoration: none;
+}
+
+a:visited {
+	color: #737373;
+	font-family: Arial;
+	font-size: 9pt;
+	text-decoration: none;
+}
+
+a:active {
+	color: #737373;
+	font-family: Arial;
+	font-size: 9pt;
+	text-decoration: none;
+}
+
+a:hover {
+	color: blue;
+	font-family: Arial;
+	font-size: 9pt;
+	text-decoration: none;
+}
+
+a.logout:link {
+	color: #004080;
+	font-family: Arial;
+	font-size: 9pt;
+	text-decoration: none;
+}
+
+a.logout:active {
+	color: #004080;
+	font-family: Arial;
+	font-size: 9pt;
+	text-decoration: none;
+}
+
+a.logout:visited {
+	color: #004080;
+	font-family: Arial;
+	font-size: 9pt;
+	text-decoration: none;
+}
+
+a.nodecoration {
+	color: #FFFFFF;
+	background-color: #FFFFFF;
+	font-family: Arial;
+	font-size: 9pt;
+	text-decoration: none;
+}

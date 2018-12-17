@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="manageStateMandates" extends="struts-twms-default">
+		<action name="manage_StateMandates"
+            class="tavant.twms.web.admin.stateMandates.ListStateMandatesAction">
+            <interceptor-ref name="adminParamsPrepare" />
+            <result>pages/secure/admin/stateMandates/stateMandatesInboxView.jsp</result>
+        </action>
+        
+           <action name="initialize_stateMandates"
+			class="tavant.twms.web.admin.stateMandates.ListStateMandatesAction" method="load">
+			<interceptor-ref name="adminParamsPrepare"/>
+			<result>pages/secure/admin/stateMandates/initializeStateMandates.jsp</result>
+		</action>
+		
+		<action name="get_stateMandates"
+            class="tavant.twms.web.admin.stateMandates.ListStateMandatesAction"
+            method="tableBody">
+            <interceptor-ref name="adminParamsPrepare" />
+            <result>pages/secure/home/json.jsp</result>
+        </action>
+		
+		<action name="preview_stateMandates"
+            class="tavant.twms.web.admin.stateMandates.ListStateMandatesAction" method="preview">
+            <interceptor-ref name="adminParamsPrepare" />
+            <result>pages/secure/admin/stateMandates/previewStateMandates.jsp</result>
+        </action> 
+        
+        <action name="history_stateMandates"
+            class="tavant.twms.web.admin.stateMandates.ListStateMandatesAction" method="getStateMandateHistory">
+            <interceptor-ref name="adminParamsPrepare" />
+            <result>pages/secure/admin/stateMandates/stateMandateHistoryDetails.jsp</result>
+        </action>
+        
+        <action name="detail_stateMandates"
+			class="tavant.twms.web.admin.stateMandates.ListStateMandatesAction" method="detail">
+			<interceptor-ref name="adminTwmsParamsWithoutPrepare"/>
+			<result name="success">pages/secure/admin/stateMandates/stateMandatesDetails.jsp</result>
+		</action>
+		
+		<action name="create_state_mandate"
+			class="tavant.twms.web.admin.stateMandates.ListStateMandatesAction" method="createStateMandate">
+			<interceptor-ref name="adminTwmsParamsPrepareParams"/>
+			<result name="success">pages/secure/common/successFullRefresh.jsp</result>
+			<result name="input">pages/secure/admin/stateMandates/initializeStateMandates.jsp</result>
+		</action>	
+		
+		<action name="update_stateMandates"
+			class="tavant.twms.web.admin.stateMandates.ListStateMandatesAction"	method="updateStateMandates">
+			<interceptor-ref name="adminTwmsParamsPrepareParams"/>	
+			<result name="success">pages/secure/common/successFullRefresh.jsp</result>
+			<result name="input">pages/secure/admin/stateMandates/stateMandatesDetails.jsp</result>			
+		</action>
+		
+		<action name="deactivate_stateMandates"
+			class="tavant.twms.web.admin.stateMandates.ListStateMandatesAction"	method="deactivateStateMandates">
+			<interceptor-ref name="adminTwmsParamsWithoutPrepare"/>	
+			<result name="success">pages/secure/common/successFullRefresh.jsp</result>	
+		</action>
+		
+		<action name="activate_stateMandates"
+			class="tavant.twms.web.admin.stateMandates.ListStateMandatesAction"	method="activateStateMandates">
+			<interceptor-ref name="adminTwmsParamsWithoutPrepare"/>	
+			<result name="success">pages/secure/common/successFullRefresh.jsp</result>	
+		</action>
+		
+        <action name="exportDataToExcel"
+            class="tavant.twms.web.admin.stateMandates.ListStateMandatesAction" method="downloadListingData" >        
+			<interceptor-ref name="adminParamsPrepare" />
+		 </action>
+	</package>
+</struts>

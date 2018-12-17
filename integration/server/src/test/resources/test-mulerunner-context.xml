@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+       http://www.springframework.org/schema/beans/spring-beans-2.0.xsd"
+	default-autowire="byName">
+
+	<bean id="namingStrategy"
+		class="org.hibernate.cfg.ImprovedNamingStrategy" />
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="annotatedClasses">
+			<list>
+				<value>
+					tavant.twms.integration.server.staging.file.SyncFile
+				</value>
+				<value>
+					tavant.twms.integration.server.staging.file.SyncError
+				</value>
+				<value>
+					tavant.twms.integration.server.common.dataaccess.SyncTracker
+				</value>
+				<value>
+					tavant.twms.integration.server.common.dataaccess.SyncStatus
+				</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					${hibernate.dialect}
+				</prop>
+				<prop key="hibernate.show_sql">
+					${hibernate.show_sql}
+				</prop>
+				<prop key="hibernate.format_sql">
+					${hibernate.format_sql}
+				</prop>
+				<prop key="hibernate.use_sql_comments">
+					${hibernate.use_sql_comments}
+				</prop>
+				<prop key="hibernate.generate_statistics">true</prop>
+				<prop key="hibernate.default_batch_fetch_size">25</prop>
+				<prop key="hibernate.cache.provider_class">
+					org.hibernate.cache.HashtableCacheProvider
+				</prop>
+				<prop key="hibernate.hbm2ddl.auto">
+					${hibernate.hbm2ddl}
+				</prop>
+				<prop key="hibernate.cglib.use_reflection_optimizer">
+					false
+				</prop>
+			</props>
+		</property>
+	</bean>
+	<bean id="syncTrackerDao"
+		class="tavant.twms.integration.server.common.dataaccess.SyncTrackerDAOImpl">
+		<property name="maxResults">
+			<value>10</value>
+		</property>
+		<property name="failureCountThreshold">
+			<value>2</value>
+		</property>
+	</bean>
+
+	<bean id="creditSubmitProcessor"
+		class="tavant.twms.integration.server.common.dataaccess.SyncPersisterImpl">
+		<property name="syncType" value="Claim" />
+	</bean>
+
+	<bean id="creditNotifyProcessor"
+		class="tavant.twms.integration.server.common.dataaccess.SyncPersisterImpl"
+		autowire="byName">
+		<property name="syncType" value="CreditNotification" />
+	</bean>
+	<bean id="priceCheckProcessor"
+		class="tavant.twms.integration.server.common.dataaccess.SyncPersisterImpl"
+		autowire="byName">
+		<property name="syncType" value="PriceCheck" />
+	</bean>
+	<!-- <bean id="creditSubmissionJob"
+		class="tavant.twms.integration.server.external.CreditSubmissionJob">
+	</bean> -->
+
+	<bean id="syncFileRepository"
+		class="tavant.twms.integration.server.staging.file.impl.SyncFileRepositoryImpl" />
+
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="itemXMLToSyncTrackerTransformer"
+		class="tavant.twms.integration.server.staging.transformer.xml.ItemTransformer">
+		<property name="syncType" value="SyncItem" />
+	</bean>
+</beans>

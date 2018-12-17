@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Review id="claimsubmission-partsclaim-domain">
+  <ReviewIssue id="G59AYFFX">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-02-04 :: 14:15:35:277 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-02-04 :: 14:16:32:731 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ramalakshmi</ReviewerId>
+    <AssignedTo>Lavin</AssignedTo>
+    <ReviewTime>5</ReviewTime>
+    <File line="974">src/main/java/tavant/twms/domain/claim/Claim.java</File>
+    <Type>item.type.label.programLogic</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>Can the two else ifs be made a single with OR condition?</Summary>
+    <Description>else if(partsClaim.getPartInstalled() &amp;&amp; this.getClaimCompetitorModel()!=null)
+{
+          	return getInstallationDate();
+}
+ else if (partsClaim.getPartInstalled() &amp;&amp; !getItemReference().isSerialized()) {
+            return getInstallationDate();
+} </Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+    <ReworkTime></ReworkTime>
+  </ReviewIssue>
+  <ReviewIssue id="G59C997M">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-02-04 :: 14:52:00:034 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-02-04 :: 14:53:42:894 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ramalakshmi</ReviewerId>
+    <AssignedTo>Lavin</AssignedTo>
+    <ReviewTime>15</ReviewTime>
+    <File line="121">src/main/java/tavant/twms/domain/claim/ClaimServiceImpl.java</File>
+    <Type>item.type.label.programLogic</Type>
+    <Severity>item.severity.label.normal</Severity>
+    <Summary>Causal Part setting should be BU specific</Summary>
+    <Description>We should default the causal part to the part given on page one only based on the new BU configuration ("Warranty applicable for parts claim") because other BUs should continue on their current behaviour (defaulting casual part only for part not installed on unit)</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+    <ReworkTime></ReworkTime>
+  </ReviewIssue>
+  <ReviewIssue id="G59CPBVC">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-02-04 :: 15:04:29:976 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-02-04 :: 15:05:05:461 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ramalakshmi</ReviewerId>
+    <AssignedTo>Lavin</AssignedTo>
+    <ReviewTime>15</ReviewTime>
+    <File line="564">src/main/java/tavant/twms/domain/policy/PolicyDefinition.java</File>
+    <Type>item.type.label.codingStandards</Type>
+    <Severity>item.severity.label.normal</Severity>
+    <Summary>Rename method warrantyPeriodBasedOnInstallationDate as its calculating warranty based on both DOI/DOP</Summary>
+    <Description>Rename method warrantyPeriodBasedOnInstallationDate as its calculating warranty based on both DOI/DOP</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+    <ReworkTime></ReworkTime>
+  </ReviewIssue>
+  <ReviewIssue id="G59D8QNP">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-02-04 :: 15:19:35:605 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-02-04 :: 15:20:10:917 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ramalakshmi</ReviewerId>
+    <AssignedTo>Lavin</AssignedTo>
+    <ReviewTime></ReviewTime>
+    <File line="134">src/main/java/tavant/twms/domain/policy/PolicyServiceImpl.java</File>
+    <Type>item.type.label.programLogic</Type>
+    <Severity>item.severity.label.major</Severity>
+    <Summary>For serialized parts, system should look for only the parts registered coverage</Summary>
+    <Description>For serialized parts, system should look for only the parts registered coverage</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+    <ReworkTime></ReworkTime>
+  </ReviewIssue>
+  <ReviewIssue id="G59EDALW">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-02-04 :: 15:51:07:700 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-02-04 :: 15:52:37:669 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ramalakshmi</ReviewerId>
+    <AssignedTo>Lavin</AssignedTo>
+    <ReviewTime>15</ReviewTime>
+    <File line="146">src/main/java/tavant/twms/domain/policy/PolicyDefinitionRepositoryImpl.java</File>
+    <Type>item.type.label.programLogic</Type>
+    <Severity>item.severity.label.normal</Severity>
+    <Summary>Rename method findPoliciesForParts to findApplicablePolicyForClaimedPart</Summary>
+    <Description>As there is already a method findPoliciesForItem it is confusing. Take care of the HBM query as well</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+    <ReworkTime></ReworkTime>
+  </ReviewIssue>
+  <ReviewIssue id="G59EIVEM">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-02-04 :: 15:55:27:934 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-02-04 :: 16:31:47:972 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ramalakshmi</ReviewerId>
+    <AssignedTo>Lavin</AssignedTo>
+    <ReviewTime>15</ReviewTime>
+    <File line="109">src/main/java/tavant/twms/domain/policy/SimpleBestApplicablePolicyEvaluator.java</File>
+    <Type>item.type.label.programLogic</Type>
+    <Severity>item.severity.label.normal</Severity>
+    <Summary>Need to have serviceHoursCoveredLogic in case of parts claim too</Summary>
+    <Description>Need to have serviceHoursCoveredLogic/failureDate coverage check in case of parts claim too. </Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+    <ReworkTime></ReworkTime>
+  </ReviewIssue>
+  <ReviewIssue id="G59EY79I">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-02-04 :: 16:07:23:142 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-02-04 :: 16:07:51:064 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ramalakshmi</ReviewerId>
+    <AssignedTo>Lavin</AssignedTo>
+    <ReviewTime></ReviewTime>
+    <File line="104">src/main/java/tavant/twms/domain/policy/SimpleBestApplicablePolicyEvaluator.java</File>
+    <Type>item.type.label.codingStandards</Type>
+    <Severity>item.severity.label.normal</Severity>
+    <Summary>Avoid duplication of code between findBestApplicablePolicy(Claim) &amp; findBestApplicablePolicy(ClaimedItem)</Summary>
+    <Description></Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+    <ReworkTime></ReworkTime>
+  </ReviewIssue>
+  <ReviewIssue id="G59GEUUM">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-02-04 :: 16:48:19:822 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-02-04 :: 16:48:42:712 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ramalakshmi</ReviewerId>
+    <AssignedTo>Lavin</AssignedTo>
+    <ReviewTime>15</ReviewTime>
+    <File line="268">src/main/java/tavant/twms/domain/claim/Claim.java</File>
+    <Type>item.type.label.codingStandards</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>Rename variable claimCompetitorModel to competitorModel</Summary>
+    <Description>Rename variable claimCompetitorModel to competitorModel</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+    <ReworkTime></ReworkTime>
+  </ReviewIssue>
+  <ReviewIssue id="G5AJNW2X">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-02-05 :: 11:07:06:345 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-02-05 :: 11:07:42:586 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ramalakshmi</ReviewerId>
+    <AssignedTo>Lavin</AssignedTo>
+    <ReviewTime>5</ReviewTime>
+    <File line="247">src/main/java/tavant/twms/domain/claim/Claim.java</File>
+    <Type>item.type.label.codingStandards</Type>
+    <Severity>item.severity.label.normal</Severity>
+    <Summary>Look into renaming the database table columns too (for partItemReference)</Summary>
+    <Description>Look into renaming the database table columns too (for partItemReference)</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+    <ReworkTime></ReworkTime>
+  </ReviewIssue>
+</Review>

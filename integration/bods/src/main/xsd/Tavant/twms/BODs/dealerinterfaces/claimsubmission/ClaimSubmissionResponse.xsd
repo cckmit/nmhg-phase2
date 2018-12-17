@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema
+	xmlns="http://www.tavant.com/dealerinterfaces/claimsubmission/response"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.tavant.com/dealerinterfaces/claimsubmission/response"
+	elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="ClaimSubmissionResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="ApplicationArea">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Sender">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Task">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="50" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="LogicalId">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="50" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="ReferenceId">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="100" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="BODId">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="50" />
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="InterfaceNumber">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="50" />
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="CreationDateTime" type="xs:string" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Status" type="xs:string" nillable="false" />
+				<xs:element name="ClaimNumber" type="xs:string" nillable="true" minOccurs="0"/>
+				<xs:element name="TavantClaimUniqueIdentifier" type="xs:string"
+					nillable="true" minOccurs="0"/>
+				<xs:element name="Exceptions" minOccurs="0">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Error" minOccurs="0" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="errorCode" type="xs:string">
+										</xs:element>
+										<xs:element name="errorMessage" type="xs:string">
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

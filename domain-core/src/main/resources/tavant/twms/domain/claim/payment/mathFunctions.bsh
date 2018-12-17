@@ -1,0 +1,11 @@
+import java.lang.Math;
+
+double minimumof(double a,double b) {
+	return Math.min(a,b);
+}
+
+double maximumof(double a,double b) {
+	return Math.max(a,b);
+} 
+
+1==0;

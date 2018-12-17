@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <query name="findAllTasksForSwimlane">
+        <![CDATA[
+     SELECT task
+     FROM Task task
+     JOIN task.swimlane sw
+     JOIN task.processDefinition processdef
+     WHERE processdef.name = :process
+     AND sw.name IN(:swimlanes)
+     AND processdef.version = (SELECT MAX(version) FROM ProcessDefinition pd where pd.name=:process)
+     ORDER BY task.name
+    ]]>
+    </query>
+
+    <query name="countTasksByTaskNames">
+        <![CDATA[
+     SELECT COUNT(ti) ,ti.task.name
+     FROM TaskInstance ti
+     WHERE ti.isOpen = true
+     AND ti.task.name in (:taskNames)
+     and ti.task.processDefinition.name = :processDefinition
+     AND ti.actorId = :actorId
+     group by ti.task.name
+    ]]>
+    </query>
+
+    <query name="allOpenTasksForTaskName">
+        <![CDATA[
+     SELECT ti
+     FROM TaskInstance ti
+     WHERE ti.isOpen = true
+     AND ti.task.name = :taskName
+    ]]>
+    </query>
+
+</hibernate-mapping>

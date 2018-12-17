@@ -1,0 +1,167 @@
+<%--
+	This jsp is meant to hold the internationalized values of all javascript variables, which are to be used as
+	TabLabels and other things like that, where the value can't be internationlized otherwise. This will act as 
+	a common place for such variables(used as keys).
+	The file will have to be included in all the jsps, where the value for these keys are required.
+--%>
+<%@page contentType="text/html"%>
+<%@page pageEncoding="UTF-8"%>
+<%@taglib prefix="s" uri="/struts-tags"%>
+
+<%-- IMPORTANT : Please make sure that the i18N variables are added in 
+				 the list in alphabatical order. --%>
+				 
+<script type="text/javascript">
+	var i18N = {
+				add_condition_subRow_title :    "<s:text name="button.common.addSubCondition"/>",
+		       	asm_row_cannot_be_leaf :        "<s:text name="error.serviceProcedure.leafAsmMustHaveSpChild"/>",
+				claimDueParts_locationbased :   "<s:text name="title.partReturnConfiguration.dueParts"/>",
+				claimOverDueParts_locationbased : "<s:text name="title.partReturnConfiguration.overdueParts"/>",
+				common_by :						"<s:text name="label.common.by"/>",
+				create_campaign :			    "<s:text name="title.campaign.createCampaign"/>",
+				create_item_price_modifier:     "<s:text name="title.manageRates.createItemPriceModifier"/>",
+				create_lov :                    "<s:text name="title.listOfValues.createLov"/>",
+				create_lr_configuration :       "<s:text name="title.manageRates.createLabourRate"/>",
+				create_part_prices_configuration :"<s:text name="title.manageRates.createPartPrices"/>",
+				create_payment_modifier :       "<s:text name="title.managePayment.createModifier"/>",
+				create_policy_modifier :        "<s:text name="title.managePolicy.newPolicyModifier"/>",
+				create_tr_configuration :       "<s:text name="title.manageRates.createTravelRate"/>",
+				create_warehouse :              "<s:text name="title.manageWarehouse.createWarehouse"/>",
+				dealer_groupScheme :		    "<s:text name="title.manageGroup.dealerGroupScheme"/>",
+				dealer_Name :		    		"<s:text name="error.report.searchDealerName"/>",
+				dealer_GroupName :		    	"<s:text name="error.report.searchDealerGroupName"/>",
+				definition_not_valid :          "<s:text name="error.serviceProcedure.invalidDefinition"/>",
+                delete_condition_row_title :    "<s:text name="button.common.deleteCondition"/>",
+       			delete_condition_subRow_title : "<s:text name="button.common.deleteSubCondition"/>",
+		        delete_item_price_modifier:     "<s:text name="button.common.delete"/>",
+        		delete_lr_configuration :       "<s:text name="button.common.delete"/>",
+		        delete_partDefinition :         "<s:text name="button.common.delete"/>",
+		        delete_payment_modifier :       "<s:text name="button.common.delete"/>",
+		        delete_tr_configuration :       "<s:text name="button.common.delete"/>",
+				dueParts_claimbased :           "<s:text name="title.dueParts.claimView"/>",
+				dueParts_detail :               "<s:text name="title.dueParts.detailView"/>",
+				duplicateClaimCheck_rhsPrefix : "<s:text name="label.manageBusinessCondition.rhsPrefix"/>",		   
+				edit_expression				  : "<s:text name="title.viewClaim.editExpression"/>",
+				expressionEditor_operator_all : "<s:text name="dropdown.manageBusinessCondition.all"/>",
+		        expressionEditor_operator_any : "<s:text name="dropdown.manageBusinessCondition.any"/>",
+		        extended_warranty_purchase    : "<s:text name="summaryTable.inboxButton.purchase_warranty"/>", 
+       			ft_row_cannot_be_leaf :         "<s:text name="error.serviceProcedure.leafFtMustHaveFcChild"/>",
+				group_name :					"<s:text name="title.manageGroup.groupName"/>",	
+        		home_tab_label :                "<s:text name="home_jsp.tabs.home"/>",
+				item_groupScheme : 			    "<s:text name="title.manageGroup.itemGroupScheme"/>",
+				loading_message :	 			"<s:text name="message.common.loadingMessage"/>",
+				manage_dealer_groups :			"<s:text name="title.manageGroup.manageDealerGroups"/>",
+				manage_item_groups :			"<s:text name="title.manageGroup.manageItemGroups"/>",
+				manage_user_groups :			"<s:text name="title.manageGroup.manageUserGroups"/>",	
+				manage_role_groups :			"<s:text name="title.manageGroup.manageRoleGroups"/>",
+				manage_fleet_warrantycoverage:	"<s:text name="summaryTable.label.managewarrantycoverage"/>",		
+				name :							"<s:text name="title.manageGroup.name"/>",
+				new_claim : 					"<s:text name="title.newClaim"/>",
+				new_user_site : 				"<s:text name="title.newUserSite"/>",
+				new_consumer_complaint : 		"<s:text name="title.common.newConsumerComplaint"/>",
+				new_field_report : 		        "<s:text name="title.common.new_field_report"/>",
+				new_contract : 			        "<s:text name="title.contractAdmin.createContract"/>",
+		        new_createPRDefinition :        "<s:text name="title.partReturnConfiguration.createConfig"/>",
+				new_dealerGroup :			    "<s:text name="title.manageGroup.newDealerGroup"/>",
+				new_dealerScheme: 		        "<s:text name="title.manageGroup.newDealerScheme"/>",
+				new_domainrule :                "<s:text name="title.manageBusinessRule.newBusinessRule"/>",
+				new_loaScheme :                 "<s:text name="title.manageLOAScheme.newLOAScheme"/>",
+				new_expression:                 "<s:text name="title.manageBusinessCondition.newBusinessCondition"/>",
+                invalidConditionsWhileSaving:   "<s:text name="error.manageBusinessCondition.invalidConditionsWhileSaving"/>",
+                saveFailed:                     "<s:text name="error.manageBusinessCondition.saveFailed"/>",
+                new_itemGroup :			        "<s:text name="title.manageGroup.newItemGroup"/>",
+				new_itemScheme: 		        "<s:text name="title.manageGroup.newItemScheme"/>",
+		        newPaymentDefinition : 			"<s:text name="title.managePayment.newPaymentDefinition"/>",
+				new_policy_definition : 		"<s:text name="title.managePolicy.newPolicyDefinition"/>",
+				new_userGroup :			        "<s:text name="title.manageGroup.newUserGroup"/>",
+				new_userScheme : 		        "<s:text name="title.manageGroup.newUserScheme"/>",
+				new_roleScheme:                 "<s:text name="title.manageGroup.newRoleScheme"/>",
+				new_roleGroup:                  "<s:text name="title.manageGroup.newRoleGroup"/>",
+				role_groupScheme:				"<s:text name="title.manageGroup.roleGroupScheme"/>",
+				new_technician_certification :  "<s:text name="title.technician.newTechnicianCertification"/>",
+		        numbers :	{
+					            "0" : "<s:text name="label.common.numberZero"/>",
+					            "1" : "<s:text name="label.common.numberOne"/>",
+					            "2" : "<s:text name="label.common.numberTwo"/>",
+					            "3" : "<s:text name="label.common.numberThree"/>",
+					            "4" : "<s:text name="label.common.numberFour"/>",
+					            "5" : "<s:text name="label.common.numberFive"/>",
+					            "6" : "<s:text name="label.common.numberSix"/>",
+					            "7" : "<s:text name="label.common.numberSeven"/>",
+					            "8" : "<s:text name="label.common.numberEight"/>",
+					            "9" : "<s:text name="label.common.numberNine"/>"
+		        },	
+				overDueParts_claimbased :       "<s:text name="title.partReturnConfiguration.overdueParts"/>",
+		        purchase_extended_warranty :    "<s:text name="title.manageCustomer.extendedWarranty"/>",
+		        register_product :           	"<s:text name="title.manageCustomer.registerProduct"/>",
+				search_claim : 					"<s:text name="title.claim.searchClaim"/>",
+				search_inventory :				"<s:text name="title.claim.searchInventory"/>",
+				search_results :				"<s:text name="error.report.search"/>",
+		        summary_table_hide :            "<s:text name="label.common.hide"/>",
+		        summary_table_hidePreview :     "<s:text name="label.common.hidePreview"/>",        
+		        summary_table_show :            "<s:text name="label.common.show"/>",
+		        summary_table_showPreview :     "<s:text name="label.common.showPreview"/>",
+		        supplier_Name :     			"<s:text name="error.report.searchSupplierName"/>",
+				upload_claim :                  "<s:text name="title.uploadClaims.importClaims"/>",
+				user_groupScheme : 			    "<s:text name="title.manageGroup.userGroupScheme"/>",
+				view_consumer_complaint :       "<s:text name="title.common.view_consumer_complaint"/>",
+				view_field_report :             "<s:text name="title.common.viewFieldReport"/>",  
+				warranty_transfer : 			"<s:text name="title.warrantyRegistration.equipmentTransfer"/>",
+				retail_machine_transfer :		"<s:text name="title.warrantyRegistration.retailMachineTransfer"/>",
+                zero_lab_hrs_not_allowed :      "<s:text name="error.serviceProcedure.zeroLabourHrsNotAllowed"/>",
+    			<%-- TODO : Following variables are used only in inboxButtonCallbacks.js. They should  
+    			<START>		be removed once everything has been moved to summaryTableAction	--%>
+                field_modification : 			"<s:text name="title.campaign.serviceCampaign"/>",
+   				new_warranty_registration : 	"<s:text name="title.managePolicy.warrantyRegistration"/>",
+		        manage_partDefinition :	        "<s:text name="javascript.var.manage_definition"/>",
+				create_customer : 				"<s:text name="javascript.var.create_customer"/>",
+				create_payment_definition :		"<s:text name="javascript.var.create_payment_definition"/>",
+				new_policy :		            "Create Policy",
+				upload_document :				"<s:text name="title.uploadClaims.uploadDocument"/>",
+				scrap_inventory : 				"<s:text name="title.scrap.scrapInventory"/>",
+				create_supplier : 				"<s:text name="button.manageSuppliers.create"/>",
+				unScrap_inventory:              "<s:text name="title.unScrap.unScrapInventory"/>",
+				stolen_inventory:				"<s:text name="title.stolen.stolenInventory"/>",
+				unStolen_inventory:				"<s:text name="title.unStolen.unStolenInventory"/>",
+				create_attribute:				"<s:text name="button.manageAttributes.create"/>",
+				dealer_to_dealer:				"<s:text name="title.dealertodealer.dealertodealertransfer"/>",
+				new_dcap_claims:				"<s:text name="label.dcap.submit.DcapClaims"/>",
+				approve_all_dcap_claims:		"<s:text name="label.dcap.approve.DcapClaims"/>",
+				new_third_party_claim:			"<s:text name="label.claim.create.ThirdPartyClaims"/>",
+				create_laborType:               "<s:text name="button.laborType.createLaborType"/>",
+				create_stateMandates:           "<s:text name="button.stateMandates.createStateMandates"/>",
+                etr_print_tab:                  "<s:text name="label.tabs.etrPrintForm"/>",
+                dr_print_tab:                   "<s:text name="label.tabs.drPrintForm"/>",
+                register_major_components:      "<s:text name="label.majorComponent.register"/>",
+				create_alarm_code :             "<s:text name="label.alarmcode.createAlarmCode"/>",
+                failure_report :                "<s:text name="label.common.failureReport"/>",
+                oem_installed_parts : 			"<s:text name="label.claim.installedParts"/>",
+                non_oem_installed_parts : 		"<s:text name="label.newClaim.nonHussmanPartsInstalled"/>",
+                select_additional_inventories:  "<s:text name="select.additional.inventories"/>",
+                oem_removed_parts : 			"<s:text name="label.claim.removedParts"/>",
+                serial_number : 			    "<s:text name="label.common.serialNumber"/>",
+                part_number : 			        "<s:text name="label.common.partNumber"/>",
+                quantity : 		            	"<s:text name="label.common.quantity"/>",
+                description :        			"<s:text name="label.common.description"/>",
+                return_location : 			    "<s:text name="label.common.returnlocation"/>",
+                days : 			                "<s:text name="label.common.days"/>",
+                payment_condition : 		    "<s:text name="columnTitle.partReturnConfiguration.paymentCondition"/>",
+                price : 			            "<s:text name="label.common.price"/>",
+                invoice : 			            "<s:text name="label.newClaim.invoice"/>",
+                recovery_return : 		        "<s:text name="label.recovery.return"/>",
+                unitPrice : 			        "<s:text name="label.inventory.unitPrice" />",
+                uomDisplay : 			        "<s:text name="label.uom.display" />",
+                unitCostPrice : 		        "<s:text name="label.newClaim.unitCostPrice" />",
+                create_shipper :              "<s:text name="title.manageShipper.createShipper"/>"
+                <%-- <END> --%>
+  			  };	
+  			  
+    function getI18NNumber(/*int*/ number) {
+        var returnNumber = "";
+        number = ("" + number);
+        for(var i = 0; i < ("" + number).length; i++) {
+            returnNumber += i18N.numbers[number.charAt(i)];
+        }
+        return new String(returnNumber);
+    }
+</script>

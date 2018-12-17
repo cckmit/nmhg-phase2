@@ -1,0 +1,11 @@
+DB Patches Guidelines
+
+No semi colons
+No hard coded IDs
+Separate Patches for DMLs and DDLs
+No commits in DDL
+Add commits in DML
+end all statements with '/'.
+Give appropriate names for patch files.
+'.sql' extension (case sensitive)
+No space after the statements

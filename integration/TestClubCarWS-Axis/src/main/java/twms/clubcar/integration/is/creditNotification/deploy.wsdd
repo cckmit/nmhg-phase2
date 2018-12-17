@@ -1,0 +1,29 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from ProcessCreditNotification-WS WSDL service -->
+
+  <service name="ProcessCreditNotification-WS" provider="java:RPC" style="rpc" use="encoded">
+      <parameter name="wsdlTargetNamespace" value="http://external.server.integration.twms.tavant"/>
+      <parameter name="wsdlServiceElement" value="ProcessCreditNotification-WS"/>
+      <parameter name="wsdlServicePort" value="ProcessCreditNotification-WS"/>
+      <parameter name="className" value="twms.clubcar.integration.is.creditNotification.ProcessCreditNotificationWSSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="$Proxy205"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="sync" qname="operNS:sync" xmlns:operNS="http://external.server.integration.twms.tavant" returnQName="syncReturn" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="in0" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <parameter name="allowedMethods" value="sync"/>
+      <parameter name="scope" value="Session"/>
+
+  </service>
+</deployment>

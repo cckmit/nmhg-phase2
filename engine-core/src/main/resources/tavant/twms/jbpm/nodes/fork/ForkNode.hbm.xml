@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+      "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+          "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping default-access="field">
+
+  <subclass name="tavant.twms.jbpm.nodes.fork.ForkNode" discriminator-value="V"
+    extends="org.jbpm.graph.def.Node">
+
+    <list name="repeatableTransitions" table="REPEATABLE_TRANSITION">
+      <key column="FORK_NODE" />
+      <list-index column="LIST_INDEX" />
+      <composite-element class="tavant.twms.jbpm.nodes.fork.RepeatableTransition">
+        <property name="transitionName" column="TRANSITION_NAME" access="field"/>
+        <property name="repetitionCriteriaClass" column="REPETITION_CRITERIA_CLASS" access="field"/>
+        <property name="inputExpression" column="INPUT_EXPRESSION" access="field"/>
+        <property name="outputExpression" column="OUTPUT_EXPRESSION" access="field"/>
+      </composite-element>
+    </list>
+  </subclass>
+
+</hibernate-mapping>

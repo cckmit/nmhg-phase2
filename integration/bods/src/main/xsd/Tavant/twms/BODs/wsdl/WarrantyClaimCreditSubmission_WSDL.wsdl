@@ -1,0 +1,691 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="MI_CreditSubmission_SLMS" targetNamespace="http://nmhg.com/WarrantyClaimCreditSubmission" xmlns:p1="http://nmhg.com/WarrantyClaimCreditSubmission" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+	<wsdl:types>
+		<xsd:schema targetNamespace="http://nmhg.com/WarrantyClaimCreditSubmission" xmlns="http://nmhg.com/WarrantyClaimCreditSubmission" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+			<xsd:element name="MT_CreditSubmission" type="CreditSubmission"/>
+			<xsd:complexType name="CreditSubmission">
+				<xsd:sequence>
+					<xsd:element name="ApplicationArea">
+						<xsd:annotation>
+							<xsd:appinfo source="http://sap.com/xi/TextID">32ca1d7b795d11e39125100ba93959d4</xsd:appinfo>
+						</xsd:annotation>
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="Sender">
+									<xsd:annotation>
+										<xsd:appinfo source="http://sap.com/xi/TextID">32ca5f6f795d11e3b1e1100ba93959d4</xsd:appinfo>
+									</xsd:annotation>
+									<xsd:complexType>
+										<xsd:sequence>
+											<xsd:element name="Task">
+												<xsd:annotation>
+													<xsd:appinfo source="http://sap.com/xi/TextID">32ca5f70795d11e38466100ba93959d4</xsd:appinfo>
+												</xsd:annotation>
+												<xsd:simpleType>
+													<xsd:restriction base="xsd:string">
+														<xsd:maxLength value="50"/>
+													</xsd:restriction>
+												</xsd:simpleType>
+											</xsd:element>
+											<xsd:element name="LogicalId">
+												<xsd:annotation>
+													<xsd:appinfo source="http://sap.com/xi/TextID">32ca5f71795d11e3cbbd100ba93959d4</xsd:appinfo>
+												</xsd:annotation>
+												<xsd:simpleType>
+													<xsd:restriction base="xsd:string">
+														<xsd:maxLength value="50"/>
+													</xsd:restriction>
+												</xsd:simpleType>
+											</xsd:element>
+											<xsd:element name="ReferenceId">
+												<xsd:annotation>
+													<xsd:appinfo source="http://sap.com/xi/TextID">32ca5f72795d11e3c945100ba93959d4</xsd:appinfo>
+												</xsd:annotation>
+												<xsd:simpleType>
+													<xsd:restriction base="xsd:string">
+														<xsd:maxLength value="100"/>
+													</xsd:restriction>
+												</xsd:simpleType>
+											</xsd:element>
+										</xsd:sequence>
+									</xsd:complexType>
+								</xsd:element>
+								<xsd:element name="BODId">
+									<xsd:annotation>
+										<xsd:appinfo source="http://sap.com/xi/TextID">32ca5f73795d11e3c1bc100ba93959d4</xsd:appinfo>
+									</xsd:annotation>
+									<xsd:simpleType>
+										<xsd:restriction base="xsd:string">
+											<xsd:maxLength value="50"/>
+										</xsd:restriction>
+									</xsd:simpleType>
+								</xsd:element>
+								<xsd:element name="InterfaceNumber">
+									<xsd:annotation>
+										<xsd:appinfo source="http://sap.com/xi/TextID">32ca5f74795d11e3cafa100ba93959d4</xsd:appinfo>
+									</xsd:annotation>
+									<xsd:simpleType>
+										<xsd:restriction base="xsd:string">
+											<xsd:maxLength value="50"/>
+										</xsd:restriction>
+									</xsd:simpleType>
+								</xsd:element>
+								<xsd:element name="CreationDateTime" type="xsd:string" minOccurs="0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+									<xsd:annotation>
+										<xsd:appinfo source="http://sap.com/xi/TextID">32ca5f75795d11e38b93100ba93959d4</xsd:appinfo>
+									</xsd:annotation>
+								</xsd:element>
+							</xsd:sequence>
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="DataArea">
+						<xsd:annotation>
+							<xsd:appinfo source="http://sap.com/xi/TextID">32ca785d795d11e3a7a2100ba93959d4</xsd:appinfo>
+						</xsd:annotation>
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="Invoice">
+									<xsd:annotation>
+										<xsd:appinfo source="http://sap.com/xi/TextID">32ca785e795d11e396ff100ba93959d4</xsd:appinfo>
+									</xsd:annotation>
+									<xsd:complexType>
+										<xsd:sequence>
+											<xsd:element name="LineContext">
+												<xsd:annotation>
+													<xsd:appinfo source="http://sap.com/xi/TextID">32ca785f795d11e3a785100ba93959d4</xsd:appinfo>
+												</xsd:annotation>
+												<xsd:simpleType>
+													<xsd:restriction base="xsd:string">
+														<xsd:maxLength value="20"/>
+													</xsd:restriction>
+												</xsd:simpleType>
+											</xsd:element>
+											<xsd:element name="LineAttribute1">
+												<xsd:annotation>
+													<xsd:appinfo source="http://sap.com/xi/TextID">32ca7860795d11e3a383100ba93959d4</xsd:appinfo>
+												</xsd:annotation>
+												<xsd:simpleType>
+													<xsd:restriction base="xsd:string">
+														<xsd:maxLength value="20"/>
+													</xsd:restriction>
+												</xsd:simpleType>
+											</xsd:element>
+											<xsd:element name="BatchSourceName">
+												<xsd:annotation>
+													<xsd:appinfo source="http://sap.com/xi/TextID">32ca7861795d11e39217100ba93959d4</xsd:appinfo>
+												</xsd:annotation>
+												<xsd:simpleType>
+													<xsd:restriction base="xsd:string">
+														<xsd:maxLength value="20"/>
+													</xsd:restriction>
+												</xsd:simpleType>
+											</xsd:element>
+											<xsd:element name="ShipSiteId" minOccurs="0">
+												<xsd:annotation>
+													<xsd:appinfo source="http://sap.com/xi/TextID">32ca7862795d11e3af2b100ba93959d4</xsd:appinfo>
+												</xsd:annotation>
+												<xsd:simpleType>
+													<xsd:restriction base="xsd:string">
+														<xsd:maxLength value="100"/>
+													</xsd:restriction>
+												</xsd:simpleType>
+											</xsd:element>
+											<xsd:element name="ShipCustomerId">
+												<xsd:annotation>
+													<xsd:appinfo source="http://sap.com/xi/TextID">32ca7863795d11e399b4100ba93959d4</xsd:appinfo>
+												</xsd:annotation>
+												<xsd:simpleType>
+													<xsd:restriction base="xsd:string">
+														<xsd:maxLength value="20"/>
+													</xsd:restriction>
+												</xsd:simpleType>
+											</xsd:element>
+											<xsd:element name="TrxDate" type="xsd:string">
+												<xsd:annotation>
+													<xsd:appinfo source="http://sap.com/xi/TextID">32ca7864795d11e3a543100ba93959d4</xsd:appinfo>
+												</xsd:annotation>
+											</xsd:element>
+											<xsd:element name="InstallationDate" type="xsd:string">
+												<xsd:annotation>
+													<xsd:appinfo source="http://sap.com/xi/TextID">32ca7865795d11e39a84100ba93959d4</xsd:appinfo>
+												</xsd:annotation>
+											</xsd:element>
+											<xsd:element name="ClaimSubmissionDate" type="xsd:string">
+												<xsd:annotation>
+													<xsd:appinfo source="http://sap.com/xi/TextID">32ca7866795d11e3a0e6100ba93959d4</xsd:appinfo>
+												</xsd:annotation>
+											</xsd:element>
+											<xsd:element name="SalesOrderLine" minOccurs="0">
+												<xsd:annotation>
+													<xsd:appinfo source="http://sap.com/xi/TextID">32ca7867795d11e3caf5100ba93959d4</xsd:appinfo>
+												</xsd:annotation>
+												<xsd:simpleType>
+													<xsd:restriction base="xsd:string">
+														<xsd:maxLength value="50"/>
+													</xsd:restriction>
+												</xsd:simpleType>
+											</xsd:element>
+											<xsd:element name="PartItemNumber" minOccurs="0">
+												<xsd:annotation>
+													<xsd:appinfo source="http://sap.com/xi/TextID">32ca9fe5795d11e3877b100ba93959d4</xsd:appinfo>
+												</xsd:annotation>
+												<xsd:simpleType>
+													<xsd:restriction base="xsd:string">
+														<xsd:maxLength value="40"/>
+													</xsd:restriction>
+												</xsd:simpleType>
+											</xsd:element>
+											<xsd:element name="ClaimType">
+												<xsd:annotation>
+													<xsd:appinfo source="http://sap.com/xi/TextID">32ca9fe6795d11e382f3100ba93959d4</xsd:appinfo>
+												</xsd:annotation>
+												<xsd:simpleType>
+													<xsd:restriction base="xsd:string">
+														<xsd:enumeration value="MACHINE"/>
+														<xsd:enumeration value="PARTS"/>
+														<xsd:enumeration value="FIELD MODIFICATION"/>
+														<xsd:enumeration value="MODIFICATION"/>
+														<xsd:enumeration value="ATTACHMENTS"/>
+														<xsd:enumeration value="INFORMATION"/>
+														<xsd:enumeration value="ONLY"/>
+														<xsd:maxLength value="100"/>
+													</xsd:restriction>
+												</xsd:simpleType>
+											</xsd:element>
+											<xsd:element name="ProjectCode">
+												<xsd:annotation>
+													<xsd:appinfo source="http://sap.com/xi/TextID">32ca9fe7795d11e39696100ba93959d4</xsd:appinfo>
+												</xsd:annotation>
+												<xsd:simpleType>
+													<xsd:restriction base="xsd:string">
+														<xsd:maxLength value="20"/>
+													</xsd:restriction>
+												</xsd:simpleType>
+											</xsd:element>
+											<xsd:element name="SMRFlag" minOccurs="0">
+												<xsd:annotation>
+													<xsd:appinfo source="http://sap.com/xi/TextID">32ca9fe8795d11e38a3c100ba93959d4</xsd:appinfo>
+												</xsd:annotation>
+												<xsd:simpleType>
+													<xsd:restriction base="xsd:string">
+														<xsd:enumeration value="Y"/>
+														<xsd:enumeration value="N"/>
+														<xsd:maxLength value="5"/>
+													</xsd:restriction>
+												</xsd:simpleType>
+											</xsd:element>
+											<xsd:element name="SMRReason" minOccurs="0">
+												<xsd:annotation>
+													<xsd:appinfo source="http://sap.com/xi/TextID">32ca9fe9795d11e3b4ce100ba93959d4</xsd:appinfo>
+												</xsd:annotation>
+												<xsd:simpleType>
+													<xsd:restriction base="xsd:string">
+														<xsd:maxLength value="20"/>
+													</xsd:restriction>
+												</xsd:simpleType>
+											</xsd:element>
+											<xsd:element name="SellingEntity" minOccurs="0">
+												<xsd:annotation>
+													<xsd:appinfo source="http://sap.com/xi/TextID">32ca9fea795d11e39383100ba93959d4</xsd:appinfo>
+												</xsd:annotation>
+												<xsd:simpleType>
+													<xsd:restriction base="xsd:string">
+														<xsd:maxLength value="50"/>
+													</xsd:restriction>
+												</xsd:simpleType>
+											</xsd:element>
+											<xsd:element name="WarrantyType">
+												<xsd:annotation>
+													<xsd:appinfo source="http://sap.com/xi/TextID">32ca9feb795d11e3c8f8100ba93959d4</xsd:appinfo>
+												</xsd:annotation>
+												<xsd:simpleType>
+													<xsd:restriction base="xsd:string">
+														<xsd:maxLength value="20"/>
+													</xsd:restriction>
+												</xsd:simpleType>
+											</xsd:element>
+											<xsd:element name="Code">
+												<xsd:annotation>
+													<xsd:appinfo source="http://sap.com/xi/TextID">32ca9fec795d11e3a465100ba93959d4</xsd:appinfo>
+												</xsd:annotation>
+												<xsd:simpleType>
+													<xsd:restriction base="xsd:string">
+														<xsd:maxLength value="255"/>
+													</xsd:restriction>
+												</xsd:simpleType>
+											</xsd:element>
+											<xsd:element name="Description">
+												<xsd:annotation>
+													<xsd:appinfo source="http://sap.com/xi/TextID">32ca9fed795d11e39ee7100ba93959d4</xsd:appinfo>
+												</xsd:annotation>
+												<xsd:simpleType>
+													<xsd:restriction base="xsd:string">
+														<xsd:maxLength value="255"/>
+													</xsd:restriction>
+												</xsd:simpleType>
+											</xsd:element>
+											<xsd:element name="WorkOrderNumber">
+												<xsd:annotation>
+													<xsd:appinfo source="http://sap.com/xi/TextID">32cacb4a795d11e389c7100ba93959d4</xsd:appinfo>
+												</xsd:annotation>
+												<xsd:simpleType>
+													<xsd:restriction base="xsd:string">
+														<xsd:maxLength value="50"/>
+													</xsd:restriction>
+												</xsd:simpleType>
+											</xsd:element>
+											<xsd:element name="BUName">
+												<xsd:annotation>
+													<xsd:appinfo source="http://sap.com/xi/TextID">32cacb4b795d11e3aa57100ba93959d4</xsd:appinfo>
+												</xsd:annotation>
+												<xsd:simpleType>
+													<xsd:restriction base="xsd:string">
+														<xsd:maxLength value="20"/>
+													</xsd:restriction>
+												</xsd:simpleType>
+											</xsd:element>
+											<xsd:element name="InvoiceNo" minOccurs="0">
+												<xsd:annotation>
+													<xsd:appinfo source="http://sap.com/xi/TextID">32cacb4c795d11e38207100ba93959d4</xsd:appinfo>
+												</xsd:annotation>
+												<xsd:simpleType>
+													<xsd:restriction base="xsd:string">
+														<xsd:maxLength value="20"/>
+													</xsd:restriction>
+												</xsd:simpleType>
+											</xsd:element>
+											<xsd:element name="ReturnForReason" minOccurs="0">
+												<xsd:annotation>
+													<xsd:appinfo source="http://sap.com/xi/TextID">32cacb4d795d11e3ac89100ba93959d4</xsd:appinfo>
+												</xsd:annotation>
+												<xsd:simpleType>
+													<xsd:restriction base="xsd:string">
+														<xsd:maxLength value="255"/>
+													</xsd:restriction>
+												</xsd:simpleType>
+											</xsd:element>
+											<xsd:element name="SerializedClaim" minOccurs="0">
+												<xsd:annotation>
+													<xsd:appinfo source="http://sap.com/xi/TextID">32cacb4e795d11e39dcf100ba93959d4</xsd:appinfo>
+												</xsd:annotation>
+												<xsd:simpleType>
+													<xsd:restriction base="xsd:string">
+														<xsd:enumeration value="Yes"/>
+														<xsd:enumeration value="No"/>
+														<xsd:maxLength value="5"/>
+													</xsd:restriction>
+												</xsd:simpleType>
+											</xsd:element>
+											<xsd:element name="LineAttribute6">
+												<xsd:annotation>
+													<xsd:appinfo source="http://sap.com/xi/TextID">32cacb4f795d11e38d65100ba93959d4</xsd:appinfo>
+												</xsd:annotation>
+												<xsd:complexType>
+													<xsd:sequence>
+														<xsd:element name="SerialNumbers" minOccurs="0">
+															<xsd:annotation>
+																<xsd:appinfo source="http://sap.com/xi/TextID">32cacb50795d11e39153100ba93959d4</xsd:appinfo>
+															</xsd:annotation>
+															<xsd:complexType>
+																<xsd:sequence>
+																	<xsd:element name="UnitDetail" maxOccurs="unbounded">
+																		<xsd:annotation>
+																			<xsd:appinfo source="http://sap.com/xi/TextID">32cacb51795d11e3a16b100ba93959d4</xsd:appinfo>
+																		</xsd:annotation>
+																		<xsd:complexType>
+																			<xsd:sequence>
+																				<xsd:element name="SerialNumber" minOccurs="0">
+																					<xsd:annotation>
+																						<xsd:appinfo source="http://sap.com/xi/TextID">32cacb52795d11e3ae00100ba93959d4</xsd:appinfo>
+																					</xsd:annotation>
+																					<xsd:simpleType>
+																						<xsd:restriction base="xsd:string">
+																							<xsd:maxLength value="20"/>
+																						</xsd:restriction>
+																					</xsd:simpleType>
+																				</xsd:element>
+																				<xsd:element name="ItemNumber" minOccurs="0">
+																					<xsd:annotation>
+																						<xsd:appinfo source="http://sap.com/xi/TextID">32cacb53795d11e38baa100ba93959d4</xsd:appinfo>
+																					</xsd:annotation>
+																					<xsd:simpleType>
+																						<xsd:restriction base="xsd:string">
+																							<xsd:maxLength value="40"/>
+																						</xsd:restriction>
+																					</xsd:simpleType>
+																				</xsd:element>
+																				<xsd:element name="ModelNumber" minOccurs="0">
+																					<xsd:annotation>
+																						<xsd:appinfo source="http://sap.com/xi/TextID">32cacb54795d11e3a052100ba93959d4</xsd:appinfo>
+																					</xsd:annotation>
+																					<xsd:simpleType>
+																						<xsd:restriction base="xsd:string">
+																							<xsd:maxLength value="50"/>
+																						</xsd:restriction>
+																					</xsd:simpleType>
+																				</xsd:element>
+																				<xsd:element name="SourceWarehouse" minOccurs="0">
+																					<xsd:annotation>
+																						<xsd:appinfo source="http://sap.com/xi/TextID">32caf8a3795d11e38f8b100ba93959d4</xsd:appinfo>
+																					</xsd:annotation>
+																					<xsd:simpleType>
+																						<xsd:restriction base="xsd:string">
+																							<xsd:maxLength value="100"/>
+																						</xsd:restriction>
+																					</xsd:simpleType>
+																				</xsd:element>
+																			</xsd:sequence>
+																		</xsd:complexType>
+																	</xsd:element>
+																</xsd:sequence>
+															</xsd:complexType>
+														</xsd:element>
+													</xsd:sequence>
+												</xsd:complexType>
+											</xsd:element>
+											<xsd:element name="LineItems">
+												<xsd:annotation>
+													<xsd:appinfo source="http://sap.com/xi/TextID">32caf8a4795d11e3be51100ba93959d4</xsd:appinfo>
+												</xsd:annotation>
+												<xsd:complexType>
+													<xsd:sequence>
+														<xsd:element name="LineItem" maxOccurs="unbounded">
+															<xsd:annotation>
+																<xsd:appinfo source="http://sap.com/xi/TextID">32caf8a5795d11e3c67f100ba93959d4</xsd:appinfo>
+															</xsd:annotation>
+															<xsd:complexType>
+																<xsd:sequence>
+																	<xsd:element name="LineAttribute3">
+																		<xsd:annotation>
+																			<xsd:appinfo source="http://sap.com/xi/TextID">32caf8a6795d11e3cd13100ba93959d4</xsd:appinfo>
+																		</xsd:annotation>
+																		<xsd:simpleType>
+																			<xsd:restriction base="xsd:string">
+																				<xsd:enumeration value="OEMPARTS"/>
+																				<xsd:enumeration value="NONOEMPARTS"/>
+																				<xsd:enumeration value="MISCPARTS"/>
+																				<xsd:enumeration value="LABOR"/>
+																				<xsd:enumeration value="MISCELLANEOUS"/>
+																				<xsd:maxLength value="100"/>
+																			</xsd:restriction>
+																		</xsd:simpleType>
+																	</xsd:element>
+																	<xsd:element name="DNETPerVal" type="xsd:decimal" minOccurs="0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+																		<xsd:annotation>
+																			<xsd:appinfo source="http://sap.com/xi/TextID">32caf8a7795d11e3834e100ba93959d4</xsd:appinfo>
+																		</xsd:annotation>
+																	</xsd:element>
+																	<xsd:element name="DealerNet" type="xsd:decimal" minOccurs="0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+																		<xsd:annotation>
+																			<xsd:appinfo source="http://sap.com/xi/TextID">32caf8a8795d11e3b8ba100ba93959d4</xsd:appinfo>
+																		</xsd:annotation>
+																	</xsd:element>
+																	<xsd:element name="STDCost" type="xsd:decimal" minOccurs="0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+																		<xsd:annotation>
+																			<xsd:appinfo source="http://sap.com/xi/TextID">32caf8a9795d11e393d8100ba93959d4</xsd:appinfo>
+																		</xsd:annotation>
+																	</xsd:element>
+																	<xsd:element name="Amount" type="xsd:decimal">
+																		<xsd:annotation>
+																			<xsd:appinfo source="http://sap.com/xi/TextID">32cb69c5795d11e3811a100ba93959d4</xsd:appinfo>
+																		</xsd:annotation>
+																	</xsd:element>
+																	<xsd:element name="TotalAmount" type="xsd:decimal">
+																		<xsd:annotation>
+																			<xsd:appinfo source="http://sap.com/xi/TextID">32cb69c6795d11e39884100ba93959d4</xsd:appinfo>
+																		</xsd:annotation>
+																	</xsd:element>
+																	<xsd:element name="SubItem" maxOccurs="unbounded">
+																		<xsd:annotation>
+																			<xsd:appinfo source="http://sap.com/xi/TextID">32cb69c7795d11e3a47a100ba93959d4</xsd:appinfo>
+																		</xsd:annotation>
+																		<xsd:complexType>
+																			<xsd:sequence>
+																				<xsd:element name="LineAttribute4">
+																					<xsd:annotation>
+																						<xsd:appinfo source="http://sap.com/xi/TextID">32cb69c8795d11e38595100ba93959d4</xsd:appinfo>
+																					</xsd:annotation>
+																					<xsd:simpleType>
+																						<xsd:restriction base="xsd:string">
+																							<xsd:enumeration value="FREIGHT"/>
+																							<xsd:enumeration value="OEMPARTS"/>
+																							<xsd:enumeration value="NONOEMPARTS"/>
+																							<xsd:enumeration value="MISCPARTS"/>
+																							<xsd:enumeration value="TRAVEL"/>
+																							<xsd:enumeration value="MEALS"/>
+																							<xsd:enumeration value="PARKING"/>
+																							<xsd:enumeration value="PERDIEM"/>
+																							<xsd:enumeration value="RENTALCHARGES"/>
+																							<xsd:enumeration value="ADDITIONALTRAVELHOURS"/>
+																							<xsd:enumeration value="LOCALPURCHASE"/>
+																							<xsd:enumeration value="TOLLS"/>
+																							<xsd:enumeration value="OTHERFREIGHTDUTY"/>
+																							<xsd:enumeration value="OTHERS"/>
+																							<xsd:enumeration value="TRANSPORTATION"/>
+																							<xsd:maxLength value="100"/>
+																						</xsd:restriction>
+																					</xsd:simpleType>
+																				</xsd:element>
+																				<xsd:element name="PartNumber">
+																					<xsd:annotation>
+																						<xsd:appinfo source="http://sap.com/xi/TextID">32cb69c9795d11e39982100ba93959d4</xsd:appinfo>
+																					</xsd:annotation>
+																					<xsd:simpleType>
+																						<xsd:restriction base="xsd:string">
+																							<xsd:maxLength value="40"/>
+																						</xsd:restriction>
+																					</xsd:simpleType>
+																				</xsd:element>
+																				<xsd:element name="Quantity" type="xsd:int">
+																					<xsd:annotation>
+																						<xsd:appinfo source="http://sap.com/xi/TextID">32cb69ca795d11e3a0af100ba93959d4</xsd:appinfo>
+																					</xsd:annotation>
+																				</xsd:element>
+																				<xsd:element name="Amount" type="xsd:decimal">
+																					<xsd:annotation>
+																						<xsd:appinfo source="http://sap.com/xi/TextID">32cb69cb795d11e3af2e100ba93959d4</xsd:appinfo>
+																					</xsd:annotation>
+																				</xsd:element>
+																			</xsd:sequence>
+																		</xsd:complexType>
+																	</xsd:element>
+																</xsd:sequence>
+															</xsd:complexType>
+														</xsd:element>
+													</xsd:sequence>
+												</xsd:complexType>
+											</xsd:element>
+											<xsd:element name="CompanyCode" minOccurs="0">
+												<xsd:annotation>
+													<xsd:appinfo source="http://sap.com/xi/TextID">32cb69cc795d11e391d8100ba93959d4</xsd:appinfo>
+												</xsd:annotation>
+												<xsd:simpleType>
+													<xsd:restriction base="xsd:string">
+														<xsd:maxLength value="20"/>
+													</xsd:restriction>
+												</xsd:simpleType>
+											</xsd:element>
+											<xsd:element name="BusinessArea" minOccurs="0">
+												<xsd:annotation>
+													<xsd:appinfo source="http://sap.com/xi/TextID">32cb7bd6795d11e3c157100ba93959d4</xsd:appinfo>
+												</xsd:annotation>
+												<xsd:simpleType>
+													<xsd:restriction base="xsd:string">
+														<xsd:maxLength value="20"/>
+													</xsd:restriction>
+												</xsd:simpleType>
+											</xsd:element>
+											<xsd:element name="SellingLocation" minOccurs="0">
+												<xsd:annotation>
+													<xsd:appinfo source="http://sap.com/xi/TextID">32cb7bd7795d11e3a96b100ba93959d4</xsd:appinfo>
+												</xsd:annotation>
+												<xsd:simpleType>
+													<xsd:restriction base="xsd:string">
+														<xsd:maxLength value="20"/>
+													</xsd:restriction>
+												</xsd:simpleType>
+											</xsd:element>
+											<xsd:element name="NCRFlag" minOccurs="0">
+												<xsd:annotation>
+													<xsd:appinfo source="http://sap.com/xi/TextID">32cb7bd8795d11e393d7100ba93959d4</xsd:appinfo>
+												</xsd:annotation>
+												<xsd:simpleType>
+													<xsd:restriction base="xsd:string">
+														<xsd:enumeration value="Yes"/>
+														<xsd:enumeration value="No"/>
+														<xsd:maxLength value="5"/>
+													</xsd:restriction>
+												</xsd:simpleType>
+											</xsd:element>
+											<xsd:element name="NCRWith30Days" minOccurs="0">
+												<xsd:annotation>
+													<xsd:appinfo source="http://sap.com/xi/TextID">32cb7bd9795d11e3b891100ba93959d4</xsd:appinfo>
+												</xsd:annotation>
+												<xsd:simpleType>
+													<xsd:restriction base="xsd:string">
+														<xsd:enumeration value="Yes"/>
+														<xsd:enumeration value="No"/>
+														<xsd:maxLength value="5"/>
+													</xsd:restriction>
+												</xsd:simpleType>
+											</xsd:element>
+											<xsd:element name="ManufacturingLocation" minOccurs="0">
+												<xsd:annotation>
+													<xsd:appinfo source="http://sap.com/xi/TextID">32cb7bda795d11e38969100ba93959d4</xsd:appinfo>
+												</xsd:annotation>
+												<xsd:simpleType>
+													<xsd:restriction base="xsd:string">
+														<xsd:maxLength value="20"/>
+													</xsd:restriction>
+												</xsd:simpleType>
+											</xsd:element>
+											<xsd:element name="UnitShippedDate" type="xsd:string" minOccurs="0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+												<xsd:annotation>
+													<xsd:appinfo source="http://sap.com/xi/TextID">32cb7bdb795d11e3a111100ba93959d4</xsd:appinfo>
+												</xsd:annotation>
+											</xsd:element>
+											<xsd:element name="EmailAddress" minOccurs="0">
+												<xsd:annotation>
+													<xsd:appinfo source="http://sap.com/xi/TextID">32cb7bdc795d11e3af6a100ba93959d4</xsd:appinfo>
+												</xsd:annotation>
+												<xsd:simpleType>
+													<xsd:restriction base="xsd:string">
+														<xsd:maxLength value="50"/>
+													</xsd:restriction>
+												</xsd:simpleType>
+											</xsd:element>
+											<xsd:element name="ExchangeRate" minOccurs="0">
+												<xsd:annotation>
+													<xsd:appinfo source="http://sap.com/xi/TextID">32cb7bdd795d11e39de8100ba93959d4</xsd:appinfo>
+												</xsd:annotation>
+												<xsd:simpleType>
+													<xsd:restriction base="xsd:string">
+														<xsd:maxLength value="20"/>
+													</xsd:restriction>
+												</xsd:simpleType>
+											</xsd:element>
+											<xsd:element name="ShipCustomerCountryCode" minOccurs="0">
+												<xsd:annotation>
+													<xsd:appinfo source="http://sap.com/xi/TextID">32cb7bde795d11e39410100ba93959d4</xsd:appinfo>
+												</xsd:annotation>
+												<xsd:simpleType>
+													<xsd:restriction base="xsd:string">
+														<xsd:maxLength value="20"/>
+													</xsd:restriction>
+												</xsd:simpleType>
+											</xsd:element>
+											<xsd:element name="MarketingGroupCode" minOccurs="0">
+												<xsd:annotation>
+													<xsd:appinfo source="http://sap.com/xi/TextID">32cb7bdf795d11e3ca1e100ba93959d4</xsd:appinfo>
+												</xsd:annotation>
+												<xsd:simpleType>
+													<xsd:restriction base="xsd:string">
+														<xsd:maxLength value="20"/>
+													</xsd:restriction>
+												</xsd:simpleType>
+											</xsd:element>
+											<xsd:element name="DealerMkgtGroup" minOccurs="0">
+												<xsd:annotation>
+													<xsd:appinfo source="http://sap.com/xi/TextID">32cbad6e795d11e3ad34100ba93959d4</xsd:appinfo>
+												</xsd:annotation>
+												<xsd:simpleType>
+													<xsd:restriction base="xsd:string">
+														<xsd:maxLength value="20"/>
+													</xsd:restriction>
+												</xsd:simpleType>
+											</xsd:element>
+											<xsd:element name="DebitManufacturingPlant" minOccurs="0">
+												<xsd:annotation>
+													<xsd:appinfo source="http://sap.com/xi/TextID">32cbad6f795d11e39244100ba93959d4</xsd:appinfo>
+												</xsd:annotation>
+												<xsd:simpleType>
+													<xsd:restriction base="xsd:string">
+														<xsd:enumeration value="Yes"/>
+														<xsd:enumeration value="No"/>
+														<xsd:maxLength value="5"/>
+													</xsd:restriction>
+												</xsd:simpleType>
+											</xsd:element>
+											<xsd:element name="CurrencyCode">
+												<xsd:annotation>
+													<xsd:appinfo source="http://sap.com/xi/TextID">32cbad70795d11e3a463100ba93959d4</xsd:appinfo>
+												</xsd:annotation>
+												<xsd:simpleType>
+													<xsd:restriction base="xsd:string">
+														<xsd:enumeration value="ZAR"/>
+														<xsd:enumeration value="GBP"/>
+														<xsd:enumeration value="EUR"/>
+														<xsd:enumeration value="CAD"/>
+														<xsd:enumeration value="USD"/>
+														<xsd:maxLength value="3"/>
+													</xsd:restriction>
+												</xsd:simpleType>
+											</xsd:element>
+											<xsd:element name="LateFeeAmount" type="xsd:decimal">
+												<xsd:annotation>
+													<xsd:appinfo source="http://sap.com/xi/TextID">32cbad71795d11e3920d100ba93959d4</xsd:appinfo>
+												</xsd:annotation>
+											</xsd:element>
+											<xsd:element name="TotalClaimAmount" type="xsd:decimal">
+												<xsd:annotation>
+													<xsd:appinfo source="http://sap.com/xi/TextID">32cbad72795d11e3a247100ba93959d4</xsd:appinfo>
+												</xsd:annotation>
+											</xsd:element>
+											<xsd:element name="TotalWarrantyCostAmount" type="xsd:decimal">
+												<xsd:annotation>
+													<xsd:appinfo source="http://sap.com/xi/TextID">32cbad73795d11e3b9e6100ba93959d4</xsd:appinfo>
+												</xsd:annotation>
+											</xsd:element>
+										</xsd:sequence>
+									</xsd:complexType>
+								</xsd:element>
+							</xsd:sequence>
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:complexType>
+		</xsd:schema>
+	</wsdl:types>
+	<wsdl:message name="MT_CreditSubmission">
+		<wsdl:part name="MT_CreditSubmission" element="p1:MT_CreditSubmission" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"/>
+	</wsdl:message>
+	<wsdl:portType name="MI_CreditSubmission_SLMS">
+		<wsdl:operation name="MI_CreditSubmission_SLMS">
+			<wsdl:input message="p1:MT_CreditSubmission"/>
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="MI_CreditSubmission_SLMSBinding" type="p1:MI_CreditSubmission_SLMS" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"/>
+		<wsdl:operation name="MI_CreditSubmission_SLMS">
+			<soap:operation soapAction="http://sap.com/xi/WebService/soap1.1" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"/>
+			<wsdl:input>
+				<soap:body use="literal" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"/>
+			</wsdl:input>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="MI_CreditSubmission_SLMSService">
+		<wsdl:port name="MI_CreditSubmission_SLMSPort" binding="p1:MI_CreditSubmission_SLMSBinding" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+			<soap:address location="http://ac4sap02:58100/XISOAPAdapter/MessageServlet?channel=SLMS:BS_DEV_SLMS:CC_WarrantyClaimCreditSubmission_SLMS_to_SAP_SND" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"/>
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="contractadmin" extends="struts-twms-default">
+ 
+		<!--Actions for the maintain contracts admin screen-->
+		
+		<action name="list_contracts"
+			class="tavant.twms.web.admin.supplier.ListContracts">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">pages/secure/admin/supplier/contract_inbox_view.jsp</result>
+		</action>		
+		
+		<action name="contracts_table_body"
+			class="tavant.twms.web.admin.supplier.ListContracts"
+			method="tableBody">
+			<interceptor-ref name="adminParamsPrepare" />
+      		<result name="success">pages/secure/home/json.jsp</result>
+			<result name="input">error.jsp</result>		
+		</action>
+		
+		<action name="contract_preview"
+			class="tavant.twms.web.admin.supplier.ManageContract"
+			method="preview">
+			<interceptor-ref name="adminParamsPrepareWithoutValidation" />
+			<result name="success">
+				pages/secure/admin/supplier/contractPreview.jsp
+			</result>
+		</action>
+		
+		<action name="contract_view"
+			class="tavant.twms.web.admin.supplier.ManageContract"
+			method="preview">
+			<interceptor-ref name="adminParamsPrepareWithoutValidation" />
+			<result name="success">
+				pages/secure/admin/supplier/contract.jsp
+			</result>
+		</action>
+		
+		<action name="contract_detail"
+			class="tavant.twms.web.admin.supplier.ManageContract"
+			method="detail">
+			<interceptor-ref name="adminParamsPrepareWithoutValidation" />
+			<result name="success">
+				pages/secure/admin/supplier/detail/createContract.jsp
+			</result>
+		</action>
+		
+		  
+       <action name="get_items_for_contract"
+              class="tavant.twms.web.admin.supplier.ManageContract"
+              method="gridBody">
+          <interceptor-ref name="adminParamsPrepare" />
+      </action>
+
+
+	<action name="search_items" class="tavant.twms.web.admin.supplier.ManageContract"
+		method="searchItems">
+		<interceptor-ref name="adminParamsPrepareWithoutValidation" />
+		<result name="input">
+			pages/secure/admin/supplier/detail/createContract.jsp
+		</result>
+		<result name="success">
+			pages/secure/admin/supplier/detail/selectItems.jsp
+		</result>
+	</action>
+	
+	<action name="remove_items_from_contract" 
+        class="tavant.twms.web.admin.supplier.ManageContract"
+        method="removeItemsFromItemGroup">
+            <interceptor-ref name="adminParamsPrepare" />            
+			<result name="input">
+				pages/secure/admin/supplier/detail/createContract.jsp
+			</result>
+            <result name="success">
+				pages/secure/admin/supplier/detail/createContract.jsp
+			</result>
+        </action>
+		
+		<action name="contract_submit"
+			class="tavant.twms.web.admin.supplier.ManageContract"
+			method="submit">
+			<interceptor-ref name="adminTwmsParamsPrepareRepeatTableParams"/>
+			<result name="success">pages/secure/common/successFullRefresh.jsp</result>
+			<result name="input">pages/secure/admin/supplier/detail/createContract.jsp</result>
+		</action>
+
+		<action name="create_contract"
+			class="tavant.twms.web.admin.supplier.ManageContract"
+			method="execute">
+			<interceptor-ref name="adminParamsPrepareWithoutValidation" />
+			<result name="success">
+				pages/secure/admin/supplier/detail/createContract.jsp
+			</result>
+		</action>
+		
+		<action name="list_suppliers"
+			class="tavant.twms.web.admin.supplier.ManageContract" method="listSuppliers">
+			<interceptor-ref name="adminParamsPrepareWithoutValidation"/>
+			<result name="success">pages/secure/home/json.jsp</result>
+		</action>
+		
+		<action name="get_supplier"
+			class="tavant.twms.web.admin.supplier.ManageContract" method="getSupplierCurrency">
+			<interceptor-ref name="adminParamsPrepareWithoutValidation"/>
+			<result name="success">pages/secure/home/json.jsp</result>
+		</action>
+
+		<action name="list_shipmentLocations"
+			class="tavant.twms.web.admin.supplier.ManageContract" method="listShipmentLocations">
+			<interceptor-ref name="adminParamsPrepareWithoutValidation"/>
+			<result name="success">pages/secure/home/json.jsp</result>
+		</action>		
+
+		<action name="list_supplierItems"
+			class="tavant.twms.web.admin.supplier.ManageContract" method="listSupplierItems">
+			<interceptor-ref name="adminParamsPrepareWithoutValidation"/>
+			<result name="success">pages/secure/home/json.jsp</result>
+		</action>		
+
+		<action name="get_supplierItemDetails"
+			class="tavant.twms.web.admin.supplier.ManageContract" method="getSupplierItemDetails">
+			<interceptor-ref name="adminParamsPrepareWithoutValidation"/>
+			<result name="success">pages/secure/home/json.jsp</result>
+		</action>		
+			
+		<!-- end of actions for maintain contracts-->
+		 <action name="exportcontractListToExcel"
+			class="tavant.twms.web.admin.supplier.ListContracts" method="downloadListingData"/>
+
+		 <action name="submit_supplier"
+		 	class="tavant.twms.web.admin.supplier.ManageSuppliers"
+		 	method="submitSupplier">
+		 	<interceptor-ref name="adminTwmsParamsPrepareParams" />
+		 	<result name="success">pages/secure/common/successFullRefresh.jsp</result>
+		 	<result name="input">pages/secure/admin/supplier/detail/createSupplier.jsp</result>
+		 </action>
+		 
+		  <action name="delete_supplier"
+		 	class="tavant.twms.web.admin.supplier.ManageSuppliers"
+		 	method="deleteSupplier">
+		 	<interceptor-ref name="adminTwmsParamsPrepareParams" />
+		 	<result name="success">pages/secure/common/successFullRefresh.jsp</result>
+		 	<result name="input">pages/secure/admin/supplier/detail/createSupplier.jsp</result>
+		 </action>
+		 
+		 <action name="create_supplier"
+			class="tavant.twms.web.admin.supplier.ManageSuppliers"
+			method="execute">
+			<interceptor-ref name="adminParamsPrepareWithoutValidation" />
+			<result name="success">
+				pages/secure/admin/supplier/detail/createSupplier.jsp
+			</result>
+		</action>
+		 
+	   <action name="listSuppliers"
+			class="tavant.twms.web.admin.supplier.ListSuppliers">
+			<result name="success">pages/secure/admin/supplier/supplier_inbox_view.jsp</result>
+		</action>
+		
+		<action name="suppliers_table_body"
+			class="tavant.twms.web.admin.supplier.ListSuppliers"
+			method="tableBody">
+			<interceptor-ref name="adminParamsPrepare" />
+      		<result name="success">pages/secure/home/json.jsp</result>
+			<result name="input">error.jsp</result>		
+		</action>
+		
+		<action name="supplier_item_preview"
+			class="tavant.twms.web.admin.supplier.ManageSuppliers"
+			method="preview">
+			<interceptor-ref name="adminParamsPrepareWithoutValidation" />
+			<result name="success">
+				pages/secure/admin/supplier/supplierPreview.jsp
+			</result>
+		</action>
+		
+		<action name="supplier_item_detail"
+			class="tavant.twms.web.admin.supplier.ManageSuppliers"
+			method="detail">
+			<interceptor-ref name="adminParamsPrepareWithoutValidation" />
+			<result name="success">
+				pages/secure/admin/supplier/detail/createSupplier.jsp
+			</result>
+		</action>
+		
+		<action name="list_part_source"
+			class="tavant.twms.web.admin.supplier.ListItems">
+			<result name="success">pages/secure/admin/supplier/partSource_history_inbox_view.jsp</result>
+		</action>
+		
+		<action name="import_claims"
+			class="tavant.twms.web.admin.supplier.ManageContract" method="importRecClaim">
+			<interceptor-ref name="adminParamsPrepareWithoutValidation" />
+			<result name="success">pages/secure/admin/supplier/importRecClaimsForDebitNotification.jsp</result>
+		</action>
+		
+		<action name="uploadDebitClaims"
+			class="tavant.twms.web.admin.supplier.UploadDebitClaims" method="processDebitNotifications">
+			<interceptor-ref name="adminTwmsParamsWithoutPrepare" />
+			<result name="success">pages/secure/admin/supplier/importRecClaimsForDebitNotification.jsp</result>
+			<result name="input">pages/secure/admin/supplier/importRecClaimsForDebitNotification.jsp</result>
+		</action>
+		
+		
+		<action name="part_source_table_body"
+			class="tavant.twms.web.admin.supplier.ListItems"
+			method="tableBody">
+			<interceptor-ref name="adminParamsPrepare" />
+      		<result name="success">pages/secure/home/json.jsp</result>
+			<result name="input">error.jsp</result>		
+		</action>
+		
+		<action name="part_source_preview"
+			class="tavant.twms.web.admin.supplier.ListItems"
+			method="preview">
+			<interceptor-ref name="adminParamsPrepareWithoutValidation" />
+			<result name="success">
+				pages/secure/admin/supplier/partSource.jsp
+			</result>
+		</action>
+		
+		<action name="part_source_detail"
+			class="tavant.twms.web.admin.supplier.ListItems"
+			method="preview">
+			<interceptor-ref name="adminParamsPrepareWithoutValidation" />
+			<result name="success">
+				pages/secure/admin/supplier/partSource.jsp
+			</result>
+		</action>
+		
+		<action name="list_parts_for_supplier"
+			class="tavant.twms.web.admin.supplier.ManageSuppliers"
+			method="listItems">
+			<interceptor-ref name="adminParamsPrepare" />
+      		<result name="success">pages/secure/home/json.jsp</result>
+			<result name="input">error.jsp</result>		
+		</action>
+		
+		<action name="oem_part_details_for_supplier"
+			class="tavant.twms.web.admin.supplier.ManageSuppliers"
+			method="getOEMPartDetails">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result>pages/secure/home/json.jsp</result>
+		</action>
+		
+		<action name="exportsupplierListToExcel"
+			class="tavant.twms.web.admin.supplier.ListSuppliers" method="downloadListingData">
+			<interceptor-ref name="adminParamsPrepareWithoutValidation" />
+		</action>
+		
+		<action name="exportitemListToExcel"
+			class="tavant.twms.web.admin.supplier.ListItems" method="downloadListingData">
+			<interceptor-ref name="adminParamsPrepareWithoutValidation" />
+		</action>
+		
+		 <action name="add_supplier_location_item"
+		 	class="tavant.twms.web.admin.supplier.ManageSuppliers"
+		 	method="addSupplierLocationItem">
+		 	<interceptor-ref name="adminTwmsParamsPrepareParams" />
+		 	<result name="success">pages/secure/admin/supplier/detail/createSupplier.jsp</result>
+			<result name="input">pages/secure/admin/supplier/detail/createSupplier.jsp</result>
+		 </action>
+
+       <action name="get_locationitems_for_supplier"
+              class="tavant.twms.web.admin.supplier.ManageSuppliers"
+              method="gridBody">
+          <interceptor-ref name="adminParamsPrepare" />
+      </action>
+		<action name="remove_supplier_items"
+              class="tavant.twms.web.admin.supplier.ManageSuppliers"
+              method="removeSupplierLocationItems">
+          <interceptor-ref name="adminParamsPrepare" />
+             <result name="success">
+				pages/secure/admin/supplier/detail/createSupplier.jsp
+			</result>
+			<result name="input">
+				pages/secure/admin/supplier/detail/createSupplier.jsp
+			</result>
+      </action>		
+		
+	</package>
+</struts>	

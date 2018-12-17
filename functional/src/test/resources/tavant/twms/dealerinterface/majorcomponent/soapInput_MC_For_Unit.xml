@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<request:MajorComponentRegistration 
+		xmlns:request="http://www.tavant.com/dealerinterfaces/majorcomponentregistration/majorcomponentregistrationrequest" 
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+		
+		<request:BUName>Thermo King TSA</request:BUName>		
+		<request:CurrentlyActiveOrganizationNumber></request:CurrentlyActiveOrganizationNumber>
+		<request:MajorComponentSerialNumber>12311</request:MajorComponentSerialNumber>
+		<request:MajorComponentItemNumber>012260</request:MajorComponentItemNumber>
+		<request:DateOfDelivery>2010-04-20</request:DateOfDelivery>
+		<request:InventorySerialNumber>0001035719</request:InventorySerialNumber>
+		<request:InventoryItemNumber>920272M</request:InventoryItemNumber>
+		<request:CustomerType></request:CustomerType>
+		<request:CustomerID></request:CustomerID>
+		<request:CertifiedInstallerName>TRI0030</request:CertifiedInstallerName>
+		<request:NonCertifiedInstallerType></request:NonCertifiedInstallerType>
+		<request:NonCertifiedInstallerId></request:NonCertifiedInstallerId>			
+		
+</request:MajorComponentRegistration>

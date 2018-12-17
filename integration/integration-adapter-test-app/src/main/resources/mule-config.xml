@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mule-configuration PUBLIC "-//MuleSource //DTD mule-configuration XML V1.0//EN"
+        "http://mule.mulesource.org/dtds/mule-configuration.dtd">
+<mule-configuration id="twms-integration-adapter-layer" version="1.0">
+
+	<mule-environment-properties>
+		<threading-profile maxThreadsActive="1"/>
+		<pooling-profile maxActive="1"/>
+	</mule-environment-properties>
+
+	<container-context className="org.mule.extras.spring.SpringContainerContext">
+		<properties>
+			<property name="configFile" value="application-context.xml"/>
+		</properties>
+	</container-context>
+
+	<connector name="jmsConnector"
+		className="org.mule.providers.jms.JmsConnector">
+		<properties>
+			<property name="specification" value="1.1"/>
+			<container-property name="connectionFactory"
+				reference="activeMQConnectionFactory"/>
+            <property name="maxRedelivery" value="3"/>
+            <map name="serviceOverrides">
+				<property name="message.receiver"
+					value="org.mule.providers.jms.TransactedSingleResourceJmsMessageReceiver"/>
+				<property name="transacted.message.receiver"
+					value="org.mule.providers.jms.TransactedSingleResourceJmsMessageReceiver"/>
+			</map>
+		</properties>
+		<exception-strategy
+			className="tavant.twms.integration.adapter.mule.RollbackExceptionStrategy">
+			<endpoint address="jms://ActiveMQ.DLQ">
+				<transaction action="ALWAYS_JOIN"/>
+			</endpoint>
+		</exception-strategy>
+	</connector>
+
+	<transformers>
+		<transformer name="ConfirmBODToBODDTO"
+			className="tavant.twms.integration.adapter.mule.transformer.ConfirmBODTransformer"/>
+	</transformers>
+
+	<mule-descriptor name="SyncItemInitiator" implementation="syncInitiator">
+		<inbound-router>
+			<endpoint address="quartz:/SyncItemInitiator">
+				<properties>
+					<property name="repeatInterval" value="3000"/>
+					<property name="payload" value="SyncItem"/>
+					<property name="payloadClassName" value="java.util.String"/>
+				</properties>
+			</endpoint>
+		</inbound-router>
+		<outbound-router>
+			<router
+				className="org.mule.routing.outbound.FilteringOutboundRouter">
+				<endpoint address="jms://tracking.queue"/>
+				<filter expectedType="java.util.List"
+					className="org.mule.routing.filters.PayloadTypeFilter"/>
+			</router>
+			<router
+				className="org.mule.routing.outbound.OutboundPassThroughRouter"/>
+		</outbound-router>
+	</mule-descriptor>
+
+	<mule-descriptor name="SyncUMO" implementation="filterDuplicateSync">
+		<inbound-router>
+			<endpoint address="jms://tracking.queue">
+				<transaction action="ALWAYS_BEGIN"
+					factory="org.mule.providers.jms.JmsTransactionFactory"/>
+			</endpoint>
+		</inbound-router>
+		<outbound-router>
+			<router className="org.mule.routing.outbound.ChainingRouter">
+				<endpoint
+					address="axis:http://localhost:8081/services/SyncItemWebService?method=sync"/>
+				<endpoint address="vm://SyncResponseProcessor"/>
+			</router>
+		</outbound-router>
+	</mule-descriptor>
+
+	<mule-descriptor name="SyncItemWebService"
+		implementation="tavant.twms.integration.adapter.umo.SyncWebServiceImpl"
+		inboundEndpoint="axis:http://localhost:8081/services">
+		<properties>
+			<property name="BodType" value="SyncItem"/>
+		</properties>
+	</mule-descriptor>
+
+	<mule-descriptor name="SyncResponseProcessor"
+		implementation="syncResponseProcessor"
+		inboundEndpoint="vm://SyncResponseProcessor"
+		inboundTransformer="ConfirmBODToBODDTO">
+		<exception-strategy
+			className="tavant.twms.integration.adapter.mule.RollbackExceptionStrategy">
+			<endpoint address="jms://ActiveMQ.DLQ">
+				<transaction action="ALWAYS_JOIN"/>
+			</endpoint>
+		</exception-strategy>
+	</mule-descriptor>
+
+</mule-configuration>

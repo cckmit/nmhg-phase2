@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<tocdata>
+<book name="DSM" url="Before_you_Begin/Introduction.htm" >
+  <book name="Before you Begin" >
+    <item name="Copyright" url="Before_you_Begin/Copyright.htm" />
+    <item name="Introduction" url="Before_you_Begin/Introduction.htm" />
+    <item name="Before you Begin" url="Before_you_Begin/Before_you_Begin.htm" />
+    <item name="Common Application Features" url="Before_you_Begin/common_application_features.htm" />
+  </book>
+  <book name="Claims" >
+    <book name="Claim Folders" >
+      <item name="Claim Folders" url="Claims/Claim_Folders.htm" />
+      <item name="Advice Request" url="Claims/Advice_Request.htm" />
+      <item name="Service Manager Review" url="Claims/Service_Manager_Review.htm" />
+    </book>
+    <item name="Claim Validation" url="Claims/Claim_Validation.htm" />
+    <item name="Search Claims" url="Claims/Search_Claims.htm" />
+    <item name="Claim Details" url="Claims/Claim_Details.htm" />
+    <item name="Policy Details" url="Claims/Policy_Details.htm" />
+  </book>
+  <book name="Field Modifications" >
+    <item name="Search Campaigns" url="Field_Modifications/Search_Campaigns.htm" />
+  </book>
+  <book name="Inventory" >
+    <item name="Inventory" url="Inventory/Inventory.htm" />
+    <item name="Search Inventory" url="Inventory/Search_Inventory.htm" />
+    <item name="Equipment Details" url="Inventory/Equipment_Details.htm" />
+  </book>
+  <book name="Part Returns" >
+    <item name="Search Parts" url="Part_Returns/Search_Parts.htm" />
+  </book>
+  <book name="Items" >
+    <item name="Search Items" url="Items/Search_Items.htm" />
+  </book>
+  <book name="Reports" >
+    <item name="Reports" url="Reports/Reports.htm" />
+    <item name="Upload Management" url="Reports/Upload_Management.htm" />
+    <item name="Download Management" url="Reports/Download_Management.htm" />
+  </book>
+  <book name="Settings" >
+    <item name="Profile" url="Settings/Profile.htm" />
+    <item name="Email Subscription" url="Settings/Email_Subscription.htm" />
+  </book>
+</book>
+
+</tocdata>

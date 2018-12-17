@@ -1,0 +1,6 @@
+--Purpose    : Patch for adding SERIAL_NUMBER column to OEM_PART_REPLACED table.
+--Author     : ROHIT MEHROTRA
+--Created On : 22-APR-2013
+
+ALTER TABLE OEM_PART_REPLACED ADD SERIAL_NUMBER VARCHAR2(255)
+/

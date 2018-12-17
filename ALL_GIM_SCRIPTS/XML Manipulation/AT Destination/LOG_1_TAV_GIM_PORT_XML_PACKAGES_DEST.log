@@ -1,0 +1,197 @@
+Creating migration objects..
+
+Message: Dropping objects if already availbale...
+
+Sequence dropped.
+
+
+Table dropped.
+
+
+Table dropped.
+
+
+Table dropped.
+
+DROP TABLE claim_audit_temp
+           *
+ERROR at line 1:
+ORA-00942: table or view does not exist 
+
+
+DROP TABLE PARTY_ARRAY_TABLE
+           *
+ERROR at line 1:
+ORA-00942: table or view does not exist 
+
+
+DROP TABLE ORG_USER_ARRAY_TABLE
+           *
+ERROR at line 1:
+ORA-00942: table or view does not exist 
+
+
+DROP TABLE COST_CATEGORY_ARRAY_TABLE
+           *
+ERROR at line 1:
+ORA-00942: table or view does not exist 
+
+
+Creating temp tables to compile TAV_GIM_PROCESS_CLAIM_AUD_XML package...
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Index created.
+
+
+Index created.
+
+
+Index created.
+
+
+Index created.
+
+
+Index created.
+
+
+Index created.
+
+
+Table created.
+
+Message: Creating Master log and Exception Log tables
+
+Sequence created.
+
+
+Table created.
+
+
+Index created.
+
+
+Index created.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table created.
+
+Porting and Compiling TAV_GIM_INITIAL_SETUP.
+
+
+Package created.
+
+
+Package body created.
+
+
+Package body created.
+
+Porting and Compiling TAV_GIM_XML_UTILITIES.
+
+
+Package created.
+
+
+Package body created.
+
+
+Package body created.
+
+Porting and Compiling TAV_GIM_PROCESS_CLAIM_AUD_XML.
+
+
+Package created.
+
+
+Package body created.
+
+
+Package body created.
+
+Porting and Compiling TAV_GIM_PROCESS_DOM_PRED_XML.
+
+
+Package created.
+
+
+Package body created.
+
+
+Package body created.
+
+Porting and Compiling TAV_GIM_PROCESS_DOM_RULE_XML.
+
+
+Package created.
+
+
+Package body created.
+
+
+Package body created.
+
+Porting and Compiling TAV_GIM_PROCESS_FOC_ORDER_XML.
+
+
+Package created.
+
+
+Package body created.
+
+
+Package body created.
+
+
+'*********** Validation of XML packages ***********'
+
+
+OBJECT_NAME                    OBJECT_TYPE         STATUS  TIMESTAMP            
+------------------------------ ------------------- ------- -------------------  
+TAV_GIM_INITIAL_SETUP          PACKAGE             VALID   2011-05-18:14:34:36  
+TAV_GIM_INITIAL_SETUP          PACKAGE BODY        VALID   2011-05-18:14:34:38  
+TAV_GIM_PROCESS_CLAIM_AUD_XML  PACKAGE             VALID   2011-05-18:14:34:41  
+TAV_GIM_PROCESS_CLAIM_AUD_XML  PACKAGE BODY        VALID   2011-05-18:14:34:43  
+TAV_GIM_PROCESS_DOM_PRED_XML   PACKAGE             VALID   2011-05-18:14:34:45  
+TAV_GIM_PROCESS_DOM_PRED_XML   PACKAGE BODY        VALID   2011-05-18:14:34:46  
+TAV_GIM_PROCESS_DOM_RULE_XML   PACKAGE             VALID   2011-05-18:14:34:47  
+TAV_GIM_PROCESS_DOM_RULE_XML   PACKAGE BODY        VALID   2011-05-18:14:34:48  
+TAV_GIM_PROCESS_FOC_ORDER_XML  PACKAGE             VALID   2011-05-18:14:34:49  
+TAV_GIM_PROCESS_FOC_ORDER_XML  PACKAGE BODY        VALID   2011-05-18:14:34:49  
+TAV_GIM_XML_UTILITIES          PACKAGE             VALID   2011-05-18:14:34:40  
+
+OBJECT_NAME                    OBJECT_TYPE         STATUS  TIMESTAMP            
+------------------------------ ------------------- ------- -------------------  
+TAV_GIM_XML_UTILITIES          PACKAGE BODY        VALID   2011-05-18:14:34:40  
+
+12 rows selected.
+
+
+'*********** Execution of XML update procs***********'
+
+Message: Refer LOG_1_TAV_GIM_PORT_XML_PACKAGES_DEST.log before proceeding.
+
+Message: Run process 1 ==> Run TAV_GIM_PROCESS_CLAIM_AUD_XML.PROCESS_CLAIM_AUDIT_XML_STR() for XML string updation.
+
+Message: Run process 2==> Insert data from the source to populate the tables refered by the ARRAY vefore continuing.This will take time!!!
+
+Message: Run process 3==> Run process_claim_audit_job_master() manually providing the number of JOBS!!!
+

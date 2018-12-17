@@ -1,0 +1,125 @@
+<set>
+	<!--<domainPredicate name="Labor Rate is not set up for atleast one of the labors performed."
+		context="ClaimRules">
+		<predicate class="forAny">
+			<collectionValuedVariable>
+				<accessedFromType>Claim</accessedFromType>
+				<fieldName>claim.serviceInformation.serviceDetail.laborPerformed</fieldName>
+			</collectionValuedVariable>
+			<conditionToBeSatisfied class="isNotSet">
+				<operand >
+					<accessedFromType>LaborDetail</accessedFromType>
+					<fieldName>laborRate</fieldName>
+				</operand>
+			</conditionToBeSatisfied>
+		</predicate>
+	</domainPredicate>
+	<domainPredicate name="Travel Rate by distance is not set up."
+		context="ClaimRules">
+		<predicate class="isNotSet">
+			<operand>
+					<accessedFromType>Claim</accessedFromType>
+				<fieldName>claim.serviceInformation.serviceDetail.travelDetails.distanceCharge</fieldName>
+			</operand>
+		</predicate>
+	</domainPredicate>
+
+	<domainPredicate name="Price not set up for any OEMParts Replaced or Non OEMParts Replaced."
+		context="ClaimRules">
+		<predicate class="or">
+			<lhs class="forAny">
+				<collectionValuedVariable>
+					<accessedFromType>Claim</accessedFromType>				
+					<fieldName>claim.serviceInformation.serviceDetail.oEMPartsReplaced</fieldName>
+				</collectionValuedVariable>
+				<conditionToBeSatisfied class="isNotSet">
+					<operand >
+					<accessedFromType>OEMPartReplaced</accessedFromType>											
+						<fieldName>pricePerUnit</fieldName>
+					</operand>
+				</conditionToBeSatisfied>
+			</lhs>
+			<rhs class="forAny">
+				<collectionValuedVariable>
+				<accessedFromType>Claim</accessedFromType>				
+					<fieldName>claim.serviceInformation.serviceDetail.nonOEMPartsReplaced</fieldName>
+				</collectionValuedVariable>
+				<conditionToBeSatisfied class="isNotSet">
+					<operand >
+						<accessedFromType>NonOEMPartReplaced</accessedFromType>						
+						<fieldName>pricePerUnit</fieldName>
+					</operand>
+				</conditionToBeSatisfied>
+			</rhs>
+		</predicate>
+	</domainPredicate>
+
+
+	<domainPredicate name="Labor Hours is not set up."
+		context="ClaimRules">
+		<predicate class="forAny">
+			<collectionValuedVariable>
+				<accessedFromType>Claim</accessedFromType>
+				<fieldName>claim.serviceInformation.serviceDetail.laborPerformed</fieldName>
+			</collectionValuedVariable>
+			<conditionToBeSatisfied class="isNotSet">
+				<operand>
+				<accessedFromType>LaborDetail</accessedFromType>
+					<fieldName>hoursSpent</fieldName>
+				</operand>
+			</conditionToBeSatisfied>
+		</predicate>
+	</domainPredicate>
+	<domainPredicate
+		name="Labor details are not supplied completely. One out of job codes and labor hours is supplied and the other is not."
+		context="ClaimRules">
+		<predicate class="forAny">
+			<collectionValuedVariable>
+				<accessedFromType>Claim</accessedFromType>
+				<fieldName>claim.serviceInformation.serviceDetail.laborPerformed</fieldName>
+			</collectionValuedVariable>
+			<conditionToBeSatisfied class="or">
+				<lhs class="and">
+					<lhs class="greaterThan">
+						<lhs class="domainVariable">
+				<accessedFromType>LaborDetail</accessedFromType>
+							<fieldName>hoursSpent</fieldName>
+						</lhs>
+						<rhs class="constant" literal="0" type="integer" />
+					</lhs>
+					<rhs class="isNotSet">
+						<operand>
+				<accessedFromType>LaborDetail</accessedFromType>
+							<fieldName>jobPerformed</fieldName>
+						</operand>
+					</rhs>
+				</lhs>
+				<rhs class="and">
+					<lhs class="equals">
+						<lhs class="domainVariable">
+				<accessedFromType>LaborDetail</accessedFromType>
+							<fieldName>hoursSpent</fieldName>
+						</lhs>
+						<rhs class="constant" literal="0" type="integer" />
+					</lhs>
+					<rhs class="isSet">
+						<operand>
+				<accessedFromType>LaborDetail</accessedFromType>
+							<fieldName>jobPerformed</fieldName>
+						</operand>
+					</rhs>
+				</rhs>
+			</conditionToBeSatisfied>
+		</predicate>
+	</domainPredicate>-->
+	<domainPredicate name="Hours in service/Enerygy Unit is more than 5."
+		context="ClaimRules">
+		<predicate class="greaterThan">
+			<lhs class="domainVariable">
+				<accessedFromType>Claim</accessedFromType>			
+				<fieldName>claim.hoursInService</fieldName>
+			</lhs>
+			<rhs class="constant" literal="5" type="integer" />
+		</predicate>
+	</domainPredicate>	
+</set>

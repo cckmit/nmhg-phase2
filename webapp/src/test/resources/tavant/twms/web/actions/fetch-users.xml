@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process-definition name="FetchUsers">
+
+	<!-- Swimlane Definition starts here -->
+	<swimlane name="processor">
+		<assignment
+			class="tavant.twms.jbpm.assignment.RuleBasedAssignmentHandler">
+			<ruleSet>ProcessorAssignment</ruleSet>
+			<variables>
+				<variable>claim</variable>
+				<variable>claim.forDealer</variable>
+				<variable>claim.forDealer.address</variable>
+			</variables>
+		</assignment>
+	</swimlane>
+
+	<swimlane name="dsm">
+		<assignment
+			class="tavant.twms.jbpm.assignment.RuleBasedAssignmentHandler">
+			<ruleSet>DsmAssignment</ruleSet>
+			<variables>
+				<variable>claim</variable>
+				<variable>claim.forDealer</variable>
+				<variable>claim.forDealer.address</variable>
+			</variables>
+		</assignment>
+	</swimlane>
+
+	<start-state name="Start">
+		<transition name="Move" to="ProcessorReview" />
+	</start-state>
+
+	<task-node name="ProcessorReview">
+		<task name="Processor Review" swimlane="processor">
+			<forms>
+				<inputForm>processor_review</inputForm>
+			</forms>
+			<claim-state>Processor Review</claim-state>
+		</task>
+		<transition name="Seek Advice" to="AdviceRequest" />
+		<transition name="end" to="End" />		
+	</task-node>
+
+	<task-node name="AdviceRequest">
+		<task name="Advice Request" swimlane="dsm">
+			<forms>
+				<inputForm>advice_request</inputForm>
+			</forms>
+			<claim-state>Advice Request</claim-state>
+		</task>
+		<transition name="Transfer" to="ProcessorReview" />
+		<transition name="end" to="End" />
+	</task-node>
+	<end-state name="End" />
+</process-definition>

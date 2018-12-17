@@ -1,0 +1,8 @@
+--PURPOSE    : PATCH FOR ITEM_TYPE_MAPPING TABLE DATA UPDATE
+--AUTHOR     : BHASKARA K
+--CREATED ON : 21-APR-09
+
+update item_type_mapping set item_type='PART' where item_type IN('WIP KITTING','WIP CONFIGURATIONS')
+/
+COMMIT
+/

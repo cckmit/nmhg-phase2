@@ -1,0 +1,47 @@
+<!DOCTYPE validators PUBLIC "-//Apache Struts//XWork Validator 1.0.2//EN"
+        "http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+<validators>
+    <validator type="expression">
+        <param name="expression">
+            <![CDATA[section.{? #this.questionnaire.{? #this.answerOptions.{? #this.answerOption==""}.size>0}.size > 0 }.size == 0]]>
+        </param>
+        <message key="error.customReport.optionValueRequired"/>
+    </validator>
+    <validator type="expression">
+        <param name="expression">
+            <![CDATA[section.{? #this.questionnaire.{? #this.answerType!="textbox" &&  #this.answerOptions.size>0 && #this.defaultAnswer.order==null}.size > 0 }.size == 0]]>
+        </param>
+        <message key="error.customReport.defaultOptionValueRequired"/>
+    </validator>
+    <validator type="expression">
+        <param name="expression">
+            <![CDATA[section.{? #this.questionnaire.{? #this.name==""}.size > 0 }.size == 0]]>
+        </param>
+        <message key="error.customReport.questionNameRequired"/>
+    </validator>
+    <validator type="expression">
+        <param name="expression">
+            <![CDATA[section.{? #this.questionnaire.{? #this.order==null}.size > 0 }.size == 0]]>
+        </param>
+        <message key="error.customReport.questionOrderRequired"/>
+    </validator>
+    <validator type="expression">
+        <param name="expression">
+            <![CDATA[section.{? #this.questionnaire.{? #this.answerType!="textbox" && #this.noOfOptions!=null && #this.noOfOptions<=0}.size > 0 }.size == 0]]>
+        </param>
+        <message key="error.customReport.invalidNoOfOptions"/>
+    </validator>
+    <validator type="expression">
+        <param name="expression">
+            <![CDATA[section.{? #this.questionnaire.{? #this.answerType!="textbox" && #this.noOfOptions==null}.size > 0 }.size == 0]]>
+        </param>
+        <message key="error.customReport.noOfOptionsRequired"/>
+    </validator>
+    <field name="sections">
+        <field-validator type="visitor" short-circuit="true">
+            <param name="appendPrefix">true</param>
+            <param name="context">update</param>
+            <message></message>
+        </field-validator>
+    </field>
+</validators>

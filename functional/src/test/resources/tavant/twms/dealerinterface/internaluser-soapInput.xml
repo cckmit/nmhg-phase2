@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<p1:UnitServiceHistoryRequest xmlns:p1="http://www.tavant.com/dealerinterfaces/unitservicehistory/unitservicehistoryrequest" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <p1:SerialNumber>2175199</p1:SerialNumber>
+    <p1:ItemNumber>16669418#100</p1:ItemNumber>
+    <p1:ContainerNumber></p1:ContainerNumber>
+    <p1:CurrentlyActiveOrganizationNumber></p1:CurrentlyActiveOrganizationNumber>
+</p1:UnitServiceHistoryRequest>

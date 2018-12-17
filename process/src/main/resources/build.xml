@@ -1,0 +1,283 @@
+<project name="warranty" basedir="." default="install">
+  <property name="target.dir" value="./../../../target" />
+  <property name="class.dir" value="${target.dir}/classes" />
+  <property name="spring.context.files" value="classpath:process-env-context.xml,classpath:datasource-context.xml,classpath*:/app-context.xml,classpath*:/app-context-domain-core.xml" />
+  <property file="batchCommand.properties" />
+
+  <property name="skip.rules" value="false" />
+  <taskdef resource="net/sf/antcontrib/antcontrib.properties">
+    <classpath>
+      <pathelement location="./../../../src/ant/lib/ant-contrib-1.0b3.jar" />
+    </classpath>
+  </taskdef>
+
+  <!--
+       ############################################################
+       This is the target that is currently invoked via Maven
+       ############################################################
+  -->
+  <target name="create.dbPatch" depends="setup" description="creates the patch for changes that need to be applied to
+    the db">
+    <echo message="Creating database patch..." />
+    <typedef name="action" classname="tavant.twms.ant.utils.ActionDefinition">
+      <classpath refid="maven.compile.classpath" />
+    </typedef>
+    <typedef name="actionInput" classname="tavant.twms.ant.utils.ActionInput">
+      <classpath refid="maven.compile.classpath" />
+    </typedef>
+    <taskdef name="springContextActions" classname="tavant.twms.ant.utils.SpringContextActions">
+      <classpath refid="maven.test.classpath" />
+    </taskdef>
+
+    <springContextActions appContextLocation="${spring.context.files}" database="${jdbc.database}">
+      <action className="tavant.twms.deployment.tasks.GenerateDbPatch">
+        <actionInput name="dbPatchesOutputDir" value="${dbPatches.outputDir}" />
+      </action>
+	</springContextActions>
+  </target>
+
+  <target name="refresh.jbpm" depends="setup,drop.jbpm,create.jbpm" description="creates the patch for changes that need to be applied to the db while refreshing jbpm tables">
+    <echo message="Creating database patch..." />
+    <typedef name="action" classname="tavant.twms.ant.utils.ActionDefinition">
+      <classpath refid="maven.compile.classpath" />
+    </typedef>
+    <typedef name="actionInput" classname="tavant.twms.ant.utils.ActionInput">
+      <classpath refid="maven.compile.classpath" />
+    </typedef>
+    <taskdef name="springContextActions" classname="tavant.twms.ant.utils.SpringContextActions">
+      <classpath refid="maven.test.classpath" />
+    </taskdef>
+
+    <springContextActions appContextLocation="${spring.context.files}" database="${jdbc.database}">
+	  <action className="tavant.twms.deployment.tasks.DeployProcessDefinitions">
+        <actionInput name="process" value="/PartsReturn/processdefinition.xml,
+            /ClaimServiceSubProcess/processdefinition.xml,
+            /SupplierRecovery/processdefinition.xml,
+			/SupplierPartReturn/processdefinition.xml,
+            /ClaimSubmission/processdefinition.xml" />
+      </action>
+      <action className="tavant.twms.deployment.tasks.GenerateDbPatch">
+        <actionInput name="dbPatchesOutputDir" value="${dbPatches.outputDir}" />
+      </action>
+	</springContextActions>
+  </target>
+
+  <target name="deployProcessDefintion" depends="setup" description="Deploying process definiton">
+    <typedef name="action" classname="tavant.twms.ant.utils.ActionDefinition">
+      <classpath refid="maven.compile.classpath" />
+    </typedef>
+    <typedef name="actionInput" classname="tavant.twms.ant.utils.ActionInput">
+      <classpath refid="maven.compile.classpath" />
+    </typedef>
+    <taskdef name="springContextActions" classname="tavant.twms.ant.utils.SpringContextActions">
+      <classpath refid="maven.test.classpath" />
+    </taskdef>
+
+    <springContextActions appContextLocation="${spring.context.files}" database="${jdbc.database}">
+	  <action className="tavant.twms.deployment.tasks.DeployProcessDefinitions">
+        <actionInput name="process" value="/ClaimSubmission/processdefinition.xml" />
+      </action>
+	</springContextActions>
+  </target>
+
+<!--
+  <target name="fullInstall" depends="setup, drop.database, create.database, create.schema"
+          description="Recreates the database and loads data. ** Use with caution, since you will lose existing
+          data! **" />
+	-->
+  <target name="setup" description="Sets up the properties needed for execution">
+    <property name="twms.properties" value="${TWMS_HOME}\${TWMS_ENV_MODE}\twms_${TWMS_DB}.properties" />
+    <condition property="twms.properties.exist" value="true">
+      <available file="${twms.properties}" type="file" />
+    </condition>
+    <if>
+      <equals arg1="${twms.properties.exist}" arg2="true" />
+      <then>
+        <echo message="Got property file from etc folder"/>
+        <property file="${twms.properties}" />
+        <copy overwrite="true" file="${twms.properties}" tofile="${class.dir}\twms.properties" />
+      </then>
+      <else>
+        <echo message="Didn't get property file from etc folder so picking default property file"/>
+        <property file="${target.dir}\classes\twms.properties" />
+      </else>
+    </if>
+  </target>
+	
+  <target name="drop.jbpm" description="truncating the jbpm tables">
+	<if>
+        <equals arg1="${TWMS_DB}" arg2="oracle" />
+        <then>
+          <stopwatch name="Drop JBPM tables" />
+          <echo message="Drop JBPM tables ${jdbc.database}" />
+          <exec executable="sqlplus" description="SQLPlus client is needed.">
+            <arg value="${jdbc.username}/${jdbc.password}@${jdbc.database}" />
+            <arg value="@${basedir}/../../../target/classes/drop-jbpm.sql" />
+          </exec>
+          <stopwatch name="Drop JBPM tables" action="total" />
+        </then>
+      </if>
+  </target>
+
+  <target name="create.jbpm" description="populating the jbpm tables">
+	<if>
+        <equals arg1="${TWMS_DB}" arg2="oracle" />
+        <then>
+          <stopwatch name="Create JBPM tables" />
+          <echo message="Create JBPM tables ${jdbc.database}" />
+          <exec executable="sqlplus" description="SQLPlus client is needed.">
+            <arg value="${jdbc.username}/${jdbc.password}@${jdbc.database}" />
+            <arg value="@${basedir}/../../../target/classes/create-jbpm.sql" />
+          </exec>
+          <stopwatch name="Create JBPM tables" action="total" />
+        </then>
+      </if>
+  </target>
+  
+  <target name="drop.database" description="drop the database">
+    <if>
+      <equals arg1="${TWMS_DB}" arg2="mysql" />
+      <then>
+        <stopwatch name="Dropping Database" />
+        <echo message="Dropping MySQL database ${jdbc.database}" />
+        <exec executable="mysql">
+          <arg line="--user=${jdbc.username} --password=${jdbc.password} --execute=&quot;drop database ${jdbc.database}&quot;" />
+        </exec>
+        <stopwatch name="Dropping Database" action="total" />
+      </then>
+      <elseif>
+        <equals arg1="${TWMS_DB}" arg2="oracle" />
+        <then>
+          <stopwatch name="Drop Oracle Schema" />
+          <echo message="Drop Oracle Schema ${jdbc.database}" />
+          <exec executable="sqlplus" description="SQLPlus client is needed.">
+            <arg value="${jdbc.username}/${jdbc.password}@${jdbc.database}" />
+            <arg value="@${basedir}/../../../target/classes/drop-schema.sql" />
+          </exec>
+          <stopwatch name="Drop Oracle Schema" action="total" />
+        </then>
+      </elseif>
+      <else>
+        <echo message="The value of property TWMS_DB is not oracle or mysql" />
+      </else>
+    </if>
+  </target>
+
+  <target name="create.database" description="create the database">
+    <if>
+      <equals arg1="${TWMS_DB}" arg2="mysql" />
+      <then>
+        <stopwatch name="Creating Database" />
+        <echo message="Creating MySQL database ${jdbc.database}" />
+        <exec executable="mysql">
+          <arg line="--user=root --password=welcome --execute=&quot;create database ${jdbc.database}&quot;" />
+        </exec>
+        <echo message="Created MySQL database ${jdbc.database}" />
+        <stopwatch name="Creating Database" action="total" />
+      </then>
+    </if>
+  </target>
+
+  <target name="create.schema" depends="create.schema.script, execute.schema.script" />
+
+  <target name="create.schema.script" description="create the database">
+    <echo message="Creating schema script..." />
+    <typedef name="action" classname="tavant.twms.ant.utils.ActionDefinition">
+      <classpath refid="maven.compile.classpath" />
+    </typedef>
+    <typedef name="actionInput" classname="tavant.twms.ant.utils.ActionInput">
+      <classpath refid="maven.compile.classpath" />
+    </typedef>
+    <taskdef name="springContextActions" classname="tavant.twms.ant.utils.SpringContextActions">
+      <classpath refid="maven.test.classpath" />
+    </taskdef>
+
+    <springContextActions appContextLocation="${spring.context.files}" database="${jdbc.database}">
+      <action className="tavant.twms.deployment.tasks.CreateSchema">
+        <actionInput name="baseDirectory" value="${basedir}/../../../" />
+      </action>
+    </springContextActions>
+  </target>
+
+  <target name="execute.schema.script">
+    <if>
+      <equals arg1="${TWMS_DB}" arg2="mysql" />
+      <then>
+        <stopwatch name="Execute Schema Script" />
+        <echo message="Executing schema script..." />
+        <exec executable="mysql">
+          <arg line="--user=${jdbc.username} --password=${jdbc.password} --database=${jdbc.database}" />
+          <redirector input="${basedir}/../../../target/create-schema.sql">
+          </redirector>
+        </exec>
+        <stopwatch name="Execute Schema Script" action="total" />
+      </then>
+      <elseif>
+        <equals arg1="${TWMS_DB}" arg2="oracle" />
+        <then>
+          <stopwatch name="Execute Schema Script" />
+          <echo message="Executing schema script..." />
+          <exec executable="sqlplus" description="SQLPlus client is needed.">
+            <arg value="${jdbc.username}/${jdbc.password}@${jdbc.database}" />
+            <arg value="@${basedir}/../../../target/create-schema.sql" />
+          </exec>
+          <stopwatch name="Execute Schema Script" action="total" />
+        </then>
+      </elseif>
+      <else>
+        <echo message="The value of property TWMS_DB is not oracle or mysql" />
+      </else>
+    </if>
+  </target>
+
+  <target name="export.cannedrules.fromdb">
+    <typedef name="action" classname="tavant.twms.ant.utils.ActionDefinition">
+      <classpath refid="maven.compile.classpath" />
+    </typedef>
+
+    <typedef name="actionInput" classname="tavant.twms.ant.utils.ActionInput">
+      <classpath refid="maven.compile.classpath" />
+    </typedef>
+
+    <taskdef name="springContextActions" classname="tavant.twms.ant.utils.SpringContextActions">
+      <classpath refid="maven.test.classpath" />
+    </taskdef>
+    <echo message="Skipping rules - ${skip.rules}" />
+    <if>
+      <not>
+        <equals arg1="${skip.rules}" arg2="true" />
+      </not>
+      <then>
+        <springContextActions appContextLocation="${spring.context.files}" database="${jdbc.database}">
+          <action className="tavant.twms.deployment.tasks.ExportCannedExpressionsFromDB" />
+          <action className="tavant.twms.deployment.tasks.ExportRulesFromDB" />
+        </springContextActions>
+      </then>
+    </if>
+  </target>
+
+  <target name="load.cannedrules.indb">
+    <typedef name="action" classname="tavant.twms.ant.utils.ActionDefinition">
+      <classpath refid="maven.compile.classpath" />
+    </typedef>
+    <typedef name="actionInput" classname="tavant.twms.ant.utils.ActionInput">
+      <classpath refid="maven.compile.classpath" />
+    </typedef>
+    <taskdef name="springContextActions" classname="tavant.twms.ant.utils.SpringContextActions">
+      <classpath refid="maven.test.classpath" />
+    </taskdef>
+
+    <echo message="Skipping rules - ${skip.rules}" />
+    <if>
+      <not>
+        <equals arg1="${skip.rules}" arg2="true" />
+      </not>
+      <then>
+        <springContextActions appContextLocation="${spring.context.files}" database="${jdbc.database}">
+          <action className="tavant.twms.deployment.tasks.RestoreCannedExpressionsInDB" />
+          <action className="tavant.twms.deployment.tasks.RestoreRulesInDB" />
+        </springContextActions>
+      </then>
+    </if>
+  </target>
+</project>

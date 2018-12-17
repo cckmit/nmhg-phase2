@@ -1,0 +1,88 @@
+[OPTIONS]
+Compiled File=SRA.chm
+Title=SRA
+Contents File=SRA.hhc
+Index File=SRA.hhk
+Default topic=
+Default Window=
+Error log file=
+Display compile progress=No
+Display compile notes=No
+Full-text search=Yes
+Binary Index=Yes
+Auto Index=No
+Enhanced decompilation=No
+Binary TOC=No
+Flat=No
+
+[WINDOWS]
+
+[FILES]
+Part_Returns\Search_Parts.htm
+Contract_Admin\Maintain_Supplier_Contracts.htm
+Supplier_Recovery\Supplier_Recovery_Folders.htm
+Before_you_Begin\common_application_features.htm
+Contract_Admin\index.htm
+Part_Returns\index.htm
+Before_you_Begin\index.htm
+Supplier_Recovery\index.htm
+Inventory\index.htm
+Claims\Claim_Details.htm
+Claims\Policy_Details.htm
+Claims\index.htm
+Claims\Search_Claims.htm
+Parts_Recovery\index.htm
+Parts_Recovery\Barcode_Feature_and_Search_by_Barcode.htm
+Field_Modifications\index.htm
+Settings\index.htm
+Items\index.htm
+Reports\Upload_Management.htm
+Reports\index.htm
+Contract_Admin\Manage_Suppliers.htm
+Contract_Admin\User_Groups.htm
+Contract_Admin\View_Part_Source_History.htm
+Contract_Admin\View_Supplier.htm
+Inventory\Inventory.htm
+Inventory\Equipment_Details.htm
+Inventory\Search_Inventory.htm
+Items\Search_Items.htm
+Parts_Recovery\Awaiting_Shipment.htm
+Before_you_Begin\Before_you_Begin.htm
+Before_you_Begin\Introduction.htm
+Before_you_Begin\Copyright.htm
+Field_Modifications\Search_Campaigns.htm
+Settings\Email_Subscription.htm
+Settings\Manage_User_BU_Mapping.htm
+Settings\Map_Service_Provider_Business_Unit.htm
+Parts_Recovery\Supplier_Parts_Shipped.htm
+Reports\Download_Management.htm
+Reports\Vendor_Recovery_Report.htm
+Supplier_Recovery\Claims_Due_for_Recovery.htm
+Settings\Profile.htm
+Parts_Recovery\Part_Not_In_Warehouse.htm
+Parts_Recovery\Parts_Recovery.htm
+Parts_Recovery\Shipment_Generated.htm
+Parts_Recovery\Shipment_Tag.htm
+Parts_Recovery\Supplier_Parts_Claimed.htm
+Parts_Recovery\Search_Parts.htm
+Reports\Reports.htm
+Parts_Recovery\Awaiting_Shipment_To_Warehouse.htm
+Supplier_Recovery\Pending_Recovery_Initiation.htm
+Supplier_Recovery\Multi_Claim_Maintenance.htm
+Supplier_Recovery\Claims_Under_Recovery.htm
+Supplier_Recovery\Search_Supplier_Recovery_Claims.htm
+eHelp.xml
+RoboHHRE.lng
+
+SRA.glo
+SRA.brs
+[ALIAS]
+#include SRA.ali
+
+[MAP]
+#include BSSCDefault.h
+
+[TEXT POPUPS]
+BSSCDefault.h
+
+

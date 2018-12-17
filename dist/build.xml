@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project basedir="." default="create.final.war">
+    <property file="build.properties" />
+    <taskdef resource="net/sf/antcontrib/antcontrib.properties">
+        <classpath>
+              <pathelement location="./lib/ant-contrib-1.0b3.jar" />
+        </classpath>
+    </taskdef>
+    <target name="init" depends="clean">
+        <mkdir dir="temp"/>
+		<exec executable="cmd">
+			<arg value="/c"/>
+			<arg value="net stop"/>
+			<arg value="${server.servicename}"/>
+		</exec>
+    </target>
+    <target name="clean">
+        <delete dir="temp"/>
+    </target>
+
+    <target name="explode.war" depends="init">
+	<unzip src="${war.path}/${war.name}" dest="temp"/>
+    </target>
+    
+    <target name="explode.all.jars" depends="explode.war">
+    	<foreach list="${files}" target="extract.in.loop" param="jar"
+    		delimiter=",">
+    	</foreach>    
+    </target>
+    
+    <target name="extract.in.loop">
+    	<unzip src="temp/${jar.path}/${jar}" dest="temp/${jar.explode.path}">
+		<patternset>        		
+        		<exclude name="app-context.xml"/>
+    		</patternset>    		
+    	</unzip>
+    </target>
+    
+    <target name="create.final.war" depends="explode.all.jars">
+	<war destfile="twms.war" webxml="temp/WEB-INF/web.xml" basedir="temp">
+		<manifest>
+		  <attribute name="Implementation-Build" value="${Implementation-Build}" />
+		  <attribute name="Implementation-Version" value="${Implementation-Version}" />
+		</manifest>
+	</war>  	
+
+    </target>
+    <target name="build.deploy.restart" depends="create.final.war, archive.war">
+	  <exec executable="cmd">
+	    <arg value="/c"/>
+	    <arg value="net start"/>
+	    <arg value="${server.servicename}"/>
+	  </exec>
+    </target>
+    <target name="archive.war">
+    	<exec executable="cmd">
+	    <arg value="/c"/>
+	    <arg value="perl aVersion.pl"/>
+	  </exec>
+    </target>
+</project>

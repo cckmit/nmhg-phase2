@@ -1,0 +1,74 @@
+--Purpose    : Adding error codes for warranty claim upload
+--Author     : Bharath kumar
+--Created On : 14/04/2010
+--Impact     : None
+
+--/* INSERT INTO UPLOAD_ERROR VALUES(UPLOAD_ERROR_SEQ.NEXTVAL,'DC067_IAC', 'ALARM CODES')
+--/
+--INSERT INTO UPLOAD_ERROR VALUES(UPLOAD_ERROR_SEQ.NEXTVAL,'DC068_CP','COMMERCIAL POLICY')
+--/
+--INSERT INTO UPLOAD_ERROR VALUES(UPLOAD_ERROR_SEQ.NEXTVAL,'DC069_IPI','IS PARAT INSTALLED')
+--/
+--INSERT INTO UPLOAD_ERROR VALUES(UPLOAD_ERROR_SEQ.NEXTVAL,'DC070_PITKTSA','IS PARAT INSTALLED ON TKTSA')
+--/
+--INSERT INTO UPLOAD_ERROR VALUES(UPLOAD_ERROR_SEQ.NEXTVAL,'DC072_PS','PART SERIAL NUMBER')
+--/
+--INSERT INTO UPLOAD_ERROR VALUES(UPLOAD_ERROR_SEQ.NEXTVAL,'DC073_PS','PART SERIAL NUMBER')
+--/
+--INSERT INTO UPLOAD_ERROR VALUES(UPLOAD_ERROR_SEQ.NEXTVAL,'DC071_CM', 'COMPETITOR MODEL')
+--/ */
+--/* INSERT INTO I18NUPLOAD_ERROR_TEXT VALUES(I18NUPLOAD_ERROR_TEXT_SEQ.NEXTVAL,'en_US','One or more Alarm codes are not valid',(select id from upload_error where code = 'DC067_IAC'))
+--/
+--INSERT INTO I18NUPLOAD_ERROR_TEXT VALUES(I18NUPLOAD_ERROR_TEXT_SEQ.NEXTVAL,'en_US','Commercial policy value is not valid',(select id from upload_error where code = 'DC068_CP'))
+--/
+--INSERT INTO I18NUPLOAD_ERROR_TEXT VALUES(I18NUPLOAD_ERROR_TEXT_SEQ.NEXTVAL,'en_US','Is Part Installed value is not valid',(select id from upload_error where code = 'DC069_IPI'))
+--/
+--INSERT INTO I18NUPLOAD_ERROR_TEXT VALUES(I18NUPLOAD_ERROR_TEXT_SEQ.NEXTVAL,'en_US','Is Part Installed on TKTSA value is not valid',(select id from upload_error where code = 'DC070_PITKTSA'))
+--/
+--INSERT INTO I18NUPLOAD_ERROR_TEXT VALUES(I18NUPLOAD_ERROR_TEXT_SEQ.NEXTVAL,'en_US','Part serial number is null',(select id from upload_error where code = 'DC072_PS'))
+--/
+--INSERT INTO I18NUPLOAD_ERROR_TEXT VALUES(I18NUPLOAD_ERROR_TEXT_SEQ.NEXTVAL,'en_US','Part serail number is not valid',(select id from upload_error where code = 'DC073_PS'))
+--/
+--INSERT INTO I18NUPLOAD_ERROR_TEXT VALUES(I18NUPLOAD_ERROR_TEXT_SEQ.NEXTVAL,'en_US','Competitor model value is not valid',(select id from upload_error where code = 'DC071_CM'))
+--/
+--INSERT INTO UPLOAD_MGT_UPLOAD_ERRORS VALUES((SELECT ID FROM UPLOAD_MGT WHERE NAME_OF_TEMPLATE = 'draftWarrantyClaims'),(SELECT ID FROM UPLOAD_ERROR WHERE CODE = 'DC067_IAC'))
+--/
+--INSERT INTO UPLOAD_MGT_UPLOAD_ERRORS VALUES((SELECT ID FROM UPLOAD_MGT WHERE NAME_OF_TEMPLATE = 'draftWarrantyClaims'),(SELECT ID FROM UPLOAD_ERROR WHERE CODE = 'DC068_CP'))
+--/
+--INSERT INTO UPLOAD_MGT_UPLOAD_ERRORS VALUES((SELECT ID FROM UPLOAD_MGT WHERE NAME_OF_TEMPLATE = 'draftWarrantyClaims'),(SELECT ID FROM UPLOAD_ERROR WHERE CODE = 'DC069_IPI'))
+--/
+--INSERT INTO UPLOAD_MGT_UPLOAD_ERRORS VALUES((SELECT ID FROM UPLOAD_MGT WHERE NAME_OF_TEMPLATE = 'draftWarrantyClaims'),(SELECT ID FROM UPLOAD_ERROR WHERE CODE = 'DC070_PITKTSA'))
+--/
+--INSERT INTO UPLOAD_MGT_UPLOAD_ERRORS VALUES((SELECT ID FROM UPLOAD_MGT WHERE NAME_OF_TEMPLATE = 'draftWarrantyClaims'),(SELECT ID FROM UPLOAD_ERROR WHERE CODE = 'DC072_PS'))
+--/
+--INSERT INTO UPLOAD_MGT_UPLOAD_ERRORS VALUES((SELECT ID FROM UPLOAD_MGT WHERE NAME_OF_TEMPLATE = 'draftWarrantyClaims'),(SELECT ID FROM UPLOAD_ERROR WHERE CODE = 'DC073_PS'))
+--/
+--INSERT INTO UPLOAD_MGT_UPLOAD_ERRORS VALUES((SELECT ID FROM UPLOAD_MGT WHERE NAME_OF_TEMPLATE = 'draftWarrantyClaims'),(SELECT ID FROM UPLOAD_ERROR WHERE CODE = 'DC071_CM'))
+--/ */
+--/* insert into upload_error values(UPLOAD_ERROR_SEQ.NEXTVAL,'DC036_MP','MISCELLANEOUS PARTS')
+--/
+--insert into upload_error values(UPLOAD_ERROR_SEQ.NEXTVAL,'DC036_RP','REPLACED IR PARTS')
+--/
+--insert into upload_error values(UPLOAD_ERROR_SEQ.NEXTVAL,'DC036_ALH','REASON FOR EXTRA LABOR HOURS')
+--/
+--insert into upload_error values(UPLOAD_ERROR_SEQ.NEXTVAL,'DC074','LABOUR HOURS')
+--/ */
+--/* insert into upload_mgt_upload_errors values((SELECT ID FROM UPLOAD_MGT WHERE NAME_OF_TEMPLATE = 'draftWarrantyClaims'),(SELECT ID FROM UPLOAD_ERROR WHERE CODE = 'DC036_MP'))
+--/
+--insert into upload_mgt_upload_errors values((SELECT ID FROM UPLOAD_MGT WHERE NAME_OF_TEMPLATE = 'draftWarrantyClaims'),(SELECT ID FROM UPLOAD_ERROR WHERE CODE = 'DC036_RP'))
+--/
+--insert into upload_mgt_upload_errors values((SELECT ID FROM UPLOAD_MGT WHERE NAME_OF_TEMPLATE = 'draftWarrantyClaims'),(SELECT ID FROM UPLOAD_ERROR WHERE CODE = 'DC036_ALH'))
+--/
+--insert into upload_mgt_upload_errors values((SELECT ID FROM UPLOAD_MGT WHERE NAME_OF_TEMPLATE = 'draftWarrantyClaims'),(SELECT ID FROM UPLOAD_ERROR WHERE CODE = 'DC074'))
+--/
+--insert into i18nupload_error_text values(I18NUPLOAD_ERROR_TEXT_SEQ.NEXTVAL,'en_US','Miscellaneous Parts  cost category is not allowed for this product',(SELECT ID FROM UPLOAD_ERROR WHERE CODE = 'DC036_MP'))
+--/
+--insert into i18nupload_error_text values(I18NUPLOAD_ERROR_TEXT_SEQ.NEXTVAL,'en_US','Thermo King TSA Parts cost category is not allowed for this product',(SELECT ID FROM UPLOAD_ERROR WHERE CODE = 'DC036_RP'))
+--/
+--insert into i18nupload_error_text values(I18NUPLOAD_ERROR_TEXT_SEQ.NEXTVAL,'en_US','This is user is not eligible to add extra labour hours',(SELECT ID FROM UPLOAD_ERROR WHERE CODE = 'DC036_ALH'))
+--/
+--insert into i18nupload_error_text values(I18NUPLOAD_ERROR_TEXT_SEQ.NEXTVAL,'en_US','Labor hours cost category is not allowed for this product',(SELECT ID FROM UPLOAD_ERROR WHERE CODE = 'DC074'))
+--/
+--Kuldeep - Merged with PATCH_ADD_ROWS_UPLOAD_ERROR.sql DB patch
+commit
+/

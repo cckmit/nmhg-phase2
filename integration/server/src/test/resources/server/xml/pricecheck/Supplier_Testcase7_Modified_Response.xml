@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<PriceFetchResponse>
+  <ApplicationArea>
+    <Sender>
+      <LogicalId>CCT_WINDCHILL</LogicalId>
+      <Task>TavantWMS</Task>
+      <ReferenceId>1231</ReferenceId>
+    </Sender>
+    <BODId>ITEM_PRICE_RESPONSE_TAVANT</BODId>
+    <CreationDateTime>20081219122325</CreationDateTime>
+    <InterfaceNumber>USINT0802</InterfaceNumber>
+  </ApplicationArea>
+  <Status>
+    <code>SUCCESS</code>
+    <errorMessage></errorMessage>
+  </Status>
+  <CostCheckResponse>
+    <LineItem>
+      <Status>
+        <code>SUCCESS</code>
+      </Status>
+      <PartNo>P700</PartNo>
+      <Quantity>1</Quantity>
+      <StandardCost CurrencyCode="USD">700</StandardCost>
+      <UOM>POUND</UOM>
+    </LineItem>
+    <LineItem>
+      <Status>
+        <code>SUCCESS</code>
+      </Status>
+      <PartNo>P600</PartNo>
+      <Quantity>1</Quantity>
+      <StandardCost CurrencyCode="USD">600</StandardCost>
+      <UOM>POUND</UOM>
+    </LineItem>
+    <LineItem>
+      <Status>
+        <code>SUCCESS</code>
+      </Status>
+      <PartNo>P500</PartNo>
+      <Quantity>1</Quantity>
+      <StandardCost CurrencyCode="USD">500</StandardCost>
+      <UOM>POUND</UOM>
+    </LineItem>
+    <LineItem>
+      <Status>
+        <code>SUCCESS</code>
+      </Status>
+      <PartNo>P400</PartNo>
+      <Quantity>1</Quantity>
+      <StandardCost CurrencyCode="USD">400</StandardCost>
+      <UOM>POUND</UOM>
+    </LineItem>
+    <LineItem>
+      <Status>
+        <code>SUCCESS</code>
+      </Status>
+      <PartNo>P300</PartNo>
+      <Quantity>1</Quantity>
+      <StandardCost CurrencyCode="USD">300</StandardCost>
+      <UOM>KG</UOM>
+    </LineItem>
+    <LineItem>
+      <Status>
+        <code>SUCCESS</code>
+      </Status>
+      <PartNo>P200</PartNo>
+      <Quantity>1</Quantity>
+      <StandardCost CurrencyCode="USD">200</StandardCost>
+      <UOM>POUND</UOM>
+    </LineItem>
+    <LineItem>
+      <Status>
+        <code>SUCCESS</code>
+      </Status>
+      <PartNo>P100</PartNo>
+      <Quantity>1</Quantity>
+      <StandardCost CurrencyCode="USD">100</StandardCost>
+      <UOM>POUND</UOM>
+    </LineItem>
+  </CostCheckResponse>
+</PriceFetchResponse>

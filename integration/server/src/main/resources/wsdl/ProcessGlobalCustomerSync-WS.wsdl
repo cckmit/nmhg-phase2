@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://www.tavant.com/globalsync/customersync/definition"
+                  xmlns:impl="http://www.tavant.com/globalsync/customersync/definition"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                  xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <wsdl:message name="syncRequest">
+        <wsdl:part name="syncRequest" type="xsd:string"/>
+    </wsdl:message>
+    <wsdl:message name="syncResponse">
+        <wsdl:part name="syncResponse" type="xsd:string"/>
+    </wsdl:message>
+    <wsdl:portType name="ProcessGlobalCustomerSync">
+        <wsdl:operation name="sync" parameterOrder="syncRequest">
+            <wsdl:input message="impl:syncRequest" name="syncRequest"/>
+            <wsdl:output message="impl:syncResponse" name="syncResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="ProcessGlobalCustomerSync-WSSoapBinding" type="impl:ProcessGlobalCustomerSync">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="sync">
+            <soap:operation soapAction="http://www.tavant.com/globalsync/customersync"/>
+            <wsdl:input name="syncRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="syncResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="ProcessGlobalCustomerSync-WS">
+        <wsdl:port binding="impl:ProcessGlobalCustomerSync-WSSoapBinding" name="ProcessGlobalCustomerSync-WS">
+            <soap:address location="http://10.7.9.19:8080/services/integration/ProcessGlobalCustomerSync-WS"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
+

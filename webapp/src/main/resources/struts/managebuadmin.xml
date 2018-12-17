@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+  <package name="managebuadmin" extends="struts-twms-default">
+
+    <action name="list_bu_config"
+      class="tavant.twms.web.bu.ListBuConfigurationsAction">
+      <interceptor-ref name="adminParamsPrepare" />      
+      <result name="success">pages/secure/admin/bu/buHome.jsp</result>
+    </action>
+    <action name="configvalue"
+			class="tavant.twms.web.bu.SaveConfigValueAction">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result>pages/secure/home/json.jsp</result>
+	</action>
+	<action name="manageBUConfiguration" class="tavant.twms.web.bu.ManageBUConfiguration" >
+			<interceptor-ref name="adminParamsPrepare" />
+		<result name="success">pages/secure/admin/bu/buAdminHome.jsp</result> 	
+	</action>
+	<action name="saveBUConfiguration" class="tavant.twms.web.bu.ManageBUConfiguration" method="save">
+		<interceptor-ref name="adminTwmsParamsPrepareParams" />
+		<result name="input">pages/secure/admin/bu/buAdminHome.jsp</result>
+		<result name="success">pages/secure/admin/bu/success.jsp</result>
+		<result name="error">pages/secure/admin/bu/error.jsp</result>
+	</action>
+      <action name="show_user_bu_mapping" class="tavant.twms.web.bu.ManageUserBUMapping" method="show" >
+			<interceptor-ref name="adminParamsPrepare" />
+		<result name="success">pages/secure/admin/bu/userBuMapping.jsp</result>
+	</action>
+    <action name="searchBuUserMap" class="tavant.twms.web.bu.ManageUserBUMapping" method="search">
+		<interceptor-ref name="twmsParamsPrepareParams" />
+		<result name="success">pages/secure/admin/bu/buUserMapSearchResult.jsp</result>
+		<result name="input">pages/secure/admin/bu/userBuMapping.jsp</result>
+	</action>
+    <action name="updateUserBUMapping" class="tavant.twms.web.bu.ManageUserBUMapping" method="update">
+		<interceptor-ref name="twmsParamsPrepareParams" />
+		<result name="success">pages/secure/admin/bu/userBuMapping.jsp</result>
+        <result name="input">pages/secure/admin/bu/userBuMapping.jsp</result>
+    </action>
+    <action name="show_dealer_bu_mapping" class="tavant.twms.web.bu.ManageDealerBUMapping" method="show" >
+		<interceptor-ref name="adminParamsPrepare" />
+		<result name="success">pages/secure/admin/bu/dealerBUMapping.jsp</result>
+	</action>    
+    <action name="searchServiceProvider" class="tavant.twms.web.bu.ManageDealerBUMapping" method="search">
+		<interceptor-ref name="twmsParamsPrepareParams" />
+		<result name="success">pages/secure/admin/bu/buDealerMapSearchResult.jsp</result>
+		<result name="input">pages/secure/admin/bu/dealerBUMapping.jsp</result>
+	</action>
+    <action name="updateDealerBUMapping" class="tavant.twms.web.bu.ManageDealerBUMapping" method="update">
+		<interceptor-ref name="twmsParamsPrepareParams" />
+		<result name="success">pages/secure/admin/bu/dealerBUMapping.jsp</result>
+        <result name="input">pages/secure/admin/bu/dealerBUMapping.jsp</result>
+    </action> 
+    
+    <!-- Map Supplier to BU TKTSA-1478 -->
+     <action name="show_supplier_bu_mapping" class="tavant.twms.web.bu.ManageSupplierBUMapping">
+		<interceptor-ref name="adminParamsPrepareWithoutValidation" />
+		<result name="success">pages/secure/admin/bu/supplierBUMapping.jsp</result>
+	</action>  
+	<action name="searchSupplier" class="tavant.twms.web.bu.ManageSupplierBUMapping" method="search">
+		<interceptor-ref name="twmsParamsPrepareParams" />
+		<result name="success">pages/secure/admin/bu/buSupplierMapSearchResult.jsp</result>
+		<result name="input">pages/secure/admin/bu/supplierBUMapping.jsp</result>
+	</action> 
+	<action name="updateSupplierBUMapping" class="tavant.twms.web.bu.ManageSupplierBUMapping" method="update">
+		<interceptor-ref name="twmsParamsPrepareParams" />
+		<result name="success">pages/secure/admin/bu/supplierBUMapping.jsp</result>
+        <result name="input">pages/secure/admin/bu/supplierBUMapping.jsp</result>
+    </action>    
+  </package>
+</struts>

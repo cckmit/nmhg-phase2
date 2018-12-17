@@ -1,0 +1,258 @@
+html {
+background-color:#FFF;
+margin:0;
+padding:0;
+}
+
+body {
+background-color:#FFF;
+scrollbar-base-color:#E8EDEF;
+scrollbar-arrow-color:#000;
+scrollbar-track-color:#f6f6f6;
+scrollbar-3dlight-color:#133173;
+scrollbar-highlight-color:#FFF;
+scrollbar-darkshadow-color:#666;
+scrollbar-shadow-color:#CCC;
+scrollbar-face-color:#E8EDEF;
+height:100%;
+margin:0;
+padding:0;
+}
+
+.sectionbgPadding {
+color:#959494;
+background-color:#FCFCFC;
+padding:5px;
+}
+
+.noBorderCellbg {
+border:none;
+background-color:#777777;
+padding:0;
+}
+
+.buttonWrapperPrimary {
+padding-top:7px;
+padding-bottom:7px;
+text-align:center;
+}
+
+.buttonGeneric {
+background-image:url(../../../image/buttonBg_new.gif)repeat-x scroll left center;
+border:1px solid #9B9B9B;
+color:#6D7177;
+cursor:pointer;
+font-family:Arial, Helvetica, sans-serif;
+font-size:9pt;
+font-weight:700;
+overflow:visible;
+text-align:center;
+height:22px;
+line-height:14px;
+vertical-align:top;
+white-space:nowrap;
+}
+
+.label {
+color:#545454;
+font-family:Verdana,sans-serif,Arial,Helvetica;
+font-size:9pt;
+font-weight:700;
+font-style:normal;
+vertical-align:top;
+padding-left:5px;
+text-align:left;
+line-height:20px;
+}
+
+.labelNormal {
+color:#545454;
+font-family:Arial, Helvetica, sans-serif;
+font-size:9pt;
+font-weight:400;
+font-style:normal;
+vertical-align:middle;
+text-align:left;
+}
+
+.colHeader {
+font-family:Arial, Helvetica, sans-serif;
+font-size:9pt;
+color:#5577B4;
+text-align:left;
+text-decoration:none;
+background-color:#DCE9F7;
+padding-left:4px;
+border:1px solid #ffffff;
+}
+
+.tableDataWhiteText {
+font-family:Arial, Helvetica, sans-serif;
+font-size:9pt;
+line-height:15px;
+border:0;
+padding-left:2px;
+text-align:left;
+color:#000;
+}
+
+.tableDataYellowRowText {
+font-family:Arial, Helvetica, sans-serif;
+font-size:9pt;
+line-height:15px;
+border:0;
+padding-left:2px;
+text-align:left;
+color:#000;
+}
+
+#separatorbgColor {
+background-color:#fff;
+margin-top:7px;
+}
+
+td {
+font-family:Arial, Helvetica, sans-serif;
+font-size:9pt;
+line-height:15px;
+text-align:left;
+}
+
+th {
+line-height:17px;
+}
+
+select {
+font-family:Arial, Helvetica, sans-serif;
+font-size:9pt;
+text-align:left;
+margin-top:2px;
+margin-bottom:2px;
+}
+
+div.separator {
+padding-top:5px;
+background-color:#FFF;
+}
+
+div.subtitle {
+font-family:Arial, Helvetica, sans-serif;
+background-color:#F5F5F5;
+font-size:9pt;
+color:#5577B4;
+text-transform:uppercase;
+margin-top:8px;
+padding-left:4px;
+line-height:15px;
+border:1px solid #EFEBF7;
+width:97.5%;
+margin-left:6px;
+}
+
+.tablestylingWithBottom {
+border-bottom:1px solid #EFEBF7;
+}
+
+.tablestyling,.tablestylingWithBottom {
+border-left:1px solid #EFEBF7;
+border-right:1px solid #EFEBF7;
+margin-left:6px;
+margin-right:6px;
+width:98.2%;
+}
+
+.tablestylingSub {
+margin-left:6px;
+margin-right:6px;
+width:98.2%;
+}
+
+div.detailsHeader {
+font-family:Arial, Helvetica, sans-serif;
+font-size:9pt;
+font-weight:700;
+text-transform:uppercase;
+color:#5577B4;
+/*border-top:1px solid #EFEBF7;
+border-left:1px solid #EFEBF7;
+border-right:1px solid #EFEBF7;*/
+background:#DCE9F7;
+line-height:25px;
+height:25px;
+padding-left:10px;
+}
+
+
+.borderComments{
+width:98.5%; 
+/*\*/
+ * width:99.4%; 
+/**/
+border:1px solid #b8c8d9; 
+margin-left:5px
+}
+
+div.inspectionResult {
+font-family:Arial, Helvetica, sans-serif;
+font-size:9pt;
+font-weight:400;
+color:#636363;
+border-left:1px solid #EFEBF7;
+border-right:1px solid #EFEBF7;
+border-bottom:1px solid #EFEBF7;
+background-color:#F3FBFE;
+margin-left:5px;
+}
+
+.carrierLabel {
+width:15%;
+color:#545454;
+font-family:Arial, Helvetica, sans-serif;
+font-size:9pt;
+font-weight:700;
+font-style:normal;
+vertical-align:top;
+text-align:left;
+line-height:20px;
+}
+
+.carrierLabelNormal,.widgetTopAlign {
+width:30%;
+color:#000;
+font-family:Arial, Helvetica, sans-serif;
+font-size:9pt;
+font-weight:400;
+font-style:normal;
+text-align:left;
+}
+
+.widgetTopAlign {
+vertical-align:top;
+}
+
+.carrierLabelNormal {
+vertical-align:middle;
+}
+
+.disabledLOV {
+font-family:Arial, Helvetica, sans-serif;
+font-size:9pt;
+color:#999;
+font-weight:700;
+padding-left:2px;
+vertical-align:middle;
+height:5px;
+margin-bottom:5px;
+}
+
+.NoborderForTable{
+border:0px solid #EFEBF7;
+}
+
+.NoborderForTable tr td{
+border:0px solid #EFEBF7;
+}
+
+.tableBorder{
+	  border: 1px solid #999;
+	}

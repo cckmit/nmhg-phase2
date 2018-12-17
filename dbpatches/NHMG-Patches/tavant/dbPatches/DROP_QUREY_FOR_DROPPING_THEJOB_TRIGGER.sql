@@ -1,0 +1,5 @@
+--PURPOSE    : PATCH TO ADD JOB_STATUS TABLE FOR ITALY CLAIM INTERFACE
+--AUTHOR     : KALYANI
+--CREATED ON : 13-MAY-13
+drop trigger job_status_trigger
+/

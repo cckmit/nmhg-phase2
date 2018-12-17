@@ -1,0 +1,171 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <artifactId>server</artifactId>
+    <groupId>tavant.twms.TSA_DEV</groupId>
+    <version>0.5-SNAPSHOT</version>
+  </parent>
+
+  <artifactId>process</artifactId>
+  <name>server-process</name>
+
+  <dependencies>
+  	<dependency>
+      <groupId>tavant.twms.TSA_DEV</groupId>
+      <artifactId>common</artifactId>
+    </dependency>
+
+	<dependency>
+      <groupId>tavant.twms.TSA_DEV</groupId>
+      <artifactId>common-test</artifactId>
+	  <scope>test</scope>
+    </dependency>
+
+	<dependency>
+      <groupId>tavant.twms.TSA_DEV</groupId>
+      <artifactId>seeddata</artifactId>
+      <scope>compile</scope>
+    </dependency>
+
+	<dependency>
+      <groupId>tavant.twms.TSA_DEV</groupId>
+      <artifactId>domain-core</artifactId>
+    </dependency>
+	
+    <dependency>
+      <groupId>tavant.twms.TSA_DEV</groupId>
+      <artifactId>domain</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>tavant.twms.TSA_DEV</groupId>
+      <artifactId>engine</artifactId>
+    </dependency>
+
+  	<dependency>
+      <groupId>tavant.twms.TSA_DEV</groupId>
+      <artifactId>integration-layer</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>ant</groupId>
+      <artifactId>ant</artifactId>
+    </dependency>
+
+    <!--dependency>
+      <groupId>org.dbunit</groupId>
+      <artifactId>dbunit</artifactId>
+	  <scope>compile</scope>
+    </dependency-->
+
+   <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+
+    </dependency>
+
+    <dependency>
+        <groupId>oracle</groupId>
+        <artifactId>ojdbc14</artifactId>
+        <version>10.2.0.2</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.poi</groupId>
+      <artifactId>poi</artifactId>
+      <scope>compile</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.aspectj</groupId>
+      <artifactId>aspectjrt</artifactId>
+      <optional>true</optional>
+    </dependency>
+
+    <dependency>
+      <groupId>org.aspectj</groupId>
+      <artifactId>aspectjweaver</artifactId>
+      <optional>true</optional>
+    </dependency>
+
+  </dependencies>
+
+    <!-- Please include -Dhibernate.bytecode.provider=cglib in MAVEN_OPTS as it is required to execute the ant target-->
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>1.6</source>
+          <target>1.6</target>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-antrun-plugin</artifactId>
+        <version>1.1</version>
+        <executions>
+          <execution>
+            <phase>install</phase>
+            <configuration>
+              <tasks>
+                <ant antfile="build.xml" dir="src/main/resources" target="${ant.target}" inheritRefs="true">
+                  <property name="skip.rules" value="${skip.rules}" />
+				  <property name="basedir" value="${basedir}" />
+                  <property name="TWMS_HOME" value="${TWMS_HOME}"/>
+                  <property name="TWMS_ENV_MODE" value="${TWMS_ENV_MODE}"/>
+                  <property name="TWMS_DB" value="${TWMS_DB}"/>
+                  <property name="dbPatches.outputDir" value="${dbPatches.outputDir}" />
+                </ant>
+              </tasks>
+            </configuration>
+            <goals>
+              <goal>run</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
+  <repositories>
+    <repository>
+      <id>temp.repo</id>
+      <name>Tavant Shared Repository</name>
+      <url>http://www.ibiblio.org/maven/mule/dependencies/maven2/</url>
+    </repository>
+  </repositories>
+
+  <profiles>
+
+    <profile>
+      <id>oracle</id>
+      <properties>
+        <TWMS_DB>oracle</TWMS_DB>
+      </properties>
+    </profile>
+	
+    <profile>
+      <id>ci</id>
+      <properties>
+        <database>citestdb</database>
+      </properties>
+    </profile>
+
+    <profile>
+      <id>functest</id>
+      <properties>
+        <database>functestdb</database>
+      </properties>
+    </profile>
+
+  </profiles>
+
+  <properties>
+    <dbPatches.outputDir>${basedir}/../dbpatches/patches/tavant/dbPatches</dbPatches.outputDir>
+    <ant.target>deployProcessDefintion</ant.target>
+    <TWMS_HOME>${basedir}/../etc</TWMS_HOME>
+  </properties>
+</project>

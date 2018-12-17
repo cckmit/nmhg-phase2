@@ -1,0 +1,15 @@
+--PURPOSE    : PATCH FOR ADDING ADDITIONAL COLUMN WPRA to part_return_action and oem_part_replaced table
+--AUTHOR     : Deepak Patel
+--CREATED ON : 02-DEC-2012
+
+alter table OEM_PART_REPLACED add (WPRA NUMBER(19,0))
+/
+
+alter table OEM_PART_REPLACED add CONSTRAINT OEM_WPRA_FK FOREIGN KEY (wpra) REFERENCES WPRA (ID) ENABLE
+/
+
+alter table PART_RETURN add (WPRA NUMBER(19,0))
+/
+
+alter table PART_RETURN add CONSTRAINT PART_RETURN_WPRA_FK FOREIGN KEY (wpra) REFERENCES WPRA (ID) ENABLE
+/

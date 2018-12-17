@@ -1,0 +1,159 @@
+<html>
+<!-- Sitemap 1.0 -->
+<object type="text/site properties">
+  <param name="SiteType" value="index">
+</object>
+<ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Inventory">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Fault Location">
+    <param name="Name" value="Claim Details">
+    <param name="Local" value="Claims\Claim_Details.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Equipment Details">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Claim History">
+    <param name="Name" value="Claim Details">
+    <param name="Local" value="Claims\Claim_Details.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Fault Found">
+    <param name="Name" value="Claim Details">
+    <param name="Local" value="Claims\Claim_Details.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Memo Details">
+    <param name="Name" value="Claim Details">
+    <param name="Local" value="Claims\Claim_Details.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Claim Details">
+    <param name="Name" value="Claim Details">
+    <param name="Local" value="Claims\Claim_Details.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Service Information">
+    <param name="Name" value="Claim Details">
+    <param name="Local" value="Claims\Claim_Details.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Manage Documents">
+    <param name="Name" value="Claim Details">
+    <param name="Local" value="Claims\Claim_Details.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Failure Information">
+    <param name="Name" value="Claim Details">
+    <param name="Local" value="Claims\Claim_Details.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Job Code">
+    <param name="Name" value="Claim Details">
+    <param name="Local" value="Claims\Claim_Details.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Failure Detail">
+    <param name="Name" value="Claim Details">
+    <param name="Local" value="Claims\Claim_Details.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Payment Details">
+    <param name="Name" value="Claim Details">
+    <param name="Local" value="Claims\Claim_Details.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Outside Parts">
+    <param name="Name" value="Claim Details">
+    <param name="Local" value="Claims\Claim_Details.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Components Replaced">
+    <param name="Name" value="Claim Details">
+    <param name="Local" value="Claims\Claim_Details.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Policy details">
+    <param name="Name" value="Policy Details">
+    <param name="Local" value="Claims\Policy_Details.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="PreDefined Stock Search">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="PreDefined Retail Search">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Transaction History">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Parts Replaced">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Recovered Amount">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Sales Order Number">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Major Components">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Policy Code">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Dealer Details">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Field Modification">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Invoice Number">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Barcode">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Return Location">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Part Returns">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Due parts Inspection">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Supply Recovery Admin">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Parts Recovery">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Recovery Claim Number">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Shipment Generated">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Shipment Tag">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Due Parts">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Print Shipment Tag">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Work Order Number">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Due Date">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Profile">
+  </object>
+</ul>
+</html>

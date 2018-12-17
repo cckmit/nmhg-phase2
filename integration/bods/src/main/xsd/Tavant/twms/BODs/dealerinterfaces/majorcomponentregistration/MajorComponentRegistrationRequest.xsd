@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://www.tavant.com/dealerinterfaces/majorcomponentregistration/majorcomponentregistrationrequest" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ns="http://www.tavant.com/dealerinterfaces/majorcomponentregistration/majorcomponentregistrationrequest" targetNamespace="http://www.tavant.com/dealerinterfaces/majorcomponentregistration/majorcomponentregistrationrequest" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="MajorComponentRegistration">
+		<xs:complexType>
+			<xs:sequence>			
+			<!-- Name of the Business Unit to which Major Component belongs to-->
+			<xs:element name="BUName" default="Thermo King TSA" nillable="false">
+				<xs:simpleType>
+                    <xs:restriction base="xs:string">
+						<xs:enumeration value="Thermo King TSA"/>
+						<xs:enumeration value="Hussmann"/>
+						<xs:enumeration value="AIR"/>
+						<xs:enumeration value="Club Car"/>
+						<xs:enumeration value="Clubcar ESA"/>
+						<xs:enumeration value="TFM"/>
+						<xs:enumeration value="TK"/>
+						<xs:enumeration value="Transport Solutions ESA"/>
+						<xs:enumeration value="ITS"/>
+                    </xs:restriction>
+                </xs:simpleType>
+			</xs:element>
+			<!-- Organization Number w.r.t which dealer is performing the action. Mandatory if the dealer is working for more than one organization -->
+			<xs:element name="CurrentlyActiveOrganizationNumber" type="xs:string"  nillable="true"/>			<!-- Major Component Serial Number-->
+			<xs:element name="MajorComponentSerialNumber" minOccurs="1" maxOccurs="1" nillable="false">
+ 				<xs:simpleType>
+      					<xs:restriction base="xs:string">
+        					 <xs:minLength value="1" />        
+      					</xs:restriction>
+   				</xs:simpleType>
+			</xs:element>
+
+			<!-- Major Component Item Number-->
+			<xs:element name="MajorComponentItemNumber" minOccurs="1" maxOccurs="1" nillable="false">
+				<xs:simpleType>
+      					<xs:restriction base="xs:string">
+        					 <xs:minLength value="1" />        
+      					</xs:restriction>
+   				</xs:simpleType>
+			</xs:element>
+
+			<xs:element name="DateOfDelivery" type="xs:date" minOccurs="1" maxOccurs="1" nillable="false"/>
+			<!-- Installed on Machine Serial Number-->
+			<xs:element name="InventorySerialNumber" type="xs:string" nillable="true"/>
+			<!-- Installed on Machine Item Number-->
+			<xs:element name="InventoryItemNumber" type="xs:string" nillable="true"/>
+			<!-- Type of the customer to whom major component is being registered. Possible values are 	 DirectCustomer,InterCompany,NationalAccount,Dealer and End Customer-->
+			<xs:element name="CustomerType" type="xs:string" nillable="true"/>
+			<!-- Customer ID of the customer -->
+			<xs:element name="CustomerID" type="xs:string" nillable="true"/>
+			<!-- Dealer Number of the certified Installer-->
+			<xs:element name="CertifiedInstallerName" type="xs:string" nillable="true"/>
+			<!-- Non certified customer type.Possible values are DirectCustomer,InterCompany,NationalAccount,Dealer and End Customer-->
+			<xs:element name="NonCertifiedInstallerType" type="xs:string" nillable="true"/>
+			<!-- Non certified customer ID. -->
+			<xs:element name="NonCertifiedInstallerId" type="xs:string" nillable="true"/>	
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>	
+</xs:schema>

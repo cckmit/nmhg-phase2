@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="manageInclusiveJobCodes" extends="struts-twms-default">
+	
+	    <action name="manageInclusiveJobCodes" class="tavant.twms.web.admin.inclusiveJobCodes.ManageInclusiveJobCodesAction">
+            <interceptor-ref name="adminParamsPrepareWithoutValidation"/>
+            <result name="success">pages/secure/admin/inclusiveJobCodes/inclusiveJobCodesInboxView.jsp</result>
+        </action>	
+        
+        <action name="get_parent_job_codes" class="tavant.twms.web.admin.inclusiveJobCodes.ManageInclusiveJobCodesAction" method="tableBody">
+			<interceptor-ref name="adminParamsPrepare" />
+		    <result name="success">pages/secure/home/json.jsp</result>
+        </action>
+        
+         <action name="create_inclusive_job_code" class="tavant.twms.web.admin.inclusiveJobCodes.ManageInclusiveJobCodesAction" method="detail">
+			<interceptor-ref name="adminParamsPrepareWithoutValidation" />
+		    <result name="success">pages/secure/admin/inclusiveJobCodes/createInclusiveJobCode.jsp</result>
+        </action>
+        
+        <action name="inclusive_job_code_preview" class="tavant.twms.web.admin.inclusiveJobCodes.ManageInclusiveJobCodesAction" method="detail">
+			<interceptor-ref name="adminParamsPrepareWithoutValidation" />
+		    <result name="success">pages/secure/admin/inclusiveJobCodes/inclusiveJobCodePreview.jsp</result>
+        </action>
+        
+         <action name="list_job_codes" class="tavant.twms.web.admin.inclusiveJobCodes.ManageInclusiveJobCodesAction" method="listJobCodes">
+        	<interceptor-ref name="adminParamsPrepareWithoutValidation"/>
+        </action>
+        
+         <action name="get_description_for_serProcDef"
+                class="tavant.twms.web.admin.inclusiveJobCodes.ManageInclusiveJobCodesAction" method="getDescriptionForServiceProcedureDefinition">
+            <interceptor-ref name="adminParamsPrepareWithoutValidation"/>
+		    <result name="success">pages/secure/home/json.jsp</result>
+        </action>   
+        
+        <action name="saveInclusiveJobCodes" class="tavant.twms.web.admin.inclusiveJobCodes.ManageInclusiveJobCodesAction" method="save">
+			<interceptor-ref name="adminTwmsParamsPrepareRepeatTableParams" />
+			<result name="success">pages/secure/admin/inclusiveJobCodes/createInclusiveJobCode.jsp</result>
+			<result name="input">pages/secure/admin/inclusiveJobCodes/createInclusiveJobCode.jsp</result>
+		</action>
+		
+		 <action name="exportInclusiveJobCodesToExcel" class="tavant.twms.web.admin.inclusiveJobCodes.ManageInclusiveJobCodesAction"
+           method="downloadListingData" >
+			<interceptor-ref name="adminParamsPrepare" />
+		</action>		
+		
+	</package>
+</struts>

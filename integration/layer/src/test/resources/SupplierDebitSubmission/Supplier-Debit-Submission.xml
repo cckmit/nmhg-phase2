@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProcessIriInvoice lang="en" evnironment="Test" revision="1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <ApplicationArea>
+    <Sender>
+      <LogicalId>0200001999</LogicalId>
+      <Task>98-572-4553</Task>
+    </Sender>
+    <BODId>10016806_3</BODId>
+    <CreationDateTime>2004-06-30</CreationDateTime>
+  </ApplicationArea>
+  <DataArea>
+    <IriInvoice>
+      <LineContext>RECOVERY</LineContext>
+      <WarrantyClaimNumber>10016806_3</WarrantyClaimNumber>
+      <RecoveryItemNumber>33103482</RecoveryItemNumber>
+      <WarrantyClaimType>ClaimType</WarrantyClaimType>
+      <WarrantySerialNumber>CC77236232</WarrantySerialNumber>
+      <BatchSourceName>RECOVERY TAVANT</BatchSourceName>
+	  <SupplierNumber>33420</SupplierNumber>
+	  <TotalAmount>
+	    <CurrencyCode>EUR</CurrencyCode>
+		<Amount>-120.00</Amount>
+	  </TotalAmount>
+    </IriInvoice>
+  </DataArea>
+</ProcessIriInvoice>

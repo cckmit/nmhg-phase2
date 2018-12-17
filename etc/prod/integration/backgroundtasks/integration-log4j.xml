@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+	<appender name="INTEGRATION_LOG" class="org.apache.log4j.RollingFileAppender">        
+	<param name="File" value="/data/apps/jboss-4.2.3.GA/etc/iri-upgrade/prod/app_logs/integrationserver.log"/>
+    	<param name="MaxFileSize" value="10MB"/>
+        <param name="MaxBackupIndex" value="25"/>    		
+        <param name="Append" value="true" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="[%d] %-5p %m%n"/>
+        </layout>
+    </appender>
+
+    <root>
+        <level value="ERROR"/>
+        <appender-ref ref="INTEGRATION_LOG"/>
+    </root>
+</log4j:configuration>

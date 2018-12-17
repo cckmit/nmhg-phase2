@@ -1,0 +1,24 @@
+<div class="fileUploader ${cssClasses}" style="${cssStyle}">
+    <div class="fileBrowserSection" dojoAttachPoint="fileBrowserNodeContainer">
+        <form action="${documentUploadUrl}" enctype="multipart/form-data" method="post"
+              dojoAttachPoint="uploadFormNode">
+            <span dojoAttachPoint="fileBrowserTriggerNode" class="fileBrowserTrigger">
+            </span>
+            <span dojoAttachPoint="fileBrowserNodeWrapper">
+                <input type="file" dojoAttachPoint="fileBrowserNode" name="document" class="fileBrowser clickable" size="${fieldSize}">
+            </span>
+        </form>
+    </div>
+    <div class="fileUploadSection">
+        <div dojoAttachPoint="selectedFilesNode">
+            <div dojoAttachPoint="selectedFileTemplateNode" class="selectedFileSection" style="display: none">
+                <div class="selectedFilesSeparator"></div>
+                <div class="fileDisplaySection"></div>
+                <div class="fileRemovalSection"></div>
+            </div>
+        </div>
+    </div>
+    <input type="hidden" dojoAttachPoint="deletedFilesParamNode" name="__twmsDeleteByElementId.${name}"
+           disabled="disabled">
+    <div class="resetStylingNode"></div>
+</div>

@@ -1,0 +1,20 @@
+<!DOCTYPE validators PUBLIC
+    "-//Apache Struts//XWork Validator 1.0.2//EN"
+    "http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+<validators>
+
+	<validator type="expression">
+		<param name="expression">
+			<![CDATA[(!"dealers".equals(getOptionSelected()) || !reportSearchCriteria.getDealers().length() < 1)]]>
+		</param>
+		<message key="error.report.invalidDealerSize" />
+	</validator>
+	
+	<validator type="expression">
+		<param name="expression">
+			<![CDATA[(!"dealerGroups".equals(getOptionSelected()) || !reportSearchCriteria.getDealerGroups().length() < 1)]]>
+		</param>
+		<message key="error.report.invalidDealerGroupSize" />
+	</validator>
+	
+</validators>

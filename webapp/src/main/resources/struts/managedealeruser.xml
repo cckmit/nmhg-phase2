@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="managedealeruser" extends="struts-twms-default">
+		<!--  Dealer User Maintenance -->
+
+		<action name="show_dealer_user"
+			class="tavant.twms.web.actions.ManageDealerUserAction" method="forwardToCreateUser">
+			<interceptor-ref name="paramsPrepareWithoutValidation"/>
+			<result name="success">pages/secure/dealer/manageDealerUser.jsp</result>
+		</action>
+
+		<action name="create_dealer_user"
+			class="tavant.twms.web.actions.ManageDealerUserAction"
+			method="create">
+			<interceptor-ref name="twmsParamsPrepareParams" />
+			<result name="input">pages/secure/dealer/manageDealerUser.jsp</result>
+			<result name="success">pages/secure/dealer/manageDealerUserResult.jsp</result>
+		</action>
+		
+		<action name="forward_to_search_dealer_user"
+				class="tavant.twms.web.actions.ManageDealerUserAction">
+            <interceptor-ref name="paramsPrepareWithoutValidation"/>
+            <result name="success">pages/secure/dealer/searchDealerUser.jsp</result>
+            <result name="input">pages/secure/dealer/searchDealerUser.jsp</result>
+        </action>
+        
+       
+		<action name="exportCertificationToExcel"
+			class="tavant.twms.web.actions.SeriesCertificationAction"
+			method="downloadListingData">
+			<interceptor-ref name="adminParamsPrepare" />
+    	</action>
+
+        <action name="search_Dealer_user"
+				class="tavant.twms.web.actions.ManageDealerUserAction" method="search">
+			<interceptor-ref name="paramsPrepareWithoutValidation"/>
+			<result name="input">pages/secure/dealer/searchDealerUser.jsp</result>
+            <result name="success">pages/secure/dealer/searchDealerUser.jsp</result>
+            <result name="exactMatch">pages/secure/dealer/updateDealerUser.jsp</result>
+        </action>
+        
+        <action name="list_certificate_details_for_certificateName"
+				class="tavant.twms.web.actions.SeriesCertificationAction" method="listCertificateDetails">
+            <result name="success">pages/secure/home/json.jsp</result>
+        </action>
+
+		<action name="show_technician_information"
+				class="tavant.twms.web.actions.ManageDealerUserAction" method="forwardToUpdateDealerUser">
+            <interceptor-ref name="paramsPrepareWithoutValidation"/>
+            <result name="success">pages/secure/dealer/technician_details.jsp</result>
+        </action>
+
+		<action name="forward_to_update_dealer_user"
+				class="tavant.twms.web.actions.ManageDealerUserAction" method="forwardToUpdateDealerUser">
+            <interceptor-ref name="paramsPrepareWithoutValidation"/>
+            <result name="success">pages/secure/dealer/updateDealerUser.jsp</result>
+            <result name="input">pages/secure/dealer/searchDealerUser.jsp</result>
+        </action>
+
+        <action name="update_Dealer_user"
+				class="tavant.twms.web.actions.ManageDealerUserAction" method="update">
+			<interceptor-ref name="twmsParamsPrepareParams"/>
+			<result name="input">pages/secure/dealer/updateDealerUser.jsp</result>
+            <result name="success">pages/secure/dealer/manageDealerUserResult.jsp</result>
+        </action>
+
+        <action name="get_states_by_country"
+			class="tavant.twms.web.actions.ManageDealerUserAction" method="getStatesByCountry">
+		    <interceptor-ref name="paramsWithoutValidation"/>
+		</action>	
+		
+		<action name="get_cities_by_country_and_state"
+			class="tavant.twms.web.actions.ManageDealerUserAction" method="getCitiesByCountryAndState">
+		    <interceptor-ref name="paramsWithoutValidation"/>
+		</action>
+		
+		<action name="get_zips_by_country_state_and_city"
+			class="tavant.twms.web.actions.ManageCustomer" method="getZipsByCountryStateAndCity">
+		    <interceptor-ref name="paramsWithoutValidation"/>
+		</action>
+		
+		<action name="get_counties_by_country_state_and_zip_for_Dealer"
+			class="tavant.twms.web.actions.ManageCustomer" method="getCountiesByCountryStateAndZip">
+		    <interceptor-ref name="paramsWithoutValidation"/>
+		</action>
+		<action name="managesso" class="tavant.twms.web.actions.ManageSSO"
+		method="createOrUpdateUser">
+		<result name="success" type="redirect">${actionUrl}</result>
+		<result name="input">login.jsp</result>
+		</action>
+		
+		
+			<action name="seriesRefToCertification_preview"
+			class="tavant.twms.web.actions.SeriesCertificationAction"
+			method="viewDefinition">
+			<interceptor-ref name="adminParamsWithoutValidation" />
+			<result name="success">
+				pages/secure/dealer/previewSeriesRefCertification.jsp
+			</result>
+		</action>
+		
+		<action name="series_reference_to_certification"
+			class="tavant.twms.web.actions.SeriesCertificationAction">
+			<interceptor-ref name="adminTwmsParamsWithoutPrepareAndValidate"/>
+			<result name="success">pages/secure/dealer/seriesRefToCerticationInboxView.jsp</result>
+		</action>
+		
+		<action name="seriesRefToCertification_table_body"
+			class="tavant.twms.web.actions.SeriesCertificationAction" method="tableBody">
+			<interceptor-ref name="adminParamsPrepare" />
+		    <result name="success">pages/secure/home/json.jsp</result>
+		    <result name="input">error.jsp</result>
+		</action>
+		
+		<action name="seriesRefToCertification_detail"
+			class="tavant.twms.web.actions.SeriesCertificationAction" method="detail">
+			<interceptor-ref name="adminParamsPrepare"/>
+			<result name="input">pages/secure/dealer/update_series_ref_certificates.jsp</result>
+			<result name="success">pages/secure/dealer/update_series_ref_certificates.jsp</result>
+		</action>
+          <action name="save_series_Certificates"
+				class="tavant.twms.web.actions.SeriesCertificationAction" method="saveSeriesCertificates">
+				<interceptor-ref name="twmsParamsPrepareParams" />
+			<result name="input">pages/secure/dealer/new_technician_certification.jsp</result>
+            <result name="success">pages/secure/admin/success.jsp</result>
+        </action>
+        
+        <action name="update_series_Certificates"
+				class="tavant.twms.web.actions.SeriesCertificationAction" method="updateSeriesCertificates">
+			<interceptor-ref name="twmsParamsWithoutPrepare" />
+			<result name="input">pages/secure/dealer/update_series_ref_certificates.jsp</result>
+            <result name="success">pages/secure/admin/success.jsp</result>
+        </action>
+        
+        <action name="delete_series_Certificates"
+				class="tavant.twms.web.actions.SeriesCertificationAction" method="deleteSeriesCertificates">
+			<interceptor-ref name="adminTwmsParamsWithoutPrepareAndValidate"/>
+			<result name="input">pages/secure/dealer/update_series_ref_certificates.jsp</result>
+            <result name="success">pages/secure/admin/success.jsp</result>
+        </action>
+		
+		<action name="showNewCertificationForm"
+			class="tavant.twms.web.actions.SeriesCertificationAction" method="seriesToCertification">
+			<interceptor-ref name="adminTwmsParamsWithoutPrepareAndValidate"/>
+			<result name="input">pages/secure/dealer/new_technician_certification.jsp</result>
+			<result name="success">pages/secure/dealer/new_technician_certification.jsp</result>
+		</action>
+		
+		<action name="list_series"
+			class="tavant.twms.web.admin.partreturns.AutoCompleteAction"
+			method="listSeries">
+			<interceptor-ref name="adminParamsPrepare" />
+		</action>
+		
+		<action name="list_series_description"
+                class="tavant.twms.web.actions.SeriesCertificationAction" method="getDescriptionForSeries">
+            <interceptor-ref name="adminParamsWithoutValidation"/>
+            <result name="success">pages/secure/home/json.jsp</result>
+        </action>
+		
+
+	</package>
+</struts>

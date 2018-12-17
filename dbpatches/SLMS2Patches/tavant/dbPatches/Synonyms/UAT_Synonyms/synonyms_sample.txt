@@ -1,0 +1,14 @@
+create synonym nacco_user.XXX for NACCO_OWNER.XXX;
+create synonym nacco_uat.XXX for NACCO_OWNER.XXX;
+
+
+-- For a new table, use the below one---
+grant select,insert,update,delete on XXXX to nacco_user;
+grant select,insert,update,delete on XXXX to nacco_uat;
+
+
+-- For a new/modified synonym,use the below one--- ---
+grant select on "sequencename" to nacco_user;
+grant select on "sequencename" to nacco_uat;
+
+

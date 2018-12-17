@@ -1,0 +1,13 @@
+.lodingLidThrobber {
+/*background-image: url("../image/throbber.gif");*//*removed the loading image...*/
+background-repeat:no-repeat;
+border:none;
+}
+
+.loadingMessageDiv {
+color:#555555;
+font-weight:700;
+text-align:center;
+font-family:Verdana, sans-serif, Arial, Helvetica;
+font-size:8pt;
+}

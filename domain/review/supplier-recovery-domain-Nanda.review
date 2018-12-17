@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Review id="supplier-recovery-domain">
+  <ReviewIssue id="G4E4H2F8">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-13 :: 18:33:16:100 GMT+05:30</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-19 :: 12:56:02:295 GMT+05:30</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Nanda</ReviewerId>
+    <AssignedTo>Kaustubh</AssignedTo>
+    <ReviewTime></ReviewTime>
+    <File line="132">src/main/java/tavant/twms/domain/claim/ClaimNumberPatternServiceImpl.java</File>
+    <Type>item.type.label.irrelevant</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>Is this if condition required?</Summary>
+    <Description></Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+    <ReworkTime></ReworkTime>
+  </ReviewIssue>
+  <ReviewIssue id="G4E4JEE0">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-13 :: 18:35:04:920 GMT+05:30</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-19 :: 12:56:22:248 GMT+05:30</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Nanda</ReviewerId>
+    <AssignedTo>Kaustubh</AssignedTo>
+    <ReviewTime></ReviewTime>
+    <File line="152">src/main/java/tavant/twms/domain/claim/ClaimNumberPatternServiceImpl.java</File>
+    <Type>item.type.label.clarity</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>A simpler way to implement this method would be to increment the count by one whenever the recoveryClaimNumber is present</Summary>
+    <Description></Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+    <ReworkTime></ReworkTime>
+  </ReviewIssue>
+  <ReviewIssue id="G4E4LI6Z">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-13 :: 18:36:43:163 GMT+05:30</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-19 :: 14:03:51:422 GMT+05:30</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Nanda</ReviewerId>
+    <AssignedTo>Kaustubh</AssignedTo>
+    <ReviewTime></ReviewTime>
+    <File line="142">src/main/java/tavant/twms/domain/claim/ClaimNumberPatternServiceImpl.java</File>
+    <Type>item.type.label.usability</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>Modify getReplacedPartsRecovery method to return an empty collection if null. This way the null check can be avoided here and other places too</Summary>
+    <Description></Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+    <ReworkTime></ReworkTime>
+  </ReviewIssue>
+  <ReviewIssue id="G4E5F465">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-13 :: 18:59:44:669 GMT+05:30</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-13 :: 23:34:33:906 GMT+05:30</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Nanda</ReviewerId>
+    <AssignedTo>Kaustubh</AssignedTo>
+    <ReviewTime></ReviewTime>
+    <File line="813">src/main/java/tavant/twms/domain/rules/OgnlContextHelper.java</File>
+    <Type>item.type.label.suggestion</Type>
+    <Severity>item.severity.label.normal</Severity>
+    <Summary>Use the ContractService's canStartRecovery instead</Summary>
+    <Description></Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+    <ReworkTime></ReworkTime>
+  </ReviewIssue>
+  <ReviewIssue id="G4E5ONVJ">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-13 :: 19:07:10:111 GMT+05:30</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-19 :: 13:07:08:024 GMT+05:30</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Nanda</ReviewerId>
+    <AssignedTo>Kaustubh</AssignedTo>
+    <ReviewTime></ReviewTime>
+    <File line="416">src/main/java/tavant/twms/domain/supplier/contract/ContractServiceImpl.java</File>
+    <Type>item.type.label.irrelevant</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>Remove this method since this is no longer used</Summary>
+    <Description></Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+    <ReworkTime></ReworkTime>
+  </ReviewIssue>
+  <ReviewIssue id="G4E7507M">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-13 :: 19:47:52:210 GMT+05:30</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-19 :: 14:06:39:446 GMT+05:30</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Nanda</ReviewerId>
+    <AssignedTo>Kaustubh</AssignedTo>
+    <ReviewTime></ReviewTime>
+    <File line="82">src/main/java/tavant/twms/domain/supplier/recovery/RecoveryClaimInfo.java</File>
+    <Type>item.type.label.suggestion</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>rename addRecoveryClaims to addRecoveryClaim</Summary>
+    <Description></Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+    <ReworkTime></ReworkTime>
+  </ReviewIssue>
+  <ReviewIssue id="G4E76BHS">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-13 :: 19:48:53:488 GMT+05:30</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-19 :: 14:09:34:097 GMT+05:30</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Nanda</ReviewerId>
+    <AssignedTo>Kaustubh</AssignedTo>
+    <ReviewTime></ReviewTime>
+    <File line="143">src/main/java/tavant/twms/domain/supplier/contract/ContractServiceImpl.java</File>
+    <Type>item.type.label.irrelevant</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>Redundant if check</Summary>
+    <Description></Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+    <ReworkTime></ReworkTime>
+  </ReviewIssue>
+  <ReviewIssue id="G4E7DA60">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-13 :: 19:54:18:360 GMT+05:30</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-19 :: 14:12:03:905 GMT+05:30</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Nanda</ReviewerId>
+    <AssignedTo>Kaustubh</AssignedTo>
+    <ReviewTime></ReviewTime>
+    <File line="479">src/main/java/tavant/twms/domain/supplier/contract/ContractServiceImpl.java</File>
+    <Type>item.type.label.suggestion</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>rename this method to canAutoInitiateRecovery</Summary>
+    <Description></Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+    <ReworkTime></ReworkTime>
+  </ReviewIssue>
+  <ReviewIssue id="G4E7DQZF">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-13 :: 19:54:40:155 GMT+05:30</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-19 :: 14:12:29:701 GMT+05:30</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Nanda</ReviewerId>
+    <AssignedTo>Kaustubh</AssignedTo>
+    <ReviewTime></ReviewTime>
+    <File line="484">src/main/java/tavant/twms/domain/supplier/contract/ContractServiceImpl.java</File>
+    <Type>item.type.label.clarity</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>rewrite this as follows: return causalPartContract.size() == 1 &amp;&amp; causalPartContract.get(0).getCollateralDamageToBePaid();</Summary>
+    <Description></Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+    <ReworkTime></ReworkTime>
+  </ReviewIssue>
+  <ReviewIssue id="G4E835QP">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-13 :: 20:14:25:681 GMT+05:30</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-13 :: 23:34:18:578 GMT+05:30</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Nanda</ReviewerId>
+    <AssignedTo>Kaustubh</AssignedTo>
+    <ReviewTime></ReviewTime>
+    <File line="492">src/main/java/tavant/twms/domain/supplier/contract/ContractServiceImpl.java</File>
+    <Type>item.type.label.irrelevant</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>isEmpty check redundant</Summary>
+    <Description></Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+    <ReworkTime></ReworkTime>
+  </ReviewIssue>
+  <ReviewIssue id="G4E83NVV">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-13 :: 20:14:49:195 GMT+05:30</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-19 :: 14:13:11:121 GMT+05:30</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Nanda</ReviewerId>
+    <AssignedTo>Kaustubh</AssignedTo>
+    <ReviewTime></ReviewTime>
+    <File line="499">src/main/java/tavant/twms/domain/supplier/contract/ContractServiceImpl.java</File>
+    <Type>item.type.label.irrelevant</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>isEmpty check redundant</Summary>
+    <Description></Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+    <ReworkTime></ReworkTime>
+  </ReviewIssue>
+  <ReviewIssue id="G4E84G9Y">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-13 :: 20:15:25:990 GMT+05:30</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-13 :: 23:34:13:204 GMT+05:30</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Nanda</ReviewerId>
+    <AssignedTo>Kaustubh</AssignedTo>
+    <ReviewTime></ReviewTime>
+    <File line="519">src/main/java/tavant/twms/domain/supplier/contract/ContractServiceImpl.java</File>
+    <Type>item.type.label.programLogic</Type>
+    <Severity>item.severity.label.normal</Severity>
+    <Summary>Check with causal part should not be done.</Summary>
+    <Description>This is because this method is called only if causal part has no contract. Hence all the replaced parts should be checked</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+    <ReworkTime></ReworkTime>
+  </ReviewIssue>
+  <ReviewIssue id="G4EBX7XY">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-13 :: 22:01:47:062 GMT+05:30</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-13 :: 23:34:10:922 GMT+05:30</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Nanda</ReviewerId>
+    <AssignedTo>Kaustubh</AssignedTo>
+    <ReviewTime></ReviewTime>
+    <File line="171">src/main/java/tavant/twms/domain/supplier/contract/ContractServiceImpl.java</File>
+    <Type>item.type.label.suggestion</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>This for loop is not required. updateSupplierItemOnPart can be called in the previous for loop</Summary>
+    <Description></Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+    <ReworkTime></ReworkTime>
+  </ReviewIssue>
+  <ReviewIssue id="G4EC801M">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-13 :: 22:10:10:042 GMT+05:30</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-19 :: 14:17:15:738 GMT+05:30</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Nanda</ReviewerId>
+    <AssignedTo>Kaustubh</AssignedTo>
+    <ReviewTime></ReviewTime>
+    <File line="346">src/main/java/tavant/twms/domain/supplier/contract/ContractServiceImpl.java</File>
+    <Type>item.type.label.suggestion</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>Modify this method to take an Item as a parameter instead of partReplaced and return the corresponding supplier item. This way both the if (oemPart) checks can be removed</Summary>
+    <Description></Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+    <ReworkTime></ReworkTime>
+  </ReviewIssue>
+  <ReviewIssue id="G4ECAQ29">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-13 :: 22:12:17:073 GMT+05:30</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-13 :: 23:34:05:423 GMT+05:30</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Nanda</ReviewerId>
+    <AssignedTo>Kaustubh</AssignedTo>
+    <ReviewTime></ReviewTime>
+    <File line="354">src/main/java/tavant/twms/domain/supplier/contract/ContractServiceImpl.java</File>
+    <Type>item.type.label.programLogic</Type>
+    <Severity>item.severity.label.trivial</Severity>
+    <Summary>If the contract's supplier cannot be found set the supplier item as the first item mapping's supplier item. Please take a look at public void updateContract(Claim claim, PartReplaced partReplaced, Contract contract)</Summary>
+    <Description></Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+    <ReworkTime></ReworkTime>
+  </ReviewIssue>
+  <ReviewIssue id="G4ECPNHV">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-13 :: 22:23:53:587 GMT+05:30</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-19 :: 12:53:06:082 GMT+05:30</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Nanda</ReviewerId>
+    <AssignedTo>Kaustubh</AssignedTo>
+    <ReviewTime></ReviewTime>
+    <File line="247">src/main/java/tavant/twms/domain/supplier/contract/ContractServiceImpl.java</File>
+    <Type>item.type.label.programLogic</Type>
+    <Severity>item.severity.label.normal</Severity>
+    <Summary>Please update this method to handle only the auto recovery scenarios specified in FD</Summary>
+    <Description></Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+    <ReworkTime></ReworkTime>
+  </ReviewIssue>
+  <ReviewIssue id="G4ECRR4D">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-13 :: 22:25:31:597 GMT+05:30</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-19 :: 12:45:39:815 GMT+05:30</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Nanda</ReviewerId>
+    <AssignedTo>Kaustubh</AssignedTo>
+    <ReviewTime></ReviewTime>
+    <File line="267">src/main/java/tavant/twms/domain/supplier/contract/ContractServiceImpl.java</File>
+    <Type>item.type.label.suggestion</Type>
+    <Severity>item.severity.label.trivial</Severity>
+    <Summary>Add a method in ServiceDetail to get a combined list of OEMPartReplaced. This will avoid the need for 2 for loops. Refactor all other usages in this class once the new method is added to serviceDetail</Summary>
+    <Description></Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+    <ReworkTime></ReworkTime>
+  </ReviewIssue>
+  <ReviewIssue id="G4ECTC31">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-13 :: 22:26:45:421 GMT+05:30</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-19 :: 14:19:14:828 GMT+05:30</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Nanda</ReviewerId>
+    <AssignedTo>Kaustubh</AssignedTo>
+    <ReviewTime></ReviewTime>
+    <File line="267">src/main/java/tavant/twms/domain/supplier/contract/ContractServiceImpl.java</File>
+    <Type>item.type.label.irrelevant</Type>
+    <Severity>item.severity.label.normal</Severity>
+    <Summary>This is not required</Summary>
+    <Description></Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+    <ReworkTime></ReworkTime>
+  </ReviewIssue>
+  <ReviewIssue id="G4ECUUE8">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-13 :: 22:27:55:808 GMT+05:30</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-19 :: 12:03:23:474 GMT+05:30</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Nanda</ReviewerId>
+    <AssignedTo>Kaustubh</AssignedTo>
+    <ReviewTime></ReviewTime>
+    <File line="300">src/main/java/tavant/twms/domain/supplier/contract/ContractServiceImpl.java</File>
+    <Type>item.type.label.programLogic</Type>
+    <Severity>item.severity.label.trivial</Severity>
+    <Summary>Comparison with causal part should be removed</Summary>
+    <Description></Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.resolution.label.unsureValidity</Resolution>
+    <Status>item.status.label.open</Status>
+    <ReworkTime></ReworkTime>
+  </ReviewIssue>
+  <ReviewIssue id="G4L8I2UW">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-18 :: 18:00:25:016 GMT+05:30</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-18 :: 18:00:33:703 GMT+05:30</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Nanda</ReviewerId>
+    <AssignedTo>Kaustubh</AssignedTo>
+    <ReviewTime></ReviewTime>
+    <File line="519">src/main/java/tavant/twms/domain/supplier/contract/ContractServiceImpl.java</File>
+    <Type>item.type.label.suggestion</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>Rename replacePartContract to causalPartContracts</Summary>
+    <Description></Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+    <ReworkTime></ReworkTime>
+  </ReviewIssue>
+  <ReviewIssue id="G4LA3H9X">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-18 :: 18:45:03:093 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-18 :: 18:45:20:249 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Nanda</ReviewerId>
+    <AssignedTo>Kaustubh</AssignedTo>
+    <File line="23">src/main/java/tavant/twms/domain/supplier/recovery/RecoveryInfoService.java</File>
+    <Type>item.type.label.programLogic</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>Add @Transactional(readOnly = true) to the interface</Summary>
+    <Description></Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+</Review>

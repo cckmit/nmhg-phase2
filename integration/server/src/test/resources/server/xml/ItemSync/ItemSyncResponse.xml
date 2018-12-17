@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ItemSyncResponse xmlns="http://www.tavant.com/globalsync/itemsyncresponse">
+	<ApplicationArea>
+		<Sender>
+		    <Task>CCT_MONT-MAPICS</Task>
+		    <LogicalId>TavantWMS</LogicalId>
+		    <ReferenceId>ITEM_SYNC_TAVANT_MAPICS-0-2009-01-16T13:07:06.236Z</ReferenceId>
+		</Sender>
+		<BODId>INT06</BODId>	
+		<InterfaceNumber></InterfaceNumber>
+		<CreationDateTime>2009-01-19T15:09:26.983Z</CreationDateTime>
+    	</ApplicationArea>
+	<Status>
+		<code>SUCCESS</code>
+		<errorMessage></errorMessage> 
+	</Status>
+	<!--Element ItemMasterResponse, maxOccurs=unbounded-->
+	<ItemMasterResponse>
+			<Status>
+				<code>SUCCESS</code>
+				<errorMessage></errorMessage> 
+			</Status>
+			<ItemId>1040525        MTY</ItemId>		
+	</ItemMasterResponse>	
+	<ItemMasterResponse>
+			<Status>
+				<code>ERROR</code>
+				<errorMessage>DIVISION CODE IS NOT VALID</errorMessage> 
+			</Status>
+			<ItemId>1000008        MTY</ItemId>		
+	</ItemMasterResponse>		
+</ItemSyncResponse>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Review id="part-return-barcode-webapp">
+  <ReviewIssue id="G448V117">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-06 :: 20:38:24:187 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-06 :: 22:10:31:953 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Rahul</ReviewerId>
+    <AssignedTo>Amritha</AssignedTo>
+    <ReviewTime></ReviewTime>
+    <Type>item.type.label.codingStandards</Type>
+    <Severity>item.severity.label.trivial</Severity>
+    <Summary>Input tag should be inside a TD</Summary>
+    <Description>Warning will go away, if you move the Input tag inside TD.</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+    <ReworkTime></ReworkTime>
+  </ReviewIssue>
+  <ReviewIssue id="G4587OYD">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-07 :: 13:08:01:621 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-07 :: 13:09:55:245 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Rahul</ReviewerId>
+    <AssignedTo>Amritha</AssignedTo>
+    <ReviewTime></ReviewTime>
+    <Type>item.type.label.suggestion</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>No need to fix the height to 200px</Summary>
+    <Description>I don't think there is a need to fix the height to 200 px. Take a look.</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+    <ReworkTime></ReworkTime>
+  </ReviewIssue>
+  <ReviewIssue id="G458BKSM">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-07 :: 13:11:02:854 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-07 :: 13:11:58:448 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Rahul</ReviewerId>
+    <AssignedTo>Amritha</AssignedTo>
+    <ReviewTime></ReviewTime>
+    <File line="31">src/main/webapp/pages/secure/partreturns/inspection_detail.jsp</File>
+    <Type>item.type.label.codingStandards</Type>
+    <Severity>item.severity.label.normal</Severity>
+    <Summary>charset should be UTF-8</Summary>
+    <Description>charset should be UTF-8 throughout the application</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+    <ReworkTime></ReworkTime>
+  </ReviewIssue>
+  <ReviewIssue id="G458F8PA">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-07 :: 13:13:53:806 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-07 :: 13:17:08:477 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Rahul</ReviewerId>
+    <AssignedTo>Amritha</AssignedTo>
+    <ReviewTime></ReviewTime>
+    <Type>item.type.label.suggestion</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>No need to fix the height to 200px</Summary>
+    <Description>I don't think there is a need to fix the height to 200 px. Take a look.</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+    <ReworkTime></ReworkTime>
+  </ReviewIssue>
+</Review>

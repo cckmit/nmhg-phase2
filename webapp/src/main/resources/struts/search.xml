@@ -1,0 +1,405 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="search" extends="struts-twms-default">
+
+       <!-- Claim Search Summary Table-->
+       
+       <!-- Define Search Query -->
+		<action name="dynamicClaimSearchResult"
+			class="tavant.twms.web.search.DynamicClaimSearchAction">			
+			<result name="input">pages/secure/claims/claim_search.jsp</result>
+			<result name="success">pages/secure/claims/claimSearchInboxView.jsp</result>
+		</action>
+		<action name="claimSearchSummaryBody" class="tavant.twms.web.search.ClaimSearchSummaryAction"
+			method="tableBody">
+           <result name="success">pages/secure/home/json.jsp</result>
+		   <result name="input">pages/error.jsp</result>
+		</action>
+		
+		<action name="multiClaimMaintainSearch" class="tavant.twms.web.claim.MultiClaimMaintenanceAction"
+		 method="claimsForMultipleMaintenance">
+           <interceptor-ref name="paramsPrepare" />
+		   <result name="success">pages/secure/claims/multipleClaimMaintenance/claimSearchResult.jsp</result>
+		   <result name="input">pages/secure/claims/multipleClaimMaintenance/claimSearchResult.jsp</result>
+		</action>
+		
+		<action name="multiClaimAttributesClaims" class="tavant.twms.web.claim.MultiClaimMaintenanceAction"
+		 method="claimsForMultipleMaintenance">
+           <interceptor-ref name="paramsPrepare" />
+		   <result name="success">pages/secure/claims/multipleClaimMaintenance/multiClaimAttributesClaimResults.jsp</result>
+		   <result name="input">pages/secure/claims/multipleClaimMaintenance/claimSearchResult.jsp</result>
+		</action>
+		
+		<action name="multiTransferOrReProcess" class="tavant.twms.web.claim.MultiClaimMaintenanceAction"
+		 method="claimsForTransferOrReProcess">
+           <interceptor-ref name="paramsPrepare" />
+		   <result name="success">pages/secure/claims/multipleClaimMaintenance/multiTransferReProcessSearchResult.jsp</result>
+		   <result name="input">pages/secure/claims/multipleClaimMaintenance/multiTransferReProcessSearchResult.jsp</result>
+		</action>
+		
+		<action name="multiTransferOrReProcessClaims" class="tavant.twms.web.claim.MultiClaimMaintenanceAction"
+		 method="claimsForTransferOrReProcess">
+           <interceptor-ref name="paramsPrepare" />
+		   <result name="success">pages/secure/claims/multipleClaimMaintenance/multiTransferReProcessClaimResults.jsp</result>
+		   <result name="input">pages/secure/claims/multipleClaimMaintenance/multiTransferReProcessSearchResult.jsp</result>
+		</action>
+		
+		<action name="multiTransfer" class="tavant.twms.web.claim.MultiClaimMaintenanceAction"
+		 method="claimsForMultiTransfer">
+           <interceptor-ref name="twmsParamsPrepareParams" />
+		   <result name="success">pages/secure/common/successFullRefresh.jsp</result>
+		   <result name="input">pages/secure/claims/multipleClaimMaintenance/multiTransferReProcessSearchResult.jsp</result>
+		</action>
+		
+		<action name="multiReProcess" class="tavant.twms.web.claim.MultiClaimMaintenanceAction"
+		 method="claimsForMultiReProcess">
+           <interceptor-ref name="twmsParamsPrepareParams" />
+		   <result name="success">pages/secure/common/successFullRefresh.jsp</result>
+		   <result name="input">pages/secure/claims/multipleClaimMaintenance/multiTransferReProcessSearchResult.jsp</result>
+		</action>
+		
+		<action name="multiRecClaimMaintainSearch" class="tavant.twms.web.claim.MultiRecoveryClaimMaintenanceAction"
+		 method="recClaimsForMultipleMaintenance">
+           <interceptor-ref name="paramsPrepare" />
+		   <result name="success">pages/secure/claims/multipleClaimMaintenance/recClaimSearchResult.jsp</result>
+		   <result name="input">pages/error.jsp</result>
+		</action>
+
+		<action name="view_search_preview" class="tavant.twms.web.search.ClaimSearchSummaryAction"
+			method="preview">
+			<interceptor-ref name="paramsPrepare" />
+			<result name="success">pages/secure/claims/forms/search_result/preview.jsp </result>
+		</action>
+
+		<action name="view_search_detail" class="tavant.twms.web.search.ClaimSearchSummaryAction"
+			method="detail">
+			<interceptor-ref name="paramsPrepare" />
+			<result name="success">pages/secure/claims/forms/search_result/detail.jsp</result>
+			<result name="error">pages/error.jsp</result>
+		</action>
+		
+		<action name="claim_version_history_detail"
+			class="tavant.twms.web.search.ClaimSearchSummaryAction" method="claimVersionDetail">
+			<interceptor-ref name="paramsPrepare" />
+			<result name="success">pages/secure/claims/forms/search_result/detail.jsp</result>
+            <result name="error">pages/secure/claims/forms/common/auditNotFound.jsp</result>
+		</action>
+
+		<action name="exportClaimSearchToExcel" class="tavant.twms.web.search.ClaimSearchSummaryAction"
+		   method="downloadListingData"/>
+
+		<!--  PreDefined Search Query -->
+		
+		
+		<!-- Inventory Search -->
+		<action name="inventorySearch"
+			class="tavant.twms.web.search.InventorySearchAction"
+			method="setupSearchView">
+			<result name="success">pages/secure/inventory/inventory_search.jsp</result>
+		</action>
+
+		<action name="dynamicInventorySearchResult"
+			class="tavant.twms.web.search.DynamicInventorySearchAction">
+			<interceptor-ref name="paramsPrepare" />
+      <result name="success">pages/secure/admin/warranty/retailInboxView.jsp</result>
+			<result name="input">pages/secure/claims/inventory_search.jsp</result>
+		</action>
+
+
+		<action name="inventorySearchBody"
+			class="tavant.twms.web.search.InventorySearchAction"
+			method="tableBody">
+			<interceptor-ref name="adminParamsPrepare" />
+        <result name="success">pages/secure/home/json.jsp</result>
+			<result name="input">pages/error.jsp</result>
+		</action>
+       <action name="exportInvSearchToExcel" class="tavant.twms.web.search.InventorySearchAction"
+			method="downloadListingData"/>
+
+		<!-- Part Return Search -->
+		<action name="partReturnSearch"
+			class="tavant.twms.web.search.PartReturnSearchAction">
+			<interceptor-ref name="paramsPrepare" />
+      		<result name="success">pages/secure/partreturns/partReturnSearchInboxView.jsp</result>
+		</action>
+
+		<action name="get_partReturn_search_body"
+			class="tavant.twms.web.search.PartReturnSearchAction"
+			method="tableBody">
+			<interceptor-ref name="paramsPrepare" />
+      		<result name="success">pages/secure/home/json.jsp</result>
+			<result name="input">pages/error.jsp</result>
+		</action>
+
+		<action name="view_partReturn_search_preview"
+			class="tavant.twms.web.search.PartReturnSearchAction" method="detail">
+			<interceptor-ref name="paramsPrepare" />
+			<result name="success">pages/secure/partreturns/partReturnSearchPreview.jsp</result>
+		</action>
+		
+		<action name="view_partReturn_search_detail"
+			class="tavant.twms.web.search.PartReturnSearchAction" method="detail">
+			<interceptor-ref name="paramsPrepare" />
+			<result name="success">pages/secure/partreturns/partReturnSearchDetail.jsp</result>
+		</action>
+		
+		<action name="exportPartReturnSearchToExcel" class="tavant.twms.web.search.PartReturnSearchAction"
+			method="downloadListingData"/>
+		
+		<!-- Recovery Claim Search -->
+		
+		<action name="recoveryClaimSearch"
+			class="tavant.twms.web.search.RecoveryClaimSearchAction"
+			method="setupSearchView">
+			<result name="success">pages/secure/inventory/recovery_claim_search.jsp</result>
+		</action>
+		
+		<action name="dynamicRecoveryClaimSearchResult"
+			class="tavant.twms.web.search.DynamicRecoveryClaimSearchAction">
+			<result name="input">pages/secure/claims/recoveryClaimSearchInboxView.jsp</result>
+			<result name="success">pages/secure/claims/recoveryClaimSearchInboxView.jsp</result>
+		</action>
+
+		<action name="recoveryClaimSearchSummaryBody" class="tavant.twms.web.search.RecoveryClaimSearchAction"
+			method="tableBody">
+           <interceptor-ref name="paramsWithoutValidation" />
+		   <result name="success">pages/secure/home/json.jsp</result>
+		   <result name="input">pages/error.jsp</result>
+		</action>
+
+		<action name="recovery_claim_search_preview" class="tavant.twms.web.search.RecoveryClaimSearchAction"
+			method="preview">
+			<result name="success">pages/secure/supplier/preview/sra.jsp</result>
+		</action>
+
+		<action name="recovery_claim_search_detail" class="tavant.twms.web.search.RecoveryClaimSearchAction"
+			method="detail">
+			<interceptor-ref name="paramsPrepare" />
+			<result name="success">pages/secure/admin/supplier/sra_claims_sentto_partshipper.jsp</result>
+		</action>
+		
+		<action name="recovery_claim_version_history_detail"
+			class="tavant.twms.web.search.RecoveryClaimSearchAction" method="claimVersionDetail">
+			<result name="success">pages/secure/claims/forms/search_result/detail.jsp</result>
+		</action>
+
+		<action name="exportRecoveryClaimSearchToExcel" class="tavant.twms.web.search.RecoveryClaimSearchAction"
+		   method="downloadListingData"/>
+		   
+	  <action name="dynamicItemSearchResult"
+			class="tavant.twms.web.search.ItemSearchAction"	>
+			<interceptor-ref name="paramsPrepare" />		
+			<result name="success">pages/secure/admin/groups/item/itemSearchInboxView.jsp</result>
+	  </action>
+	  
+	    <action name="exportItemSearchToExcel" class="tavant.twms.web.search.ItemSearchAction"
+			method="downloadListingData"/>
+			
+	  <action name="itemSearchBody"
+			class="tavant.twms.web.search.ItemSearchAction"
+			method="tableBody">
+			<interceptor-ref name="paramsPrepare" />
+        <result name="success">pages/secure/home/json.jsp</result>
+		<result name="input">pages/error.jsp</result>
+	 </action>		
+	 
+	 <action name="itemSearchPreview" class="tavant.twms.web.search.ItemSearchAction"
+			method="preview">
+			<result name="success">pages/secure/admin/groups/item/itemPreview.jsp </result>
+		</action>
+
+	 <action name="itemSearchDetail" class="tavant.twms.web.search.ItemSearchAction"
+			method="detail">
+			<result name="success">pages/secure/admin/groups/item/itemDetail.jsp</result>
+	 </action>
+	 
+
+	<!-- Quick Search  -->
+	<action name="displayQuickSearch"
+		  class="tavant.twms.web.search.QuickSearch" method="showSearchpage">
+		  <interceptor-ref name="twmsParamsPrepareParams" />	  
+		  <result name="claim">pages/secure/claims/quickClaimSearch.jsp</result>
+		  <result name="inventory">pages/secure/inventory/quickInventorySearch.jsp</result>
+		  <result name="majorComponent">pages/secure/registerMajorComponent/quickSearchMajorComponent.jsp</result>
+		  <result name="vinEquipment">pages/secure/inventory/quickInventoryVINSearch.jsp</result>
+		  <result name="wpra">pages/secure/partreturns/quickWpraSearch.jsp</result>
+		  <result name="historicalClaim">pages/secure/claims/quickHistoricalClaimSearch.jsp</result>
+	</action>
+	<!-- Quick Claim Search -->
+	<action name="viewQuickClaimSearchDetail" class="tavant.twms.web.search.ClaimSearchSummaryAction"
+			method="showDetailUsingClaimNumber">
+			<interceptor-ref name="paramsPrepare" />
+			<result name="success">pages/secure/claims/forms/search_result/detail.jsp</result>
+			<result name="error">pages/secure/claims/quickClaimSearch.jsp</result>
+		</action>
+		
+	<action name="viewQuickHistClaimSearchDetail_table_body" class="tavant.twms.web.search.QuickHistoricalClaimSearch" method="tableBody">
+		<interceptor-ref name="paramsPrepareWithoutValidation"/>
+        <param name="actionUrl">viewQuickHistClaimSearchDetail</param>
+        <param name="taskName">Hist Claim Search</param>
+        <result name="success">pages/secure/home/json.jsp</result>
+        <result name="input">pages/secure/claims/quickHistoricalClaimSearch.jsp</result>
+    </action>
+    
+	<action name="viewQuickHistClaimSearchDetail" class="tavant.twms.web.search.QuickHistoricalClaimSearch">
+		<param name="taskName">Hist Claim Search</param>
+		<result name="success">pages/secure/claims/historicalClaimInboxView.jsp</result>
+		<result name="input">pages/secure/claims/quickHistoricalClaimSearch.jsp</result>
+	</action>
+	
+	<action name="acceptedClaimSearch" class="tavant.twms.web.search.AcceptedClaimSearchAction">
+		<result name="success">pages/secure/claims/acceptedClaimSearchInboxView.jsp</result>
+	</action>
+	
+	<action name="acceptedClaimSearchResult" class="tavant.twms.web.search.AcceptedClaimSearchAction"
+			method = "tableBody">
+		<result name="success">pages/secure/home/json.jsp</result>
+		<result name="input">error.jsp</result>
+	</action>
+	
+	<action name="partShippedNotReceivedSearch" class="tavant.twms.web.search.PartShippedNotReceivedSearchAction">
+		<result name="success">pages/secure/claims/shippedNotReceivedSearchInboxView.jsp</result>
+	</action>
+	
+	<action name="partShippedNotReceivedSearchSearchResult" class="tavant.twms.web.search.PartShippedNotReceivedSearchAction"
+			method = "tableBody">
+		<result name="success">pages/secure/home/json.jsp</result>
+		<result name="input">error.jsp</result>
+	</action>
+	
+	<!-- Quick Inventory Search -->
+	<action name="viewEquipmentHistoryForQuickSearch"
+			class="tavant.twms.web.search.QuickInventorySearchAction"
+			method="display">
+			<param name="actionName">inventoryDetail</param>
+			<result name="success" type="chain">inventoryDetail</result>
+			<result name="duplicate">pages/secure/inventory/quickSearchDuplicateNumbers.jsp</result>
+			<result name="input">pages/secure/inventory/quickInventorySearch.jsp</result>
+	</action>
+	<!-- Quick Major Component Search -->
+	<action name="viewMajorCompHistoryForQuickSearch"
+			class="tavant.twms.web.search.QuickInventorySearchAction"
+			method="showMajorComponentEquipmentHistory">
+			<param name="actionName">majorComponentInventoryDetail</param>
+			<result name="success" type="chain">majorComponentInventoryDetail</result>
+			<result name="input">pages/secure/registerMajorComponent/quickSearchMajorComponent.jsp</result>
+	</action> 
+	
+<!-- Quick VIN/Equipment Number Search -->
+	<action name="viewQuickSearchOfEquipmentVIN"
+		    class="tavant.twms.web.search.PredefinedInventorySearchAction" >
+		    <interceptor-ref name="paramsPrepareWithoutValidation"/>
+		    <result name="success">pages/secure/inventory/new_inventoryVINInboxView.jsp</result>
+	</action>
+	<action name="showQuickVINSearchQuery"
+		    class="tavant.twms.web.search.PredefinedInventorySearchAction" method="showPreDefinedInventoryQuery">
+		    <interceptor-ref name="paramsPrepareWithoutValidation"/>
+		   <result name="retail">pages/secure/inventory/quickInventoryVINSearch.jsp</result>
+	</action>
+	<action name="downloadInvToExcelForVIN"
+			class="tavant.twms.web.search.PredefinedInventorySearchAction"
+			method="downloadListingData">
+			<interceptor-ref name="paramsPrepareWithoutValidation"/>
+	</action>	
+	<!-- End of Quick VIN/Equipment Number Search -->
+	
+	<action name="warrantyRegistrationForQuickSearch"
+			class="tavant.twms.web.search.QuickInventorySearchAction"
+			method="display">
+			<interceptor-ref name="twmsParamsPrepareParams" />
+			<param name="actionName">create_warranty_quicksearch</param>
+			<result name="success" type="chain">create_warranty_quicksearch</result>
+			<result name="duplicate">pages/secure/inventory/quickSearchDuplicateNumbers.jsp</result>
+			<result name="input">pages/secure/inventory/quickInventorySearch.jsp</result>
+	</action>
+	<action name="dealerToDealerForQuickSearch"
+			class="tavant.twms.web.search.QuickInventorySearchAction"
+			method="display">
+			<interceptor-ref name="twmsParamsPrepareParams" />
+			<param name="actionName">show_D2D_transfer_inventory</param>
+			<result name="success" type="chain">show_D2D_transfer_inventory</result>
+			<result name="duplicate">pages/secure/inventory/quickSearchDuplicateNumbers.jsp</result>
+			<result name="input">pages/secure/inventory/quickInventorySearch.jsp</result>
+	</action>
+	<action name="equipmentTransferForQuickSearch"
+			class="tavant.twms.web.search.QuickInventorySearchAction"
+			method="display">
+			<interceptor-ref name="twmsParamsPrepareParams" />
+			<param name="actionName">show_warranty_transfer_quicksearch</param>
+			<result name="success" type="chain">show_warranty_transfer_quicksearch</result>
+			<result name="duplicate">pages/secure/inventory/quickSearchDuplicateNumbers.jsp</result>
+			<result name="input">pages/secure/inventory/quickInventorySearch.jsp</result>
+	</action>
+	<action name="extendedWarrantyPurchaseForQuickSearch"
+			class="tavant.twms.web.search.QuickInventorySearchAction"
+			method="display">
+			<interceptor-ref name="twmsParamsPrepareParams" />
+			<param name="actionName">show_extended_warrantyplans_quicksearch</param>
+			<result name="success" type="chain">show_extended_warrantyplans_quicksearch</result>
+			<result name="duplicate">pages/secure/inventory/quickSearchDuplicateNumbers.jsp</result>
+			<result name="input">pages/secure/inventory/quickInventorySearch.jsp</result>
+	</action>
+	<action name="createClaimForQuickSearch"
+			class="tavant.twms.web.search.QuickInventorySearchAction"
+			method="display">
+			<interceptor-ref name="twmsParamsPrepareParams" />
+			<param name="actionName">showNewMachineClaimForm</param>
+			<result name="success" type="chain">showNewMachineClaimForm</result>
+			<result name="duplicate">pages/secure/inventory/quickSearchDuplicateNumbers.jsp</result>
+			<result name="input">pages/secure/inventory/quickInventorySearch.jsp</result>
+	</action>
+	
+    <action name="retailMachineTransferForQuickSearch"
+			class="tavant.twms.web.search.QuickInventorySearchAction"
+			method="display">
+			<interceptor-ref name="twmsParamsPrepareParams" />
+			<param name="actionName">show_retail_machine_transfer_quicksearch</param>
+			<result name="success" type="chain">show_retail_machine_transfer_quicksearch</result>
+			<result name="duplicate">pages/secure/inventory/quickSearchDuplicateNumbers.jsp</result>
+			<result name="input">pages/secure/inventory/quickInventorySearch.jsp</result>
+	</action>
+	
+	<action name="viewQuickWpraSearchDetail" class="tavant.twms.web.partsreturn.WpraSearchForPartsInboxAction">
+			<param name="taskName">WPRA Search For Parts</param>
+			<result name="success">pages/secure/partreturns/wpraPartSerchInboxview.jsp</result>
+			<result name="input">pages/secure/partreturns/quickWpraSearch.jsp</result>
+	</action>
+					
+	<action name="viewQuickWpraSearchDetail_table_body" class="tavant.twms.web.partsreturn.WpraSearchForPartsInboxAction" method="tableBody">
+					<interceptor-ref name="paramsPrepareWithoutValidation"/>
+                   <param name="actionUrl">viewQuickWpraSearchDetail</param>
+                   <param name="taskName">WPRA Search For Parts</param>
+                   <result name="success">pages/secure/home/json.jsp</result>
+                   <result name="input">pages/secure/partreturns/quickWpraSearch.jsp</result>
+    </action>
+    
+      <action name="exportviewQuickWpraSearchDetailToExcel"
+                class="tavant.twms.web.partsreturn.WpraSearchForPartsInboxAction"
+                method="downloadListingData">
+            <interceptor-ref name="paramsPrepareWithoutValidation"/>
+            <param name="taskName">WPRA Search For Parts</param>
+        </action>
+        
+        <action name="viewQuickWpraSearchDetail_preview"
+                   class="tavant.twms.web.partsreturn.WpraSearchForPartsInboxAction" method="showPreview">
+                   <param name="actionUrl">wpraSearchForParts</param>
+                   <param name="taskName">WPRA Search For Parts</param>
+                   <result name="input">pages/secure/partreturns/noPreview.jsp</result>
+                   <result name="success">pages/secure/partreturns/noPreview.jsp</result>
+               </action>
+
+        <action name="markPartAsScrapped"
+                class="tavant.twms.web.partsreturn.MarkPartAsScrap" method="processPartForScrap">
+            <interceptor-ref name="paramsPrepareWithoutValidation"/>
+            <result name="input">pages/secure/partreturns/partReturnSearchDetail.jsp</result>
+            <result name="success">pages/secure/partreturns/partreturnresponse.jsp</result>
+        </action>
+
+    		
+</package>
+</struts>

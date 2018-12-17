@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="rolegroupsadmin" extends="struts-twms-default">
+        <!--  Actions Admin Role Group Maintenance -->
+
+		<action name="show_role_schemes"
+			class="tavant.twms.web.admin.groups.ListRoleSchemes">
+			<interceptor-ref name="adminParamsPrepareWithoutValidation"/>
+			<result name="success">pages/secure/admin/groups/role/roleSchemeInboxView.jsp</result>
+		</action>
+		
+		<action name="get_role_schemes_body"
+			class="tavant.twms.web.admin.groups.ListRoleSchemes"
+			method="tableBody">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">pages/secure/home/json.jsp</result>
+		</action>
+		
+		<action name="export_role_scheme_to_excel"
+			class="tavant.twms.web.admin.groups.ListRoleSchemes"
+			method="downloadListingData">
+			<interceptor-ref name="adminParamsPrepare" />
+	    </action>
+	    
+	    <action name="show_role_groups"
+			class="tavant.twms.web.admin.groups.ManageRoleSchemes"
+			method="showGroups">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">
+				pages/secure/admin/groups/role/showSchemes.jsp
+			</result>
+		</action>
+		
+		<action name="create_role_scheme"
+			class="tavant.twms.web.admin.groups.ManageRoleSchemes"
+			method="createScheme">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">
+				pages/secure/admin/groups/role/showSchemes.jsp
+			</result>
+		</action>
+
+		<action name="save_role_scheme"
+			class="tavant.twms.web.admin.groups.ManageRoleSchemes"
+			method="saveScheme">
+			<interceptor-ref name="adminTwmsParamsPrepareParams" />
+			<result name="success">
+				pages/secure/admin/groups/role/showSchemes.jsp
+			</result>
+			<result name="input">
+				pages/secure/admin/groups/role/showSchemes.jsp
+			</result>
+		</action>
+		
+		<!-- Actions for Role Groups under RoleScheme  -->
+		
+		<action name="list_role_groups"
+			class="tavant.twms.web.admin.groups.ListRoleGroups">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">pages/secure/admin/groups/role/roleGroupsInboxView.jsp</result>
+		</action>
+		
+		<action name="get_role_groups_body"
+			class="tavant.twms.web.admin.groups.ListRoleGroups"
+			method="tableBody">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">pages/secure/home/json.jsp</result>
+		</action>
+
+		<action name="view_role_group_preview"
+			class="tavant.twms.web.admin.groups.ManageRoleGroups"
+			method="showGroup">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="role">
+				pages/secure/admin/groups/role/showGroup.jsp
+			</result>
+			<result name="group">
+				pages/secure/admin/groups/role/showGroup.jsp
+			</result>
+		</action>
+
+		<action name="view_role_group"
+			class="tavant.twms.web.admin.groups.ManageRoleGroups"
+			method="showGroup">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="role">
+				pages/secure/admin/groups/role/manageRole.jsp
+			</result>
+			<result name="group">
+				pages/secure/admin/groups/role/manageGroup.jsp
+			</result>
+		</action>
+
+		<action name="export_role_group_to_excel"
+			class="tavant.twms.web.admin.groups.ListRoleGroups"
+			method="downloadListingData">
+			<interceptor-ref name="adminParamsPrepare" />
+		</action>
+		
+		<!--  Actions for Creation of Role Group -->
+		
+		<action name="create_role_group"
+			class="tavant.twms.web.admin.groups.CreateRoleGroup"
+			method="setUpForCreate">
+			<interceptor-ref name="adminParamsPrepareWithoutValidation" />
+			<result name="success">pages/secure/admin/groups/role/createRoleGroup.jsp</result>
+		</action>
+		
+		<action name="save_role_group"
+			class="tavant.twms.web.admin.groups.CreateRoleGroup"
+			method="save">
+			<interceptor-ref name="adminTwmsParamsPrepareParams" />
+			<result name="input">
+				pages/secure/admin/groups/role/createRoleGroup.jsp
+			</result>
+		</action>
+
+		<action name="manage_role_group"
+			class="tavant.twms.web.admin.groups.ManageRoleGroup"
+			method="manage">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">
+				pages/secure/admin/groups/role/manageGroup.jsp
+			</result>
+		</action>
+
+		<action name="manage_role"
+			class="tavant.twms.web.admin.groups.ManageRole"
+			method="manage">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">
+				pages/secure/admin/groups/role/manageRole.jsp
+			</result>
+		</action>
+		<action name="search_roles_for_rolegroup"
+			class="tavant.twms.web.admin.groups.ManageRole"
+			method="search">
+			<interceptor-ref name="adminTwmsParamsPrepareParams" />
+			<result name="input">
+				pages/secure/admin/groups/role/error.jsp
+			</result>
+			<result name="success">
+				pages/secure/admin/groups/role/selectRoles.jsp
+			</result>
+		</action>
+
+		<action name="search_groups_for_rolegroup"
+			class="tavant.twms.web.admin.groups.ManageRoleGroup"
+			method="search">
+			<interceptor-ref name="adminTwmsParamsPrepareParams" />
+			<result name="input">
+				pages/secure/admin/groups/role/error.jsp
+			</result>
+			<result name="success">
+				pages/secure/admin/groups/role/selectGroups.jsp
+			</result>
+		</action>
+
+		<action name="add_roles_to_rolegroup"
+			class="tavant.twms.web.admin.groups.ManageRole"
+			method="add">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">
+				pages/secure/admin/groups/role/manageRole.jsp
+			</result>
+		</action>
+
+		<action name="add_groups_to_rolegroup"
+			class="tavant.twms.web.admin.groups.ManageRoleGroup"
+			method="add">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">
+				pages/secure/admin/groups/role/manageGroup.jsp
+			</result>
+		</action>
+
+		<action name="save_role"
+			class="tavant.twms.web.admin.groups.ManageRole"
+			method="save">
+			<interceptor-ref name="adminTwmsParamsPrepareParams" />
+			<result name="success">
+				pages/secure/admin/groups/role/success.jsp
+			</result>
+			<result name="input">
+				pages/secure/admin/groups/role/manageRole.jsp
+			</result>
+		</action>
+
+		<action name="save_rolegroup"
+			class="tavant.twms.web.admin.groups.ManageRoleGroup"
+			method="save">
+			<interceptor-ref name="adminTwmsParamsPrepareParams" />
+			<result name="success">
+				pages/secure/admin/groups/role/success.jsp
+			</result>
+			<result name="input">
+				pages/secure/admin/groups/role/manageGroup.jsp
+			</result>
+		</action>
+		
+  </package>
+</struts>		
+		

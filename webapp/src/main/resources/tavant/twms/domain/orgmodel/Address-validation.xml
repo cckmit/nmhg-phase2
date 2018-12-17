@@ -1,0 +1,32 @@
+<!DOCTYPE validators PUBLIC 
+    "-//Apache Struts//XWork Validator 1.0.2//EN"   
+    "http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+<validators>
+	<field name="addressLine1">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>		
+			<message key="error.manageCustomer.requiredAddress"/>
+		</field-validator>
+	</field>
+
+	<field name="country">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>		
+			<message key="error.manageCustomer.requiredCountry"/>
+		</field-validator>
+	</field>
+	
+	<field name="phone">
+		<field-validator type="phone">
+			<param name="trim">true</param>		
+			<message key="error.manageCustomer.invalidPhone"/>
+		</field-validator>
+	</field>
+	
+	<field name="secondaryPhone">
+		<field-validator type="phone">
+			<param name="trim">true</param>		
+			<message key="error.manageCustomer.invalidFax"/>
+		</field-validator>
+	</field>
+</validators>

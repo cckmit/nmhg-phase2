@@ -1,0 +1,23 @@
+<!DOCTYPE validators PUBLIC "-//Apache Struts//XWork Validator 1.0.2//EN"
+       "http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+<validators>
+
+    <field name="item">
+        <field-validator type="fieldexpression" short-circuit="true">
+        	<param name="expression"><![CDATA[
+        	  !(item == null)
+        	]]></param>
+            <message key="error.campaign.invalidSerialNumber" />
+        </field-validator>
+    </field>
+
+    <field name="noOfUnits">
+        <field-validator type="fieldexpression" short-circuit="true">
+        	<param name="expression"><![CDATA[
+        		noOfUnits != null && noOfUnits.intValue() > 0
+        	]]></param>
+            <message key="error.newClaim.invalidOEMPartUnits"/>
+        </field-validator>
+    </field> 
+    
+</validators>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process-definition xmlns="" name="RuleAssignment">
+  <start-state name="Start">
+    <transition name="" to="TaskNode1"/>
+  </start-state>
+  <end-state name="End"></end-state>
+  <task-node name="TaskNode1">
+    <task name="DsmAssignmentTask">
+      <assignment
+        class="tavant.twms.jbpm.assignment.RuleBasedAssignmentHandler">
+        <variables>
+          <variable>claim</variable>
+          <variable>claim.forDealer</variable>
+          <variable>claim.forDealer.address</variable>          
+        </variables>
+        <ruleSet>DsmAssignment</ruleSet>
+      </assignment>
+    </task>
+    <transition name="" to="TaskNode2"/>
+  </task-node>
+  <task-node name="TaskNode2">
+    <task name="ProcessorAssignmentTask">
+      <assignment
+        class="tavant.twms.jbpm.assignment.RuleBasedAssignmentHandler">
+        <variables>
+          <variable>claim</variable>
+        </variables>
+        <ruleSet>ProcessorAssignment</ruleSet>
+      </assignment>
+    </task>
+    <transition name="" to="End"/>
+  </task-node>
+</process-definition>

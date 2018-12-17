@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="loaScheme" extends="struts-twms-default">
+		<!-- LOA SCHEME Configuration Actions -->
+       	<action name="list_loa_schemes"
+			class="tavant.twms.web.admin.loaScheme.LOASchemes">			
+			<interceptor-ref name="adminParamsPrepare" />			
+			<result name="success">pages/secure/admin/loaScheme/loaSchemeInboxView.jsp</result>
+			<result name="input">pages/secure/admin/loaScheme/loaSchemeInboxView.jsp</result>
+		</action>
+		
+		<action name="get_loa_schemes_body"
+			class="tavant.twms.web.admin.loaScheme.LOASchemes" method="tableBody">
+			<interceptor-ref name="adminParamsPrepareWithoutValidation" />		
+			<result name="success">pages/secure/home/json.jsp</result>
+		</action>
+		
+		<action name="exportLOASchemesToExcel"
+			class="tavant.twms.web.admin.loaScheme.LOASchemes" method="downloadListingData">
+			<interceptor-ref name="adminParamsPrepare" />
+		</action>
+		
+		<action name="list_loa_scheme_users"
+			class="tavant.twms.web.admin.loaScheme.ListAllLOAUsers"
+			method="allLOAUsers">
+			<interceptor-ref name="adminParamsWithoutValidation" />
+    	  <result name="success">pages/secure/home/json.jsp</result>
+    	  <result name="input">pages/error.jsp</result>
+        </action>
+        	
+        <action name="create_loa_scheme"
+			class="tavant.twms.web.admin.loaScheme.ManageLOAScheme"
+			method="createLOAScheme">
+			<interceptor-ref name="adminParamsPrepareWithoutValidation" />
+			<result name="success">
+				pages/secure/admin/loaScheme/create_loa_scheme.jsp
+			</result>  
+			<result name="input">
+				pages/secure/admin/loaScheme/create_loa_scheme.jsp
+			</result>     
+        </action>
+        
+        <action name="save_LOA_Scheme"
+			class="tavant.twms.web.admin.loaScheme.ManageLOAScheme" method="saveLOAScheme">
+			<interceptor-ref name="adminTwmsParamsPrepareRepeatTableParams" />
+			<result name="success">pages/secure/admin/loaScheme/loa_createSuccess.jsp</result>
+			<result name="input">pages/secure/admin/loaScheme/create_loa_scheme.jsp</result>
+		</action>
+        
+        <action name="manage_loa_scheme"
+			class="tavant.twms.web.admin.loaScheme.ManageLOAScheme"
+			method="manageLOAScheme">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">
+				pages/secure/admin/loaScheme/manage_loa_scheme.jsp
+			</result>            
+			<result name="input">
+				pages/secure/admin/loaScheme/manage_loa_scheme.jsp
+			</result>			
+        </action>
+        
+         <action name="update_LOA_Scheme"
+			class="tavant.twms.web.admin.loaScheme.ManageLOAScheme"
+			method="updateLOAScheme">
+			<interceptor-ref name="adminTwmsParamsPrepareRepeatTableParams" />
+			<result name="success">
+				pages/secure/admin/loaScheme/manage_loa_scheme.jsp
+			</result>            
+			<result name="input">
+				pages/secure/admin/loaScheme/manage_loa_scheme.jsp
+			</result>
+			<result name="error">
+				pages/secure/admin/loaScheme/manage_loa_scheme.jsp
+			</result>
+        </action>
+        
+         <action name="delete_LOA_Scheme"
+			class="tavant.twms.web.admin.loaScheme.ManageLOAScheme"
+			method="deleteLOAScheme">
+			<interceptor-ref name="adminTwmsParamsPrepareRepeatTableParams" />
+			<result name="success">
+				pages/secure/admin/success.jsp
+			</result>            
+        </action>
+        	<!-- End of LOA SCHEME Configurations -->
+	</package>
+</struts>

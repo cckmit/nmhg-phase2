@@ -1,0 +1,12 @@
+<!DOCTYPE validators PUBLIC 
+    "-//Apache Struts//XWork Validator 1.0.2//EN"   
+    "http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+<validators>
+		
+    <validator type="visitor">
+        <param name="fieldName">customer.addresses</param>
+        <param name="appendPrefix">true</param>
+        <message/>
+    </validator>    
+   
+</validators>

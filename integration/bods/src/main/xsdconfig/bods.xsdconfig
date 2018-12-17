@@ -1,0 +1,183 @@
+<xb:config xmlns:xb="http://xml.apache.org/xmlbeans/2004/02/xbean/config">
+    <xb:namespace uri="http://www.tavant.com/oagis">
+        <xb:suffix>DTO</xb:suffix>
+    </xb:namespace>
+    <xb:namespace uri="http://www.tavant.com/oagis">
+        <xb:package>tavant.oagis</xb:package>
+    </xb:namespace>
+
+    <xb:namespace uri="http://www.tavant.com/supplier">
+        <xb:suffix>DTO</xb:suffix>
+    </xb:namespace>
+    <xb:namespace uri="http://www.tavant.com/supplier">
+        <xb:package>tavant.supplier</xb:package>
+    </xb:namespace>
+
+    <xb:namespace uri="http://www.tavant.com/extwarranty">
+        <xb:suffix>DTO</xb:suffix>
+    </xb:namespace>
+    <xb:namespace uri="http://www.tavant.com/extwarranty">
+        <xb:package>tavant.extwarranty</xb:package>
+    </xb:namespace>
+
+    <xb:namespace uri="http://www.tavant.com/dealerglobalsync">
+        <xb:package>tavant.dealerglobalsync</xb:package>
+    </xb:namespace>
+    <xb:namespace uri="http://www.tavant.com/dealerglobalsync">
+        <xb:suffix>DTO</xb:suffix>
+    </xb:namespace>
+
+    <xb:namespace uri="http://www.tavant.com/itemglobalsync">
+        <xb:package>tavant.itemglobalsync</xb:package>
+    </xb:namespace>
+    <xb:namespace uri="http://www.tavant.com/itemglobalsync">
+        <xb:suffix>DTO</xb:suffix>
+    </xb:namespace>
+
+    <xb:namespace uri="http://www.tavant.com/userglobalsync">
+        <xb:package>tavant.userglobalsync</xb:package>
+    </xb:namespace>
+    <xb:namespace uri="http://www.tavant.com/userglobalsync">
+        <xb:suffix>DTO</xb:suffix>
+    </xb:namespace>
+
+    <!--Added as the part of Global Integration effort-->
+    <xb:namespace uri="http://www.tavant.com/globalsync/pricefetchresponse">
+        <xb:suffix>DTO</xb:suffix>
+    </xb:namespace>
+    <xb:namespace uri="http://www.tavant.com/globalsync/pricefetchresponse">
+        <xb:package>tavant.globalsync.pricefetchresponse</xb:package>
+    </xb:namespace>
+
+    <xb:namespace uri="http://www.tavant.com/globalsync/pricefetchrequest">
+        <xb:suffix>DTO</xb:suffix>
+    </xb:namespace>
+    <xb:namespace uri="http://www.tavant.com/globalsync/pricefetchrequest">
+        <xb:package>tavant.globalsync.pricefetchrequest</xb:package>
+    </xb:namespace>
+
+    <xb:namespace uri="http://www.tavant.com/globalsync/foc">
+        <xb:package>tavant.globalsync.foc</xb:package>
+    </xb:namespace>
+
+    <xb:namespace uri="http://www.tavant.com/globalsync/warrantyclaimcreditnotification">
+        <xb:suffix>DTO</xb:suffix>
+    </xb:namespace>
+    <xb:namespace uri="http://www.tavant.com/globalsync/warrantyclaimcreditnotification">
+        <xb:package>tavant.globalsync.warrantyclaimcreditnotification</xb:package>
+    </xb:namespace>
+
+    <xb:namespace uri="http://www.tavant.com/globalsync/warrantyclaimcreditsubmission">
+        <xb:suffix>DTO</xb:suffix>
+    </xb:namespace>
+    <xb:namespace uri="http://www.tavant.com/globalsync/warrantyclaimcreditsubmission">
+        <xb:package>tavant.globalsync.warrantyclaimcreditsubmission</xb:package>
+    </xb:namespace>
+
+    <xb:namespace uri="http://www.tavant.com/globalsync/supplierdebitsubmission">
+        <xb:suffix>DTO</xb:suffix>
+    </xb:namespace>
+    <xb:namespace uri="http://www.tavant.com/globalsync/supplierdebitsubmission">
+        <xb:package>tavant.globalsync.supplierdebitsubmission</xb:package>
+    </xb:namespace>
+
+    <xb:namespace uri="http://www.tavant.com/globalsync/supplierdebitnotification">
+        <xb:suffix>DTO</xb:suffix>
+    </xb:namespace>
+    <xb:namespace uri="http://www.tavant.com/globalsync/supplierdebitnotification">
+        <xb:package>tavant.globalsync.supplierdebitnotification</xb:package>
+    </xb:namespace>
+
+    <xb:namespace uri="http://www.tavant.com/globalsync/extendedwarrantynotification">
+        <xb:suffix>DTO</xb:suffix>
+    </xb:namespace>
+    <xb:namespace uri="http://www.tavant.com/globalsync/extendedwarrantynotification">
+        <xb:package>tavant.globalsync.extendedwarrantynotification</xb:package>
+    </xb:namespace>
+
+    <xb:namespace uri="http://www.tavant.com/globalsync/exchangeratesync">
+        <xb:suffix>DTO</xb:suffix>
+    </xb:namespace>
+    <xb:namespace uri="http://www.tavant.com/globalsync/exchangeratesync">
+        <xb:package>tavant.globalsync.exchangeratesync</xb:package>
+    </xb:namespace>
+
+    <xb:namespace uri="http://www.tavant.com/globalsync/itemsync">
+        <xb:suffix>DTO</xb:suffix>
+    </xb:namespace>
+    <xb:namespace uri="http://www.tavant.com/globalsync/itemsync">
+        <xb:package>tavant.globalsync.itemsync</xb:package>
+    </xb:namespace>
+
+    <xb:namespace uri="http://www.tavant.com/globalsync/installbasesync">
+        <xb:suffix>DTO</xb:suffix>
+    </xb:namespace>
+    <xb:namespace uri="http://www.tavant.com/globalsync/installbasesync">
+        <xb:package>tavant.globalsync.installbasesync</xb:package>
+    </xb:namespace>
+
+    <xb:namespace uri="http://www.tavant.com/globalsync/customersync">
+        <xb:suffix>DTO</xb:suffix>
+    </xb:namespace>
+    <xb:namespace uri="http://www.tavant.com/globalsync/customersync">
+        <xb:package>tavant.globalsync.customersync</xb:package>
+    </xb:namespace>
+
+    <xb:namespace uri="http://www.tavant.com/globalsync/itemsyncresponse">
+        <xb:suffix>DTO</xb:suffix>
+    </xb:namespace>
+    <xb:namespace uri="http://www.tavant.com/globalsync/itemsyncresponse">
+        <xb:package>tavant.globalsync.itemsyncresponse</xb:package>
+    </xb:namespace>
+
+    <xb:namespace uri="http://www.tavant.com/globalsync/usersync">
+        <xb:suffix>DTO</xb:suffix>
+    </xb:namespace>
+    <xb:namespace uri="http://www.tavant.com/globalsync/usersync">
+        <xb:package>tavant.globalsync.usersync</xb:package>
+    </xb:namespace>
+
+    <xb:namespace uri="http://www.tavant.com/globalsync/exchangeratesync">
+        <xb:package>tavant.globalsync.exchangeratesync</xb:package>
+    </xb:namespace>
+    <xb:namespace uri="http://www.tavant.com/globalsync/exchangeratesync">
+        <xb:suffix>DTO</xb:suffix>
+    </xb:namespace>
+    <!--End Global Integration changes-->
+
+    <!--Begin Dealer Interfaces-->
+    <xb:namespace uri="http://www.tavant.com/dealerinterfaces/unitservicehistory/unitservicehistoryresponse">
+        <xb:suffix>DTO</xb:suffix>
+    </xb:namespace>
+    <xb:namespace uri="http://www.tavant.com/dealerinterfaces/unitservicehistory/unitservicehistoryrequest">
+        <xb:suffix>DTO</xb:suffix>
+    </xb:namespace>
+
+    <xb:namespace uri="http://www.tavant.com/dealerinterfaces/dealerinterfaces/claimsubmission/request">
+        <xb:suffix>DTO</xb:suffix>
+    </xb:namespace>
+    <xb:namespace uri="http://www.tavant.com/dealerinterfaces/claimsubmission/response">
+        <xb:suffix>DTO</xb:suffix>
+    </xb:namespace>
+
+    <xb:namespace uri="http://www.tavant.com/dealerinterfaces/dealerinterfaces/warrantyregistration/request">
+        <xb:suffix>DTO</xb:suffix>
+    </xb:namespace>
+    <xb:namespace uri="http://www.tavant.com/dealerinterfaces/warrantyregistration/response">
+        <xb:suffix>DTO</xb:suffix>
+    </xb:namespace>
+
+    <!-- Major Components -->
+    <xb:namespace uri="http://www.tavant.com/dealerinterfaces/dealerinterfaces/majorcomponentregistration/request">
+        <xb:suffix>DTO</xb:suffix>
+    </xb:namespace>
+    <!--End Dealer Interfaces-->
+
+     <xb:namespace uri="http://www.tavant.com/twms/security/resource">
+            <xb:package>tavant.twms.xmlbeans.security.impl</xb:package>
+     </xb:namespace>
+
+     <xb:namespace uri="http://www.tavant.com/twms/security/resource">
+            <xb:suffix>DTO</xb:suffix>
+     </xb:namespace>
+</xb:config>

@@ -1,0 +1,34 @@
+<process-definition name="FormNodeProcess">
+	<start-state name="start">
+		<transition name="" to="ManualClaimAdjudication"></transition>
+	</start-state>
+	<task-node name="ManualClaimAdjudication">
+		<task name="Assign claim to processor">			
+			<assignment
+				class="tavant.twms.jbpm.assignment.ExpressionAssignmentHandler">
+				<expression>pooledActor=processor</expression>
+			</assignment>
+			<controller>
+				<variable name="comment"></variable>
+			</controller>
+			<forms>
+				<inputForm>ManualClaimAdjudication.Input</inputForm>
+				<successForm>ManualClaimAdjudication.Success</successForm>
+			</forms>
+		</task>
+		<transition name="Accept" to="end"></transition>
+	</task-node>
+	<task-node name="ManualClaimAdjudicationWithoutForms">
+		<task name="Assign claim to processor">
+			<assignment
+				class="tavant.twms.jbpm.ExpressionAssignmentHandler">
+				<expression>pooledActor=processor</expression>
+			</assignment>
+			<controller>
+				<variable name="comment"></variable>
+			</controller>
+		</task>
+		<transition name="Accept" to="end"></transition>
+	</task-node>
+	<end-state name="end"></end-state>
+</process-definition>

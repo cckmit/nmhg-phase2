@@ -1,0 +1,778 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="ruleadmin" extends="struts-twms-default">
+		
+		<action name="list_domain_rules"
+			class="tavant.twms.web.admin.rules.ListRules">			
+			<interceptor-ref name="adminParamsPrepare" />			
+			<result name="success">pages/secure/admin/rules/domainRuleInboxView.jsp</result>
+		</action>
+		
+		<action name="list_entry_validation_rules"
+			class="tavant.twms.web.admin.rules.ListRules">			
+			<interceptor-ref name="adminParamsPrepare" />			
+			<result name="success">pages/secure/admin/rules/entryValidationRuleInboxView.jsp</result>
+		</action>
+		
+		<action name="list_claim_processor_routing_rules"
+			class="tavant.twms.web.admin.rules.ListRules">			
+			<interceptor-ref name="adminParamsPrepare" />			
+			<result name="success">pages/secure/admin/rules/claimProcessorRoutingInboxView.jsp</result>
+		</action>
+		
+		<action name="get_domain_rules_body"
+			class="tavant.twms.web.admin.rules.ListRules" method="tableBody">
+			<interceptor-ref name="adminParamsPrepareWithoutValidation" />		
+			<param name="context">ClaimRules</param>
+			<result name="success">pages/secure/home/json.jsp</result>
+		</action>
+		<action name="get_entry_validation_rules_body"
+			class="tavant.twms.web.admin.rules.ListRules" method="tableBody">
+			<interceptor-ref name="adminParamsPrepareWithoutValidation" />		
+			<param name="context">EntryValidationRules</param>
+			<result name="success">pages/secure/home/json.jsp</result>
+		</action>
+		<action name="get_processor_routing_rules_body"
+			class="tavant.twms.web.admin.rules.ListRules" method="tableBody">
+			<interceptor-ref name="adminParamsPrepareWithoutValidation" />		
+			<param name="context">ClaimProcessorRouting</param>
+			<result name="success">pages/secure/home/json.jsp</result>
+		</action>
+		<action name="get_rec_processor_routing_rules_body"
+			class="tavant.twms.web.admin.rules.ListRules" method="tableBody">
+			<interceptor-ref name="adminParamsPrepareWithoutValidation" />		
+			<param name="context">recClaimRouting</param>
+			<result name="success">pages/secure/home/json.jsp</result>
+		</action>
+		
+		<!-- TODO: Can't we reuse the same action for preview and detail -->
+		<action name="manage_domain_rule_preview"
+			class="tavant.twms.web.admin.rules.ManageDomainRules"
+			method="showDomainRule">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">
+				pages/secure/admin/rules/manageDomainRule.jsp
+			</result>
+		</action>
+		
+		<action name="manage_domain_rule_detail"
+			class="tavant.twms.web.admin.rules.ManageDomainRules"
+			method="showDomainRule">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">
+				pages/secure/admin/rules/manageDomainRule.jsp
+			</result>
+		</action>
+
+		<action name="manage_processor_routing_rule_preview"
+			class="tavant.twms.web.admin.rules.ManageProcessorRoutingRules"
+			method="showDomainRule">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">
+				pages/secure/admin/rules/manageProcessorRoutingRule.jsp
+			</result>
+		</action>
+		
+		<action name="manage_processor_routing_rule_detail"
+			class="tavant.twms.web.admin.rules.ManageProcessorRoutingRules"
+			method="showDomainRule">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">
+				pages/secure/admin/rules/manageProcessorRoutingRule.jsp
+			</result>
+		</action>
+		
+		<!-- For DSM routing -->
+		<action name="list_DSM_rules"
+            class="tavant.twms.web.admin.rules.ListRules">          
+            <interceptor-ref name="adminParamsPrepare" />            
+            <result name="success">pages/secure/admin/rules/DSMRoutingInboxView.jsp</result>
+        </action>
+        
+        <action name="get_DSM_routing_rules_body"
+            class="tavant.twms.web.admin.rules.ListRules" method="tableBody">
+            <interceptor-ref name="adminParamsPrepareWithoutValidation" />       
+            <param name="context">DSMRouting</param>
+            <result name="success">pages/secure/home/json.jsp</result>
+        </action>
+        
+        <action name="create_DSM_routing_rule"
+            class="tavant.twms.web.admin.rules.CreateProcessorRoutingRules"
+            method="createRule">
+            <param name="purpose">DSM Assignment</param>
+            <interceptor-ref name="adminParamsPrepareWithoutValidation" />
+            <result name="success">
+                pages/secure/admin/rules/create_DSM_processor_routing_rule.jsp
+            </result>
+            <result name="setup">
+                pages/secure/admin/rules/userGroupsNotSetup.jsp
+            </result>
+            <result name="error">
+				pages/secure/admin/rules/group/ruleGroupsNotSetup.jsp
+			</result>
+        </action>
+        
+        <action name="search_predicates_for_new_DSM_routing_rule"
+            class="tavant.twms.web.admin.rules.CreateProcessorRoutingRules"
+            method="searchPredicates">
+            <param name="context">DSMRouting</param>
+            <param name="purpose">DSM Assignment</param>
+            <interceptor-ref name="adminParamsPrepareWithoutValidation" />           
+            <result name="success">
+                pages/secure/admin/rules/create_DSM_processor_routing_rule.jsp
+            </result>
+            <result name="setup">
+                pages/secure/admin/rules/userGroupsNotSetup.jsp
+            </result>
+        </action>
+        
+        <action name="save_DSM_routing_rule"
+            class="tavant.twms.web.admin.rules.CreateProcessorRoutingRules"
+            method="saveRule">          
+            <interceptor-ref name="adminTwmsParamsPrepareParams" />
+            <param name="purpose">DSM Assignment</param>
+            <param name="context">DSMRouting</param>
+            <result name="success">
+                pages/secure/admin/rules/createSuccess.jsp
+            </result>
+            <result name="input">
+                pages/secure/admin/rules/create_DSM_processor_routing_rule.jsp
+            </result>
+        </action>
+        
+        <action name="manage_DSM_routing_rule_detail"
+            class="tavant.twms.web.admin.rules.ManageDSMRoutingRules"
+            method="showDomainRule">
+            <interceptor-ref name="adminParamsPrepare" />
+            <result name="success">
+                pages/secure/admin/rules/manageProcessorRoutingRule.jsp
+            </result>
+        </action>
+
+        <!-- For Processor Authority Rules -->
+        <action name="list_processor_authority_rules"
+            class="tavant.twms.web.admin.rules.ListRules">          
+            <interceptor-ref name="adminParamsPrepare" />            
+            <result name="success">pages/secure/admin/rules/processorAuthorityInboxView.jsp</result>
+        </action>
+        
+        <action name="create_processor_authority_rule"
+            class="tavant.twms.web.admin.rules.CreateProcessorRoutingRules"
+            method="createRule">
+            <param name="purpose">Processor Authority</param>
+            <interceptor-ref name="adminParamsPrepareWithoutValidation" />
+            <result name="success">
+                pages/secure/admin/rules/create_processor_authority_rule.jsp
+            </result>
+            <result name="setup">
+                pages/secure/admin/rules/userGroupsNotSetup.jsp
+            </result>
+        </action>
+        
+        <action name="get_processor_authority_rules_body"
+            class="tavant.twms.web.admin.rules.ListRules" method="tableBody">
+            <interceptor-ref name="adminParamsPrepare" />
+            <param name="context">ProcessorAuthority</param>
+            <result name="success">pages/secure/home/json.jsp</result>
+        </action>        
+        
+        <action name="manage_processor_authority_rule_detail"
+            class="tavant.twms.web.admin.rules.ManageProcessorAuthorityRules"
+            method="showDomainRule">
+            <interceptor-ref name="adminParamsPrepare" />
+            <result name="success">
+                pages/secure/admin/rules/manageProcessorAuthorityRule.jsp
+            </result>
+        </action>
+
+        <action name="search_predicates_for_new_processor_authority_rule"
+            class="tavant.twms.web.admin.rules.CreateProcessorRoutingRules"
+            method="searchPredicates">
+            <param name="context">ProcessorAuthority</param>
+            <param name="purpose">Processor Authority</param>
+            <interceptor-ref name="adminParamsPrepareWithoutValidation" />           
+            <result name="success">
+                pages/secure/admin/rules/create_processor_authority_rule.jsp
+            </result>
+            <result name="setup">
+                pages/secure/admin/rules/userGroupsNotSetup.jsp
+            </result>
+        </action>
+
+        <action name="save_processor_authority_rule"
+            class="tavant.twms.web.admin.rules.CreateProcessorRoutingRules"
+            method="saveRule">          
+            <interceptor-ref name="adminTwmsParamsPrepareParams" />
+            <param name="purpose">Processor Authority</param>
+            <param name="context">ProcessorAuthority</param>
+            <result name="success">
+                pages/secure/admin/rules/createSuccess.jsp
+            </result>
+            <result name="input">
+                pages/secure/admin/rules/create_processor_authority_rule.jsp
+            </result>
+        </action>
+
+		<action name="update_processor_authority_rule"
+			class="tavant.twms.web.admin.rules.ManageProcessorAuthorityRules"
+			method="updateDomainRule">
+			<interceptor-ref name="adminTwmsParamsPrepareParams" />
+			<result name="success">
+				pages/secure/admin/rules/manageProcessorAuthorityRule.jsp
+			</result>
+			<result name="input">
+				pages/secure/admin/rules/manageProcessorAuthorityRule.jsp
+			</result>
+        </action>
+        <!-- For Processor Authority Rules -->
+
+        <!-- For DSM Advisor Routing -->
+        <action name="list_DSM_advisor_rules"
+            class="tavant.twms.web.admin.rules.ListRules">          
+            <interceptor-ref name="adminParamsPrepare" />            
+            <result name="success">pages/secure/admin/rules/DSMAdvisorRoutingInboxView.jsp</result>
+        </action>
+        
+        <action name="get_DSM_advisor_routing_rules_body"
+            class="tavant.twms.web.admin.rules.ListRules" method="tableBody">
+            <interceptor-ref name="adminParamsPrepareWithoutValidation" />       
+            <param name="context">DSMAdvisorRouting</param>
+            <result name="success">pages/secure/home/json.jsp</result>
+        </action>
+        
+        <action name="create_DSM_advisor_routing_rule"
+            class="tavant.twms.web.admin.rules.CreateProcessorRoutingRules"
+            method="createRule">
+            <param name="purpose">DSM Advisor Assignment</param>
+            <interceptor-ref name="adminParamsPrepareWithoutValidation" />
+            <result name="success">
+                pages/secure/admin/rules/create_DSM_advisor_routing_rule.jsp
+            </result>
+            <result name="setup">
+                pages/secure/admin/rules/userGroupsNotSetup.jsp
+            </result>
+            <result name="error">
+				pages/secure/admin/rules/group/ruleGroupsNotSetup.jsp
+			</result>
+        </action>
+        
+        <action name="search_predicates_for_new_DSM_advisor_routing_rule"
+            class="tavant.twms.web.admin.rules.CreateProcessorRoutingRules"
+            method="searchPredicates">
+            <param name="context">DSMAdvisorRouting</param>
+            <param name="purpose">DSM Advisor Assignment</param>
+            <interceptor-ref name="adminParamsPrepareWithoutValidation" />           
+            <result name="success">
+                pages/secure/admin/rules/create_DSM_advisor_routing_rule.jsp
+            </result>
+            <result name="setup">
+                pages/secure/admin/rules/userGroupsNotSetup.jsp
+            </result>
+        </action>
+        
+        <action name="save_DSM_advisor_routing_rule"
+            class="tavant.twms.web.admin.rules.CreateProcessorRoutingRules"
+            method="saveRule">          
+            <interceptor-ref name="adminTwmsParamsPrepareParams" />
+            <param name="purpose">DSM Advisor Assignment</param>
+            <param name="context">DSMAdvisorRouting</param>
+            <result name="success">
+                pages/secure/admin/rules/createSuccess.jsp
+            </result>
+            <result name="input">
+                pages/secure/admin/rules/create_DSM_advisor_routing_rule.jsp
+            </result>
+        </action>
+        
+        <action name="manage_DSM_advisor_routing_rule_detail"
+            class="tavant.twms.web.admin.rules.ManageDSMAdvisorRoutingRules"
+            method="showDomainRule">
+            <interceptor-ref name="adminParamsPrepare" />
+            <result name="success">
+                pages/secure/admin/rules/manageProcessorRoutingRule.jsp
+            </result>
+        </action>
+		
+		<!-- For Recovery Claims routing -->
+		<action name="list_rec_claim_processor_routing_rules"
+			class="tavant.twms.web.admin.rules.ListRules">			
+			<interceptor-ref name="adminParamsPrepare" />			
+			<result name="success">pages/secure/admin/rules/recClaimProcessorRoutingInboxView.jsp</result>
+		</action>
+		
+		<action name="manage_rec_processor_routing_rule_preview"
+			class="tavant.twms.web.admin.rules.ManageRecoveryProcessorRoutingRules"
+			method="showDomainRule">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">
+				pages/secure/admin/rules/manageProcessorRoutingRule.jsp
+			</result>
+		</action>
+		
+		<action name="manage_rec_processor_routing_rule_detail"
+			class="tavant.twms.web.admin.rules.ManageRecoveryProcessorRoutingRules"
+			method="showDomainRule">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">
+				pages/secure/admin/rules/manageRecProcessorRoutingRule.jsp
+			</result>
+		</action>
+		
+		<action name="update_rec_processor_routing_rule"
+			class="tavant.twms.web.admin.rules.ManageRecoveryProcessorRoutingRules"
+			method="updateDomainRule">
+			<interceptor-ref name="adminTwmsParamsPrepareParams" />
+			<result name="success">
+				pages/secure/admin/rules/manageRecProcessorRoutingRule.jsp
+			</result>
+			<result name="input">
+				pages/secure/admin/rules/manageRecProcessorRoutingRule.jsp
+			</result>
+        </action>
+        
+        <action name="create_rec_processor_routing_rule"
+			class="tavant.twms.web.admin.rules.CreateProcessorRoutingRules"
+			method="createRule">
+			<interceptor-ref name="adminParamsPrepareWithoutValidation" />
+			<param name="purpose">Recovery Claim Assignment</param>
+			<result name="success">
+				pages/secure/admin/rules/create_rec_processor_routing_rule.jsp
+			</result>
+            <result name="setup">
+				pages/secure/admin/rules/userGroupsNotSetup.jsp
+			</result>
+        </action>
+        
+        <action name="delete_processor_routing_rule"
+			class="tavant.twms.web.admin.rules.ManageRecoveryProcessorRoutingRules"
+			method="deleteDomainRule">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">
+				pages/secure/admin/rules/success.jsp
+			</result>
+		</action>
+		
+		<action name="search_predicates_for_new_rec_processor_routing_rule"
+			class="tavant.twms.web.admin.rules.CreateProcessorRoutingRules"
+			method="searchPredicates">
+			<param name="context">recClaimRouting</param>
+			<param name="purpose">Recovery Claim Assignment</param>
+			<interceptor-ref name="adminParamsPrepareWithoutValidation" />			
+			<result name="success">
+				pages/secure/admin/rules/create_rec_processor_routing_rule.jsp
+			</result>
+            <result name="setup">
+				pages/secure/admin/rules/userGroupsNotSetup.jsp
+			</result>
+		</action>
+		
+		<action name="save_rec_processor_routing_rule"
+			class="tavant.twms.web.admin.rules.CreateProcessorRoutingRules"
+			method="saveRule">			
+			<interceptor-ref name="adminTwmsParamsPrepareParams" />
+			<param name="context">recClaimRouting</param>
+			<param name="purpose">Recovery Claim Assignment</param>
+			<result name="success">
+				pages/secure/admin/rules/createSuccess.jsp
+			</result>
+			<result name="input">
+				pages/secure/admin/rules/create_rec_processor_routing_rule.jsp
+			</result>
+		</action>
+		<!-- Recovery Claim processor routing ends -->
+		
+		<action name="update_domain_rule"
+			class="tavant.twms.web.admin.rules.ManageDomainRules"
+			method="updateDomainRule">
+			<interceptor-ref name="adminTwmsParamsPrepareParams" />
+			<result name="success">
+				pages/secure/admin/rules/manageDomainRule.jsp
+			</result>
+			<result name="input">
+				pages/secure/admin/rules/manageDomainRule.jsp
+			</result>
+        </action>
+        
+		<action name="update_processor_routing_rule"
+			class="tavant.twms.web.admin.rules.ManageProcessorRoutingRules"
+			method="updateDomainRule">
+			<interceptor-ref name="adminTwmsParamsPrepareParams" />
+			<result name="success">
+				pages/secure/admin/rules/manageProcessorRoutingRule.jsp
+			</result>
+			<result name="input">
+				pages/secure/admin/rules/manageProcessorRoutingRule.jsp
+			</result>
+        </action>
+        		
+		<action name="delete_domain_rule"
+			class="tavant.twms.web.admin.rules.ManageDomainRules"
+			method="deleteDomainRule">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">
+				pages/secure/admin/rules/success.jsp
+			</result>
+		</action>
+		
+		<action name="delete_processor_routing_rule"
+			class="tavant.twms.web.admin.rules.ManageProcessorRoutingRules"
+			method="deleteDomainRule">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">
+				pages/secure/admin/rules/success.jsp
+			</result>
+		</action>
+		
+		<action name="create_domain_rule"
+			class="tavant.twms.web.admin.rules.CreateDomainRule"
+			method="createRule">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">
+				pages/secure/admin/rules/createRule.jsp
+			</result>
+            <result name="error">
+				pages/secure/admin/rules/group/ruleGroupsNotSetup.jsp
+			</result>
+        </action>
+		
+		<action name="create_entry_validation_rule"
+			class="tavant.twms.web.admin.rules.CreateDomainRule"
+			method="createRule">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">
+				pages/secure/admin/rules/create_entry_validation_rule.jsp
+			</result>
+		</action>
+				
+		<action name="create_processor_routing_rule"
+			class="tavant.twms.web.admin.rules.CreateProcessorRoutingRules"
+			method="createRule">
+			<param name="purpose">Claim Assignment</param>
+			<interceptor-ref name="adminParamsPrepareWithoutValidation" />
+			<result name="success">
+				pages/secure/admin/rules/create_processor_routing_rule.jsp
+			</result>
+            <result name="setup">
+				pages/secure/admin/rules/userGroupsNotSetup.jsp
+			</result>
+			<result name="error">
+				pages/secure/admin/rules/group/ruleGroupsNotSetup.jsp
+			</result>
+        </action>
+		
+		<action name="search_predicates_for_new_rule"
+			class="tavant.twms.web.admin.rules.CreateDomainRule"
+			method="searchPredicates">
+			<param name="context">ClaimRules</param>
+			<interceptor-ref name="adminParamsPrepareWithoutValidation" />			
+			<result name="success">
+				pages/secure/admin/rules/createRule.jsp
+			</result>
+            <result name="setup">
+				pages/secure/admin/rules/userGroupsNotSetup.jsp
+			</result>            
+        </action>
+        
+       
+		<action name="search_predicates_for_new_entry_validation_rule"
+			class="tavant.twms.web.admin.rules.CreateDomainRule"
+			method="searchPredicates">
+			<param name="context">EntryValidationRules</param>
+			<interceptor-ref name="adminParamsPrepareWithoutValidation" />			
+			<result name="success">
+				pages/secure/admin/rules/create_entry_validation_rule.jsp
+			</result>
+		</action>
+
+		<action name="search_predicates_for_new_processor_routing_rule"
+			class="tavant.twms.web.admin.rules.CreateProcessorRoutingRules"
+			method="searchPredicates">
+			<param name="context">ClaimProcessorRouting</param>
+			<param name="purpose">Claim Assignment</param>
+			<interceptor-ref name="adminParamsPrepareWithoutValidation" />			
+			<result name="success">
+				pages/secure/admin/rules/create_processor_routing_rule.jsp
+			</result>
+            <result name="setup">
+				pages/secure/admin/rules/userGroupsNotSetup.jsp
+			</result>
+		</action>
+		
+		<action name="save_domain_rule"
+			class="tavant.twms.web.admin.rules.CreateDomainRule"
+			method="saveRule">			
+			<interceptor-ref name="adminTwmsParamsPrepareParams" />
+			<param name="context">ClaimRules</param>
+			<result name="success">
+				pages/secure/admin/rules/createSuccess.jsp
+			</result>
+			<result name="input">
+				pages/secure/admin/rules/createRule.jsp
+			</result>
+		</action>		
+		<action name="save_entry_validation_rule"
+			class="tavant.twms.web.admin.rules.CreateDomainRule"
+			method="saveRule">			
+			<interceptor-ref name="adminTwmsParamsPrepareParams" />
+			<param name="context">EntryValidationRules</param>
+			<result name="success">
+				pages/secure/admin/rules/createEntryValidationRuleSuccess.jsp
+			</result>
+			<result name="input">
+				pages/secure/admin/rules/create_entry_validation_rule.jsp
+			</result>
+		</action>
+
+		<action name="save_i18n_failure_messages"
+			class="tavant.twms.web.admin.rules.CreateDomainRule"
+			method="setUpForCreateI18NMessages">			
+			<interceptor-ref name="adminParamsPrepare" />
+			<param name="context">EntryValidationRules</param>
+			<result name="success">
+				pages/secure/admin/rules/create_I18N_Failure_Messages.jsp
+			</result>
+			<result name="input">
+				pages/secure/admin/rules/create_entry_validation_rule.jsp
+			</result>
+		</action>
+		
+		<action name="save_i18n_Rule_Description"
+			class="tavant.twms.web.admin.rules.CreateDomainRule"
+			method="setUpForCreateI18NMessages">			
+			<interceptor-ref name="adminParamsPrepare" />
+			<param name="context">EntryValidationRules</param>
+			<result name="success">
+				pages/secure/admin/rules/create_I18N_Rule_Description.jsp
+			</result>
+			<result name="input">
+				pages/secure/admin/rules/create_entry_validation_rule.jsp
+			</result>
+		</action>
+		
+		<action name="save_failure_messages"
+			class="tavant.twms.web.admin.rules.CreateDomainRule"
+			method="saveI18NMessages">			
+			<interceptor-ref name="adminParamsPrepare" />
+			<param name="context">EntryValidationRules</param>
+			<result name="success">
+				pages/secure/admin/rules/createSuccess.jsp
+			</result>
+			<result name="input">
+				pages/secure/admin/rules/create_I18N_Failure_Messages.jsp
+			</result>
+		</action>
+		
+		<action name="save_rule_description"
+			class="tavant.twms.web.admin.rules.CreateDomainRule"
+			method="saveI18NRuleDescription">			
+			<interceptor-ref name="adminParamsPrepare" />
+			<param name="context">EntryValidationRules</param>
+			<result name="success">
+				pages/secure/admin/rules/createSuccess.jsp
+			</result>
+			<result name="input">
+				pages/secure/admin/rules/create_I18N_Rule_Description.jsp
+			</result>
+		</action>
+
+		<action name="save_processor_routing_rule"
+			class="tavant.twms.web.admin.rules.CreateProcessorRoutingRules"
+			method="saveRule">			
+			<interceptor-ref name="adminTwmsParamsPrepareParams" />
+			<param name="purpose">Claim Assignment</param>
+			<param name="context">ClaimProcessorRouting</param>
+			<result name="success">
+				pages/secure/admin/rules/createSuccess.jsp
+			</result>
+			<result name="input">
+				pages/secure/admin/rules/create_processor_routing_rule.jsp
+			</result>
+		</action>
+
+		<!-- Action to populate ognl expression for existing domain rules -->
+		<action name="populate_ognl_expression"
+			class="tavant.twms.web.admin.rules.ManageDomainRules"
+			method="populateDomainRuleOgnlExpression">
+			<interceptor-ref name="params" />
+			<result name="success">
+				pages/secure/admin/rules/populatedOgnlExpressions.jsp
+			</result>
+        </action>
+
+        <action name="exportRulesToExcel"
+			class="tavant.twms.web.admin.rules.ListRules" method="downloadListingData">
+			<interceptor-ref name="adminParamsPrepare" />
+		</action>	
+		
+        <!-- Rule Group Related actions -->
+        <action name="list_rule_groups" class="tavant.twms.web.admin.rules.group.ListRuleGroups">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">pages/secure/admin/rules/group/ruleGroupInboxView.jsp</result>
+		</action>
+
+        <action name="get_rule_groups_body" class="tavant.twms.web.admin.rules.group.ListRuleGroups" method="tableBody">
+			<interceptor-ref name="adminParamsWithoutValidation" />
+			<result name="success">pages/secure/home/json.jsp</result>
+		</action>
+
+        <action name="rule_group_preview" class="tavant.twms.web.admin.rules.group.ListRuleGroups"
+                method="viewRuleGroup">
+			<interceptor-ref name="adminParamsPrepareWithoutValidation" />
+			<result name="success">
+				pages/secure/admin/rules/group/ruleGroupPreview.jsp
+			</result>
+		</action>
+
+		<action name="rule_group_detail" class="tavant.twms.web.admin.rules.group.ListRuleGroups"
+			method="viewRuleGroup">
+			<interceptor-ref name="adminParamsPrepareWithoutValidation" />
+			<result name="success">
+				pages/secure/admin/rules/group/ruleGroupDetail.jsp
+			</result>
+		</action>
+
+        <action name="setup_rule_group_creation" class="tavant.twms.web.admin.rules.group.ManageRuleGroup"
+                method="setupRuleGroupCreation">
+			<interceptor-ref name="adminParamsWithoutValidation" />
+			<result name="success">
+				pages/secure/admin/rules/group/createRuleGroup.jsp
+			</result>
+		</action>
+
+		<action name="create_rule_group" class="tavant.twms.web.admin.rules.group.ManageRuleGroup"
+                method="saveRuleGroup">
+			<interceptor-ref name="adminTwmsParamsWithoutPrepare" />
+			<result name="success">
+				pages/secure/common/successFullRefresh.jsp
+			</result>
+			<result name="input">
+				pages/secure/admin/rules/group/createRuleGroup.jsp
+			</result>
+		</action>
+
+        <action name="update_rule_group" class="tavant.twms.web.admin.rules.group.ManageRuleGroup"
+                method="updateRuleGroup">
+			<interceptor-ref name="adminTwmsParamsWithoutPrepare" />
+			<result name="success">
+				pages/secure/common/successFullRefresh.jsp
+			</result>
+			<result name="input">
+				pages/secure/admin/rules/group/ruleGroupDetail.jsp
+			</result>
+        </action>
+
+        <action name="setup_rule_groups_prioritizaton" class="tavant.twms.web.admin.rules.group.ManageRuleGroup"
+                method="setupRuleGroupsPrioritizaton">
+			<interceptor-ref name="adminParamsWithoutValidation" />
+			<result name="success">
+				pages/secure/admin/rules/group/reprioritizeRuleGroups.jsp
+			</result>
+        </action>
+
+        <action name="reprioritize_rule_groups" class="tavant.twms.web.admin.rules.group.ManageRuleGroup"
+                method="rePrioritizeRuleGroups">
+			<interceptor-ref name="adminParamsWithoutValidation" />
+			<result name="success">
+				pages/secure/common/successFullRefresh.jsp
+			</result>
+        </action>
+
+        <action name="deactivate_rule_group" class="tavant.twms.web.admin.rules.group.ManageRuleGroup"
+                method="deactivateRuleGroup">
+			<interceptor-ref name="adminTwmsParamsWithoutPrepare" />
+			<result name="success">
+				pages/secure/common/successFullRefresh.jsp
+			</result>
+			<result name="input">
+				pages/secure/admin/rules/group/ruleGroupDetail.jsp
+			</result>
+        </action>
+        
+        <action name="activate_rule_group" class="tavant.twms.web.admin.rules.group.ManageRuleGroup"
+                method="activateRuleGroup">
+			<interceptor-ref name="adminTwmsParamsWithoutPrepare" />
+			<result name="success">
+				pages/secure/common/successFullRefresh.jsp
+			</result>
+			<result name="input">
+				pages/secure/admin/rules/group/ruleGroupDetail.jsp
+			</result>
+        </action>
+        
+        		<!-- For CP Advisor Routing -->
+        <action name="list_CP_advisor_rules"
+            class="tavant.twms.web.admin.rules.ListRules">          
+            <interceptor-ref name="adminParamsPrepare" />            
+            <result name="success">pages/secure/admin/rules/CPAdvisorRoutingInboxView.jsp</result>
+        </action>
+        
+        <action name="get_CP_advisor_routing_rules_body"
+            class="tavant.twms.web.admin.rules.ListRules" method="tableBody">
+            <interceptor-ref name="adminParamsPrepareWithoutValidation" />       
+            <param name="context">CPAdvisorRouting</param>
+            <result name="success">pages/secure/home/json.jsp</result>
+        </action>
+        
+        <action name="create_CP_advisor_routing_rule"
+            class="tavant.twms.web.admin.rules.CreateProcessorRoutingRules"
+            method="createRule">
+            <param name="purpose">CP Advisor Assignment</param>
+            <interceptor-ref name="adminParamsPrepareWithoutValidation" />
+            <result name="success">
+                pages/secure/admin/rules/create_CP_advisor_routing_rule.jsp
+            </result>
+            <result name="setup">
+                pages/secure/admin/rules/userGroupsNotSetup.jsp
+            </result>
+        </action>
+        
+        <action name="search_predicates_for_new_CP_advisor_routing_rule"
+            class="tavant.twms.web.admin.rules.CreateProcessorRoutingRules"
+            method="searchPredicates">
+            <param name="context">CPAdvisorRouting</param>
+            <param name="purpose">CP Advisor Assignment</param>
+            <interceptor-ref name="adminParamsPrepareWithoutValidation" />           
+            <result name="success">
+                pages/secure/admin/rules/create_CP_advisor_routing_rule.jsp
+            </result>
+            <result name="setup">
+                pages/secure/admin/rules/userGroupsNotSetup.jsp
+            </result>
+        </action>
+        
+        <action name="save_CP_advisor_routing_rule"
+            class="tavant.twms.web.admin.rules.CreateProcessorRoutingRules"
+            method="saveRule">          
+            <interceptor-ref name="adminTwmsParamsPrepareParams" />
+            <param name="purpose">CP Advisor Assignment</param>
+            <param name="context">CPAdvisorRouting</param>
+            <result name="success">
+                pages/secure/admin/rules/createSuccess.jsp
+            </result>
+            <result name="input">
+                pages/secure/admin/rules/create_CP_advisor_routing_rule.jsp
+            </result>
+        </action>
+        
+        <action name="manage_CP_advisor_routing_rule_detail"
+            class="tavant.twms.web.admin.rules.ManageCPAdvisorRoutingRules"
+            method="showDomainRule">
+            <interceptor-ref name="adminParamsPrepare" />
+            <result name="success">
+                pages/secure/admin/rules/manageProcessorRoutingRule.jsp
+            </result>
+        </action>
+		<!-- CP Advisor Routing routing ends -->
+
+        <action name="export_rule_groups_to_excel"
+			class="tavant.twms.web.admin.rules.group.ListRuleGroups" method="downloadListingData">
+			<interceptor-ref name="adminParamsPrepareWithoutValidation"/>
+		</action>
+
+	</package>
+</struts>	

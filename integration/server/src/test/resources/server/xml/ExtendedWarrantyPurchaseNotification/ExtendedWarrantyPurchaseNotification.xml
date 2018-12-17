@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ExtWarrantyNotification xmlns="http://www.tavant.com/globalsync/extendedwarrantynotification">
+	<ApplicationArea> 
+		<Sender> 
+			<LogicalId>SAP</LogicalId>
+			<Task>TavantWMS</Task> 
+			<ReferenceId>6001084104_MCSB0D5Y8KHR</ReferenceId>
+		</Sender> 
+		<BODId>BOD059_TSA</BODId>
+		<InterfaceNumber>INT068</InterfaceNumber>
+		<CreationDateTime>2008-03-14T11:15:03-08:00</CreationDateTime>
+	</ApplicationArea> 
+	<DataArea> 
+		<BUNAME>NMHG-US</BUName>
+		<PurchaseNotification> 
+		<NotificationType>SALE</NotificationType> 
+		<DealerNumber>2060</DealerNumber> 
+		<SerialNumber>336668</SerialNumber>
+		<EquipmentItemNumber>85550184</EquipmentItemNumber>
+		<WarrantyItemNumber>S07112811#10</WarrantyItemNumber>
+		<WarrantyPlanCode>AC-DT</WarrantyPlanCode>
+		<SalesOrderNumber>3177TST21</SalesOrderNumber> 
+		<SalesOrderLineNumber>11</SalesOrderLineNumber> 
+		<InvoiceNumber>111111</InvoiceNumber>
+		<InvoiceDate>2010-05-24T00:00:00-00:00</InvoiceDate> 
+		</PurchaseNotification> 
+	</DataArea> 
+</ExtWarrantyNotification>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Inventory xmlns="http://www.tavant.com/oagis" xmlns:oa="http://www.openapplications.org/oagis/9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <SerialNumber>S001</SerialNumber>
+    <ItemNumber>Doesn'tExist</ItemNumber>
+    <Type>RETAIL</Type>
+    <ConditionType>NEW</ConditionType>
+    <RegistrationDate>2005-10-10</RegistrationDate>
+    <DeliveryDate>2005-10-10</DeliveryDate>
+    <ShipmentDate>2005-10-10</ShipmentDate>
+    <HoursOnMachine>100</HoursOnMachine>
+    <InventoryTransaction>
+        <InvoiceDate>2005-10-10</InvoiceDate>
+        <InvoiceNumber>IN-25765</InvoiceNumber>
+        <SalesOrderNumber>SO-34256</SalesOrderNumber>
+        <TransactionDate>2004-12-15</TransactionDate>
+        <Seller>
+			<Type>OEM</Type>
+			<Id>OEM</Id>
+		</Seller>
+        <Buyer>
+			<Type>Dealer</Type>
+			<Id>COMP-123</Id>
+        </Buyer>
+    </InventoryTransaction>
+</Inventory>

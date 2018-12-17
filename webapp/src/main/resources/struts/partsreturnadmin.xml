@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="partsreturnadmin" extends="struts-twms-default">
+
+		<!-- Actions for admin part return definition. -->
+		<action name="list_part_return_definitions"
+			class="tavant.twms.web.admin.partreturns.ListPartReturnDefinitionsAction">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">pages/secure/admin/partreturns/partReturnDefinitionsInboxView.jsp</result>
+		</action>
+
+		<action name="get_part_return_definition_body"
+			class="tavant.twms.web.admin.partreturns.ListPartReturnDefinitionsAction"
+			method="tableBody">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">pages/secure/home/json.jsp</result>
+			<result name="input">error.jsp</result>
+		</action>
+
+
+		<action name="export_part_return_config_to_excel"
+			class="tavant.twms.web.admin.partreturns.ListPartReturnDefinitionsAction"
+			method="downloadListingData">
+			<interceptor-ref name="adminParamsPrepare" />
+		</action>
+
+		<action name="preview_part_return_definition"
+			class="tavant.twms.web.admin.partreturns.ManagePartReturnDefinitionAction"
+			method="viewDefinition">
+			<interceptor-ref name="adminParamsWithoutValidation" />
+			<result name="success">
+				pages/secure/admin/partreturns/previewPartReturnDefinition.jsp
+			</result>
+		</action>
+
+		<action name="manage_part_return_definition"
+			class="tavant.twms.web.admin.partreturns.ManagePartReturnDefinitionAction"
+			method="viewDefinition">
+			<interceptor-ref name="adminParamsWithoutValidation" />
+			<result name="success">
+				pages/secure/admin/partreturns/updatePartReturnDefinition.jsp
+			</result>
+		</action>
+
+		<action name="update_part_return_definition"
+			class="tavant.twms.web.admin.partreturns.ManagePartReturnDefinitionAction"
+			method="updateDefinition">
+			<interceptor-ref name="adminTwmsParamsPrepareRepeatTableParams" />
+			<result name="success">pages/secure/admin/success.jsp</result>
+			<result name="input">
+				pages/secure/admin/partreturns/updatePartReturnDefinition.jsp
+			</result>
+		</action>
+
+		<action name="update_part_return_definition_status"
+			class="tavant.twms.web.admin.partreturns.ManagePartReturnDefinitionAction"
+			method="updateDefinitionStatus">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">pages/secure/admin/success.jsp</result>
+			<result name="input">
+				pages/secure/admin/partreturns/updatePartReturnDefinition.jsp
+			</result>
+		</action>
+
+		<action name="delete_part_return_definition"
+			class="tavant.twms.web.admin.partreturns.ManagePartReturnDefinitionAction"
+			method="deleteDefinition">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">pages/secure/admin/success.jsp</result>
+		</action>
+
+		<action name="create_part_return_definition"
+			class="tavant.twms.web.admin.partreturns.ManagePartReturnDefinitionAction"
+			method="createDefinition">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">
+				pages/secure/admin/partreturns/createPartReturnDefinition.jsp
+			</result>
+		</action>
+
+		<action name="save_part_return_definition"
+			class="tavant.twms.web.admin.partreturns.ManagePartReturnDefinitionAction"
+			method="saveDefinition">
+			<interceptor-ref name="adminTwmsParamsPrepareRepeatTableParams" />
+			<result name="success">pages/secure/admin/success.jsp</result>
+			<result name="input">
+				pages/secure/admin/partreturns/createPartReturnDefinition.jsp
+			</result>
+		</action>
+		<action name="list_part_return_service_providers" class="tavant.twms.web.admin.partreturns.ManagePartReturnDefinitionAction" method="listServiceProviders" ><interceptor-ref name="adminParamsPrepare"/></action>
+		<action name="list_part_return_dealer_groups" class="tavant.twms.web.admin.partreturns.ManagePartReturnDefinitionAction" method="listDealerGroups" ><interceptor-ref name="adminParamsPrepare"/></action>
+		<action name="list_part_return_*"
+			class="tavant.twms.web.admin.partreturns.AutoCompleteAction"
+			method="list{1}">
+			<interceptor-ref name="adminParamsPrepare" />
+		</action>
+		 <action name="list_part_class_with_label_id"
+                class="tavant.twms.web.admin.partreturns.AutoCompleteAction"
+                 method="findItemGroupsForGroupType">
+            <interceptor-ref name="adminParamsPrepare"/>
+        </action>
+	</package>
+</struts>

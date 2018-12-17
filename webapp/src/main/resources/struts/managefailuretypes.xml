@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+    
+<struts>
+	<package name="managefailuretypes" extends="struts-twms-default">
+		<!-- Actions for Job Code maintenance -->
+    <default-interceptor-ref name="twmsParamsWithoutPrepare"/>
+
+    <action name="manageFailureTypes"
+			class="tavant.twms.web.admin.failuretype.ManageFailureTypesAction">
+      <result name="success">
+				pages/secure/admin/failuretype/failureType.jsp
+			</result>
+		</action>
+
+    <action name="manageFailureTypesRootCause"
+			class="tavant.twms.web.admin.failuretype.ManageFailureTypesAction">
+      <result name="success">
+			pages/secure/admin/failuretype/failureTypeRootCause.jsp
+	  </result>
+	</action>
+
+	<!-- Maintain Root Cause of Failure URL -->		
+    <action name="manageMachineUrl"
+			class="tavant.twms.web.admin.failuretype.ManageFailureTypeRootCause">
+    	<interceptor-ref name="paramsPrepare" />
+        <result name="success">pages/secure/admin/failuretype/failureTypeRootCauseUrlInboxView.jsp</result>
+	</action>
+
+    <action name="searchProductAndModelUrl" class="tavant.twms.web.admin.failuretype.ManageFailureTypeRootCause" 
+    	method="tableBody">
+        <interceptor-ref name="paramsPrepare" />
+        <result name="success">pages/secure/home/json.jsp</result>
+        <result name="input">error.jsp</result>
+    </action>
+
+    <action name="rootcause_failure_url_preview"
+            class="tavant.twms.web.admin.failuretype.ManageFailureTypeRootCause" method="detail">
+		<param name="view">preview</param>
+        <result name="input">pages/secure/admin/failuretype/failureTypeRootCauseUrl.jsp</result>
+        <result name="success">pages/secure/admin/failuretype/failureTypeRootCauseUrl.jsp</result>
+    </action>
+
+    <action name="rootcause_failure_url"
+            class="tavant.twms.web.admin.failuretype.ManageFailureTypeRootCause" method="detail">
+		<param name="view">detail</param>
+        <result name="input">pages/secure/admin/failuretype/failureTypeRootCauseUrl.jsp</result>
+        <result name="success">pages/secure/admin/failuretype/failureTypeRootCauseUrl.jsp</result>
+    </action>
+
+    <action name="update_model_url"
+            class="tavant.twms.web.admin.failuretype.ManageFailureTypeRootCause" method="update">
+        <interceptor-ref name="paramsPrepare"/>
+        <result name="input">pages/secure/admin/failuretype/failureTypeRootCauseUrl.jsp</result>
+        <result name="success">pages/secure/admin/failuretype/failureTypeRootCauseUrl.jsp</result>
+    </action>
+        
+	<action name="export_rc_flr_url_to_excel"
+		class="tavant.twms.web.admin.failuretype.ManageFailureTypeRootCause" method="downloadListingData">
+		<interceptor-ref name="paramsPrepare" />
+	</action>
+	<!-- Maintain Root Cause of Failure URL -->		
+
+	<action name="populate_failure_tree_data"
+			class="tavant.twms.web.admin.failuretype.ManageFailureTypesAction"
+			method="populateTreeData">
+    	<interceptor-ref name="twmsParamsPrepareParams"/>
+      <result name="success">
+	      pages/secure/home/json.jsp
+      </result>
+    </action>
+    
+    <action name="fetch_failure_types"
+			class="tavant.twms.web.admin.failuretype.ManageFailureTypesAction"
+			method="fetchFailureTypes">
+			<interceptor-ref name="paramsPrepare" />
+      <result name="success">
+          pages/secure/home/json.jsp
+      </result>
+    </action>
+
+    <action name="fetch_failure_causes"
+			class="tavant.twms.web.admin.failuretype.ManageFailureTypesAction"
+			method="fetchFailureCauses">
+			<interceptor-ref name="paramsPrepare" />
+      <result name="success">
+          pages/secure/home/json.jsp
+      </result>
+    </action>
+
+    <action name="fetch_failure_root_causes"
+			class="tavant.twms.web.admin.failuretype.ManageFailureTypesAction"
+			method="fetchFailureRootCauses">
+			<interceptor-ref name="paramsPrepare" />
+      <result name="success">
+          pages/secure/home/json.jsp
+      </result>
+    </action>
+
+    <action name="create_failure_type"
+			class="tavant.twms.web.admin.failuretype.ManageFailureTypesAction"
+			method="saveFailureType">
+			<interceptor-ref name="paramsPrepare" />
+      <result name="success">
+          pages/secure/home/json.jsp
+      </result>
+    </action>
+
+    <action name="create_failure_cause"
+			class="tavant.twms.web.admin.failuretype.ManageFailureTypesAction"
+			method="saveFailureCause">
+			<interceptor-ref name="paramsPrepare" />
+      <result name="success">
+          pages/secure/home/json.jsp
+      </result>
+   	</action>
+
+    <action name="create_failure_root_cause"
+			class="tavant.twms.web.admin.failuretype.ManageFailureTypesAction"
+			method="saveFailureRootCause">
+			<interceptor-ref name="paramsPrepare" />
+      <result name="success">
+          pages/secure/home/json.jsp
+      </result>
+   	</action>
+
+    <action name="save_fault_found_association"
+			class="tavant.twms.web.admin.failuretype.ManageFailureTypesAction"
+			method="saveTreeData">
+      <interceptor-ref name="twmsParamsPrepareParams"/>
+      <result name="success">
+        pages/secure/admin/failuretype/failureType.jsp
+      </result>
+      <result name="rootCause">
+        pages/secure/admin/failuretype/failureTypeRootCause.jsp
+      </result>
+      <result name="input">
+        pages/secure/admin/failuretype/failureType.jsp
+      </result>
+    </action>
+  </package>
+</struts>	

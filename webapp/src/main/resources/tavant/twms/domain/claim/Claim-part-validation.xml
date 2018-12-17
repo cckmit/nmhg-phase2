@@ -1,0 +1,96 @@
+<!DOCTYPE validators PUBLIC "-//Apache Struts//XWork Validator 1.0.2//EN"
+       "http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+<validators>
+
+	<field name="serviceInformation">
+		<field-validator type="visitor">
+			<param name="appendPrefix">true</param>
+			<param name="context">part</param>
+			<message></message>
+		</field-validator>
+	</field>
+
+	<field name="payment">
+		<field-validator type="visitor">
+			<param name="appendPrefix">true</param>
+			<param name="context">part</param>
+			<message></message>
+		</field-validator>
+	</field>
+
+	<field name="conditionFound">
+		<field-validator type="requiredstring">
+			<message key="error.newClaim.conditionFoundRequired" />
+		</field-validator>
+	</field>
+
+	<field name="workPerformed">
+		<field-validator type="requiredstring">
+			<message key="error.newClaim.workPerformedRequired" />
+		</field-validator>
+	</field>
+
+<!--	<field name="probableCause">
+		<field-validator type="requiredstring">
+			<message key="error.newClaim.probableCauseRequired" />
+		</field-validator>
+	</field> -->
+
+	<field name="failureDate">
+		<field-validator type="required" short-circuit="true">
+			<message key="error.newClaim.failureDateRequired" />
+		</field-validator>
+
+		<field-validator type="fieldexpression" short-circuit="true">
+			<param name="expression"><![CDATA[!failureDate.isAfter(@com.domainlanguage.timeutil.Clock@today())]]></param>
+			<message key="error.newClaim.invalidFailureDate" />
+		</field-validator>
+	</field>
+	<field name="repairStartDate">
+		<field-validator type="required" short-circuit="true">
+			<message key="error.newClaim.repairStartDateRequired" />
+		</field-validator>
+
+		<field-validator type="fieldexpression" short-circuit="true">
+			<param name="expression"><![CDATA[!repairStartDate.isAfter(@com.domainlanguage.timeutil.Clock@today())]]></param>
+			<message key="error.newClaim.invalidRepairStartDate" />
+		</field-validator>
+
+		<field-validator type="fieldexpression" short-circuit="true">
+			<param name="expression"><![CDATA[!repairStartDate.isAfter(repairDate)]]></param>
+			<message key="error.newClaim.repairStartDateIsAfterEndDate" />
+		</field-validator>
+		<field-validator type="fieldexpression" short-circuit="true">
+			<param name="expression"><![CDATA[!repairStartDate.isBefore(failureDate)]]></param>
+			<message key="error.newClaim.invalidRepairStartDuration" />
+		</field-validator>
+	</field>
+	<field name="repairDate">
+		<field-validator type="required" short-circuit="true">
+			<message key="error.newClaim.repairDateRequired" />
+		</field-validator>
+
+		<field-validator type="fieldexpression" short-circuit="true">
+			<param name="expression"><![CDATA[!repairDate.isAfter(@com.domainlanguage.timeutil.Clock@today())]]></param>
+			<message key="error.newClaim.invalidRepairDate" />
+		</field-validator>
+
+		<field-validator type="fieldexpression" short-circuit="true">
+			<param name="expression"><![CDATA[!repairDate.isBefore(failureDate)]]></param>
+			<message key="error.newClaim.invalidDuration" />
+		</field-validator>
+	</field>
+
+
+	<field name="filedOnDate">
+		<field-validator type="required" short-circuit="true">
+			<message key="error.newClaim.filedOnDateRequired" />
+		</field-validator>
+	</field>
+
+	<validator type="expression">
+		<param name="expression"><![CDATA[(claim.servicingLocation!=null)]]></param>
+		<message key="error.newClaim.servicingLocationRequired" />
+	</validator>
+
+</validators>

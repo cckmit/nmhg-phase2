@@ -1,0 +1,61 @@
+[MAS SUPPORT]
+SupportMas_Prj=1
+[Target:WebHelp]
+SupportMas_Prj=1
+ResultFileName=!SSL!\WebHelp\PartShipper.htm
+SSLayoutType=2
+CreateProjectTime=09:57, February 19, 2013
+CreateProjectUser=alka.arora
+SupportMas_MPJ=1
+ActionID For Generation=1002
+Remove Folder with prompt=1
+ViewFileName=!SSL!\WebHelp\PartShipper.htm
+ResultStatus=0
+BuildTimeHi=30281308
+BuildTimeLow=2044281140
+[Target:WebHelp Pro]
+SupportMas_Prj=1
+ResultFileName=!SSL!\WebHelp_Pro\PartShipper.htm
+SSLayoutType=32
+ServerProjectName=PartShipper
+CreateProjectTime=
+CreateProjectUser=
+SupportMas_MPJ=1
+[Target:Microsoft HTML Help]
+ResultFileName=!SSL!\Microsoft_HTML_Help\PartShipper.chm
+SSLayoutType=1
+CreateProjectTime=
+CreateProjectUser=
+SupportMas_MPJ=1
+[Target:FlashHelp]
+ResultFileName=!SSL!\FlashHelp\PartShipper.htm
+SSLayoutType=2
+CreateProjectTime=
+CreateProjectUser=
+SupportMas_MPJ=1
+[Target:Printed Documentation]
+ResultFileName=!SSL!\Printed_Documentation\PartShipper.doc
+SSLayoutType=7
+[Target:XML Output]
+ResultFileName=!SSL!\XML_Output\PartShipper.xml
+SSLayoutType=8192
+[PreSingleSource]
+Html Help Project=D:\Alka_Backup\Projects\NACCO\TWMS\Working\Phase 1\Online Help\PartShipper\PartShipper.hhp
+Table Of Content=D:\Alka_Backup\Projects\NACCO\TWMS\Working\Phase 1\Online Help\PartShipper\PartShipper.hhc
+Index=D:\Alka_Backup\Projects\NACCO\TWMS\Working\Phase 1\Online Help\PartShipper\PartShipper_merged$.hhk
+See Also Index=D:\Alka_Backup\Projects\NACCO\TWMS\Working\Phase 1\Online Help\PartShipper\PartShipper.hha
+Browse Sequence=D:\Alka_Backup\Projects\NACCO\TWMS\Working\Phase 1\Online Help\PartShipper\PartShipper.brs
+Topic Properties=D:\Alka_Backup\Projects\NACCO\TWMS\Working\Phase 1\Online Help\PartShipper\PartShipper.trs
+Active Folders=D:\Alka_Backup\Projects\NACCO\TWMS\Working\Phase 1\Online Help\PartShipper\PartShipper.trf
+Baggage Files=D:\Alka_Backup\Projects\NACCO\TWMS\Working\Phase 1\Online Help\PartShipper\PartShipper.trb
+Skin List=D:\Alka_Backup\Projects\NACCO\TWMS\Working\Phase 1\Online Help\PartShipper\PartShipper.trk
+OriginalHhk=D:\Alka_Backup\Projects\NACCO\TWMS\Working\Phase 1\Online Help\PartShipper\PartShipper.hhk
+Active Layout Names=D:\Alka_Backup\Projects\NACCO\TWMS\Working\Phase 1\Online Help\PartShipper\PartShipper.trl
+Default Topic=D:\Alka_Backup\Projects\NACCO\TWMS\Working\Phase 1\Online Help\PartShipper\Before_you_Begin\Introduction.htm
+Build Tags0=6340;Print | Online
+Build Tags=
+Build Expression=
+Language ID=1033
+Language Name=English
+Language=D:\Alka_Backup\Projects\NACCO\TWMS\Working\Phase 1\Online Help\PartShipper\RoboHHRE.lng
+Stop List=D:\Alka_Backup\Projects\NACCO\TWMS\Working\Phase 1\Online Help\PartShipper\PartShipper.stp

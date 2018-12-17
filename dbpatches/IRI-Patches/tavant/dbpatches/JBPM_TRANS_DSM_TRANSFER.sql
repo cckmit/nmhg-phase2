@@ -1,0 +1,10 @@
+--Purpose    :INSERT TRANSITION to DSM TRANSFER
+--Author     : jitesh jain
+--Created On : 14-Nov-08
+insert into jbpm_transition values (
+HIBERNATE_SEQUENCE.NEXTVAL,'Transfer',(SELECT ID_ FROM JBPM_PROCESSDEFINITION WHERE NAME_ = 'ClaimSubmission'),
+(SELECT ID_ FROM JBPM_NODE WHERE NAME_='ServiceManagerReview' AND PROCESSDEFINITION_ in (SELECT ID_ FROM JBPM_PROCESSDEFINITION WHERE NAME_ = 'ClaimSubmission')),
+(SELECT ID_ FROM JBPM_NODE WHERE NAME_='ServiceManagerReview' AND PROCESSDEFINITION_ in (SELECT ID_ FROM JBPM_PROCESSDEFINITION WHERE NAME_ = 'ClaimSubmission')),2)
+/
+commit
+/

@@ -1,0 +1,16 @@
+#payment {
+    margin: 10px 0 10px 10px;
+    width: 60%;
+}
+#payment td {
+    padding-left: 30px;
+}
+#payment tr.total td {
+    padding-left: 10px;
+    padding-bottom: 10px;
+    color: #666666;
+    font-weight: bold;
+}
+#payment th {
+    border-bottom: 1px dashed #AAAAAA;
+}

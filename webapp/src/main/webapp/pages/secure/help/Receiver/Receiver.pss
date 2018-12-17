@@ -1,0 +1,61 @@
+[MAS SUPPORT]
+SupportMas_Prj=1
+[Target:WebHelp]
+SupportMas_Prj=1
+ResultFileName=!SSL!\WebHelp\Receiver.htm
+SSLayoutType=2
+CreateProjectTime=16:36, February 26, 2013
+CreateProjectUser=alka.arora
+SupportMas_MPJ=1
+ActionID For Generation=1002
+Remove Folder with prompt=1
+ViewFileName=!SSL!\WebHelp\Receiver.htm
+ResultStatus=0
+BuildTimeHi=30282769
+BuildTimeLow=1510208242
+[Target:WebHelp Pro]
+SupportMas_Prj=1
+ResultFileName=!SSL!\WebHelp_Pro\Receiver.htm
+SSLayoutType=32
+ServerProjectName=Receiver
+CreateProjectTime=
+CreateProjectUser=
+SupportMas_MPJ=1
+[Target:Microsoft HTML Help]
+ResultFileName=!SSL!\Microsoft_HTML_Help\Receiver.chm
+SSLayoutType=1
+CreateProjectTime=
+CreateProjectUser=
+SupportMas_MPJ=1
+[Target:FlashHelp]
+ResultFileName=!SSL!\FlashHelp\Receiver.htm
+SSLayoutType=2
+CreateProjectTime=
+CreateProjectUser=
+SupportMas_MPJ=1
+[Target:Printed Documentation]
+ResultFileName=!SSL!\Printed_Documentation\Receiver.doc
+SSLayoutType=7
+[Target:XML Output]
+ResultFileName=!SSL!\XML_Output\Receiver.xml
+SSLayoutType=8192
+[PreSingleSource]
+Html Help Project=D:\Alka_Backup\Projects\NACCO\Phase 1\Online Help\Receiver\Receiver.hhp
+Table Of Content=D:\Alka_Backup\Projects\NACCO\Phase 1\Online Help\Receiver\Receiver.hhc
+Index=D:\Alka_Backup\Projects\NACCO\Phase 1\Online Help\Receiver\Receiver_merged$.hhk
+See Also Index=D:\Alka_Backup\Projects\NACCO\Phase 1\Online Help\Receiver\Receiver.hha
+Browse Sequence=D:\Alka_Backup\Projects\NACCO\Phase 1\Online Help\Receiver\Receiver.brs
+Topic Properties=D:\Alka_Backup\Projects\NACCO\Phase 1\Online Help\Receiver\Receiver.trs
+Active Folders=D:\Alka_Backup\Projects\NACCO\Phase 1\Online Help\Receiver\Receiver.trf
+Baggage Files=D:\Alka_Backup\Projects\NACCO\Phase 1\Online Help\Receiver\Receiver.trb
+Skin List=D:\Alka_Backup\Projects\NACCO\Phase 1\Online Help\Receiver\Receiver.trk
+OriginalHhk=D:\Alka_Backup\Projects\NACCO\Phase 1\Online Help\Receiver\Receiver.hhk
+Active Layout Names=D:\Alka_Backup\Projects\NACCO\Phase 1\Online Help\Receiver\Receiver.trl
+Default Topic=D:\Alka_Backup\Projects\NACCO\Phase 1\Online Help\Receiver\Before_you_Begin\Copyright.htm
+Build Tags0=22537;Print | Online
+Build Tags=
+Build Expression=
+Language ID=1033
+Language Name=English
+Language=D:\Alka_Backup\Projects\NACCO\Phase 1\Online Help\Receiver\RoboHHRE.lng
+Stop List=D:\Alka_Backup\Projects\NACCO\Phase 1\Online Help\Receiver\Receiver.stp

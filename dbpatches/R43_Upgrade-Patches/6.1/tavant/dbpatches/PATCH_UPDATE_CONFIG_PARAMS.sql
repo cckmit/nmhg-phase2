@@ -1,0 +1,466 @@
+--Purpose    : Patch for correcting the conflicted BUs,changes made as a part of 4.3 upgrade
+--Author     : Kuldeep Patil
+--Created On : 05-July-2011
+
+UPDATE CONFIG_VALUE
+SET CONFIG_PARAM_OPTION =
+  (SELECT ID FROM CONFIG_PARAM_OPTION WHERE DISPLAY_VALUE = 'Yes'
+  )
+WHERE CONFIG_PARAM =
+  (SELECT ID
+  FROM CONFIG_PARAM
+  WHERE NAME = 'legalDisclaimerAllowed'
+  )
+AND BUSINESS_UNIT_INFO IN ('AIR', 'Clubcar ESA', 'TFM')
+/
+UPDATE CONFIG_VALUE
+SET CONFIG_PARAM_OPTION =
+  (SELECT ID FROM CONFIG_PARAM_OPTION WHERE DISPLAY_VALUE = 'Yes'
+  )
+WHERE CONFIG_PARAM =
+  (SELECT ID
+  FROM CONFIG_PARAM
+  WHERE NAME = 'dealerGroupCode'
+  )
+AND BUSINESS_UNIT_INFO = 'Thermo King TSA'
+/
+INSERT INTO CONFIG_PARAM_OPTION(ID, DISPLAY_VALUE, VALUE) VALUE(CONFIG_PARAM_OPTION_SEQ.NEXTVAL, 'DCAP Dealer','dcapDealer')
+/
+INSERT INTO CONFIG_PARAM_OPTION(ID, DISPLAY_VALUE, VALUE) VALUE(CONFIG_PARAM_OPTION_SEQ.NEXTVAL, 'VIEW FOC CLAIMS','VIEWFOCCLAIMS')
+/
+INSERT INTO CONFIG_PARAM_OPTION(ID, DISPLAY_VALUE, VALUE) VALUE(CONFIG_PARAM_OPTION_SEQ.NEXTVAL, 'Third Party Privilege','thirdPartyPrivilege')
+/
+COMMIT
+/
+INSERT
+INTO CONFIG_VALUE
+  (
+    ID,
+    ACTIVE,
+    VALUE,
+    CONFIG_PARAM,
+    D_CREATED_ON,
+    D_INTERNAL_COMMENTS,
+    D_UPDATED_ON,
+    D_LAST_UPDATED_BY,
+    D_CREATED_TIME,
+    D_UPDATED_TIME,
+    D_ACTIVE,
+    BUSINESS_UNIT_INFO,
+    CONFIG_PARAM_OPTION
+  )
+  VALUES
+  (
+    CONFIG_VALUE_SEQ.NEXTVAL,
+    1,
+    NULL,
+    (SELECT ID FROM CONFIG_PARAM WHERE NAME = 'rolesToBeDisplayed'
+    ),
+    SYSDATE,
+    NULL,
+    SYSDATE,
+    56,
+    SYSTIMESTAMP,
+    SYSTIMESTAMP,
+    1,
+    'AIR',
+    (SELECT id FROM config_value WHERE value = 'dcapDealer'
+    )
+  )
+/
+INSERT
+INTO CONFIG_VALUE
+  (
+    ID,
+    ACTIVE,
+    VALUE,
+    CONFIG_PARAM,
+    D_CREATED_ON,
+    D_INTERNAL_COMMENTS,
+    D_UPDATED_ON,
+    D_LAST_UPDATED_BY,
+    D_CREATED_TIME,
+    D_UPDATED_TIME,
+    D_ACTIVE,
+    BUSINESS_UNIT_INFO,
+    CONFIG_PARAM_OPTION
+  )
+  VALUES
+  (
+    CONFIG_VALUE_SEQ.NEXTVAL,
+    1,
+    NULL,
+    (SELECT ID FROM CONFIG_PARAM WHERE NAME = 'rolesToBeDisplayed'
+    ),
+    SYSDATE,
+    NULL,
+    SYSDATE,
+    56,
+    SYSTIMESTAMP,
+    SYSTIMESTAMP,
+    1,
+    'AIR',
+    (SELECT id FROM config_value WHERE value = 'VIEWFOCCLAIMS'
+    )
+  )
+/
+INSERT
+INTO CONFIG_VALUE
+  (
+    ID,
+    ACTIVE,
+    VALUE,
+    CONFIG_PARAM,
+    D_CREATED_ON,
+    D_INTERNAL_COMMENTS,
+    D_UPDATED_ON,
+    D_LAST_UPDATED_BY,
+    D_CREATED_TIME,
+    D_UPDATED_TIME,
+    D_ACTIVE,
+    BUSINESS_UNIT_INFO,
+    CONFIG_PARAM_OPTION
+  )
+  VALUES
+  (
+    CONFIG_VALUE_SEQ.NEXTVAL,
+    1,
+    NULL,
+    (SELECT ID FROM CONFIG_PARAM WHERE NAME = 'rolesToBeDisplayed'
+    ),
+    SYSDATE,
+    NULL,
+    SYSDATE,
+    56,
+    SYSTIMESTAMP,
+    SYSTIMESTAMP,
+    1,
+    'AIR',
+    (SELECT id FROM config_value WHERE value = 'thirdPartyPrivilege'
+    )
+ )
+/
+INSERT
+INTO CONFIG_VALUE
+  (
+    ID,
+    ACTIVE,
+    VALUE,
+    CONFIG_PARAM,
+    D_CREATED_ON,
+    D_INTERNAL_COMMENTS,
+    D_UPDATED_ON,
+    D_LAST_UPDATED_BY,
+    D_CREATED_TIME,
+    D_UPDATED_TIME,
+    D_ACTIVE,
+    BUSINESS_UNIT_INFO,
+    CONFIG_PARAM_OPTION
+  )
+  VALUES
+  (
+    CONFIG_VALUE_SEQ.NEXTVAL,
+    1,
+    NULL,
+    (SELECT ID FROM CONFIG_PARAM WHERE NAME = 'rolesToBeDisplayed'
+    ),
+    SYSDATE,
+    NULL,
+    SYSDATE,
+    56,
+    SYSTIMESTAMP,
+    SYSTIMESTAMP,
+    1,
+    'Clubcar ESA',
+    (SELECT id FROM config_value WHERE value = 'dcapDealer'
+    )
+  )
+/
+INSERT
+INTO CONFIG_VALUE
+  (
+    ID,
+    ACTIVE,
+    VALUE,
+    CONFIG_PARAM,
+    D_CREATED_ON,
+    D_INTERNAL_COMMENTS,
+    D_UPDATED_ON,
+    D_LAST_UPDATED_BY,
+    D_CREATED_TIME,
+    D_UPDATED_TIME,
+    D_ACTIVE,
+    BUSINESS_UNIT_INFO,
+    CONFIG_PARAM_OPTION
+  )
+  VALUES
+  (
+    CONFIG_VALUE_SEQ.NEXTVAL,
+    1,
+    NULL,
+    (SELECT ID FROM CONFIG_PARAM WHERE NAME = 'rolesToBeDisplayed'
+    ),
+    SYSDATE,
+    NULL,
+    SYSDATE,
+    56,
+    SYSTIMESTAMP,
+    SYSTIMESTAMP,
+    1,
+    'Clubcar ESA',
+    (SELECT id FROM config_value WHERE value = 'VIEWFOCCLAIMS'
+    )
+  )
+/
+INSERT
+INTO CONFIG_VALUE
+  (
+    ID,
+    ACTIVE,
+    VALUE,
+    CONFIG_PARAM,
+    D_CREATED_ON,
+    D_INTERNAL_COMMENTS,
+    D_UPDATED_ON,
+    D_LAST_UPDATED_BY,
+    D_CREATED_TIME,
+    D_UPDATED_TIME,
+    D_ACTIVE,
+    BUSINESS_UNIT_INFO,
+    CONFIG_PARAM_OPTION
+  )
+  VALUES
+  (
+    CONFIG_VALUE_SEQ.NEXTVAL,
+    1,
+    NULL,
+    (SELECT ID FROM CONFIG_PARAM WHERE NAME = 'rolesToBeDisplayed'
+    ),
+    SYSDATE,
+    NULL,
+    SYSDATE,
+    56,
+    SYSTIMESTAMP,
+    SYSTIMESTAMP,
+    1,
+    'Clubcar ESA',
+    (SELECT id FROM config_value WHERE value = 'thirdPartyPrivilege'
+    )
+  )
+/
+INSERT
+INTO CONFIG_VALUE
+  (
+    ID,
+    ACTIVE,
+    VALUE,
+    CONFIG_PARAM,
+    D_CREATED_ON,
+    D_INTERNAL_COMMENTS,
+    D_UPDATED_ON,
+    D_LAST_UPDATED_BY,
+    D_CREATED_TIME,
+    D_UPDATED_TIME,
+    D_ACTIVE,
+    BUSINESS_UNIT_INFO,
+    CONFIG_PARAM_OPTION
+  )
+  VALUES
+  (
+    CONFIG_VALUE_SEQ.NEXTVAL,
+    1,
+    NULL,
+    (SELECT ID FROM CONFIG_PARAM WHERE NAME = 'rolesToBeDisplayed'
+    ),
+    SYSDATE,
+    NULL,
+    SYSDATE,
+    56,
+    SYSTIMESTAMP,
+    SYSTIMESTAMP,
+    1,
+    'TFM',
+    (SELECT id FROM config_value WHERE value = 'dcapDealer'
+    )
+  )
+/
+INSERT
+INTO CONFIG_VALUE
+  (
+    ID,
+    ACTIVE,
+    VALUE,
+    CONFIG_PARAM,
+    D_CREATED_ON,
+    D_INTERNAL_COMMENTS,
+    D_UPDATED_ON,
+    D_LAST_UPDATED_BY,
+    D_CREATED_TIME,
+    D_UPDATED_TIME,
+    D_ACTIVE,
+    BUSINESS_UNIT_INFO,
+    CONFIG_PARAM_OPTION
+  )
+  VALUES
+  (
+    CONFIG_VALUE_SEQ.NEXTVAL,
+    1,
+    NULL,
+    (SELECT ID FROM CONFIG_PARAM WHERE NAME = 'rolesToBeDisplayed'
+    ),
+    SYSDATE,
+    NULL,
+    SYSDATE,
+    56,
+    SYSTIMESTAMP,
+    SYSTIMESTAMP,
+    1,
+    'TFM',
+    (SELECT id FROM config_value WHERE value = 'VIEWFOCCLAIMS'
+    )
+  )
+/
+INSERT
+INTO CONFIG_VALUE
+  (
+    ID,
+    ACTIVE,
+    VALUE,
+    CONFIG_PARAM,
+    D_CREATED_ON,
+    D_INTERNAL_COMMENTS,
+    D_UPDATED_ON,
+    D_LAST_UPDATED_BY,
+    D_CREATED_TIME,
+    D_UPDATED_TIME,
+    D_ACTIVE,
+    BUSINESS_UNIT_INFO,
+    CONFIG_PARAM_OPTION
+  )
+  VALUES
+  (
+    CONFIG_VALUE_SEQ.NEXTVAL,
+    1,
+    NULL,
+    (SELECT ID FROM CONFIG_PARAM WHERE NAME = 'rolesToBeDisplayed'
+    ),
+    SYSDATE,
+    NULL,
+    SYSDATE,
+    56,
+    SYSTIMESTAMP,
+    SYSTIMESTAMP,
+    1,
+    'TFM',
+    (SELECT id FROM config_value WHERE value = 'thirdPartyPrivilege'
+    )
+  )
+/
+INSERT
+INTO CONFIG_VALUE
+  (
+    ID,
+    ACTIVE,
+    VALUE,
+    CONFIG_PARAM,
+    D_CREATED_ON,
+    D_INTERNAL_COMMENTS,
+    D_UPDATED_ON,
+    D_LAST_UPDATED_BY,
+    D_CREATED_TIME,
+    D_UPDATED_TIME,
+    D_ACTIVE,
+    BUSINESS_UNIT_INFO,
+    CONFIG_PARAM_OPTION
+  )
+  VALUES
+  (
+    CONFIG_VALUE_SEQ.NEXTVAL,
+    1,
+    NULL,
+    (SELECT ID FROM CONFIG_PARAM WHERE NAME = 'rolesToBeDisplayed'
+    ),
+    SYSDATE,
+    NULL,
+    SYSDATE,
+    56,
+    SYSTIMESTAMP,
+    SYSTIMESTAMP,
+    1,
+    'Hussmann',
+    (SELECT id FROM config_value WHERE value = 'dcapDealer'
+    )
+  )
+/
+INSERT
+INTO CONFIG_VALUE
+  (
+    ID,
+    ACTIVE,
+    VALUE,
+    CONFIG_PARAM,
+    D_CREATED_ON,
+    D_INTERNAL_COMMENTS,
+    D_UPDATED_ON,
+    D_LAST_UPDATED_BY,
+    D_CREATED_TIME,
+    D_UPDATED_TIME,
+    D_ACTIVE,
+    BUSINESS_UNIT_INFO,
+    CONFIG_PARAM_OPTION
+  )
+  VALUES
+  (
+    CONFIG_VALUE_SEQ.NEXTVAL,
+    1,
+    NULL,
+    (SELECT ID FROM CONFIG_PARAM WHERE NAME = 'rolesToBeDisplayed'
+    ),
+    SYSDATE,
+    NULL,
+    SYSDATE,
+    56,
+    SYSTIMESTAMP,
+    SYSTIMESTAMP,
+    1,
+    'Transport Solutions ESA',
+    (SELECT id FROM config_value WHERE value = 'VIEWFOCCLAIMS'
+    )
+  )
+/
+INSERT
+INTO CONFIG_VALUE
+  (
+    ID,
+    ACTIVE,
+    VALUE,
+    CONFIG_PARAM,
+    D_CREATED_ON,
+    D_INTERNAL_COMMENTS,
+    D_UPDATED_ON,
+    D_LAST_UPDATED_BY,
+    D_CREATED_TIME,
+    D_UPDATED_TIME,
+    D_ACTIVE,
+    BUSINESS_UNIT_INFO,
+    CONFIG_PARAM_OPTION
+  )
+  VALUES
+  (
+    CONFIG_VALUE_SEQ.NEXTVAL,
+    1,
+    NULL,
+    (SELECT ID FROM CONFIG_PARAM WHERE NAME = 'rolesToBeDisplayed'
+    ),
+    SYSDATE,
+    NULL,
+    SYSDATE,
+    56,
+    SYSTIMESTAMP,
+    SYSTIMESTAMP,
+    1,
+    'Transport Solutions ESA',
+    (SELECT id FROM config_value WHERE value = 'thirdPartyPrivilege'
+    )
+  )
+/

@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:p1="http://nmhg.com/Synch_Response" name="MI_OraStatusBean_SLMS" targetNamespace="http://nmhg.com/Synch_Response">
+	<wsdl:types>
+		<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://nmhg.com/Synch_Response" targetNamespace="http://nmhg.com/Synch_Response">
+			<xsd:element name="MT_OraStatusBean" type="OraStatusBean"/>
+			<xsd:complexType name="OraStatusBean">
+				<xsd:sequence>
+					<xsd:element name="ApplicationArea">
+						<xsd:annotation>
+							<xsd:appinfo source="http://sap.com/xi/TextID">
+                            aac9884e81ee11e288fd100ba93959d4
+                            </xsd:appinfo>
+						</xsd:annotation>
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="Sender">
+									<xsd:annotation>
+										<xsd:appinfo source="http://sap.com/xi/TextID">
+                                        aac9884f81ee11e2c75c100ba93959d4
+                                        </xsd:appinfo>
+									</xsd:annotation>
+									<xsd:complexType>
+										<xsd:sequence>
+											<xsd:element name="Task">
+												<xsd:annotation>
+													<xsd:appinfo source="http://sap.com/xi/TextID">
+                                                    aac9885081ee11e2a8e6100ba93959d4
+                                                    </xsd:appinfo>
+												</xsd:annotation>
+												<xsd:simpleType>
+													<xsd:restriction base="xsd:string">
+														<xsd:maxLength value="50"/>
+													</xsd:restriction>
+												</xsd:simpleType>
+											</xsd:element>
+											<xsd:element name="LogicalId">
+												<xsd:annotation>
+													<xsd:appinfo source="http://sap.com/xi/TextID">
+                                                    aac9885181ee11e293c6100ba93959d4
+                                                    </xsd:appinfo>
+												</xsd:annotation>
+												<xsd:simpleType>
+													<xsd:restriction base="xsd:string">
+														<xsd:maxLength value="50"/>
+													</xsd:restriction>
+												</xsd:simpleType>
+											</xsd:element>
+											<xsd:element name="ReferenceId">
+												<xsd:annotation>
+													<xsd:appinfo source="http://sap.com/xi/TextID">
+                                                    aac9885281ee11e284c1100ba93959d4
+                                                    </xsd:appinfo>
+												</xsd:annotation>
+												<xsd:simpleType>
+													<xsd:restriction base="xsd:string">
+														<xsd:maxLength value="100"/>
+													</xsd:restriction>
+												</xsd:simpleType>
+											</xsd:element>
+										</xsd:sequence>
+									</xsd:complexType>
+								</xsd:element>
+								<xsd:element name="BODId">
+									<xsd:annotation>
+										<xsd:appinfo source="http://sap.com/xi/TextID">
+                                        aac9885381ee11e2ae6e100ba93959d4
+                                        </xsd:appinfo>
+									</xsd:annotation>
+									<xsd:simpleType>
+										<xsd:restriction base="xsd:string">
+											<xsd:maxLength value="50"/>
+										</xsd:restriction>
+									</xsd:simpleType>
+								</xsd:element>
+								<xsd:element name="InterfaceNumber">
+									<xsd:annotation>
+										<xsd:appinfo source="http://sap.com/xi/TextID">
+                                        aac9885481ee11e2cb80100ba93959d4
+                                        </xsd:appinfo>
+									</xsd:annotation>
+									<xsd:simpleType>
+										<xsd:restriction base="xsd:string">
+											<xsd:maxLength value="50"/>
+										</xsd:restriction>
+									</xsd:simpleType>
+								</xsd:element>
+								<xsd:element name="CreationDateTime" type="xsd:string">
+									<xsd:annotation>
+										<xsd:appinfo source="http://sap.com/xi/TextID">
+                                        aac9885581ee11e280e0100ba93959d4
+                                        </xsd:appinfo>
+									</xsd:annotation>
+								</xsd:element>
+							</xsd:sequence>
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="status" type="xsd:string">
+						<xsd:annotation>
+							<xsd:appinfo source="http://sap.com/xi/TextID">
+                            aac9885681ee11e2a4f4100ba93959d4
+                            </xsd:appinfo>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="Exceptions" minOccurs="0">
+						<xsd:annotation>
+							<xsd:appinfo source="http://sap.com/xi/TextID">
+                            aac9885781ee11e29a4c100ba93959d4
+                            </xsd:appinfo>
+						</xsd:annotation>
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="Error" minOccurs="0" maxOccurs="unbounded">
+									<xsd:annotation>
+										<xsd:appinfo source="http://sap.com/xi/TextID">
+                                        aac9885881ee11e2b721100ba93959d4
+                                        </xsd:appinfo>
+									</xsd:annotation>
+									<xsd:complexType>
+										<xsd:sequence>
+											<xsd:element name="errorCode" type="xsd:string">
+												<xsd:annotation>
+													<xsd:appinfo source="http://sap.com/xi/TextID">
+                                                    aac9885981ee11e2ca3d100ba93959d4
+                                                    </xsd:appinfo>
+												</xsd:annotation>
+											</xsd:element>
+											<xsd:element name="errorMessage" type="xsd:string">
+												<xsd:annotation>
+													<xsd:appinfo source="http://sap.com/xi/TextID">
+                                                    aac9b14e81ee11e28be5100ba93959d4
+                                                    </xsd:appinfo>
+												</xsd:annotation>
+											</xsd:element>
+										</xsd:sequence>
+									</xsd:complexType>
+								</xsd:element>
+							</xsd:sequence>
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:complexType>
+		</xsd:schema>
+	</wsdl:types>
+	<wsdl:message name="MT_OraStatusBean">
+		<wsdl:part name="MT_OraStatusBean" element="p1:MT_OraStatusBean"/>
+	</wsdl:message>
+	<wsdl:portType name="MI_OraStatusBean_SLMS">
+		<wsdl:operation name="MI_OraStatusBean_SLMS">
+			<wsdl:input message="p1:MT_OraStatusBean"/>
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="MI_OraStatusBean_SLMSBinding" type="p1:MI_OraStatusBean_SLMS">
+		<soap:binding xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<wsdl:operation name="MI_OraStatusBean_SLMS">
+			<soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://sap.com/xi/WebService/soap1.1"/>
+			<wsdl:input>
+				<soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+			</wsdl:input>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="MI_OraStatusBean_SLMSService">
+		<wsdl:port name="MI_OraStatusBean_SLMSPort" binding="p1:MI_OraStatusBean_SLMSBinding">
+			<soap:address xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" location="http://10.5.106.102:58100/XISOAPAdapter/MessageServlet?channel=SLMS:BS_DEV_SLMS:CC_Sync_Response_SLMS_to_NMHG_SND"/>
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

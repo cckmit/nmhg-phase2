@@ -1,0 +1,35 @@
+Message : Starting creation of Staging Area...
+
+Message : Dropping CONSTRAINTS for STAGING TABLES.Please wait...
+
+Message : Phase 1 ==> Drop Constraints
+
+
+Message : Phase 2 ==> Drop Constraints
+
+
+Message : Dropping Constraints completed!
+
+********** VALIDATION OF DROP CONSTRAINTS **********
+
+List of CONSTRAINTS not dropped:
+
+
+********** END OF VALIDATION OF DROP CONSTRAINTS **********
+
+Message : Dropping existing STAGING TABLES. Please wait...
+
+
+Message : Dropping Staging Tables completed!
+
+********** VALIDATION OF DROP STAGING TABLES **********
+
+List of STAGING TABLES not dropped:
+
+
+********** END OF VALIDATION OF DROP STAGING TABLES **********
+
+Message: Next Step ==> Create Staging Tables and Constraints
+
+Message: Please refer LOG_4_VALIDATE_CREATE_STAGING_AREA_PHASE1.log before proceeding
+

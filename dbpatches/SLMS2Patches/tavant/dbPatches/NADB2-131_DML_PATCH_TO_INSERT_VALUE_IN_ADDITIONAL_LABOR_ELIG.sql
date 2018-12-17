@@ -1,0 +1,9 @@
+--PURPOSE    : Patch to insert AMER value for ADDITIONAL_LABOR_ELIGIBILITY
+--AUTHOR     : Raghu
+--CREATED ON : 22-APR-2014
+Insert into ADDITIONAL_LABOR_ELIGIBILITY (
+ID,BUSINESS_UNIT_INFO,D_CREATED_ON,D_INTERNAL_COMMENTS,D_UPDATED_ON,D_LAST_UPDATED_BY,D_CREATED_TIME,D_UPDATED_TIME,D_ACTIVE) values 
+(hibernate_sequence.nextval,'AMER',sysdate,null,sysdate,1,sysdate,sysdate,1)
+/
+commit
+/

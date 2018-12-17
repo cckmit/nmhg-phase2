@@ -1,0 +1,628 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PriceFetch xmlns="http://www.tavant.com/globalsync/pricefetchrequest">
+
+<ApplicationArea>
+
+<Sender>
+
+<Task>ESAORACLEAPPS</Task>
+
+<LogicalId>TavantWMS</LogicalId>                                
+
+<ReferenceId>7654</ReferenceId>
+
+</Sender>
+
+<BODId>INT03</BODId>   
+
+<InterfaceNumber></InterfaceNumber>
+
+<CreationDateTime>2009-01-13T07:05:00.865Z</CreationDateTime>
+
+</ApplicationArea>
+
+<DataArea>
+
+<BUNAME>NMHG-US</BUName>
+
+<PriceCheckRequest>            
+
+<WarrantyType>STANDARD</WarrantyType>            
+
+<DateOfRepair>2009-01-13T07Z</DateOfRepair>
+
+<DealerNo>117057</DealerNo>
+
+<CurrencyCode>USD</CurrencyCode>
+
+<ReplacedParts>
+
+<!--Element LineItem, maxOccurs=unbounded-->
+
+  <LineItem>                             
+
+    <PartNumber>03149234#100</PartNumber>
+
+    <Quantity>1</Quantity>
+
+    <ManufacturingLocation>BGN</ManufacturingLocation>
+
+    <UOM>EACH</UOM>
+
+    <DivisionCode>31201</DivisionCode>
+
+  </LineItem>
+
+  <LineItem>                             
+
+    <PartNumber>92468354#100</PartNumber>
+
+    <Quantity>1</Quantity>
+
+    <ManufacturingLocation>BGN</ManufacturingLocation>
+
+    <UOM>EACH</UOM>
+
+    <DivisionCode>31201</DivisionCode>
+
+  </LineItem>
+
+  <LineItem>                             
+
+    <PartNumber>03578374#101</PartNumber>
+
+    <Quantity>1</Quantity>
+
+    <ManufacturingLocation>BGN</ManufacturingLocation>
+
+    <UOM>EACH</UOM>
+
+    <DivisionCode>31201</DivisionCode>
+
+  </LineItem>
+
+  <LineItem>                             
+
+    <PartNumber>80103799#100</PartNumber>
+
+    <Quantity>1</Quantity>
+
+    <ManufacturingLocation>BGN</ManufacturingLocation>
+
+    <UOM>EACH</UOM>
+
+    <DivisionCode>31201</DivisionCode>
+
+  </LineItem>
+
+  <LineItem>                             
+
+    <PartNumber>10563724#100</PartNumber>
+
+    <Quantity>1</Quantity>
+
+    <ManufacturingLocation>BGN</ManufacturingLocation>
+
+    <UOM>EACH</UOM>
+
+    <DivisionCode>31201</DivisionCode>
+
+  </LineItem>
+
+  <LineItem>                             
+
+    <PartNumber>91488775#100</PartNumber>
+
+    <Quantity>1</Quantity>
+
+    <ManufacturingLocation>BGN</ManufacturingLocation>
+
+    <UOM>EACH</UOM>
+
+    <DivisionCode>31201</DivisionCode>
+
+  </LineItem>
+
+  <LineItem>                             
+
+    <PartNumber>41SA8LPQ4-EU</PartNumber>
+
+    <Quantity>1</Quantity>
+
+    <ManufacturingLocation>BGN</ManufacturingLocation>
+
+    <UOM>EACH</UOM>
+
+    <DivisionCode>31201</DivisionCode>
+
+  </LineItem>
+
+  <LineItem>                             
+
+    <PartNumber>03373198#100</PartNumber>
+
+    <Quantity>1</Quantity>
+
+    <ManufacturingLocation>BGN</ManufacturingLocation>
+
+    <UOM>EACH</UOM>
+
+    <DivisionCode>31201</DivisionCode>
+
+  </LineItem>
+
+  <LineItem>                             
+
+    <PartNumber>03771086#100</PartNumber>
+
+    <Quantity>1</Quantity>
+
+    <ManufacturingLocation>BGN</ManufacturingLocation>
+
+    <UOM>EACH</UOM>
+
+    <DivisionCode>31201</DivisionCode>
+
+  </LineItem>
+
+  <LineItem>                             
+
+    <PartNumber>03054087#100</PartNumber>
+
+    <Quantity>1</Quantity>
+
+    <ManufacturingLocation>BGN</ManufacturingLocation>
+
+    <UOM>EACH</UOM>
+
+    <DivisionCode>31201</DivisionCode>
+
+  </LineItem>
+
+  <LineItem>                             
+
+    <PartNumber>56741762#100</PartNumber>
+
+    <Quantity>1</Quantity>
+
+    <ManufacturingLocation>BGN</ManufacturingLocation>
+
+    <UOM>EACH</UOM>
+
+    <DivisionCode>31201</DivisionCode>
+
+  </LineItem>
+
+  <LineItem>                             
+
+    <PartNumber>01328590#100</PartNumber>
+
+    <Quantity>1</Quantity>
+
+    <ManufacturingLocation>BGN</ManufacturingLocation>
+
+    <UOM>EACH</UOM>
+
+    <DivisionCode>31201</DivisionCode>
+
+  </LineItem>
+
+  <LineItem>                             
+
+    <PartNumber>22039432#100</PartNumber>
+
+    <Quantity>1</Quantity>
+
+    <ManufacturingLocation>BGN</ManufacturingLocation>
+
+    <UOM>EACH</UOM>
+
+    <DivisionCode>31201</DivisionCode>
+
+  </LineItem>
+
+  <LineItem>                             
+
+    <PartNumber>92468826#100</PartNumber>
+
+    <Quantity>1</Quantity>
+
+    <ManufacturingLocation>BGN</ManufacturingLocation>
+
+    <UOM>EACH</UOM>
+
+    <DivisionCode>31201</DivisionCode>
+
+  </LineItem>
+
+  <LineItem>                             
+
+    <PartNumber>01365253#100</PartNumber>
+
+    <Quantity>1</Quantity>
+
+    <ManufacturingLocation>BGN</ManufacturingLocation>
+
+    <UOM>EACH</UOM>
+
+    <DivisionCode>31201</DivisionCode>
+
+  </LineItem>
+
+  <LineItem>                             
+
+    <PartNumber>92468347#100</PartNumber>
+
+    <Quantity>1</Quantity>
+
+    <ManufacturingLocation>BGN</ManufacturingLocation>
+
+    <UOM>EACH</UOM>
+
+    <DivisionCode>31201</DivisionCode>
+
+  </LineItem>
+
+  <LineItem>                             
+
+    <PartNumber>92468230#100</PartNumber>
+
+    <Quantity>1</Quantity>
+
+    <ManufacturingLocation>BGN</ManufacturingLocation>
+
+    <UOM>EACH</UOM>
+
+    <DivisionCode>31201</DivisionCode>
+
+  </LineItem>
+
+  <LineItem>                             
+
+    <PartNumber>92536044#100</PartNumber>
+
+    <Quantity>1</Quantity>
+
+    <ManufacturingLocation>BGN</ManufacturingLocation>
+
+    <UOM>EACH</UOM>
+
+    <DivisionCode>31201</DivisionCode>
+
+  </LineItem>
+
+  <LineItem>                             
+
+    <PartNumber>01352186#100</PartNumber>
+
+    <Quantity>1</Quantity>
+
+    <ManufacturingLocation>BGN</ManufacturingLocation>
+
+    <UOM>EACH</UOM>
+
+    <DivisionCode>31201</DivisionCode>
+
+  </LineItem>
+
+  <LineItem>                             
+
+    <PartNumber>04371985#100</PartNumber>
+
+    <Quantity>1</Quantity>
+
+    <ManufacturingLocation>BGN</ManufacturingLocation>
+
+    <UOM>EACH</UOM>
+
+    <DivisionCode>31201</DivisionCode>
+
+  </LineItem>
+
+  <LineItem>                             
+
+    <PartNumber>04374336#100</PartNumber>
+
+    <Quantity>1</Quantity>
+
+    <ManufacturingLocation>BGN</ManufacturingLocation>
+
+    <UOM>EACH</UOM>
+
+    <DivisionCode>31201</DivisionCode>
+
+  </LineItem>
+
+  <LineItem>                             
+
+    <PartNumber>91136259#100</PartNumber>
+
+    <Quantity>1</Quantity>
+
+    <ManufacturingLocation>BGN</ManufacturingLocation>
+
+    <UOM>EACH</UOM>
+
+    <DivisionCode>31201</DivisionCode>
+
+  </LineItem>
+
+  <LineItem>                             
+
+    <PartNumber>91136291#100</PartNumber>
+
+    <Quantity>1</Quantity>
+
+    <ManufacturingLocation>BGN</ManufacturingLocation>
+
+    <UOM>EACH</UOM>
+
+    <DivisionCode>31201</DivisionCode>
+
+  </LineItem>
+
+  <LineItem>                             
+
+    <PartNumber>01328582#100</PartNumber>
+
+    <Quantity>1</Quantity>
+
+    <ManufacturingLocation>BGN</ManufacturingLocation>
+
+    <UOM>EACH</UOM>
+
+    <DivisionCode>31201</DivisionCode>
+
+  </LineItem>
+
+  <LineItem>                             
+
+    <PartNumber>01328558#100</PartNumber>
+
+    <Quantity>1</Quantity>
+
+    <ManufacturingLocation>BGN</ManufacturingLocation>
+
+    <UOM>EACH</UOM>
+
+    <DivisionCode>31201</DivisionCode>
+
+  </LineItem>
+
+  <LineItem>                             
+
+    <PartNumber>92536036#100</PartNumber>
+
+    <Quantity>1</Quantity>
+
+    <ManufacturingLocation>BGN</ManufacturingLocation>
+
+    <UOM>EACH</UOM>
+
+    <DivisionCode>31201</DivisionCode>
+
+  </LineItem>
+
+  <LineItem>                             
+
+    <PartNumber>03788510#100</PartNumber>
+
+    <Quantity>1</Quantity>
+
+    <ManufacturingLocation>BGN</ManufacturingLocation>
+
+    <UOM>EACH</UOM>
+
+    <DivisionCode>31201</DivisionCode>
+
+  </LineItem>
+
+  <LineItem>                             
+
+    <PartNumber>92468362#100</PartNumber>
+
+    <Quantity>1</Quantity>
+
+    <ManufacturingLocation>BGN</ManufacturingLocation>
+
+    <UOM>EACH</UOM>
+
+    <DivisionCode>31201</DivisionCode>
+
+  </LineItem>
+
+  <LineItem>                             
+
+    <PartNumber>80171853#100</PartNumber>
+
+    <Quantity>1</Quantity>
+
+    <ManufacturingLocation>BGN</ManufacturingLocation>
+
+    <UOM>EACH</UOM>
+
+    <DivisionCode>31201</DivisionCode>
+
+  </LineItem>
+
+  <LineItem>                             
+
+    <PartNumber>01337625#100</PartNumber>
+
+    <Quantity>1</Quantity>
+
+    <ManufacturingLocation>BGN</ManufacturingLocation>
+
+    <UOM>EACH</UOM>
+
+    <DivisionCode>31201</DivisionCode>
+
+  </LineItem>
+
+  <LineItem>                             
+
+    <PartNumber>45484755#100</PartNumber>
+
+    <Quantity>1</Quantity>
+
+    <ManufacturingLocation>BGN</ManufacturingLocation>
+
+    <UOM>EACH</UOM>
+
+    <DivisionCode>31201</DivisionCode>
+
+  </LineItem>
+
+  <LineItem>                             
+
+    <PartNumber>01371624#100</PartNumber>
+
+    <Quantity>1</Quantity>
+
+    <ManufacturingLocation>BGN</ManufacturingLocation>
+
+    <UOM>EACH</UOM>
+
+    <DivisionCode>31201</DivisionCode>
+
+  </LineItem>
+
+  <LineItem>                             
+
+    <PartNumber>03149234#100</PartNumber>
+
+    <Quantity>1</Quantity>
+
+    <ManufacturingLocation>BGN</ManufacturingLocation>
+
+    <UOM>EACH</UOM>
+
+    <DivisionCode>31201</DivisionCode>
+
+  </LineItem>
+
+  <LineItem>                             
+
+    <PartNumber>20035903#100</PartNumber>
+
+    <Quantity>1</Quantity>
+
+    <ManufacturingLocation>BGN</ManufacturingLocation>
+
+    <UOM>EACH</UOM>
+
+    <DivisionCode>31201</DivisionCode>
+
+  </LineItem>
+
+  <LineItem>                             
+
+    <PartNumber>03625514#100</PartNumber>
+
+    <Quantity>1</Quantity>
+
+    <ManufacturingLocation>BGN</ManufacturingLocation>
+
+    <UOM>EACH</UOM>
+
+    <DivisionCode>31201</DivisionCode>
+
+  </LineItem>
+
+  <LineItem>                             
+
+    <PartNumber>80152085#100</PartNumber>
+
+    <Quantity>1</Quantity>
+
+    <ManufacturingLocation>BGN</ManufacturingLocation>
+
+    <UOM>EACH</UOM>
+
+    <DivisionCode>31201</DivisionCode>
+
+  </LineItem>
+
+  <LineItem>                             
+
+    <PartNumber>03801586#100</PartNumber>
+
+    <Quantity>1</Quantity>
+
+    <ManufacturingLocation>BGN</ManufacturingLocation>
+
+    <UOM>EACH</UOM>
+
+    <DivisionCode>31201</DivisionCode>
+
+  </LineItem>
+
+  <LineItem>                             
+
+    <PartNumber>89939060#100</PartNumber>
+
+    <Quantity>1</Quantity>
+
+    <ManufacturingLocation>BGN</ManufacturingLocation>
+
+    <UOM>EACH</UOM>
+
+    <DivisionCode>31201</DivisionCode>
+
+  </LineItem>
+
+  <LineItem>                             
+
+    <PartNumber>03663929#100</PartNumber>
+
+    <Quantity>1</Quantity>
+
+    <ManufacturingLocation>BGN</ManufacturingLocation>
+
+    <UOM>EACH</UOM>
+
+    <DivisionCode>31201</DivisionCode>
+
+  </LineItem>
+
+</ReplacedParts>
+
+</PriceCheckRequest>
+
+<CostCheckRequest>            
+
+<WarrantyType>STANDARD</WarrantyType>            
+
+<DateOfRepair>2008-12-19-07Z</DateOfRepair>
+
+<SupplierNumber>50000149</SupplierNumber>
+
+<CurrencyCode>USD</CurrencyCode>
+
+<ReplacedParts>
+
+<!--Element LineItem, maxOccurs=unbounded-->
+
+  <LineItem>                             
+
+    <PartNumber>30296552#100</PartNumber>
+
+    <Quantity>1</Quantity>
+
+    <ManufacturingLocation>BGN</ManufacturingLocation>
+
+    <UOM>EACH</UOM>
+
+    <DivisionCode>31201</DivisionCode>
+
+  </LineItem>                   
+
+</ReplacedParts>
+
+</CostCheckRequest> 
+
+</DataArea>
+
+</PriceFetch>
+

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<functionalareas xmlns="http://www.tavant.com/twms/security/resource"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.tavant.com/twms/security/resource
+			http://www.tavant.com/twms/security/resource">
+	<functionalarea name="partreturnmanagement" defaultpolicy="none">
+
+	<!-- Resources for update or Read Only -->
+	
+		<resource type="ui" value="partReturnsPartReturnsTab" operation="OR">
+			<permissions>partReturns:partReturnsPartReturnsTab:update,partReturns:partReturnsPartReturnsTab:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="partReturnsDuePartsReceipt" operation="OR">
+			<permissions>partReturns:partReturnsDuePartsReceipt:update,partReturns:partReturnsDuePartsReceipt:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="partReturnsDuePartsInspection" operation="OR">
+			<permissions>partReturns:partReturnsDuePartsInspection:update,partReturns:partReturnsDuePartsInspection:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="partReturnsAwaitingShipmentforDealer" operation="OR">
+			<permissions>partReturns:partReturnsAwaitingShipmentforDealer:update,partReturns:partReturnsAwaitingShipmentforDealer:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="partReturnsShipmentGeneratedForDealer" operation="OR">
+			<permissions>partReturns:partReturnsShipmentGeneratedForDealer:update,partReturns:partReturnsShipmentGeneratedForDealer:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="partReturnsDealerRequestedPartsShipped" operation="OR">
+			<permissions>partReturns:partReturnsDealerRequestedPartsShipped:update,partReturns:partReturnsDealerRequestedPartsShipped:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="partReturnsRequiredPartsfromDealer" operation="OR">
+			<permissions>partReturns:partReturnsRequiredPartsfromDealer:update,partReturns:partReturnsRequiredPartsfromDealer:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="partReturnsDealerRequestedPart" operation="OR">
+			<permissions>partReturns:partReturnsDealerRequestedPart:update,partReturns:partReturnsDealerRequestedPart:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="partReturnsDefineSearchQuery" operation="OR">
+			<permissions>partReturns:partReturnsDefineSearchQuery:update,partReturns:partReturnsDefineSearchQuery:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="partReturnsPredefinedSearch" operation="OR">
+			<permissions>partReturns:partReturnsPredefinedSearch:update,partReturns:partReturnsPredefinedSearch:view
+			</permissions>
+		</resource>
+	
+	<!-- Resources for Read Only-->
+	
+		<resource type="ui" value="partReturnsPartReturnsTabReadOnlyView">
+			<permissions>partReturns:partReturnsPartReturnsTab:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="partReturnsDuePartsReceiptReadOnlyView">
+			<permissions>partReturns:partReturnsDuePartsReceipt:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="partReturnsDuePartsInspectionReadOnlyView">
+			<permissions>partReturns:partReturnsDuePartsInspection:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="partReturnsAwaitingShipmentforDealerReadOnlyView">
+			<permissions>partReturns:partReturnsAwaitingShipmentforDealer:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="partReturnsShipmentGeneratedForDealerReadOnlyView">
+			<permissions>partReturns:partReturnsShipmentGeneratedForDealer:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="partReturnsDealerRequestedPartsShippedReadOnlyView">
+			<permissions>partReturns:partReturnsDealerRequestedPartsShipped:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="partReturnsRequiredPartsfromDealerReadOnlyView">
+			<permissions>partReturns:partReturnsRequiredPartsfromDealer:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="partReturnsDealerRequestedPartReadOnlyView">
+			<permissions>partReturns:partReturnsDealerRequestedPart:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="partReturnsDefineSearchQueryReadOnlyView">
+			<permissions>partReturns:partReturnsDefineSearchQuery:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="partReturnsPredefinedSearchReadOnlyView">
+			<permissions>partReturns:partReturnsPredefinedSearch:view
+			</permissions>
+		</resource>
+        
+	</functionalarea>
+
+</functionalareas>

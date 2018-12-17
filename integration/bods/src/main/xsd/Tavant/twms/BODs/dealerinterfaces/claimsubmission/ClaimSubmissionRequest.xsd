@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema
+	xmlns="http://www.tavant.com/dealerinterfaces/claimsubmission/request"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.tavant.com/dealerinterfaces/claimsubmission/request"
+	elementFormDefault="qualified">
+	<xs:element name="ClaimSubmission">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="ApplicationArea">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Sender">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Task">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="50" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="LogicalId">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="50" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="ReferenceId">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="100" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="BODId">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="50" />
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="InterfaceNumber">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="50" />
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="CreationDateTime" type="xs:dateTime" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="BUName" nillable="false">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="003" />
+							<xs:enumeration value="056" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="ClaimType">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="MACHINE" />
+							<xs:enumeration value="PARTS" />
+							<xs:enumeration value="FIELDMODIFICATION" />
+							<xs:enumeration value="FLEET">
+								<xs:annotation>
+									<xs:documentation>Fleet claim type</xs:documentation>
+								</xs:annotation>
+							</xs:enumeration>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="InventorySerialNumber" type="xs:string"
+					minOccurs="0" />
+				<xs:element name="InventoryModelNumber" type="xs:string"
+					nillable="true" minOccurs="0" />
+				<xs:element name="InventoryItemNumber" type="xs:string"
+					minOccurs="0" />
+				<xs:element name="ComponentSerialNumber" type="xs:string"
+					nillable="true" minOccurs="0" />
+				<xs:element name="CompetitorModel" type="xs:string"
+					nillable="true" minOccurs="0" />
+				<xs:element name="CompetitorModelTruckSerialNumber" type="xs:string"
+					nillable="true" minOccurs="0" />
+				<xs:element name="Brand" nillable="true" minOccurs="0">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="HYSTER" />
+							<xs:enumeration value="YALE" />
+							<xs:enumeration value="UTILEV" />
+							<xs:enumeration value="">
+								<xs:annotation>
+									<xs:documentation>Blank</xs:documentation>
+								</xs:annotation>
+							</xs:enumeration>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="UnszdSlNo" type="xs:string"
+					nillable="true" minOccurs="0" />
+				<xs:element name="ComponentDateCode" type="xs:string"
+					nillable="true" minOccurs="0" />
+				<xs:element name="PartNumber" type="xs:string" nillable="true" minOccurs="0"/>
+				<xs:element name="BrandOnCompetitorModel" type="xs:string"
+					nillable="true" minOccurs="0" />
+				<xs:element name="RepairStartDate" type="xs:date" />
+				<xs:element name="RepairEndDate" type="xs:date" />
+				<xs:element name="FailureDate" type="xs:date" nillable="true"
+					minOccurs="0" maxOccurs="1" />
+				<xs:element name="PartFittedDate" type="xs:date"
+					nillable="true" minOccurs="0" maxOccurs="1" />
+				<xs:element name="PurchaseDate" type="xs:date" nillable="true"
+					minOccurs="0" maxOccurs="1" />
+				<xs:element name="TotalLaborHours" type="xs:decimal"
+					nillable="true" minOccurs="0" maxOccurs="1" />
+				<xs:element name="DealerJobNumber" type="xs:string"
+					minOccurs="0" />
+				<xs:element name="ConditionsFound" type="xs:string" />
+				<xs:element name="WorkPerformed" type="xs:string" />
+				<xs:element name="ClaimNotes" type="xs:string" minOccurs="0"
+					nillable="true" />
+				<xs:element name="ServicingLocationSiteNumber" type="xs:string"
+					minOccurs="0" />
+				<xs:element name="CausalPart" type="xs:string" nillable="true"
+					minOccurs="0" />
+				<xs:element name="CausedBy" type="xs:string" nillable="true"
+					minOccurs="0" />
+				<xs:element name="CampaignCode" type="xs:string"
+					nillable="true" minOccurs="0" />
+				<xs:element name="FaultLocation" type="xs:string"
+					nillable="true" minOccurs="0" />
+				<xs:element name="FaultFound" type="xs:string" nillable="true"
+					minOccurs="0" />
+				<xs:element name="TechnicianId" type="xs:string"
+					nillable="true" minOccurs="0" />
+				<xs:element name="SMRClaim" type="xs:boolean" />
+				<xs:element name="ReasonforSMRClaim" type="xs:string"
+					minOccurs="0" />
+				<xs:element name="ForceToDraft" type="xs:boolean" />
+				<xs:element name="CommercialPolicy" type="xs:boolean"
+					minOccurs="0" default="false"/>
+				<xs:element name="InvoiceNumber" type="xs:string"
+					minOccurs="0" />
+				<xs:element name="TravelbyDistance" type="xs:decimal"
+					minOccurs="0" maxOccurs="1" />
+				<xs:element name="TravelbyTrip" type="xs:integer"
+					minOccurs="0" maxOccurs="1" />
+				<xs:element name="TravelbyHours" type="xs:decimal"
+					minOccurs="0" maxOccurs="1" />
+				<xs:element name="HoursOnTruck" type="xs:decimal"
+					nillable="true" minOccurs="0" maxOccurs="1" />
+				<xs:element name="HoursOnTruckWhenPartInstalled" type="xs:decimal"
+					nillable="true" minOccurs="0" maxOccurs="1" />
+				<xs:element name="TravelLocation" type="xs:string"
+					minOccurs="0" />
+				<xs:element name="AdditionalTravelHours" type="xs:decimal"
+					minOccurs="0" maxOccurs="1" nillable="true" />
+				<xs:element name="ReasonForAdditionalTravelHours" type="xs:string"
+					minOccurs="0" />
+				<xs:element name="ItemFreightAndDuty" type="xs:decimal"
+					minOccurs="0" maxOccurs="1" nillable="true" />
+				<xs:element name="Meals" type="xs:decimal" minOccurs="0"
+					maxOccurs="1" nillable="true" />
+				<xs:element name="OtherFreightAndDuty" type="xs:decimal"
+					minOccurs="0" maxOccurs="1" nillable="true" />
+				<xs:element name="Others" type="xs:decimal" minOccurs="0"
+					maxOccurs="1" nillable="true" />
+				<xs:element name="LocalPurchase" type="xs:decimal"
+					minOccurs="0" maxOccurs="1" nillable="true" />
+				<xs:element name="Parking" type="xs:decimal" minOccurs="0"
+					maxOccurs="1" nillable="true" />
+				<xs:element name="PerDiem" type="xs:decimal" minOccurs="0"
+					maxOccurs="1" nillable="true" />
+				<xs:element name="RentalCharges" type="xs:decimal"
+					minOccurs="0" maxOccurs="1" nillable="true" />
+				<xs:element name="Tolls" type="xs:decimal" minOccurs="0"
+					maxOccurs="1" nillable="true" />
+				<xs:element name="HandlingFee" type="xs:decimal" minOccurs="0"
+					maxOccurs="1" nillable="true" />
+				<xs:element name="Transportation" type="xs:decimal" minOccurs="0"
+					maxOccurs="1" nillable="true" />
+				<xs:element name="NoInvoiceAvalibleForTransportation" type="xs:boolean" minOccurs="0" default="false"/>
+				<xs:element name="ComponentsReplaced" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="NMHGReplacedParts" minOccurs="0"
+								maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="PartNumber" type="xs:string"
+											nillable="true" />
+										<xs:element name="ComponentSerialNumber" type="xs:string"
+											nillable="true" minOccurs="0" />
+
+										<xs:element name="PartPrice" type="xs:decimal"
+											nillable="true" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>Part price for fleet</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="PartQuantity" type="xs:int" nillable="true"/>
+										<xs:element name="ComponentDateCode" type="xs:string"
+											minOccurs="0" nillable="true" />
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="NMHGInstalledParts" minOccurs="0"
+								maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="PartNumber" type="xs:string"
+											nillable="true" />
+										<xs:element name="ComponentSerialNumber" type="xs:string"
+											nillable="true" minOccurs="0" />
+
+										<xs:element name="PartPrice" type="xs:decimal"
+											nillable="true" minOccurs="0" >
+											<xs:annotation>
+												<xs:documentation>Part price for fleet</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="PartQuantity" type="xs:int" nillable="true"/>
+										<xs:element name="ComponentDateCode" type="xs:string"
+											minOccurs="0" nillable="true" />
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="ReplacedNonNMHGParts" minOccurs="0">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="EachPart" maxOccurs="unbounded" minOccurs="0">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:annotation>
+											<xs:documentation>Part number for non eom fleet</xs:documentation>
+										</xs:annotation>									
+										<xs:element name="NonNMHGPartNumber" type="xs:string"
+											nillable="true" minOccurs="0"/>
+										<xs:element name="NonNMHGPartDescription"
+											 maxOccurs="1" nillable="false">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="1" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="NonNMHGPartPrice" type="xs:decimal"
+											nillable="false" maxOccurs="1" />
+										<xs:element name="NonNMHGPartQuantity" type="xs:int" nillable="true"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="AlarmCodes" minOccurs="0" maxOccurs="1">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="EachAlarmCode" minOccurs="0"
+								maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="code" minOccurs="0" maxOccurs="1"
+											nillable="false">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="1" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="JobCodes" minOccurs="0" maxOccurs="1">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="EachJobCode" minOccurs="0"
+								maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="JobCode" minOccurs="0" maxOccurs="1"
+											nillable="false">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="1" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="LabourHours" type="xs:decimal"
+											minOccurs="0" maxOccurs="1" />
+										<xs:element name="ReasonForLabourHours" type="xs:string"
+											minOccurs="0" maxOccurs="1" />
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="MiscellanousParts" minOccurs="0"
+					maxOccurs="1">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="EachMiscellanousPart" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="PartItemNumber" type="xs:string"
+											nillable="true" />
+										<xs:element name="PartQuantity" type="xs:int" nillable="true"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="TaxDetails" minOccurs="0" maxOccurs="1">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="EachTaxDetail" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="TaxCode" type="xs:string"
+											nillable="true" minOccurs="0" />
+										<xs:element name="TaxLocation" type="xs:string"
+											nillable="true" minOccurs="0" />
+										<xs:element name="TaxAmount" type="xs:decimal"
+											nillable="true" minOccurs="0" />
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="CustomerDetails" minOccurs="0"
+					maxOccurs="1">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="CustomerName" type="xs:string" />
+							<xs:element name="CustomerCity" type="xs:string" />
+							<xs:element name="CustomerState" type="xs:string" minOccurs="0" />
+							<xs:element name="CustomerZip" type="xs:string" />
+							<xs:element name="CustomerCountry" type="xs:string" />
+							<xs:element name="CustomerAddress" type="xs:string" />
+							<xs:element name="CustomerAddress2" type="xs:string"
+								minOccurs="0" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="CmsTicketNumber" type="xs:string"
+					nillable="true" minOccurs="0" />
+				<xs:element name="AuthorizationNumber" type="xs:string"
+					nillable="true" minOccurs="0" />
+				<xs:element name="DealerClaimNumber" type="xs:string"
+					nillable="true" minOccurs="0" />
+				<xs:element name="DealerContact" type="xs:string"
+					nillable="true" minOccurs="0" />
+				<xs:element name="CustomerContact" type="xs:string"
+					nillable="true" minOccurs="0" />
+				<xs:element name="BT30DayNCR" type="xs:boolean" minOccurs="0" default="false"/>
+				<xs:element name="InformationOnlyClaim" type="xs:boolean" minOccurs="0" default="false"/>
+				<xs:element name="DealerNumber" type="xs:string" />
+				<xs:element name="IsEmission" type="xs:boolean" minOccurs="0" default="false" />
+
+				<xs:element name="TotalLaborAmount" type="xs:decimal" nillable="true" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Total Labor Amount for fleet</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+
+				<xs:element name="TotalTravelAmount" type="xs:decimal" nillable="true" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Total Travel Amount for fleet</xs:documentation>
+					</xs:annotation>
+				</xs:element>				
+
+				<xs:element name="Miscellaneous" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Miscellaneous items for fleet</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="EachMiscItem" maxOccurs="unbounded" minOccurs="0">
+								<xs:complexType>
+									<xs:sequence>									
+										<xs:element name="MiscItem" type="xs:string"/>
+										<xs:element name="MiscDescription" type="xs:string"	minOccurs="0" />
+										<xs:element name="MiscItemPrice" type="xs:decimal" nillable="false" maxOccurs="1" />
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="PONumber" type="xs:string" nillable="true" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

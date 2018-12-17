@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<ftstdata>
+<topic name="Before you Begin" url="Before_you_Begin/Before_you_Begin.htm" />
+<topic name="Common Application Features" url="Before_you_Begin/common_application_features.htm" />
+<topic name="Copyright" url="Before_you_Begin/Copyright.htm" />
+<topic name="Index" url="Before_you_Begin/index.htm" />
+<topic name="Introduction" url="Before_you_Begin/Introduction.htm" />
+<topic name="Claim Details" url="Claims/Claim_Details.htm" />
+<topic name="Index" url="Claims/index.htm" />
+<topic name="Policy Details" url="Claims/Policy_Details.htm" />
+<topic name="Search Claims" url="Claims/Search_Claims.htm" />
+<topic name="Equipment Details" url="Inventory/Equipment_Details.htm" />
+<topic name="Index" url="Inventory/index.htm" />
+<topic name="Inventory" url="Inventory/Inventory.htm" />
+<topic name="Search Inventory" url="Inventory/Search_Inventory.htm" />
+<topic name="Index" url="Items/index.htm" />
+<topic name="Search Items" url="Items/Search_Items.htm" />
+<topic name="Due Parts Receipt" url="Part_Returns/Due_Parts_Receipt.htm" />
+<topic name="Index" url="Part_Returns/index.htm" />
+<topic name="Search Parts" url="Part_Returns/Search_Parts.htm" />
+<topic name="Barcode_Feature_and_Search_by_Barcode" url="Parts_Recovery/Barcode_Feature_and_Search_by_Barcode.htm" />
+<topic name="Index" url="Parts_Recovery/index.htm" />
+<topic name="Parts Recovery" url="Parts_Recovery/Parts_Recovery.htm" />
+<topic name="Search Parts" url="Parts_Recovery/Search_Parts.htm" />
+<topic name="Shipment Generated" url="Parts_Recovery/Shipment_Generated.htm" />
+<topic name="Shipment Tag" url="Parts_Recovery/Shipment_Tag.htm" />
+<topic name="Supplier Parts Claimed" url="Parts_Recovery/Supplier_Parts_Claimed.htm" />
+<topic name="Supplier Parts Shipped" url="Parts_Recovery/Supplier_Parts_Shipped.htm" />
+<topic name="Index" url="Settings/index.htm" />
+<topic name="Profile" url="Settings/Profile.htm" />
+
+</ftstdata>  

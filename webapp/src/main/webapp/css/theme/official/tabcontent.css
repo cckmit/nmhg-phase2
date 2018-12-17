@@ -1,0 +1,10 @@
+.tabcontent{
+display:none;
+margin:-8px;
+}
+
+@media print {
+.tabcontent {
+display:block!important;
+}
+}

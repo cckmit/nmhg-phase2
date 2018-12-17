@@ -1,0 +1,108 @@
+<!--
+    Copyright (C) 2004 Orbeon, Inc.
+  
+    This program is free software; you can redistribute it and/or modify it under the terms of the
+    GNU Lesser General Public License as published by the Free Software Foundation; either version
+    2.1 of the License, or (at your option) any later version.
+  
+    This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
+    without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+    See the GNU Lesser General Public License for more details.
+  
+    The full text of the license is available at http://www.gnu.org/copyleft/lesser.html
+-->
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/" xmlns="http://jakarta.apache.org/log4j/">
+
+    <!-- Chainsaw is a graphical appender-->
+    <appender name="ChainsawAppender" class="org.apache.log4j.net.SocketAppender">
+        <param name="RemoteHost" value="localhost"/>
+        <param name="Port" value="4445"/>
+        <param name="LocationInfo" value="true"/>
+    </appender>
+    
+    <!-- This is the OPS Studio monitor -->
+    <appender name="OPSMonitor" class="org.apache.log4j.net.SocketHubAppender">
+        <param name="Port" value="4446"/>
+        <param name="LocationInfo" value="true"/>
+        <filter class="org.apache.log4j.varia.LevelRangeFilter">
+            <param name="LevelMin" value="debug" />
+        </filter>
+    </appender>
+
+    <!-- Logging to file, typically used in production -->
+    <appender name="FileAppender" class="org.apache.log4j.FileAppender">
+        <param name="File" value="target/twms1.log"/>
+        <param name="Append" value="false" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="[%d] %t %-5p %c{2} - %m%n"/>
+        </layout>
+    </appender>
+
+	<appender name="SpringAppender" class="org.apache.log4j.FileAppender">
+        <param name="File" value="C:/spring.log"/>
+        <param name="Append" value="false" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="[%d] %t %-5p %c{2} - %m%n"/>
+        </layout>
+    </appender>
+	
+    <!--
+    <category name="org.orbeon.oxf.processor.xmldb.XMLDBProcessor">
+        <priority value="debug"/>
+    </category>
+
+    <category name="org.orbeon.oxf.processor.sql.SQLProcessor">
+        <priority value="debug"/>
+    </category>
+
+    <category name="org.orbeon.oxf.xforms.processor.XFormsServer">
+        <priority value="debug"/>
+    </category>
+
+    <category name="org.orbeon.oxf.processor.PageFlowControllerProcessor">
+        <priority value="debug"/>
+    </category>
+
+    <category name="org.orbeon.oxf.processor.generator.RequestGenerator">
+        <priority value="debug"/>
+    </category>
+
+    <category name="org.orbeon.oxf.webapp.OPSSessionListener">
+        <priority value="info"/>
+    </category>
+
+    <category name="org.orbeon.oxf.webapp.OPSServletContextListener">
+        <priority value="info"/>
+    </category>
+    -->
+
+    <category name="org.orbeon">
+        <priority value="ERROR"/>
+        <appender-ref ref="FileAppender"/> 
+    </category>
+	
+	<!-- <category name="org.springframework">
+        <priority value="debug"/>
+        <appender-ref ref="SpringAppender"/> 
+    </category>
+	
+	<category name="org.hibernate">
+        <priority value="info"/>
+        <appender-ref ref="SpringAppender"/> 
+    </category>
+	
+	<category name="tavant.twms.web.actions.PaymentAction">
+        <priority value="debug"/>
+        <appender-ref ref="SpringAppender"/> 
+    </category> -->
+
+    <category name="tavant.twms.web.admin.policy" additivity="false">
+        <priority value="DEBUG"/>
+        <appender-ref ref="FileAppender"/> 
+    </category>
+
+    <category name="com.opensymphony.xwork.interceptor" additivity="false">
+        <priority value="DEBUG"/>
+        <appender-ref ref="FileAppender"/> 
+    </category>
+</log4j:configuration>

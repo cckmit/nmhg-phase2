@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<functionalareas xmlns="http://www.tavant.com/twms/security/resource"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.tavant.com/twms/security/resource
+			http://www.tavant.com/twms/security/resource">
+	<functionalarea name="reports" defaultpolicy="none">
+
+	<!-- Resources for update or Read Only -->
+	
+		<resource type="ui" value="reportsReportsTab" operation="OR">
+			<permissions>reports:reportsReportsTab:update,reports:reportsReportsTab:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="reportsVendorRecoveryReport" operation="OR">
+			<permissions>reports:reportsVendorRecoveryReport:update,reports:reportsVendorRecoveryReport:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="reportsManageUploads/Downloads" operation="OR">
+			<permissions>reports:reportsManageUploads/Downloads:update,reports:reportsManageUploads/Downloads:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="reportsUploadManagement" operation="OR">
+			<permissions>reports:reportsUploadManagement:update,reports:reportsUploadManagement:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="reportsDownloadManagement" operation="OR">
+			<permissions>reports:reportsDownloadManagement:update,reports:reportsDownloadManagement:view
+			</permissions>
+		</resource>
+	
+	<!-- Resources for Read Only-->
+	
+		<resource type="ui" value="reportsReportsTabReadOnlyView">
+			<permissions>reports:reportsReportsTab:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="reportsVendorRecoveryReportReadOnlyView">
+			<permissions>reports:reportsVendorRecoveryReport:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="reportsManageUploads/DownloadsReadOnlyView">
+			<permissions>reports:reportsManageUploads/Downloads:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="reportsUploadManagementReadOnlyView">
+			<permissions>reports:reportsUploadManagement:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="reportsDownloadManagementReadOnlyView">
+			<permissions>reports:reportsDownloadManagement:view
+			</permissions>
+		</resource>
+        
+	</functionalarea>
+
+</functionalareas>

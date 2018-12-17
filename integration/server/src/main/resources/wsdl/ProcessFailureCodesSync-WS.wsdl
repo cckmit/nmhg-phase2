@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://www.tavant.com/globalsync/failurecodesesync/definition"
+                  xmlns:impl="http://www.tavant.com/globalsync/failurecodesesync/definition"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                  xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <wsdl:message name="syncRequest">
+        <wsdl:part name="syncRequest" type="xsd:string"/>
+    </wsdl:message>
+    <wsdl:message name="syncResponse">
+        <wsdl:part name="syncResponse" type="xsd:string"/>
+    </wsdl:message>
+    <wsdl:portType name="ProcessFailureCodesSync">
+        <wsdl:operation name="sync" parameterOrder="syncRequest">
+            <wsdl:input message="impl:syncRequest" name="syncRequest"/>
+            <wsdl:output message="impl:syncResponse" name="syncResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="ProcessFailureCodesSync-WSSoapBinding" type="impl:ProcessFailureCodesSync">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="sync">
+            <soap:operation soapAction="http://www.tavant.com/globalsync/failurecodesesync"/>
+            <wsdl:input name="syncRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="syncResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="ProcessFailureCodesSync-WS">
+        <wsdl:port binding="impl:ProcessFailureCodesSync-WSSoapBinding" name="ProcessFailureCodesSync-WS">
+            <soap:address location="http://server:8080/services/ProcessFailureCodesSync-WS"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

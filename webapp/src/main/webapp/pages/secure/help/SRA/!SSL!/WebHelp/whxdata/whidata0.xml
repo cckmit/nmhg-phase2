@@ -1,0 +1,173 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<indexdata>
+<key name="Awaiting Shipment" >
+  <topic name="Awaiting Shipment" url="Parts_Recovery/Awaiting_Shipment.htm" />
+</key>
+<key name="Barcode" >
+  <topic name="Barcode Feature and Search by Barcode" url="Parts_Recovery/Barcode_Feature_and_Search_by_Barcode.htm" />
+</key>
+<key name="Business Unit" >
+  <topic name="Map Service Provider Business Unit" url="Settings/Map_Service_Provider_Business_Unit.htm" />
+</key>
+<key name="Causal Part" >
+  <topic name="Claim Details" url="Claims/Claim_Details.htm" />
+</key>
+<key name="Claim Details" >
+  <topic name="Claim Details" url="Claims/Claim_Details.htm" />
+</key>
+<key name="Claim History" >
+  <topic name="Claim Details" url="Claims/Claim_Details.htm" />
+</key>
+<key name="Claim Number" >
+  <topic name="Claim Details" url="Claims/Claim_Details.htm" />
+</key>
+<key name="Claims Due for Recovery" >
+  <topic name="Claims Due for Recovery" url="Supplier_Recovery/Claims_Due_for_Recovery.htm" />
+</key>
+<key name="Claims Under Recovery" >
+  <topic name="Claims Under Recovery" url="Supplier_Recovery/Claims_Under_Recovery.htm" />
+</key>
+<key name="Components Replaced" >
+  <topic name="Claim Details" url="Claims/Claim_Details.htm" />
+</key>
+<key name="Contract Details" >
+  <topic name="Maintain Supplier Contracts" url="Contract_Admin/Maintain_Supplier_Contracts.htm" />
+</key>
+<key name="Dealer Details" >
+  <topic name="Equipment Details" url="Inventory/Equipment_Details.htm" />
+</key>
+<key name="Download Management" >
+  <topic name="Download Management" url="Reports/Download_Management.htm" />
+</key>
+<key name="Due Date" >
+  <topic name="Shipment Generated" url="Parts_Recovery/Shipment_Generated.htm" />
+</key>
+<key name="Due Days" >
+  <topic name="Shipment Generated" url="Parts_Recovery/Shipment_Generated.htm" />
+</key>
+<key name="Email Subscription" >
+  <topic name="Email Subscription" url="Settings/Email_Subscription.htm" />
+</key>
+<key name="Equipment Details" >
+  <topic name="Equipment Details" url="Inventory/Equipment_Details.htm" />
+</key>
+<key name="Failure Detail" >
+  <topic name="Claim Details" url="Claims/Claim_Details.htm" />
+</key>
+<key name="Failure Information" >
+  <topic name="Claim Details" url="Claims/Claim_Details.htm" />
+</key>
+<key name="Fault Location" >
+  <topic name="Claim Details" url="Claims/Claim_Details.htm" />
+</key>
+<key name="Field Modification" >
+  <topic name="Equipment Details" url="Inventory/Equipment_Details.htm" />
+</key>
+<key name="Initiate Supplier Recovery" >
+  <topic name="Pending Recovery Initiation" url="Supplier_Recovery/Pending_Recovery_Initiation.htm" />
+</key>
+<key name="Job Code" >
+  <topic name="Claim Details" url="Claims/Claim_Details.htm" />
+</key>
+<key name="Major Components" >
+  <topic name="Equipment Details" url="Inventory/Equipment_Details.htm" />
+</key>
+<key name="Manage Documents" >
+  <topic name="Claim Details" url="Claims/Claim_Details.htm" />
+</key>
+<key name="Manage Suppliers" >
+  <topic name="Manage Suppliers" url="Contract_Admin/Manage_Suppliers.htm" />
+</key>
+<key name="Memo Details" >
+  <topic name="Claim Details" url="Claims/Claim_Details.htm" />
+</key>
+<key name="Multi Claim Maintenance" >
+  <topic name="Supplier Recovery Folders" url="Supplier_Recovery/Supplier_Recovery_Folders.htm" />
+</key>
+<key name="Outside Parts" >
+  <topic name="Claim Details" url="Claims/Claim_Details.htm" />
+</key>
+<key name="Owner Details" >
+  <topic name="Equipment Details" url="Inventory/Equipment_Details.htm" />
+</key>
+<key name="Parts Recovery" >
+  <topic name="Parts Recovery" url="Parts_Recovery/Parts_Recovery.htm" />
+</key>
+<key name="Parts Replaced" >
+  <topic name="Equipment Details" url="Inventory/Equipment_Details.htm" />
+</key>
+<key name="Payment Details" >
+  <topic name="Claim Details" url="Claims/Claim_Details.htm" />
+</key>
+<key name="Pending Recovery Initiation" >
+  <topic name="Pending Recovery Initiation" url="Supplier_Recovery/Pending_Recovery_Initiation.htm" />
+</key>
+<key name="Policy Details" >
+  <topic name="Policy Details" url="Claims/Policy_Details.htm" />
+</key>
+<key name="PreDefined Retail Search" >
+  <topic name="Search Inventory" url="Inventory/Search_Inventory.htm" />
+</key>
+<key name="PreDefined Stock Search" >
+  <topic name="Search Inventory" url="Inventory/Search_Inventory.htm" />
+</key>
+<key name="Profile" >
+  <topic name="Profile" url="Settings/Profile.htm" />
+</key>
+<key name="Recovered Amount" >
+  <topic name="Claims Due for Recovery" url="Supplier_Recovery/Claims_Due_for_Recovery.htm" />
+</key>
+<key name="Recovery Claim Number" >
+  <topic name="Claims Due for Recovery" url="Supplier_Recovery/Claims_Due_for_Recovery.htm" />
+</key>
+<key name="Return Location" >
+  <topic name="Supplier Parts Claimed" url="Parts_Recovery/Supplier_Parts_Claimed.htm" />
+  <topic name="Supplier Parts Shipped" url="Parts_Recovery/Supplier_Parts_Shipped.htm" />
+</key>
+<key name="Sales Order Number" >
+  <topic name="Equipment Details" url="Inventory/Equipment_Details.htm" />
+</key>
+<key name="Schemas" >
+  <topic name="User Groups" url="Contract_Admin/User_Groups.htm" />
+</key>
+<key name="Service Information" >
+  <topic name="Claim Details" url="Claims/Claim_Details.htm" />
+</key>
+<key name="Shipment Generated" >
+  <topic name="Shipment Generated" url="Parts_Recovery/Shipment_Generated.htm" />
+</key>
+<key name="Shipment Location" >
+  <topic name="Maintain Supplier Contracts" url="Contract_Admin/Maintain_Supplier_Contracts.htm" />
+</key>
+<key name="Shipment Number" >
+  <topic name="Shipment Generated" url="Parts_Recovery/Shipment_Generated.htm" />
+</key>
+<key name="Shipment Tag" >
+  <topic name="Shipment Tag" url="Parts_Recovery/Shipment_Tag.htm" />
+</key>
+<key name="Supplier Contracts" >
+  <topic name="Maintain Supplier Contracts" url="Contract_Admin/Maintain_Supplier_Contracts.htm" />
+</key>
+<key name="Supply Recovery Admin" >
+  <topic name="Supplier Recovery Folders" url="Supplier_Recovery/Supplier_Recovery_Folders.htm" />
+</key>
+<key name="Transaction History" >
+  <topic name="Equipment Details" url="Inventory/Equipment_Details.htm" />
+</key>
+<key name="Upload Management" >
+  <topic name="Upload Management" url="Reports/Upload_Management.htm" />
+</key>
+<key name="User Groups" >
+  <topic name="User Groups" url="Contract_Admin/User_Groups.htm" />
+</key>
+<key name="Vendor Recovery Report" >
+  <topic name="Vendor Recovery Report" url="Reports/Vendor_Recovery_Report.htm" />
+</key>
+<key name="View Supplier" >
+  <topic name="View Supplier" url="Contract_Admin/View_Supplier.htm" />
+</key>
+<key name="Warranty Coverages" >
+  <topic name="Equipment Details" url="Inventory/Equipment_Details.htm" />
+</key>
+
+</indexdata>

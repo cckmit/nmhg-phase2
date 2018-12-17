@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping SYSTEM
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="tavant.twms.domain.policy">
+<query name="customerNameLike">
+<![CDATA[
+	from 
+		Customer c 
+	where 
+		c.name LIKE :name and
+		c.individual = true 
+]]>	
+</query>
+
+<query name="customerCompanyNameLike">
+<![CDATA[
+	from 
+		Customer c 
+	where 
+		c.companyName LIKE :companyName and
+		c.individual = false 
+]]>	
+</query>
+</hibernate-mapping>
+

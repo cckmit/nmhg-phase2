@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process-definition name="PolicyAndPaymentComputationProcess">
+
+  <start-state name="Start">
+    <transition name="checkIfPolicyHasToBeComputed" to="IsPolicyComputationRequired"/>
+  </start-state>
+  
+  <decision name="IsPolicyComputationRequired">
+  	<transition name="No" to="End">
+  		<condition>#{claim.type.type=="Parts" || claim.itemReference.serialized==false}</condition>
+  	</transition>
+  	<transition name="Yes" to="ComputePolicy">
+	  	<condition>#{claim.type.type!="Parts" and claim.itemReference.serialized}</condition>
+  	</transition>
+  </decision>
+  
+  <serviceNode name="ComputePolicy">    
+    <beanName>policyService</beanName>
+    <methodName>updateApplicablePolicies</methodName>
+    <parameters>
+      <variable>claim</variable>
+    </parameters>
+    <transition name="goToEnd" to="End">
+    </transition>
+  </serviceNode>
+
+  <end-state name="End"/> 
+</process-definition>

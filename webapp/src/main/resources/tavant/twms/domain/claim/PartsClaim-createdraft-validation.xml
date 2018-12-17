@@ -1,0 +1,116 @@
+<!DOCTYPE validators PUBLIC
+  "-//Apache Struts//XWork Validator 1.0.2//EN"
+  "http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+
+<!--
+
+   Copyright (c)2006 Tavant Technologies
+   All Rights Reserved.
+
+   This software is furnished under a license and may be used and copied
+   only  in  accordance  with  the  terms  of such  license and with the
+   inclusion of the above copyright notice. This software or  any  other
+   copies thereof may not be provided or otherwise made available to any
+   other person. No title to and ownership of  the  software  is  hereby
+   transferred.
+
+   The information in this software is subject to change without  notice
+   and  should  not be  construed as a commitment  by Tavant Technologies.
+
+-->
+
+<validators>
+   <!-- <field name="workOrderNumber">
+        <field-validator type="requiredstring" short-circuit="true">
+            <message key="error.newClaim.workorderNoRequired"/>
+        </field-validator>
+    </field>-->
+
+    <!-- <field name="hoursInService">
+        <field-validator type="fieldexpression" short-circuit="true">
+            <param name="expression"><![CDATA[((partInstalled && hoursInService != null)
+            || (!partInstalled && hoursInService == null))]]></param>
+            <message key="error.newClaim.serviceHrsInvalid"/>
+        </field-validator>
+
+        <field-validator type="fieldexpression" short-circuit="true">
+            <param name="expression"><![CDATA[((partInstalled && hoursInService != null and hoursInService.intValue()>=0)
+             || (!partInstalled && hoursInService == null))]]></param>
+            <message key="error.newClaim.serviceHrsInvalid"/>
+        </field-validator>
+    </field>
+
+        -->
+        
+   <field name="hoursOnTruck">
+        <field-validator type="fieldexpression" short-circuit="true">
+            <param name="expression"><![CDATA[!((partInstalled && hoursOnTruck != null && hoursInService!=null) && (hoursOnTruck.intValue() > hoursInService.intValue()))]]></param>
+            <message key="error.newClaim.serviceHrsGreater"/>
+        </field-validator>
+     </field>
+	
+    <field name="failureDate">
+        <field-validator type="required" short-circuit="true">
+            <message key="error.newClaim.failureDateRequired"/>
+        </field-validator>
+
+        <field-validator type="fieldexpression" short-circuit="true">
+            <param name="expression"><![CDATA[!failureDate.isAfter(@com.domainlanguage.timeutil.Clock@today())]]></param>
+            <message key="error.newClaim.invalidFailureDate"/>
+        </field-validator>
+
+    </field>
+     <field name="repairStartDate">
+        <field-validator type="required" short-circuit="true">
+            <message key="error.newClaim.repairStartDateRequired"/>
+        </field-validator>
+
+        <field-validator type="fieldexpression" short-circuit="true">
+            <param name="expression"><![CDATA[!repairStartDate.isAfter(@com.domainlanguage.timeutil.Clock@today())]]></param>
+            <message key="error.newClaim.invalidRepairStartDate"/>
+        </field-validator>
+        
+        <field-validator type="fieldexpression" short-circuit="true">
+            <param name="expression"><![CDATA[!repairStartDate.isAfter(repairDate)]]></param>
+            <message key="error.newClaim.repairStartDateIsAfterEndDate"/>
+        </field-validator>
+        <field-validator type="fieldexpression" short-circuit="true">
+            <param name="expression"><![CDATA[!repairStartDate.isBefore(failureDate)]]></param>
+            <message key="error.newClaim.invalidRepairStartDuration"/>
+        </field-validator>
+    </field> 
+    <field name="repairDate">
+        <field-validator type="required" short-circuit="true">
+            <message key="error.newClaim.repairDateRequired"/>
+        </field-validator>
+
+        <field-validator type="fieldexpression" short-circuit="true">
+            <param name="expression"><![CDATA[!repairDate.isAfter(@com.domainlanguage.timeutil.Clock@today())]]></param>
+            <message key="error.newClaim.invalidRepairDate"/>
+        </field-validator>
+
+        <field-validator type="fieldexpression" short-circuit="true">
+            <param name="expression"><![CDATA[!repairDate.isBefore(failureDate)]]></param>
+            <message key="error.newClaim.invalidDuration"/>
+        </field-validator>
+    </field>
+       
+
+    <field name="reasonForServiceManagerRequest">
+        <field-validator type="fieldexpression" short-circuit="true">
+            <param name="expression">
+            	<![CDATA[
+		            ((serviceManagerRequest == null || !serviceManagerRequest) &&
+		            	(reasonForServiceManagerRequest == null || reasonForServiceManagerRequest.description == null 
+		            		|| reasonForServiceManagerRequest.description.trim().length() == 0))
+		            ||	
+		            ((serviceManagerRequest != null && serviceManagerRequest) &&
+		            	(reasonForServiceManagerRequest != null && reasonForServiceManagerRequest.description != null 
+		            			&& reasonForServiceManagerRequest.description.trim().length() > 0))
+		            ]]>
+			</param>
+            <message key="error.newClaim.smrReasonRequired"/>
+        </field-validator>
+    </field>
+    
+</validators>

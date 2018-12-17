@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<!-- This plugin is required to force the Google Guice container to use the application
+    context created as part of our IntegrationTestCase for wiring dependencies-->    
+<struts>
+    <bean type="com.opensymphony.xwork2.ObjectFactory" name="intTestObjFac" class="tavant.twms.infra.IntegrationTestCaseObjectFactory" />    
+    <constant name="struts.objectFactory" value="intTestObjFac" />
+    <constant name="setup" value="true" />     
+</struts>

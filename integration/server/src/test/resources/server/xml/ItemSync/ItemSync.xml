@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SyncItemMaster>
+  <ApplicationArea>
+    <Sender>
+      <LogicalId>CCT_WINDCHILL</LogicalId>
+      <Task>TavantWMS</Task>
+      <ReferenceId>12523983#2176B99G11TST#5482002#TSA</ReferenceId>
+    </Sender>
+    <CreationDateTime>2010-07-19T16:27:25.319Z</CreationDateTime>
+    <BODId>12523983#2176B99G11TST#5482002#TSA</BODId>
+    <InterfaceNumber>USINT0805</InterfaceNumber>
+  </ApplicationArea>
+  <DataArea>
+    <ItemMaster>
+      <Header>
+        <ItemId>
+          <Id>2176B99G11TST</Id>
+        </ItemId>
+        <Type>PART</Type>
+        <Status>
+          <Code>ACTIVE</Code>
+        </Status>
+        <UOM>ea</UOM>
+        <Description>FILTER-AIR_TEST123</Description>
+        <UserArea>
+          <ManufName>Thermo King TSA</ManufName>
+          <DivisionCode>Thermo King TSA</DivisionCode>
+          <DivisionCodeDescription>Thermo King TSA</DivisionCodeDescription>
+          <ClassCode>NS</ClassCode>
+          <ProductCode>PART</ProductCode>
+          <ModelCode>PART</ModelCode>
+          <ItemNumberSegment1>2176B99G11TST</ItemNumberSegment1>
+          <SerialStatusEnabled>N</SerialStatusEnabled>
+          <ServicePart>N</ServicePart>
+        </UserArea>
+      </Header>
+    </ItemMaster>
+  </DataArea>
+</SyncItemMaster>

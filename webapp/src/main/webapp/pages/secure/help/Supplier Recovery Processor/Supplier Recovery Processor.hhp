@@ -1,0 +1,84 @@
+[OPTIONS]
+Compiled File=Supplier Recovery Processor.chm
+Title=Supplier Recovery Processor
+Contents File=Supplier Recovery Processor.hhc
+Index File=Supplier Recovery Processor.hhk
+Default topic=
+Default Window=
+Error log file=
+Display compile progress=No
+Display compile notes=No
+Full-text search=Yes
+Binary Index=Yes
+Auto Index=No
+Enhanced decompilation=No
+Binary TOC=No
+Flat=No
+
+[WINDOWS]
+
+[FILES]
+Reports\Upload_Management.htm
+Reports\Reports.htm
+Reports\index.htm
+Settings\index.htm
+Claims\Claim_Details.htm
+Parts_Recovery\Parts_Recovery.htm
+Parts_Recovery\Part_Not_In_Warehouse.htm
+Parts_Recovery\index.htm
+Part_Returns\index.htm
+Field_Modifications\index.htm
+Before_you_Begin\common_application_features.htm
+Before_you_Begin\index.htm
+Inventory\index.htm
+Items\index.htm
+Before_you_Begin\Copyright.htm
+Supplier_Recovery\Claims_Due_for_Recovery.htm
+Before_you_Begin\Introduction.htm
+Claims\Policy_Details.htm
+Supplier_Recovery\Claims_Under_Recovery.htm
+Claims\Search_Claims.htm
+Claims\index.htm
+Supplier_Recovery\index.htm
+Field_Modifications\Search_Campaigns.htm
+Inventory\Search_Inventory.htm
+Part_Returns\Search_Parts.htm
+Parts_Recovery\Awaiting_Shipment.htm
+Parts_Recovery\Awaiting_Shipment_To_Warehouse.htm
+Parts_Recovery\Search_Parts.htm
+Reports\Download_Management.htm
+Reports\Vendor_Recovery_Report.htm
+Settings\Profile.htm
+Inventory\Equipment_Details.htm
+Before_you_Begin\Before_you_Begin.htm
+Inventory\Inventory.htm
+Items\Search_Items.htm
+Contract_Admin\User_Groups.htm
+Supplier_Recovery\Supplier_Recovery.htm
+Supplier_Recovery\Search_Supplier_Recovery_Claims.htm
+Contract_Admin\Maintain_Supplier_Contracts.htm
+Supplier_Recovery\Multi_Claim_Maintenance.htm
+Contract_Admin\Manage_Business_Rules.htm
+Contract_Admin\Manage_Business_Conditions.htm
+Contract_Admin\index.htm
+Processor_Review.htm
+on_hold.htm
+transferred.htm
+Contract_Admin\Manage_Suppliers.htm
+Contract_Admin\View_Part_Source_History.htm
+Contract_Admin\View_Suppliers.htm
+eHelp.xml
+RoboHHRE.lng
+
+Supplier Recovery Processor.glo
+Supplier Recovery Processor.brs
+[ALIAS]
+#include Supplier Recovery Processor.ali
+
+[MAP]
+#include BSSCDefault.h
+
+[TEXT POPUPS]
+BSSCDefault.h
+
+

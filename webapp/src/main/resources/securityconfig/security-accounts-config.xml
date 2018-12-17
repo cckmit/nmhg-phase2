@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<functionalareas xmlns="http://www.tavant.com/twms/security/resource"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.tavant.com/twms/security/resource
+			http://www.tavant.com/twms/security/resource">
+	<functionalarea name="accounts" defaultpolicy="none">
+
+	<!-- Resources for update or Read Only -->
+	
+		<resource type="ui" value="accountsAccountsTab" operation="OR">
+			<permissions>accounts:accountsAccountsTab:update,accounts:accountsAccountsTab:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="accountsRemoteInteractionsLogs" operation="OR">
+			<permissions>accounts:accountsRemoteInteractionsLogs:update,accounts:accountsRemoteInteractionsLogs:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="accountsMonthEndScheduler" operation="OR">
+			<permissions>accounts:accountsMonthEndScheduler:update,accounts:accountsMonthEndScheduler:view
+			</permissions>
+		</resource>
+	
+	<!-- Resources for Read Only-->
+	
+		<resource type="ui" value="accountsAccountsTabReadOnlyView">
+			<permissions>accounts:accountsAccountsTab:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="accountsRemoteInteractionsLogsReadOnlyView">
+			<permissions>accounts:accountsRemoteInteractionsLogs:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="accountsMonthEndSchedulerReadOnlyView">
+			<permissions>accounts:accountsMonthEndScheduler:view
+			</permissions>
+		</resource>
+        
+	</functionalarea>
+
+</functionalareas>

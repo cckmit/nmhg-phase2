@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://www.tavant.com" xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.tavant.com">
+
+	<xs:element name="Claims" type="claims"/>
+
+	<xs:complexType name="claims">
+		<xs:sequence>
+			<xs:element maxOccurs="unbounded" name="claim" type="claim"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="claim">
+		<xs:sequence>
+			<xs:element maxOccurs="1" minOccurs="1" name="claim_type" type="xs:string"/>
+			<xs:element maxOccurs="1" minOccurs="1" name="item_reference" type="item_reference">
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="1" name="failure_date" type="xs:string">
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="1" name="repair_date" type="xs:string">
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="1" name="hours_in_service" type="xs:string">
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="1" name="service_information" type="service_information">
+			</xs:element>
+			<xs:element default="false" maxOccurs="1" minOccurs="1" name="service_manager_request" type="xs:string">
+			</xs:element>
+			<xs:element name="installation_date" type="xs:string"/>
+
+			<xs:element maxOccurs="1" minOccurs="0" name="probable_cause" type="xs:string">
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="work_performed" type="xs:string">
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="other_comments" type="xs:string">
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="condition_found" type="xs:string">
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="failures" type="xs:string">
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="service_information">
+		<xs:sequence>
+			<xs:element maxOccurs="1" minOccurs="1" name="fault_code" type="xs:string">
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="1" name="fault_found" type="xs:string">
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="1" name="caused_by" type="xs:string">
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="1" name="causal_part" type="xs:string">
+			</xs:element>
+			<xs:element maxOccurs="unbounded" minOccurs="0" name="oem_part_replaced" type="oem_part_replaced">
+			</xs:element>
+			<xs:element maxOccurs="unbounded" minOccurs="0" name="non_oem_part_replaced" type="non_oem_part_replaced">
+			</xs:element>
+			<xs:element maxOccurs="unbounded" minOccurs="0" name="labor_detail" type="labor_detail">
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="travel_detail" type="travel_detail">
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="item_freight_and_duty" type="xs:string">
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="meals_expense" type="xs:string">
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+
+	<xs:complexType name="item_reference">
+		<xs:sequence>
+			<xs:element maxOccurs="1" minOccurs="0" name="item_number" type="xs:string">
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="serial_number" type="xs:string">
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="oem_part_replaced">
+		<xs:sequence>
+			<xs:element maxOccurs="1" minOccurs="1" name="quantity" type="xs:int">
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="serial_number" type="xs:string">
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="item_number" type="xs:string">
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="non_oem_part_replaced">
+		<xs:sequence>
+			<xs:element maxOccurs="1" minOccurs="1" name="quantity" type="xs:string">
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="price" type="xs:string">
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="1" name="item_number" type="xs:string">
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="description" type="xs:string">
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="labor_detail">
+		<xs:sequence>
+			<xs:element maxOccurs="1" minOccurs="1" name="job_code" type="xs:string">
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="1" name="hours_spent" type="xs:string">
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="travel_detail">
+		<xs:sequence>
+			<xs:element maxOccurs="1" minOccurs="1" name="location" type="xs:string">
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="trips" type="xs:string">
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="hours" type="xs:string">
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="distance" type="xs:string">
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

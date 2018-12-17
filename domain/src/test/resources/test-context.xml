@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+	default-autowire="byName">
+
+    <bean id="sessionFactory" parent="domainSessionFactory"
+        class="tavant.twms.infra.EnhancedAnnotationSessionFactoryBean">
+        <property name="moduleWiseAnnotatedClasses">
+            <set merge="true">
+                <ref bean="DomainTest.annotated.classes"/>
+            </set>
+        </property>
+    </bean>
+
+	<bean name="DomainTest.annotated.classes" class="java.util.HashSet">
+		<constructor-arg>
+			<set value-type="java.lang.Class">
+				<value>tavant.twms.infra.SampleGroup</value>
+			</set>
+		</constructor-arg>
+	</bean>
+
+	<bean id="domainDataSetup" class="tavant.twms.infra.DataSetup" >
+		<property name="seedDataResources">
+			<list value-type="java.lang.String">
+		    <value>classpath:unit-test/Common.xls</value>
+		    <value>classpath:unit-test/ListOfValues.xls</value>
+		    <value>classpath:unit-test/OrgData.xls</value>
+		    <value>classpath:unit-test/Category.xls</value>
+		    <value>classpath:unit-test/CatalogInventoryData.xls</value>
+            <value>classpath:unit-test/FailureStructure.xls</value>
+		    <value>classpath:unit-test/PaymentData.xls</value>
+		    <value>classpath:unit-test/PaymentDefinitionData.xls</value>
+		    <value>classpath:unit-test/PolicyData.xls</value>
+		    <value>classpath:unit-test/ClaimData.xls</value>
+		    <value>classpath:unit-test/Rules.xls</value>
+		    <value>classpath:unit-test/PartReturnData.xls</value>
+		    <value>classpath:unit-test/Supplier.xls</value>
+		    <value>classpath:unit-test/CampaignData.xls</value>
+		    <value>classpath:unit-test/BUConfigurationParams.xls</value>
+			</list>
+		</property>
+		<property name="populateData" value="true"/>
+	</bean>
+
+	<bean id="authenticationManager"
+		class="org.acegisecurity.providers.ProviderManager">
+		<property name="providers">
+			<list>
+				<ref local="daoAuthenticationProvider" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="daoAuthenticationProvider"
+		class="org.acegisecurity.providers.dao.DaoAuthenticationProvider">
+		<property name="userDetailsService" ref="userDetailsService" />
+	</bean>
+
+	<!-- Fetches User through Org API -->
+	<bean id="userDetailsService"
+		class="tavant.twms.security.model.OrgAwareUserDetailsService" />
+
+
+	<bean id="sampleGroupRepository" class="tavant.twms.infra.SampleGroupRepositoryImpl" />
+
+
+</beans>

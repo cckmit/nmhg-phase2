@@ -1,0 +1,9 @@
+--Purpose    : Patch for adding the Flag for Manual DR column in warranty table
+--Author     : Priyanka S
+--Created On : 04-DEC-2013
+
+
+ALTER TABLE DOCUMENT ADD ("UNIT_DOCUMENT_TYPE" NUMBER(19,0))
+/
+ALTER TABLE DOCUMENT ADD (CONSTRAINT "DOCUMENT_UNIT_DOCUMENT_TYPE_FK" FOREIGN KEY ("UNIT_DOCUMENT_TYPE") REFERENCES LIST_OF_VALUES("ID"))
+/

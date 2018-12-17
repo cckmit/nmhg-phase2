@@ -1,0 +1,7 @@
+--PURPOSE    : PATCH TO DROP brand COLUMN FROM ITEM TABLE
+--AUTHOR     : PRACHER PANCHOLI
+--CREATED ON : 12-NOV-12
+
+
+alter table ITEM drop column BRAND
+/

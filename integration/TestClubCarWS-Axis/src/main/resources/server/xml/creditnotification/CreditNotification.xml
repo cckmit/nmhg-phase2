@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SyncInvoice  xmlns="http://www.tavant.com/oagis" xmlns:oa="http://www.openapplications.org/oagis/9" >
+  <ApplicationArea>
+    <Sender>
+      <LogicalId>7777-7777</LogicalId>
+      <Task>100000002</Task>
+    </Sender>
+    <CreationDateTime>2007-12-359-195452</CreationDateTime>
+  </ApplicationArea>
+  <DataArea>
+    <Invoice>
+      <Header>
+        <DocumentIds>
+          <DocumentId>
+            <Id>267088 </Id>
+          </DocumentId>
+        </DocumentIds>
+        <DocumentDateTime>2007-12-25T19:54:52-05:00</DocumentDateTime>
+        <TotalAmount>1104.00</TotalAmount>
+        <UserArea>
+          <ClaimNumber>CC-100157_4</ClaimNumber>
+        </UserArea>
+      </Header>
+      <DocumentDateTime>2007-12-26T09:26:46-05:00</DocumentDateTime>
+      <Line>
+        <TotalAmount currency="USD"/>
+        <Tax>
+          <TaxAmount>0.00</TaxAmount>
+        </Tax>
+      </Line>
+    </Invoice>
+  </DataArea>
+</SyncInvoice>

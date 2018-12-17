@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="adminfaultcode" extends="struts-twms-default">
+		<action name="list_fault_code_defs"
+			class="tavant.twms.web.admin.faultcode.ListFaultCodesAction">
+			<interceptor-ref name="adminParamsPrepare" />
+      <result name="success">pages/secure/admin/faultcode/faultCodeInboxView.jsp</result>
+		</action>
+
+		<action name="get_fault_code_body"
+			class="tavant.twms.web.admin.faultcode.ListFaultCodesAction"
+			method="tableBody">
+			<interceptor-ref name="adminParamsPrepare" />
+      <result name="success">pages/secure/home/json.jsp</result>
+			<result name="input">error.jsp</result>
+		</action>
+
+		<action name="export_fault_code_to_excel"
+			class="tavant.twms.web.admin.faultcode.ListFaultCodesAction"
+			method="downloadListingData">
+			<interceptor-ref name="adminParamsPrepare" />
+		</action>
+
+		<action name="view_fault_code_preview"
+			class="tavant.twms.web.admin.faultcode.ListFaultCodesAction" method="showFaultCode">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">pages/secure/admin/faultcode/faultCodeView.jsp</result>
+		</action>
+
+		<action name="view_fault_code_detail"
+			class="tavant.twms.web.admin.faultcode.ListFaultCodesAction" method="showFaultCode">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">pages/secure/admin/faultcode/faultCodeView.jsp</result>
+		</action>
+
+        <action name="list_model"
+		  class="tavant.twms.web.admin.model.ListModelsAction">
+		  <interceptor-ref name="adminParamsPrepareWithoutValidation"/>
+		  <result name="success">pages/secure/admin/model/modelInboxView.jsp</result>
+		</action>
+
+        <action name="get_model_body"
+			class="tavant.twms.web.admin.model.ListModelsAction"
+			method="tableBody">
+			<interceptor-ref name="adminParamsPrepare" />
+            <result name="success">pages/secure/home/json.jsp</result>
+			<result name="input">error.jsp</result>
+		</action>
+		 <action name="preview_model"
+			class="tavant.twms.web.admin.model.ListModelsAction"
+			method="preview">
+		
+            <result name="success">pages/secure/admin/model/modelPreview.jsp</result>
+			<result name="input">error.jsp</result>
+		</action>
+
+        <action name="export_model_to_excel"
+			class="tavant.twms.web.admin.model.ListModelsAction"
+			method="downloadListingData">
+			<interceptor-ref name="adminParamsPrepare" />
+		</action>
+        
+        <action name="save_part_class_and_job_codes_association"
+			class="tavant.twms.web.admin.faultcode.PartClassAndJobCodeAssociationAction"
+			method="savePartClassAndJobCodeAssociation">
+			<interceptor-ref name="adminTwmsParamsPrepareRepeatTableParams" />
+			<result name="success">pages/secure/common/successFullRefresh.jsp</result>
+			<result name="input">pages/secure/admin/faultcode/maintainPartClassAndJobCodeAssociation.jsp</result>
+		</action>
+
+        <action name="load_part_class_and_job_codes_association"
+			class="tavant.twms.web.admin.faultcode.PartClassAndJobCodeAssociationAction"
+			method="loadPartClassAndJobCodeAssociation">
+			<interceptor-ref name="adminTwmsParamsPrepareRepeatTableParams" />
+			<result name="success">pages/secure/admin/faultcode/maintainPartClassAndJobCodeAssociation.jsp</result>
+		</action>
+
+    </package>
+</struts>

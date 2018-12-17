@@ -1,0 +1,25 @@
+<!DOCTYPE validators PUBLIC "-//Apache Struts//XWork Validator 1.0.2//EN"
+       "http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+<validators>
+	
+    <field name="percentageAcceptance">
+    	<field-validator type="required" short-circuit="true">
+            <message key="label.error.percentage"/>
+        </field-validator>
+        <field-validator type="double">
+            <param name="minInclusive">0.0</param>
+            <message key="label.error.negativeAcceptancePercentage"/>
+        </field-validator>
+    </field>
+    
+    <field name="percentageAcceptanceForCp">
+    	<field-validator type="required" short-circuit="true">
+            <message key="label.error.CPpercentage"/>
+        </field-validator>
+        <field-validator type="double">
+            <param name="minInclusive">0.0</param>
+            <message key="label.error.negativeCPAcceptancePercentage"/>
+        </field-validator>
+    </field>	
+
+</validators>

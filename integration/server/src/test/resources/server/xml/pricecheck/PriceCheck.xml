@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PriceFetch xmlns="http://www.tavant.com/oagis" xmlns:oa="http://www.openapplications.org/oagis/9" lang="en" evnironment="Test" revision="1.0">
+  <ApplicationArea>
+    <Sender>
+      <LogicalId>Tavant</LogicalId>
+      <Task>985724553</Task>
+    </Sender>
+    <CreationDateTime>2004-06-30</CreationDateTime>
+  </ApplicationArea>
+  <DataArea>
+	<PriceCheckRequest>
+		<DealerNo>393520</DealerNo>
+		<WarrantyType>STANDARD</WarrantyType>
+		<CurrencyCode>USD</CurrencyCode>
+		<DateOfRepair>2004-06-26</DateOfRepair>
+		<ReplacedParts>
+			<LineItem>
+				<PartNumber>332</PartNumber>
+				<Quantity>1</Quantity>
+			</LineItem>
+			<LineItem>
+				<PartNumber> NS41118011</PartNumber>
+				<Quantity>2</Quantity>
+			</LineItem>
+		</ReplacedParts>
+	</PriceCheckRequest>
+  </DataArea>
+</PriceFetch>

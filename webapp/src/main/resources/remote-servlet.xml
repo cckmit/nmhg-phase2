@@ -1,0 +1,9 @@
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" 
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans default-autowire="byName">
+	<!-- Changes for studio, export the ModelObjectDao as a service -->
+	<bean name="/RepositoryRemote" class="org.springframework.remoting.httpinvoker.HttpInvokerServiceExporter">
+		<property name="service" ref="modelObjectDao"/>
+		<property name="serviceInterface" value="tavant.twms.rules.model.ModelObjectDao"/>
+	</bean>
+</beans>

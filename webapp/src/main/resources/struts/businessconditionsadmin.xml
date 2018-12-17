@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+    
+<struts>
+	<package name="businessconditionsadmin" extends="struts-twms-default">
+		 
+		<action name="list_expressions"
+			class="tavant.twms.web.rules.ListExpressions">
+			<interceptor-ref name="adminParamsPrepareWithoutValidation" />			
+			<result name="success">pages/secure/admin/expressionBuilder/expressionInboxView.jsp</result>
+		</action>
+		
+		<action name="get_expressions_body"
+			class="tavant.twms.web.rules.ListExpressions" method="tableBody">
+			<interceptor-ref name="adminParamsPrepareWithoutValidation" />
+			<result name="success">pages/secure/home/json.jsp</result>
+		</action> 
+		 
+		<action name="new_expression"
+		  class="tavant.twms.web.rules.ExpressionEditor" method="newExpression">
+		  <interceptor-ref name="adminParamsPrepareWithoutValidation"/>		  
+		  <result name="success">pages/secure/admin/expressionBuilder/expressionEditor.jsp</result>
+		</action>	
+		
+		<action name="new_search_expression"
+		  class="tavant.twms.web.rules.SearchExpressionEditor" method="newExpression">
+		  <interceptor-ref name="paramsPrepareWithoutValidation"/>		  
+		  <result name="success">pages/secure/admin/expressionBuilder/query/queryExpressionEditor.jsp</result>
+		</action>	
+
+		<action name="preview_view_expression"
+		  class="tavant.twms.web.rules.ExpressionEditor"
+          method="previewExpression">
+		  <interceptor-ref name="adminParamsPrepareWithoutValidation"/>		  
+		  <result name="success">pages/secure/admin/expressionBuilder/expressionEditor.jsp</result>
+		</action>
+		
+		<action name="detail_view_expression"
+		  class="tavant.twms.web.rules.ExpressionEditor"
+          method="viewExpression">
+		  <interceptor-ref name="adminParamsPrepareWithoutValidation"/>		  
+		  <result name="success">pages/secure/admin/expressionBuilder/expressionEditor.jsp</result>
+		</action>
+		
+		<action name="detail_view_search_expression"
+		  class="tavant.twms.web.rules.SearchExpressionEditor"
+          method="viewExpression">
+		  <interceptor-ref name="adminParamsPrepareWithoutValidation"/>		  
+		  <result name="success">pages/secure/admin/expressionBuilder/query/queryExpressionEditor.jsp</result>
+		</action>
+		
+
+		<action name="save_expression"
+		  class="tavant.twms.web.rules.ExpressionEditor" method="saveExpression">
+		  <interceptor-ref name="adminParamsPrepareWithoutValidation"/>
+		  <result name="input">pages/secure/admin/expressionBuilder/expressionEditor.jsp</result>
+		  <result name="success">pages/secure/common/successFullRefresh.jsp</result>
+        </action>
+        
+     	<action name="save_search_expression"
+		  class="tavant.twms.web.rules.SearchExpressionEditor" method="saveExpression">
+		  <interceptor-ref name="adminParamsPrepareWithoutValidation"/>
+		  <result name="input">pages/secure/admin/expressionBuilder/query/queryExpressionEditor.jsp</result>
+		  <result name="success">dynamicClaimSearchResult.action</result>
+		  <result name="multiClaimMaintainSearchSuccess">multiClaimMaintainSearch.action</result>
+  	      <result name="inventorysearchsuccess">dynamicInventorySearchResult.action</result>
+   		  <result name="partreturnsearchsuccess">partReturnSearch.action</result>
+   		  <result name="recoveryclaimsearchsuccess">dynamicRecoveryClaimSearchResult.action</result>
+   		  <result name="itemsearchsuccess">dynamicItemSearchResult.action</result>
+   		  <result name="multiRecClaimMaintainSearchSuccess">multiRecClaimMaintainSearch.action</result>
+   		  <result name="partInventorySearchSuccess">definedSearchPartInventory.action</result>
+   		  <result name="transferReprocessSuccess">multiTransferOrReProcess.action</result>
+
+        </action>
+        
+
+        <action name="get_all_categories_of_a_kind"
+                class="tavant.twms.web.rules.ExpressionEditor"
+                method="fetchAllCategoriesOfAKind" >
+            <interceptor-ref name="adminParamsWithoutValidation"/>
+        </action>
+              
+		<action name="delete_expression"
+		  class="tavant.twms.web.rules.ExpressionEditor"
+          method="deleteExpression">
+		  <interceptor-ref name="adminParamsPrepareWithoutValidation"/>
+		  <result name="input">pages/secure/admin/expressionBuilder/expressionEditor.jsp</result>
+		  <result name="success">pages/secure/common/successDelete.jsp</result>
+        </action>
+        
+        <action name="delete_search_expression"
+		  class="tavant.twms.web.rules.SearchExpressionEditor"
+          method="deleteExpression">
+		  <interceptor-ref name="adminParamsPrepareWithoutValidation"/>
+		  <result name="input">pages/secure/admin/expressionBuilder/query/queryExpressionEditor.jsp</result>
+		  <result name="success">pages/secure/admin/expressionBuilder/query/success.jsp</result>
+        </action>
+        
+        <action name="copy_search_expression"
+		  class="tavant.twms.web.rules.SearchExpressionEditor"
+          method="copyExpression">
+		  <interceptor-ref name="adminParamsPrepareWithoutValidation"/>
+		  <result name="success">pages/secure/admin/expressionBuilder/query/queryExpressionEditor.jsp</result>
+        </action>
+        
+        <action name="exportBusinessConditionsToExcel"
+			class="tavant.twms.web.rules.ListExpressions" method="downloadListingData">
+			<interceptor-ref name="adminParamsPrepareWithoutValidation" />
+		</action>
+    </package>
+</struts>	

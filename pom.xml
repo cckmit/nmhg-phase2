@@ -1,0 +1,999 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>tavant.twms.TSA_DEV</groupId>
+    <artifactId>server</artifactId>
+    <packaging>pom</packaging>
+    <name>server</name>
+    <version>0.5-SNAPSHOT</version>
+    <url>http://www.tavant.com</url>
+
+    <scm>
+        <connection>scm:svn:http://svn.corp.tavant.com/twms/app/server/branches/TSA_DEV/</connection>
+    </scm>
+
+    <organization>
+        <name>Tavant Technologies</name>
+        <url>http://www.tavant.com</url>
+    </organization>
+
+    <modules>
+        <module>common</module>
+        <module>common-test</module>
+        <module>seeddata</module>
+		<module>domain-core</module>
+        <module>domain</module>
+        <module>engine-core</module>
+        <module>engine</module>
+        <module>integration</module>
+        <module>webapp</module>
+        <!--<module>dist</module>-->
+        <module>functional</module>
+    </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>tavant.twms.TSA_DEV</groupId>
+                <artifactId>common</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>tavant.twms.TSA_DEV</groupId>
+                <artifactId>common-test</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>tavant.twms.TSA_DEV</groupId>
+                <artifactId>seeddata</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+			<dependency>
+                <groupId>tavant.twms.TSA_DEV</groupId>
+                <artifactId>domain-core</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>tavant.twms.TSA_DEV</groupId>
+                <artifactId>domain</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-webmvc</artifactId>
+                <version>${spring-version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>com.lowagie</groupId>
+                        <artifactId>itext</artifactId>
+                    </exclusion>
+                </exclusions>
+
+            </dependency>
+
+            <dependency>
+                <groupId>itext</groupId>
+                <artifactId>itext</artifactId>
+                <version>2.1.0</version>
+            </dependency>
+
+            <dependency>
+                <groupId>tavant.twms.TSA_DEV</groupId>
+                <artifactId>engine-core</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>tavant.twms.TSA_DEV</groupId>
+                <artifactId>engine</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>tavant.twms.TSA_DEV</groupId>
+                <artifactId>common</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>tavant.twms.TSA_DEV</groupId>
+                <artifactId>integration-layer</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>tavant.twms.TSA_DEV</groupId>
+                <artifactId>annotations</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>log4j</groupId>
+                <artifactId>log4j</artifactId>
+                <version>1.2.12</version>
+            </dependency>
+
+            <dependency>
+                <groupId>commons-beanutils</groupId>
+                <artifactId>commons-beanutils</artifactId>
+                <version>1.7.0</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-core</artifactId>
+                <version>3.5.6-Final</version>
+            </dependency>
+
+            <dependency>
+	    	<groupId>asm</groupId>
+	    	<artifactId>asm</artifactId>
+	    	<version>3.3</version>
+            </dependency>
+
+			<dependency>
+				<groupId>cglib</groupId>
+				<artifactId>cglib</artifactId>
+				<version>2.2</version>
+			</dependency>
+
+            <dependency>
+                <groupId>org.aspectj</groupId>
+                <artifactId>aspectjrt</artifactId>
+                <version>1.7.4</version>
+            </dependency>
+            <dependency>
+                <groupId>org.aspectj</groupId>
+                <artifactId>aspectjweaver</artifactId>
+                <version>1.7.4</version>
+            </dependency>
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-annotations</artifactId>
+                <version>3.5.6-Final</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-commons-annotations</artifactId>
+                <version>3.2.0.Final</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-validator</artifactId>
+                <version>4.0.2.ga</version>
+            </dependency>
+
+            <dependency>
+	    	<groupId>javax.validation</groupId>
+	    	<artifactId>validation-api</artifactId>
+	    	<version>1.0.0.ga</version>
+	    </dependency>
+
+            <dependency>
+	    	<groupId>com.sun.xml.bind</groupId>
+	    	<artifactId>jaxb-impl</artifactId>
+	    	<version>2.2</version>
+            </dependency>
+
+
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-log4j12</artifactId>
+                <version>1.5.0</version>
+            </dependency>
+
+            <dependency>
+                <groupId>net.sf.ehcache</groupId>
+                <artifactId>ehcache-core</artifactId>
+                <version>2.1.0</version>
+            </dependency>
+
+            <dependency>
+                <groupId>net.sf.ehcache</groupId>
+                <artifactId>ehcache-jgroupsreplication</artifactId>
+                <version>1.3</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>net.sf.ehcache</groupId>
+                        <artifactId>ehcache-terracotta</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>net.sf.ehcache</groupId>
+                        <artifactId>ehcache</artifactId>
+                    </exclusion>
+                    <exclusion>
+						<groupId>jgroups</groupId>
+						<artifactId>jgroups</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jgroups</groupId>
+                <artifactId>jgroups</artifactId>
+                <version>2.12.1.Final</version>
+	    </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-orm</artifactId>
+                <version>${spring-version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-beans</artifactId>
+                <version>${spring-version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context</artifactId>
+                <version>${spring-version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-aop</artifactId>
+                <version>${spring-version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context-support</artifactId>
+                <version>${spring-version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-jdbc</artifactId>
+                <version>${spring-version}</version>
+            </dependency>
+
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-test</artifactId>
+                <version>${spring-version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.acegisecurity</groupId>
+                <artifactId>acegi-security-tiger</artifactId>
+                <version>1.0.7</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>spring-aop</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>spring-support</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+            <dependency>
+                <groupId>org.acegisecurity</groupId>
+                <artifactId>acegi-security</artifactId>
+                <version>1.0.7</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>spring-remoting</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>spring-jdbc</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>spring-support</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+            <dependency>
+                <groupId>com.thoughtworks.xstream</groupId>
+                <artifactId>xstream</artifactId>
+                <version>1.2.1</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.domainlanguage</groupId>
+                <artifactId>timeandmoney</artifactId>
+                <version>0.5.1</version>
+            </dependency>
+
+            <dependency>
+                <groupId>joda-time</groupId>
+                <artifactId>joda-time</artifactId>
+                <version>2.2</version>
+            </dependency>
+
+            <dependency>
+                <groupId>bsh</groupId>
+                <artifactId>bsh</artifactId>
+                <version>1.3.0</version>
+            </dependency>
+
+            <dependency>
+                <groupId>ognl</groupId>
+                <artifactId>ognl</artifactId>
+                <version>3.0.5</version>
+            </dependency>
+
+            <dependency>
+                <groupId>jbpm</groupId>
+                <artifactId>jbpm-identity</artifactId>
+                <version>${jbpmVersion}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>jbpm</groupId>
+                <artifactId>jbpm</artifactId>
+                <version>${jbpmVersion}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>jbpm</groupId>
+                <artifactId>springmodules-0.6-jbpm</artifactId>
+                <version>3.1</version>
+            </dependency>
+
+            <dependency>
+                <groupId>javax.mail</groupId>
+                <artifactId>mail</artifactId>
+                <version>1.4</version>
+            </dependency>
+
+            <dependency>
+                <groupId>commons-httpclient</groupId>
+                <artifactId>commons-httpclient</artifactId>
+                <version>3.0.1</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.struts.xwork</groupId>
+                <artifactId>xwork-core</artifactId>
+                <version>${strutsVersion}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.struts</groupId>
+                <artifactId>struts2-core</artifactId>
+                <version>${strutsVersion}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.apache.struts.xwork</groupId>
+                        <artifactId>xwork-core</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.struts</groupId>
+                <artifactId>struts2-spring-plugin</artifactId>
+                <version>${strutsVersion}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.struts</groupId>
+                <artifactId>struts2-jasperreports-plugin</artifactId>
+                <version>${strutsVersion}</version>
+            </dependency>
+
+			<dependency>
+				<groupId>org.apache.struts</groupId>
+				<artifactId>struts2-dojo-plugin</artifactId>
+				<version>${strutsVersion}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.apache.struts</groupId>
+				<artifactId>struts2-dwr-plugin</artifactId>
+				<version>${strutsVersion}</version>
+			</dependency>
+
+            <dependency>
+                <groupId>org.apache.struts</groupId>
+                <artifactId>struts2-pell-multipart-plugin</artifactId>
+                <version>${strutsVersion}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>opensymphony</groupId>
+                <artifactId>pell-multipart</artifactId>
+                <version>2.1.5</version>
+            </dependency>
+
+            <!--<dependency>
+               <groupId>commons-digester</groupId>
+               <artifactId>commons-digester</artifactId>
+               <version>1.7</version>
+           </dependency>
+
+           <dependency>
+               <groupId>velocity</groupId>
+               <artifactId>velocity-dep</artifactId>
+               <version>1.4</version>
+           </dependency> -->
+
+            <!--  DOM4J xpath lookup doesn't work without this -->
+            <!--<dependency>
+               <groupId>jaxen</groupId>
+               <artifactId>jaxen</artifactId>
+               <version>1.1-beta-9</version>
+           </dependency> -->
+
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>servlet-api</artifactId>
+                <version>2.4</version>
+            </dependency>
+
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>jsp-api</artifactId>
+                <version>2.0</version>
+            </dependency>
+
+            <dependency>
+                <groupId>net.sf.dozer</groupId>
+                <artifactId>dozer</artifactId>
+                <version>${dozerVersion}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>uk.ltd.getahead</groupId>
+                <artifactId>dwr</artifactId>
+                <version>1.1-beta-3</version>
+            </dependency>
+
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>5.0.0-beta</version>
+            </dependency>
+
+            <dependency>
+                <groupId>net.sf.barbecue</groupId>
+                <artifactId>barbecue</artifactId>
+                <version>1.5-alpha3</version>
+            </dependency>
+
+            <dependency>
+                <groupId>net.sf.opencsv</groupId>
+                <artifactId>opencsv</artifactId>
+                <version>1.8</version>
+            </dependency>
+
+            <dependency>
+                <groupId>jasperreports</groupId>
+                <artifactId>jasperreports</artifactId>
+                <version>1.3.0</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>eclipse</groupId>
+                        <artifactId>jdtcore</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+            <dependency>
+                <groupId>net.sourceforge.jexcelapi</groupId>
+                <artifactId>jxl</artifactId>
+                <version>2.6</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.keypoint</groupId>
+                <artifactId>png-encoder</artifactId>
+                <version>1.5</version>
+            </dependency>
+
+            <!--<dependency>
+                <groupId>xmlbeans</groupId>
+                <artifactId>xbean</artifactId>
+                <version>2.2.0</version>
+            </dependency>
+
+            <dependency>
+                <groupId>xmlbeans</groupId>
+                <artifactId>xmlbeans-jsr173-api</artifactId>
+                <version>2.2</version>
+            </dependency> -->
+			<dependency>
+			<groupId>org.apache.xmlbeans</groupId>
+			<artifactId>xmlbeans</artifactId>
+			<version>2.6.0</version>
+		</dependency>
+
+            <dependency>
+                <groupId>commons-collections</groupId>
+                <artifactId>commons-collections</artifactId>
+                <version>3.2</version>
+            </dependency>
+
+            <dependency>
+                <groupId>commons-fileupload</groupId>
+                <artifactId>commons-fileupload</artifactId>
+                <version>1.1-patched</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.poi</groupId>
+                <artifactId>poi</artifactId>
+                <version>3.8</version>
+            </dependency>
+
+            <dependency>
+                <groupId>net.sf.jxls</groupId>
+                <artifactId>jxls-core</artifactId>
+                <version>0.9.8</version>
+            </dependency>
+
+            <dependency>
+                <groupId>net.sf.jxls</groupId>
+                <artifactId>jxls-reader</artifactId>
+                <version>0.9.8</version>
+            </dependency>
+
+
+            <dependency>
+                <groupId>commons-jexl</groupId>
+                <artifactId>commons-jexl</artifactId>
+                <version>1.0</version>
+            </dependency>
+
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>3.8.1</version>
+                <scope>test</scope>
+            </dependency>
+
+            <!--dependency>
+                <groupId>org.dbunit</groupId>
+                <artifactId>dbunit</artifactId>
+                <version>2.4.7</version>
+            </dependency-->
+
+            <dependency>
+                <groupId>jmock</groupId>
+                <artifactId>jmock-cglib</artifactId>
+                <version>1.1.0.RC1</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>hsqldb</groupId>
+                <artifactId>hsqldb</artifactId>
+                <version>1.8.0.4</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>xmlunit</groupId>
+                <artifactId>xmlunit</artifactId>
+                <version>1.0</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>ant</groupId>
+                <artifactId>ant</artifactId>
+                <version>1.6.5</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.12</version>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.dbunit</groupId>
+            <artifactId>dbunit</artifactId>
+			<version>2.4.7</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>jmock</groupId>
+            <artifactId>jmock-cglib</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>hsqldb</groupId>
+            <artifactId>hsqldb</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+	      <groupId>org.apache.poi</groupId>
+	      <artifactId>poi</artifactId>
+	      <version>3.8</version>
+	    </dependency>
+
+        <dependency>
+            <groupId>xmlunit</groupId>
+            <artifactId>xmlunit</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.6</source>
+                    <target>1.6</target>
+                </configuration>
+            </plugin>
+            <plugin>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>2.5</version>
+             </plugin>
+            <plugin>
+                <groupId>org.zeroturnaround</groupId>
+                <artifactId>jrebel-maven-plugin</artifactId>
+                <version>1.1.1</version>
+                <executions>
+                    <execution>
+                        <id>generate-rebel-xml</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!--plugin>
+           <groupId>org.codehaus.mojo</groupId>
+           <artifactId>cobertura-maven-plugin</artifactId>
+           <version>2.0</version>
+           <executions>
+             <execution>
+               <id>clean</id>
+               <goals>
+                 <goal>clean</goal>
+               </goals>
+             </execution>
+           </executions>
+                   </plugin-->
+
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-pmd-plugin</artifactId>
+                <version>2.2</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>tavant.twms.TSA_DEV</groupId>
+                        <artifactId>build-tools</artifactId>
+                        <version>${project.version}</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>2.1</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>tavant.twms.TSA_DEV</groupId>
+                        <artifactId>build-tools</artifactId>
+                        <version>${project.version}</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+		</plugins>
+    </build>
+
+    <reporting>
+        <plugins>
+            <!--<plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-surefire-report-plugin</artifactId>
+              <configuration>
+                <showSuccess>false</showSuccess>
+              </configuration>
+            </plugin>-->
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jxr-plugin</artifactId>
+                <configuration>
+                    <aggregate>false</aggregate>
+                </configuration>
+            </plugin>
+
+            <!--plugin>
+                   <groupId>org.codehaus.mojo</groupId>
+                   <artifactId>cobertura-maven-plugin</artifactId>
+                   <version>2.0</version>
+                   </plugin-->
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-pmd-plugin</artifactId>
+                <configuration>
+                    <targetJdk>1.5</targetJdk>
+                    <rulesets>
+                        <ruleset>pmd/twms_rules.xml</ruleset>
+                    </rulesets>
+                    <excludes>
+                        <exclude>org/json/**</exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <configuration>
+                    <configLocation>checkstyle/twms_checks.xml</configLocation>
+                </configuration>
+            </plugin>
+
+
+            <!--plugin>
+           <groupId>org.codehaus.mojo</groupId>
+           <artifactId>findbugs-maven-plugin</artifactId>
+           <version>1.0</version>
+           <configuration>
+             <threshold>Normal</threshold>
+           </configuration>
+                   </plugin-->
+
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>javancss-maven-plugin</artifactId>
+                <version>2.0-beta-2</version>
+            </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>jdepend-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </reporting>
+
+    <profiles>
+        <profile>
+            <id>xradar</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-antrun-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <phase>site-deploy</phase>
+                                <configuration>
+                                    <tasks>
+                                        <ant antfile="build.xml" inheritRefs="true" target="run.xradar"/>
+                                    </tasks>
+                                </configuration>
+                                <goals>
+                                    <goal>run</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <dependencies>
+                            <dependency>
+                                <groupId>ant</groupId>
+                                <artifactId>ant-apache-oro</artifactId>
+                                <version>1.6.5</version>
+                            </dependency>
+                        </dependencies>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <profile>
+            <id>functest</id>
+            <modules>
+                <module>process</module>
+                <module>functional</module>
+            </modules>
+        </profile>
+
+        <profile>
+            <id>ci</id>
+            <modules>
+                <module>common</module>
+                <module>common-test</module>
+                <module>seeddata</module>
+                <module>domain-core</module>
+                <module>domain</module>
+                <module>engine-core</module>
+                <module>engine</module>
+                <module>integration</module>
+                <module>annotations</module>
+                <module>webapp</module>
+            </modules>
+            <properties>
+                <maven.test.skip>true</maven.test.skip>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>dailyqabuild</id>
+            <modules>
+                <module>common</module>
+                <module>common-test</module>
+                <module>seeddata</module>
+				<module>domain-core</module>
+                <module>domain</module>
+                <module>engine-core</module>
+                <module>engine</module>
+                <module>integration</module>
+                <module>annotations</module>
+                <module>webapp</module>
+                <!--<module>functional</module>-->
+            </modules>
+            <properties>
+                <maven.test.skip>true</maven.test.skip>
+            </properties>
+		</profile>
+
+        <profile>
+            <id>qabuildkeepdata</id>
+            <modules>
+                <module>common</module>
+				<module>domain-core</module>
+                <module>domain</module>
+                <module>engine</module>
+                <module>webapp</module>
+                <module>package</module>
+            </modules>
+        </profile>
+
+        <profile>
+            <id>commitChecks</id>
+            <build>
+                <defaultGoal>deploy</defaultGoal>
+            </build>
+            <modules>
+                <module>common</module>
+				<module>domain-core</module>
+                <module>domain</module>
+                <module>engine</module>
+                <module>integration</module>
+                <module>process</module>
+                <module>webapp</module>
+            </modules>
+        </profile>
+
+        <profile>
+            <id>quickDeploy</id>
+            <build>
+                <defaultGoal>deploy</defaultGoal>
+            </build>
+            <modules>
+                <module>common</module>
+				<module>domain-core</module>
+                <module>domain</module>
+                <module>engine</module>
+                <module>process</module>
+            </modules>
+            <properties>
+                <maven.test.skip>true</maven.test.skip>
+            </properties>
+        </profile>
+    </profiles>
+
+
+    <distributionManagement>
+        <repository>
+            <id>snapshots</id>
+            <url>http://bglcsr-infra3.in.corp.tavant.com:8081/nexus/content/repositories/snapshots</url>
+        </repository>
+    </distributionManagement>
+
+    <issueManagement>
+        <system>Bugzilla</system>
+        <url/>
+    </issueManagement>
+
+    <ciManagement>
+        <system>continuum</system>
+        <url>http://ccbuild:9010/continuum</url>
+        <notifiers>
+            <notifier>
+                <type>mail</type>
+                <sendOnError>true</sendOnError>
+                <sendOnFailure>true</sendOnFailure>
+                <sendOnSuccess>true</sendOnSuccess>
+                <sendOnWarning>true</sendOnWarning>
+                <configuration>
+                    <address>harikrishna.yd@tavant.com</address>
+                </configuration>
+            </notifier>
+        </notifiers>
+    </ciManagement>
+
+    <developers>
+
+        <developer>
+            <id>harikrishna.yd</id>
+            <name>Hari Krishna</name>
+            <email>harikrishna.yd@tavant.com</email>
+        </developer>
+
+        <developer>
+            <id>harikiran.reddy</id>
+            <name>Hari Kiran</name>
+            <email>harikiran.reddy@tavant.com</email>
+        </developer>
+
+        <developer>
+            <id>pradyot.rout</id>
+            <name>Pradyot Kumar Rout</name>
+            <email>pradyot.rout@tavant.com</email>
+        </developer>
+
+        <developer>
+            <id>prashant.srivastava</id>
+            <name>Prashant Srivastava</name>
+            <email>prashant.srivastava@tavant.com</email>
+        </developer>
+
+        <developer>
+            <id>ramalakshmi.p</id>
+            <name>Ramalakshmi</name>
+            <email>ramalakshmi.p@tavant.com</email>
+        </developer>
+
+        <developer>
+            <id>smita.kadle</id>
+            <name>Smita Kadle</name>
+            <email>smita.kadle@tavant.com</email>
+        </developer>
+
+        <developer>
+            <id>rashmi.malik</id>
+            <name>Rashmi Malik</name>
+            <email>rashmi.malik@tavant.com</email>
+        </developer>
+
+    </developers>
+
+    <properties>
+        <spring-version>3.1.1.RELEASE</spring-version>
+        <strutsVersion>2.3.4</strutsVersion>
+        <jbpmVersion>3.1.2</jbpmVersion>
+        <dozerVersion>4.2.1</dozerVersion>
+        <updatePolicy>interval:5</updatePolicy>
+        <TWMS_HOME>${basedir}/etc</TWMS_HOME>
+        <TWMS_ENV_MODE>dev</TWMS_ENV_MODE>
+        <TWMS_DB>oracle</TWMS_DB>
+    </properties>
+</project>

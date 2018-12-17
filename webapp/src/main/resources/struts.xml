@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+  <include file="config-browser.xml"/>
+  <include file="struts/twms-default.xml"/>
+
+  <package name="main" extends="struts-twms-default">
+
+    <action name="home"
+      class="tavant.twms.web.actions.HomeAction">
+      <result name="success">pages/secure/home/home.jsp</result>
+      <result name="input" type="chain">login.action</result>
+    </action>
+    
+    <action name="getAccessToken"
+      class="tavant.twms.web.actions.HomeAction" method="getAccessToken">
+    </action>
+    
+    <action name="goToFleet"
+      class="tavant.twms.web.actions.HomeAction" method="goToFleet">
+        <result name="success">pages/secure/home/fleetHome.jsp</result>
+    </action>
+    
+    <action name="login"
+      class="tavant.twms.web.actions.CheckBannerAction">
+      <interceptor-ref name="login-stack" />
+      <result name="success">login.jsp</result>      
+    </action>
+
+    <action name="bu"
+      class="tavant.twms.web.actions.HomeAction"
+      method="updateSelectedBusinessUnit">
+      <result name="success" type="chain">home</result>
+    </action>
+
+    <action name="org"
+      class="tavant.twms.web.actions.HomeAction"
+      method="updateSelectedOrganization">
+      <result name="success">pages/secure/home/json.jsp</result>
+    </action>
+
+    <action name="logout" class="tavant.twms.web.actions.HomeAction" method="logout">
+      <result name="success">login.jsp</result>      
+    </action>
+    
+    <action name="loginAfterTimeout" class="tavant.twms.web.actions.HomeAction" method="loginAfterTimeout">
+        <result name="success">redirectpartnerpavilion.jsp</result>
+    </action>
+
+    <action name="reassign"
+      class="tavant.twms.web.actions.ClaimReassignmentAction"
+      method="reassignment">
+      <result name="success">pages/secure/common/successWithWarning.jsp</result>
+    </action>
+
+	<action name="initRecovery"
+      class="tavant.twms.web.actions.RecoveryClaimInitiation"
+      method="run">
+      <result name="success">pages/secure/common/successWithWarning.jsp</result>
+    </action>
+
+	<action name="sendToSupplier"
+      class="tavant.twms.web.actions.SendRecoveryClaimToSupplier"
+      method="run">
+      <result name="success">pages/secure/common/successWithWarning.jsp</result>
+    </action>
+
+    <action name="ping" class="tavant.twms.web.actions.HomeAction" method="ping"/>
+
+    <action name="registrationTransferFolders"
+      class="tavant.twms.web.actions.HomeAction"
+      method="refreshWarrantyRegistrationTransferFolders">
+      <result name="success">pages/secure/home/json.jsp</result>
+    </action>
+
+    <action name="claimFolders"
+      class="tavant.twms.web.actions.HomeAction"
+      method="refreshClaimFolders">
+      <result name="success">pages/secure/home/json.jsp</result>
+    </action>
+ 
+    <action name="partsReturnFolders"
+      class="tavant.twms.web.actions.HomeAction"
+      method="refreshPartsReturnFolders">
+      <result name="success">pages/secure/home/json.jsp</result>
+    </action>
+    
+    <action name="supplierRecoveryFolders"
+      class="tavant.twms.web.actions.HomeAction"
+      method="refreshSupplierRecoveryFolders">
+      <result name="success">pages/secure/home/json.jsp</result>
+    </action>
+    
+     <action name="supplierRecoveryPartReturnFolders"
+          class="tavant.twms.web.actions.HomeAction"
+          method="refreshSupplierRecoveryPartReturnFolders">
+          <result name="success">pages/secure/home/json.jsp</result>
+    </action>
+
+    <action name="claimSearchFolders"
+      class="tavant.twms.web.actions.HomeAction"
+      method="refreshClaimSearchFolders">
+      <result name="success">pages/secure/home/claimsearchfolders.jsp</result>
+    </action>
+    
+    <action name="inventorySearchFolders"
+      class="tavant.twms.web.actions.HomeAction"
+      method="refreshInventorySearchFolders">
+      <result name="success">pages/secure/home/inventorysearchfolders.jsp</result>
+    </action>
+    
+    <action name="recoveryClaimSearchFolders"
+      class="tavant.twms.web.actions.HomeAction"
+      method="refreshRecoveryClaimSearchFolders">
+      <result name="success">pages/secure/home/recoveryclaimsearchfolders.jsp</result>
+    </action>
+    
+    <action name="partReturnSearchFolders"
+      class="tavant.twms.web.actions.HomeAction"
+      method="refreshPartReturnSearchFolders">
+      <result name="success">pages/secure/home/partreturnsearchfolders.jsp</result>
+    </action>
+    
+    <action name="partRecoverySearchFolders"
+      class="tavant.twms.web.actions.HomeAction"
+      method="refreshPartRecoverySearchFolders">
+      <result name="success">pages/secure/home/partrecoverysearchfolders.jsp</result>
+    </action>
+    
+    <action name="itemSearchFolders"
+      class="tavant.twms.web.actions.HomeAction"
+      method="refreshItemSearchFolders">
+      <result name="success">pages/secure/home/itemSearchFolders.jsp</result>
+    </action>
+    
+    <action name="fieldModSearchFolders"
+      class="tavant.twms.web.actions.HomeAction"
+      method="refreshFieldModSearchFolders">
+      <result name="success">pages/secure/home/fieldModSearchFolders.jsp</result>
+    </action>
+    
+   <action name="pendingCampaignsFolder"
+      class="tavant.twms.web.actions.HomeAction"
+      method="refreshPendingCampaignsCount">
+      <result name="success">pages/secure/home/json.jsp</result>
+    </action>
+    
+    <action name="updatingCampaignsFolder"
+      class="tavant.twms.web.actions.HomeAction"
+      method="refreshUpdatingCampaignsCount">
+      <result name="success">pages/secure/home/json.jsp</result>
+    </action>
+    
+    <action name="deniedCampaignsFolder"
+      class="tavant.twms.web.actions.HomeAction"
+      method="refreshDeniedCampaignsCount">
+      <result name="success">pages/secure/home/json.jsp</result>
+    </action>
+    
+     <action name="userStockCount"
+      class="tavant.twms.web.actions.HomeAction"
+      method="refreshUserStockCount">
+      <result name="success">pages/secure/home/json.jsp</result>
+    </action>
+    
+     <action name="userVintageStockCount"
+      class="tavant.twms.web.actions.HomeAction"
+      method="refreshUserVintageStockCount">
+      <result name="success">pages/secure/home/json.jsp</result>
+    </action>
+    
+    <action name="recoveryPendingClaimsCount"
+      class="tavant.twms.web.actions.HomeAction"
+      method="refreshRecoveryPendingClaimsCount">
+      <result name="success">pages/secure/home/json.jsp</result>
+    </action>
+    
+    <action name="pendingReviewCampaignsFolder"
+      class="tavant.twms.web.actions.HomeAction"
+      method="refreshPendingReviewCampaignsCount">
+      <result name="success">pages/secure/home/json.jsp</result>
+    </action>
+        
+    <action name="requestForExtensionFolder"
+      class="tavant.twms.web.actions.HomeAction"
+      method="refreshRequestForExtensionCount">
+      <result name="success">pages/secure/home/json.jsp</result>
+    </action>    
+      
+    <action name="refreshExtensionRequestsCount"   class="tavant.twms.web.actions.HomeAction"
+      method="refreshExtensionRequestsCount">
+      <result name="success">pages/secure/home/json.jsp</result>
+    </action>   
+   
+    <action name="inboxViewAction"
+      class="tavant.twms.web.actions.InboxViewAction">
+      <result name="success">pages/secure/view/createView.jsp</result>
+      <result name="input">pages/secure/view/createView.jsp</result>
+    </action>
+    
+    <action name="inboxViewSubmitAction"
+      class="tavant.twms.web.actions.InboxViewAction" method="submit">
+      <result name="success">pages/secure/view/success.jsp</result>
+      <result name="input">pages/secure/view/createView.jsp</result>
+    </action>   
+    
+     <action name="delete_view"
+      class="tavant.twms.web.actions.InboxViewAction" method="deleteView">
+      <result name="success">pages/secure/view/success.jsp</result>
+      <result name="input">pages/secure/view/createView.jsp</result>
+    </action>   
+    
+    
+    <action name="inboxViewListAction"
+      class="tavant.twms.web.actions.InboxViewAction" method="findAllViews">
+      <result name="success">pages/secure/view/viewList.jsp</result>
+    </action>
+    
+
+
+  </package>
+  <!-- added for task transition utility-->
+  <package name="test" extends="struts-twms-default">
+
+    <action name="task_transition"
+        class="tavant.twms.external.TaskTransitionAction"
+        method="execute">
+        <result name="success">pages/taskTransition.jsp</result>
+      </action>
+      <action name="task_transition_submit"
+        class="tavant.twms.external.TaskTransitionAction"
+        method="submit">
+        <result name="success">pages/taskTransition.jsp</result>
+      </action>
+      <action name="workflow_debug" class="tavant.twms.external.WorkflowDebugAction">
+        <result name="success">pages/workflowDebug.jsp</result>
+      </action>
+    <action name="logical_shipment" class="tavant.twms.external.LogicalShipmentAction">
+      <result name="success">pages/secure/claims/part_logical_shipment.jsp</result>
+    </action>
+    <action name="logical_shipment_submit" class="tavant.twms.external.LogicalShipmentAction" method="shipPart">
+      <result name="success">pages/secure/claims/part_logical_shipment.jsp</result>
+    </action>
+    <action name="logical_dealer_shipment_submit" class="tavant.twms.external.LogicalShipmentAction" method="shipDealerPart">
+      <result name="success">pages/secure/claims/part_logical_shipment.jsp</result>
+    </action>
+    <action name="groovyScript" class="tavant.twms.external.GroovyScriptAction">
+      <result name="success">pages/groovy_script.jsp</result>
+      <result name="error">pages/groovy_script.jsp</result>
+    </action>
+     <action name="reassign"
+      class="tavant.twms.web.actions.ClaimReassignmentAction"
+      method="reassignment">
+      <result name="success">pages/secure/common/successWithWarning.jsp</result>
+    </action>
+      <action name="reassignSMR"
+      class="tavant.twms.web.actions.SMRClaimReassignmentAction"
+      method="reassignment">
+      <result name="success">pages/secure/common/successWithWarning.jsp</result>
+    </action>
+      <action name="listAdvisors"
+      class="tavant.twms.web.actions.AdvisorAssignmentListingAction"
+      method="listingOfAdvisors">
+      <result name="success">pages/secure/common/advisorListing.jsp</result>
+    </action>
+    <action name="clearCache" class="tavant.twms.web.util.ClearHibernateCacheAction" method="clearCache"/>
+	<action name="managesso" class="tavant.twms.web.actions.ManageSSO"
+		method="createOrUpdateUser">
+		<result name="input">login.jsp</result>
+		<result name="success" type="redirect">${actionUrl}</result>
+		<result name="fleetSuccess" type="redirect">
+			<param name="location">
+				/fleetredirect.jsp
+			</param>
+		</result>
+	</action>
+    
+  </package>
+
+  <include file="struts/claims.xml" />
+  <include file="struts/partreturn.xml" />
+  <include file="struts/supplyrecovery.xml" />
+  <include file="struts/policyadmin.xml" />
+  <include file="struts/paymentadmin.xml" />
+  <include file="struts/partsreturnadmin.xml" />
+  <include file="struts/contractadmin.xml" />
+  <include file="struts/jobcodeadmin.xml" />  
+  <include file="struts/groupsadmin.xml" />
+  <include file="struts/dealergroupsadmin.xml" />
+  <include file="struts/usergroupsadmin.xml" />
+  <include file="struts/processoravailabilityadmin.xml" />
+  <include file="struts/search.xml" />
+  <include file="struts/preDefinedSearches.xml" />
+  <include file="struts/warrantyregistration.xml" />
+  <include file="struts/managecustomer.xml" />
+  <include file="struts/inventory.xml" />
+  <include file="struts/reports.xml" />
+  <include file="struts/external.xml" />
+  <include file="struts/ruleadmin.xml" />
+  <include file="struts/businessconditionsadmin.xml" />
+  <include file="struts/documentOperations.xml" />
+  <include file="struts/common.xml" />
+  <include file="struts/managedealeruser.xml" />
+  <include file="struts/campaignadmin.xml" />
+  <include file="struts/adminwarrantyreg.xml" />
+  <include file="struts/adminwarehouses.xml" />
+  <include file="struts/adminlovs.xml" />
+  <include file="struts/campaigns.xml" />
+  <include file="struts/admindatamanagement.xml"/>
+  <include file="struts/labels.xml"/>
+  <include file="struts/internationalisation.xml"/>
+  <include file="struts/adminfaultcode.xml"/>
+  <include file="struts/manageconsumercomplaints.xml"/>
+  <include file="struts/managefailuretypes.xml"/>
+  <include file="struts/uploadhistory.xml"/>
+  <include file="struts/generatedActionMappings.xml"/>
+  <include file="struts/managefleetwarrantycoverage.xml"/>
+  <include file="struts/partyadmin.xml"/>
+  <include file="struts/adminAttributes.xml" />
+  <include file="struts/managebuadmin.xml"/>
+  <include file="struts/dealertodealertransfer.xml" />
+  <include file="struts/print.xml" />
+  <include file="struts/uploadsDownloads.xml" />
+  <include file="struts/print.xml" />
+  <include file="struts/rolegroupsadmin.xml"/>
+  <include file="struts/warrantyProcess.xml"/>
+  <include file="struts/adminLabels.xml"/>
+  <include file="struts/manageLaborType.xml"/>
+  <include file="struts/customReports.xml"/>
+  <include file="struts/uom.xml"/>
+  <include file="struts/miscellaneousParts.xml"/>
+  <include file="struts/admincostcategory.xml"/>
+  <include file="struts/manageAdditionalLabourEligibility.xml"/>
+  <include file="struts/manageMinimumLaborRoundUp.xml"/>
+  <include file="struts/loaScheme.xml"/>
+  <include file="struts/foc.xml"/>
+  <include file="struts/dealerSummary.xml"/>
+  <include file="struts/registerMajorComponents.xml"/>
+  <include file="struts/alarmCodes.xml"/>
+  <include file="struts/relateCampaign.xml"/>
+  <include file="struts/failureReports.xml"/>
+  <include file="struts/manageInclusiveJobCodes.xml"/>
+  <include file="struts/manageInternalUser.xml"/>
+  <include file="struts/adminshippers.xml" />
+    <include file="struts/roles.xml" />
+     <include file="struts/manageStateMandates.xml" />
+    <include file="struts/supplierpartreturn.xml" />
+</struts>

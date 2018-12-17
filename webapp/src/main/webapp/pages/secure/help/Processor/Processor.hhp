@@ -1,0 +1,110 @@
+[OPTIONS]
+Compiled File=Processor.chm
+Title=Processor
+Contents File=Processor.hhc
+Index File=Processor.hhk
+Default topic=
+Default Window=
+Error log file=
+Display compile progress=No
+Display compile notes=No
+Full-text search=Yes
+Binary Index=Yes
+Auto Index=No
+Enhanced decompilation=No
+Binary TOC=No
+Flat=No
+
+[WINDOWS]
+
+[FILES]
+Claims\Claim_Folders.htm
+Claims\On_Hold.htm
+Claims\Processor_Review.htm
+Claims\Replies.htm
+Inventory\Inventory.htm
+Claims\Claim_Submission.htm
+Claims\Appealed.htm
+Claims\Requested_for_Information.htm
+Claims\Transferred.htm
+Inventory\Search_Inventory.htm
+Claims\index.htm
+Before_you_Begin\index.htm
+Claims\Policy_Details.htm
+Before_you_Begin\common_application_features.htm
+Reports\Vendor_Recovery_Report.htm
+Reports\Upload_Management.htm
+Reports\Download_Management.htm
+Inventory\index.htm
+Part_Returns\index.htm
+Settings\index.htm
+Reports\index.htm
+Inventory\Equipment_Transfer_Report.htm
+Contract_Admin\Business_Conditions.htm
+Contract_Admin\User_Groups.htm
+Parts_Recovery\index.htm
+Items\index.htm
+Contract_Admin\index.htm
+Field_Modifications\index.htm
+Supplier_Recovery\Multi_Claim_Maintenance.htm
+Supplier_Recovery\Claims_Under_Recovery.htm
+Before_you_Begin\Before_you_Begin.htm
+Supplier_Recovery\Claims_Due_for_Recovery.htm
+Supplier_Recovery\index.htm
+Supplier_Recovery\Pending_Recovery_Initiation.htm
+Before_you_Begin\Introduction.htm
+Before_you_Begin\Copyright.htm
+Inventory\Extended_Warranty_Purchase.htm
+Inventory\Dealer_to_Dealer_Transfer.htm
+Inventory\Equipment_Details.htm
+Inventory\Address_Book.htm
+Claims\Transfer_Re-process.htm
+Contract_Admin\Business_Rules.htm
+Claims\Field_Modification_Claims.htm
+Claims\Claim_Validation.htm
+Claims\Claim_Details.htm
+Claims\Major_Component_Registration.htm
+Contract_Admin\Maintain_Supplier_Contracts.htm
+Claims\Claim_Attributes.htm
+Claims\Search_Claims.htm
+Supplier_Recovery\Search_Supplier_Recovery_Claims.htm
+Reports\Reports.htm
+Parts_Recovery\Parts_Recovery.htm
+Parts_Recovery\Search_Parts.htm
+Part_Returns\Search_Parts.htm
+Contract_Admin\View_Part_Source_History.htm
+Parts_Recovery\Awaiting_Shipment.htm
+Items\Search_Items.htm
+Field_Modifications\Search_Campaigns.htm
+Parts_Recovery\Part_Not_In_Warehouse.htm
+Contract_Admin\View_Suppliers.htm
+Contract_Admin\Manage_Suppliers.htm
+Settings\Email_Subscription.htm
+Settings\Profile.htm
+Parts_Recovery\Awaiting_Shipment_To_Warehouse.htm
+Serialized_part_with_Part_installed_on_non-serialized_host_machine.htm
+Serialized_part_with_Part_installed_on_Competitor_Model.htm
+Supplier_Recovery\Supplier_Recovery.htm
+parts_claim.htm
+machine_claims.htm
+sold_alone_part_not_installed.htm
+Non-serialized_part_with_Part_installed_on_Competitor_Model.htm
+Non-serialized_part_with_Part_installed_on_non-serialized_host_machine.htm
+Serialized_part_with_Part_installed_on_serialized_host_machine.htm
+Non-serialized_part_with_Part_installed_on_serialized_host_machine.htm
+Inventory\warranty_registration.htm
+eHelp.xml
+RoboHHRE.lng
+
+Processor.glo
+Processor.brs
+[ALIAS]
+#include Processor.ali
+
+[MAP]
+#include BSSCDefault.h
+
+[TEXT POPUPS]
+BSSCDefault.h
+
+

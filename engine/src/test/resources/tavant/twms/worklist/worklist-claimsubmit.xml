@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process-definition xmlns="" name="ClaimSubmission">
+  <!-- Swimlane Definition starts here -->
+  <swimlane name="processor">
+    <assignment class="tavant.twms.jbpm.assignment.ExpressionAssignmentHandler">
+      <expression>actor=ann</expression>
+    </assignment>
+  </swimlane>
+  
+  <swimlane name="dsm">
+    <assignment class="tavant.twms.jbpm.assignment.ExpressionAssignmentHandler">
+      <expression>actor=phil</expression>
+    </assignment>
+  </swimlane>
+  
+  <swimlane name="dealer">
+    <assignment class="tavant.twms.jbpm.assignment.ExpressionAssignmentHandler">
+      <expression>actor=bishop</expression>
+    </assignment>
+  </swimlane>
+  <!-- Swimlane Definition ends here -->
+  <start-state name="start">
+    <transition name="" to="isSMR"></transition>
+  </start-state>
+  
+  <decision name="isSMR">
+    <transition name="No" to="ManualClaimAdjudication"></transition>
+    <transition name="Yes" to="Submit SMR Response">
+      <condition>#{claim.serviceManagerRequest}</condition>
+    </transition>
+  </decision>
+  
+  <task-node name='ManualClaimAdjudication'>
+    <task name="PaymentWaitTask" swimlane="processor"/>      
+    <transition name="Accept" to="Notify Payment"></transition>
+    <transition name="Forward" to="Respond to forwarded claim"></transition>
+  </task-node>
+  
+  <node name="Notify Payment">
+    <transition name="" to="end"></transition>
+  </node>
+  <end-state name="end"></end-state>
+  
+  <task-node name="Respond to forwarded claim">
+    <task name="Forwarded claims" swimlane="dealer"/>     
+    <transition name="Submit" to="ManualClaimAdjudication"></transition>
+  </task-node>
+
+  <task-node name="Submit SMR Response">
+    <task name="Assign claim to SMR" swimlane="dsm"/>      
+    <transition name="Reject" to="Submit SMR Re-request"></transition>
+    <transition name="Accept" to="Submit claim"></transition>
+  </task-node>
+
+  <task-node name="Submit SMR Re-request">
+    <task name="Assign to Dealer" swimlane="dealer"/>
+    <transition name="Re-Submit" to="Submit SMR Response"></transition>
+  </task-node>
+</process-definition>

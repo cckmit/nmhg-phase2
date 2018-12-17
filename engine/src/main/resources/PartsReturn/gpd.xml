@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process-diagram name="PartsReturn" width="592" height="444">
+  <node name="Start" x="260" y="12" width="130" height="40">
+    <transition name="">
+      <label x="5" y="-10"/>
+    </transition>
+  </node>
+  <node name="Due Parts for Shipment" x="247" y="84" width="153" height="40">
+    <transition name="Generate Shipment">
+      <label x="-39" y="-8"/>
+    </transition>
+  </node>
+  <node name="Shipment Generated" x="253" y="166" width="140" height="40">
+    <transition name="Ship">
+      <label x="-10" y="-10"/>
+    </transition>
+    <transition name="Remove Part">
+      <label x="-11" y="-4"/>
+      <bendpoint w1="130" h1="0" w2="129" h2="82"/>
+      <bendpoint w1="129" h1="-82" w2="128" h2="0"/>
+    </transition>
+  </node>
+  <node name="Due Parts Received" x="254" y="243" width="140" height="40">
+    <transition name="Send for Inspection">
+      <label x="-44" y="-13"/>
+    </transition>
+    <transition name="Part Not Received">
+      <label x="-45" y="12"/>
+      <bendpoint w1="-142" h1="-1" w2="-141" h2="158"/>
+      <bendpoint w1="-142" h1="-159" w2="-141" h2="0"/>
+    </transition>
+  </node>
+  <node name="Due Parts For Inspection" x="239" y="321" width="169" height="40">
+    <transition name="">
+      <label x="5" y="-10"/>
+    </transition>
+  </node>
+  <node name="End" x="254" y="403" width="140" height="40"/>
+</process-diagram>

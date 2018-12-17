@@ -1,0 +1,18 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	elementFormDefault="qualified" attributeFormDefault="unqualified">
+    <xs:include schemaLocation="../Resources/Nouns/global/ApplicationAreaType.xsd" />
+	<xs:element name="OraStatusBean">
+		<xs:complexType>
+			<xs:sequence>
+                <xs:element name="ApplicationArea" type="ApplicationAreaType" />
+				<xs:element ref="status" />
+				<xs:element ref="errorMessage" />
+				<xs:element ref="errorCode" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="errorCode" type="xs:string" />
+	<xs:element name="errorMessage" type="xs:string" />
+	<xs:element name="status" type="xs:string" />
+
+</xs:schema>

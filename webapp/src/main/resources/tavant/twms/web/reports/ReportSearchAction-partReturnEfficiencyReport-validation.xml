@@ -1,0 +1,51 @@
+<!DOCTYPE validators PUBLIC
+    "-//Apache Struts//XWork Validator 1.0.2//EN"
+    "http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+<validators>
+
+	<field name="reportSearchCriteria.startDate">
+		<field-validator type="required">
+			<message key="error.report.invalidStartDate" />
+		</field-validator>
+		<field-validator type="date">
+			<message key="error.report.invalidStartDate" />
+		</field-validator>
+	</field>
+
+	<field name="reportSearchCriteria.endDate">
+		<field-validator type="required">
+			<message key="error.report.invalidEndDate" />
+		</field-validator>
+		<field-validator type="date">
+			<message key="error.report.invalidEndDate" />
+		</field-validator>
+	</field>
+	
+	<validator type="dateRange">
+		<param name="startDateField">reportSearchCriteria.startDate</param>
+		<param name="endDateField">reportSearchCriteria.endDate</param>
+		<message key="error.report.invalidDateRange" />
+	</validator>
+	
+	<validator type="expression">
+		<param name="expression">
+			<![CDATA[!(reportSearchCriteria.getEndDate()!=null and reportSearchCriteria.getStartDate() !=null and reportSearchCriteria.getEndDate().plusMonths(-3).plusDays(-1).compareTo(reportSearchCriteria.getStartDate()) >=1)]]>
+		</param>
+		<message key="error.report.invalidDate" />
+	</validator>
+	
+	<validator type="expression">
+		<param name="expression">
+			<![CDATA[(!"dealers".equals(getOptionSelected()) || !reportSearchCriteria.getDealers().length() < 1)]]>
+		</param>
+		<message key="error.report.invalidDealerSize" />
+	</validator>
+	
+	<validator type="expression">
+		<param name="expression">
+			<![CDATA[(!"dealerGroups".equals(getOptionSelected()) || !reportSearchCriteria.getDealerGroups().length() < 1)]]>
+		</param>
+		<message key="error.report.invalidDealerGroupSize" />
+	</validator>
+	
+</validators>

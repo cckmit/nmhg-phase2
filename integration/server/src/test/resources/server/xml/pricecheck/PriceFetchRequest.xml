@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PriceFetch lang="en" evnironment="Test" revision="1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <ApplicationArea>
+        <Sender>
+            <Task>CCT_WINDCHILL</Task>
+            <LogicalId>TavantWMS</LogicalId>            	    
+            <ReferenceId>1231</ReferenceId>
+        </Sender>
+        <BODId>INT03</BODId>   
+        <InterfaceNumber></InterfaceNumber>
+        <CreationDateTime>2008-03-14 15:09:26</CreationDateTime>
+    </ApplicationArea>
+    <DataArea>
+    	<BUNAME>NMHG-US</BUName>
+        <PriceCheckRequest>            
+            <WarrantyType>STANDARD</WarrantyType>            
+            <DateOfRepair>2008-03-13-07:00</DateOfRepair>
+            <DealerNo>262320</DealerNo>
+            <CurrencyCode>USD</CurrencyCode>
+            <ReplacedParts>
+		<!--Element LineItem, maxOccurs=unbounded-->
+                <LineItem>   
+                    <PartNumber>01135562</PartNumber>
+                    <Quantity>2</Quantity>
+		    <ManufacturingLocation>BGN</ManufacturingLocation>
+		    <UOM>EACH</UOM>
+		    <DivisionCode>BGN</DivisionCode>
+                </LineItem>
+                <LineItem>                    
+		    <PartNumber>0113568</PartNumber>
+		    <Quantity>3</Quantity>
+		    <ManufacturingLocation>BGN</ManufacturingLocation>
+		    <UOM>EACH</UOM>
+		    <DivisionCode>BGN</DivisionCode>
+                </LineItem>
+            </ReplacedParts>
+        </PriceCheckRequest>
+        <!--******************************************-->
+        <CostCheckRequest>            
+	            <WarrantyType>STANDARD</WarrantyType>            
+	            <DateOfRepair>2008-03-13-07:00</DateOfRepair>
+	            <SupplierNumber>123</SupplierNumber>
+	            <CurrencyCode>USD</CurrencyCode>
+	            <ReplacedParts>
+			<!--Element LineItem, maxOccurs=unbounded-->
+	                <LineItem>	                    
+	                    <PartNumber>0113568</PartNumber>
+	                    <Quantity>2</Quantity>
+			    <ManufacturingLocation>BGN</ManufacturingLocation>
+			    <UOM>EACH</UOM>
+			    <DivisionCode>BGN</DivisionCode>
+	                </LineItem>
+	                <LineItem>	                    
+			    <PartNumber>0113568</PartNumber>
+			    <Quantity>3</Quantity>
+			    <ManufacturingLocation>BGN</ManufacturingLocation>
+			    <UOM>EACH</UOM>
+			    <DivisionCode>BGN</DivisionCode>
+	                </LineItem>
+	            </ReplacedParts>
+        </CostCheckRequest>       
+        
+    </DataArea>
+</PriceFetch>

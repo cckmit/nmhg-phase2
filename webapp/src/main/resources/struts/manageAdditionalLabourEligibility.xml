@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="manageAdditionalLaborEligibility" extends="struts-twms-default">
+
+		<action name="manageAdditionalLabourEligibility"
+			class="tavant.twms.web.admin.additionalLabourEligibility.ManageAdditionalLabourEligibility"  method="load">
+			<interceptor-ref name="adminTwmsParamsPrepareRepeatTableParams" />
+			<result name="success">pages/secure/admin/additionalLabourEligibility/manageAdditionalLabourEligibility.jsp</result>
+			<result name="input">pages/secure/admin/additionalLabourEligibility/manageAdditionalLabourEligibility.jsp</result>
+		</action>
+		
+		<action name="saveAdditionalLabourEligibility"
+			class="tavant.twms.web.admin.additionalLabourEligibility.ManageAdditionalLabourEligibility" method="save">
+			<interceptor-ref name="adminTwmsParamsPrepareRepeatTableParams" />
+			<result name="success">pages/secure/common/successFullRefresh.jsp</result>
+			<result name="input">pages/secure/admin/additionalLabourEligibility/manageAdditionalLabourEligibility.jsp</result>
+		</action>
+		
+	</package>
+</struts>

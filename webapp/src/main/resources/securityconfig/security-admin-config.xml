@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<functionalareas xmlns="http://www.tavant.com/twms/security/resource"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.tavant.com/twms/security/resource
+			http://www.tavant.com/twms/security/resource">
+	<functionalarea name="admin" defaultpolicy="none">
+
+        <resource type="ui" value="bUConfigurationsSetup">
+            <permissions>BUConfigurations:bUConfigurationsSetup:update
+            </permissions>
+        </resource>
+        
+        <resource type="ui" value="readOnlyAccesstoSLMS">
+            <permissions>Read-OnlyAccesstoSLMS:readOnlyAccesstoSLMS:update
+            </permissions>
+        </resource>
+        
+        <resource type="ui" value="extensionforApproval">
+            <permissions>Registration/Transfer:extensionforApproval:update
+            </permissions>
+        </resource>
+        
+        <resource type="ui" value="reducedCoverage">
+            <permissions>Registration/Transfer:reducedCoverage:update
+            </permissions>
+        </resource>
+
+	</functionalarea>
+
+</functionalareas>

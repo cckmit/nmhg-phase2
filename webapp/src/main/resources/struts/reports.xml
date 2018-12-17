@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+    
+<struts>
+	<package name="report-forms" extends="struts-twms-default">
+  
+		<action name="dealers" class="tavant.twms.web.reports.ReportSearchAction" method="dealers">
+		    <interceptor-ref name="adminParamsPrepareWithoutValidation" />
+		    <result name="input">pages/secure/report/error.jsp</result>
+		    <result name="success">pages/secure/report/json.jsp</result>
+		</action>
+		<action name="dealerGroups" class="tavant.twms.web.reports.ReportSearchAction" method="dealerGroups">
+		    <interceptor-ref name="adminParamsPrepareWithoutValidation" />
+   		    <result name="input">pages/secure/report/error.jsp</result>
+			 <result name="success">pages/secure/report/json.jsp</result>
+		</action>
+		<action name="suppliers" class="tavant.twms.web.reports.ReportSearchAction" method="suppliers">
+		    <interceptor-ref name="adminParamsPrepareWithoutValidation" />
+		    <result name="input">pages/secure/report/error.jsp</result>
+		    <result name="success">pages/secure/report/json.jsp</result>
+		</action>
+		<action name="claimReports" class="tavant.twms.web.reports.ReportSearchAction" method="claimReports">
+			<interceptor-ref name="adminParamsPrepareWithoutValidation"/>			
+			<result name="success">pages/secure/report/claimreports.jsp</result>
+		</action>
+		<action name="partReturnsReports" class="tavant.twms.web.reports.ReportSearchAction" method="partReturnsReports">
+			<interceptor-ref name="adminParamsPrepareWithoutValidation"/>			
+			<result name="success">pages/secure/report/partReturnsReports.jsp</result>
+		</action>
+		<action name="supplierRecoveryReports" class="tavant.twms.web.reports.ReportSearchAction" method="supplierRecoveryReports">
+			<interceptor-ref name="adminParamsPrepareWithoutValidation"/>			
+			<result name="success">pages/secure/report/supplierRecoveryReports.jsp</result>
+		</action>
+	</package>
+  
+	<package name="reports" extends="struts-twms-default">
+	   	<result-types>
+    		<result-type name="jasper" class="tavant.twms.web.reports.JasperReportsResult"/>
+    	</result-types>
+		<action name="claimStatusReport" class="tavant.twms.web.reports.ReportSearchAction" method="generateClaimReport">
+            <interceptor-ref name="adminTwmsParamsPrepareParams" />
+		    <param name="documentTitle">Claim Status Report</param>
+   		    <result name="input">pages/secure/report/claimreports.jsp</result>
+			<result name="success" type="jasper">
+				<param name="location">reports/claimStatus.jasper</param>
+				<param name="dataSource">listOfClaim</param>
+				<param name="contentDisposition">attachment</param>
+				<param name="documentName">Claim Status</param>
+				<param name="format">${taskName}</param>
+			</result>
+		</action>
+		<action name="claimTypeReport" class="tavant.twms.web.reports.ReportSearchAction" method="generateClaimReport">
+            <interceptor-ref name="adminTwmsParamsPrepareParams" />
+		    <param name="documentTitle">Claim Type Report</param>
+  		    <result name="input">pages/secure/report/claimreports.jsp</result>
+			<result name="success" type="jasper">
+				<param name="location">reports/claimType.jasper</param>
+				<param name="dataSource">listOfClaim</param>
+				<param name="contentDisposition">attachment</param>
+				<param name="documentName">Claim Type</param>
+				<param name="format">${taskName}</param>
+			</result>
+		</action>
+		<action name="claimsByFaultReport" class="tavant.twms.web.reports.ReportSearchAction" method="generateClaimsByFaultReport">
+            <interceptor-ref name="adminTwmsParamsPrepareParams" />
+		    <param name="documentTitle">Claims By Fault Report</param>
+  		    <result name="input">pages/secure/report/claimreports.jsp</result>
+			<result name="success" type="jasper">
+				<param name="location">reports/claimFault.jasper</param>
+				<param name="dataSource">listOfClaim</param>
+				<param name="contentDisposition">attachment</param>
+				<param name="documentName">Claims By Fault</param>
+				<param name="format">${taskName}</param>
+				<param name="orderBy">${reportSearchCriteria.orderBy}</param>
+			</result>
+		</action>
+		<action name="claimsByProductReport" class="tavant.twms.web.reports.ReportSearchAction" method="generateClaimsByProductReport">
+            <interceptor-ref name="adminTwmsParamsPrepareParams" />
+		    <param name="documentTitle">Claims By Product</param>
+  		    <result name="input">pages/secure/report/claimreports.jsp</result>
+			<result name="success" type="jasper">
+				<param name="location">reports/claimProduct.jasper</param>
+				<param name="dataSource">listOfClaim</param>
+				<param name="contentDisposition">attachment</param>
+				<param name="documentName">Claims By Product</param>
+				<param name="format">${taskName}</param>
+			</result>
+		</action>
+		<action name="warrantyPayoutReport" class="tavant.twms.web.reports.ReportSearchAction" method="generateWarrantyPayoutReport">
+            <interceptor-ref name="adminTwmsParamsPrepareParams" />
+		    <param name="documentTitle">Warranty PayOut Report</param>
+  		    <result name="input">pages/secure/report/claimreports.jsp</result>
+			<result name="success" type="jasper">
+				<param name="location">reports/warranty.jasper</param>
+				<param name="dataSource">listOfClaim</param>
+				<param name="contentDisposition">attachment</param>
+				<param name="documentName">Warranty PayOut</param>
+				<param name="format">${taskName}</param>
+				<param name="groupBy">${reportSearchCriteria.groupBy}</param>
+			</result>
+		</action>
+		<action name="processingEfficiencyReport" class="tavant.twms.web.reports.ReportSearchAction" method="generateProcessingEfficiencyReport">
+            <interceptor-ref name="adminTwmsParamsPrepareParams" />
+		    <param name="documentTitle">Processing Efficiency Report</param>
+			<result name="success" type="jasper">
+				<param name="location">reports/processingEfficiency.jasper</param>
+				<param name="dataSource">listOfClaim</param>
+				<param name="contentDisposition">attachment</param>
+				<param name="documentName">ProcessingEfficiency</param>
+				<param name="format">${taskName}</param>
+			</result>
+		</action>
+		<action name="partReturnEfficiencyReport" class="tavant.twms.web.reports.ReportSearchAction" method="generatePartReturnEfficiencyReport">
+            <interceptor-ref name="adminTwmsParamsPrepareParams" />
+		    <param name="documentTitle">Part Return Efficiency Report</param>
+   		    <result name="input">pages/secure/report/partReturnsReports.jsp</result>
+			<result name="success" type="jasper">
+				<param name="location">reports/partReturn.jasper</param>
+				<param name="dataSource">listOfClaim</param>
+				<param name="contentDisposition">attachment</param>
+				<param name="documentName">PartReturn</param>
+				<param name="format">${taskName}</param>
+			</result>
+		</action>
+		<action name="duePartReturnsReport" class="tavant.twms.web.reports.ReportSearchAction" method="generateDuePartReturnsReport">
+		    <interceptor-ref name="adminTwmsParamsPrepareParams" />
+		    <param name="documentTitle">Due Part Return Report</param>
+   		    <result name="input">pages/secure/report/partReturnsReports.jsp</result>
+			<result name="success" type="jasper">
+				<param name="location">reports/duePartReturn.jasper</param>
+				<param name="dataSource">listOfClaim</param>
+				<param name="contentDisposition">attachment</param>
+				<param name="documentName">DuePartReturn</param>
+				<param name="format">${taskName}</param>
+			</result>
+		</action>
+		<action name="supplierRecoveryJasper" class="tavant.twms.web.reports.ReportSearchAction" method="generateSupplierRecoveryReport">
+            <interceptor-ref name="adminTwmsParamsPrepareParams" />
+			<result name="input">pages/secure/report/supplierRecoveryReports.jsp</result>
+		    <param name="documentTitle">Supplier Recovery Report</param>
+			<result name="success" type="jasper">
+				<param name="location">reports/supplierRecovery.jasper</param>
+				<param name="dataSource">listOfClaim</param>
+				<param name="contentDisposition">attachment</param>
+				<param name="documentName">SupplierRecovery</param>
+				<param name="format">${taskName}</param>
+			</result>
+		</action>
+		<action name="I18nReport" class="tavant.twms.web.reports.ReportSearchAction" method="generateI18nReport">
+            <interceptor-ref name="adminTwmsParamsPrepareParams" />
+			<result name="input">pages/secure/report/I18nReport.jsp</result>
+		    <param name="documentTitle">I18nReport</param>
+			<result name="success" type="jasper">
+				<param name="location">reports/I18n.jasper</param>
+				<param name="dataSource">listOfClaim</param>
+				<param name="contentDisposition">attachment</param>
+				<param name="documentName">I18nReport</param>
+				<param name="format">${taskName}</param>
+				<param name="groupBy">month</param>
+			</result>
+		</action>
+        
+        <action name="treadReportSetup" class="tavant.twms.web.reports.TREADReportAction" method="setup">
+            <result name="success">pages/secure/report/treadReport.jsp</result>
+        </action>
+        
+        <action name="generateTreadReport" class="tavant.twms.web.reports.TREADReportAction" method="generate">
+            <interceptor-ref name="adminTwmsParamsPrepareParams" />
+            <result name="input">pages/secure/report/treadReport.jsp</result>
+        </action>
+
+        <action name="downloadVendorRecoveryExtractAction" class="tavant.twms.web.reports.VendorRecoveryExtractAction" method="downloadListingData">
+            <interceptor-ref name="adminParamsPrepare" />
+        </action>
+        
+        <action name="vendorRecoveryExtractAction" class="tavant.twms.web.reports.VendorRecoveryExtractAction" method="downloadReportData">
+            <interceptor-ref name="twmsParamsPrepareParams" />
+            <result name="download" type="chain">downloadVendorRecoveryExtractAction</result>
+            <result name="selectDownloadPage">pages/secure/report/vendorRecExtract.jsp</result>
+            <result name="input">pages/secure/report/vendorRecExtract.jsp</result>
+        </action>
+
+        <action name="displatExtractFilterAction" class="tavant.twms.web.reports.VendorRecoveryExtractAction" 
+        																							method="displaySearch">
+        	<result name="setup">pages/secure/report/vendorRecExtract.jsp</result>
+        </action>
+</package>
+</struts>

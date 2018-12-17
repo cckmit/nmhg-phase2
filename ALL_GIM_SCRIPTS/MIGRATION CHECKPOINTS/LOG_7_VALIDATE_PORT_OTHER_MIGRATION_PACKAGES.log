@@ -1,0 +1,25 @@
+
+'*********** Validation of Migration Packages ***********'
+
+
+OBJECT_NAME                    OBJECT_TYPE         STATUS  TIMESTAMP            
+------------------------------ ------------------- ------- -------------------  
+TAV_GIM_CLEANUP_UTILITIES      PACKAGE             VALID   2011-07-15:12:09:36  
+TAV_GIM_CLEANUP_UTILITIES      PACKAGE BODY        VALID   2011-07-15:12:09:36  
+TAV_GIM_COMP_UNIQUE_SCENARIOS  PACKAGE             VALID   2011-07-15:12:09:34  
+TAV_GIM_COMP_UNIQUE_SCENARIOS  PACKAGE BODY        VALID   2011-07-15:12:09:35  
+TAV_GIM_INITIAL_SETUP          PACKAGE             VALID   2011-07-15:12:01:26  
+TAV_GIM_INITIAL_SETUP          PACKAGE BODY        VALID   2011-07-15:12:01:28  
+TAV_GIM_PROCESS_MIGRATION      PACKAGE             VALID   2011-07-15:12:09:30  
+TAV_GIM_PROCESS_MIGRATION      PACKAGE BODY        VALID   2011-07-15:12:09:32  
+TAV_GIM_UTILITIES              PACKAGE             VALID   2011-07-15:12:09:28  
+TAV_GIM_UTILITIES              PACKAGE BODY        VALID   2011-07-15:12:09:28  
+
+'*********** End of Validation of Migration Packages ***********'
+
+Message: Refer LOG_7_VALIDATE_PORT_OTHER_MIGRATION_PACKAGES.log.log before proceeding.
+
+Message: Next process ==> Populate Staging Area
+
+Message: Please execute TAV_GIM_POPULATE_STAGING_AREA.sql to populate staging area.
+

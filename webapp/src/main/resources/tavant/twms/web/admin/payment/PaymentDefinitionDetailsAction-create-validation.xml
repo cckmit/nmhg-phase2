@@ -1,0 +1,22 @@
+<!DOCTYPE validators PUBLIC 
+    "-//Apache Struts//XWork Validator 1.0.2//EN"   
+    "http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+<validators>
+	<field name="paymentDefinition.startDate">
+		<field-validator type="required">
+			<message key="error.managePayment.startDateRequired"/>
+		</field-validator>
+		<field-validator type="date">
+			<message key="error.managePayment.invalidDateFormat/>
+		</field-validator>
+	</field>
+	
+	<field name="paymentDefinition.endDate">
+		<field-validator type="required">
+			<message key="error.managePayment.endDateRequired/>
+		</field-validator>
+		<field-validator type="date">
+			<message key="error.managePayment.invalidDateFormat"/>
+		</field-validator>
+	</field>
+</validators>

@@ -1,0 +1,34 @@
+
+Message: Starting the process to load Staging Tables. Please wait...
+
+
+Message: Loading staging tables completed !
+
+Message: For more information query Master Log and Exception log tables
+
+
+'*********** Validation of Staging tables ***********'
+
+Total Number of tables to be processed:
+
+COUNT(TABLE_NAME)                                                               
+-----------------                                                               
+              446                                                               
+
+Number of tables not processed:
+
+COUNT(TABLE_NAME)                                                               
+-----------------                                                               
+                0                                                               
+
+'*********** End of Validation of staging tables ***********'
+
+Message: Next process ==> Updating SELF/CYCLIC references in the staging tables
+
+Message: Press 'ENTER' to proceed to update cyclic rerences or close this window to 'ABORT'
+
+'Updating cyclic references in the stage in progress.Please check the master log...'
+
+Message: Updating cyclic references in the staging tables complete!
+
+SQL> exit

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ExtendedWarrantyPriceFetch lang="en" evnironment="Test" revision="1.0">
+  <ApplicationArea>
+    <Sender>
+      <LogicalId>Tavant</LogicalId>
+      <Task>985724553</Task>
+    </Sender>
+    <CreationDateTime>30-JUL-2006</CreationDateTime>
+  </ApplicationArea>
+  <DataArea>
+	<PriceCheckRequest>
+		<DealerNo>10099</DealerNo>
+		<UserItemType>Extended Warranty</UserItemType>
+		<ItemNumber>23523ERT</ItemNumber>
+		<Description>description of the item</Description>
+		<Plans>
+			<LineItem>
+				<PlanCode>S48</PlanCode>
+				<PlanItemNumber>145</PlanItemNumber>
+			</LineItem>
+			<LineItem>
+				<PlanCode>S50</PlanCode>
+				<PlanItemNumber>212</PlanItemNumber>
+			</LineItem>
+		</Plans>
+	</PriceCheckRequest>
+  </DataArea>
+</ExtendedWarrantyPriceFetch>

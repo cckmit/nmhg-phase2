@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+	default-autowire="byName">
+
+	<!-- Task for creating EmailMessage for sending mail -->
+	<bean id="createEventMessageTrigger"
+		class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail" ref="createEventMessageJobDetail" />
+        <property name="cronExpression" value="${processNotificationEventCronExpression}" />
+	</bean>
+
+
+	<bean id="createEventMessageJobDetail"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="eventProcessor" />
+		<property name="targetMethod" value="processPendingEvent" />
+        <property name="concurrent" value="false" />
+    </bean>
+	
+	<bean id="sendEmailTrigger"
+		class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail" ref="sendEmailJobDetail" />
+        <property name="cronExpression" value="${emailRelatedCronExpression}" />
+	</bean>
+	
+	<bean id="sendEmailJobDetail"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="notificationService" />
+		<property name="targetMethod" value="sendPendingMail" />
+        <property name="concurrent" value="false" />
+	</bean>
+		
+	<!-- Task for creating EmailMessage for sending mail END -->	
+
+	<bean id="logicalShipmentTimerTask"
+		class="org.springframework.scheduling.timer.MethodInvokingTimerTaskFactoryBean">
+		<property name="targetObject" ref="logicalShipmentService" />
+		<property name="targetMethod"
+			value="generateAllLogicalShipments" />
+	</bean>
+
+	<bean id="logicalShipmentScheduledTask"
+		class="org.springframework.scheduling.timer.ScheduledTimerTask">
+		<property name="delay" value="${timer.start.delay}" />
+		<property name="period" value="${timer.repeat.interval}" />
+		<property name="timerTask" ref="logicalShipmentTimerTask" />
+	</bean>
+
+	<bean id="logicalDealerShipmentTimerTask"
+		class="org.springframework.scheduling.timer.MethodInvokingTimerTaskFactoryBean">
+		<property name="targetObject" ref="logicalShipmentService" />
+		<property name="targetMethod"
+			value="generateAllDealerLogicalShipments" />
+	</bean>
+
+	<bean id="logicalDealerShipmentScheduledTask"
+		class="org.springframework.scheduling.timer.ScheduledTimerTask">
+		<property name="delay" value="${timer.start.delay}" />
+		<property name="period" value="${timer.repeat.interval}" />
+		<property name="timerTask" ref="logicalDealerShipmentTimerTask" />
+	</bean>
+
+	<bean id="campaignAssignmentTimerTask"
+		class="org.springframework.scheduling.timer.MethodInvokingTimerTaskFactoryBean">
+		<property name="targetObject" ref="campaignAssignmentService" />
+		<property name="targetMethod"
+			value="generateNotificationForCampaignItems" />
+	</bean>
+
+	<bean id="campaignAssignmentScheduledTask"
+		class="org.springframework.scheduling.timer.ScheduledTimerTask">
+		<property name="delay" value="${timer.start.delay}" />
+		<property name="period" value="${timer.repeat.interval}" />
+		<property name="timerTask" ref="campaignAssignmentTimerTask" />
+	</bean>
+	
+	<bean id="supplierRecoveryAutoDebitTimerTask"
+		class="org.springframework.scheduling.timer.MethodInvokingTimerTaskFactoryBean">
+		<property name="targetObject" ref="autoDebitService" />
+		<property name="targetMethod" value="autoDebit" />
+	</bean>
+
+	<bean id="supplierRecoveryAutoDebitScheduledTask"
+		class="org.springframework.scheduling.timer.ScheduledTimerTask">
+		<property name="delay" value="${timer.start.delay}" />
+		<property name="period" value="${timer.repeat.interval}" />
+		<property name="timerTask" ref="supplierRecoveryAutoDebitTimerTask" />
+	</bean>
+
+    <bean id="partReturnShippedNotReceivedTrigger"
+		class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail" ref="partReturnShippedNotReceivedJobDetail" />
+        <property name="cronExpression" value="${partReturnShippedNotReceivedCronExpression}" />
+	</bean>
+
+	<bean id="partReturnShippedNotReceivedJobDetail"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="claimProcessService" />
+		<property name="targetMethod" value="performActionForPartsShippedNotReceieved" />
+		<property name="concurrent" value="false" />
+	</bean>
+
+	<bean id="fOCClaimsForSubmitTimer"
+		class="org.springframework.scheduling.timer.ScheduledTimerTask">
+		<property name="delay" value="${focClaimsAutoSubmitTimer.start.delay}" />
+		<property name="period" value="${focClaimsAutoSubmitTimer.repeat.interval}" />
+		<property name="timerTask" ref="findFOCClaimsForSubmit" />
+	</bean>
+	
+	<bean id="findFOCClaimsForSubmit"
+		class="org.springframework.scheduling.timer.MethodInvokingTimerTaskFactoryBean">
+		<property name="targetObject" ref="partReturnProcessingService" />
+		<property name="targetMethod" value="focClaimsPendingSubmission" />
+	</bean>
+	
+	<!-- Inventory BOM Updation related -->
+	
+	<bean id="updateInvItemBOMTrigger"
+		class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail" ref="updateInvItemBOMJobDetail" />
+        <property name="cronExpression" value="${updateInvItemBOMCronExpression}" />
+	</bean>
+
+	<bean id="updateInvItemBOMJobDetail"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="claimProcessService" />
+		<property name="targetMethod" value="updateBOMOnClaimAcceptance" />
+        <property name="concurrent" value="false" />
+	</bean>
+
+    <!-- Actual scheduler should start -->
+<!--	<bean id="timerFactory"
+		class="org.springframework.scheduling.timer.TimerFactoryBean">
+		<property name="scheduledTimerTasks">
+			<list>
+                <ref bean="supplierRecoveryAutoDebitScheduledTask" />
+	                <ref bean="fOCClaimsForSubmitTimer" />   
+		 		    <ref bean="purgeSEAForInventoryDcapScheduledTask"/>
+					<ref bean="purgeSCAForInventoryDcapScheduledTask"/> 
+					<ref bean="logicalShipmentScheduledTask" />
+					<ref bean="logicalDealerShipmentScheduledTask" />
+                
+			</list>
+		</property>
+	</bean>-->
+	
+	<bean id="retryCreditSubmitsTimerTask"
+		class="org.springframework.scheduling.timer.MethodInvokingTimerTaskFactoryBean">
+		<property name="targetObject" ref="retryIntegrationService" />
+		<property name="targetMethod" value="retryFailedCreditSubmissions" />
+	</bean>
+	
+	<bean id="retryCreditSubmitsScheduledTask"
+		class="org.springframework.scheduling.timer.ScheduledTimerTask">
+		<property name="delay" value="${debit.timer.start.delay}" />
+		<property name="period" value="${debit.timer.repeat.interval}" />
+		<property name="timerTask" ref="retryCreditSubmitsTimerTask" />
+	</bean>
+
+	<bean id="customerUploadTrigger"
+		class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail" ref="customerUploadJobDetail" />
+        <property name="cronExpression" value="${customerUploadCronExpression}" />
+	</bean>
+
+	<bean id="customerUploadJobDetail"
+		class="org.springframework.scheduling.quartz.JobDetailBean">
+		<property name="jobClass" value="tavant.twms.integration.layer.customer.upload.CustomerUploadJob" />
+	</bean>
+
+	<bean id="buConfigSchedulerJobTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="buConfigSchedulerJobDetail" />
+		<property name="cronExpression" value="${buConfigSchedulerJobCronExpression}"/>
+	</bean>
+	
+	<bean id="buConfigSchedulerJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="buConfigSchedulerTaskService" />
+		<property name="targetMethod" value="executeTasks" />
+		<property name="concurrent" value="false" />
+	</bean>
+
+    <bean id="buConfigSchedulerJobForWpraAndSupplierPartShippedTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail" ref="buConfigSchedulerJobForWpraAndSupPrtShippedDetail" />
+        <property name="cronExpression" value="${buConfigSchedulerJobWPRAAndSupPrtShippedCleanupCronExpression}"/>
+    </bean>
+
+    <bean id="buConfigSchedulerJobForWpraAndSupPrtShippedDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject" ref="buConfigSchedulerTaskService" />
+        <property name="targetMethod" value="executeCleanupForWpraAndSupPrtShippedTasks" />
+        <property name="concurrent" value="false" />
+    </bean>
+
+
+    <bean id="generateWpraSchedulerTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="generateWpraSchedulerJobDetail" />
+		<property name="cronExpression" value="${generateWpraSchedulerExpression}"/>
+	</bean>
+
+	<bean id="generateWpraSchedulerJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="generateWpraScheduler" />
+		<property name="targetMethod" value="executeTasks" />
+		<property name="concurrent" value="false" />
+	</bean>
+	
+	 <bean id="overDueDaysExceedEmailSchedulerTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="overDueDaysExceedEmailSchedulerJobDetail" />
+		<property name="cronExpression" value="${overDueDaysExceedEmailSchedulerExpression}"/>
+	</bean>
+
+	<bean id="overDueDaysExceedEmailSchedulerJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="overDueDaysExceedEmailScheduler" />
+		<property name="targetMethod" value="executeTasks" />
+		<property name="concurrent" value="false" />
+	</bean>
+
+    <bean id="removeNotCollectedPartsSchedulerTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail" ref="removeNotCollectedPartsSchedulerJobDetail" />
+        <property name="cronExpression" value="${removeDealerNotCollectedPartsImplScheduler}"/>
+    </bean>
+
+    <bean id="removeNotCollectedPartsSchedulerJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject" ref="removeDealerNotCollectedPartsScheduler" />
+        <property name="targetMethod" value="executeTasks" />
+        <property name="concurrent" value="false" />
+    </bean>
+    
+    <bean id="rejectedPartsSchedulerTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="rejectedPartsSchedulerJobDetail" />
+		<property name="cronExpression" value="${rejectedPartsSchedulerExpression}"/>
+	</bean>
+
+	<bean id="rejectedPartsSchedulerJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="rejectedPartsScheduler" />
+		<property name="targetMethod" value="executeTasks" />
+		<property name="concurrent" value="false" />
+	</bean>
+    
+    <!-- <bean id="supplierInitialResponseEmailSchedulerTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="supplierInitialResponseEmailSchedulerJobDetail" />
+		<property name="cronExpression" value="${supplierInitialResponseEmailSchedulerExpression}"/>
+	</bean>
+
+	<bean id="supplierInitialResponseEmailSchedulerJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="supplierInitialResponseEmailScheduler" />
+		<property name="targetMethod" value="executeTasks" />
+		<property name="concurrent" value="false" />
+	</bean>
+	
+	   <bean id="supplierFinalResponseEmailSchedulerTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="supplierFinalResponseEmailSchedulerJobDetail" />
+		<property name="cronExpression" value="${supplierFinalResponseEmailSchedulerExpression}"/>
+	</bean>
+
+	<bean id="supplierFinalResponseEmailSchedulerJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="supplierFinalResponseEmailScheduler" />
+		<property name="targetMethod" value="executeTasks" />
+		<property name="concurrent" value="false" />
+	</bean>-->
+
+    <bean id="quartzScheduler"
+		class="org.springframework.scheduling.quartz.SchedulerFactoryBean" autowire="no">
+		<property name="triggers">
+			<list>
+                <ref bean="updateInvItemBOMTrigger" />
+                <ref bean="partReturnShippedNotReceivedTrigger" />
+                <ref bean="createEventMessageTrigger" /> 
+                <ref bean="sendEmailTrigger" />
+                <ref bean="customerUploadTrigger" />
+                <!-- The following are Integration Quartz JObs and their Actual Job definitions are in integration.app-xontext.xml -->						 
+                <ref bean="jbpmTimerJobTrigger" />
+				<!-- <ref bean="creditSubmissionTrigger" />-->
+				<ref bean="supplierDebitSubmissionTrigger" />
+				<ref bean="ewDebitSubmissionTrigger" />
+				<!--<ref bean="itemSyncTaskTrigger" />-->
+				<ref bean="supportAutomationTaskTrigger" />
+				<ref bean="dataUploadJobTrigger" />
+				<ref bean="draftClaimUploadJobTrigger" />
+				<!--<ref bean="itemSyncRetryTaskTrigger" />-->
+				<ref bean="installBaseSyncRetryTaskTrigger" />
+				<ref bean="buConfigSchedulerJobTrigger" />
+                <ref bean="generateWpraSchedulerTrigger" />
+                <ref bean="removeNotCollectedPartsSchedulerTrigger" />
+                <ref bean="overDueDaysExceedEmailSchedulerTrigger" />
+                <ref bean="buConfigSchedulerJobForWpraAndSupplierPartShippedTrigger" />
+               <!-- <ref bean="supplierInitialResponseEmailSchedulerTrigger"/>
+                <ref bean="supplierFinalResponseEmailSchedulerTrigger"/>-->
+                <ref bean="rejectedPartsSchedulerTrigger" />
+			</list>
+		</property>
+		<property name="quartzProperties">
+			<props>
+				<prop key="org.quartz.jobStore.class">
+					org.quartz.simpl.RAMJobStore
+				</prop>
+				<prop key="org.quartz.threadPool.class">
+					org.quartz.simpl.SimpleThreadPool
+				</prop>
+			</props>
+		</property>
+		<property name="autoStartup" value="${autoStartupValue}"/>
+        <property name="schedulerName" value="BackgroundTasks Schedular" />
+        <property name="applicationContextSchedulerContextKey" value="springApplicationContext" />
+	</bean>
+
+</beans>

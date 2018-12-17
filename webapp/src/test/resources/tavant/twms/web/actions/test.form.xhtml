@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xhtml:html xmlns:xf="http://www.w3.org/2002/xforms" 
+  xmlns:xhtml="http://www.w3.org/1999/xhtml"
+  xmlns:xlink="http://www.w3.org/1999/xlink" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:ev="http://www.w3.org/2001/xml-events"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema" >
+<xhtml:head>
+  <xhtml:title>Claim Processing</xhtml:title>
+  <xf:model id="claim">
+
+      <xf:instance id="data" src="contextobject:$taskView">
+      </xf:instance>
+      
+      <xf:instance id="template">
+          <taskView>
+              <claim>
+                  <id/>
+                  <state>
+                      <state/>
+                  </state>
+                  <hoursInService/>
+                  <failureDate/>
+                  <repairDate/>
+                  <forItem>
+                      <ofType>
+                          <number/>
+                          <make/>
+                          <model/>
+                          <price>
+                          </price>    
+                      </ofType>
+                      <ownedBy>
+                          <name/>
+                          <email/>
+                      </ownedBy>    
+                  </forItem>
+                  <serviceInformation>
+                      <faultCode/>
+                      <serviceDetail>
+                          <laborPerformed>
+                              <laborDetail>
+                                  <jobPerformed>
+                                      <jobCode/>
+                                  </jobPerformed>
+                                  <hoursSpent/>
+                                  <laborRate>
+                                  </laborRate>    
+                              </laborDetail>    
+                          </laborPerformed>    
+                      </serviceDetail>
+                  </serviceInformation>
+                  <serviceManagerRequest/>
+              </claim>    
+          </taskView>    
+      </xf:instance>
+
+
+    <xf:bind id="claim" nodeset="/taskView/claim" />
+    <xf:bind id="claimstate" nodeset="/taskView/claim/state/state" />
+    <xf:bind id="hoursinservice" nodeset="/taskView/claim/hoursInService" type="xsd:integer" />
+    <xf:bind id="claimid" nodeset="/taskView/claim/id" type="xsd:integer" readonly="true()" />
+    <xf:bind id="failuredate" nodeset="/taskView/claim/failureDate" type="xsd:date" readonly="true()" />
+    <xf:bind id="repairdate" nodeset="/taskView/claim/repairDate" type="xsd:date" readonly="true()" />
+
+    <xf:bind id="coveragestartdate" nodeset="/taskView/claim/forItem/coverage/startDate" type="xsd:date"
+      readonly="true()" />
+    <xf:bind id="coverageenddate" nodeset="/taskView/claim/forItem/coverage/endDate" type="xsd:date"
+      readonly="true()" />
+
+    <xf:bind id="itemmake" nodeset="/taskView/claim/forItem/ofType/make" type="xsd:string"
+      readonly="true()" />
+    <xf:bind id="itemmodel" nodeset="/taskView/claim/forItem/ofType/model" type="xsd:string"
+      readonly="true()" />
+    <xf:bind id="itemnumber" nodeset="/taskView/claim/forItem/ofType/number" type="xsd:string"
+      readonly="true()" />
+    <xf:bind id="itemamount" nodeset="/taskView/claim/forItem/ofType/price/amount" type="xsd:decimal"
+      readonly="true()" />
+    <!--xf:bind id="itemcurrency" nodeset="/claim/forItem/ofType/id" type="xsd:string"/-->
+
+    <xf:bind id="itemownername" nodeset="/taskView/claim/forItem/ownedBy/name" type="xsd:string"
+      readonly="true()" />
+    <xf:bind id="itemowneremail" nodeset="/taskView/claim/forItem/ownedBy/email" type="xsd:string"
+      readonly="true()" />
+
+    <xf:bind id="faultcode" nodeset="/taskView/claim/serviceInformation/faultCode" type="xsd:string"
+      readonly="true()" />
+
+    <xf:bind id="labordetails"
+      nodeset="/taskView/claim/serviceInformation/serviceDetail/laborPerformed/laborDetail"
+      type="xsd:string">
+      <xf:bind id="jobcode" xf:nodeset="jobPerformed/jobCode" xf:type="xsd:string" readonly="true()" />
+      <xf:bind id="expectedjobhours" xf:nodeset="jobPerformed/expectedNumberOfHours" xf:type="xsd:int"
+        readonly="true()" />
+      <xf:bind id="spentjobhours" xf:nodeset="hoursSpent" xf:type="xsd:int" readonly="true()" />
+      <xf:bind id="joblaborrateamount" xf:nodeset="laborRate/amount" xf:type="xsd:decimal"
+        readonly="true()" />
+    </xf:bind>
+
+
+    <xf:bind id="traveldistance"
+      nodeset="/taskView/claim/serviceinformation/servicedetails/distance" type="xsd:string" />
+    <xf:bind id="smr" nodeset="/taskView/claim/serviceManagerRequest" type="xsd:boolean"
+      readonly="false()" />
+    <xf:bind id="foritemserialnumber" nodeset="/taskView/claim/forItem/serialNumber" type="xsd:string"
+      readonly="true()" />
+
+    <xf:submission id="Re-Submit" method="post"
+      action="http://localhost:8080/claimprocess/transition.action?transition=Re-Submit" />
+  </xf:model>
+
+</xhtml:head>
+<xhtml:body>
+  <xf:group bind="claim" appearance="full">
+    <xf:label>
+      <b>Claim Details</b>
+    </xf:label>
+    <xf:input bind="claimid">
+      <xf:label>Claim Number:</xf:label>
+      <xf:help>Specify your claim number here eg: RWR-23444</xf:help>
+      <xf:hint>What is your claim number?</xf:hint>
+    </xf:input>
+    <xf:input bind="failuredate">
+      <xf:label>Failure Date:</xf:label>
+      <xf:help>Specify your machine's failure date here</xf:help>
+      <xf:hint>Do you remember when your machine failed?</xf:hint>
+    </xf:input>
+    <xf:input bind="repairdate">
+      <xf:label>Repair Date:</xf:label>
+      <xf:help>Specify your machine's repair date here</xf:help>
+      <xf:hint>Do you remember when your machine was repaired?</xf:hint>
+    </xf:input>
+    <xf:input bind="hoursinservice">
+      <xf:label>Hours in service/Energy Unit:</xf:label>
+    </xf:input>
+    <xf:select1 bind="smr">
+      <xf:label>SMR:</xf:label>
+      <xf:item>
+        <xf:label>Yes</xf:label>
+        <xf:value>true</xf:value>
+      </xf:item>
+      <xf:item>
+        <xf:label>No</xf:label>
+        <xf:value>false</xf:value>
+      </xf:item>
+    </xf:select1>
+
+    <xf:group id="InvItemDetails" appearance="minimal">
+      <xf:label>Inventory Item Details</xf:label>
+      <xf:input bind="foritemserialnumber">
+        <xf:label>Serial Number:</xf:label>
+        <xf:help>Specify your item's serial number here</xf:help>
+      </xf:input>
+
+      <xf:group id="Itemtype" appearance="minimal">
+        <xf:label>Item</xf:label>
+        <xf:input bind="itemmake">
+          <xf:label>Make:</xf:label>
+        </xf:input>
+
+        <xf:input bind="itemmodel">
+          <xf:label>Model:</xf:label>
+        </xf:input>
+
+        <xf:input bind="itemnumber">
+          <xf:label>Number:</xf:label>
+        </xf:input>
+
+        <xf:input bind="itemamount">
+          <xf:label>Amount(in USD):</xf:label>
+        </xf:input>
+
+      </xf:group>
+
+      <xf:group id="Coverage" appearance="minimal">
+        <xf:label>Coverage Details</xf:label>
+        <xf:input bind="coveragestartdate">
+          <xf:label>Start Date:</xf:label>
+        </xf:input>
+
+        <xf:input bind="coverageenddate">
+          <xf:label>End Date:</xf:label>
+        </xf:input>
+      </xf:group>
+
+      <xf:group id="ItemOwner" appearance="minimal">
+        <xf:label>Item Owner Details</xf:label>
+        <xf:input bind="itemownername">
+          <xf:label>Owner Name:</xf:label>
+        </xf:input>
+
+        <xf:input bind="itemowneremail">
+          <xf:label>Owner Details:</xf:label>
+        </xf:input>
+      </xf:group>
+    </xf:group>
+
+    <xf:group id="serviceinformation" appearance="minimal">
+      <xf:label>Service Information</xf:label>
+      <xf:input bind="faultcode">
+        <xf:label>Fault Code:</xf:label>
+      </xf:input>
+
+      <xf:group id="laborPerformed" appearance="minimal">
+        <xf:label>Labor Performed</xf:label>
+
+        <xf:repeat id="thelabordetails" bind="labordetails" appearance="compact">
+          <xf:input id="thejobcode" xf:bind="jobcode">
+            <xf:label>Job Code</xf:label>
+          </xf:input>
+          <xf:input id="thejobhours" xf:bind="expectedjobhours">
+            <xf:label>Expected Job Hours</xf:label>
+          </xf:input>
+          <xf:input id="thespentjobhours" xf:bind="spentjobhours">
+            <xf:label>Spent Job Hours</xf:label>
+          </xf:input>
+          <xf:input id="joblaborrate" xf:bind="joblaborrateamount">
+            <xf:label>Labor Rate</xf:label>
+          </xf:input>
+
+        </xf:repeat>
+      </xf:group>
+    </xf:group>
+
+  </xf:group>
+
+  <xf:submit submission="Re-Submit">
+    <xf:label>Submit Back</xf:label>
+  </xf:submit>
+</xhtml:body>
+</xhtml:html>

@@ -1,0 +1,79 @@
+<project name="TWMS" basedir="." default="help">
+	<property file="./build.properties" />
+	<property name="twms.stage.directory" value="twms" />
+	<property name="twms.jboss.server.war.location" value="${twms.jboss.home}/server/${twms.server.name}/deploy" />
+	<property name="twms.jetty.server.war.location" value="${twms.jetty.home}/webapps-plus" />
+	<property name="twms.zip.container.files.location" value="${twms.stage.directory}/container/${twms.container.type}" />
+	<property name="twms.app.config.files.location" value="${twms.stage.directory}/config" />
+	<property name="twms.db.script.relative.loction" value="db/${twms.db.type}/scripts" />
+	<property name="twms.db.script.loction" value="${twms.stage.directory}/${twms.db.script.relative.loction}" />
+	<property name="twms.db.lib.loction" value="${twms.stage.directory}/db/${twms.db.type}/lib" />
+	<property name="twms.db.url" value="jdbc:${twms.db.type}://${twms.db.machine.name}:${twms.db.port}/${twms.db.schema.name}" />
+	
+	<target name="help">
+		<echo>This tool can download and/or install the twms webarchive into a running server.</echo>
+		<echo>Edit the build.properties and type "run deploy.app"</echo>
+	</target>
+
+	<target name="container.settings">
+		<!-- Because of the limitation of condition tag we need to expand it-->
+		<condition property="is.jboss.container">
+			<equals arg1="${twms.container.type}" arg2="jboss" casesensitive="false" trim="true" />
+		</condition>
+		<condition property="is.jetty.container">
+			<equals arg1="${twms.container.type}" arg2="jetty" casesensitive="false" trim="true" />
+		</condition>
+
+		<!-- Now call container specific targets -->
+		<antcall target="jboss.container.settings" />
+		<antcall target="jetty.container.settings" />
+	</target>
+
+	<target name="jboss.container.settings" if="is.jboss.container">
+		<echo>Deploying war to a ${twms.container.type} container at ${twms.jboss.server.war.location}</echo>
+		<copy file="${twms.stage.directory}/${twms.war.file.name}" todir="${twms.jboss.server.war.location}" overwrite="true" />
+		<echo>Copying ${twms.container.type} specific files</echo>
+		<copy todir="${twms.jboss.server.war.location}" overwrite="true">
+			<fileset dir="${twms.zip.container.files.location}">
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="jetty.container.settings" if="is.jetty.container">
+		<echo>Deploying war to a ${twms.container.type} container at ${twms.jetty.server.war.location}</echo>
+		<copy file="${twms.stage.directory}/${twms.war.file.name}" todir="${twms.jetty.server.war.location}" overwrite="true" />
+		<echo>Copying ${twms.container.type} specific files</echo>
+		<copy todir="${twms.jetty.server.war.location}" overwrite="true">
+			<fileset dir="${twms.zip.container.files.location}">
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="execute.db.scripts">
+		<echo>Executing db scripts at ${twms.db.script.loction}</echo>
+		<sql driver="${twms.db.driver.name}" password="${twms.db.user.password}" url="${twms.db.url}" userid="${twms.db.user.name}">
+			<classpath>
+				<fileset dir="${twms.db.lib.loction}" />
+			</classpath>
+			<fileset dir="${twms.db.script.loction}" />
+		</sql>
+	</target>
+
+	<target name="app.configuration">
+		<property environment="env" />
+		<echo>Copying application configuration files to ${env.TWMS_HOME}</echo>
+		<!-- First delete the files-->
+		<delete>
+			<fileset dir="${env.TWMS_HOME}">
+			</fileset>
+		</delete>
+
+		<copy todir="${env.TWMS_HOME}" overwrite="true">
+			<fileset dir="${twms.app.config.files.location}">
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="deploy.app" depends="container.settings, execute.db.scripts, app.configuration">
+	</target>
+</project>

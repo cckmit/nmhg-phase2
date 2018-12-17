@@ -1,0 +1,18 @@
+Hi ${userName},<br/><br/> 
+
+Following Recovery claim/s are pending in Supplier's (${supplier}) ${inboxName} inbox. Please take an action:<br/><br/>
+
+Recovery Claim Number: ${emailDetailsForFinalResponse}<br/><br/>
+Supplier details: <br/>
+<br/>
+Supplier name: ${supplier}<br/>
+Supplier number: ${supplierNumber}<br/>
+Part Shipped Date: ${partShippedDate} <br/>
+Date on which recovery claim put on hold: ${assignedDate} <br/><br/>
+     
+
+You can sign-in to <a href="${url}">NMHG Warranty System</a> to respond to the claim.<br/><br/>
+
+Thank you.<br/><br/>
+
+Please note that this email is an automated notification. Any reply to this email will not be received.

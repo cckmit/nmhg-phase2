@@ -1,0 +1,49 @@
+[OPTIONS]
+Compiled File=Supplier.chm
+Title=Supplier
+Contents File=Supplier.hhc
+Index File=Supplier.hhk
+Default topic=
+Default Window=
+Error log file=
+Display compile progress=No
+Display compile notes=No
+Full-text search=Yes
+Binary Index=Yes
+Auto Index=No
+Enhanced decompilation=No
+Binary TOC=No
+Flat=No
+
+[WINDOWS]
+
+[FILES]
+Supplier_Recovery\Supply_Recovery.htm
+Reports\index.htm
+Supplier_Recovery\index.htm
+Before_you_Begin\index.htm
+Before_you_Begin\common_application_features.htm
+Settings\index.htm
+Before_you_Begin\Introduction.htm
+Before_you_Begin\Copyright.htm
+Supplier_Recovery\Search_Parts.htm
+Supplier_Recovery\Reopened.htm
+Settings\Profile.htm
+Before_you_Begin\Before_you_Begin.htm
+Reports\Upload_Management.htm
+Settings\Site_Management.htm
+eHelp.xml
+RoboHHRE.lng
+
+Supplier.glo
+Supplier.brs
+[ALIAS]
+#include Supplier.ali
+
+[MAP]
+#include BSSCDefault.h
+
+[TEXT POPUPS]
+BSSCDefault.h
+
+

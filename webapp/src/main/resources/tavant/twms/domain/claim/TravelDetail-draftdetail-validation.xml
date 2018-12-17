@@ -1,0 +1,40 @@
+<!DOCTYPE validators PUBLIC "-//Apache Struts//XWork Validator 1.0.2//EN"
+       "http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+<validators>
+    <field name="hours">
+        <field-validator type="int">
+            <message key="error.newClaim.hoursOfTravelRequired"/>
+        </field-validator>
+    </field>
+    
+     <field name="distance">
+        <field-validator type="int">
+            <message key="error.newClaim.distance"/>
+        </field-validator>
+    </field>
+    
+<!--      <field name="trips">
+        <field-validator type="int">
+            <message key="error.newClaim.trips"/>
+        </field-validator>
+    </field> -->
+    <field name="trips">
+		<field-validator type="fieldexpression" short-circuit="true">
+			<param name="expression"><![CDATA[trips == null || (trips != null && trips.intValue() >= 0)]]></param>
+            <message key="error.newClaim.trips"/>
+        </field-validator>
+    </field>
+    <field name="additionalHours">
+		<field-validator type="fieldexpression" short-circuit="true">
+			<param name="expression"><![CDATA[additionalHours == null || (additionalHours != null && additionalHours.intValue() >= 0)]]></param>
+            <message key="error.newClaim.additionalHours"/>
+        </field-validator>
+    </field>
+    <field name="additionalHoursReason">
+		<field-validator type="fieldexpression" short-circuit="true">
+			<param name="expression"><![CDATA[(additionalHours == null || additionalHours < 0.001) || 
+			(additionalHours != null && additionalHours > 0  && additionalHoursReason != null && additionalHoursReason.length() > 0)]]></param>
+			<message key="error.newClaim.additionalHoursReasonRequired" />
+		</field-validator>
+	</field>
+</validators>

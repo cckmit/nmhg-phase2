@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<InstallBaseSync xmlns="http://www.tavant.com/globalsync/installbasesync">
+    <ApplicationArea>
+        <Sender>
+            <LogicalId>SAP</LogicalId>
+            <Task>TavantWMS</Task>
+            <ReferenceId>3534140</ReferenceId>
+        </Sender>
+        <BODId>BOD058</BODId>
+        <InterfaceNumber>INT029</InterfaceNumber>
+        <CreationDateTime>2012-02-26T11:15:03-08:00</CreationDateTime>
+    </ApplicationArea>
+    <DataArea>
+        <InventorySync>
+            <SyncType>MACHINE_SALE</SyncType>
+            <ShipFromNumber></ShipFromNumber>
+            <ShipFromLocation>913</ShipFromLocation>
+            <ShipToNumber>142|70422</ShipToNumber>
+            <ShipToLocation>IRAC-SAN FRANCISCO</ShipToLocation>
+			<ShipToAddress>
+				<Address1>Address1</Address1>
+				<Address1>Address2</Address1>
+				<City>City</City>
+				<State>SK</State>
+				<ZipCode>003</ZipCode>
+				<Country>US</Country>			
+			</ShipToAddress>
+			<BillToNumber>14266954</BillToNumber>
+            <InventoryDetail>
+                <ItemNumber>918590</ItemNumber>
+                <BUName>Thermo King TSA</BUName>
+                <SerialNumber>01167R4371</SerialNumber>
+                <BuildDate>2012-02-22-08:00</BuildDate>
+                <AdditionalAttributes>
+                    <AdditionalAttribute>
+                        <Name>EngineSerialNumber</Name>
+                        <value></value>
+                    </AdditionalAttribute>
+                </AdditionalAttributes>
+                <ManufacturingSite></ManufacturingSite>
+            </InventoryDetail>
+            <SalesOrderNumber>10815540</SalesOrderNumber>
+            <SalesOrderLineNumber>1</SalesOrderLineNumber>
+            <InvoiceNumber>7772</InvoiceNumber>
+            <InvoiceDate>2012-03-28-08:00</InvoiceDate>
+            <ShipFromOrgCode>TAVANT-TWMS</ShipFromOrgCode>
+            <DeliveryDateTime>2012-03-28-08:00</DeliveryDateTime>
+            <DivisionCode>TAVANT-TWMS</DivisionCode>
+        </InventorySync>
+    </DataArea>
+</InstallBaseSync>

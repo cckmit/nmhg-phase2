@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process-definition xmlns="" name="PartsReturn">
+  <start-state name="Start">
+    <transition name="checkIfPartIsToBeReturned" to="IsPartToBeReturned"></transition>
+  </start-state>
+  <decision name="IsPartToBeReturned">
+  	<transition name="No" to="End">
+  		<condition>#{!partReturn.oemPartReplaced.partToBeReturned}</condition>
+  	</transition>  	
+  	<transition name="ShipmentToOEM" to="Due Parts for Shipment">
+  		<condition>#{partReturn.oemPartReplaced.partToBeReturned}</condition>
+  	</transition>
+  </decision>
+   <task-node name="Due Parts for Shipment">
+    <task name="Due Parts" swimlane="dealer" />
+    <transition name="Generate Shipment" to="Shipment Generated">
+    	<script>partReturn.setStatus(tavant.twms.domain.partreturn.PartReturnStatus.SHIPMENT_GENERATED)</script>
+    </transition>
+  </task-node>
+  <task-node name="Shipment Generated">
+    <task name="Shipment Generated" swimlane="dealer"/>
+    <transition name="Submit" to="PartsShippedFork">
+    	<script>partReturn.setStatus(tavant.twms.domain.partreturn.PartReturnStatus.PART_SHIPPED)</script>
+    </transition>
+    </task-node>
+    <fork name="PartsShippedFork">
+    <transition name="Parts Shipped" to="Due Parts Shipped" />
+    <transition name="Parts Received" to="Due Parts Received" />
+  </fork>
+  <task-node name="Due Parts Shipped">
+    <task name="Parts Shipped" swimlane="dealer" >
+    
+    </task>
+    <transition name="To SingleTokenJoin" to="End" />
+  </task-node>
+   <task-node name="Due Parts Received">
+    <task name="Due Parts Receipt" swimlane="receiver">
+	</task>
+    <transition name="Received Due Parts" to="SingleTokenJoin" />
+  </task-node>
+
+
+  <end-tasks-join name="SingleTokenJoin" task-name-to-end="Parts Shipped">
+    <transition name="checkReceiverAction" to="Check Receiver Action" />
+  </end-tasks-join>
+  
+  <decision name="Check Receiver Action">
+    <transition name="Send to Clone" to="Clone">
+       	<condition>#{partReturn.paymentCondition.code == "PAY_ON_RETURN" and transition=="Send for Inspection"}</condition>
+       	<script>partReturn.setStatus(tavant.twms.domain.partreturn.PartReturnStatus.PART_RECEIVED)</script>
+    </transition>
+    </decision>
+    
+    <clone-token-node name="Clone">
+    <transition name="Notify Payment On Receipt" to="End" end-process-transition='true'>
+    </transition>
+    <transition name="Send for Inspection" to="Due Parts For Inspection">
+    </transition>
+  </clone-token-node>
+  
+  <task-node name="Due Parts For Inspection">
+    <task name="Due Parts Inspection" swimlane="inspector">
+    </task>    
+    <transition name="Mark for Reuse or Scrap" to="End">
+    </transition>
+  </task-node>  
+
+  <end-state name="End"></end-state>
+</process-definition>

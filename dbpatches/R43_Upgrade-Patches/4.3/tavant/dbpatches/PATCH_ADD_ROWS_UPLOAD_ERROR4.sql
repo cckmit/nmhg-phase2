@@ -1,0 +1,50 @@
+--Purpose    : Adding error codes for warranty claim upload
+--Author     : Bharath kumar
+--Created On : 17/05/2010
+--Impact     : None
+
+--insert into upload_error values(upload_error_seq.nextval,'DC045_IN','INSTALLED IR PARTS')
+--/
+--insert into upload_error values(upload_error_seq.nextval,'DC075','INSTALLED IR PARTS')
+--/
+--insert into upload_error values(upload_error_seq.nextval,'DC046_IN','INSTALLED IR PARTS')
+--/
+--insert into upload_error values(upload_error_seq.nextval,'DC027_IN','INSTALLED IR PARTS QUANTITY')
+--/
+--insert into upload_error values(upload_error_seq.nextval,'DC047_IN','INSTALLED IR PARTS QUANTITY')
+--/
+--insert into upload_error values(upload_error_seq.nextval,'DC048_IN','INSTALLED IR PARTS QUANTITY')
+--/
+--insert into upload_error values(upload_error_seq.nextval,'DC054_IN','INSTALLED IR PARTS QUANTITY')
+--/
+--insert into upload_mgt_upload_errors values((SELECT ID FROM UPLOAD_MGT WHERE NAME_OF_TEMPLATE = 'draftWarrantyClaims'),(select id from upload_error where code = 'DC045_IN'))
+--/
+--insert into upload_mgt_upload_errors values((SELECT ID FROM UPLOAD_MGT WHERE NAME_OF_TEMPLATE = 'draftWarrantyClaims'),(select id from upload_error where code = 'DC075'))
+--/
+--insert into upload_mgt_upload_errors values((SELECT ID FROM UPLOAD_MGT WHERE NAME_OF_TEMPLATE = 'draftWarrantyClaims'),(select id from upload_error where code = 'DC046_IN'))
+--/
+--insert into upload_mgt_upload_errors values((SELECT ID FROM UPLOAD_MGT WHERE NAME_OF_TEMPLATE = 'draftWarrantyClaims'),(select id from upload_error where code = 'DC027_IN'))
+--/
+--insert into upload_mgt_upload_errors values((SELECT ID FROM UPLOAD_MGT WHERE NAME_OF_TEMPLATE = 'draftWarrantyClaims'),(select id from upload_error where code = 'DC047_IN'))
+--/
+--insert into upload_mgt_upload_errors values((SELECT ID FROM UPLOAD_MGT WHERE NAME_OF_TEMPLATE = 'draftWarrantyClaims'),(select id from upload_error where code = 'DC048_IN'))
+--/
+--insert into upload_mgt_upload_errors values((SELECT ID FROM UPLOAD_MGT WHERE NAME_OF_TEMPLATE = 'draftWarrantyClaims'),(select id from upload_error where code = 'DC054_IN'))
+--/
+--insert into i18nupload_error_text values(i18nupload_error_text_seq.nextval,'en_US','Invalid format for Installed IR Parts',(select id from upload_error where code = 'DC045_IN'))
+--/
+--insert into i18nupload_error_text values(i18nupload_error_text_seq.nextval,'en_US','Replaced IR Parts or Number of quantity values do not match the Installed IR Parts or number of Installed IR Parts',(select id from upload_error where code = 'DC075'))
+--/
+--insert into i18nupload_error_text values(i18nupload_error_text_seq.nextval,'en_US','One or more Installed IR Parts are invalid',(select id from upload_error where code = 'DC046_IN'))
+--/
+--insert into i18nupload_error_text values(i18nupload_error_text_seq.nextval,'en_US','Empty Installed IR Parts Quantity',(select id from upload_error where code = 'DC027_IN'))
+--/
+--insert into i18nupload_error_text values(i18nupload_error_text_seq.nextval,'en_US','Invalid format for Installed IR Parts Quantity',(select id from upload_error where code = 'DC047_IN'))
+--/
+--insert into i18nupload_error_text values(i18nupload_error_text_seq.nextval,'en_US','Number of quantity values do not match the number of Installed IR Parts',(select id from upload_error where code = 'DC048_IN'))
+--/
+--insert into i18nupload_error_text values(i18nupload_error_text_seq.nextval,'en_US','One or more Installed IR Parts Quantity is not valid',(select id from upload_error where code = 'DC054_IN'))
+--/
+-- --Kuldeep - Merged with PATCH_ADD_ROWS_UPLOAD_ERROR.sql DB patch
+commit
+/

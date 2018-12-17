@@ -1,0 +1,1 @@
+sqlplus %1/%2@%3 @ANALYSE_DESTINATION_DATABASE.sql

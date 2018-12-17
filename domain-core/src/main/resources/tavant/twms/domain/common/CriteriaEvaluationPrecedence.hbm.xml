@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping SYSTEM
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="tavant.twms.domain.common">
+<database-object>
+	<create>alter table criteria_evaluation_precedence add constraint unique_data unique(for_data)</create>
+	<drop>alter table criteria_evaluation_precedence drop constraint unique_data</drop>	
+</database-object>
+</hibernate-mapping>
+

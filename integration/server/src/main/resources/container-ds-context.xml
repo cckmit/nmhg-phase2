@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd" 
+       default-autowire="byName">
+	
+	<!-- Look up the JNDI name -->
+	<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName">
+            <value>java:comp/env/jdbc/integration-ds</value>
+        </property>
+	</bean>
+
+	<!-- A bean that executes SQL scripts. This needs to move to the 'process module'. Need to 
+	figure out the quirks.-->	
+	<bean id="sqlScript" class="tavant.twms.infra.SQLScript">
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+</beans>

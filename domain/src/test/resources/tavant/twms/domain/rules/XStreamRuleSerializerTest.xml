@@ -1,0 +1,11 @@
+<domainPredicate name="Travel Location is Madrid">
+  <version>0</version>
+  <predicate class="equals">
+    <lhs class="domainVariable" context="ClaimRules">
+      <accessedFromType>Claim</accessedFromType>
+      <fieldName>claim.serviceInformation.serviceDetail.travelDetails.location</fieldName>
+    </lhs>
+    <rhs class="constant" literal="madrid" type="string"/>
+  </predicate>
+  <businessUnitInfo/>
+</domainPredicate>

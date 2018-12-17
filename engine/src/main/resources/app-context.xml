@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+  default-autowire="byName">
+
+	<bean name="Engine.hbm.xmls" class="java.util.HashMap">
+		<constructor-arg>
+			<map key-type="java.lang.Integer" value-type="java.lang.String">
+     <entry key="1" value="tavant/twms/worklist/WorkList.hbm.xml" />
+     <entry key="2" value="tavant/twms/jbpm/infra/CustomTaskInstance.hbm.xml" />
+			</map>
+		</constructor-arg>
+	</bean>
+
+  <!-- Beans specific to jBPM -->
+  <bean id="jbpmConfiguration"
+        class="org.springmodules.workflow.jbpm31.LocalJbpmConfigurationFactoryBean">
+    <property name="configuration" value="classpath:jbpm.cfg.xml" />
+    <property name="sessionFactory" ref="sessionFactory" />
+  </bean>
+
+  <bean id="workListDao" class="tavant.twms.worklist.WorkListDaoImpl" />
+  <bean id="supplierRecoveryWorkListDao" class="tavant.twms.worklist.supplier.SupplierRecoveryWorkListDao" />
+  <bean id="customerWorkListDao" class="tavant.twms.worklist.customer.CustomerWorkListDao" />
+  <bean id="assignmentRuleExecutor" class="tavant.twms.jbpm.assignment.AssignmentRuleExecutor"/>
+  <bean id="workListService"
+    class="tavant.twms.worklist.WorkListServiceImpl" />
+  <bean id="partReturnWorkListDao" class="tavant.twms.worklist.partreturn.PartReturnWorkListDaoImpl" />
+  <bean id="partReturnWorkListService"
+    class="tavant.twms.worklist.partreturn.PartReturnWorkListServiceImpl" />
+  <bean id="partReturnWorkListItemService"
+    class="tavant.twms.worklist.partreturn.PartReturnWorkListItemServiceImpl" />
+  <bean id="logicalShipmentService"
+  	class="tavant.twms.process.LogicalShipmentServiceImpl"/>
+
+  <bean id="workListItemService"
+    class="tavant.twms.worklist.WorkListItemServiceImpl" />
+  <bean id="claimProcessService"
+    class="tavant.twms.process.ClaimProcessServiceImpl" />
+  <bean id="partReturnProcessingService"
+    class="tavant.twms.process.PartReturnProcessingServiceImpl" />
+  <bean id="paymentAsyncService" class="tavant.twms.external.PaymentAsyncServiceImpl">
+  	<property name="externalServiceEnabled">
+  		<value>${processclaim.paymentservice.enabled}</value>
+  	</property>
+  	<property name="supplierDebitSubmissionEnabled">
+  		<value>${supplier.debitSubmission.enabled}</value>
+  	</property>  	
+	<property name="integrationBridge" ref="integrationBridge" />
+  </bean>
+  <bean id="itemBasePriceRepositoryInterceptor" depends-on="itemPriceAdminService" class="tavant.twms.external.ItemBasePriceRepositoryWSImpl">
+  		<property name="integrationBridge" ref="integrationBridge" />
+		<property name="externalServiceEnabled" value="${pricecheck.externalservice.enabled}" />
+        <property name="hysterBillToCode" value="${hysterBillToCode}" />
+        <property name="yaleBillToCode" value="${yaleBillToCode}" />
+  </bean>
+  <bean id="mailSender"
+    class="org.springframework.mail.javamail.JavaMailSenderImpl">
+    <property name="host">
+      <value>${tavant.email.smtp-server}</value>
+    </property>
+  </bean>
+  <bean id="mailMessage"
+    class="org.springframework.mail.SimpleMailMessage">
+    <property name="from">
+      <value>twms-admin@tavant.com</value>
+    </property>
+    <property name="subject">
+      <value>Mail from TWMS Admin</value>
+    </property>
+  </bean>
+
+  <bean id="partReturnService" class="tavant.twms.domain.partreturn.PartReturnServiceImpl"/>
+   <bean id="autoDebitService" class="tavant.twms.process.AutoDebitServiceImpl"/>
+
+ <!--  BU Configuration -->
+    <bean id="configParamService" class="tavant.twms.domain.configuration.ConfigParamServiceImpl" />   
+	
+	<bean id="retryIntegrationService" class="tavant.twms.external.RetryIntegrationService">
+		<property name="minutesGap">
+			<value>${processclaim.submission.timedelay.minutes}</value>
+		</property>
+	</bean>
+
+    <bean id="buSettingsDao" class="tavant.twms.worklist.common.BuSettingsDaoImpl"/>
+    <bean id="buSettingsService" class="tavant.twms.worklist.common.BuSettingsServiceImpl"/>
+	  		
+	
+</beans>

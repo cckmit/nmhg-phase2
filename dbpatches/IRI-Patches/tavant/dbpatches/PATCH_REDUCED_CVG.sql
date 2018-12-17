@@ -1,0 +1,9 @@
+--PURPOSE    : PATCH FOR IMPLEMENTING CUSTOM REPORTS
+--AUTHOR     : PRADYOT ROUT
+--CREATED ON : 10-DEC-08
+Alter table REQUEST_WNTY_CVG add requested_by number(19)
+/
+alter table REQUEST_WNTY_CVG add  (CONSTRAINT SERV_PROVIDER_FK FOREIGN KEY (requested_by) REFERENCES service_provider (ID))
+/
+COMMIT
+/

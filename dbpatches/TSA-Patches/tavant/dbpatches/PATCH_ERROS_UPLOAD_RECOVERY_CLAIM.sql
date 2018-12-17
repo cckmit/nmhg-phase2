@@ -1,0 +1,121 @@
+--Author     : Amritha 
+--Created On : 21-4-2010
+
+INSERT INTO  UPLOAD_ERROR 
+VALUES (UPLOAD_ERROR_SEQ.NEXTVAL,'RC001','RECOVERY CLAIM NUMBER')
+/
+INSERT INTO  UPLOAD_ERROR 
+VALUES (UPLOAD_ERROR_SEQ.NEXTVAL,'RC002','DECISION')
+/
+INSERT INTO  UPLOAD_ERROR 
+VALUES (UPLOAD_ERROR_SEQ.NEXTVAL,'RC003','DECISION REASON')
+/
+INSERT INTO  UPLOAD_ERROR 
+VALUES (UPLOAD_ERROR_SEQ.NEXTVAL,'RC004','DECISION COMMENTS')
+/
+INSERT INTO  UPLOAD_ERROR 
+VALUES (UPLOAD_ERROR_SEQ.NEXTVAL,'RC005','RECOVERY CLAIM NUMBER')
+/
+INSERT INTO  UPLOAD_ERROR 
+VALUES (UPLOAD_ERROR_SEQ.NEXTVAL,'RC006','DECISION')
+/
+INSERT INTO  UPLOAD_ERROR 
+VALUES (UPLOAD_ERROR_SEQ.NEXTVAL,'RC007','DECISION REASON')
+/
+INSERT INTO  UPLOAD_ERROR 
+VALUES (UPLOAD_ERROR_SEQ.NEXTVAL,'RC008','RECOVERY CLAIM NUMBER')
+/
+INSERT INTO  UPLOAD_ERROR 
+VALUES (UPLOAD_ERROR_SEQ.NEXTVAL,'RC009','DECISION REASON')
+/
+INSERT INTO  UPLOAD_ERROR 
+VALUES (UPLOAD_ERROR_SEQ.NEXTVAL,'RC010','DECISION REASON')
+/
+INSERT INTO  UPLOAD_ERROR 
+VALUES (UPLOAD_ERROR_SEQ.NEXTVAL,'RC011','RECOVERY CLAIM NUMBER')
+/
+INSERT INTO  i18nupload_error_text
+VALUES (I18N_UPLOAD_ERROR_SEQ.NEXTVAL,'en_US','Recovery claim number is mandatory',(SELECT ID FROM UPLOAD_ERROR WHERE code = 'RC001'))
+/
+INSERT INTO  i18nupload_error_text
+VALUES (I18N_UPLOAD_ERROR_SEQ.NEXTVAL,'en_US','Decision taken cannot be empty',(SELECT ID FROM UPLOAD_ERROR WHERE code = 'RC002'))
+/
+INSERT INTO  i18nupload_error_text
+VALUES (I18N_UPLOAD_ERROR_SEQ.NEXTVAL,'en_US','Decision reason  taken cannot be empty',(SELECT ID FROM UPLOAD_ERROR WHERE code = 'RC003'))
+/
+INSERT INTO  i18nupload_error_text
+VALUES (I18N_UPLOAD_ERROR_SEQ.NEXTVAL,'en_US','Decision comments  cannot be left empty',(SELECT ID FROM UPLOAD_ERROR WHERE code = 'RC004'))
+/
+INSERT INTO  i18nupload_error_text
+VALUES (I18N_UPLOAD_ERROR_SEQ.NEXTVAL,'en_US','Invalid recovery claim number',(SELECT ID FROM UPLOAD_ERROR WHERE code = 'RC005'))
+/
+INSERT INTO  i18nupload_error_text
+VALUES (I18N_UPLOAD_ERROR_SEQ.NEXTVAL,'en_US','Invalid decision .Please choose either of [Accept / Dispute ] ',(SELECT ID FROM UPLOAD_ERROR WHERE code = 'RC006'))
+/
+INSERT INTO  i18nupload_error_text
+VALUES (I18N_UPLOAD_ERROR_SEQ.NEXTVAL,'en_US','Invalid acceptance reason entered  for decision',(SELECT ID FROM UPLOAD_ERROR WHERE code = 'RC007'))
+/
+INSERT INTO  i18nupload_error_text
+VALUES (I18N_UPLOAD_ERROR_SEQ.NEXTVAL,'en_US','Invalid dispute reason entered while marking claim for dispute',(SELECT ID FROM UPLOAD_ERROR WHERE code = 'RC009'))
+/
+INSERT INTO  i18nupload_error_text
+VALUES (I18N_UPLOAD_ERROR_SEQ.NEXTVAL,'en_US','The recovery claim is with recovery processor and it cannot be disputed.',(SELECT ID FROM UPLOAD_ERROR WHERE code = 'RC010'))
+/
+INSERT INTO  i18nupload_error_text
+VALUES (I18N_UPLOAD_ERROR_SEQ.NEXTVAL,'en_US','The claim state does not allow it to be  accepted/disputed.',(SELECT ID FROM UPLOAD_ERROR WHERE code = 'RC008'))
+/
+INSERT INTO  i18nupload_error_text
+VALUES (I18N_UPLOAD_ERROR_SEQ.NEXTVAL,'en_US','This recovery claim has been added more than once in the sheet',(SELECT ID FROM UPLOAD_ERROR WHERE code = 'RC011'))
+/
+INSERT INTO UPLOAD_MGT_UPLOAD_ERRORS 
+VALUES((select ID from UPLOAD_MGT where NAME_OF_TEMPLATE = 'supplierDecisionUpload'),
+(select id from  UPLOAD_ERROR WHERE code = 'RC001'))
+/
+INSERT INTO UPLOAD_MGT_UPLOAD_ERRORS 
+VALUES((select ID from UPLOAD_MGT where NAME_OF_TEMPLATE = 'supplierDecisionUpload'),
+(select id from  UPLOAD_ERROR WHERE code = 'RC002'))
+/
+INSERT INTO UPLOAD_MGT_UPLOAD_ERRORS 
+VALUES((select ID from UPLOAD_MGT where NAME_OF_TEMPLATE = 'supplierDecisionUpload'),
+(select id from  UPLOAD_ERROR WHERE code = 'RC003'))
+/
+INSERT INTO UPLOAD_MGT_UPLOAD_ERRORS 
+VALUES((select ID from UPLOAD_MGT where NAME_OF_TEMPLATE = 'supplierDecisionUpload'),
+(select id from  UPLOAD_ERROR WHERE code = 'RC004'))
+/
+INSERT INTO UPLOAD_MGT_UPLOAD_ERRORS 
+VALUES((select ID from UPLOAD_MGT where NAME_OF_TEMPLATE = 'supplierDecisionUpload'),
+(select id from  UPLOAD_ERROR WHERE code = 'RC005'))
+/
+INSERT INTO UPLOAD_MGT_UPLOAD_ERRORS 
+VALUES((select ID from UPLOAD_MGT where NAME_OF_TEMPLATE = 'supplierDecisionUpload'),
+(select id from  UPLOAD_ERROR WHERE code = 'RC005'))
+/
+INSERT INTO UPLOAD_MGT_UPLOAD_ERRORS 
+VALUES((select ID from UPLOAD_MGT where NAME_OF_TEMPLATE = 'supplierDecisionUpload'),
+(select id from  UPLOAD_ERROR WHERE code = 'RC006'))
+/
+INSERT INTO UPLOAD_MGT_UPLOAD_ERRORS 
+VALUES((select ID from UPLOAD_MGT where NAME_OF_TEMPLATE = 'supplierDecisionUpload'),
+(select id from  UPLOAD_ERROR WHERE code = 'RC007'))
+/
+INSERT INTO UPLOAD_MGT_UPLOAD_ERRORS 
+VALUES((select ID from UPLOAD_MGT where NAME_OF_TEMPLATE = 'supplierDecisionUpload'),
+(select id from  UPLOAD_ERROR WHERE code = 'RC008'))
+/
+INSERT INTO UPLOAD_MGT_UPLOAD_ERRORS 
+VALUES((select ID from UPLOAD_MGT where NAME_OF_TEMPLATE = 'supplierDecisionUpload'),
+(select id from  UPLOAD_ERROR WHERE code = 'RC009'))
+/
+ INSERT INTO UPLOAD_MGT_UPLOAD_ERRORS 
+VALUES((select ID from UPLOAD_MGT where NAME_OF_TEMPLATE = 'supplierDecisionUpload'),
+(select id from  UPLOAD_ERROR WHERE code = 'RC010'))
+/
+ INSERT INTO UPLOAD_MGT_UPLOAD_ERRORS 
+VALUES((select ID from UPLOAD_MGT where NAME_OF_TEMPLATE = 'supplierDecisionUpload'),
+(select id from  UPLOAD_ERROR WHERE code = 'RC011'))
+/
+COMMIT
+/
+
+

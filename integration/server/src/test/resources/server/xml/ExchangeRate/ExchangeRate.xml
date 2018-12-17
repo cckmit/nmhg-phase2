@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ExchangeRate>
+  <ApplicationArea>
+    <Sender>
+      <LogicalId>CCORACLEAPPS</LogicalId>
+      <Task>TavantWMS</Task>
+      <ReferenceId>TavantExchangeRate 1-JUN-2010 - 30-JUN-2010 TSA</ReferenceId>
+    </Sender>
+    <BODId>BOD062</BODId>
+    <InterfaceNumber>INT070</InterfaceNumber>
+    <CreationDateTime>2010-06-04T11:31:50-05:00</CreationDateTime>
+  </ApplicationArea>
+  <DataArea>
+    <BUName>Thermo King TSA</BUName>
+    <dateRange>
+      <startDate>2010-06-01</startDate>
+      <endDate>2010-06-30</endDate>
+    </dateRange>
+    <currencies>
+      <currencyDetails curCode="EUR">
+        <currencyConversion>
+          <conCode>ARS</conCode>
+          <rate>0.2068717441</rate>
+        </currencyConversion>
+        <currencyConversion>
+          <conCode>AUD</conCode>
+          <rate>0.6882381492</rate>
+        </currencyConversion>
+        <currencyConversion>
+          <conCode>BHD</conCode>
+          <rate>2.1457614059</rate>
+        </currencyConversion>
+        <currencyConversion>
+          <conCode>BRL</conCode>
+          <rate>0.4437115839</rate>
+        </currencyConversion>
+        <currencyConversion>
+          <conCode>CAD</conCode>
+          <rate>0.7703367254</rate>
+        </currencyConversion>
+        <currencyConversion>
+          <conCode>CLP</conCode>
+          <rate>0.0015283854</rate>
+        </currencyConversion>
+        <currencyConversion>
+          <conCode>CNY</conCode>
+          <rate>0.1184170523</rate>
+        </currencyConversion>
+        <currencyConversion>
+          <conCode>COP</conCode>
+          <rate>0.0004108316</rate>
+        </currencyConversion>
+        <currencyConversion>
+          <conCode>CZK</conCode>
+          <rate>0.0391245106</rate>
+        </currencyConversion>
+        <currencyConversion>
+          <conCode>DKK</conCode>
+          <rate>0.1344140430</rate>
+        </currencyConversion>
+        <currencyConversion>
+          <conCode>EGP</conCode>
+          <rate>0.1428070620</rate>
+        </currencyConversion>
+        <currencyConversion>
+          <conCode>EUR</conCode>
+          <rate>1.0000000000</rate>
+        </currencyConversion>
+        <currencyConversion>
+          <conCode>HKD</conCode>
+          <rate>0.1038781831</rate>
+        </currencyConversion>
+        <currencyConversion>
+          <conCode>HUF</conCode>
+          <rate>0.0036395729</rate>
+        </currencyConversion>
+        <currencyConversion>
+          <conCode>INR</conCode>
+          <rate>0.0170985116</rate>
+        </currencyConversion>
+        <currencyConversion>
+          <conCode>JPY</conCode>
+          <rate>0.0088952111</rate>
+        </currencyConversion>
+        <currencyConversion>
+          <conCode>KWD</conCode>
+          <rate>2.7790662110</rate>
+        </currencyConversion>
+        <currencyConversion>
+          <conCode>MYR</conCode>
+          <rate>0.2454279728</rate>
+        </currencyConversion>
+        <currencyConversion>
+          <conCode>MXN</conCode>
+          <rate>0.0632228927</rate>
+        </currencyConversion>
+        <currencyConversion>
+          <conCode>NZD</conCode>
+          <rate>0.5531467400</rate>
+        </currencyConversion>
+        <currencyConversion>
+          <conCode>NOK</conCode>
+          <rate>0.1255635496</rate>
+        </currencyConversion>
+        <currencyConversion>
+          <conCode>PEN</conCode>
+          <rate>0.2841842906</rate>
+        </currencyConversion>
+        <currencyConversion>
+          <conCode>PHP</conCode>
+          <rate>0.0174075878</rate>
+        </currencyConversion>
+        <currencyConversion>
+          <conCode>PLN</conCode>
+          <rate>0.2465425012</rate>
+        </currencyConversion>
+        <currencyConversion>
+          <conCode>RUB</conCode>
+          <rate>0.0264886183</rate>
+        </currencyConversion>
+        <currencyConversion>
+          <conCode>SAR</conCode>
+          <rate>0.2157033247</rate>
+        </currencyConversion>
+        <currencyConversion>
+          <conCode>SGD</conCode>
+          <rate>0.5776012781</rate>
+        </currencyConversion>
+        <currencyConversion>
+          <conCode>ZAR</conCode>
+          <rate>0.1069264359</rate>
+        </currencyConversion>
+        <currencyConversion>
+          <conCode>KRW</conCode>
+          <rate>0.0006608397</rate>
+        </currencyConversion>
+        <currencyConversion>
+          <conCode>SEK</conCode>
+          <rate>0.1028075069</rate>
+        </currencyConversion>
+        <currencyConversion>
+          <conCode>CHF</conCode>
+          <rate>0.7021357466</rate>
+        </currencyConversion>
+        <currencyConversion>
+          <conCode>TWD</conCode>
+          <rate>0.0251869924</rate>
+        </currencyConversion>
+        <currencyConversion>
+          <conCode>THB</conCode>
+          <rate>0.0248519414</rate>
+        </currencyConversion>
+        <currencyConversion>
+          <conCode>TRY</conCode>
+          <rate>0.5193775845</rate>
+        </currencyConversion>
+        <currencyConversion>
+          <conCode>AED</conCode>
+          <rate>0.2202370248</rate>
+        </currencyConversion>
+        <currencyConversion>
+          <conCode>GBP</conCode>
+          <rate>1.1801488432</rate>
+        </currencyConversion>
+        <currencyConversion>
+          <conCode>VEF</conCode>
+          <rate>0.0986500728</rate>
+        </currencyConversion>
+        <currencyConversion>
+          <conCode>ZWD</conCode>
+          <rate>0.0000079922</rate>
+        </currencyConversion>
+        <currencyConversion>
+          <conCode>USD</conCode>
+          <rate>0.8089305938</rate>
+        </currencyConversion>
+      </currencyDetails>
+      <currencyDetails curCode="USD">
+        <currencyConversion>
+          <conCode>ARS</conCode>
+          <rate>0.2557348500 </rate>
+        </currencyConversion>
+        <currencyConversion>
+          <conCode>AUD</conCode>
+          <rate>0.8508000000 </rate>
+        </currencyConversion>
+        <currencyConversion>
+          <conCode>BHD</conCode>
+          <rate>2.6525902500 </rate>
+        </currencyConversion>
+        <currencyConversion>
+          <conCode>BRL</conCode>
+          <rate>0.5485162600 </rate>
+        </currencyConversion>
+        <currencyConversion>
+          <conCode>CAD</conCode>
+          <rate>0.9522902600 </rate>
+        </currencyConversion>
+        <currencyConversion>
+          <conCode>CLP</conCode>
+          <rate>0.0018893900 </rate>
+        </currencyConversion>
+        <currencyConversion>
+          <conCode>CNY</conCode>
+          <rate>0.1463871600 </rate>
+        </currencyConversion>
+        <currencyConversion>
+          <conCode>COP</conCode>
+          <rate>0.0005078700 </rate>
+        </currencyConversion>
+        <currencyConversion>
+          <conCode>CZK</conCode>
+          <rate>0.0483657200 </rate>
+        </currencyConversion>
+        <currencyConversion>
+          <conCode>DKK</conCode>
+          <rate>0.1661626400 </rate>
+        </currencyConversion>
+        <currencyConversion>
+          <conCode>EGP</conCode>
+          <rate>0.1765380900 </rate>
+        </currencyConversion>
+        <currencyConversion>
+          <conCode>EUR</conCode>
+          <rate>1.2362000000 </rate>
+        </currencyConversion>
+        <currencyConversion>
+          <conCode>HKD</conCode>
+          <rate>0.1284142100 </rate>
+        </currencyConversion>
+        <currencyConversion>
+          <conCode>HUF</conCode>
+          <rate>0.0044992400 </rate>
+        </currencyConversion>
+        <currencyConversion>
+          <conCode>INR</conCode>
+          <rate>0.0211371800 </rate>
+        </currencyConversion>
+        <currencyConversion>
+          <conCode>JPY</conCode>
+          <rate>0.0109962600 </rate>
+        </currencyConversion>
+        <currencyConversion>
+          <conCode>KWD</conCode>
+          <rate>3.4354816500 </rate>
+        </currencyConversion>
+        <currencyConversion>
+          <conCode>MYR</conCode>
+          <rate>0.3033980600 </rate>
+        </currencyConversion>
+        <currencyConversion>
+          <conCode>MXN</conCode>
+          <rate>0.0781561400 </rate>
+        </currencyConversion>
+        <currencyConversion>
+          <conCode>NZD</conCode>
+          <rate>0.6838000000 </rate>
+        </currencyConversion>
+        <currencyConversion>
+          <conCode>NOK</conCode>
+          <rate>0.1552216600 </rate>
+        </currencyConversion>
+        <currencyConversion>
+          <conCode>PEN</conCode>
+          <rate>0.3513086200 </rate>
+        </currencyConversion>
+        <currencyConversion>
+          <conCode>PHP</conCode>
+          <rate>0.0215192600 </rate>
+        </currencyConversion>
+        <currencyConversion>
+          <conCode>PLN</conCode>
+          <rate>0.3047758400 </rate>
+        </currencyConversion>
+        <currencyConversion>
+          <conCode>RUB</conCode>
+          <rate>0.0327452300 </rate>
+        </currencyConversion>
+        <currencyConversion>
+          <conCode>SAR</conCode>
+          <rate>0.2666524500 </rate>
+        </currencyConversion>
+        <currencyConversion>
+          <conCode>SGD</conCode>
+          <rate>0.7140307000 </rate>
+        </currencyConversion>
+        <currencyConversion>
+          <conCode>ZAR</conCode>
+          <rate>0.1321824600 </rate>
+        </currencyConversion>
+        <currencyConversion>
+          <conCode>KRW</conCode>
+          <rate>0.0008169300 </rate>
+        </currencyConversion>
+        <currencyConversion>
+          <conCode>SEK</conCode>
+          <rate>0.1270906400 </rate>
+        </currencyConversion>
+        <currencyConversion>
+          <conCode>CHF</conCode>
+          <rate>0.8679802100 </rate>
+        </currencyConversion>
+        <currencyConversion>
+          <conCode>TWD</conCode>
+          <rate>0.0311361600 </rate>
+        </currencyConversion>
+        <currencyConversion>
+          <conCode>THB</conCode>
+          <rate>0.0307219700 </rate>
+        </currencyConversion>
+        <currencyConversion>
+          <conCode>TRY</conCode>
+          <rate>0.6420545700 </rate>
+        </currencyConversion>
+        <currencyConversion>
+          <conCode>AED</conCode>
+          <rate>0.2722570100 </rate>
+        </currencyConversion>
+        <currencyConversion>
+          <conCode>GBP</conCode>
+          <rate>1.4589000000 </rate>
+        </currencyConversion>
+        <currencyConversion>
+          <conCode>VEF</conCode>
+          <rate>0.1219512200 </rate>
+        </currencyConversion>
+        <currencyConversion>
+          <conCode>ZWD</conCode>
+          <rate>0.0000098800 </rate>
+        </currencyConversion>
+        <currencyConversion>
+          <conCode>USD</conCode>
+          <rate>1.0000000000</rate>
+        </currencyConversion>
+      </currencyDetails>
+    </currencies>
+  </DataArea>
+</ExchangeRate>

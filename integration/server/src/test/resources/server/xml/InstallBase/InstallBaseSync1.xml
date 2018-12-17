@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<InstallBaseSync>	
+  <ApplicationArea>
+    <Sender>
+      <LogicalId>9528872210</LogicalId>
+      <Task>TavantWMS</Task>
+      <ReferenceId>9528872210_3_2009-01-20T06:07:55.512Z</ReferenceId>
+    </Sender>
+    <BODId>BOD058</BODId>
+    <InterfaceNumber>USINT0833</InterfaceNumber>
+    <CreationDateTime>2009-01-20T06:07:55.596Z</CreationDateTime>
+  </ApplicationArea>
+  <DataArea>
+    <InventorySync>
+      <SyncType>DROP SHIPMENT</SyncType>
+      <ShipFromNumber>02-57</ShipFromNumber>
+      <ShipFromLocation></ShipFromLocation>
+      <ShipToNumber>AMPACT900406003B</ShipToNumber>
+      <ShipToLocation></ShipToLocation>
+      <ShipToAddress>
+        <Address1></Address1>
+        <Address2></Address2>
+        <City>COMMERCE                 </City>
+        <State>CA</State>
+        <ZipCode>90040</ZipCode>
+      </ShipToAddress>
+      <InventoryDetail>
+        <ItemNumber>00480</ItemNumber>
+        <BUNAME>NMHG-US</BUName>
+        <SerialNumber>B9611113</SerialNumber>
+        <ItemCondition>NEW        </ItemCondition>
+        <BuildDate>20080927000000</BuildDate>
+        <AdditionalAttributes></AdditionalAttributes>
+        <ManufacturingSite>BGN</ManufacturingSite>
+        <DCAPModel></DCAPModel>
+        <DCAPCode></DCAPCode>
+        <DCAPAccrualFlag></DCAPAccrualFlag>
+      </InventoryDetail>
+      <SalesOrderNumber>FCE2507     </SalesOrderNumber>
+      <SalesOrderLineNumber></SalesOrderLineNumber>
+      <FactoryOrderNumber>FCE2507     </FactoryOrderNumber>
+      <InvoiceNumber>FC0333364</InvoiceNumber>
+      <InvoiceDate>20081001000000</InvoiceDate>
+      <ShipFromOrgCode>HUSSMANN</ShipFromOrgCode>
+      <DeliveryDateTime></DeliveryDateTime>
+      <RegistrationDate></RegistrationDate>
+      <Organization></Organization>
+      <Division></Division>
+      <ProductCode></ProductCode>
+      <ModelCode></ModelCode>
+      <OperatingUnit></OperatingUnit>
+    </InventorySync>
+  </DataArea>
+</InstallBaseSync>

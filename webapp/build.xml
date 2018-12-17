@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="Webapp" >
+	<target name="moveResources">
+		<!--mkdir dir="${dist}"/>
+		<copy todir="${dist}">
+			<fileset dir="${fromJSFolder}"/>
+		</copy-->
+		<replace dir="${jspHtmlFolder}" token="${find}" value="${replace}">
+			<exclude name="**/help/**"/>
+			<exclude name="**/*.class"/>
+			<exclude name="**/lib/**"/>
+			<exclude name="**/css/**"/>
+			<exclude name="**/image/**"/>
+		</replace>
+	</target>
+</project>

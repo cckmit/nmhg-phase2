@@ -1,0 +1,134 @@
+Please provide DB LINK name when prompted..Enter to continue..
+
+Creating migration objects..
+
+Message: Dropping objects if already availbale...
+DROP TABLE PARTY_ARRAY_TABLE
+           *
+ERROR at line 1:
+ORA-00942: table or view does not exist 
+
+
+DROP TABLE ORG_USER_ARRAY_TABLE
+           *
+ERROR at line 1:
+ORA-00942: table or view does not exist 
+
+
+DROP TABLE COST_CATEGORY_ARRAY_TABLE
+           *
+ERROR at line 1:
+ORA-00942: table or view does not exist 
+
+
+Creating temp tables to compile TAV_GIM_PROCESS_CLAIM_AUD_XML package...
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+Inserting data nito temp tables to for tables with lookup values
+
+Enter value for link_r4: link_r4
+old   2: SELECT id,old_43_id FROM TG_PARTY@&&LINK_R4
+new   2: SELECT id,old_43_id FROM TG_PARTY@link_r4
+
+335189 rows created.
+
+old   2: SELECT ID,OLD_43_ID FROM TG_ORG_USER@&&LINK_R4
+new   2: SELECT ID,OLD_43_ID FROM TG_ORG_USER@link_r4
+
+10424 rows created.
+
+old   2: SELECT ID,OLD_43_ID FROM TG_COST_CATEGORY@&&LINK_R4
+new   2: SELECT ID,OLD_43_ID FROM TG_COST_CATEGORY@link_r4
+
+17 rows created.
+
+
+Commit complete.
+
+
+Index created.
+
+
+Index created.
+
+
+Index created.
+
+
+Index created.
+
+
+Index created.
+
+
+Index created.
+
+Porting and Compiling TAV_GIM_INITIAL_SETUP.
+
+
+Package created.
+
+
+Package body created.
+
+
+Package body created.
+
+Porting and Compiling TAV_GIM_XML_UTILITIES.
+
+
+Package created.
+
+
+Package body created.
+
+
+Package body created.
+
+Porting and Compiling TAV_GIM_PROCESS_CLAIM_AUD_XML.
+
+
+Package created.
+
+
+Package body created.
+
+
+Package body created.
+
+
+'*********** Validation of XML packages ***********'
+
+
+OBJECT_NAME                    OBJECT_TYPE         STATUS  TIMESTAMP            
+------------------------------ ------------------- ------- -------------------  
+TAV_GIM_INITIAL_SETUP          PACKAGE             VALID   2011-07-02:16:00:01  
+TAV_GIM_INITIAL_SETUP          PACKAGE BODY        VALID   2011-07-02:16:00:02  
+TAV_GIM_PROCESS_CLAIM_AUD_XML  PACKAGE             VALID   2011-07-03:08:54:50  
+TAV_GIM_PROCESS_CLAIM_AUD_XML  PACKAGE BODY        VALID   2011-07-03:08:54:50  
+TAV_GIM_XML_UTILITIES          PACKAGE             VALID   2011-07-03:08:54:49  
+TAV_GIM_XML_UTILITIES          PACKAGE BODY        VALID   2011-07-03:08:54:50  
+
+6 rows selected.
+
+
+'*********** Execution of XML update procs***********'
+
+Message: Refer LOG_1_TAV_GIM_PORT_XML_PACKAGES_DEST.log before proceeding.
+
+Message: Run process 1==> Check for inserted data from the source to populate the tables refered by the ARRAY before continuing.
+
+Message: Run process 3==> Hit enter to run claim audit string and id replacement
+
+Running claim audit string and id replacement procedure(TAV_GIM_PROCESS_CLAIM_AUD_XML.PROCESS_CLAIM_AUDIT_JOB_CHILD)..
+
+PL/SQL procedure successfully completed.
+

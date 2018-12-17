@@ -1,0 +1,59 @@
+## The Tavant Database Patch catalog
+##
+## This file contains a sequential list of all the database patches along with logical database name.	
+## (both sql scripts and java programs) that must be run to properly
+## construct and maintain a database in conjunction with the version
+## of code represented by the current version of this file. Patch names
+## shall be relative to tavant/dbPatches
+##
+## Entries in this will look like this (but will be left-justfied):
+##    main/Patchyyyymmdd.[sql|java] tavant
+## or
+##    iri/Patchyyyymmdd.[sql|java] dba
+##
+##All entries in patchCatalog.txt would consist of both the patch name
+##followed by a 'logical' database/schema name (seperated by whitespace). This
+##would name no longer be optional.
+##Failure to provide a 'logical' db name for all patches is considered to be
+##an error.
+##Failure to define all 'logical' names in the external properties file is an
+##error.
+##  Ex)
+##
+## Here are some guidelines on how to create db patches. 
+## Please follow this strictly to avoid unnecessary issues when applying db patches via version manager.
+## 1. The .sql extension should be in lower case (never use .SQL)
+## 2. There should not be a ; (semicolon) after a sql statement.
+## 3. There should be / (forward slash) in the next line after every sql statement.
+## 4. There should not be any space or tab before or after the / (forward slash).
+## 
+## There is a sample patch file PATCH_TEST_VM.sql in versionmanager folder.
+## Also make sure none of these patches are applied manually on any database except DEV.
+
+JBPM_BACKUPTABLES_CREATION.sql main twms_owner
+CLENUP_JBPM_TABLES.sql main twms_owner
+UPLOAD_JOB_CODE_UPLOAD_TSESA_694_FIX_05_01_12.sql main twms_owner
+UPLOAD_JOB_CODE_UPLOAD_TSESA_694_FIX_10_01_12.sql main twms_owner
+ITS_422_FIX.sql main twms_owner
+PATCHINSTALL_BASE_10_1_12.sql main twms_owner
+PATCHITEM_UPLOAD_10_1_12.sql main twms_owner
+PATCH_ITEMUPLOAD_FIX-ITS-478.sql main twms_owner
+PATCH_SUPPLIER_UPLOAD-TKTSA-1286.sql main twms_owner
+PATCH_SUPPLIER_UPLOAD_VAL_PROC-TKTSA-1286.sql main twms_owner
+PATCH_SUPPLIER_UPLOAD_PROC-TKTSA-1286.sql main twms_owner
+PATCH_ALTER_ORG_USER_ITS-35.sql main twms_owner
+PATCH_SUPPLIER_UPLOAD-TKTSA-1286-2.sql main twms_owner
+PATCH_SUPPLIER_UPLOAD_VAL_PROC-TKTSA-1286-2.sql main twms_owner
+QUARTZ_TABLES.sql main twms_owner
+ITEM_UPLOAD_PROC_ITS_488.sql main twms_owner
+CUSTOMER_UPLOAD_PROCEDURE_ITS-164.sql main twms_owner
+PATCH_THIRD_PARTY_UPLOAD_HUSS-974.sql main twms_owner
+PATCH_ITEM_UPLOAD_ERROR_MESSAGE_ESESA-2047.sql main twms_owner
+PATCH_ITEMUPLOAD_FIX-ESESA-2047.sql main twms_owner
+PATCH_ITEMVALIDATION_FIX-ESESA-2047.sql main twms_owner
+UPLOAD_INSTALL_BASE_UPLOAD_PROC_ITS-377.sql main twms_owner
+TKTSA_1506Patch.sql main twms_owner
+ITS-673_REC_PROCESSING_TASKS.sql main twms_owner
+ITS-632_REOPNED_ONHOLD_JBPM_PATCH.sql main twms_owner
+ITEM_VALIDATION_PROC_CON_ERR_CODE_TKTSA-1552.sql main twms_owner
+EROR_CODE_FIX_TKTSA_1552.sql main twms_owner

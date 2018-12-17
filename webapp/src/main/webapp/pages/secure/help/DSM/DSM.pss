@@ -1,0 +1,61 @@
+[MAS SUPPORT]
+SupportMas_Prj=1
+[Target:WebHelp]
+SupportMas_Prj=1
+ResultFileName=!SSL!\WebHelp\DSM.htm
+SSLayoutType=2
+CreateProjectTime=15:16, August 30, 2011
+CreateProjectUser=jyoti.patwal
+SupportMas_MPJ=1
+ActionID For Generation=1002
+Remove Folder with prompt=1
+ViewFileName=!SSL!\WebHelp\DSM.htm
+ResultStatus=0
+BuildTimeHi=30172921
+BuildTimeLow=-1487111685
+[Target:WebHelp Pro]
+SupportMas_Prj=1
+ResultFileName=!SSL!\WebHelp_Pro\DSM.htm
+SSLayoutType=32
+ServerProjectName=DSM
+CreateProjectTime=
+CreateProjectUser=
+SupportMas_MPJ=1
+[Target:Microsoft HTML Help]
+ResultFileName=!SSL!\Microsoft_HTML_Help\DSM.chm
+SSLayoutType=1
+CreateProjectTime=
+CreateProjectUser=
+SupportMas_MPJ=1
+[Target:FlashHelp]
+ResultFileName=!SSL!\FlashHelp\DSM.htm
+SSLayoutType=2
+CreateProjectTime=
+CreateProjectUser=
+SupportMas_MPJ=1
+[Target:Printed Documentation]
+ResultFileName=!SSL!\Printed_Documentation\DSM.doc
+SSLayoutType=7
+[Target:XML Output]
+ResultFileName=!SSL!\XML_Output\DSM.xml
+SSLayoutType=8192
+[PreSingleSource]
+Html Help Project=D:\Jyoti\Final IR Project\DSM\DSM.hhp
+Table Of Content=D:\Jyoti\Final IR Project\DSM\DSM.hhc
+Index=D:\Jyoti\Final IR Project\DSM\DSM_merged$.hhk
+See Also Index=D:\Jyoti\Final IR Project\DSM\DSM.hha
+Browse Sequence=D:\Jyoti\Final IR Project\DSM\DSM.brs
+Topic Properties=D:\Jyoti\Final IR Project\DSM\DSM.trs
+Active Folders=D:\Jyoti\Final IR Project\DSM\DSM.trf
+Baggage Files=D:\Jyoti\Final IR Project\DSM\DSM.trb
+Skin List=D:\Jyoti\Final IR Project\DSM\DSM.trk
+OriginalHhk=D:\Jyoti\Final IR Project\DSM\DSM.hhk
+Active Layout Names=D:\Jyoti\Final IR Project\DSM\DSM.trl
+Default Topic=D:\Jyoti\Final IR Project\DSM\Before_you_Begin\common_application_features.htm
+Build Tags0=18496;Print | Online
+Build Tags=
+Build Expression=
+Language ID=1033
+Language Name=English
+Language=D:\Jyoti\Final IR Project\DSM\RoboHHRE.lng
+Stop List=D:\Jyoti\Final IR Project\DSM\DSM.stp

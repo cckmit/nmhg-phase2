@@ -1,0 +1,124 @@
+<?xml version="1.0"?>
+<project>
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <artifactId>server</artifactId>
+    <groupId>tavant.twms.TSA_DEV</groupId>
+    <version>0.5-SNAPSHOT</version>
+  </parent>
+
+  <artifactId>fitnesse</artifactId>
+  <name>server-fit-tests</name>
+  <!-- >packaging>pom</packaging-->
+  <dependencies>
+
+    <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>domain</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>engine</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    
+    <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>process</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    
+
+    <dependency>
+      <groupId>org.dbunit</groupId>
+      <artifactId>dbunit</artifactId>
+      <version>2.4.7</version>
+    </dependency>
+
+    <dependency>
+      <groupId>fit</groupId>
+      <artifactId>fitlibrary</artifactId>
+      <version>19.07.2006</version>
+    </dependency>
+
+    <dependency>
+      <groupId>fit</groupId>
+      <artifactId>fitnesse</artifactId>
+      <version>19.07.2006</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.poi</groupId>
+      <artifactId>poi</artifactId>
+      <version>3.2-FINAL</version>
+    </dependency>
+    
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-mock</artifactId>
+      <version>2.0</version>
+    </dependency>
+    
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+    </dependency>
+    
+    <dependency>
+      <groupId>hsqldb</groupId>
+      <artifactId>hsqldb</artifactId>
+      <version>1.8.0.4</version>
+    </dependency>
+    
+  </dependencies>
+
+  <build>
+	<!-- Specifying the src/it as the source directory, since the testDirectory classes won't be
+		 included in the artifact.  -->
+    <sourceDirectory>src/it</sourceDirectory>    
+    <plugins>
+      <plugin>        
+        <artifactId>maven-compiler-plugin</artifactId>
+        <executions>
+          <execution>
+            <goals>
+              <goal>testCompile</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <source>1.6</source>
+          <target>1.6</target>          
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <executions>
+          <execution>
+            <phase>deploy</phase>
+	        <configuration>
+	          <descriptorId>jar-with-dependencies</descriptorId>
+	          <finalName>fitnesse</finalName>
+	          <outputDirectory>${user.home}/.m2/repository/twms-fit-classpath</outputDirectory>
+	        </configuration>
+            <goals>
+              <goal>assembly</goal>
+            </goals>
+          </execution>
+        </executions>                
+      </plugin>      
+    </plugins>
+  </build>
+
+  <pluginRepositories>
+    <pluginRepository>
+      <id>apache-snapshot-repo</id>
+      <name>apache-snapshot-repo</name>
+      <url>http://people.apache.org/repo/m2-snapshot-repository/</url>
+    </pluginRepository>
+  </pluginRepositories>
+
+</project>

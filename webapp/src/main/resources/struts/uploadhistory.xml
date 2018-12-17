@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+  <package name="upload_history" extends="struts-twms-default">
+
+    <action name="get_history_table" class="tavant.twms.web.admin.upload.history.UploadHistoryAction"
+      method="execute">
+      <result name="success">/pages/secure/admin/dataManagement/uploadHistory.jsp</result>
+    </action>
+
+    <action name="download_input_file" class="tavant.twms.web.admin.upload.history.UploadHistoryAction"
+      method="downloadInputFile" />
+
+    <action name="download_error_file" class="tavant.twms.web.admin.upload.history.UploadHistoryAction"
+      method="downloadErrorFile" />
+
+  </package>
+</struts>

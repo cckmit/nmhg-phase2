@@ -1,0 +1,32 @@
+<!DOCTYPE validators PUBLIC 
+    "-//Apache Struts//XWork Validator 1.0.2//EN"   
+    "http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+<validators>
+	<field name="shipment.carrier.id">
+		<field-validator type="required">
+			<message>Carrier should be selected</message>
+		</field-validator>
+	</field>
+	
+	<field name="shipment.trackingId">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message>Tracking Number is required</message>
+		</field-validator>
+	</field>
+	
+	<field name="shipment.shipmentDate">
+		<field-validator type="required">
+			<message>Shipment Date is required</message>
+		</field-validator>
+<!--
+	<field-validator type="fieldexpression">
+      <param name="expression"><![CDATA[!shipmentDate.isAfter(@com.domainlanguage.timeutil.Clock@today())]]></param>
+      <message>Shipment Date on or  before today</message>
+	</field-validator>-->
+	</field>
+	<validator type="expression">
+		<param name="expression">!(taskInstances == null)</param>
+		<message>Select at least one Supplier Part Number</message>
+	</validator>
+</validators>

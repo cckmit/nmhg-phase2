@@ -1,0 +1,41 @@
+/*Buttons....*/
+
+.inboxLikeButtonWithoutPadding {
+background-repeat:no-repeat;
+background-position:center left;
+height:16px;
+text-align:center;
+cursor:hand;
+vertical-align:middle;
+display:inline;
+color:#000;
+margin:0;
+}
+
+.inboxLikeButtonWrapper {
+margin:1px;
+}
+
+.inboxLikeButtonText {
+vertical-align:middle;
+}
+
+.create_button {
+/*background-image:url(../../../image/createIcon.gif);*/
+}
+
+.download_to_excel_button {
+background-image:url(../../../image/downloadExcel.gif);
+}
+
+.inboxLikeButton {
+padding-left: 25px;
+height:16px;
+text-align:center;
+cursor:hand;
+vertical-align:middle;
+display:inline;
+color:#000;
+margin:0;
+font-size:100%;
+}

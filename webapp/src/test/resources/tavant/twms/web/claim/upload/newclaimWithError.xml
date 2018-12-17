@@ -1,0 +1,44 @@
+<tav:Claims xmlns:tav="http://www.tavant.com">
+  <tav:Claim>
+    <tav:claim_no>2</tav:claim_no>
+    <tav:claim_type>Machine</tav:claim_type>
+    <tav:failure_date/>
+    <tav:repair_date>07/02/2007</tav:repair_date>
+    <tav:hours_in_service/>
+    <tav:installation_date>07/02/2007</tav:installation_date>
+    <tav:service_information>
+      <tav:fault_code>HP-001</tav:fault_code>
+      <tav:causal_part>P4566</tav:causal_part>
+      <tav:fault_found>BAD OIL</tav:fault_found>
+      <tav:caused_by>BAD CRIMP</tav:caused_by>
+      <tav:oem_part_replaced>
+        <tav:item_number>P4566</tav:item_number>
+        <tav:serial_number/>
+        <tav:quantity>2</tav:quantity>
+      </tav:oem_part_replaced>
+      <tav:non_oem_part_replaced>
+        <tav:item_number>a</tav:item_number>
+        <tav:description>abc</tav:description>
+        <tav:quantity>1</tav:quantity>
+        <tav:price>10</tav:price>
+      </tav:non_oem_part_replaced>
+      <tav:labor_detail>
+        <tav:job_code>HD-001-Repaired</tav:job_code>
+        <tav:hours_spent>6</tav:hours_spent>
+      </tav:labor_detail>
+      <tav:travel_detail>
+        <tav:location>Yorkshire</tav:location>
+        <tav:trips>1</tav:trips>
+        <tav:hours>2</tav:hours>
+        <tav:distance>3</tav:distance>
+      </tav:travel_detail>
+      <tav:meals_expense>20</tav:meals_expense>
+      <tav:item_freight_and_duty>20.38</tav:item_freight_and_duty>
+    </tav:service_information>
+    <tav:item_reference>
+      <tav:serial_number/>
+      <tav:item_number>2294321</tav:item_number>
+    </tav:item_reference>
+    <tav:failures>[[failure date is required], [Hours in service/Energy Unit is required]]</tav:failures>
+  </tav:Claim>
+</tav:Claims>

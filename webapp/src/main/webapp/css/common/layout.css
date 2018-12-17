@@ -1,0 +1,252 @@
+/*
+   Copyright (c)2006 Tavant Technologies
+   All Rights Reserved.
+
+   This software is furnished under a license and may be used and copied
+   only  in  accordance  with  the  terms  of such  license and with the
+   inclusion of the above copyright notice. This software or  any  other
+   copies thereof may not be provided or otherwise made available to any
+   other person. No title to and ownership of  the  software  is  hereby
+   transferred.
+
+   The information in this software is subject to change without  notice
+   and  should  not be  construed as a commitment  by Tavant Technologies.
+*/
+
+html,body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+}
+
+body .progress_text {
+    font-family:Verdana,sans-serif,Arial,Helvetica;
+    font-size:90%;
+    color:#888888;
+    text-align:center;
+    position:relative;
+    top:43%;
+}
+
+body .twmsHackForAccordionGradient {
+    height: 30px;
+}
+
+.accordionBody {
+    overflow: auto;
+}
+
+.accordionBody li {
+    cursor: pointer;
+}
+
+#accordion {
+    margin: 0;
+    overflow: hidden;
+}
+
+#rootLayoutContainer {
+    width: 100%;
+    height: 100%;
+}
+
+p#greeting {
+    padding: 5px;
+    float: left;
+}
+
+p#date {
+    padding: 5px;
+    float: right;
+}
+
+body #footer {
+    padding:3px 0 5px 5px;
+}
+
+body #footer .footerData {
+    float:right;
+    height:32px;
+    padding-right:5px;
+    margin-top:2px;
+	font-size:7.5pt;
+}
+
+body a#tavantLogoHolder {
+    float:left;
+}
+
+.folder {
+    padding-left:12px;
+    margin:3px 0 3px 10px;
+}
+
+.uFoldStyle{
+	   color:#3160B0;
+	font-weight:700;
+	}
+body .dojoTabLabels-top {
+    margin-left: 2px;
+}
+
+.pagination_button {
+    float: right;
+    margin: 0px 0;
+}
+
+.button {
+    float: left;
+    margin: 5px;
+}
+
+.buttonPane {
+    padding: 5px 0;
+}
+
+.summary_table {
+    width: 100%;
+}
+
+.summary_table th {
+    cursor: pointer;
+    padding: 1px 1px 0px 2px;
+}
+
+.summary_table tbody td {
+    padding: 1px 1px 0px 2px;
+}
+
+.summary_table thead td {
+    padding: 0px;
+}
+
+.summary_table td,.summary_table th {
+    display: table-cell;
+}
+
+.filter_input {
+    width: 100%;
+}
+
+.preview {
+    overflow: auto;
+}
+
+body iframe {
+    border: none;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+}
+
+.buttons {
+    float: right;
+    padding-right: 5px;
+}
+
+#tabPane {
+    overflow: hidden;
+}
+
+.dojoTabPanePaneClose {
+    margin-bottom: 5px;
+}
+
+.showProgressMessage {
+    display: inline;
+    padding: 3px;
+}
+
+.reloadable {
+    position: absolute;
+    top: 0px;
+}
+
+iframe.reloadable {
+    left: 0px;
+    z-index: 0;
+}
+
+p.reloadable {
+    right: 0px;
+    z-index: 1;
+}
+
+.showProgressMessage {
+    background: #CC4444;
+    color: white;
+}
+
+#undockNavigator { /* not #undockNavigator.disabled which was not working in IE */
+    margin-left: 5px;
+}
+
+#undockNavigator.enabled {
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+#dockNavigator { /* not #dockNavigator.disabled which was not working in IE */
+    margin-top:8px;
+}
+
+#dockNavigator.enabled {
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.dock {
+    width: 20px !important; /* This is needed to fix the width problem on IE */
+}
+
+#tabPane {
+    z-index: 0;
+    position: absolute;
+    top: 5px;!important;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+	margin-top:5px;
+}
+
+.editableTreePad {
+    padding: 0 3px 0 3px;
+}
+
+h4.searchFolders {
+    margin-top: 20px;
+    margin-right: 20px;
+    font-weight: bold;
+    padding-top: 5px;
+}
+
+.maxSize {
+    width: 100%;
+    height: 100%;
+}
+
+.hidden {
+    display:none;
+}
+
+.scrollXNotY {
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+.scrollYNotX {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.scrollXAndY {
+    overflow-x: auto;
+    overflow-y: auto;
+}
+
+.dontScrollXAndY {
+    overflow-x: hidden;
+    overflow-y: hidden;
+}

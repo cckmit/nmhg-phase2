@@ -1,0 +1,19 @@
+--Purpose    : To disable the constraint from Supplier Locations table
+--Author     : Jhulfikar Ali. A
+--Created On : 16-Dec-08
+
+ALTER TABLE supplier_locations
+DROP CONSTRAINT SUPPLIER_LOCATIONS_PK
+/
+DROP INDEX SUPPLIER_LOCATIONS_PK
+/
+CREATE SEQUENCE SUPPLIER_LOCATIONS_SEQ
+START WITH 1
+INCREMENT BY 1
+MINVALUE 0
+/
+ALTER TABLE SUPPLIER_LOCATIONS
+ADD (id NUMBER)
+/
+COMMIT
+/

@@ -1,0 +1,15 @@
+Hi <b>${userName}</b>,<br/><br/> 
+
+The following claim has been denied and closed:<br/>
+
+Claim Number: <b>${claimNumber}</b><br/>
+      Status: <b>${state}</b><br/><br/><br/>
+
+ 
+You can sign-in to <a href="${url}">NMHG Warranty System</a> to respond to the claim.<br/><br/>
+
+Thank you.<br/><br/>
+
+Please note that this email is an automated notification. Any reply to this email will not be received. 
+
+You can unsubscribe to this e-mail at any time via your user profile page.

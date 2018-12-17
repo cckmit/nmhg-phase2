@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="managefleetwarrantycoverage" extends="struts-twms-default">
+		<action name="select_inventories_fleetcoverage"
+			class="tavant.twms.web.admin.warranty.ManageFleetWarrantyCoverage" method="selectInventoriesFleetCoverage">
+			<interceptor-ref name="paramsPrepareWithoutValidation" />
+			<result name="success">pages/secure/admin/fleetcoverage/manageFleetCoverageListActions.jsp</result>
+		</action>
+		<action name="show_fleetwarrantycoverage"
+			class="tavant.twms.web.admin.warranty.ManageFleetWarrantyCoverage" method="showFleetWarrantyCoverage">
+			<interceptor-ref name="paramsPrepareWithoutValidation" />
+			<result name="success">pages/secure/admin/fleetcoverage/manageFleetCoverageListInventories.jsp</result>
+		</action>
+		<action name="manageFleetWarrantyCoverageConf"
+			class="tavant.twms.web.admin.warranty.ManageFleetWarrantyCoverage" method="confirmFleetWarrantyCoverage">
+			<interceptor-ref name="twmsParamsPrepareParams" />
+			<result name="success">pages/secure/admin/fleetcoverage/manageFleetCoverageConfirmation.jsp</result>
+			<result name="input">pages/secure/warranty/purchase_extended_warranty_error.jsp</result>			
+		</action>
+		<action name="searchInventories_MFWC"
+			class="tavant.twms.web.admin.warranty.ManageFleetWarrantyCoverage" method="searchInventories">
+			<interceptor-ref name="paramsPrepareWithoutValidation" />
+			<result name="input">pages/secure/multipleInventoryPicker/searchError.jsp</result>
+            <result name="success">pages/secure/multipleInventoryPicker/multipleInventorySearchResults.jsp</result>		
+		</action>				
+		<action name="manageFleetWarrantyCoverage"
+			class="tavant.twms.web.admin.warranty.ManageFleetWarrantyCoverage"
+			method="manageFleetWarrantyCoverage">
+			<interceptor-ref name="twmsParamsPrepareParams" />
+				<result name="success">pages/secure/common/successFullRefresh.jsp</result>
+		</action>		
+		<action name="select_plan_fleetGWextension"
+			class="tavant.twms.web.admin.warranty.ManageFleetWarrantyCoverage"
+			method="showGoodWillPlans">
+			<interceptor-ref name="paramsPrepareWithoutValidation" />
+				<result name="success">pages/secure/admin/fleetcoverage/fleetGWExtensionListPlans.jsp</result>
+		</action>
+		<action name="searchInventories_GWExtension"
+			class="tavant.twms.web.admin.warranty.ManageFleetWarrantyCoverage" method="searchInventoriesForGWExtension">
+			<interceptor-ref name="paramsPrepareWithoutValidation" />
+			<result name="input">pages/secure/multipleInventoryPicker/searchError.jsp</result>
+            <result name="success">pages/secure/multipleInventoryPicker/multipleInventorySearchResults.jsp</result>		
+		</action>
+		<action name="show_inventories_GWPolicy"
+			class="tavant.twms.web.admin.warranty.ManageFleetWarrantyCoverage" method="showInventoriesGWPolicy">
+			<interceptor-ref name="paramsPrepareWithoutValidation" />
+			<result name="success">pages/secure/admin/fleetcoverage/fleetGWExtensionListInventories.jsp</result>	
+		</action>
+		<action name="showDetails_inventories_GWPolicy"
+			class="tavant.twms.web.admin.warranty.ManageFleetWarrantyCoverage" method="showPolicyDetailsForGWPolicy">
+			<interceptor-ref name="paramsPrepareWithoutValidation" />
+			<result name="success">pages/secure/admin/fleetcoverage/fleetGWExtensionInventoryDetails.jsp</result>
+		</action>
+		<action name="gwFleetExtensionConf"
+			class="tavant.twms.web.admin.warranty.ManageFleetWarrantyCoverage" method="confirmFleetGWExtension">
+			<interceptor-ref name="twmsParamsPrepareParams" />
+			<result name="success">pages/secure/admin/fleetcoverage/fleetGWExtensionConfirmation.jsp</result>
+			<result name="input">pages/secure/warranty/purchase_extended_warranty_error.jsp</result>			
+		</action>
+		<action name="fleetGWExtension"
+			class="tavant.twms.web.admin.warranty.ManageFleetWarrantyCoverage"
+			method="fleetGWExtension">
+			<interceptor-ref name="twmsParamsPrepareParams" />
+				<result name="success">pages/secure/common/successFullRefresh.jsp</result>
+		</action>
+	</package>
+</struts>

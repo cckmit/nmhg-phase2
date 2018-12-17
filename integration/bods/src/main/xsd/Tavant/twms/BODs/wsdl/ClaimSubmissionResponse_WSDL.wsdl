@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="MI_ClaimSubmissionResponse_OB" targetNamespace="http://nmhg.com/BatchClaim_Response" xmlns:p1="http://nmhg.com/BatchClaim_Response" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+	<wsdl:types>
+		<xsd:schema targetNamespace="http://nmhg.com/BatchClaim_Response" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://nmhg.com/BatchClaim_Response">
+			<xsd:element name="MT_ClaimSubmissionResponse" type="ClaimSubmissionResponse"/>
+			<xsd:complexType name="ClaimSubmissionResponse">
+				<xsd:sequence>
+					<xsd:element name="ApplicationArea">
+						<xsd:annotation>
+							<xsd:appinfo source="http://sap.com/xi/TextID">d4ef6a7099b311e3c7ed100ba93959d4</xsd:appinfo>
+						</xsd:annotation>
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="Sender">
+									<xsd:annotation>
+										<xsd:appinfo source="http://sap.com/xi/TextID">d4efc23499b311e3ce71100ba93959d4</xsd:appinfo>
+									</xsd:annotation>
+									<xsd:complexType>
+										<xsd:sequence>
+											<xsd:element name="Task">
+												<xsd:annotation>
+													<xsd:appinfo source="http://sap.com/xi/TextID">d4efc23599b311e3c06f100ba93959d4</xsd:appinfo>
+												</xsd:annotation>
+												<xsd:simpleType>
+													<xsd:restriction base="xsd:string">
+														<xsd:maxLength value="50"/>
+													</xsd:restriction>
+												</xsd:simpleType>
+											</xsd:element>
+											<xsd:element name="LogicalId">
+												<xsd:annotation>
+													<xsd:appinfo source="http://sap.com/xi/TextID">d4efc23699b311e3883a100ba93959d4</xsd:appinfo>
+												</xsd:annotation>
+												<xsd:simpleType>
+													<xsd:restriction base="xsd:string">
+														<xsd:maxLength value="50"/>
+													</xsd:restriction>
+												</xsd:simpleType>
+											</xsd:element>
+											<xsd:element name="ReferenceId">
+												<xsd:annotation>
+													<xsd:appinfo source="http://sap.com/xi/TextID">d4effa9299b311e3b70a100ba93959d4</xsd:appinfo>
+												</xsd:annotation>
+												<xsd:simpleType>
+													<xsd:restriction base="xsd:string">
+														<xsd:maxLength value="100"/>
+													</xsd:restriction>
+												</xsd:simpleType>
+											</xsd:element>
+										</xsd:sequence>
+									</xsd:complexType>
+								</xsd:element>
+								<xsd:element name="BODId">
+									<xsd:annotation>
+										<xsd:appinfo source="http://sap.com/xi/TextID">d4effa9399b311e3be90100ba93959d4</xsd:appinfo>
+									</xsd:annotation>
+									<xsd:simpleType>
+										<xsd:restriction base="xsd:string">
+											<xsd:maxLength value="50"/>
+										</xsd:restriction>
+									</xsd:simpleType>
+								</xsd:element>
+								<xsd:element name="InterfaceNumber">
+									<xsd:annotation>
+										<xsd:appinfo source="http://sap.com/xi/TextID">d4effa9499b311e3be4c100ba93959d4</xsd:appinfo>
+									</xsd:annotation>
+									<xsd:simpleType>
+										<xsd:restriction base="xsd:string">
+											<xsd:maxLength value="50"/>
+										</xsd:restriction>
+									</xsd:simpleType>
+								</xsd:element>
+								<xsd:element name="CreationDateTime" type="xsd:string">
+									<xsd:annotation>
+										<xsd:appinfo source="http://sap.com/xi/TextID">d4effa9599b311e3cabf100ba93959d4</xsd:appinfo>
+									</xsd:annotation>
+								</xsd:element>
+							</xsd:sequence>
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="Status" type="xsd:string">
+						<xsd:annotation>
+							<xsd:appinfo source="http://sap.com/xi/TextID">d4effa9699b311e3b862100ba93959d4</xsd:appinfo>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="ClaimNumber" type="xsd:string" minOccurs="0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+						<xsd:annotation>
+							<xsd:appinfo source="http://sap.com/xi/TextID">d4effa9799b311e3b287100ba93959d4</xsd:appinfo>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="TavantClaimUniqueIdentifier" type="xsd:string" minOccurs="0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+						<xsd:annotation>
+							<xsd:appinfo source="http://sap.com/xi/TextID">d4effa9899b311e3bf04100ba93959d4</xsd:appinfo>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="Exceptions" minOccurs="0">
+						<xsd:annotation>
+							<xsd:appinfo source="http://sap.com/xi/TextID">d4effa9999b311e3bee7100ba93959d4</xsd:appinfo>
+						</xsd:annotation>
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="Error" minOccurs="0" maxOccurs="unbounded" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+									<xsd:annotation>
+										<xsd:appinfo source="http://sap.com/xi/TextID">d4effa9a99b311e389b5100ba93959d4</xsd:appinfo>
+									</xsd:annotation>
+									<xsd:complexType>
+										<xsd:sequence>
+											<xsd:element name="errorCode" type="xsd:string">
+												<xsd:annotation>
+													<xsd:appinfo source="http://sap.com/xi/TextID">d4f00cba99b311e38548100ba93959d4</xsd:appinfo>
+												</xsd:annotation>
+											</xsd:element>
+											<xsd:element name="errorMessage" type="xsd:string">
+												<xsd:annotation>
+													<xsd:appinfo source="http://sap.com/xi/TextID">d4f00cbb99b311e3c638100ba93959d4</xsd:appinfo>
+												</xsd:annotation>
+											</xsd:element>
+										</xsd:sequence>
+									</xsd:complexType>
+								</xsd:element>
+							</xsd:sequence>
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:complexType>
+		</xsd:schema>
+	</wsdl:types>
+	<wsdl:message name="MT_ClaimSubmissionResponse">
+		<wsdl:part name="MT_ClaimSubmissionResponse" element="p1:MT_ClaimSubmissionResponse" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"/>
+	</wsdl:message>
+	<wsdl:portType name="MI_ClaimSubmissionResponse_OB">
+		<wsdl:operation name="MI_ClaimSubmissionResponse_OB">
+			<wsdl:input message="p1:MT_ClaimSubmissionResponse"/>
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="MI_ClaimSubmissionResponse_OBBinding" type="p1:MI_ClaimSubmissionResponse_OB" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"/>
+		<wsdl:operation name="MI_ClaimSubmissionResponse_OB">
+			<soap:operation soapAction="http://sap.com/xi/WebService/soap1.1" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"/>
+			<wsdl:input>
+				<soap:body use="literal" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"/>
+			</wsdl:input>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="MI_ClaimSubmissionResponse_OBService">
+		<wsdl:port name="MI_ClaimSubmissionResponse_OBPort" binding="p1:MI_ClaimSubmissionResponse_OBBinding" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+			<soap:address location="http://ac4sap02:58100/XISOAPAdapter/MessageServlet?channel=SLMS:BS_DEV_SLMS:CC_ClaimSubmissionResponse_SLMS_to_NWO_SND" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"/>
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

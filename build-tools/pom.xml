@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<project>
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <artifactId>server</artifactId>
+    <groupId>tavant.twms.TSA_DEV</groupId>
+    <version>0.5-SNAPSHOT</version>
+  </parent>
+
+  <artifactId>build-tools</artifactId>
+  <name>build-tools</name>
+  
+       
+</project>

@@ -1,0 +1,71 @@
+<!DOCTYPE root>
+<excel>
+  <sheet sheetName="Machine" type="tavant.twms.domain.claim.MachineClaim" startRow="3">
+    <block>
+      <column-mapping column="0" expression="itemReference" dependsOn="1" dependsOnType="java.lang.String" convertorName="itemRefConvertor"/>
+      <column-mapping column="2" expression="failureDate" />
+	  <column-mapping column="3" expression="repairDate"/>
+	  <column-mapping column="4" expression="hoursInService"></column-mapping>
+	  <column-mapping column="5" expression="installationDate"/>
+      <column-mapping column="6" expression="serviceInformation.faultCode" />
+      <column-mapping column="7" expression="serviceInformation.causalPart" convertorName="itemConvertor" />
+	  <column-mapping column="8" expression="serviceInformation.faultFound" />
+	  <column-mapping column="9" expression="serviceInformation.causedBy" />
+      <column-mapping column="10" expression="serviceInformation.serviceDetail.oemPartsReplaced[].itemReference" dependsOn="11" dependsOnType="java.lang.String" convertorName="itemRefConvertor"/>
+      <column-mapping column="12" expression="serviceInformation.serviceDetail.oemPartsReplaced[].numberOfUnits" />
+	  <column-mapping column="13" expression="serviceInformation.serviceDetail.nonOEMPartsReplaced[].description"/>
+	  <column-mapping column="14" expression="serviceInformation.serviceDetail.nonOEMPartsReplaced[].description"/>
+	  <column-mapping column="15" expression="serviceInformation.serviceDetail.nonOEMPartsReplaced[].numberOfUnits"/>
+	  <column-mapping column="16" expression="serviceInformation.serviceDetail.nonOEMPartsReplaced[].pricePerUnit" convertorName="moneyConvertor"/>
+	  <column-mapping column="17" expression="serviceInformation.serviceDetail.laborPerformed[].serviceProcedure" convertorName="serviceProcedureConvertor"/>
+	  <column-mapping column="18" expression="serviceInformation.serviceDetail.laborPerformed[].hoursSpent"/>
+	  <column-mapping column="19" expression="serviceInformation.serviceDetail.travelDetails.location"/>
+	  <column-mapping column="20" expression="serviceInformation.serviceDetail.travelDetails.trips"/>
+	  <column-mapping column="21" expression="serviceInformation.serviceDetail.travelDetails.hours"/>
+	  <column-mapping column="22" expression="serviceInformation.serviceDetail.travelDetails.distance"/>
+      <column-mapping column="23" expression="serviceInformation.serviceDetail.mealsExpense"/>
+	  <column-mapping column="24" expression="serviceInformation.serviceDetail.itemFreightAndDuty"/>
+	  <column-mapping column="25" expression="probableCause"/>
+	  <column-mapping column="26" expression="workPerformed"/>
+	  <column-mapping column="27" expression="conditionFound"/>
+	  <column-mapping column="28" expression="otherComments"/>
+    </block>
+
+    <block-break column="0"/>
+    <sheet-end/>
+  </sheet>
+  <sheet sheetName="Parts" type="tavant.twms.domain.claim.PartsClaim" startRow="3">
+    <block>
+      <column-mapping column="0" expression="itemReference" dependsOn="1" dependsOnType="java.lang.String" convertorName="itemRefConvertor"/>
+      <column-mapping column="2" expression="failureDate" />
+	  <column-mapping column="3" expression="repairDate"/>
+	  <column-mapping column="4" expression="hoursInService"></column-mapping>
+	  <column-mapping column="5" expression="installationDate"/>
+      <column-mapping column="6" expression="serviceInformation.faultCode" />
+      <column-mapping column="7" expression="serviceInformation.causalPart" convertorName="itemConvertor" />
+	  <column-mapping column="8" expression="serviceInformation.faultFound" />
+	  <column-mapping column="9" expression="serviceInformation.causedBy" />
+      <column-mapping column="10" expression="serviceInformation.serviceDetail.oemPartsReplaced[].itemReference" dependsOn="11" dependsOnType="java.lang.String" convertorName="itemRefConvertor"/>
+      <column-mapping column="12" expression="serviceInformation.serviceDetail.oemPartsReplaced[].numberOfUnits" />
+	  <column-mapping column="13" expression="serviceInformation.serviceDetail.nonOEMPartsReplaced[].description"/>
+	  <column-mapping column="14" expression="serviceInformation.serviceDetail.nonOEMPartsReplaced[].description"/>
+	  <column-mapping column="15" expression="serviceInformation.serviceDetail.nonOEMPartsReplaced[].numberOfUnits"/>
+	  <column-mapping column="16" expression="serviceInformation.serviceDetail.nonOEMPartsReplaced[].pricePerUnit" convertorName="moneyConvertor"/>
+	  <column-mapping column="17" expression="serviceInformation.serviceDetail.laborPerformed[].serviceProcedure" convertorName="serviceProcedureConvertor"/>
+	  <column-mapping column="18" expression="serviceInformation.serviceDetail.laborPerformed[].hoursSpent"/>
+	  <column-mapping column="19" expression="serviceInformation.serviceDetail.travelDetails.location"/>
+	  <column-mapping column="20" expression="serviceInformation.serviceDetail.travelDetails.trips"/>
+	  <column-mapping column="21" expression="serviceInformation.serviceDetail.travelDetails.hours"/>
+	  <column-mapping column="22" expression="serviceInformation.serviceDetail.travelDetails.distance"/>
+      <column-mapping column="23" expression="serviceInformation.serviceDetail.mealsExpense"/>
+	  <column-mapping column="24" expression="serviceInformation.serviceDetail.itemFreightAndDuty"/>
+	  <column-mapping column="25" expression="probableCause"/>
+	  <column-mapping column="26" expression="workPerformed"/>
+	  <column-mapping column="27" expression="conditionFound"/>
+	  <column-mapping column="28" expression="otherComments"/>
+    </block>
+
+    <block-break column="0"/>
+    <sheet-end/>
+  </sheet>
+</excel>

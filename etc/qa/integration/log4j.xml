@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+    <appender name="TWMS_LOG" class="org.apache.log4j.RollingFileAppender">
+        <param name="File" value="/home/blrproj/apps/jboss-4.2.3.GA/etc/twms/qa/app_logs/twms.log"/>
+        <param name="MaxFileSize" value="10MB"/>
+        <param name="MaxBackupIndex" value="25"/>
+        <param name="Append" value="true"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="[%d] %-5p %m%n"/>
+        </layout>
+    </appender>
+
+    <appender name="STRUTS2_LOG" class="org.apache.log4j.DailyRollingFileAppender">
+    	<param name="File" value="/home/blrproj/apps/jboss-4.2.3.GA/etc/twms/qa/app_logs/struts.log"/>
+    	<param name="datePattern" value="'.'yyyy-MM-dd" />
+    	<param name="append" value="true" />
+    	<layout class="org.apache.log4j.PatternLayout">
+        	<param name="ConversionPattern" value="[%d] %-5p %m%n"/>
+    	</layout>
+    </appender>
+
+    <appender name="JBPM_LOG" class="org.apache.log4j.RollingFileAppender">
+        <param name="File" value="/home/blrproj/apps/jboss-4.2.3.GA/etc/twms/qa/app_logs/jbpm.log"/>
+        <param name="MaxFileSize" value="10MB"/>
+        <param name="MaxBackupIndex" value="25"/>
+        <param name="Append" value="true"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="[%d] %-5p %m%n"/>
+        </layout>
+    </appender>
+	
+    <appender name="WEB_LOG" class="org.apache.log4j.DailyRollingFileAppender">
+	<param name="file" value="/home/blrproj/apps/jboss-4.2.3.GA/etc/twms/qa/app_logs/web.log" />
+	<param name="datePattern" value="'.'yyyy-MM-dd" />
+        <param name="append" value="true" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="[%d] - %m %n"/>
+        </layout>
+    </appender>
+
+    <appender name="PRICE_CHECK_LOG" class="org.apache.log4j.DailyRollingFileAppender">
+          <param name="file" value="/home/blrproj/apps/jboss-4.2.3.GA/etc/twms/qa/app_logs/price-check.log" />
+          <param name="datePattern" value="'.'yyyy-MM-dd" />
+          <param name="append" value="true" />
+          <layout class="org.apache.log4j.PatternLayout">
+              <param name="ConversionPattern" value="[%d] - %m %n"/>
+          </layout>
+    </appender>
+
+    <appender name="RULE_FAILURE_LOG" class="org.apache.log4j.RollingFileAppender">
+        <param name="File" value="/home/blrproj/apps/jboss-4.2.3.GA/etc/twms/qa/app_logs/rule-failures.log"/>
+        <param name="MaxFileSize" value="10MB"/>
+        <param name="MaxBackupIndex" value="25"/>
+        <param name="Append" value="true"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="[%d] %-5p %m%n"/>
+        </layout>
+    </appender>
+
+    <appender name="DEALERAPI_LOG" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="file" value="/home/blrproj/apps/jboss-4.2.3.GA/etc/twms/qa/app_logs/dealer-interface.log"/>
+        <param name="datePattern" value="'.'yyyy-MM-dd"/>
+        <param name="append" value="true"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="[%d] - %m %n"/>
+        </layout>
+    </appender>
+
+
+   	
+
+    <appender name="NULL" class="org.apache.log4j.varia.NullAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="[%d] %-5p %m%n"/>
+        </layout>
+    </appender>
+
+    <logger name="tavant.twms.filter.ResponseTimeLogFilter" additivity="false">
+        <level value="INFO"/>
+        <appender-ref ref="WEB_LOG"/>
+    </logger>
+    
+    <logger name="priceCheck" additivity="false">
+        <level value="INFO"/>
+        <appender-ref ref="PRICE_CHECK_LOG"/>
+    </logger>
+
+    <logger name="com.opensymphony" additivity="false">
+        <level value="ERROR"/>
+        <appender-ref ref="STRUTS2_LOG"/>
+    </logger>
+
+    <logger name="org.apache.struts2" additivity="false">
+        <level value="ERROR"/>
+        <appender-ref ref="STRUTS2_LOG"/>
+    </logger>
+
+    <logger name="org.jbpm" additivity="false">
+        <level value="ERROR"/>
+        <appender-ref ref="JBPM_LOG"/>
+    </logger>
+
+    <logger name="com.opensymphony.xwork2.util.InstantiatingNullHandler" additivity="false">
+        <level value="ERROR"/>
+        <appender-ref ref="NULL"/>
+    </logger>
+
+    <logger name="tavant.twms.domain.rules.RuleExecutionTemplate" additivity="false">
+        <level value="ERROR"/>
+        <appender-ref ref="RULE_FAILURE_LOG"/>
+    </logger>
+
+    <logger name="dealerAPILogger" additivity="false">
+          <level value="DEBUG"/>
+          <appender-ref ref="DEALERAPI_LOG"/>
+    </logger>
+ 
+    <root>
+        <level value="ERROR"/>
+        <appender-ref ref="TWMS_LOG"/>
+    </root>
+
+</log4j:configuration>

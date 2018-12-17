@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SyncInvoice>
+	<ApplicationArea>
+		<Sender>
+			<Task>0200001999</Task>
+			<LogicalId>98-572-4553</LogicalId>
+		</Sender>
+		<BODId>bodId</BODId>
+		<CreationDateTime>2001-12-17T09:30:47-05:00</CreationDateTime>
+	</ApplicationArea>
+	<DataArea>
+		<Invoice>
+			<Header>
+				<UserArea>
+					<ClaimNumber>4</ClaimNumber>
+				</UserArea>
+				<DocumentIds>
+					<DocumentId>
+						<Id>52577887962</Id>
+					</DocumentId>
+				</DocumentIds>
+				<TotalAmount>
+					<body>4500.00</body>
+				</TotalAmount>
+			</Header>
+			<DocumentDateTime> 2001-12-17T09:30:47-05:00 </DocumentDateTime>
+			<Line>
+				<Tax>
+					<TaxAmount>
+						<body>400.00</body>
+					</TaxAmount>
+				</Tax>
+				<TotalAmount currency="USD" />
+			</Line>
+		</Invoice>
+	</DataArea>
+</SyncInvoice>

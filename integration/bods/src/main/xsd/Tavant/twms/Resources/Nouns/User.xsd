@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://www.tavant.com/oagis"
+	xmlns="http://www.tavant.com/oagis"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:oa="http://www.openapplications.org/oagis/9"
+	elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="../Fields.xsd" />
+	<xs:element name="User" type="User"></xs:element>
+	<xs:complexType name="User">
+		<xs:sequence>
+			<xs:element name="CompanyId" type="xs:string" />
+			<xs:element name="UserId" type="xs:string" />
+			<xs:element name="Login" type="xs:string" />
+			<xs:element name="Password" type="xs:string" />
+			<xs:element name="Role" type="xs:string" />
+			<xs:element name="PostalAddress" type="Address" />
+			<xs:element name="RemoteSystem" type="RemoteSystemType"/>
+			<xs:element name="LanguagePreference" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="RemoteSystemType">
+		<xs:sequence>
+			<xs:element name="RemoteSystemName" type="xs:string"/>
+			<xs:element name="RemoteSystemUserId" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

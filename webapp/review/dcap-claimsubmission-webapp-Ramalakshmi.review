@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Review id="dcap-claimsubmission-webapp">
+  <ReviewIssue id="G4O1K236">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-20 :: 17:09:18:546 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-02-04 :: 12:29:28:393 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ramalakshmi</ReviewerId>
+    <AssignedTo>Ramalakshmi</AssignedTo>
+    <File line="266">src/main/java/tavant/twms/web/dcap/SubmitDcapClaimAction.java</File>
+    <Type>item.type.label.programLogic</Type>
+    <Severity>item.label.unset</Severity>
+    <Summary>How will this API work for a multi line dealer?</Summary>
+    <Description>Do we need to pass Business unit information in threadlocal?</Description>
+    <Annotation></Annotation>
+    <Revision>this API is considering multi bu also</Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.resolved</Status>
+  </ReviewIssue>
+  <ReviewIssue id="G4O1KVNU">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-20 :: 17:09:56:874 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-02-04 :: 12:30:42:156 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ramalakshmi</ReviewerId>
+    <AssignedTo>Ramalakshmi</AssignedTo>
+    <File line="271">src/main/java/tavant/twms/web/dcap/SubmitDcapClaimAction.java</File>
+    <Type>item.type.label.codingStandards</Type>
+    <Severity>item.severity.label.normal</Severity>
+    <Summary>Add constants for parameter values</Summary>
+    <Description></Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.resolved</Status>
+  </ReviewIssue>
+  <ReviewIssue id="G4O1NUC4">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-20 :: 17:12:15:124 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-02-04 :: 12:31:42:826 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ramalakshmi</ReviewerId>
+    <AssignedTo>Ramalakshmi</AssignedTo>
+    <File line="58">src/main/java/tavant/twms/web/dcap/PriceMatrixAction.java</File>
+    <Type>item.type.label.other</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>How is this currency list handled in JSP?</Summary>
+    <Description>How is this currency list handled in JSP?</Description>
+    <Annotation></Annotation>
+    <Revision>we are taking one parameter string with name currency code in jsp</Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.resolved</Status>
+  </ReviewIssue>
+</Review>

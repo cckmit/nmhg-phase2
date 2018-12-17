@@ -1,0 +1,16 @@
+--PURPOSE    : patch to add columns for techncian tables
+--AUTHOR     : Raghu
+--CREATED ON : 23-JAN-2014
+--adding the columns for Technician table
+alter table technician add  (comments varchar2(4000),status varchar2(50))
+/
+alter table technician_certification add (TECH_USER NUMBER(19),IS_CORE_LEVEL NUMBER(1),CORE_CERTIFICATION NUMBER(19),SERIES_CERTIFICATION NUMBER(19))
+/
+alter table TECHNICIAN_CERTIFICATION modify(TECHNICIAN   NUMBER(19) null)
+/
+alter table TECHNICIAN_CERTIFICATION add CONSTRAINT "TECHNICIAN_FK" FOREIGN KEY ("TECH_USER") REFERENCES "TECHNICIAN" ("ID") ENABLE
+/
+alter table TECHNICIAN_CERTIFICATION add CONSTRAINT "tech_series_cert_FK" FOREIGN KEY ("SERIES_CERTIFICATION")REFERENCES "SERIES_REF_CERTIFICATION" ("ID") ENABLE
+/
+alter table TECHNICIAN_CERTIFICATION add CONSTRAINT "tech_core_cert_FK" FOREIGN KEY ("CORE_CERTIFICATION") REFERENCES "CORE_CERTIFICATION" ("ID") ENABLE
+/

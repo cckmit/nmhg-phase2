@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="dealergroupsadmin" extends="struts-twms-default">
+
+		<!-- Actions for admin dealer group management. -->
+		<action name="show_dealer_schemes"
+			class="tavant.twms.web.admin.groups.ListDealerSchemes">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">pages/secure/admin/groups/dealer/dealerSchemeInboxView.jsp</result>
+		</action>
+
+		<action name="get_dealer_schemes_body"
+			class="tavant.twms.web.admin.groups.ListDealerSchemes"
+			method="tableBody">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">pages/secure/home/json.jsp</result>
+		</action>
+
+		<action name="export_dealer_scheme_to_excel"
+			class="tavant.twms.web.admin.groups.ListDealerSchemes"
+			method="downloadListingData">
+			<interceptor-ref name="adminParamsPrepare" />
+	    </action>
+
+		<action name="show_dealer_groups"
+			class="tavant.twms.web.admin.groups.ManageDealerSchemes"
+			method="showGroups">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">
+				pages/secure/admin/groups/dealer/showSchemes.jsp
+			</result>
+		</action>
+
+		<action name="create_dealer_scheme"
+			class="tavant.twms.web.admin.groups.ManageDealerSchemes"
+			method="createScheme">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">
+				pages/secure/admin/groups/dealer/showSchemes.jsp
+			</result>
+		</action>
+
+		<action name="save_dealer_scheme"
+			class="tavant.twms.web.admin.groups.ManageDealerSchemes"
+			method="saveScheme">
+			<interceptor-ref name="adminTwmsParamsPrepareParams" />
+			<result name="success">
+				pages/secure/admin/groups/dealer/showSchemes.jsp
+			</result>
+			<result name="input">
+				pages/secure/admin/groups/dealer/showSchemes.jsp
+			</result>
+		</action>
+
+		<!-- Actions for Dealer Groups  -->
+
+		<action name="list_dealer_groups"
+			class="tavant.twms.web.admin.groups.ListDealerGroups">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">pages/secure/admin/groups/dealer/dealerGroupsInboxView.jsp</result>
+		</action>
+
+		<action name="get_dealer_groups_body"
+			class="tavant.twms.web.admin.groups.ListDealerGroups"
+			method="tableBody">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">pages/secure/home/json.jsp</result>
+		</action>
+
+		<action name="view_dealer_group_preview"
+			class="tavant.twms.web.admin.groups.ManageDealerGroups"
+			method="showGroup">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="dealer">
+				pages/secure/admin/groups/dealer/showGroup.jsp
+			</result>
+			<result name="group">
+				pages/secure/admin/groups/dealer/showGroup.jsp
+			</result>
+		</action>
+
+		<action name="view_dealer_group"
+			class="tavant.twms.web.admin.groups.ManageDealerGroups"
+			method="showGroup">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="dealer">
+				pages/secure/admin/groups/dealer/manageDealer.jsp
+			</result>
+			<result name="group">
+				pages/secure/admin/groups/dealer/manageGroup.jsp
+			</result>
+		</action>
+
+		<action name="export_dealer_group_to_excel"
+			class="tavant.twms.web.admin.groups.ListDealerGroups"
+			method="downloadListingData">
+			<interceptor-ref name="adminParamsPrepare" />
+		</action>
+
+		<!--  Actions for Creation of DealerGroup -->
+		<action name="create_dealer_group"
+			class="tavant.twms.web.admin.groups.CreateDealerGroup"
+			method="setUpForCreate">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">
+				pages/secure/admin/groups/dealer/createDealerGroup.jsp
+			</result>
+		</action>
+
+		<action name="save_dealer_group"
+			class="tavant.twms.web.admin.groups.CreateDealerGroup"
+			method="save">
+			<interceptor-ref name="adminTwmsParamsPrepareParams" />
+			<result name="input">
+				pages/secure/admin/groups/dealer/createDealerGroup.jsp
+			</result>
+		</action>
+
+		<action name="manage_dealer_group"
+			class="tavant.twms.web.admin.groups.ManageDealerGroup"
+			method="manage">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">
+				pages/secure/admin/groups/dealer/manageGroup.jsp
+			</result>
+		</action>
+
+		<action name="manage_dealer"
+			class="tavant.twms.web.admin.groups.ManageDealer"
+			method="manage">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">
+				pages/secure/admin/groups/dealer/manageDealer.jsp
+			</result>
+		</action>
+
+		<action name="search_dealers_for_dealergroup"
+			class="tavant.twms.web.admin.groups.ManageDealer"
+			method="search">
+			<interceptor-ref name="adminTwmsParamsPrepareParams" />
+			<result name="input">
+				pages/secure/admin/groups/dealer/error.jsp
+			</result>
+			<result name="success">
+				pages/secure/admin/groups/dealer/selectDealers.jsp
+			</result>
+		</action>
+
+		<action name="search_groups_for_dealergroup"
+			class="tavant.twms.web.admin.groups.ManageDealerGroup"
+			method="search">
+			<interceptor-ref name="adminTwmsParamsPrepareParams" />
+			<result name="input">
+				pages/secure/admin/groups/dealer/error.jsp
+			</result>
+			<result name="success">
+				pages/secure/admin/groups/dealer/selectGroups.jsp
+			</result>
+		</action>
+
+		<action name="add_dealers_to_dealergroup"
+			class="tavant.twms.web.admin.groups.ManageDealer"
+			method="add">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">
+				pages/secure/admin/groups/dealer/manageDealer.jsp
+			</result>
+		</action>
+
+		<action name="add_groups_to_dealergroup"
+			class="tavant.twms.web.admin.groups.ManageDealerGroup"
+			method="add">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">
+				pages/secure/admin/groups/dealer/manageGroup.jsp
+			</result>
+		</action>
+
+		<action name="save_dealer"
+			class="tavant.twms.web.admin.groups.ManageDealer"
+			method="save">
+			<interceptor-ref name="adminTwmsParamsPrepareParams" />
+			<result name="success">
+				pages/secure/admin/groups/dealer/success.jsp
+			</result>
+			<result name="input">
+				pages/secure/admin/groups/dealer/manageDealer.jsp
+			</result>
+		</action>
+
+		<action name="save_dealergroup"
+			class="tavant.twms.web.admin.groups.ManageDealerGroup"
+			method="save">
+			<interceptor-ref name="adminTwmsParamsPrepareParams" />
+			<result name="success">
+				pages/secure/admin/groups/dealer/success.jsp
+			</result>
+			<result name="input">
+				pages/secure/admin/groups/dealer/manageGroup.jsp
+			</result>
+		</action>
+	</package>
+</struts>

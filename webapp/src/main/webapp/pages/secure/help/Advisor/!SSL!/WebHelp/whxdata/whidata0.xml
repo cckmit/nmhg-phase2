@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<indexdata>
+<key name="Advice Request" >
+  <topic name="Advice Request" url="Claims/Advice_Request.htm" />
+</key>
+<key name="Causal Part" >
+  <topic name="Claim Details" url="Claims/Claim_Details.htm" />
+</key>
+<key name="Claim Details" >
+  <topic name="Claim Details" url="Claims/Claim_Details.htm" />
+</key>
+<key name="Claim History" >
+  <topic name="Claim Details" url="Claims/Claim_Details.htm" />
+</key>
+<key name="Claim Number" >
+  <topic name="Claim Details" url="Claims/Claim_Details.htm" />
+</key>
+<key name="Components Replaced" >
+  <topic name="Claim Details" url="Claims/Claim_Details.htm" />
+</key>
+<key name="Dealer Details" >
+  <topic name="Equipment Details" url="Inventory/Equipment_Details.htm" />
+</key>
+<key name="Download Management" >
+  <topic name="Download Management" url="Reports/Download_Management.htm" />
+</key>
+<key name="Equipment Details" >
+  <topic name="Equipment Details" url="Inventory/Equipment_Details.htm" />
+</key>
+<key name="Failure Detail" >
+  <topic name="Claim Details" url="Claims/Claim_Details.htm" />
+</key>
+<key name="Failure Information" >
+  <topic name="Claim Details" url="Claims/Claim_Details.htm" />
+</key>
+<key name="Fault Code" >
+  <topic name="Claim Details" url="Claims/Claim_Details.htm" />
+</key>
+<key name="Fault Location" >
+  <topic name="Claim Details" url="Claims/Claim_Details.htm" />
+</key>
+<key name="Job Code" >
+  <topic name="Claim Details" url="Claims/Claim_Details.htm" />
+</key>
+<key name="Major Components" >
+  <topic name="Equipment Details" url="Inventory/Equipment_Details.htm" />
+</key>
+<key name="Manage Documents" >
+  <topic name="Claim Details" url="Claims/Claim_Details.htm" />
+</key>
+<key name="Memo Details" >
+  <topic name="Claim Details" url="Claims/Claim_Details.htm" />
+</key>
+<key name="Outside Parts" >
+  <topic name="Claim Details" url="Claims/Claim_Details.htm" />
+</key>
+<key name="Part Number" >
+  <topic name="Claim Details" url="Claims/Claim_Details.htm" />
+</key>
+<key name="Payment Details" >
+  <topic name="Claim Details" url="Claims/Claim_Details.htm" />
+</key>
+<key name="PreDefined Retail Search" >
+  <topic name="Search Inventory" url="Inventory/Search_Inventory.htm" />
+</key>
+<key name="PreDefined Stock Search" >
+  <topic name="Search Inventory" url="Inventory/Search_Inventory.htm" />
+</key>
+<key name="Profile" >
+  <topic name="Profile" url="Settings/Profile.htm" />
+</key>
+<key name="Recovered Amount" >
+  <topic name="Equipment Details" url="Inventory/Equipment_Details.htm" />
+</key>
+<key name="Sales Order Number" >
+  <topic name="Equipment Details" url="Inventory/Equipment_Details.htm" />
+</key>
+<key name="Service Information" >
+  <topic name="Claim Details" url="Claims/Claim_Details.htm" />
+</key>
+<key name="Shipment Date" >
+  <topic name="Equipment Details" url="Inventory/Equipment_Details.htm" />
+</key>
+<key name="Transaction History" >
+  <topic name="Equipment Details" url="Inventory/Equipment_Details.htm" />
+</key>
+<key name="Upload Management" >
+  <topic name="Upload Management" url="Reports/Upload_Management.htm" />
+</key>
+
+</indexdata>

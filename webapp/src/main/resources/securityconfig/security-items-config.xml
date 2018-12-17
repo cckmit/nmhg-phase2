@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<functionalareas xmlns="http://www.tavant.com/twms/security/resource"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.tavant.com/twms/security/resource
+			http://www.tavant.com/twms/security/resource">
+	<functionalarea name="items" defaultpolicy="none">
+
+	<!-- Resources for update or Read Only -->
+	
+		<resource type="ui" value="itemsItemsTab" operation="OR">
+			<permissions>items:itemsItemsTab:update,items:itemsItemsTab:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="itemsDefinedSearchQuery" operation="OR">
+			<permissions>items:itemsDefinedSearchQuery:update,items:itemsDefinedSearchQuery:view
+			</permissions>
+		</resource>
+	
+	<!-- Resources for Read Only-->
+	
+		<resource type="ui" value="itemsItemsTabReadOnlyView">
+			<permissions>items:itemsItemsTab:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="itemsDefinedSearchQueryReadOnlyView">
+			<permissions>items:itemsDefinedSearchQuery:view
+			</permissions>
+		</resource>
+        
+	</functionalarea>
+
+</functionalareas>

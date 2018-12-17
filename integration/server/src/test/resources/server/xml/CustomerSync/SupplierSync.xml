@@ -1,0 +1,41 @@
+<CustomerSyncRequest xmlns="http://www.tavant.com/globalsync/customersync">
+    <ApplicationArea>
+        <Sender>
+            <Task>SLMS</Task>
+            <LogicalId>NOMS</LogicalId>
+            <ReferenceId>146434_63337</ReferenceId>
+        </Sender>
+        <BODId>BOD060_INT026</BODId>
+        <InterfaceNumber>INT026</InterfaceNumber>
+        <CreationDateTime>2012-12-31</CreationDateTime>
+    </ApplicationArea>
+    <DataArea>
+        <Customer>
+            <BusinessUnits>
+                <BUName>003</BUName>
+                <BUName>056</BUName>
+            </BusinessUnits>
+            <CustomerName>Test Company</CustomerName>
+            <CustomerNumber>11111</CustomerNumber>
+            <Status>A</Status>
+            <CompanyType>VENDOR</CompanyType>
+            <Currency>EUR</Currency>
+            <DealerCode>11111</DealerCode>
+            <PrimaryShipToAddress>
+                <Addressline1>KTM-Service</Addressline1>
+                <Addressline2>no 2</Addressline2>
+                <Addressline3/>
+                <SiteNumber>1222228</SiteNumber>
+                <City>Leczyca</City>
+                <State/>
+                <CountyCode/>
+                <Country>Poland</Country>
+                <Zipcode>99-100</Zipcode>
+                <Email/>
+                <Phone/>
+                <Status>A</Status>
+                <Currency/>
+            </PrimaryShipToAddress>
+        </Customer>
+    </DataArea>
+</CustomerSyncRequest>

@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="inventory" extends="struts-twms-default">
+	
+	<!-- Adding Action for Registering New Components -->
+	
+	<action name="register_major_component"
+			class="tavant.twms.web.actions.InventoryAction"
+			method="regMajorComponent">
+			<interceptor-ref name="paramsPrepareWithoutValidation" />
+			<result name="success">
+				pages/secure/inventory/reg_major_component.jsp
+			</result>
+		</action>
+		
+	
+		<action name="inventory"
+			class="tavant.twms.web.actions.InventoryAction">
+			<result name="success">
+				pages/secure/inventory/inventoryInboxView.jsp
+			</result>
+		</action>
+		
+		
+		<action name="inventory"
+			class="tavant.twms.web.actions.InventoryAction">
+			<result name="success">
+				pages/secure/inventory/inventoryInboxView.jsp
+			</result>
+		</action>
+		
+		<action name="inventoryBody"
+			class="tavant.twms.web.actions.InventoryAction" method="tableBody">
+			<result name="success">pages/secure/home/json.jsp</result>
+			<result name="input">error.jsp</result>
+		</action>
+		
+		<action name="inventoryPreview"
+			class="tavant.twms.web.actions.InventoryAction"
+			method="previewDetailView">
+			<result name="success">
+				pages/secure/inventory/inventorypreview.jsp
+			</result>
+			<result name="input">error.jsp</result>
+		</action>
+		
+		<action name="inventoryScrap" 
+			class="tavant.twms.web.actions.InventoryAction"
+			method="forwardToScrap">
+			<result name="success">
+				pages/secure/inventory/inventoryScrap.jsp
+			</result>
+			<result name="input">pages/secure/report/error.jsp</result>
+		</action>
+		
+		<action name="inventoryStolen" 
+			class="tavant.twms.web.actions.InventoryAction"
+			method="forwardToStolen">
+			<result name="success">
+				pages/secure/inventory/inventoryStolen.jsp
+			</result>
+			<result name="input">pages/secure/report/error.jsp</result>
+		</action>
+		
+		<action name="show_inventories_forScrap"
+			class="tavant.twms.web.actions.ScrapInventoryAction" method="handleInventorySelection">
+			<interceptor-ref name="paramsPrepareWithoutValidation" />
+			<result name="success">pages/secure/inventory/scrapMultipleInventories.jsp</result>	
+		</action>
+		
+		<action name="show_inventories_forUnScrap"
+			class="tavant.twms.web.actions.ScrapInventoryAction" method="handleInventorySelection">
+			<interceptor-ref name="paramsPrepareWithoutValidation" />
+			<result name="success">pages/secure/inventory/unScrapMultipleInventories.jsp</result>	
+		</action>
+		
+		<action name="scrapInventory" 
+			class="tavant.twms.web.actions.ScrapInventoryAction"
+			method="scrapInventory">
+			<result name="success" type="chain">inventoryDetail	</result>
+			<result name="input">pages/secure/inventory/inventoryScrap.jsp</result>
+		</action>
+		<action name="stolenInventory" 
+			class="tavant.twms.web.actions.StolenInventoryAction"
+			method="stolenInventory">
+			<result name="success" type="chain">inventoryDetail	</result>
+			<result name="input">pages/secure/inventory/inventoryStolen.jsp</result>
+		</action>
+		<action name="show_inventories_forStolen"
+			class="tavant.twms.web.actions.StolenInventoryAction" method="handleInventorySelection">
+			<interceptor-ref name="paramsPrepareWithoutValidation" />
+			<result name="success">pages/secure/inventory/stolenMultipleInventories.jsp</result>	
+		</action>
+		
+		<action name="show_inventories_forUnStolen"
+			class="tavant.twms.web.actions.StolenInventoryAction" method="handleInventorySelection">
+			<interceptor-ref name="paramsPrepareWithoutValidation" />
+			<result name="success">pages/secure/inventory/unStolenMultipleInventories.jsp</result>	
+		</action>
+
+		<action name="inventoryDetail"
+			class="tavant.twms.web.actions.InventoryAction"
+			method="previewDetailView">
+			<param name="isEquipHistoryPage">true</param>
+			<result name="success">
+				pages/secure/inventory/inventoryequipmenthistory.jsp
+			</result>
+		</action>
+		
+		
+			<action name="inventory_save"
+			class="tavant.twms.web.actions.InventoryAction"
+			method="saveInventory">
+			<interceptor-ref name="paramsPrepareWithoutValidation" />
+            <result name="input">pages/secure/inventory/inventoryequipmenthistory.jsp</result>
+			<result name="success">
+			pages/secure/inventory/inventoryTruckDocumentsSuccess.jsp
+			</result>
+		</action>
+		
+		
+		<action name="majorComponentInventoryDetail"
+			class="tavant.twms.web.actions.InventoryAction"
+			method="showMajorComponentDetail">
+			<param name="isEquipHistoryPage">true</param>
+			<result name="success">
+				pages/secure/inventory/majorcomponent_equipmenthistory.jsp
+			</result>
+		</action>
+
+		<action name="fetchItemBom"
+			class="tavant.twms.web.actions.ItemBomAction"
+			method="fetchItemBom">
+			<result name="success">pages/secure/home/json.jsp</result>
+		</action>
+
+		<action name="exportInvToExcel"
+			class="tavant.twms.web.actions.InventoryAction"
+			method="downloadListingData" />
+
+        <!-- MultipleInventoryPicker Related actions -->
+        <action name="setupInventorySearch"
+                class="tavant.twms.web.multipleinventorypicker.MultipleInventoryPickerAction"
+                method="setupSearch" >
+            <result name="success">pages/secure/multipleInventoryPicker/multipleInventorySearch.jsp</result>
+        </action>
+        <action name="searchInventoriesForSelection"
+                class="tavant.twms.web.multipleinventorypicker.MultipleInventoryPickerAction"
+                method="searchInventories" >
+            <result name="input">pages/secure/multipleInventoryPicker/multipleInventorySearch.jsp</result>
+            <result name="success">pages/secure/multipleInventoryPicker/multipleInventorySearchResults.jsp</result>
+        </action>
+        
+        <action name="displayFleetManagementActions"
+			class="tavant.twms.web.actions.InventoryAction" method="displayFleetManagementActions">
+			<result name="success">
+				pages/secure/inventory/displayFleetManagementActions.jsp
+			</result>
+		</action>		
+		
+		<!-- Fleet Scrap related actions -->
+		<action name="select_inventories_fleetscrap"
+			class="tavant.twms.web.actions.ScrapInventoryAction"
+			method="selectInventoriesForFleetScrap">
+		    <interceptor-ref name="paramsPrepareWithoutValidation" />
+				<result name="success">pages/secure/admin/fleetcoverage/fleetInventoryScrap.jsp</result>
+		</action>
+		<action name="searchInventories_fleetScrap"
+			class="tavant.twms.web.actions.ScrapInventoryAction" 
+			method="searchInventories">
+			<interceptor-ref name="paramsPrepareWithoutValidation" />
+			<result name="input">pages/secure/multipleInventoryPicker/searchError.jsp</result>
+            <result name="success">pages/secure/multipleInventoryPicker/multipleInventorySearchResults.jsp</result>		
+		</action>		
+		<action name="show_inventories_fleetScrap"
+			class="tavant.twms.web.actions.ScrapInventoryAction" method="handleInventorySelection">
+			<interceptor-ref name="paramsPrepareWithoutValidation" />
+			<result name="success">pages/secure/admin/fleetcoverage/fleetInventroyScrapListInventories.jsp</result>	
+		</action>
+		<action name="fleetScrapConfirmation"
+			class="tavant.twms.web.actions.ScrapInventoryAction" method="confirmFleetScrap">
+			<interceptor-ref name="twmsParamsPrepareParams" />
+			<result name="success">pages/secure/admin/fleetcoverage/fleetInventoryScrapConfirmation.jsp</result>
+			<result name="input">pages/secure/warranty/purchase_extended_warranty_error.jsp</result>			
+		</action>
+		<action name="fleetInventoryScrap"
+			class="tavant.twms.web.actions.ScrapInventoryAction"
+			method="fleetInventoryScrap">
+			<interceptor-ref name="twmsParamsPrepareParams" />
+				<result name="success">pages/secure/common/successFullRefresh.jsp</result>				
+		</action>
+		
+		<!-- Un-Scrap related actions -->
+		<action name="inventoryUnScrap" 
+			class="tavant.twms.web.actions.InventoryAction"
+			method="forwardToUnScrap">
+			<result name="success">
+				pages/secure/inventory/inventoryUnscrap.jsp
+			</result>
+			<result name="input">pages/secure/report/error.jsp</result>
+		</action>
+		<action name="unScrapInventory" 
+			class="tavant.twms.web.actions.ScrapInventoryAction"
+			method="unScrapInventory">
+			<result name="success" type ="chain">inventoryDetail</result>
+			<result name="input">pages/secure/inventory/inventoryUnscrap.jsp</result>
+		</action>
+		<action name="inventoryUnStolen" 
+			class="tavant.twms.web.actions.InventoryAction"
+			method="forwardToNotStolen">
+			<result name="success">
+				pages/secure/inventory/inventoryUnstolen.jsp
+			</result>
+			<result name="input">pages/secure/report/error.jsp</result>
+		</action>
+		<action name="unStolenInventory" 
+			class="tavant.twms.web.actions.StolenInventoryAction"
+			method="unStolenInventory">
+			<result name="success" type ="chain">inventoryDetail</result>
+			<result name="input">pages/secure/inventory/inventoryUnstolen.jsp</result>
+		</action>
+		
+		
+		<!-- Fleet Un-Scrap related actions -->
+		<action name="select_inventories_fleetUnScrap"
+			class="tavant.twms.web.actions.ScrapInventoryAction"
+			method="selectInventoriesForFleetUnScrap">
+		    <interceptor-ref name="paramsPrepareWithoutValidation" />
+				<result name="success">pages/secure/admin/fleetcoverage/fleetInventoryUnScrap.jsp</result>
+		</action>
+		<action name="searchInventories_fleetUnScrap"
+			class="tavant.twms.web.actions.ScrapInventoryAction" 
+			method="searchScrappedInventories">
+			<interceptor-ref name="paramsPrepareWithoutValidation" />
+			<result name="input">pages/secure/multipleInventoryPicker/searchError.jsp</result>
+            <result name="success">pages/secure/multipleInventoryPicker/multipleInventorySearchResults.jsp</result>		
+		</action>		
+		<action name="show_inventories_fleetUnScrap"
+			class="tavant.twms.web.actions.ScrapInventoryAction" method="handleInventorySelection">
+			<interceptor-ref name="paramsPrepareWithoutValidation" />
+			<result name="success">pages/secure/admin/fleetcoverage/fleetInventoryUnScrapListInventories.jsp</result>	
+		</action>
+		<action name="fleetUnScrapConfirmation"
+			class="tavant.twms.web.actions.ScrapInventoryAction" method="confirmFleetUnScrap">
+			<interceptor-ref name="twmsParamsPrepareParams" />
+			<result name="success">pages/secure/admin/fleetcoverage/fleetInventoryUnScrapConfirmation.jsp</result>
+			<result name="input">pages/secure/warranty/purchase_extended_warranty_error.jsp</result>			
+		</action>
+		<action name="fleetInventoryUnScrap"
+			class="tavant.twms.web.actions.ScrapInventoryAction"
+			method="fleetInventoryUnScrap">
+			<interceptor-ref name="twmsParamsPrepareParams" />
+				<result name="success">pages/secure/common/successFullRefresh.jsp</result>				
+		</action>
+		
+		<action name="getInventoryItemsForPage"
+			class="tavant.twms.web.multipleinventorypicker.MultipleInventoryPickerAction" 
+			method="searchInventories">
+			<interceptor-ref name="paramsPrepareWithoutValidation" />
+			<result name="input">pages/secure/multipleInventoryPicker/searchError.jsp</result>
+            <result name="success">pages/secure/multipleInventoryPicker/multipleInventorySearchResults.jsp</result>		
+		</action>
+		<!-- Attachments related actions -->
+		<action name="show_attached_files" 
+		    class="tavant.twms.web.actions.InventoryAction" method="showAttachments">
+		    <interceptor-ref name="paramsPrepare"/>
+		    <result name="success">pages/secure/inventory/inventory_upload_attachments.jsp</result>
+		</action>
+		
+		<action name="newTruckComment"
+			class="tavant.twms.web.actions.InventoryAction" method="newTruckComment">
+			<interceptor-ref name="adminTwmsParamsWithoutPrepareAndValidate"/>
+			<result name="success">pages/secure/inventory/newTruckComment.jsp</result>
+		</action>
+		
+		<action name="saveInventoryComment"
+			class="tavant.twms.web.actions.InventoryAction" method="saveInventoryComment">
+			<interceptor-ref name="adminTwmsParamsWithoutPrepareAndValidate"/>
+			<result name="success">pages/secure/inventory/inventoryCommentSuccess.jsp</result>
+			<result name="input">pages/secure/inventory/newTruckComment.jsp</result>
+		</action>
+		
+		<action name="saveInventoryComment"
+			class="tavant.twms.web.actions.InventoryAction" method="saveInventoryComment">
+			<interceptor-ref name="adminTwmsParamsWithoutPrepareAndValidate"/>
+			<result name="success">pages/secure/inventory/inventoryCommentSuccess.jsp</result>
+			<result name="input">pages/secure/inventory/newTruckComment.jsp</result>
+		</action>
+		
+		<action name="viewEquipmentHistory" class="tavant.twms.web.actions.ManageCMS"
+		method="viewEquipmentHistory">
+		<result name="success" type="redirect">${actionUrl}</result>
+		<result name="input">login.jsp</result>
+		</action>
+		
+		<action name="viewTruckComments" class="tavant.twms.web.actions.InventoryAction"
+		method="viewTruckComments">
+		<interceptor-ref name="paramsPrepare"/>
+		<result name="success">pages/secure/inventory/viewTruckComments.jsp</result>
+		</action>
+    </package>
+</struts>

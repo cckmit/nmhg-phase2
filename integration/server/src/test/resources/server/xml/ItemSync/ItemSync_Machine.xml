@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SyncItemMaster xmlns="http://www.tavant.com/globalsync/itemsync">
+    <ApplicationArea>
+        <Sender>
+            <LogicalId>SAP</LogicalId>
+            <Task>TavantWMS</Task>
+            <ReferenceId></ReferenceId>
+        </Sender>
+        <CreationDateTime>2011-06-09T10:49:13-08:00</CreationDateTime>
+        <BODId>USINT0230_F33123-47</BODId>
+        <InterfaceNumber>USINT0230</InterfaceNumber>
+        <UserArea></UserArea>
+    </ApplicationArea>
+    <DataArea>
+        <ItemMaster>
+            <Header>
+                <ItemId>
+                    <Id>099001</Id>
+                </ItemId>
+                <Type>MACHINE</Type>
+                <Status>
+                    <Code>ACTIVE</Code>
+                </Status>
+                <UOM>EA</UOM>
+                <Description>MACHINE DESC</Description>
+                <UserArea>
+                    <LongDescription></LongDescription>
+                    <ProductCodeDescription>MHD-BUYOUTS COMPLETES-940</ProductCodeDescription>
+                    <ModelCodeDescription>ZIMMERMAN RAIL/BRIDGES-8901-940</ModelCodeDescription>
+                    <MachineCodeDescription></MachineCodeDescription>
+                    <SubseriesCode></SubseriesCode>
+                    <SubseriesCodeDescription></SubseriesCodeDescription>
+                    <ManufName>NAME</ManufName>
+                    <DivisionCode>Thermo King TSA</DivisionCode>
+                    <DivisionCodeDescription>DIVISION</DivisionCodeDescription>
+                    <ProductCode>MARINE</ProductCode>
+                    <ModelCode>381020-8901-940</ModelCode>
+                    <MachineCode></MachineCode>
+                    <ItemNumberSegment1>ITEMSYNC_MACHINE#100</ItemNumberSegment1>
+					<SerialStatusEnabled>N</SerialStatusEnabled>
+					<ProductFamilyCode>8901</ProductFamilyCode>
+                </UserArea>
+            </Header>
+        </ItemMaster>
+    </DataArea>
+</SyncItemMaster>

@@ -1,0 +1,201 @@
+<!doctype HTML public "-//W3C//DTD HTML 4.0 Frameset//EN">
+
+<html>
+
+<head>
+<title>Manage User Availability</title>
+<meta http-equiv="content-type" content="text/html; charset=windows-1252">
+<meta name="generator" content="RoboHelp by eHelp Corporation www.ehelp.com">
+<link rel="stylesheet" href="../TWMS_ns_nc.css"><style>
+<!--
+body { background-image:url("../Texture_metal3.jpg"); }
+-->
+</style><style>
+<!--
+hr.whs1 { float:aligncenter; margin-top:0px; margin-bottom:3px; height:1px; color:#385f92; }
+img\005fwhs2 { border:none; width:15px; height:15px; float:none; border-style:none; }
+-->
+</style><style>
+<!--
+div.WebHelpPopupMenu { position:absolute; left:0px; top:0px; z-index:4; visibility:hidden; }
+-->
+</style><script type="text/javascript"
+		language=JavaScript
+		title=WebHelpSplitCss><!--
+if (navigator.appName !="Netscape")
+{   document.write("<link rel='stylesheet' href='../TWMS.css'>");}
+//--></script>
+
+<script type="text/javascript"
+		language=JavaScript><!--
+if ((navigator.appName == "Netscape") && (parseInt(navigator.appVersion) == 4))
+{
+  var strNSS = "<style type='text/css'>";
+  strNSS += "hr.whs1 {margin-top:1pt; }";
+  strNSS +="</style>";
+  document.write(strNSS);
+}
+//--></script>
+
+<script type="text/javascript"
+		language=JavaScript
+		title=WebHelpInlineScript><!--
+function reDo() {
+  if (innerWidth != origWidth || innerHeight != origHeight)
+     location.reload();
+}
+if ((parseInt(navigator.appVersion) == 4) && (navigator.appName == "Netscape")) {
+	origWidth = innerWidth;
+	origHeight = innerHeight;
+	onresize = reDo;
+}
+onerror = null; 
+//--></script>
+
+<script type="text/javascript"
+		language=javascript1.2
+		src="../whmsg.js"></script>
+
+<script type="text/javascript"
+		language=javascript
+		src="../whver.js"></script>
+
+<script type="text/javascript"
+		language=javascript1.2
+		src="../whproxy.js"></script>
+
+<script type="text/javascript"
+		language=javascript1.2
+		src="../whutils.js"></script>
+
+<script type="text/javascript"
+		language=javascript1.2
+		src="../whtopic.js"></script>
+
+<style type="text/css">
+<!--
+div.WebHelpPopupMenu { position:absolute; left:0px; top:0px; z-index:4; visibility:hidden; }
+-->
+</style><script type="text/javascript" language="javascript1.2" src="../whmsg.js"></script>
+<script type="text/javascript" language="javascript" src="../whver.js"></script>
+<script type="text/javascript" language="javascript1.2" src="../whproxy.js"></script>
+<script type="text/javascript" language="javascript1.2" src="../whutils.js"></script>
+<script type="text/javascript" language="javascript1.2" src="../whtopic.js"></script>
+</head>
+<body><script type="text/javascript" language="javascript1.2">
+<!--
+if (window.gbWhTopic)
+{
+	if (window.addTocInfo)
+	{
+	addTocInfo("Admin\nWarranty Admin\nManage User Availability");
+addButton("show",BTN_TEXT,"Show","","","","",0,0,"","","");
+
+	}
+	if (window.writeBtnStyle)
+		writeBtnStyle();
+
+	if (window.writeIntopicBar)
+		writeIntopicBar(1);
+
+	if (window.setRelStartPage)
+	{
+	setRelStartPage("../Admin.htm");
+
+		autoSync(1);
+		sendSyncInfo();
+		sendAveInfoOut();
+	}
+}
+else
+	if (window.gbIE4)
+		document.location.reload();
+//-->
+</script>
+<h1 class=TW-ChapterName><script type="text/javascript"
+								language=JavaScript1.2><!-- 
+if( typeof( kadovInitEffects ) != 'function' ) kadovInitEffects = new Function();if( typeof( kadovInitTrigger ) != 'function' ) kadovInitTrigger = new Function();if( typeof( kadovFilePopupInit ) != 'function' ) kadovFilePopupInit = new Function();if( typeof( kadovTextPopupInit ) != 'function' ) kadovTextPopupInit = new Function();
+ //--></script></h1>
+
+<h1 class=TW-ChapterName>MANAGE User AVAILABILITY</h1>
+
+
+<hr class=whs1
+	style="height: 1px;
+			color: #385F92;
+			float: aligncenter;"
+	size=1
+	color=#385F92
+	align=center>
+
+
+<p class=TW-Body>When a claimant files a claim, it undergoes automatic 
+ claim processing. In the automatic claims processing engine, a claim is 
+ validated against predefined rules. If the claim passes all the processing 
+ rules during automatic claims processing, the claim amount is calculated 
+ and paid to claimant automatically. But if the claim fails in the automatic 
+ claims processing engine, a manual review is needed to process it. This 
+ assignment of claims to the processor depends upon the availability of 
+ users.</p>
+
+<p class=TW-Body>&nbsp;</p>
+
+<p class=TW-Body>There are different user roles for which the administrator 
+ sets the availability:</p>
+
+<ul>
+	
+	<li class=kadov-p-CTW-Bullet1><p class=TW-Bullet1>Processor</p></li>
+	
+	<li class=kadov-p-CTW-Bullet1><p class=TW-Bullet1>District Service 
+ Manager (DSM)</p></li>
+	
+	<li class=kadov-p-CTW-Bullet1><p class=TW-Bullet1>DSM Advisor</p></li>
+	
+	<li class=kadov-p-CTW-Bullet1><p class=TW-Bullet1>Recovery Processor</p></li>
+	
+	<li class=kadov-p-CTW-Bullet1><p class=TW-Bullet1>CP Advisor</p></li>
+</ul>
+
+<p class=TW-Body>To view the user availability, click on <span style="font-weight: bold;"><B>Manage 
+ User Availability</B></span> tab under the <span style="font-weight: bold;"><B>Warranty 
+ Admin</B></span> tab. Click on the individual roles to view the Manage user 
+ availability page which gets pre populated with the users. Some users 
+ are common to the roles. For e.g. a user may be a District Service Manager 
+ and a Processor at the same time. In such case the particular user will 
+ be available in the list of both the roles (DSM and Processor).</p>
+
+<p class=TW-Body>&nbsp;</p>
+
+<p class=TW-Body>The user page is divided into three column “User”, “Availability” 
+ and “Default User”.</p>
+
+<p class=TW-Body>&nbsp;</p>
+
+<p class=TW-Body>A list of processors are displayed under the processor 
+ inbox. Click on one of the processor in the detail page and you can view 
+ the User Availability Information page. If you mark the processor's availability 
+ as 'Yes', then this processor becomes available for the claim assignment. 
+ If the administrator marks its availability as 'No', no claims are assigned 
+ to these processors because of its unavailability.</p>
+
+<p class=TW-Body>Similarly the administrator can open the DSM, DSM Advisor, 
+ Recovery Processor and CP Advisor inbox and mark their availability as 
+ 'Yes' or 'No' as well. </p>
+
+<p class=TW-Body>&nbsp;</p>
+
+<p class=TW-Body>If the users become unavailable or due to some reason 
+ they are not able to process the claim then the claim will automatically 
+ get assigned to the default user. The administrator can set the user as 
+ a default user by selecting 'Yes' against the Default User under the User 
+ Availability Information page.</p>
+
+<script type="text/javascript" language="javascript1.2">
+<!--
+if (window.writeIntopicBar)
+	writeIntopicBar(0);
+//-->
+</script>
+</body>
+</html>

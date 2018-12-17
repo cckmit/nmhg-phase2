@@ -1,0 +1,700 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping SYSTEM
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="tavant.twms.domain.failurestruct">
+    <query name="findAssemblyLevel">
+        <![CDATA[
+            from AssemblyLevel l where l.level = :level
+        ]]>
+    </query>
+    
+    <query name="findFailureStructureForItem">
+        <![CDATA[
+            select distinct failureStructure from FailureStructure failureStructure join 
+            failureStructure.forItemGroup.scheme.purposes as purpose 
+                where :item in elements(failureStructure.forItemGroup.includedItems) 
+                        and purpose.name = 'PRODUCT STRUCTURE' and failureStructure.d.active=1
+         ]]>
+    </query>
+
+    <query name="findFailureStructuresForItemGroups">
+        <![CDATA[
+            from FailureStructure fs where fs.forItemGroup in (:itemGroups)
+         ]]>
+    </query>
+
+    <query name="findFailureStructuresForItems">
+        <![CDATA[
+            select distinct failureStructure from FailureStructure failureStructure 
+                join failureStructure.forItemGroup.scheme.purposes as purpose 
+                join failureStructure.forItemGroup.includedItems as item
+                where item in (:items)
+                        and purpose.name = 'PRODUCT STRUCTURE'
+         ]]>
+    </query>
+    
+    <query name="findIfFailureStructuerExistsForAllItems">
+        <![CDATA[
+            select count(item.id) from  FailureStructure failureStructure
+                join failureStructure.forItemGroup.scheme.purposes as purpose 
+                join failureStructure.forItemGroup.includedItems as item 
+                where item in (:items) 
+                        and purpose.name = 'PRODUCT STRUCTURE' 
+         ]]>
+    </query>
+    
+    <query name="faultCodesForPart">
+        <![CDATA[
+            select distinct faultCodeDefinition from FaultCodeDefinition faultCodeDefinition
+                join faultCodeDefinition.partClasses as partClasses
+                where partClasses.item = :part or partClasses.itemGroup = :partClass
+         ]]>
+    </query>
+
+    <query name="findAssemblyDefinition">
+        <![CDATA[
+            from AssemblyDefinition assemblyDefinition 
+                where assemblyDefinition.assemblyLevel.level = :level
+                    and assemblyDefinition.code = :code
+        ]]>
+    </query>
+    
+    <query name="findAssemblyDefinitions">
+        <![CDATA[
+           select distinct assemblyDefinition from AssemblyDefinition assemblyDefinition 
+                where assemblyDefinition.assemblyLevel.level = :level
+                    
+        ]]>
+    </query>
+
+    <query name="findAssemblyDefinitionByName">
+        <![CDATA[
+            select distinct assemblyDefinition
+                from
+                    AssemblyDefinition assemblyDefinition join assemblyDefinition.i18nAssemblyDefinition i18nAssemblyDefinition, AssemblyLevel assemblyLevel
+                where
+                    assemblyDefinition.assemblyLevel = assemblyLevel.id
+                    and assemblyLevel.level = :level
+                    and i18nAssemblyDefinition.name = :name
+                    and i18nAssemblyDefinition.locale = 'en_US'
+                    and assemblyDefinition.code = :code
+        ]]>
+    </query>
+
+    <query name="findActionDefinitionByName">
+        <![CDATA[
+            select distinct actionDefinition
+                from
+                    ActionDefinition actionDefinition join actionDefinition.i18nActionDefinition i18nActionDefinition
+                where i18nActionDefinition.name = :name
+                    and actionDefinition.code = :code
+        ]]>
+    </query>
+
+    <query name="findActionDefinition">
+        <![CDATA[
+           select distinct actionDefinition from ActionDefinition actionDefinition 
+        ]]>
+    </query>
+    
+    <sql-query name="faultFoundOptions">
+    <return alias="failure_type_definition" class="FailureTypeDefinition"/>
+        <![CDATA[
+        select distinct {failure_type_definition.*}
+        from inventory_item invitem, 
+	        	item , 
+	        	item_group child, 
+	        	failure_type,
+	        	failure_type_definition,	        	
+	        	items_in_group
+        	where invitem.id = :invItemId 
+        	and of_type = item.id
+        	and child.scheme = ( select item_scheme.id from item_scheme,item_scheme_purposes,purpose where purpose.name='PRODUCT STRUCTURE' and purpose.id=item_scheme_purposes.purposes and item_scheme_purposes.item_scheme=item_scheme.id 
+        	and item_scheme.business_unit_info = invitem.business_unit_info)
+        	and items_in_group.item = item.id
+        	and items_in_group.item_group = child.id 
+        	and failure_type.for_item_group_id in(child.id) 
+        	and failure_type.definition_id = failure_type_definition.id        	
+        ]]>
+    </sql-query>
+    
+    <sql-query name="faultFoundOptionsForModel">
+    <return alias="failure_type_definition" class="FailureTypeDefinition"/>
+        <![CDATA[
+        select distinct {failure_type_definition.*}
+		from  item_group parent,
+      		  failure_type, 
+     		  failure_type_definition
+		where 
+      		parent.scheme = (select item_scheme.id 
+                       				from item_scheme,
+                            			 item_scheme_purposes,purpose
+                       			    where purpose.name='PRODUCT STRUCTURE'
+                       					  and purpose.id=item_scheme_purposes.purposes
+                       					  and item_scheme_purposes.item_scheme=item_scheme.id
+                       					  and item_scheme.business_unit_info = parent.business_unit_info
+                       					  )
+		  	and parent.id = :modelId		  			  	
+		  	and failure_type.for_item_group_id = parent.id 
+		  	and failure_type.definition_id = failure_type_definition.id		  
+        ]]>
+    </sql-query>
+    
+       <sql-query name="faultFoundOptionsForProduct">
+    <return alias="failure_type_definition" class="FailureTypeDefinition"/>
+        <![CDATA[
+        select distinct {failure_type_definition.*}
+        from inventory_item invitem, 
+	        	item , 
+	        	item_group child, 
+            item_group parent,
+            item_group father,
+	        	failure_type,
+	        	failure_type_definition,	        	
+	        	items_in_group
+        	where invitem.id =:invItemId
+        	and of_type = item.id
+        	and child.scheme = ( select item_scheme.id from item_scheme,item_scheme_purposes,purpose where purpose.name='PRODUCT STRUCTURE' and purpose.id=item_scheme_purposes.purposes and item_scheme_purposes.item_scheme=item_scheme.id 
+        	and item_scheme.business_unit_info = invitem.business_unit_info)
+        	and items_in_group.item = item.id
+        	and items_in_group.item_group = child.id
+          and ((child.is_part_of =parent.id
+        	and failure_type.for_item_group_id in(parent.id))or
+          ((child.is_part_of =parent.id and parent.is_part_of=father.id)
+        	and failure_type.for_item_group_id in(father.id)))
+        	and failure_type.definition_id = failure_type_definition.id  	
+        ]]>
+    </sql-query>
+    <sql-query name="faultFoundOptionsForProductWithFaultFoundName">
+    <return alias="failure_type_definition" class="FailureTypeDefinition"/>
+        <![CDATA[
+        select distinct {failure_type_definition.*}
+        from inventory_item invitem, 
+	        	item , 
+	        	item_group child, 
+            item_group parent,
+            item_group father,
+	        	failure_type,
+	        	failure_type_definition,	        	
+	        	items_in_group,
+	        	i18nfailure_type_definition i18nfaildef
+        	where invitem.id =:invItemId
+        	and failure_type_definition.id = i18nfaildef.failure_type_definition 
+        	and i18nfaildef.name=:name
+        	and of_type = item.id
+        	and child.scheme = ( select item_scheme.id from item_scheme,item_scheme_purposes,purpose where purpose.name='PRODUCT STRUCTURE' and purpose.id=item_scheme_purposes.purposes and item_scheme_purposes.item_scheme=item_scheme.id 
+        	and item_scheme.business_unit_info = invitem.business_unit_info)
+        	and items_in_group.item = item.id
+        	and items_in_group.item_group = child.id
+          and ((child.is_part_of =parent.id
+        	and failure_type.for_item_group_id in(parent.id))or
+          ((child.is_part_of =parent.id and parent.is_part_of=father.id)
+        	and failure_type.for_item_group_id in(father.id)))
+        	and failure_type.definition_id = failure_type_definition.id  	
+        ]]>
+    </sql-query>
+    <sql-query name="faultFoundOptionsForModelByFaultName">
+    <return alias="failure_type_definition" class="FailureTypeDefinition"/>
+        <![CDATA[
+        select distinct {failure_type_definition.*}
+		from  item_group parent,
+      		  failure_type, 
+     		  failure_type_definition
+		where 
+      		parent.scheme = (select item_scheme.id 
+                       				from item_scheme,
+                            			 item_scheme_purposes,purpose
+                       			    where purpose.name='PRODUCT STRUCTURE'
+                       					  and purpose.id=item_scheme_purposes.purposes
+                       					  and item_scheme_purposes.item_scheme=item_scheme.id
+                       					  and item_scheme.business_unit_info = parent.business_unit_info
+                       					  )
+		  	and parent.id = :modelId
+			and failure_type_definition.name = :faultFoundName
+		  	and failure_type.for_item_group_id = parent.id 
+		  	and failure_type.definition_id = failure_type_definition.id		  
+        ]]>
+    </sql-query>
+        
+    <sql-query name="faultRootCauseByOptionForModel">
+        <return alias="failure_root_cause_definition" class="FailureRootCauseDefinition"/>
+        <![CDATA[
+         select distinct {failure_root_cause_definition.*}
+        	from
+        		item_group parent ,
+        		failure_type,
+        		failure_type_definition,
+        		failure_root_cause,
+        		failure_root_cause_definition
+        	where  parent.scheme = ( select item_scheme.id from item_scheme,item_scheme_purposes,purpose
+			where purpose.name='PRODUCT STRUCTURE' and purpose.id=item_scheme_purposes.purposes
+			and item_scheme_purposes.item_scheme=item_scheme.id
+        	 and item_scheme.business_unit_info = parent.business_unit_info)
+        	and parent.id = :modelNumber
+        	and failure_type.for_item_group_id = parent.id
+        	and failure_type.definition_id = failure_type_definition.id
+			and failure_type_definition.id = :faultFound
+        	and failure_type.id = failure_root_cause.failure_type_id
+        	and failure_root_cause.definition_id = failure_root_cause_definition.id
+        ]]>
+    </sql-query>
+    
+    <sql-query name="findRootCauseOptionsByModelAndFailureDetail">
+        <return alias="failure_root_cause_definition" class="FailureRootCauseDefinition"/>
+        <![CDATA[
+         select distinct {failure_root_cause_definition.*}
+        	from
+        		item_group parent ,
+        		failure_type,
+        		failure_type_definition,
+        		failure_root_cause,
+        		failure_root_cause_definition
+        	where  parent.scheme = ( select item_scheme.id from item_scheme,item_scheme_purposes,purpose
+			where purpose.name='PRODUCT STRUCTURE' and purpose.id=item_scheme_purposes.purposes
+			and item_scheme_purposes.item_scheme=item_scheme.id
+        	 and item_scheme.business_unit_info = parent.business_unit_info)
+        	and parent.id = :modelNumber
+        	and failure_type.for_item_group_id = parent.id
+        	and failure_type.definition_id = failure_type_definition.id
+			and failure_type_definition.id = :faultFound
+			and failure_root_cause_definition.code = :failureDetail
+        	and failure_type.id = failure_root_cause.failure_type_id
+        	and failure_root_cause.definition_id = failure_root_cause_definition.id
+        ]]>
+    </sql-query>
+    
+     <sql-query name="faultCausedByOptions">
+        <return alias="failure_cause_definition" class="FailureCauseDefinition"/>
+        <![CDATA[
+        select distinct {failure_cause_definition.*}
+        	from inventory_item invitem, item , 
+        		item_group child, 
+           		items_in_group,
+        		failure_type,
+        		failure_type_definition,
+        		failure_cause, 
+        		failure_cause_definition        		
+        	where serial_number = :serialNumber 
+        	and of_type = item.id
+        	and child.scheme = ( select item_scheme.id from item_scheme,item_scheme_purposes,purpose where purpose.name='PRODUCT STRUCTURE' and purpose.id=item_scheme_purposes.purposes and item_scheme_purposes.item_scheme=item_scheme.id
+        	and item_scheme.business_unit_info = invitem.business_unit_info ) 
+        	and items_in_group.item = item.id
+        	and items_in_group.item_group = child.id 
+        	and failure_type.for_item_group_id in(child.id) 
+        	and failure_type.definition_id = failure_type_definition.id
+		    and failure_type_definition.id = :faultFound 
+		    and failure_type.id = failure_cause.failure_type_id 
+        	and failure_cause.definition_id = failure_cause_definition.id
+        ]]>
+    </sql-query>
+    
+    <sql-query name="faultCausedByOptionsById">
+        <return alias="failure_cause_definition" class="FailureCauseDefinition"/>
+        <![CDATA[
+        select distinct {failure_cause_definition.*}
+        	from inventory_item invitem, item , 
+        		item_group child, 
+        		items_in_group,
+        		failure_type,
+        		failure_type_definition,
+        		failure_cause, 
+        		failure_cause_definition        		
+        	where invitem.id = :inventoryItemId 
+        	and of_type = item.id
+        	and child.scheme = ( select item_scheme.id from item_scheme,item_scheme_purposes,purpose where purpose.name='PRODUCT STRUCTURE' and purpose.id=item_scheme_purposes.purposes and item_scheme_purposes.item_scheme=item_scheme.id
+        	and item_scheme.business_unit_info = invitem.business_unit_info ) 
+        	and items_in_group.item = item.id
+        	and items_in_group.item_group = child.id 
+           	and failure_type.for_item_group_id in(child.id) 
+        	and failure_type.definition_id = failure_type_definition.id
+		    and failure_type_definition.id = :faultFoundId			 
+		    and failure_type.id = failure_cause.failure_type_id 
+        	and failure_cause.definition_id = failure_cause_definition.id
+        ]]>
+    </sql-query>  
+    
+        <sql-query name="faultCausedByOptionByIdForProduct">
+        <return alias="failure_cause_definition" class="FailureCauseDefinition"/>
+        <![CDATA[
+        select distinct {failure_cause_definition.*}
+        	from inventory_item invitem, item , 
+        		item_group child,
+        		item_group parent,
+        		items_in_group,
+        		failure_type,
+        		failure_type_definition,
+        		failure_cause, 
+        		failure_cause_definition        		
+        	where invitem.id = :inventoryItemId 
+        	and of_type = item.id
+        	and child.scheme = ( select item_scheme.id from item_scheme,item_scheme_purposes,purpose where purpose.name='PRODUCT STRUCTURE' and purpose.id=item_scheme_purposes.purposes and item_scheme_purposes.item_scheme=item_scheme.id
+        	and item_scheme.business_unit_info = invitem.business_unit_info ) 
+        	and items_in_group.item = item.id
+        	and items_in_group.item_group = child.id 
+        	and child.is_part_of=parent.id
+           	and failure_type.for_item_group_id in(parent.id) 
+        	and failure_type.definition_id = failure_type_definition.id
+		    and failure_type_definition.id = :faultFoundId			 
+		    and failure_type.id = failure_cause.failure_type_id 
+        	and failure_cause.definition_id = failure_cause_definition.id
+        ]]>
+    </sql-query> 
+    
+            <sql-query name="faultCausedByOptionsByIdForProduct">
+        <return alias="failure_cause_definition" class="FailureCauseDefinition"/>
+        <![CDATA[
+        select distinct {failure_cause_definition.*}
+        	from inventory_item invitem, item , 
+        		item_group child,
+        		item_group parent,
+        		item_group father,
+        		items_in_group,
+        		failure_type,
+        		failure_type_definition,
+        		failure_cause, 
+        		failure_cause_definition        		
+        	where invitem.id = :inventoryItemId 
+        	and of_type = item.id
+        	and child.scheme = ( select item_scheme.id from item_scheme,item_scheme_purposes,purpose where purpose.name='PRODUCT STRUCTURE' and purpose.id=item_scheme_purposes.purposes and item_scheme_purposes.item_scheme=item_scheme.id
+        	and item_scheme.business_unit_info = invitem.business_unit_info ) 
+        	and items_in_group.item = item.id
+        	and items_in_group.item_group = child.id 
+        	and (child.is_part_of=parent.id and parent.is_part_of=father.id)
+           	and failure_type.for_item_group_id in(father.id) 
+        	and failure_type.definition_id = failure_type_definition.id
+		    and failure_type_definition.id = :faultFoundId			 
+		    and failure_type.id = failure_cause.failure_type_id 
+        	and failure_cause.definition_id = failure_cause_definition.id
+        ]]>
+    </sql-query> 
+    
+    <sql-query name="faultCausedByOptionsForModel">
+        <return alias="failure_cause_definition" class="FailureCauseDefinition"/>
+        <![CDATA[
+        select distinct {failure_cause_definition.*}
+        	from 
+        		item_group child , 
+        		failure_type,
+        		failure_type_definition,
+        		failure_cause, 
+        		failure_cause_definition,
+        		i18nfailure_type_definition i18nfaildef
+        	where  child.scheme = ( select item_scheme.id from item_scheme,item_scheme_purposes,purpose
+        	where purpose.name='PRODUCT STRUCTURE' and purpose.id=item_scheme_purposes.purposes
+        	and item_scheme_purposes.item_scheme=item_scheme.id
+        	and item_scheme.business_unit_info = child.business_unit_info) 
+        	and child.id = :modelNumber
+        	and failure_type.for_item_group_id = child.id 
+        	and failure_type.definition_id = failure_type_definition.id
+		    and failure_type_definition.id = i18nfaildef.failure_type_definition
+			and i18nfaildef.name=:faultFound 
+        	and failure_type.id = failure_cause.failure_type_id 
+        	and failure_cause.definition_id = failure_cause_definition.id
+        ]]>
+    </sql-query>
+    <sql-query name="faultCausedByOptionForModel">
+        <return alias="failure_cause_definition" class="FailureCauseDefinition"/>
+        <![CDATA[
+         select distinct {failure_cause_definition.*}
+        	from
+        		item_group parent ,
+        		failure_type,
+        		failure_type_definition,
+        		failure_cause,
+        		failure_cause_definition,
+        		item_group itemGroup,
+        		i18nfailure_type_definition i18nfaildef
+        	where  parent.scheme = ( select item_scheme.id from item_scheme,item_scheme_purposes,purpose
+			where purpose.name='PRODUCT STRUCTURE' and purpose.id=item_scheme_purposes.purposes
+			and item_scheme_purposes.item_scheme=item_scheme.id
+        	 and item_scheme.business_unit_info = itemGroup.business_unit_info)
+        	and itemGroup.id =  :modelNumber
+        	and failure_type.for_item_group_id = parent.id
+        	and failure_type.definition_id = failure_type_definition.id
+			and failure_type_definition.id = i18nfaildef.failure_type_definition
+			and i18nfaildef.name=:faultFound       	
+        	and failure_type.id = failure_cause.failure_type_id
+        	and failure_cause.definition_id = failure_cause_definition.id
+        ]]>
+    </sql-query>
+    
+     <sql-query name="faultCausedByOptionForModelById">
+        <return alias="failure_cause_definition" class="FailureCauseDefinition"/>
+        <![CDATA[
+         select distinct {failure_cause_definition.*}
+        	from
+        		item_group parent,
+        		failure_type,
+        		failure_type_definition,
+        		failure_cause,
+        		failure_cause_definition
+        		      		
+        	where  parent.scheme = ( select item_scheme.id from item_scheme,item_scheme_purposes,purpose
+			where purpose.name='PRODUCT STRUCTURE' and purpose.id=item_scheme_purposes.purposes
+			and item_scheme_purposes.item_scheme=item_scheme.id
+        	 and item_scheme.business_unit_info = parent.business_unit_info)
+        	and parent.id = :modelNumber
+        	and failure_type.for_item_group_id = parent.id
+        	and failure_type.definition_id = failure_type_definition.id
+			and failure_type_definition.id = :faultFoundId       	
+        	and failure_type.id = failure_cause.failure_type_id
+        	and failure_cause.definition_id = failure_cause_definition.id
+        ]]>
+    </sql-query> 
+    
+    <sql-query name="faultCausedByOptionForProductById">
+        <return alias="failure_cause_definition" class="FailureCauseDefinition"/>
+        <![CDATA[
+         select distinct {failure_cause_definition.*}
+        	from
+        		item_group parent,
+        		item_group child,
+        		failure_type,
+        		failure_type_definition,
+        		failure_cause,
+        		failure_cause_definition
+        		      		
+        	where  child.scheme = ( select item_scheme.id from item_scheme,item_scheme_purposes,purpose
+			where purpose.name='PRODUCT STRUCTURE' and purpose.id=item_scheme_purposes.purposes
+			and item_scheme_purposes.item_scheme=item_scheme.id
+        	 and item_scheme.business_unit_info = child.business_unit_info)
+        	and child.id = :modelNumber
+        	and child.is_part_of = parent.id
+        	and failure_type.for_item_group_id = parent.id
+        	and failure_type.definition_id = failure_type_definition.id
+			and failure_type_definition.id = :faultFoundId       	
+        	and failure_type.id = failure_cause.failure_type_id
+        	and failure_cause.definition_id = failure_cause_definition.id
+        ]]>
+    </sql-query> 
+    
+    <sql-query name="faultCausedByOptionsForProductById">
+        <return alias="failure_cause_definition" class="FailureCauseDefinition"/>
+        <![CDATA[
+         select distinct {failure_cause_definition.*}
+        	from
+        		item_group parent ,
+        		item_group child,
+        		item_group father,
+        		failure_type,
+        		failure_type_definition,
+        		failure_cause,
+        		failure_cause_definition
+        		      		
+        	where  child.scheme = ( select item_scheme.id from item_scheme,item_scheme_purposes,purpose
+			where purpose.name='PRODUCT STRUCTURE' and purpose.id=item_scheme_purposes.purposes
+			and item_scheme_purposes.item_scheme=item_scheme.id
+        	 and item_scheme.business_unit_info = child.business_unit_info)
+        	and child.id =  :modelNumber
+        	and (child.is_part_of = parent.id and parent.is_part_of=father.id)
+        	and failure_type.for_item_group_id = father.id
+        	and failure_type.definition_id = failure_type_definition.id
+			and failure_type_definition.id = :faultFoundId       	
+        	and failure_type.id = failure_cause.failure_type_id
+        	and failure_cause.definition_id = failure_cause_definition.id
+        ]]>
+    </sql-query> 
+    
+    <sql-query name="jobCodeForModelByIdOrProductById">
+        <return alias="service_procedure_definition" class="ServiceProcedureDefinition"/>
+        <![CDATA[
+         select spd.*
+    		FROM action_node an,
+        		service_procedure sp,
+        		service_procedure_definition spd,
+        		(select id from assembly connect by prior id = is_part_of_assembly start with id in 
+            		( select a.id 
+            			from failure_structure fs,
+                			failure_structure_assemblies fsa,
+                			assembly a
+            			where
+			                a.active = 1 and
+			                fs.for_item_group = :modelIdOrProductId and
+			                fs.id = fsa.failure_structure and
+			                fsa.assemblies = a.id)
+        		) adata
+    	WHERE
+	        adata.id = an.defined_for and
+	        an.id = sp.defined_for and
+	        an.active = 1 and
+	        sp.definition = spd.id and
+	        lower(spd.code) = lower(ltrim(rtrim(:jobCode))) and 
+	        spd.d_active = 1 and 
+	        rownum = 1
+        ]]>
+    </sql-query>
+    
+    <sql-query name="getServiceProcedureForModelByIdOrProductById">
+        <return alias="service_procedure" class="ServiceProcedure"/>
+        <![CDATA[
+         select sp.*
+    		FROM action_node an,
+        		service_procedure sp,
+        		service_procedure_definition spd,
+        		(select id from assembly connect by prior id = is_part_of_assembly start with id in 
+            		( select a.id 
+            			from failure_structure fs,
+                			failure_structure_assemblies fsa,
+                			assembly a
+            			where
+			                a.active = 1 and
+			                fs.for_item_group = :modelIdOrProductId and
+			                fs.id = fsa.failure_structure and
+			                fsa.assemblies = a.id)
+        		) adata
+    	WHERE
+	        adata.id = an.defined_for and
+	        an.id = sp.defined_for and
+	        an.active = 1 and
+	        sp.definition = spd.id and
+	        lower(spd.code) = lower(ltrim(rtrim(:jobCode))) and 
+	        spd.d_active = 1 and 
+	        rownum = 1
+        ]]>
+    </sql-query>
+    
+    <sql-query name="faultCodeForModelByIdOrProductById">
+        <return alias="fault_code_definition" class="FaultCodeDefinition"/>
+        <![CDATA[
+         SELECT fcd.*
+    		FROM fault_code_definition fcd, fault_code fc,
+        		(select fault_code from assembly where fault_code is not null 
+            		connect by prior id = is_part_of_assembly start with id in 
+            		(select a.id 
+            			from failure_structure fs, failure_structure_assemblies fsa, assembly a
+            			where a.active = 1 and
+		                fs.for_item_group = :modelIdOrProductId and
+		                fs.id = fsa.failure_structure and
+		                fsa.assemblies = a.id )
+        		) adata
+   		 WHERE
+	        adata.fault_code = fc.id and
+	        fc.definition = fcd.id and
+	        lower(fcd.code) = lower(ltrim(rtrim(:faultCode))) and 
+	        fcd.d_active=1 and 
+	        rownum = 1
+        ]]>
+    </sql-query>
+    
+    <sql-query name="faultFoundForModelByIdOrProductById">
+        <return alias="Failure_Type" class="FailureType"/>
+        <![CDATA[
+         SELECT ft.*
+    		from FAILURE_TYPE ft, 
+        		I18NFAILURE_TYPE_DEFINITION ftd
+    	where 
+	        ft.definition_id = ftd.failure_type_definition
+	        AND lower(ftd.name) = lower(ltrim(rtrim(:faultFound))) 
+	        AND ft.for_item_group_id = :modelIdOrProductId
+	        AND ft.d_active = 1
+	        AND ROWNUM = 1
+        ]]>
+    </sql-query>
+    
+     <sql-query name="findAllFaultFoundCodes">
+    <return alias="failure_type_definition" class="FailureTypeDefinition"/>
+        <![CDATA[
+        select distinct {failure_type_definition.*}
+		from  failure_type_definition
+        ]]>
+    </sql-query>
+    
+    <sql-query name="findAllCausedByCodesByUsingFaultFound">
+        <return alias="failure_cause_definition" class="FailureCauseDefinition"/>
+        <![CDATA[
+         select distinct {failure_cause_definition.*}
+        	from
+        		failure_type,
+        		failure_cause,
+        		failure_cause_definition
+        		      		
+        	where failure_type.definition_id = :faultFoundId
+        	and failure_type.id = failure_cause.failure_type_id
+        	and failure_cause.definition_id = failure_cause_definition.id
+        ]]>
+    </sql-query> 
+    
+    <sql-query name="faultCausedByOptionForModelByIdAndCausedByName">
+        <return alias="failure_cause_definition" class="FailureCauseDefinition"/>
+        <![CDATA[
+         select distinct {failure_cause_definition.*}
+        	from
+        		item_group parent,
+        		failure_type,
+        		failure_type_definition,
+        		failure_cause,
+        		failure_cause_definition
+        		      		
+        	where  parent.scheme = ( select item_scheme.id from item_scheme,item_scheme_purposes,purpose
+			where purpose.name='PRODUCT STRUCTURE' and purpose.id=item_scheme_purposes.purposes
+			and item_scheme_purposes.item_scheme=item_scheme.id
+        	 and item_scheme.business_unit_info = parent.business_unit_info)
+        	and parent.id = :modelNumber
+        	and failure_type.for_item_group_id = parent.id
+        	and failure_type.definition_id = failure_type_definition.id
+			and failure_type_definition.id = :faultFoundId       	
+        	and failure_type.id = failure_cause.failure_type_id
+        	and failure_cause.definition_id = failure_cause_definition.id
+        	and failure_cause_definition.name = :causedByName
+        ]]>
+    </sql-query> 
+    
+    <sql-query name="faultCausedByOptionForProductByIdAndCausedByName">
+        <return alias="failure_cause_definition" class="FailureCauseDefinition"/>
+        <![CDATA[
+         select distinct {failure_cause_definition.*}
+        	from
+        		item_group parent,
+        		item_group child,
+        		failure_type,
+        		failure_type_definition,
+        		failure_cause,
+        		failure_cause_definition
+        		      		
+        	where  child.scheme = ( select item_scheme.id from item_scheme,item_scheme_purposes,purpose
+			where purpose.name='PRODUCT STRUCTURE' and purpose.id=item_scheme_purposes.purposes
+			and item_scheme_purposes.item_scheme=item_scheme.id
+        	 and item_scheme.business_unit_info = child.business_unit_info)
+        	and child.id = :modelNumber
+        	and child.is_part_of = parent.id
+        	and failure_type.for_item_group_id = parent.id
+        	and failure_type.definition_id = failure_type_definition.id
+			and failure_type_definition.id = :faultFoundId       	
+        	and failure_type.id = failure_cause.failure_type_id
+        	and failure_cause.definition_id = failure_cause_definition.id
+        	and failure_cause_definition.name = :causedByName
+        ]]>
+    </sql-query> 
+    
+    <sql-query name="faultCausedByOptionsForProductByIdAndCausedByName">
+        <return alias="failure_cause_definition" class="FailureCauseDefinition"/>
+        <![CDATA[
+         select distinct {failure_cause_definition.*}
+        	from
+        		item_group parent ,
+        		item_group child,
+        		item_group father,
+        		failure_type,
+        		failure_type_definition,
+        		failure_cause,
+        		failure_cause_definition
+        		      		
+        	where  child.scheme = ( select item_scheme.id from item_scheme,item_scheme_purposes,purpose
+			where purpose.name='PRODUCT STRUCTURE' and purpose.id=item_scheme_purposes.purposes
+			and item_scheme_purposes.item_scheme=item_scheme.id
+        	 and item_scheme.business_unit_info = child.business_unit_info)
+        	and child.id =  :modelNumber
+        	and (child.is_part_of = parent.id and parent.is_part_of=father.id)
+        	and failure_type.for_item_group_id = father.id
+        	and failure_type.definition_id = failure_type_definition.id
+			and failure_type_definition.id = :faultFoundId       	
+        	and failure_type.id = failure_cause.failure_type_id
+        	and failure_cause.definition_id = failure_cause_definition.id
+        	and failure_cause_definition.name = :causedByName
+        ]]>
+    </sql-query>
+    
+</hibernate-mapping>
+

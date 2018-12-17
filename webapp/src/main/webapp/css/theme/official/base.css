@@ -1,0 +1,622 @@
+/*
+   Copyright (c)2006 Tavant Technologies
+   All Rights Reserved.
+
+   This software is furnished under a license and may be used and copied
+   only  in  accordance  with  the  terms  of such  license and with the
+   inclusion of the above copyright notice. This software or  any  other
+   copies thereof may not be provided or otherwise made available to any
+   other person. No title to and ownership of  the  software  is  hereby
+   transferred.
+
+   The information in this software is subject to change without  notice
+   and  should  not be  construed as a commitment  by Tavant Technologies.
+*/
+
+html,body {
+background:#fff;
+font-family:Arial, Helvetica, sans-serif;
+font-size:9pt;
+}
+
+.Rule {
+background:#FFF;
+font-family:Arial, Helvetica, sans-serif;
+font-size:9pt;
+}
+
+#footer {
+border-top:1px solid #888888;
+height: 25px;
+}
+
+input {
+font-family:Arial, Helvetica, sans-serif;
+font-size:9pt;
+border:1px solid #CDCDCD;
+padding:0;
+margin-left:4px;
+margin-left:0\9;
+}
+
+select {
+font-family:Arial, Helvetica, sans-serif;
+font-size:9pt;
+text-align:left;
+margin-left:4px;
+}
+
+textarea {
+font-family:Arial, Helvetica, sans-serif;
+font-size:9pt;
+padding:0;
+}
+
+
+.buttonGeneric {
+background-image:url(../../../image/buttonBg_new.gif);
+background-position:left center;
+background-repeat:repeat-x;
+border:1px solid #9B9B9B;
+color:#6D7177;
+cursor:pointer;
+font-family:Arial, Helvetica, sans-serif;
+font-size:9pt;
+font-weight:700;
+overflow:visible;
+text-align:center;
+height:22px;
+line-height:14px;
+vertical-align:top;
+white-space:nowrap;
+}
+
+body .dojoTab {
+border-bottom:1px solid #BBBBBB;
+background:url(../../../image/sand_tabs/tab_left.gif) no-repeat left top;
+}
+
+body .dojoTab div {
+background:url(../../../image/sand_tabs/tab_top_right.gif) no-repeat right top;
+font-size:100%;
+letter-spacing:1px;
+}
+
+body .dojoTab.current {
+border-bottom:none;
+background-position:0 -150px;
+}
+
+body .dojoTab.current div {
+background-position:100% -150px;
+}
+
+body .dojoTabLabels-bottom .dojoTab {
+background:#EEEEEE;
+border:1px solid #C3C3C3 !important;
+margin-left:1px;
+}
+
+body .dojoTabLabels-bottom .dojoTab div {
+background:#EEEEEE;
+}
+
+body .dojoTabLabels-bottom .dojoTab span {
+color:#555555;
+}
+
+body .dojoTabLabels-bottom .dojoTab.current {
+background:#FFF;
+border-top:#fff 1px solid !important;
+}
+
+body .dojoTabLabels-bottom .dojoTab.current div {
+background:#FFF;
+padding-top:0;
+}
+
+body .dojoTabLabels-bottom .dojoTab.current span {
+color:#555555;
+font-weight:700;
+}
+
+div.dojoMenuBar2 {
+float:left;
+background:#DDDDDD url(../../../image/menubg_new_blue.jpg);
+font-family:Arial, Helvetica, sans-serif;
+font-size:9pt;
+letter-spacing:.1em;
+height:40px;
+}
+
+body .dojoMenuBar2Client {
+background:#DDDDDD url(../../../image/menubg_new.gif);
+border:none;
+}
+
+body .dojoMenuBarItem2Hover {
+background:#999999;
+color:#FFF !important;
+}
+
+body .dojoMenuItem2 {
+font-family:Arial,Helvetica,Verdana,sans-serif;
+font-size:9pt;
+font-weight:400;
+background:#EEEEEE;
+letter-spacing:.1em;
+}
+
+body .dojoMenuItem2Hover {
+color:#999999;
+}
+
+.dojoMenuItem2Hover td.dojoMenuItem2Label {
+color:#777777;
+}
+
+body .dojoPopupMenu2Client {
+background:#DDDDDD;
+}
+
+.dojoTabPane {
+position:absolute !important;
+}
+
+body .dojoTabPaneWrapper {
+border-top:1px solid #BBBBBB;
+border-right:none;
+border-left:none;
+border-bottom:none;
+background:#FFF;
+}
+
+body .dojoTab .close {
+font-size:x-small;
+}
+
+body .dojoPopupMenu2 {
+border:1px;
+border-color:#BBBBBB;
+border-style:solid;
+}
+
+body .dojoMenuBarItem2 {
+color:#fff;
+font-weight:700;
+}
+
+body .dojoMenuItem2Label {
+color:#000;
+font-weight:400;
+height:20px;
+}
+
+.dijitAccordionBody li {
+background:transparent url(../../../image/accrodionImages.png) no-repeat 0 6px;
+background-position: -10px -511px;
+cursor:pointer;
+font-family:Arial, Helvetica, sans-serif;
+font-size:9pt;
+line-height:20px;
+}
+
+.dijitAccordionBody .dijitContentPane {
+    overflow: hidden;
+}
+
+.inventory_folder,.partReturns_folder,.reports_folder,.items_folder {
+color:#000;
+}
+
+.inventoryManagement {
+background:url(../../../image/accrodionImages.png) no-repeat scroll 2px 4px;
+background-position: -8px -154px;
+height: 24px;
+}
+
+.myclaims {
+background:url(../../../image/accrodionImages.png) no-repeat 2px 4px;
+background-position: -8px -74px;
+height: 24px;
+}
+
+.reports {
+background:url(../../../image/accrodionImages.png) no-repeat 2px 4px;
+background-position: -8px -314px;
+height: 24px;
+}
+
+.dealerInfo{
+background:url(../../../image/accrodionImages.png) no-repeat 2px 4px;
+background-position: -8px -354px;
+height: 24px;
+}
+
+.inventory {
+background:url(../../../image/accrodionImages.png) no-repeat scroll 3px 4px;
+background-position: -7px -114px;
+height: 24px;
+}
+
+.items {
+background:url(../../../image/accrodionImages.png) no-repeat 2px 4px;
+background-position: -8px -274px;
+height: 24px;
+}
+
+.campaigns {
+background:url(../../../image/accrodionImages.png) no-repeat 2px 4px;
+height: 24px;
+background-position: -8px -194px;
+}
+
+.partreturns {
+background:url(../../../image/accrodionImages.png) no-repeat 2px 4px;
+background-position: -8px -234px;
+height: 24px;
+}
+
+.accounts {
+background:url(../../../image/accrodionImages.png) no-repeat 2px 4px;
+background-position: -8px -434px;
+height: 24px;
+}
+
+.warrantyAdmin {
+background:url(../../../image/accrodionImages.png) no-repeat 2px 4px;
+background-position: -8px -34px;
+height:24px;
+}
+
+.favourites {
+background:url(../../../image/favourites.gif) no-repeat 2px 50%;
+}
+
+.alerts {
+background:url(../../../image/alerts.gif) no-repeat 2px 50%;
+}
+
+.settings {
+background:url(../../../image/accrodionImages.png) no-repeat 2px 4px;
+background-position: -8px -394px;
+height: 24px;
+}
+
+.summary_table {
+border-right:1px solid #CDCDCD;
+border-top:1px solid #CDCDCD;
+}
+
+.summary_table thead tr th {
+font-weight:400;
+}
+
+.summary_table tr.alternateRow td {
+background:#FFF;
+}
+
+.summary_table tr.selected td {
+background:#CCCCCC;
+color:#000;
+}
+
+.summary_table thead td {
+border-bottom:1px solid #CDCDCD;
+border-left:1px solid #CDCDCD;
+}
+
+.summary_table thead {
+border-top:3px solid #CDCDCD;
+border-bottom:1px solid #CDCDCD;
+}
+
+.summary_table th {
+border-bottom:1px solid #CDCDCD;
+font-weight:700;
+background:url(../../../image/bg_tab.gif) #FAFAFA;
+border-right:1px solid #CDCDCD;
+border-left:1px solid #CDCDCD;
+height:18px;
+background-image:url(../../../image/tabBg_filternoArrow.gif);
+background-repeat:no-repeat;
+background-position:top right;
+}
+
+.buttons {
+border-bottom:none;
+}
+
+.summary_table th.sortedColumnHeadUp {
+background-image:url(../../../image/tabBg_filterupArrow.gif);
+background-repeat:no-repeat;
+background-position:top right;
+}
+
+.summary_table th.sortedColumnHeadDown {
+background-image:url(../../../image/tabBg_filterdownArrow.gif);
+background-repeat:no-repeat;
+background-position:top right;
+}
+
+.accordionBody {
+background:#fff;
+border-bottom:1px solid ThreeDShadow;
+border-top:1px solid #888888;
+}
+
+.sublist {
+margin-left:22px;
+color:#111111;
+font-weight:400;
+}
+
+.filter_input {
+font-family:Geneva, Tahoma, sans-serif;
+font-size:9pt;
+}
+
+.showProgressMessage {
+background:#C44;
+color:#FFF;
+}
+
+.errorMessage {
+color:red;
+}
+
+.warningMessage {
+color:orange;
+}
+
+.required {
+background:#FDD;
+}
+
+#undockNavigator {
+background:url( ../../../image/right_Arrow.gif ) no-repeat left;
+}
+
+#dockNavigator {
+/*background-image:url("images/welcomeBG.gif");*/
+width:219px;
+}
+
+
+.dock {
+/*background:url( ../../../image/bg_Dock.gif ) repeat-y;*/
+border-right:1px solid #888888;
+}
+
+a.Inboxlink,a.Inboxlink:visited,a.Inboxlink:active {
+color:blue;
+text-decoration:underline;
+font-weight:400;
+}
+
+a.Inboxlink:hover {
+color:blue;
+text-decoration:underline;
+font-weight:400;
+cursor:pointer;
+}
+
+.bgColor {
+padding-left:0;
+background-color:#F3FBFE;
+width:98%;
+padding-top:10px;
+padding-left:5px;
+}
+table.bgColor tbody tr td {
+	padding-bottom:5px;
+	padding-top:5px;
+	}
+.label {
+color:#545454;
+font-family:Arial, Helvetica, sans-serif;
+font-size:9pt;
+font-weight:normal;
+font-style:normal;
+vertical-align:top;
+padding-left:5px;
+text-align:left;
+line-height:20px;
+
+}
+
+.labelNormal {
+color:#545454;
+font-family:Arial, Helvetica, sans-serif;
+font-size:9pt;
+font-weight:400;
+font-style:normal;
+vertical-align:middle;
+padding-left:5px;
+text-align:left;
+
+}
+
+.txtField {
+width:100%;
+}
+
+.sectionTitle {
+background:#DCE9F7 repeat-x scroll 0pt 50%;
+color:#5577B4;
+font-family:Arial, Helvetica, sans-serif;
+font-size:9pt;
+font-weight:600;
+height:20px;
+padding-left:4px;
+text-transform:capitalize;
+width:100%;
+}
+
+.subTitlebar {
+font-family:Arial, Helvetica, sans-serif;
+font-size:9pt;
+color:#5577B4;
+vertical-align:middle;
+border-bottom:1px solid  #EFEBF7;
+height:20px;
+width:100%;
+}
+
+.noBorderCellbg {
+border:none;
+background-color:red;
+padding:0;
+}
+
+#separator {
+padding-top:7px;
+}
+
+.buttonWrapperPrimary {
+padding-top:7px;
+padding-bottom:7px;
+text-align:center;
+}
+
+h4.searchFolders {
+background:#F0EFEF;
+height:20px;
+/*\*/
+	* height:23px;
+/**/
+margin:0px;
+padding-top:3px;
+border-top:1px dashed #a0a0a0;
+padding-left:3px;
+}
+
+.TitleBar {
+color:#5577B4;
+font-family:Arial, Helvetica, sans-serif;
+font-size:9pt;
+font-weight:700;
+line-height:18px;
+padding-left:5px;
+padding-top:6px;
+vertical-align:middle;
+width:100%;
+}
+
+.closableDialog {
+height:23px;
+background:url('../../../image/menubg_new.gif') repeat-x;
+}
+
+div.formButtonContainer {
+text-align:center;
+}
+
+div.formButtonContainer button {
+margin:1px 4px;
+}
+
+#welcome,.welcome {
+background:#EEEEEE;
+}
+
+.open_folder,body .dojoTabLabels-top .current {
+font-weight:700;
+}
+
+.open_folder .folder_name,.summary_table tr:hover td,.summary_table tr.selected:hover td {
+background:#CCCCCC;
+}
+
+.clickable,.button {
+cursor:pointer;
+}
+
+.headerLeftLogo {
+	background-image: url( ../../../image/clubCarLogo.gif);
+    background-repeat: no-repeat;
+    float: left;
+    height:25px;
+	width:80px;
+	margin: 6px 0 0 2px;
+}
+
+.headerMenuPane {
+	width:95%;
+	float:left;
+	margin:5px 5px 0 0;
+	*margin:4px 5px 0 0;
+}
+
+.refreshIcon {
+    background-image: url('../../../image/refreshIcon.gif');
+}
+
+.closeOverIcon {
+    background-image: url('../../../image/close_over.gif');
+}
+
+.dottedLi {
+list-style-image:url(../../../image/dotOne.gif);
+padding:5px 0;
+}
+
+input[type='checkbox'] {
+	border: none;
+}
+
+input[disabled], input[readonly], textarea[disabled], textarea[readonly] {
+    cursor: not-allowed;
+    background-color: #f1f1f1;
+    color: #808080;
+}
+
+.headerLeftTKLogo {
+	background-image: url( ../../../image/TKLogo.jpg);
+    background-repeat: no-repeat;
+    float: left;
+    height:25px;
+	width:120px;
+	margin-top:6px;
+}
+
+.accordionAlign {
+	background-color: #FFF;
+	padding: 5px;
+}
+
+.outterBg{
+/*background:transparent url(dojo/official/images/bg_tabContainerHome.jpg) 
+repeat-x scroll left bottom; */
+width:100%;
+height:100%;
+}
+
+
+.headerText{
+color:#5577B4;
+font-family:Arial,Helvetica,sans-serif;
+font-size:9pt;
+font-weight:700;
+height:28px;
+}
+.borderForTable{
+border:1px solid #EFEBF7;
+}
+.borderForTable tr td{
+border:1px solid #EFEBF7;
+}
+#equipment_details_table{
+background-color:#F3FBFE;
+}
+table.bgColor > tbody > tr > td {
+  padding-bottom:10px;
+}
+
+.spacingAtTop{
+	margin-top:10px;
+}
+
+a.removeUnderline {
+text-decoration:none;
+}

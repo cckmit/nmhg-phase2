@@ -1,0 +1,39 @@
+## The Tavant Database Patch catalog
+##
+## This file contains a sequential list of all the database patches along with logical database name.	
+## (both sql scripts and java programs) that must be run to properly
+## construct and maintain a database in conjunction with the version
+## of code represented by the current version of this file. Patch names
+## shall be relative to tavant/dbPatches
+##
+## Entries in this will look like this (but will be left-justfied):
+##    main/Patchyyyymmdd.[sql|java] tavant
+## or
+##    iri/Patchyyyymmdd.[sql|java] dba
+##
+##All entries in patchCatalog.txt would consist of both the patch name
+##followed by a 'logical' database/schema name (seperated by whitespace). This
+##would name no longer be optional.
+##Failure to provide a 'logical' db name for all patches is considered to be
+##an error.
+##Failure to define all 'logical' names in the external properties file is an
+##error.
+##  Ex)
+##
+## Here are some guidelines on how to create db patches. 
+## Please follow this strictly to avoid unnecessary issues when applying db patches via version manager.
+## 1. The .sql extension should be in lower case (never use .SQL)
+## 2. There should not be a ; (semicolon) after a sql statement.
+## 3. There should be / (forward slash) in the next line after every sql statement.
+## 4. There should not be any space or tab before or after the / (forward slash).
+## 
+## There is a sample patch file PATCH_TEST_VM.sql in versionmanager folder.
+## Also make sure none of these patches are applied manually on any database except DEV.
+
+PATCH_WARRANTY_COVERAGE_EXPORT_ITS.sql main twms_owner
+PATCH_WARRANTY_POLICY_EXPORT_ITS.sql main twms_owner
+##PATCH_TWMS3.4U-210_FIX.sql main twms_owner
+PATCH_TWMS3.4U-316_FIX.sql main twms_owner
+PATCH_ITS_CLAIM_AUDIT_INDEXES.sql main twms_owner
+PATCH_DEFECTIVE_RETURN_ITS.sql main twms_owner
+PATCH_REOPEN_REC_CLAIM_WORKFLOW.sql main twms_owner

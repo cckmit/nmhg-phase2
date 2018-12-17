@@ -1,0 +1,39 @@
+<html>
+<!-- Sitemap 1.0 -->
+<object type="text/site properties">
+  <param name="SiteType" value="index">
+</object>
+<ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Upload History">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Upload Management">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Profile">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Site Management">
+    <param name="Name" value="Site Management">
+    <param name="Local" value="Settings\Site_Management.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Fault Location">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Recovery Claim Number">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Supplier Recovery">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Causal Part">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Reopened Claims">
+    <param name="Name" value="Supply Recovery">
+    <param name="Local" value="Supplier_Recovery\Supply_Recovery.htm">
+  </object>
+</ul>
+</html>

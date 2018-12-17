@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process-definition name="RuleNodeProcess">
+  <start-state name="start">
+    <transition name="" to="executeService"></transition>
+  </start-state>
+
+  <serviceNode name="executeService">
+    <transition name="" to="accept" />
+    <beanName>ruleRepository</beanName>
+    <methodName>load</methodName>
+    <parameters>
+      <element>ruleId</element>
+    </parameters>
+    <outputName>rule</outputName>
+    <postProcess>claim.setOtherComments(rule.getName())</postProcess>
+  </serviceNode>
+
+  <end-state name="accept"></end-state>
+</process-definition>

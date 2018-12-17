@@ -1,0 +1,12 @@
+--Purpose    : Patch for creating sequence for POLICY_DEFINITION_AUDIT_SEQ
+--Author     : Vamshi Gunda
+--Created On : 30-Jun-09
+
+CREATE SEQUENCE POLICY_DEFINITION_AUDIT_SEQ
+  START WITH 1100000016400
+  INCREMENT BY 20
+  MINVALUE 1
+  NOCYCLE
+  CACHE 20
+  NOORDER
+/

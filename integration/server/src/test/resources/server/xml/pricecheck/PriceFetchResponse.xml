@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PriceFetchResponse xmlns="http://www.tavant.com/oagis" xmlns:oa="http://www.openapplications.org/oagis/9">
+	<ApplicationArea>
+		<Sender>
+		    <Task>TWMS</Task>
+		    <LogicalId>CCIMAPICS</LogicalId>
+		    <ReferenceId>1230</ReferenceId>
+		</Sender>
+		<BODId>INT04</BODId>	
+		<InterfaceNumber></InterfaceNumber>
+		<CreationDateTime>2008-03-14 15:09:26</CreationDateTime>
+    	</ApplicationArea>
+	<Status>
+		<code>SUCCESS</code>
+		<errorMessage></errorMessage> 
+	</Status>
+
+	<PriceCheckResponse>
+		<!--Element LineItem, maxOccurs=unbounded-->
+		<LineItem>
+			<Status>
+				<code>SUCCESS</code>
+				<errorMessage></errorMessage> 
+			</Status>
+			<PartNo>56286865</PartNo>
+			<Quantity>1</Quantity>
+			<ListPrice CurrencyCode="USD">302.00</ListPrice>
+			<AdjustedListPrice CurrencyCode="USD">295.00</AdjustedListPrice>
+			<MaterialCost CurrencyCode="USD">102.00</MaterialCost>
+			<StandardCost CurrencyCode="USD">143.00</StandardCost>
+			<UOM>EACH</UOM>
+		</LineItem>
+		<LineItem>
+			<Status>
+				<code>SUCCESS</code>
+				<errorMessage></errorMessage> 
+			</Status>
+			<PartNo>3456277</PartNo>
+			<Quantity>1</Quantity>
+			<ListPrice CurrencyCode="USD">182.45</ListPrice>
+			<AdjustedListPrice CurrencyCode="USD">175.00</AdjustedListPrice>
+			<MaterialCost CurrencyCode="USD">82.45</MaterialCost>
+			<StandardCost CurrencyCode="USD">102.45</StandardCost>
+			<UOM>EACH</UOM>
+		</LineItem>
+	</PriceCheckResponse>
+	<CostCheckResponse>
+	        <!--Element LineItem, maxOccurs=unbounded-->
+		<LineItem>
+			<Status>
+				<code>SUCCESS</code>
+				<errorMessage></errorMessage> 
+			</Status>
+			<PartNo>56286865</PartNo>
+			<Quantity>1</Quantity>
+			<ListPrice CurrencyCode="USD">302.00</ListPrice>
+			<AdjustedListPrice CurrencyCode="USD">295.00</AdjustedListPrice>
+			<MaterialCost CurrencyCode="USD">102.00</MaterialCost>
+			<StandardCost CurrencyCode="USD">143.00</StandardCost>
+			<UOM>EACH</UOM>
+		</LineItem>
+		<LineItem>
+			<Status>
+				<code>SUCCESS</code>
+				<errorMessage></errorMessage> 
+			</Status>
+			<PartNo>3456277</PartNo>
+			<Quantity>1</Quantity>
+			<ListPrice CurrencyCode="USD">182.45</ListPrice>
+			<AdjustedListPrice CurrencyCode="USD">175.00</AdjustedListPrice>
+			<MaterialCost CurrencyCode="USD">82.45</MaterialCost>
+			<StandardCost CurrencyCode="USD">102.45</StandardCost>
+			<UOM>EACH</UOM>
+		</LineItem>
+	</CostCheckResponse>	
+</PriceFetchResponse>

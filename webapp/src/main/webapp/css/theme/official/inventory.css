@@ -1,0 +1,93 @@
+html,body {
+background:#FFF;
+font-family:Arial, Helvetica, sans-serif;
+font-size:9pt;
+height:100%;
+width:100%;
+overflow:hidden;
+margin:0;
+padding:0;
+}
+
+body .dojoTabPaneWrapper {
+border-top:none;
+border-right:none;
+border-left:none;
+border-bottom:1px solid #D1D1D1;
+background:#FFF;
+}
+
+.preview_inventory_tab {
+margin-right:1px;
+background:#FFF;
+}
+
+body .dojoTabLabels-bottom {
+margin-left:15px;
+margin-bottom:5px;
+}
+
+.bodyText {
+color:#000;
+}
+
+.invLabelNormal {
+color:#000;
+font-family:Verdana,sans-serif,Arial,Helvetica;
+font-size:7.5pt;
+font-weight:400;
+font-style:normal;
+vertical-align:middle;
+padding-left:5px;
+text-align:left;
+height:18px;
+}
+
+.invColHeader {
+font-family:Verdana,sans-serif,Arial,Helvetica;
+font-size:7.5pt;
+color:#BBBBBB;
+font-weight:700;
+text-align:left;
+text-decoration:none;
+background-color:#EEEEEE;
+padding-left:4px;
+line-height:18px;
+}
+
+.invTableDataWhiteBg {
+font-family:Verdana,sans-serif,Arial,Helvetica;
+font-size:10px;
+line-height:15px;
+border:0;
+padding-left:2px;
+text-align:left;
+background-color:#FFF;
+color:#000;
+}
+
+.invTableDataAltRow {
+font-family:Verdana,sans-serif,Arial,Helvetica;
+font-size:10px;
+line-height:15px;
+border:0;
+padding-left:2px;
+text-align:left;
+background-color:#F8F8F8;
+color:#000;
+}
+
+div.detailsHeader {
+width:97.5%;
+font-family:Verdana,sans-serif,Arial,Helvetica;
+font-size:7.5pt;
+font-weight:400;
+text-transform:uppercase;
+color:#636363;
+padding-left:5px;
+line-height:20px;
+border:1px solid #CCCCCC;
+background-color:#777777;
+margin-left:5px;
+margin-top:5px;
+}

@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mule-configuration PUBLIC "-//MuleSource //DTD mule-configuration XML V1.0//EN"
+        "http://mule.mulesource.org/dtds/mule-configuration.dtd">
+<mule-configuration id="twms-integration-adapter-layer" version="1.0">
+
+    <environment-properties>
+        <property name="twms.web.service.url" value="axis:http://localhost:8081/services"/>
+    </environment-properties>
+
+    <mule-environment-properties serverUrl="tcp://localhost:60506">
+        <threading-profile maxThreadsActive="1"/>
+        <pooling-profile maxActive="1"/>
+    </mule-environment-properties>
+
+    <container-context className="org.mule.extras.spring.SpringContainerContext">
+        <properties>
+            <property name="configFile" value="application-context-mockerp.xml"/>
+        </properties>
+    </container-context>
+
+ 	<connector name="jmsConnector"
+		className="org.mule.providers.jms.JmsConnector">
+		<properties>
+			<property name="specification" value="1.1"/>
+			<container-property name="connectionFactory"
+				reference="activeMQConnectionFactory"/>
+            <property name="maxRedelivery" value="3"/>
+            <map name="serviceOverrides">
+				<property name="message.receiver"
+					value="org.mule.providers.jms.TransactedSingleResourceJmsMessageReceiver"/>
+				<property name="transacted.message.receiver"
+					value="org.mule.providers.jms.TransactedSingleResourceJmsMessageReceiver"/>
+			</map>
+		</properties>
+		<exception-strategy
+			className="tavant.twms.integration.adapter.mule.RollbackExceptionStrategy">
+			<endpoint address="jms://ActiveMQ.DLQ">
+				<transaction action="ALWAYS_JOIN"/>
+			</endpoint>
+		</exception-strategy>
+	</connector>
+
+    <transformers>
+        <transformer name="ConfirmBODToBODDTO"
+                     className="tavant.twms.integration.adapter.mule.transformer.ConfirmBODTransformer"/>
+    </transformers>
+
+	<!--Customer Sync -->
+	<mule-descriptor name="SyncCustomerInitiator" implementation="syncInitiator">
+		<inbound-router>
+			<endpoint address="quartz:/SyncCustomerInitiator">
+				<properties>
+					<property name="repeatInterval" value="3000"/>
+					<property name="payload" value="SyncCustomer"/>
+					<property name="payloadClassName" value="java.util.String"/>
+				</properties>
+			</endpoint>
+		</inbound-router>
+		<outbound-router>
+			<router
+				className="org.mule.routing.outbound.FilteringOutboundRouter">
+				<endpoint address="jms://queue.customer"/>
+				<filter expectedType="java.util.List"
+					className="org.mule.routing.filters.PayloadTypeFilter"/>
+			</router>
+			<router
+				className="org.mule.routing.outbound.OutboundPassThroughRouter"/>
+		</outbound-router>
+	</mule-descriptor>
+
+	<mule-descriptor name="SyncCustomer" implementation="filterDuplicateSync">
+		<inbound-router>
+			<endpoint address="jms://queue.customer">
+				<transaction action="ALWAYS_BEGIN"
+					factory="org.mule.providers.jms.JmsTransactionFactory"/>
+			</endpoint>
+		</inbound-router>
+		<outbound-router>
+			<router className="org.mule.routing.outbound.ChainingRouter">
+				<endpoint address="vm://createCustomerBOD"/>
+				<endpoint address="${twms.web.service.url}/SyncCustomer-WS?method=sync" remoteSync="true"/>
+				<endpoint address="vm://SyncResponseProcessor"/>
+			</router>
+		</outbound-router>
+	</mule-descriptor>
+
+	<mule-descriptor name="createCustomerBOD" implementation="createCustomerBOD" inboundEndpoint="vm://createCustomerBOD" >
+	  <outbound-router>
+		  <router className="org.mule.routing.outbound.OutboundPassThroughRouter"/>
+	  </outbound-router>
+	</mule-descriptor>
+
+	<!--Dealer Rate Sync -->
+
+	<mule-descriptor name="SyncDealerRateInitiator" implementation="syncInitiator">
+		<inbound-router>
+			<endpoint address="quartz:/SyncDealerRateInitiator">
+				<properties>
+					<property name="repeatInterval" value="3000"/>
+					<property name="payload" value="SyncDealerRate"/>
+					<property name="payloadClassName" value="java.util.String"/>
+				</properties>
+			</endpoint>
+		</inbound-router>
+		<outbound-router>
+			<router
+				className="org.mule.routing.outbound.FilteringOutboundRouter">
+				<endpoint address="jms://queue.dealerrate"/>
+				<filter expectedType="java.util.List"
+					className="org.mule.routing.filters.PayloadTypeFilter"/>
+			</router>
+			<router
+				className="org.mule.routing.outbound.OutboundPassThroughRouter"/>
+		</outbound-router>
+	</mule-descriptor>
+
+	<mule-descriptor name="SyncDealerRate" implementation="filterDuplicateSync">
+		<inbound-router>
+			<endpoint address="jms://queue.dealerrate">
+				<transaction action="ALWAYS_BEGIN"
+					factory="org.mule.providers.jms.JmsTransactionFactory"/>
+			</endpoint>
+		</inbound-router>
+		<outbound-router>
+			<router className="org.mule.routing.outbound.ChainingRouter">
+				<endpoint address="vm://createDealerRateBOD"/>
+				<endpoint address="${twms.web.service.url}/SyncDealerRate-WS?method=sync" remoteSync="true"/>
+				<endpoint address="vm://SyncResponseProcessor"/>
+			</router>
+		</outbound-router>
+	</mule-descriptor>
+
+	<mule-descriptor name="createDealerRateBOD" implementation="createDealerRateBOD" inboundEndpoint="vm://createDealerRateBOD" >
+	  <outbound-router>
+		  <router className="org.mule.routing.outbound.OutboundPassThroughRouter"/>
+	  </outbound-router>
+	</mule-descriptor>
+
+
+	<!--Item Sync -->
+
+	<mule-descriptor name="SyncItemInitiator" implementation="syncInitiator">
+		<inbound-router>
+			<endpoint address="quartz:/SyncItemInitiator">
+				<properties>
+					<property name="repeatInterval" value="3000"/>
+					<property name="payload" value="SyncItem"/>
+					<property name="payloadClassName" value="java.util.String"/>
+				</properties>
+			</endpoint>
+		</inbound-router>
+		<outbound-router>
+			<router
+				className="org.mule.routing.outbound.FilteringOutboundRouter">
+				<endpoint address="jms://queue.item"/>
+				<filter expectedType="java.util.List"
+					className="org.mule.routing.filters.PayloadTypeFilter"/>
+			</router>
+			<router
+				className="org.mule.routing.outbound.OutboundPassThroughRouter"/>
+		</outbound-router>
+	</mule-descriptor>
+
+	<mule-descriptor name="SyncItem" implementation="filterDuplicateSync">
+		<inbound-router>
+			<endpoint address="jms://queue.item">
+				<transaction action="ALWAYS_BEGIN"
+					factory="org.mule.providers.jms.JmsTransactionFactory"/>
+			</endpoint>
+		</inbound-router>
+		<outbound-router>
+			<router className="org.mule.routing.outbound.ChainingRouter">
+				<endpoint address="vm://createItemBOD"/>
+				<endpoint address="${twms.web.service.url}/SyncItem-WS?method=sync" remoteSync="true"/>
+				<endpoint address="vm://SyncResponseProcessor"/>
+			</router>
+		</outbound-router>
+	</mule-descriptor>
+
+	<mule-descriptor name="createItemBOD" implementation="createItemBOD" inboundEndpoint="vm://createItemBOD" >
+	  <outbound-router>
+		  <router className="org.mule.routing.outbound.OutboundPassThroughRouter"/>
+	  </outbound-router>
+	</mule-descriptor>
+
+
+	<!--Inventory Sync -->
+
+	<mule-descriptor name="SyncInventoryInitiator" implementation="syncInitiator">
+		<inbound-router>
+			<endpoint address="quartz:/SyncInventoryInitiator">
+				<properties>
+					<property name="repeatInterval" value="3000"/>
+					<property name="payload" value="SyncInventory"/>
+					<property name="payloadClassName" value="java.util.String"/>
+				</properties>
+			</endpoint>
+		</inbound-router>
+		<outbound-router>
+			<router
+				className="org.mule.routing.outbound.FilteringOutboundRouter">
+				<endpoint address="jms://queue.inventory"/>
+				<filter expectedType="java.util.List"
+					className="org.mule.routing.filters.PayloadTypeFilter"/>
+			</router>
+			<router
+				className="org.mule.routing.outbound.OutboundPassThroughRouter"/>
+		</outbound-router>
+	</mule-descriptor>
+
+	<mule-descriptor name="SyncInventory" implementation="filterDuplicateSync">
+		<inbound-router>
+			<endpoint address="jms://queue.inventory">
+				<transaction action="ALWAYS_BEGIN"
+					factory="org.mule.providers.jms.JmsTransactionFactory"/>
+			</endpoint>
+		</inbound-router>
+		<outbound-router>
+			<router className="org.mule.routing.outbound.ChainingRouter">
+				<endpoint address="vm://createInventoryBOD"/>
+				<endpoint address="${twms.web.service.url}/SyncInventory-WS?method=sync" remoteSync="true"/>
+				<endpoint address="vm://SyncResponseProcessor"/>
+			</router>
+		</outbound-router>
+	</mule-descriptor>
+
+	<mule-descriptor name="createInventoryBOD" implementation="createInventoryBOD" inboundEndpoint="vm://createInventoryBOD" >
+	  <outbound-router>
+		  <router className="org.mule.routing.outbound.OutboundPassThroughRouter"/>
+	  </outbound-router>
+	</mule-descriptor>
+
+	<!-- ItemGroup Sync -->
+
+	<mule-descriptor name="SyncItemGroupInitiator" implementation="syncInitiator">
+		<inbound-router>
+			<endpoint address="quartz:/SyncItemGroupInitiator">
+				<properties>
+					<property name="repeatInterval" value="3000"/>
+					<property name="payload" value="SyncItemGroup"/>
+					<property name="payloadClassName" value="java.util.String"/>
+				</properties>
+			</endpoint>
+		</inbound-router>
+		<outbound-router>
+			<router
+				className="org.mule.routing.outbound.FilteringOutboundRouter">
+				<endpoint address="jms://queue.itemGroup"/>
+				<filter expectedType="java.util.List"
+					className="org.mule.routing.filters.PayloadTypeFilter"/>
+			</router>
+			<router
+				className="org.mule.routing.outbound.OutboundPassThroughRouter"/>
+		</outbound-router>
+	</mule-descriptor>
+
+	<mule-descriptor name="SyncItemGroup" implementation="filterDuplicateSync">
+		<inbound-router>
+			<endpoint address="jms://queue.itemGroup">
+				<transaction action="ALWAYS_BEGIN"
+					factory="org.mule.providers.jms.JmsTransactionFactory"/>
+			</endpoint>
+		</inbound-router>
+		<outbound-router>
+			<router className="org.mule.routing.outbound.ChainingRouter">
+				<endpoint address="vm://createItemGroupBOD"/>
+				<endpoint address="${twms.web.service.url}/SyncItemGroup-WS?method=sync" remoteSync="true"/>
+				<endpoint address="vm://SyncResponseProcessor"/>
+			</router>
+		</outbound-router>
+	</mule-descriptor>
+
+	<mule-descriptor name="createItemGroupBOD" implementation="createItemGroupBOD" inboundEndpoint="vm://createItemGroupBOD" >
+	  <outbound-router>
+		  <router className="org.mule.routing.outbound.OutboundPassThroughRouter"/>
+	  </outbound-router>
+	</mule-descriptor>
+
+
+	<!-- ItemPrice Sync -->
+
+	<mule-descriptor name="SyncItemPriceInitiator" implementation="syncInitiator">
+		<inbound-router>
+			<endpoint address="quartz:/SyncItemPriceInitiator">
+				<properties>
+					<property name="repeatInterval" value="3000"/>
+					<property name="payload" value="SyncItemPrice"/>
+					<property name="payloadClassName" value="java.util.String"/>
+				</properties>
+			</endpoint>
+		</inbound-router>
+		<outbound-router>
+			<router
+				className="org.mule.routing.outbound.FilteringOutboundRouter">
+				<endpoint address="jms://queue.itemPrice"/>
+				<filter expectedType="java.util.List"
+					className="org.mule.routing.filters.PayloadTypeFilter"/>
+			</router>
+			<router
+				className="org.mule.routing.outbound.OutboundPassThroughRouter"/>
+		</outbound-router>
+	</mule-descriptor>
+
+	<mule-descriptor name="SyncItemPrice" implementation="filterDuplicateSync">
+		<inbound-router>
+			<endpoint address="jms://queue.itemPrice">
+				<transaction action="ALWAYS_BEGIN"
+					factory="org.mule.providers.jms.JmsTransactionFactory"/>
+			</endpoint>
+		</inbound-router>
+		<outbound-router>
+			<router className="org.mule.routing.outbound.ChainingRouter">
+				<endpoint address="vm://createItemPriceBOD"/>
+				<endpoint address="${twms.web.service.url}/SyncItemPrice-WS?method=sync" remoteSync="true"/>
+				<endpoint address="vm://SyncResponseProcessor"/>
+			</router>
+		</outbound-router>
+	</mule-descriptor>
+
+	<mule-descriptor name="createItemPriceBOD" implementation="createItemPriceBOD" inboundEndpoint="vm://createItemPriceBOD" >
+	  <outbound-router>
+		  <router className="org.mule.routing.outbound.OutboundPassThroughRouter"/>
+	  </outbound-router>
+	</mule-descriptor>
+
+
+	<!-- User Sync -->
+
+	<mule-descriptor name="SyncUserInitiator" implementation="syncInitiator">
+		<inbound-router>
+			<endpoint address="quartz:/SyncUserInitiator">
+				<properties>
+					<property name="repeatInterval" value="3000"/>
+					<property name="payload" value="SyncUser"/>
+					<property name="payloadClassName" value="java.util.String"/>
+				</properties>
+			</endpoint>
+		</inbound-router>
+		<outbound-router>
+			<router
+				className="org.mule.routing.outbound.FilteringOutboundRouter">
+				<endpoint address="jms://queue.user"/>
+				<filter expectedType="java.util.List"
+					className="org.mule.routing.filters.PayloadTypeFilter"/>
+			</router>
+			<router
+				className="org.mule.routing.outbound.OutboundPassThroughRouter"/>
+		</outbound-router>
+	</mule-descriptor>
+
+	<mule-descriptor name="SyncUser" implementation="filterDuplicateSync">
+		<inbound-router>
+			<endpoint address="jms://queue.user">
+				<transaction action="ALWAYS_BEGIN"
+					factory="org.mule.providers.jms.JmsTransactionFactory"/>
+			</endpoint>
+		</inbound-router>
+		<outbound-router>
+			<router className="org.mule.routing.outbound.ChainingRouter">
+				<endpoint address="vm://createUserBOD"/>
+				<endpoint address="${twms.web.service.url}/SyncUser-WS?method=sync" remoteSync="true"/>
+				<endpoint address="vm://SyncResponseProcessor"/>
+			</router>
+		</outbound-router>
+	</mule-descriptor>
+
+	<mule-descriptor name="createUserBOD" implementation="createUserBOD" inboundEndpoint="vm://createUserBOD" >
+	  <outbound-router>
+		  <router className="org.mule.routing.outbound.OutboundPassThroughRouter"/>
+	  </outbound-router>
+	</mule-descriptor>
+
+
+	<mule-descriptor name="SyncResponseProcessor"
+		implementation="syncResponseProcessor"
+		inboundEndpoint="vm://SyncResponseProcessor"
+		inboundTransformer="ConfirmBODToBODDTO">
+		<exception-strategy
+			className="tavant.twms.integration.adapter.mule.RollbackExceptionStrategy">
+			<endpoint address="jms://ActiveMQ.DLQ">
+				<transaction action="ALWAYS_JOIN"/>
+			</endpoint>
+		</exception-strategy>
+	</mule-descriptor>
+
+</mule-configuration>

@@ -1,0 +1,93 @@
+<html>
+<!-- Sitemap 1.0 -->
+<object type="text/site properties">
+  <param name="SiteType" value="toc">
+  <param name="Image Width" value="16">
+  <param name="Window Styles" value="0x800002">
+  <param name="ExWindow Styles" value="0x100">
+</object>
+<ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="SRA">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="Before you Begin">
+    </object>
+    <ul>
+      <li><object type="text/sitemap">
+        <param name="Name" value="Common Application Features">
+        <param name="Local" value="Before_you_Begin\common_application_features.htm">
+      </object>
+      </ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="Claims">
+    </object>
+    <ul>
+      <li><object type="text/sitemap">
+        <param name="Name" value="Search Claims">
+        <param name="Local" value="Claims\Search_Claims.htm">
+      </object>
+      <li><object type="text/sitemap">
+        <param name="Name" value="Claim Details">
+        <param name="Local" value="Claims\Claim_Details.htm">
+      </object>
+      <li><object type="text/sitemap">
+        <param name="Name" value="Policy Details">
+        <param name="Local" value="Claims\Policy_Details.htm">
+      </object>
+      </ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="Inventory">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="Field Modifications">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="Part Returns">
+    </object>
+    <ul>
+      <li><object type="text/sitemap">
+        <param name="Name" value="Search Parts">
+        <param name="Local" value="Part_Returns\Search_Parts.htm">
+      </object>
+      </ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="Parts Recovery">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="Supplier Recovery">
+    </object>
+    <ul>
+      <li><object type="text/sitemap">
+        <param name="Name" value="Supplier Recovery Folders">
+        <param name="Local" value="Supplier_Recovery\Supplier_Recovery_Folders.htm">
+      </object>
+      </ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="Contract Admin">
+    </object>
+    <ul>
+      <li><object type="text/sitemap">
+        <param name="Name" value="Maintain Supplier Contracts">
+        <param name="Local" value="Contract_Admin\Maintain_Supplier_Contracts.htm">
+      </object>
+      </ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="Items">
+    </object>
+    <li><object type="text/sitemap">
+      <param name="Name" value="Reports">
+    </object>
+    <ul>
+      <li><object type="text/sitemap">
+        <param name="Name" value="Upload Management">
+        <param name="Local" value="Reports\Upload_Management.htm">
+      </object>
+      </ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="Settings">
+    </object>
+    </ul>
+</ul>
+</html>

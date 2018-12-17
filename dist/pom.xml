@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion> 
+  <name>x-warbuild</name>
+  <parent>
+    <artifactId>server</artifactId> 
+    <groupId>tavant.twms.TSA_DEV</groupId>
+    <version>0.5-SNAPSHOT</version> 
+  </parent>
+  <groupId>tavant.twms.TSA_DEV</groupId>
+  <artifactId>x-warbuild</artifactId>
+  <build>
+	  <plugins>
+		  <plugin>
+			<artifactId>maven-antrun-plugin</artifactId> 
+			<executions>
+				<execution>
+				<phase>clean</phase> 
+				<configuration>
+					<tasks>
+						<ant antfile="build.xml" dir="." target="${ant.target}" inheritRefs="true">
+						</ant>
+					</tasks>
+					<forkMode>once</forkMode> 
+					<argLine>-Xmx256m</argLine> 
+				</configuration>
+				<goals>
+					<goal>run</goal> 
+				</goals>
+				</execution>
+			</executions>
+		  </plugin>
+	  </plugins>
+  </build>
+
+
+  <properties>
+    <ant.target>build.deploy.restart</ant.target>
+  </properties>
+</project>

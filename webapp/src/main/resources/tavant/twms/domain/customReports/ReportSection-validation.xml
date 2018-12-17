@@ -1,0 +1,22 @@
+<!DOCTYPE validators PUBLIC "-//Apache Struts//XWork Validator 1.0.2//EN"
+       "http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+<validators>
+    <field name="name">
+        <field-validator type="requiredstring" short-circuit="true">
+            <message key="error.customReport.sectionNameRequired" />
+        </field-validator>
+    </field>
+    
+    
+     <field name="order">
+        <field-validator type="required" short-circuit="true">
+            <message key="error.customReport.sectionOrderRequired"/>
+        </field-validator>
+        <field-validator type="int">
+            <param name="min">1</param>
+            <message key="error.customReport.invalidSectionOrder"/>
+        </field-validator>
+    </field>
+   
+
+</validators>

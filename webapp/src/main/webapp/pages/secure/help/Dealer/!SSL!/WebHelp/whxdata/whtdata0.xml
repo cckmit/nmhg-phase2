@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<tocdata>
+<book name="Dealer" >
+  <book name="Before you Begin" >
+    <item name="Introduction" url="introduction.htm" />
+    <item name="Copyright" url="copyright.htm" />
+    <item name="Before you Begin" url="before_you_begin.htm" />
+    <item name="Common Application Features" url="common_application_features.htm" />
+  </book>
+  <book name="Claims" >
+    <book name="Claim Submission" >
+      <item name="Claim Submission" url="Claims/Claim_Submission.htm" />
+      <item name="Machine Claims" url="machine_claims.htm" />
+      <item name="Parts Claim" url="parts_claim.htm" />
+      <item name="Field Product Improvement Claims" url="field_modification_claims.htm" />
+    </book>
+    <item name="Claim Validation" url="Claims/Claim_Validation.htm" />
+    <book name="Claim Folders" >
+      <item name="Claim Folders" url="Claims/Claim_Folders.htm" />
+      <item name="Draft" url="Claims/Draft.htm" />
+      <item name="Forwarded" url="Claims/Request_for_Information.htm" />
+      <item name="Service Manager Response" url="Claims/Service_Manager_Response.htm" />
+    </book>
+    <item name="Search Claims" url="Claims/Search_Claims.htm" />
+    <item name="Claim Details" url="Claims/Claim_Details.htm" />
+    <item name="Policy Details" url="Claims/Policy_Details.htm" />
+  </book>
+  <book name="Inventory" >
+    <item name="Inventory" url="Inventory/Inventory.htm" />
+    <item name="Stock" url="Inventory/Stock.htm" />
+    <item name="Retailed" url="Inventory/Retailed.htm" />
+    <item name="Truck Details" url="Inventory/Equipment_Details.htm" />
+    <item name="Truck Transfer Report" url="Inventory/Equipment_Transfer_Report.htm" />
+    <item name="Retail Truck Transfer" url="Inventory/Retail_Machine_Transfer.htm" />
+    <item name="Delivery Report" url="Inventory/Warranty_Registration.htm" />
+    <item name="Search Inventory" url="Inventory/Search_Inventory.htm" />
+  </book>
+  <book name="Field Product Improvement" >
+    <item name="Pending Campaigns" url="Field_Modifications/Pending_Campaigns.htm" />
+    <item name="Search Campaigns" url="Field_Modifications/Search_Campaigns.htm" />
+  </book>
+  <book name="Part Returns" >
+    <item name="Part Return Folders" url="Part_Returns/Part_Return_Folders.htm" />
+    <item name="Prepare Due Parts" url="prepare_due_parts.htm" />
+    <item name="Due Parts" url="Part_Returns/Due_Parts.htm" />
+    <item name="Overdue Parts" url="Part_Returns/Overdue_Parts.htm" />
+    <item name="Shipment Generated" url="Part_Returns/Shipment_Generated.htm" />
+    <item name="Shipment Tag" url="Part_Returns/Shipment_Tag.htm" />
+    <item name="Parts Collected" url="Part_Returns/Parts_Shipped.htm" />
+    <item name="Rejected Parts" url="Part_Returns/Rejected_Parts.htm" />
+    <item name="Claimed Parts Receipt" url="Part_Returns/Claimed_Parts_Receipt.htm" />
+    <item name="Search Parts" url="Part_Returns/Search_Parts.htm" />
+  </book>
+  <book name="Items" >
+    <item name="Search Items" url="Items/Search_Items.htm" />
+  </book>
+  <book name="Reports" >
+    <item name="Reports" url="Reports/Reports.htm" />
+    <item name="Download Management" url="Reports/Download_Management.htm" />
+    <item name="Upload Management" url="Reports/Upload_Management.htm" />
+  </book>
+  <book name="Settings" >
+    <item name="Profile" url="Settings/Profile.htm" />
+    <item name="User Management" url="Settings/User_Management.htm" />
+    <item name="End Customer Management" url="Settings/End_Customer_Management.htm" />
+    <item name="Email Subscription" url="Settings/Email_Subscription.htm" />
+  </book>
+</book>
+
+</tocdata>

@@ -1,0 +1,12 @@
+## set the path of Version Manager .jar 
+vm.path=./VersionManager.jar
+## give the path of oracle
+vm.oracle.path=D:/TWMSSoftwares/classes12.jar
+## enter the DB URl 
+vm.jdbcurl=jdbc:oracle:thin:@192.168.135.51:1521:TWMSNC
+##Enter the location of the path of DB patches
+vm.patches.path=D:/NMHG_DEV/dbpatches/NHMG-Patches
+## Enter the username/password for twms_owner
+twms_owner_user_password=DOOSAN_DEV/DOOSAN_DEV
+## Enter the username/password for twms_user
+twms_user_user_password=DOOSAN_DEV/DOOSAN_DEV

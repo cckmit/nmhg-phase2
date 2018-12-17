@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+  <package name="manageuploadsdownloads" extends="struts-twms-default">
+
+    <action name="manageUploadDownload"
+      class="tavant.twms.web.admin.upload.ManageUploadDownload" method="uploadDownload">
+      <interceptor-ref name="adminParamsPrepare" />      
+      <result name="success">pages/secure/admin/upload/manageUploads.jsp</result>
+      <result name="input">pages/secure/admin/upload/manageUploads.jsp</result>
+	  <result name="downloadsuccess">pages/secure/admin/download/manageDownloads.jsp</result>
+    </action>
+
+    <action name="uploadTemplateData"
+      class="tavant.twms.web.admin.upload.ManageUploadDownload" method="uploadTemplateData">
+	  <interceptor-ref name="fileUpload" />
+	  <interceptor-ref name="basicStack" />
+	  <interceptor-ref name="paramsPrepareWithoutValidation" />
+      <interceptor-ref name="adminParamsPrepare" />      
+      <result name="success">pages/secure/admin/upload/manageUploads.jsp</result>	  
+	  <result name="input">pages/secure/admin/upload/manageUploads.jsp</result>
+    </action>
+
+    <action name="dataUploadHistory"
+      class="tavant.twms.web.admin.upload.ManageUploadHistory">
+      <interceptor-ref name="adminParamsPrepare" />
+      <result name="success">pages/secure/admin/upload/uploadHistoryInboxView.jsp</result>
+    </action>
+
+	<action name="dataUploadHistoryBody"
+		class="tavant.twms.web.admin.upload.ManageUploadHistory" method="tableBody">
+		<interceptor-ref name="paramsPrepareWithoutValidation" />
+		<result name="success">pages/secure/home/json.jsp</result>	
+	</action>
+
+    <action name="data_upload_history_detail" 
+    class="tavant.twms.web.admin.upload.ManageUploadHistory" method="detail">
+    	<interceptor-ref name="adminParamsPrepare" />
+		<result name="success">pages/secure/admin/upload/dataUploadHistoryDetail.jsp</result>
+    </action>
+
+    <action name="download_hist_error_content_file" 
+    class="tavant.twms.web.admin.upload.ManageUploadHistory" method="downloadErrorContent" />
+
+	<action name="download_hist_uploaded_content_file" 
+    class="tavant.twms.web.admin.upload.ManageUploadHistory" method="downloadUploadedContent" />
+
+	<action name="dataUploadHistoryToExcel" class="tavant.twms.web.admin.upload.ManageUploadHistory"
+       method="downloadListingData" >
+		<interceptor-ref name="paramsPrepare" />
+	</action>
+
+    <action name="downloadData"
+      class="tavant.twms.web.admin.upload.ManageUploadDownload" method="downloadData">
+      <interceptor-ref name="twmsParamsPrepareParams" />      
+      <result name="success">pages/secure/admin/download/manageDownloads.jsp</result>	  
+      <result name="wntyClmData" type="chain">displayDownloadClaimData</result>	  
+      <result name="wntyClmPartsData" type="chain">displayDownloadClaimPartsData</result>	  
+      <result name="wntyClmDetailData" type="chain">displayDownloadClaimDetailData</result>	  
+      <result name="supplierRecReport" type="chain">displayDownloadSupplierRecReport</result>
+      <result name="supplierRecPartsReport" type="chain">displayDownloadSupplierRecPartsReport</result>	  
+      <result name="machineRetail" type="chain">displayDownloadMachineRetail</result>	  
+      <result name="underwriterClaimsData" type="chain">displayDownloadUnderwriterClaimData</result>	  
+      <result name="extWntyClaimsPartsData" type="chain">displayDownloadExtWntyClaimData</result>	  
+      <result name="wntyFinancialReportData" type="chain">displayDownloadFinancialReport</result>
+      <result name="ewpReport" type="chain">displayDownloadEWPReport</result>
+      <result name="customerData" type="chain">displayDownloadCustomerData</result>
+      <result name="pendingExtensions" type="chain">displayDownloadPendingExtensions</result>	  
+    </action>
+    
+    <action name="displayDownloadCustomerData"
+      class="tavant.twms.web.admin.download.WarrantyClaimDetailAction" method="displayDownloadClaimDetailData">
+			<param name="context">CustomerData</param>
+			<result name="success">pages/secure/admin/download/customer_data_download.jsp</result>
+    </action>
+    
+    <action name="displayDownloadPendingExtensions"
+      class="tavant.twms.web.admin.download.WarrantyClaimDetailAction" method="displayDownloadClaimDetailData">
+			<param name="context">PendingExtensions</param>
+			<result name="success">pages/secure/admin/download/pending_extensions_download.jsp</result>
+    </action>
+        
+	<action name="displayDownloadEWPReport"
+      class="tavant.twms.web.admin.download.WarrantyClaimDetailAction" method="displayDownloadClaimDetailData">
+			<param name="context">EWPReport</param>
+			<result name="success">pages/secure/admin/download/ewp_download.jsp</result>
+    </action>
+    
+    <action name="displayDownloadClaimData"
+      class="tavant.twms.web.admin.download.WarrantyClaimDetailAction" method="displayDownloadClaimDetailData">
+			<param name="context">ClaimData</param>
+			<result name="success">pages/secure/admin/download/claim_data_download.jsp</result>
+    </action>
+
+    <action name="displayDownloadClaimPartsData"
+      class="tavant.twms.web.admin.download.WarrantyClaimDetailAction" method="displayDownloadClaimDetailData">
+			<param name="context">ClaimPartsData</param>
+			<result name="success">pages/secure/admin/download/claim_data_download.jsp</result>
+    </action>
+
+    <action name="displayDownloadClaimDetailData"
+      class="tavant.twms.web.admin.download.WarrantyClaimDetailAction" method="displayDownloadClaimDetailData">
+			<param name="context">ClaimDetailData</param>
+			<result name="success">pages/secure/admin/download/claim_data_download.jsp</result>
+    </action>
+	
+    <action name="displayDownloadSupplierRecReport"
+      class="tavant.twms.web.admin.download.WarrantyClaimDetailAction" method="displayDownloadClaimDetailData">
+			<param name="context">RecoveryReport</param>
+			<result name="success">pages/secure/admin/download/supplier_recovery_download.jsp</result>
+    </action>
+    
+    <action name="displayDownloadSupplierRecPartsReport"
+      class="tavant.twms.web.admin.download.WarrantyClaimDetailAction" method="displayDownloadClaimDetailData">
+			<param name="context">RecoveryPartsReport</param>
+			<result name="success">pages/secure/admin/download/supplier_recovery_download.jsp</result>
+    </action>
+
+    <action name="displayDownloadUnderwriterClaimData"
+      class="tavant.twms.web.admin.download.WarrantyClaimDetailAction" method="displayDownloadClaimDetailData">
+			<param name="context">UnderwriterClaimData</param>
+			<result name="success">pages/secure/admin/download/claim_report_download.jsp</result>
+    </action>
+
+    <action name="displayDownloadExtWntyClaimData"
+      class="tavant.twms.web.admin.download.WarrantyClaimDetailAction" method="displayDownloadClaimDetailData">
+			<param name="context">ExtWntyClaimData</param>
+			<result name="success">pages/secure/admin/download/claim_report_download.jsp</result>
+    </action>
+
+    <action name="displayDownloadFinancialReport"
+      class="tavant.twms.web.admin.download.WarrantyClaimDetailAction" method="displayDownloadClaimDetailData">
+			<param name="context">ClaimFinancialReportData</param>
+			<result name="success">pages/secure/admin/download/claim_financial_report.jsp</result>
+    </action>
+
+    <action name="displayDownloadMachineRetail"
+      class="tavant.twms.web.admin.download.WarrantyClaimDetailAction" method="displayDownloadClaimDetailData">
+			<param name="context">MachineRetailReport</param>
+			<result name="success">pages/secure/admin/download/machine_retail_download.jsp</result>
+    </action>
+
+    <action name="downloadClaimData"
+      class="tavant.twms.web.admin.download.WarrantyClaimDetailAction" method="downloadData">
+            <interceptor-ref name="twmsParamsPrepareParams" />
+			<result name="input">pages/secure/admin/download/claim_data_download.jsp</result>
+    </action>
+
+    <action name="downloadSupplierRecReport"
+      class="tavant.twms.web.admin.download.WarrantyClaimDetailAction" method="downloadData">
+            <interceptor-ref name="twmsParamsPrepareParams" />
+            <result name="pagination">pages/secure/admin/download/supplier_recovery_download.jsp</result>
+			<result name="input">pages/secure/admin/download/supplier_recovery_download.jsp</result>
+    </action>
+    
+    <action name="downloadClaimReportData"
+      class="tavant.twms.web.admin.download.WarrantyClaimDetailAction" method="downloadData">
+            <interceptor-ref name="twmsParamsPrepareParams" />
+			<result name="input">pages/secure/admin/download/claim_report_download.jsp</result>
+    </action>
+
+    <action name="downloadClaimFinancialReportData"
+      class="tavant.twms.web.admin.download.WarrantyClaimDetailAction" method="downloadData">
+            <interceptor-ref name="twmsParamsPrepareParams" />
+			<result name="input">pages/secure/admin/download/claim_financial_report.jsp</result>
+    </action>
+
+    <action name="downloadInventoryData"
+      class="tavant.twms.web.admin.download.WarrantyClaimDetailAction" method="downloadData">
+            <interceptor-ref name="twmsParamsPrepareParams" />
+			<result name="input">pages/secure/admin/download/machine_retail_download.jsp</result>
+    </action>
+    
+    <action name="downloadEWPData"
+      class="tavant.twms.web.admin.download.WarrantyClaimDetailAction" method="downloadData">
+            <interceptor-ref name="twmsParamsPrepareParams" />
+            <result name="pagination">pages/secure/admin/download/ewp_download.jsp</result>
+			<result name="input">pages/secure/admin/download/ewp_download.jsp</result>
+    </action>
+
+	<action name="downloadPageData"
+      class="tavant.twms.web.admin.download.WarrantyClaimDetailAction" method="downloadPage">
+            <interceptor-ref name="twmsParamsPrepareParams" />
+    </action>
+
+    <action name="downloadSupplierRecReportPage"
+      class="tavant.twms.web.admin.download.WarrantyClaimDetailAction" method="downloadPage">
+            <interceptor-ref name="twmsParamsPrepareParams" />
+			<result name="input">pages/secure/admin/download/supplier_recovery_download.jsp</result>
+    </action>
+    
+    <action name="downloadCustomerData"
+      class="tavant.twms.web.admin.download.WarrantyClaimDetailAction" method="downloadData">
+             <interceptor-ref name="twmsParamsPrepareParams" />
+			<result name="input">pages/secure/admin/download/customer_data_download.jsp</result>
+    </action>
+    <action name="downloadPendingExtensions"
+      class="tavant.twms.web.admin.download.WarrantyClaimDetailAction" method="downloadData">
+             <interceptor-ref name="twmsParamsPrepareParams" />
+			<result name="input">pages/secure/admin/download/pending_extensions_download.jsp</result>
+    </action>
+  </package>
+</struts>

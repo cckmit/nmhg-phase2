@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Review id="part-return-barcode-webapp">
+  <ReviewIssue id="G46N32N8">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-08 :: 12:52:06:500 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-08 :: 13:10:41:131 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Nanda</ReviewerId>
+    <AssignedTo>Rahul</AssignedTo>
+    <File line="260">src/main/java/tavant/twms/web/partsreturn/DuePartsInspectionAction.java</File>
+    <Type>item.type.label.clarity</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>Add comments describing why isSelected is negated and set</Summary>
+    <Description></Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="G46N5321">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-08 :: 12:53:40:345 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-08 :: 13:10:35:662 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Nanda</ReviewerId>
+    <AssignedTo>Rahul</AssignedTo>
+    <File line="106">src/main/java/tavant/twms/web/partsreturn/DuePartsReceiptAction.java</File>
+    <Type>item.type.label.suggestion</Type>
+    <Severity>item.severity.label.normal</Severity>
+    <Summary>Simplify this using a conditional or something better (please check this in other places)</Summary>
+    <Description></Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="G46N90NA">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-08 :: 12:56:43:846 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-08 :: 13:10:32:116 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Nanda</ReviewerId>
+    <AssignedTo>Rahul</AssignedTo>
+    <File line="76">src/main/java/tavant/twms/web/partsreturn/DuePartsReturnAction.java</File>
+    <Type>item.type.label.programLogic</Type>
+    <Severity>item.severity.label.trivial</Severity>
+    <Summary>Use ItemReference::getUnserializedItem and remove the try catch block (please check this in other places)</Summary>
+    <Description></Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="G46N9RAH">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-08 :: 12:57:18:377 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-08 :: 13:10:28:412 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Nanda</ReviewerId>
+    <AssignedTo>Rahul</AssignedTo>
+    <File line="86">src/main/java/tavant/twms/web/partsreturn/DuePartsReturnAction.java</File>
+    <Type>item.type.label.other</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>commentsMandatory is redundant</Summary>
+    <Description></Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="G46NAV69">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-08 :: 12:58:10:065 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-08 :: 13:10:23:491 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Nanda</ReviewerId>
+    <AssignedTo>Rahul</AssignedTo>
+    <File line="156">src/main/java/tavant/twms/web/partsreturn/DuePartsReturnAction.java</File>
+    <Type>item.type.label.clarity</Type>
+    <Severity>item.severity.label.trivial</Severity>
+    <Summary>Add comments describing why isSelected is negated and set</Summary>
+    <Description></Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="G46NCAZA">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-08 :: 12:59:17:206 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-08 :: 13:10:17:413 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Nanda</ReviewerId>
+    <AssignedTo>Rahul</AssignedTo>
+    <File line="504">src/main/java/tavant/twms/web/partsreturn/PartReturnInboxAction.java</File>
+    <Type>item.type.label.clarity</Type>
+    <Severity>item.severity.label.normal</Severity>
+    <Summary>Use java 5 syntax for iteration (please check this in other places)</Summary>
+    <Description></Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="G46NEXZ8">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-08 :: 13:01:20:324 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-08 :: 13:10:10:897 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Nanda</ReviewerId>
+    <AssignedTo>Rahul</AssignedTo>
+    <File line="513">src/main/java/tavant/twms/web/partsreturn/PartReturnInboxAction.java</File>
+    <Type>item.type.label.clarity</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>Avoid unnecessary if checks (please check this in other places)</Summary>
+    <Description></Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="G46NFZYC">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-08 :: 13:02:09:540 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-08 :: 13:09:54:366 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Nanda</ReviewerId>
+    <AssignedTo>Rahul</AssignedTo>
+    <File line="2">src/main/java/tavant/twms/web/partsreturn/PartReturnInboxAction.java</File>
+    <Type>item.type.label.suggestion</Type>
+    <Severity>item.severity.label.normal</Severity>
+    <Summary>Move repetitve code from this class and ClaimBasedPartReturnAction into new parent class</Summary>
+    <Description></Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="G46NJFYW">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-08 :: 13:04:50:264 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-08 :: 13:10:00:585 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Nanda</ReviewerId>
+    <AssignedTo>Rahul</AssignedTo>
+    <File line="624">src/main/java/tavant/twms/web/partsreturn/PartReturnInboxAction.java</File>
+    <Type>item.type.label.clarity</Type>
+    <Severity>item.severity.label.trivial</Severity>
+    <Summary>Flipping the if condition would avoid the need for null checks on shipmentStatus / ReceiptStatus (please check this in other places)</Summary>
+    <Description></Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="G46NL97D">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-08 :: 13:06:14:809 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-08 :: 13:09:47:866 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Nanda</ReviewerId>
+    <AssignedTo>Rahul</AssignedTo>
+    <File line="1431">src/main/resources/messages_en.properties</File>
+    <Type>item.type.label.suggestion</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>partNumber is specified like a variable name</Summary>
+    <Description></Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+</Review>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping SYSTEM
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="tavant.twms.domain.claim.payment.rates">
+  <query name="laborRateLookupQuery">
+    <![CDATA[
+ select 
+  laborRate 
+ from 
+  LaborRates laborRates join laborRates.rates laborRate   
+  left join laborRates.forCriteria.dealerCriterion.dealerGroup
+  specifiedDealerGroup,DealerGroup dealerGroup join dealerGroup.includedDealers dealerInGroup
+ where  
+ laborRate.duration.fromDate <= :asOfDate and :asOfDate <= laborRate.duration.tillDate  and 
+  laborRate.d.active = 1 and 
+ ( laborRates.forCriteria.productType is null or laborRates.forCriteria.productType=:productType ) and 
+ ( laborRates.forCriteria.claimType = 'ALL' or laborRates.forCriteria.claimType=:claimType )  and 
+ ( laborRates.forCriteria.warrantyType is null or laborRates.forCriteria.warrantyType=:warrantyType )  and 
+ ( laborRates.forCriteria.dealerCriterion.dealer is null or laborRates.forCriteria.dealerCriterion.dealer=:dealer ) and
+ ( specifiedDealerGroup is null  or 
+	  (  specifiedDealerGroup.nodeInfo.treeId=dealerGroup.nodeInfo.treeId and 
+	     specifiedDealerGroup.nodeInfo.lft <= dealerGroup.nodeInfo.lft and 
+	     dealerGroup.nodeInfo.rgt <= specifiedDealerGroup.nodeInfo.rgt and 
+	     :dealer = dealerInGroup
+      ) 
+  )and
+ ( (laborRates.customerType is null) or (upper(laborRates.customerType) = 'ALL') or (upper(laborRates.customerType)=upper(:customerType)) )  
+  order by laborRates.forCriteria.relevanceScore desc,specifiedDealerGroup.nodeInfo.depth desc
+    ]]>
+  </query>
+</hibernate-mapping>

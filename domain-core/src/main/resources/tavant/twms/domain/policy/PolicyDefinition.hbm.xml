@@ -1,0 +1,446 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping SYSTEM
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="tavant.twms.domain.policy">
+<query name="allActivePoliciesForInventoryItemAsOfDate">
+<![CDATA[
+ select distinct pd from PolicyDefinition pd join pd.availability.products ig, Item item,InventoryItem inventoryItem where  
+             inventoryItem.id=:id and inventoryItem.ofType = item.id 
+             and (
+             	:itemCondition in elements(pd.availability.itemConditions)
+             	or 
+             	'BOTH' in elements(pd.availability.itemConditions)
+             	) 
+             and
+              exists (SELECT specifiedItemGroup 
+          					 FROM ItemGroup specifiedItemGroup,
+                            ItemGroup itemGroup
+                             join itemGroup.includedItems itemInGroup
+                            WHERE
+                             item = itemInGroup AND
+                             ig.product = specifiedItemGroup AND
+                             itemGroup.nodeInfo.treeId = specifiedItemGroup.nodeInfo.treeId AND  
+                             specifiedItemGroup.nodeInfo.lft <= itemGroup.nodeInfo.lft AND 
+                             itemGroup.nodeInfo.rgt <= specifiedItemGroup.nodeInfo.rgt                                                                  
+                          ) and
+             pd.currentlyInactive = false and  
+             pd.invisibleFilingDr = :invisibleFilingDr and
+             (pd.availability.duration.fromDate <= :asOfDate and
+             :asOfDate <= pd.availability.duration.tillDate
+             ) and
+             pd.warrantyType.type = 'STANDARD'
+		 	 and 
+			 ( pd.availability.ownershipState.name = 'First Owner' or
+               pd.availability.ownershipState.name = 'Both' 
+             )  
+]]>
+</query>
+
+
+<query name="allActivePoliciesForInventoryItemAsOfDateFilterByInstallingDealer">
+<![CDATA[
+ select distinct pd from PolicyDefinition pd join pd.customerTypes applicableCustomerType join pd.availability.products ig,  
+ 			 Item item,InventoryItem inventoryItem, ApplicableCustomerTypes act where  
+             inventoryItem.id=:id and inventoryItem.ofType = item.id 
+             and ( 
+             	:itemCondition in elements(pd.availability.itemConditions)
+             	or 
+             	'BOTH' in elements(pd.availability.itemConditions)
+             	)                           
+             and (
+                    pd.certificationStatus = :status
+                    or
+                    pd.certificationStatus = 'ANY'
+                )                
+             and(                  
+                  :serviceProvider in elements(pd.applicableServiceProviders)
+				  or                 
+                  (
+                      exists(  SELECT specifiedDealerGroup FROM   DealerGroup specifiedDealerGroup,
+		                                                     DealerGroup dealerGroup
+		                                                     join dealerGroup.includedDealers dealerInGroup 
+		                                                     WHERE
+		                                                     :serviceProvider = dealerInGroup AND
+		                                                     specifiedDealerGroup.nodeInfo.treeId = dealerGroup.nodeInfo.treeId AND 
+		                                                     specifiedDealerGroup.nodeInfo.lft <= dealerGroup.nodeInfo.lft AND 
+		                                                     dealerGroup.nodeInfo.rgt <= specifiedDealerGroup.nodeInfo.rgt and
+		                                                     specifiedDealerGroup in elements(pd.applicableDealerGroups)
+				       )
+         	      )
+                or 
+				  (
+             	   pd.applicableServiceProviders IS EMPTY
+             	   and
+             	   pd.applicableDealerGroups IS EMPTY
+             	  )				 
+              )                                   		 
+              and             
+                 exists (SELECT specifiedItemGroup 
+          					 FROM ItemGroup specifiedItemGroup,
+                            ItemGroup itemGroup
+                             join itemGroup.includedItems itemInGroup
+                            WHERE
+                             item = itemInGroup AND
+                             ig.product = specifiedItemGroup AND
+                             itemGroup.nodeInfo.treeId = specifiedItemGroup.nodeInfo.treeId AND  
+                             specifiedItemGroup.nodeInfo.lft <= itemGroup.nodeInfo.lft AND 
+                             itemGroup.nodeInfo.rgt <= specifiedItemGroup.nodeInfo.rgt                                                                  
+                          ) and
+             pd.currentlyInactive = false and
+             pd.invisibleFilingDr = :invisibleFilingDr and
+             (pd.availability.duration.fromDate <= :asOfDate and
+             :asOfDate <= pd.availability.duration.tillDate
+             ) and
+		 	 pd.warrantyType.type = 'STANDARD'
+			 and 
+			 ( pd.availability.ownershipState.name = 'First Owner' or
+               pd.availability.ownershipState.name = 'Both' 
+             ) and
+             applicableCustomerType = act and
+             upper(act.type) = upper(:type) 
+
+]]>
+</query>
+
+<query name="allActiveExtendedPolicies">
+<![CDATA[
+ 	select pd from PolicyDefinition pd
+	where pd.currentlyInactive = false
+		and pd.warrantyType.type = 'EXTENDED'
+		and ( :isInternal = true or
+			( :isInternal = false and 
+				(pd.forInternalUsersOnly = false or pd.forInternalUsersOnly is null)
+		))
+]]>
+</query>
+ 
+<query name="allActiveExtendedPoliciesForSerialNumberAsOfDate">
+<![CDATA[
+ select distinct pd from PolicyDefinition pd join pd.availability.products ig, Item item,InventoryItem inventoryItem where  
+             inventoryItem.serialNumber=:serialNumber and inventoryItem.ofType = item and exists (SELECT specifiedItemGroup 
+                                                             FROM ItemGroup specifiedItemGroup,
+                                                                  ItemGroup itemGroup
+                                                                  join itemGroup.includedItems itemInGroup
+                                                             WHERE
+                                                                  item = itemInGroup AND
+                                                                  ig.product = specifiedItemGroup AND
+                                                                  itemGroup.nodeInfo.treeId = specifiedItemGroup.nodeInfo.treeId AND  
+                                                                  specifiedItemGroup.nodeInfo.lft <= itemGroup.nodeInfo.lft AND 
+                                                                  itemGroup.nodeInfo.rgt <= specifiedItemGroup.nodeInfo.rgt                                                                  
+                                                      ) and           
+             pd.currentlyInactive = false and
+             pd.warrantyType.type = 'EXTENDED' and
+			 ( pd.availability.ownershipState.name = inventoryItem.ownershipState.name or
+               pd.availability.ownershipState.name = 'Both' )
+]]>
+</query>
+
+<query name="allActiveGoodWillPoliciesForSerialNumberAsOfDate">
+<![CDATA[
+ select distinct pd from PolicyDefinition pd join pd.availability.products ig, Item item,InventoryItem inventoryItem where  
+             inventoryItem.serialNumber=:serialNumber and inventoryItem.ofType = item.id and   
+              exists (SELECT specifiedItemGroup 
+          					 FROM ItemGroup specifiedItemGroup,
+                            ItemGroup itemGroup
+                             join itemGroup.includedItems itemInGroup
+                            WHERE
+                             item = itemInGroup AND
+                             ig.product = specifiedItemGroup AND
+                             itemGroup.nodeInfo.treeId = specifiedItemGroup.nodeInfo.treeId AND  
+                             specifiedItemGroup.nodeInfo.lft <= itemGroup.nodeInfo.lft AND 
+                             itemGroup.nodeInfo.rgt <= specifiedItemGroup.nodeInfo.rgt                                                                  
+                          ) and  
+             pd.currentlyInactive = false and 
+             pd.availability.duration.fromDate <= :asOfDate and  
+             pd.warrantyType.type = 'POLICY' and  
+             :asOfDate <= pd.availability.duration.tillDate and
+			 ( pd.availability.ownershipState.name = inventoryItem.ownershipState.name or
+               pd.availability.ownershipState.name = 'Both' )
+]]>
+</query>
+
+<query name="allActiveGoodWillPolicies">
+<![CDATA[
+ select pd from PolicyDefinition pd where  
+             pd.currentlyInactive = false and
+             pd.warrantyType.type = 'POLICY' and
+             pd.availability.duration.fromDate <= :asOfDate and
+             :asOfDate <= pd.availability.duration.tillDate
+]]>
+</query>
+
+<query name="allActivePoliciesForItemNumberAsOfDate">
+<![CDATA[
+ select pd from PolicyDefinition pd, Item item where  
+             item.number=:itemNumber and  
+             (item.product in (select prods.product from pd.availability.products prods) or 
+			  item.model in (select prods.product from pd.availability.products prods) )  and  
+             pd.currentlyInactive = false and  
+             pd.availability.duration.fromDate <= :asOfDate and  
+             pd.warrantyType.type != 'POLICY' and  
+             :asOfDate <= pd.availability.duration.tillDate 
+]]>
+</query>
+
+<query name="allActiveInvisiblePoliciesForItemNumberAsOfDate">
+<![CDATA[
+select pd from PolicyDefinition pd, Item item where  
+             item.number=:itemNumber and  
+             (item.product in (select prods.product from pd.availability.products prods) or 
+			  item.model in (select prods.product from pd.availability.products prods))  and  
+             pd.currentlyInactive = false and  
+             pd.availability.duration.fromDate <= :asOfDate and  
+             pd.warrantyType.type != 'POLICY' and  
+             pd.invisibleFilingDr = true and 
+             :asOfDate <= pd.availability.duration.tillDate
+]]>
+</query>
+
+<query name="allActivePoliciesForProductCodeAsOfDate">
+<![CDATA[
+ select pd from PolicyDefinition pd join pd.availability.products prods where  
+             prods.product.name=:productCode  and
+             pd.currentlyInactive = false and  
+             pd.availability.duration.fromDate <= :asOfDate and
+             pd.warrantyType.type != 'POLICY' and  
+             :asOfDate <= pd.availability.duration.tillDate 
+ order by pd.id
+]]>
+</query>
+
+<query name="allActiveInvisiblePoliciesForProductCodeAsOfDate">
+<![CDATA[
+ select pd from PolicyDefinition pd join pd.availability.products prods where  
+             prods.product.name=:productCode  and 
+             pd.currentlyInactive = false and  
+             pd.availability.duration.fromDate <= :asOfDate and
+             pd.warrantyType.type != 'POLICY' and  
+             pd.invisibleFilingDr = true and 
+             :asOfDate <= pd.availability.duration.tillDate 
+ order by pd.id
+]]>
+</query>
+
+<query name="allApplicablePoliciesForClaimedPartAsOfDate">
+<![CDATA[
+ select pd from PolicyDefinition pd join pd.availability.products itemGroup, Item item where
+   			 item in elements(itemGroup.product.includedItems) and 
+		 	 item.number=:itemNumber and  
+             pd.currentlyInactive = false and  
+             pd.availability.duration.fromDate <= :asOfDate and  
+             pd.warrantyType.type != 'POLICY' and  
+             :asOfDate <= pd.availability.duration.tillDate 
+]]>
+</query>
+
+<query name="allActivePoliciesForAdminRegistrationForPart">
+<![CDATA[
+   select distinct pd from PolicyDefinition pd join pd.availability.products ig, Item item,InventoryItem inventoryItem where  
+             inventoryItem.serialNumber=:serialNumber and inventoryItem.ofType = item and exists (SELECT specifiedItemGroup 
+                                                            FROM ItemGroup specifiedItemGroup,
+                                                                 ItemGroup itemGroup
+                                                                 join itemGroup.includedItems itemInGroup join itemGroup.scheme.purposes purpose
+                                                            WHERE
+                                                                 item = itemInGroup AND
+                                                                 ig.product = specifiedItemGroup AND
+                                                                 itemGroup.nodeInfo.treeId = specifiedItemGroup.nodeInfo.treeId AND  
+                                                                 specifiedItemGroup.nodeInfo.lft <= itemGroup.nodeInfo.lft AND 
+                                                                 itemGroup.nodeInfo.rgt <= specifiedItemGroup.nodeInfo.rgt AND
+                                                                 purpose.name = 'Warranty Coverage'
+                                                      ) and 
+             pd.currentlyInactive = false and 
+              pd.availability.duration.fromDate <= :asOfDate and            
+             :asOfDate <= pd.availability.duration.tillDate and
+             ( pd.availability.ownershipState.name =  inventoryItem.ownershipState.name or
+               pd.availability.ownershipState.name = 'Both' )
+]]>
+</query>
+
+<query name="allActivePoliciesForAdminRegistrationForMachine">
+<![CDATA[
+   select distinct pd from PolicyDefinition pd join pd.availability.products ig, Item item,InventoryItem inventoryItem where  
+             inventoryItem.serialNumber=:serialNumber and inventoryItem.ofType = item and exists (SELECT specifiedItemGroup 
+          													 FROM ItemGroup specifiedItemGroup,
+                                                                  ItemGroup itemGroup
+                                                                  join itemGroup.includedItems itemInGroup
+                                                             WHERE
+                                                                  item = itemInGroup AND
+                                                                  ig.product = specifiedItemGroup AND
+                                                                  itemGroup.nodeInfo.treeId = specifiedItemGroup.nodeInfo.treeId AND  
+                                                                  specifiedItemGroup.nodeInfo.lft <= itemGroup.nodeInfo.lft AND 
+                                                                  itemGroup.nodeInfo.rgt <= specifiedItemGroup.nodeInfo.rgt                                                                  
+                                                      ) and           
+             pd.currentlyInactive = false and
+               pd.availability.duration.fromDate <= :asOfDate and            
+             :asOfDate <= pd.availability.duration.tillDate and
+             ( pd.availability.ownershipState.name =  inventoryItem.ownershipState.name or
+               pd.availability.ownershipState.name = 'Both' )
+]]>
+</query>
+<query name="allActiveInvisiblePoliciesForAdminRegistrationForMachine">
+<![CDATA[
+   select distinct pd from PolicyDefinition pd join pd.availability.products ig, Item item,InventoryItem inventoryItem where  
+             inventoryItem.serialNumber=:serialNumber and inventoryItem.ofType = item and exists (SELECT specifiedItemGroup 
+          													 FROM ItemGroup specifiedItemGroup,
+                                                                  ItemGroup itemGroup
+                                                                  join itemGroup.includedItems itemInGroup
+                                                             WHERE
+                                                                  item = itemInGroup AND
+                                                                  ig.product = specifiedItemGroup AND
+                                                                  itemGroup.nodeInfo.treeId = specifiedItemGroup.nodeInfo.treeId AND  
+                                                                  specifiedItemGroup.nodeInfo.lft <= itemGroup.nodeInfo.lft AND 
+                                                                  itemGroup.nodeInfo.rgt <= specifiedItemGroup.nodeInfo.rgt                                                                  
+                                                      ) and           
+             pd.currentlyInactive = false and
+               pd.availability.duration.fromDate <= :asOfDate and            
+             :asOfDate <= pd.availability.duration.tillDate and
+             ( pd.availability.ownershipState.name =  inventoryItem.ownershipState.name or
+               pd.availability.ownershipState.name = 'Both' ) and pd.invisibleFilingDr=true
+]]>
+</query>
+
+<query name="allExistingPoliciesForUsedItemAsOfDate">
+<![CDATA[ 
+	select 
+		pd 
+	from 
+		PolicyDefinition pd, Item item,InventoryItem inventoryItem
+	where 
+	 inventoryItem.serialNumber=:serialNumber and
+	 inventoryItem.ofType = item and 
+		(item.product in (select prods.product from pd.availability.products prods) or 
+		 item.model in (select prods.product from pd.availability.products prods) )  and
+		pd.currentlyInactive = false and				
+		pd.availability.duration.fromDate <= :asOfDate 
+		and (
+			inventoryItem.conditionType in elements(pd.availability.itemConditions)
+			or
+			'BOTH' in elements(pd.availability.itemConditions)
+			)			 
+		and
+		pd.warrantyType.type != 'POLICY' and 
+		:asOfDate <= pd.availability.duration.tillDate
+]]>
+</query>
+
+<query name="allTransferablePoliciesForInventoryItemAsOfDate">
+<![CDATA[ 
+	select 
+		pd 
+	from 
+		PolicyDefinition pd, Item item,InventoryItem inventoryItem
+	where 
+	 inventoryItem.serialNumber=:serialNumber and
+	 inventoryItem.ofType = item and 
+		(item.product in (select prods.product from pd.availability.products prods) or 
+		 item.model in (select prods.product from pd.availability.products prods) )  and
+		pd.currentlyInactive = false and
+		pd.availability.duration.fromDate <= :asOfDate and
+		pd.transferDetails.transferable = true and
+		pd.warrantyType.type != 'POLICY' and 
+		:asOfDate <= pd.availability.duration.tillDate and
+		( pd.availability.ownershipState.name = 'Preowned' or
+		  pd.availability.ownershipState.name = 'Both' )
+]]>
+</query>
+
+<query name="allActivePoliciesForMajorComponent">
+<![CDATA[
+ select distinct pd from PolicyDefinition pd,Item item
+      where item.id = :itemId 
+            and (
+                    pd.certificationStatus = :status  or
+                    pd.certificationStatus = 'ANY'                 
+                )                
+             and (                  
+                  :serviceProvider in elements(pd.applicableServiceProviders)
+                   or                 
+                  ( exists(  SELECT specifiedDealerGroup FROM DealerGroup specifiedDealerGroup,
+		                                                     DealerGroup dealerGroup
+		                                                     join dealerGroup.includedDealers dealerInGroup 
+		                                                     WHERE
+		                                                     :serviceProvider = dealerInGroup AND
+		                                                     specifiedDealerGroup.nodeInfo.treeId = dealerGroup.nodeInfo.treeId AND 
+		                                                     specifiedDealerGroup.nodeInfo.lft <= dealerGroup.nodeInfo.lft AND 
+		                                                     dealerGroup.nodeInfo.rgt <= specifiedDealerGroup.nodeInfo.rgt and
+		                                                     specifiedDealerGroup in elements(pd.applicableDealerGroups))
+				   )
+				   or 
+				  (
+             	   pd.applicableServiceProviders IS EMPTY
+             	   and
+             	   pd.applicableDealerGroups IS EMPTY
+             	  )	
+                )                                   		 
+             and (
+                  item in (select prods.product.includedItems from pd.availability.products prods) 
+			      )
+			 and pd.currentlyInactive = false
+			 and ( 
+			      pd.availability.duration.fromDate <= :asOfDate and
+                   :asOfDate <= pd.availability.duration.tillDate
+                 ) 
+             and (
+                 (pd.warrantyType.type = 'EXTENDED' and pd.isPolicyApplicableForWr = true)
+                 or
+		 	     pd.warrantyType.type = 'STANDARD'
+		 	     ) 
+		 	 and ( 
+		 	      pd.availability.ownershipState.name = 'First Owner' 
+		 	      or
+                  pd.availability.ownershipState.name = 'Both' 
+             ) 
+]]>
+</query>
+
+<query name="allActivePoliciesForMajorComponentByCustomerType">
+<![CDATA[
+ select distinct pd from PolicyDefinition pd join pd.customerTypes applicableCustomerType, 
+ 			 Item item, ApplicableCustomerTypes act 
+ 			 where item.id = :itemId 
+             and (pd.certificationStatus = :status or pd.certificationStatus = 'ANY')                 
+             and (
+                  item in (select prods.product.includedItems from pd.availability.products prods) 
+			     ) 
+			 and pd.currentlyInactive = false
+			 and (
+			        pd.availability.duration.fromDate <= :asOfDate and
+                   :asOfDate <= pd.availability.duration.tillDate
+                 ) 
+             and (
+                   (pd.warrantyType.type = 'EXTENDED' and pd.isPolicyApplicableForWr = true) 
+                   or
+		 	       pd.warrantyType.type = 'STANDARD'
+		 	     )
+		 	 and ( 
+		 	        pd.availability.ownershipState.name = 'First Owner'
+		 	         or
+                    pd.availability.ownershipState.name = 'Both'
+                   ) 
+             and applicableCustomerType = act
+             and upper(act.type) = upper(:type) 
+]]>
+</query>
+
+<query name="allActiveGoodWillPoliciesForMajorComponent">
+<![CDATA[
+ select pd from PolicyDefinition pd, Item item,InventoryItem inventoryItem where  
+             inventoryItem.serialNumber=:serialNumber and inventoryItem.ofType = item.id   
+             and item in (select prods.product.includedItems from pd.availability.products prods)
+			 and pd.currentlyInactive = false and  
+             pd.availability.duration.fromDate <= :asOfDate and  
+             pd.warrantyType.type = 'POLICY' and  
+             :asOfDate <= pd.availability.duration.tillDate and
+			 ( pd.availability.ownershipState.name = inventoryItem.ownershipState.name or
+               pd.availability.ownershipState.name = 'Both' )
+]]>
+</query>
+
+<database-object>
+	<create>alter table policy_definition add constraint unique_policy_defn_code unique(code)</create>
+	<drop>alter table policy_definition drop constraint unique_policy_defn_code</drop>	
+</database-object>
+</hibernate-mapping>
+

@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping SYSTEM
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="tavant.twms.domain.catalog">
+<database-object>
+	<create>alter table inventory_item add constraint unique_inventory_item unique(serial_number,of_type,condition_type)</create>
+	<drop>alter table inventory_item drop constraint unique_inventory_item unique(serial_number,of_type,condition_type)</drop>	
+</database-object>
+</hibernate-mapping>
+

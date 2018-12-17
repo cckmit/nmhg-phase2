@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+    
+<struts>
+	<package name="relateCampaign" extends="struts-twms-default">
+		<action name="export_related_campaign_to_excel"
+			class="tavant.twms.web.campaigns.relateCampaigns.RelateCampaignAction"
+			method="downloadListingData">
+			<interceptor-ref name="adminParamsPrepare" />
+		</action>
+		<action name="get_related_campaign_detail"
+			class="tavant.twms.web.campaigns.relateCampaigns.RelateCampaignAction"
+			method="tableBody">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">pages/secure/home/json.jsp</result>
+		</action>
+		<action name="related_campaign_list"
+			class="tavant.twms.web.campaigns.relateCampaigns.RelateCampaignAction">
+			<interceptor-ref name="adminParamsPrepareWithoutValidation" />
+			<result name="success">pages/secure/admin/relateCampaign/relateCampaignInboxView.jsp</result>
+		 </action>
+		 <action name="view_related_campaign_preview"
+			class="tavant.twms.web.campaigns.relateCampaigns.RelateCampaignAction" method="loadRelatedCampaignData">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">pages/secure/admin/relateCampaign/relatedCampaignPreview.jsp</result>
+		</action>
+		<action name="view_related_campaign_detail"
+			class="tavant.twms.web.campaigns.relateCampaigns.RelateCampaignAction" method="loadRelatedCampaignData">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">pages/secure/admin/relateCampaign/editDetailRelatedCampaign.jsp</result>
+		</action>
+		<action name="modify_related_campaigns" class="tavant.twms.web.campaigns.relateCampaigns.RelateCampaignAction" method="modifyRelatedCampaign">
+		     <interceptor-ref name="adminTwmsParamsPrepareRepeatTableParams" />
+		      <result name="input">pages/secure/admin/relateCampaign/editDetailRelatedCampaign.jsp</result>
+		     <result name="success">pages/secure/admin/success.jsp</result>	     	
+		</action>
+		<action name="delete_related_campaigns" class="tavant.twms.web.campaigns.relateCampaigns.RelateCampaignAction" method="deleteRelatedCampaign">
+		     <interceptor-ref name="adminTwmsParamsPrepareRepeatTableParams" />
+		      <result name="input">pages/secure/admin/relateCampaign/editDetailRelatedCampaign.jsp</result>
+		     <result name="success">pages/secure/admin/success.jsp</result>	     	
+		</action>
+		<action name="create_related_campaign"
+			class="tavant.twms.web.campaigns.relateCampaigns.RelateCampaignAction"
+			method="createRelatedCampaignData">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">pages/secure/admin/relateCampaign/editDetailRelatedCampaign.jsp</result>
+		</action>
+		<action name="saveRelatedCampaign" class="tavant.twms.web.campaigns.relateCampaigns.RelateCampaignAction" method="saveRelatedCampaign">
+		     <interceptor-ref name="adminTwmsParamsPrepareRepeatTableParams" />
+		      <result name="input">pages/secure/admin/relateCampaign/relatedCampaignDetail.jsp</result>
+		     <result name="success">pages/secure/admin/success.jsp</result>	     	
+		</action>
+		 <action name="list_active_campaign_starts_with" class="tavant.twms.web.admin.campaign.ListCampaignsAction" method="listActiveCampaigns">
+          <interceptor-ref name="adminParamsPrepareWithoutValidation" />
+    	  <result name="success">pages/secure/home/json.jsp</result>
+    	  <result name="input">pages/error.jsp</result>
+    	</action>
+	</package>
+</struts>

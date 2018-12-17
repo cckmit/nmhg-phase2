@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<functionalareas xmlns="http://www.tavant.com/twms/security/resource"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.tavant.com/twms/security/resource
+			http://www.tavant.com/twms/security/resource">
+	<functionalarea name="fieldmodification" defaultpolicy="none">
+
+	<!-- Resources for update or Read Only -->
+	
+		<resource type="ui" value="fPIFPITab" operation="OR">
+			<permissions>fPI:fPIFPITab:update,fPI:fPIFPITab:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="fPIPendingFPIUpdateRequests" operation="OR">
+			<permissions>fPI:fPIPendingFPIUpdateRequests:update,fPI:fPIPendingFPIUpdateRequests:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="fPIPredefinedSearch" operation="OR">
+			<permissions>fPI:fPIPredefinedSearch:update,fPI:fPIPredefinedSearch:view
+			</permissions>
+		</resource>
+	
+	<!-- Resources for Read Only-->
+	
+		<resource type="ui" value="fPIFPITabReadOnlyView">
+			<permissions>fPI:fPIFPITab:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="fPIPendingFPIUpdateRequestsReadOnlyView">
+			<permissions>fPI:fPIPendingFPIUpdateRequests:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="fPIPredefinedSearchReadOnlyView">
+			<permissions>fPI:fPIPredefinedSearch:view
+			</permissions>
+		</resource>
+        
+	</functionalarea>
+
+</functionalareas>

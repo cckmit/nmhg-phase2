@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<indexdata>
+<key name="Advice Request" >
+  <topic name="Advice Request" url="Claims/Advice_Request.htm" />
+</key>
+<key name="Causal Part" >
+  <topic name="Advice Request" url="Claims/Advice_Request.htm" />
+  <topic name="Claim Details" url="Claims/Claim_Details.htm" />
+  <topic name="Service Manager Review" url="Claims/Service_Manager_Review.htm" />
+</key>
+<key name="Claim Details" >
+  <topic name="Claim Details" url="Claims/Claim_Details.htm" />
+</key>
+<key name="Claim History" >
+  <topic name="Claim Details" url="Claims/Claim_Details.htm" />
+</key>
+<key name="Claim Validation" >
+  <topic name="Claim Validation" url="Claims/Claim_Validation.htm" />
+</key>
+<key name="Components Replaced" >
+  <topic name="Claim Details" url="Claims/Claim_Details.htm" />
+</key>
+<key name="Download Management" >
+  <topic name="Download Management" url="Reports/Download_Management.htm" />
+</key>
+<key name="Equipment Details" >
+  <topic name="Equipment Details" url="Inventory/Equipment_Details.htm" />
+</key>
+<key name="Failure Information" >
+  <topic name="Claim Details" url="Claims/Claim_Details.htm" />
+</key>
+<key name="Fault Code" >
+  <topic name="Service Manager Review" url="Claims/Service_Manager_Review.htm" />
+</key>
+<key name="Fault Location" >
+  <topic name="Claim Details" url="Claims/Claim_Details.htm" />
+</key>
+<key name="Inventory" >
+  <topic name="Inventory" url="Inventory/Inventory.htm" />
+  <topic name="Search Inventory" url="Inventory/Search_Inventory.htm" />
+</key>
+<key name="Job Code" >
+  <topic name="Claim Details" url="Claims/Claim_Details.htm" />
+</key>
+<key name="Manage Documents" >
+  <topic name="Claim Details" url="Claims/Claim_Details.htm" />
+</key>
+<key name="Payment Details" >
+  <topic name="Claim Details" url="Claims/Claim_Details.htm" />
+</key>
+<key name="Policy details" >
+  <topic name="Policy Details" url="Claims/Policy_Details.htm" />
+</key>
+<key name="Profile" >
+  <topic name="Profile" url="Settings/Profile.htm" />
+</key>
+<key name="Search Items" >
+  <topic name="Search Items" url="Items/Search_Items.htm" />
+</key>
+<key name="Service Information" >
+  <topic name="Claim Details" url="Claims/Claim_Details.htm" />
+</key>
+<key name="Service Manager Review" >
+  <topic name="Service Manager Review" url="Claims/Service_Manager_Review.htm" />
+</key>
+<key name="Upload Management" >
+  <topic name="Upload Management" url="Reports/Upload_Management.htm" />
+</key>
+
+</indexdata>

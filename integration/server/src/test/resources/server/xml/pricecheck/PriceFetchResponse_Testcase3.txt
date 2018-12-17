@@ -1,0 +1,84 @@
+AxisFault
+ faultCode: {http://schemas.xmlsoap.org/soap/envelope/}Client
+ faultSubcode: 
+ faultString: [ISS.0088.9134] Exception occurred while processing the body of the message
+ faultActor: http://10.80.237.82:5677/soap/rpc
+ faultNode: 
+ faultDetail: 
+	{http://www.webMethods.com/2001/10/soap/encoding}serviceStackTrace:
+            <ns1:java>wm.server.soap:rpc</ns1:java>
+        
+	{http://www.webMethods.com/2001/10/soap/encoding}exception:
+            <ns1:className>com.wm.lang.flow.FlowException</ns1:className>
+            <ns1:message xml:lang="">%lastError/errorType%: %lastError/error%</ns1:message>
+            <ns1:stackTrace xml:lang="">com.wm.lang.flow.FlowException: %lastError/errorType%: %lastError/error%
+	at com.wm.lang.flow.FlowExit.getFailure(FlowExit.java:250)
+	at com.wm.lang.flow.FlowState.willExit(FlowState.java:268)
+	at com.wm.lang.flow.FlowSequence.invoke(FlowSequence.java:196)
+	at com.wm.lang.flow.FlowRoot.invoke(FlowRoot.java:258)
+	at com.wm.lang.flow.FlowState.invokeNode(FlowState.java:581)
+	at com.wm.lang.flow.FlowState.step(FlowState.java:438)
+	at com.wm.lang.flow.FlowState.invoke(FlowState.java:403)
+	at com.wm.app.b2b.server.FlowSvcImpl.baseInvoke(FlowSvcImpl.java:982)
+	at com.wm.app.b2b.server.invoke.InvokeManager.process(InvokeManager.java:612)
+	at com.wm.app.b2b.server.invoke.StatisticsProcessor.process(StatisticsProcessor.java:44)
+	at com.wm.app.b2b.server.invoke.ServiceCompletionImpl.process(ServiceCompletionImpl.java:235)
+	at com.wm.app.b2b.server.invoke.ValidateProcessor.process(ValidateProcessor.java:49)
+	at com.wm.app.b2b.server.ACLManager.process(ACLManager.java:198)
+	at com.wm.app.b2b.server.invoke.DispatchProcessor.process(DispatchProcessor.java:39)
+	at com.wm.app.b2b.server.AuditLogManager.process(AuditLogManager.java:411)
+	at com.wm.app.b2b.server.invoke.InvokeManager.invoke(InvokeManager.java:521)
+	at com.wm.app.b2b.server.invoke.InvokeManager.invoke(InvokeManager.java:369)
+	at com.wm.app.b2b.server.ServiceManager.invoke(ServiceManager.java:246)
+	at com.wm.app.b2b.server.ServiceManager.invoke(ServiceManager.java:113)
+	at com.wm.app.b2b.server.Service.doInvoke(Service.java:640)
+	at com.wm.app.b2b.server.Service.doInvoke(Service.java:589)
+	at wm.server.soap.rpc(soap.java:421)
+	at sun.reflect.GeneratedMethodAccessor3208.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:585)
+	at com.wm.app.b2b.server.JavaService.baseInvoke(JavaService.java:322)
+	at com.wm.app.b2b.server.invoke.InvokeManager.process(InvokeManager.java:612)
+	at com.wm.app.b2b.server.invoke.StatisticsProcessor.process(StatisticsProcessor.java:44)
+	at com.wm.app.b2b.server.invoke.ServiceCompletionImpl.process(ServiceCompletionImpl.java:235)
+	at com.wm.app.b2b.server.invoke.ValidateProcessor.process(ValidateProcessor.java:49)
+	at com.wm.app.b2b.server.ACLManager.process(ACLManager.java:198)
+	at com.wm.app.b2b.server.invoke.DispatchProcessor.process(DispatchProcessor.java:39)
+	at com.wm.app.b2b.server.AuditLogManager.process(AuditLogManager.java:411)
+	at com.wm.app.b2b.server.invoke.InvokeManager.invoke(InvokeManager.java:521)
+	at com.wm.app.b2b.server.invoke.InvokeManager.invoke(InvokeManager.java:369)
+	at com.wm.app.b2b.server.ServiceManager.invoke(ServiceManager.java:246)
+	at com.wm.app.b2b.server.ServiceManager.invoke(ServiceManager.java:128)
+	at com.wm.app.b2b.server.HTTPSOAPHandler._process(HTTPSOAPHandler.java:465)
+	at com.wm.app.b2b.server.HTTPSOAPHandler.process(HTTPSOAPHandler.java:122)
+	at com.wm.app.b2b.server.Dispatch.run(Dispatch.java:312)
+	at com.wm.util.pool.PooledThread.run(PooledThread.java:105)
+	at java.lang.Thread.run(Thread.java:595)
+</ns1:stackTrace>
+        
+
+[ISS.0088.9134] Exception occurred while processing the body of the message
+	at org.apache.axis.message.SOAPFaultBuilder.createFault(SOAPFaultBuilder.java:222)
+	at org.apache.axis.message.SOAPFaultBuilder.endElement(SOAPFaultBuilder.java:129)
+	at org.apache.axis.encoding.DeserializationContext.endElement(DeserializationContext.java:1087)
+	at org.apache.xerces.parsers.AbstractSAXParser.endElement(Unknown Source)
+	at org.apache.xerces.impl.XMLNSDocumentScannerImpl.scanEndElement(Unknown Source)
+	at org.apache.xerces.impl.XMLDocumentFragmentScannerImpl$FragmentContentDispatcher.dispatch(Unknown Source)
+	at org.apache.xerces.impl.XMLDocumentFragmentScannerImpl.scanDocument(Unknown Source)
+	at org.apache.xerces.parsers.XML11Configuration.parse(Unknown Source)
+	at org.apache.xerces.parsers.XML11Configuration.parse(Unknown Source)
+	at org.apache.xerces.parsers.XMLParser.parse(Unknown Source)
+	at org.apache.xerces.parsers.AbstractSAXParser.parse(Unknown Source)
+	at org.apache.xerces.jaxp.SAXParserImpl$JAXPSAXParser.parse(Unknown Source)
+	at org.apache.xerces.jaxp.SAXParserImpl.parse(Unknown Source)
+	at org.apache.axis.encoding.DeserializationContext.parse(DeserializationContext.java:227)
+	at org.apache.axis.SOAPPart.getAsSOAPEnvelope(SOAPPart.java:696)
+	at org.apache.axis.Message.getSOAPEnvelope(Message.java:435)
+	at org.apache.axis.handlers.soap.MustUnderstandChecker.invoke(MustUnderstandChecker.java:62)
+	at org.apache.axis.client.AxisClient.invoke(AxisClient.java:206)
+	at org.apache.axis.client.Call.invokeEngine(Call.java:2784)
+	at org.apache.axis.client.Call.invoke(Call.java:2767)
+	at org.apache.axis.client.Call.invoke(Call.java:2443)
+	at org.apache.axis.client.Call.invoke(Call.java:2366)
+	at org.apache.axis.client.Call.invoke(Call.java:1812)
+	at tavant.twms.integration.server.external.PriceFetchRequestTest.main(PriceFetchRequestTest.java:40)

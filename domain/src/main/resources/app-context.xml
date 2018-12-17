@@ -1,0 +1,2191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd"
+	default-autowire="byName">
+
+
+	<aop:aspectj-autoproxy />
+	<!--
+		Bean class that checks if dependencies annotated with the @Required annotation have been
+		successfully injected.
+	-->
+	<bean
+		class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor" />
+		
+
+	<bean id="namingStrategy"
+		class="tavant.twms.infra.ComponentSafeNamingStrategy" />
+
+	<bean name="defaultTraversableTypeIdentifier"
+		class="tavant.twms.infra.DefaultTraversableTypeIdentifier">
+		<property name="richPrimitives">
+			<list>
+				<value>com.domainlanguage.money.Money</value>
+				<value>com.domainlanguage.time.CalendarDate</value>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean" >
+        <property name="configLocation" value="file:${TWMS_HOME}/${TWMS_ENV_MODE}/hibernate-ehcache.xml"/>
+        <property name="shared" value="true"/>
+    </bean>
+	
+
+
+	<bean name="objectGraphTraverser"
+		class="tavant.twms.infra.ObjectGraphTraverser">
+		<property name="defaultTraversablePathIdentifier"
+			ref="defaultTraversableTypeIdentifier" />
+	</bean>
+
+	<bean name="Common.hbm.xmls" class="java.util.HashMap">
+		<constructor-arg>
+            <map key-type="java.lang.Integer" value-type="java.lang.String">
+                <entry key="1" value="tavant/twms/domain/common/CriteriaEvaluationPrecedence.hbm.xml"/>
+                <entry key="2" value="tavant/twms/domain/common/CommonFilters.hbm.xml"/>
+			</map>
+		</constructor-arg>
+	</bean>
+
+	<bean name="Common.annotated.classes" class="java.util.HashMap">
+		<constructor-arg>
+			<map key-type="java.lang.Integer" value-type="java.lang.String">
+				 <entry key="1" value="tavant.twms.domain.common.CriteriaEvaluationPrecedence"/>
+				 <entry key="2" value="tavant.twms.domain.catalog.ItemCriterion"/>
+				 <entry key="3" value="tavant.twms.domain.catalog.I18NDomainRuleText"/>
+				 <entry key="4" value="tavant.twms.domain.catalog.I18NDomainRuleDescription"/>
+				 <entry key="5" value="tavant.twms.domain.orgmodel.DealerCriterion"/>
+				 <entry key="6" value="tavant.twms.domain.common.CriteriaElement"/>
+				 <entry key="7" value="tavant.twms.domain.common.TimeBoundValue"/>
+				 <entry key="8" value="tavant.twms.domain.common.TimeBoundValues"/>
+				 <entry key="9" value="tavant.twms.domain.common.DistanceUnit"/>
+				 <entry key="10" value="tavant.twms.domain.common.Distance"/>
+				 <entry key="11" value="tavant.twms.domain.common.DistanceRate"/>
+				 <entry key="12" value="tavant.twms.domain.common.Purpose"/>
+				 <entry key="13" value="tavant.twms.domain.common.CurrencyConversionFactor"/>
+				 <entry key="14" value="tavant.twms.domain.common.CurrencyExchangeRate"/>
+				 <entry key="15" value="tavant.twms.infra.TreeNodeInfo"/>
+				 <entry key="16" value="tavant.twms.infra.i18n.I18nText"/>
+				 <entry key="17" value="tavant.twms.infra.i18n.LocalizedMessages"/>
+				 <entry key="18" value="tavant.twms.infra.i18n.ProductLocale"/>
+				 <entry key="19" value="tavant.twms.infra.i18n.Text"/>
+				 <entry key="20" value="tavant.twms.rules.model.RuleSet"/>
+				 <entry key="21" value="tavant.twms.rules.model.Process"/>
+				 <entry key="22" value="tavant.twms.rules.model.ProjectEntity"/>
+				 <entry key="23" value="tavant.twms.domain.rules.DomainPredicate"/>
+				 <entry key="24" value="tavant.twms.domain.rules.DomainRule"/>
+				 <entry key="25" value="tavant.twms.domain.rules.DomainRuleAudit"/>
+				 <entry key="26" value="tavant.twms.domain.rules.DomainRuleAction"/>
+                 <entry key="27" value="tavant.twms.domain.rules.group.DomainRuleGroup"/>
+                 <entry key="28" value="tavant.twms.domain.rules.AssignmentRuleAction"/>
+				 <entry key="29" value="tavant.twms.domain.category.Category"/>
+				 <entry key="30" value="tavant.twms.domain.category.DealerCategory"/>
+				 <entry key="31" value="tavant.twms.domain.category.ApplicablePolicyCategory"/>
+				 <entry key="32" value="tavant.twms.domain.common.ListOfValues"/>
+				 <entry key="33" value="tavant.twms.domain.common.SmrReason"/>
+				 <entry key="34" value="tavant.twms.domain.common.DocumentType"/>
+				 <entry key="35" value="tavant.twms.domain.common.ClaimCompetitorModel"/>
+				 <entry key="36" value="tavant.twms.domain.campaign.FieldModificationInventoryStatus"/>
+				 <entry key="37" value="tavant.twms.domain.common.Suppliers"/>
+				 <entry key="38" value="tavant.twms.domain.common.AccountabilityCode"/>
+				 <entry key="39" value="tavant.twms.domain.partreturn.FailureReason"/>
+				 <entry key="40" value="tavant.twms.domain.common.ManufacturingSiteInventory"/>
+				 <entry key="41" value="tavant.twms.domain.partreturn.PartAcceptanceReason"/>
+				 <entry key="42" value="tavant.twms.domain.common.AcceptanceReason"/>
+				 <entry key="43" value="tavant.twms.domain.common.AcceptanceReasonForCP"/>
+				 <entry key="44" value="tavant.twms.domain.common.ReportType"/>
+				 <entry key="45" value="tavant.twms.domain.common.Oem"/>
+				 <entry key="46" value="tavant.twms.domain.common.RejectionReason"/>
+				 <entry key="47" value="tavant.twms.domain.common.Document"/>
+				 <entry key="48" value="tavant.twms.domain.upload.controller.UserFileUpload"/>
+				 <entry key="49" value="tavant.twms.domain.login.LoginHistory"/>
+				 <entry key="50" value="tavant.twms.domain.upload.history.UploadHistory"/>
+				 <entry key="51" value="tavant.twms.domain.common.Label"/>
+				 <entry key="52" value="tavant.twms.domain.complaints.Consumer"/>
+				 <entry key="53" value="tavant.twms.domain.complaints.Complaint"/>
+				 <entry key="54" value="tavant.twms.domain.complaints.CountryState"/>
+				 <entry key="55" value="tavant.twms.domain.common.RecoveryClaimRejectionReason"/>
+				 <entry key="56" value="tavant.twms.domain.common.RecoveryClaimAcceptanceReason"/>
+				 <entry key="57" value="tavant.twms.domain.common.AuditableColEntity"/>
+				 <entry key="58" value="tavant.twms.domain.catalog.I18NItemText"/>
+				 <entry key="59" value="tavant.twms.domain.common.I18NLovText"/>
+				 <entry key="60" value="tavant.twms.domain.claim.PaymentModifiersAudit"/>
+				 <entry key="61" value="tavant.twms.domain.claim.PartInformationAudit"/>
+				 <entry key="62" value="tavant.twms.domain.claim.SupplierRecoveryPaymentAudit"/>
+				 <entry key="63" value="tavant.twms.domain.claim.SupplierRecCostCategories"/>
+				 <entry key="64" value="tavant.twms.domain.claim.SupplierRecCostCategories"/>
+				 <entry key="65" value="tavant.twms.domain.common.I18NCampaignText"/>
+				 <entry key="66" value="tavant.twms.domain.common.I18NAdditionalAttributeName"/>
+				 <entry key="67" value="tavant.twms.domain.common.I18NModifierName"/>
+				 <entry key="68" value="tavant.twms.domain.common.I18NNonOemPartsDescription"/>
+				 <entry key="69" value="tavant.twms.domain.common.I18NAssemblyDefinition"/>
+				 <entry key="70" value="tavant.twms.domain.common.I18NFailureTypeDefinition"/>
+				 <entry key="71" value="tavant.twms.domain.common.I18NFailureCauseDefinition"/>
+				 <entry key="72" value="tavant.twms.domain.common.I18NFailureRootCauseDefinition"/>
+				 <entry key="73" value="tavant.twms.domain.common.I18NActionDefinition"/>
+				 <entry key="74" value="tavant.twms.domain.common.I18NPolicyTermsAndConditions"/>
+				 <entry key="75" value="tavant.twms.domain.common.I18NUploadErrorText"/>
+				 <entry key="76" value="tavant.twms.domain.upload.controller.UploadManagement"/>
+				 <entry key="77" value="tavant.twms.domain.upload.controller.UploadManagementMetaData"/>
+				 <entry key="78" value="tavant.twms.domain.upload.controller.UploadError"/>
+                 <entry key="79" value="tavant.twms.domain.customReports.CustomReportInstructions"/>
+                 <entry key="80" value="tavant.twms.domain.customReports.CustomReportApplicablePart"/>
+                 <entry key="81" value="tavant.twms.domain.customReports.CustomReport"/>
+                 <entry key="82" value="tavant.twms.domain.customReports.ReportSection"/>
+                 <entry key="83" value="tavant.twms.domain.customReports.ReportFormQuestion"/>
+                 <entry key="84" value="tavant.twms.domain.customReports.ReportFormAnswerOption"/>
+                 <entry key="85" value="tavant.twms.domain.customReports.CustomReportAnswer"/>
+                 <entry key="86" value="tavant.twms.domain.customReports.ReportFormAnswer"/>
+				<!--E-mail Notification merge Start -->
+				 <entry key="87" value="tavant.twms.domain.notification.AbstractNotificationMessage"/>
+				 <entry key="88" value="tavant.twms.domain.notification.NotificationMessage"/>
+				 <entry key="89" value="tavant.twms.domain.notification.NotificationEvent"/>
+				 <entry key="90" value="tavant.twms.domain.notification.NotificationParameter"/>
+				 <entry key="91" value="tavant.twms.domain.notification.NotificationMessageParameter"/>
+				<!--E-mail Notification merge End -->	
+                 <entry key="92" value="tavant.twms.domain.common.SourceWarehouse"/>
+                 <entry key="93" value="tavant.twms.domain.customReports.ReportI18NText"/>
+                 <entry key="94" value="tavant.twms.domain.customReports.I18NReportText"/>
+                 <entry key="95" value="tavant.twms.domain.customReports.I18NReportSectionText"/>
+                 <entry key="96" value="tavant.twms.domain.customReports.I18NQuestionText"/>
+                 <entry key="97" value="tavant.twms.domain.customReports.I18NAnswerOptionText"/>
+                 <entry key="98" value="tavant.twms.domain.common.SellingEntity"/>
+                <!--  Vendor Recovery Extract -->
+                 <entry key="99" value="tavant.twms.domain.reports.VendorRecoveryExtract"/>
+                 <entry key="100" value="tavant.twms.domain.reports.WarrantyPayoutView"/>
+                <!--I18NText for Misc Parts -->
+                 <entry key="101" value="tavant.twms.domain.catalog.I18NMiscItem"/>
+                 <entry key="102" value="tavant.twms.domain.campaign.CampaignSectionPrice"/>
+                 <entry key="103" value="tavant.twms.domain.common.RecoveryClaimCannotRecoverReason"/>
+                <entry key="104" value="tavant.twms.domain.common.LaborRateType"/> 
+                 <entry key="105" value="tavant.twms.domain.common.AdditionalComponentType"/>
+                 <entry key="106" value="tavant.twms.domain.common.AdditionalComponentSubType"/>
+                 <entry key="107" value="tavant.twms.domain.common.UnitDocumentType"/>
+                 <entry key="108" value="tavant.twms.domain.common.DeliveryCheckList"/>
+                 <entry key="109" value="tavant.twms.domain.common.RequestInfoFromUser"/>
+                 <entry key="110" value="tavant.twms.domain.common.PutOnHoldReason"/>
+                 <entry key="111" value="tavant.twms.domain.common.RecoveryClaimDocumentType"/>
+                 <entry key="112" value="tavant.twms.domain.partreturn.SupplierPartAcceptanceReason"/>
+                 <entry key="113" value="tavant.twms.domain.partreturn.SupplierPartRejectionReason"/>
+                <entry key="114" value="tavant.twms.domain.email.TestEmails"/>
+                <entry key="115" value="tavant.twms.domain.common.DiscountType"/>
+            </map>
+		</constructor-arg>
+	</bean>
+
+	<bean name="OrgModel.annotated.classes" class="java.util.HashMap">
+		<constructor-arg>
+            <map key-type="java.lang.Integer" value-type="java.lang.String">
+                 <entry key="1" value="tavant.twms.domain.admin.UserAction"/>
+                 <entry key="2" value="tavant.twms.domain.admin.FunctionalArea"/>
+                 <entry key="3" value="tavant.twms.domain.admin.SubjectArea"/>
+                 <entry key="4" value="tavant.twms.domain.admin.Permission"/>
+				 <entry key="5" value="tavant.twms.domain.orgmodel.Party"/>
+				 <entry key="6" value="tavant.twms.domain.orgmodel.Address"/>
+				 <entry key="7" value="tavant.twms.domain.orgmodel.Organization"/>
+				 <entry key="8" value="tavant.twms.domain.orgmodel.User"/>
+				 <entry key="9" value="tavant.twms.domain.orgmodel.UserBUAvailability"/>
+				 <entry key="10" value="tavant.twms.domain.orgmodel.Technician"/>
+				 <entry key="11" value="tavant.twms.domain.orgmodel.TechnicianCertification"/>
+				 <entry key="12" value="tavant.twms.domain.orgmodel.ThirdParty"/>
+				 <entry key="13" value="tavant.twms.domain.orgmodel.ServiceProvider"/>
+				 <entry key="14" value="tavant.twms.domain.orgmodel.UserGroup"/>
+				 <entry key="15" value="tavant.twms.domain.orgmodel.UserCluster"/>
+				 <entry key="16" value="tavant.twms.domain.orgmodel.UserScheme"/>
+				 <entry key="17" value="tavant.twms.domain.orgmodel.Dealership"/>
+				 <entry key="18" value="tavant.twms.domain.orgmodel.NationalAccount"/>
+				 <entry key="19" value="tavant.twms.domain.orgmodel.InterCompany"/>
+				 <entry key="20" value="tavant.twms.domain.orgmodel.OriginalEquipManufacturer"/>
+				 <entry key="21" value="tavant.twms.domain.orgmodel.DirectCustomer"/>
+				 <entry key="22" value="tavant.twms.domain.orgmodel.DealerUser"/>
+				 <entry key="23" value="tavant.twms.domain.orgmodel.Role"/>
+				 <entry key="24" value="tavant.twms.domain.orgmodel.Attribute"/>
+				 <entry key="25" value="tavant.twms.domain.orgmodel.Supplier"/>
+				 <entry key="26" value="tavant.twms.domain.orgmodel.SupplierLocation"/>
+				 <entry key="27" value="tavant.twms.domain.orgmodel.DealerScheme"/>
+				 <entry key="28" value="tavant.twms.domain.orgmodel.DealerGroup"/>
+				 <entry key="29" value="tavant.twms.domain.orgmodel.AddressBook"/>
+				 <entry key="30" value="tavant.twms.domain.orgmodel.AddressBookAddressMapping"/>
+				 <entry key="31" value="tavant.twms.domain.bu.BusinessUnit"/>
+				 <entry key="32" value="tavant.twms.domain.bu.DivisionBusinessUnitMapping"/>
+				 <entry key="33" value="tavant.twms.domain.bu.LogicalGroup"/>
+				 <entry key="34" value="tavant.twms.domain.bu.SourceSystemBuMapping"/>
+				 <entry key="35" value="tavant.twms.domain.configuration.ConfigParam"/>
+				 <entry key="36" value="tavant.twms.domain.configuration.ConfigParamOption"/>
+				 <entry key="37" value="tavant.twms.domain.configuration.ConfigValue"/>
+				 <entry key="38" value="tavant.twms.domain.orgmodel.MSA"/>
+				 <entry key="39" value="tavant.twms.domain.orgmodel.Country"/>
+				 <entry key="40" value="tavant.twms.domain.orgmodel.AttributeValue"/>
+				 <entry key="41" value="tavant.twms.domain.orgmodel.UserAttributeValue"/>
+				 <entry key="42" value="tavant.twms.domain.orgmodel.UserGroupAttributeValue"/>
+				 <entry key="43" value="tavant.twms.domain.orgmodel.OrganizationAddress"/>
+                 <entry key="44" value="tavant.twms.domain.orgmodel.RoleScheme"/>
+                 <entry key="45" value="tavant.twms.domain.orgmodel.RoleGroup"/>
+                 <entry key="46" value="tavant.twms.domain.orgmodel.EventState"/>
+                 <entry key="47" value="tavant.twms.domain.orgmodel.AdditionalLaborEligibility"/>
+                 <entry key="48" value="tavant.twms.domain.orgmodel.MinimumLaborRoundUp"/>
+                 <entry key="49" value="tavant.twms.domain.policy.Market"/>
+                 <entry key="50" value="tavant.twms.domain.policy.I18NMarketText"/>
+                 <entry key="51" value="tavant.twms.domain.policy.I18NMarketDescText"/>
+                 <entry key="52" value="tavant.twms.domain.loa.LimitOfAuthorityScheme"/>
+				 <entry key="53" value="tavant.twms.domain.loa.LimitOfAuthorityLevel"/>
+				 <entry key="54" value="tavant.twms.domain.orgmodel.MarketingGroup"/>
+				 <entry key="55" value="tavant.twms.domain.orgmodel.Brand"/>
+				 <entry key="56" value="tavant.twms.domain.orgmodel.CoreCertification" />
+                 <entry key="57" value="tavant.twms.domain.orgmodel.SeriesCertification" />
+                 <entry key="58" value="tavant.twms.domain.orgmodel.SeriesRefCertification" />
+                 <entry key="59" value="tavant.twms.domain.orgmodel.TechnicianCertification"/>
+                 <entry key="60" value="tavant.twms.domain.common.BookingsReport"/>
+            </map>
+		</constructor-arg>
+	</bean>
+
+	<bean name="CatalogManagement.hbm.xmls" class="java.util.HashMap">
+		<constructor-arg>
+            <map key-type="java.lang.Integer" value-type="java.lang.String">
+				 <entry key="1" value="tavant/twms/domain/catalog/InventoryItem.hbm.xml"/>
+				 <entry key="2" value="tavant/twms/domain/catalog/ItemGroupQueries.hbm.xml"/>
+				 <entry key="3" value="tavant/twms/domain/catalog/BasePriceValue.hbm.xml"/>
+				 <entry key="4" value="tavant/twms/domain/catalog/CatalogQueries.hbm.xml"/>
+				 <entry key="5" value="tavant/twms/domain/customReports/CustomReportQueries.hbm.xml"/>
+				 <entry key="6" value="tavant/twms/domain/failurestruct/FailureStructureQueries.hbm.xml"/>
+				 <entry key="7" value="tavant/twms/domain/catalog/MiscellanousPart.hbm.xml"/>
+			</map>
+		</constructor-arg>
+	</bean>
+
+	<bean name="CatalogManagement.annotated.classes"
+		class="java.util.HashMap">
+		<constructor-arg>
+			<map key-type="java.lang.Integer" value-type="java.lang.String">
+				 <entry key="1" value="tavant.twms.domain.catalog.Item"/>
+				 <entry key="2" value="tavant.twms.domain.catalog.ItemTypeMapping"/>
+				 <entry key="3" value="tavant.twms.domain.catalog.ItemReference"/>
+				 <entry key="4" value="tavant.twms.domain.catalog.ItemGroup"/>
+				 <entry key="5" value="tavant.twms.domain.catalog.I18NItemGroupText"/>
+				 <entry key="6" value="tavant.twms.domain.catalog.ItemScheme"/>
+				 <entry key="7" value="tavant.twms.domain.catalog.ItemComposition"/>
+				 <entry key="8" value="tavant.twms.domain.inventory.InventoryItem"/>
+				 <entry key="9" value="tavant.twms.domain.inventory.InventoryItemCondition"/>
+				 <entry key="10" value="tavant.twms.domain.inventory.InventoryType"/>
+				 <entry key="11" value="tavant.twms.domain.inventory.InventoryTransaction"/>
+				 <entry key="12" value="tavant.twms.domain.inventory.InventoryTransactionType"/>
+				 <entry key="13" value="tavant.twms.domain.catalog.MiscellaneousItem				"/>
+				 <entry key="14" value="tavant.twms.domain.catalog.MiscellaneousItemCriteria				"/>
+				 <entry key="15" value="tavant.twms.domain.catalog.MiscellaneousItemConfiguration				"/>
+				 <entry key="16" value="tavant.twms.domain.catalog.MiscItemRate				"/>
+				 <entry key="17" value="tavant.twms.domain.inventory.InventoryItemComposition"/>
+				 <entry key="18" value="tavant.twms.domain.inventory.SerializedItemReplacement"/>
+				 <entry key="19" value="tavant.twms.domain.inventory.ItemReplacementReason"/>
+				 <entry key="20" value="tavant.twms.domain.inventory.TransactionType"/>
+				 <entry key="21" value="tavant.twms.domain.inventory.Option"/>
+				 <entry key="22" value="tavant.twms.domain.inventory.DieselTierWaiver"/>
+				 <entry key="23" value="tavant.twms.domain.inventory.PartGroup"/>
+				 <entry key="24" value="tavant.twms.domain.inventory.I18NTransactionTypeText"/>
+				 <entry key="25" value="tavant.twms.domain.failurestruct.FailureStructure"/>
+				 <entry key="26" value="tavant.twms.domain.failurestruct.Assembly"/>
+				 <entry key="27" value="tavant.twms.domain.failurestruct.AssemblyDefinition"/>
+				 <entry key="28" value="tavant.twms.domain.failurestruct.AssemblyLevel"/>
+				 <entry key="29" value="tavant.twms.domain.failurestruct.ActionLevel"/>
+				 <entry key="30" value="tavant.twms.domain.failurestruct.ActionDefinition"/>
+				 <entry key="31" value="tavant.twms.domain.failurestruct.ActionNode"/>
+				 <entry key="32" value="tavant.twms.domain.failurestruct.ServiceProcedure"/>
+				 <entry key="33" value="tavant.twms.domain.failurestruct.ServiceProcedureDefinition"/>
+				 <entry key="34" value="tavant.twms.domain.failurestruct.FailureTypeDefinition"/>
+				 <entry key="35" value="tavant.twms.domain.failurestruct.FailureType"/>
+				 <entry key="36" value="tavant.twms.domain.failurestruct.FailureCauseDefinition"/>
+				 <entry key="37" value="tavant.twms.domain.failurestruct.FailureCause"/>
+				 <entry key="38" value="tavant.twms.domain.failurestruct.FailureRootCauseDefinition"/>
+				 <entry key="39" value="tavant.twms.domain.failurestruct.FailureRootCause"/>
+				 <entry key="40" value="tavant.twms.domain.failurestruct.TreadBucket"/>
+				 <entry key="41" value="tavant.twms.domain.failurestruct.FaultCodeDefinition"/>
+				 <entry key="42" value="tavant.twms.domain.failurestruct.FaultCode"/>
+				 <entry key="43" value="tavant.twms.domain.catalog.BasePriceValue"/>
+				 <entry key="44" value="tavant.twms.domain.catalog.ItemBasePrice"/>
+				 <entry key="45" value="tavant.twms.domain.additionalAttributes.AdditionalAttributes"/>
+				 <entry key="46" value="tavant.twms.domain.additionalAttributes.AttributeAssociation"/>
+				 <entry key="47" value="tavant.twms.domain.inventory.InventoryItemAttributeValue"/>
+				 <entry key="48" value="tavant.twms.domain.catalog.BrandItem"/>
+				 <entry key="49" value="tavant.twms.domain.catalog.SupersessionItem"/>
+				 <entry key="50" value="tavant.twms.domain.inventory.EngineTierCtryMapping"/>
+				 <entry key="51" value="tavant.twms.domain.inventory.DieselTier"/>
+				 <entry key="52" value="tavant.twms.domain.catalog.SupplierItemLocation"/>
+				 <entry key="53" value="tavant.twms.domain.inventory.ContractCode"/>
+				 <entry key="54" value="tavant.twms.domain.inventory.IndustryCode"/>
+				 <entry key="55" value="tavant.twms.domain.inventory.MaintenanceContract"/>
+				 <entry key="56" value="tavant.twms.domain.inventory.I18NContractCodeText"/>
+				 <entry key="57" value="tavant.twms.domain.inventory.I18NIndustryCodeText"/>
+				 <entry key="58" value="tavant.twms.domain.inventory.I18NMaintenanceContractText"/>
+                 <entry key="59" value="tavant.twms.domain.inventory.I18NWaiverText"/>
+                 <entry key="60" value="tavant.twms.domain.inventory.I18NDisclaimer"/>
+                 <entry key="61" value="tavant.twms.domain.inventory.TierTierMapping" />
+                 <entry key="62" value="tavant.twms.domain.inventory.ComponentAuditHistory" />
+				 <entry key="63" value="tavant.twms.domain.inventory.InventoryComment" />
+				 <entry key="64" value="tavant.twms.domain.inventory.InventoryItemAdditionalComponents" />
+				 <entry key="65" value="tavant.twms.domain.inventory.InternalInstallType" />
+				 <entry key="66" value="tavant.twms.domain.inventory.I18NInternalInstallType" />
+				 <entry key="67" value="tavant.twms.domain.orgmodel.CountyCodeMapping" />
+				 <entry key="68" value="tavant.twms.domain.inventory.InventoryClass" />
+				 <entry key="69" value="tavant.twms.domain.inventory.InvClassDealerMapping" />
+			</map>
+		</constructor-arg>
+	</bean>
+
+	<bean name="ClaimProcessing.hbm.xmls" class="java.util.HashMap">
+		<constructor-arg>
+			<map key-type="java.lang.Integer" value-type="java.lang.String">
+				 <entry key="1" value="tavant/twms/domain/claim/payment/rates/LaborRatesQueries.hbm.xml"/>
+				 <entry key="2" value="tavant/twms/domain/claim/payment/rates/TravelRatesQueries.hbm.xml"/>
+                 <entry key="3" value="tavant/twms/domain/claim/payment/rates/DealerSummary.hbm.xml"/>
+                 <entry key="4" value="tavant/twms/domain/claim/payment/rates/AdministeredItemPriceQueries.hbm.xml"/>
+				 <entry key="5" value="tavant/twms/domain/policy/PolicyDefinition.hbm.xml"/>
+				 <entry key="6" value="tavant/twms/domain/policy/Customer.hbm.xml"/>
+				 <entry key="7" value="tavant/twms/domain/policy/PolicyRatesQueries.hbm.xml"/>
+				 <entry key="8" value="tavant/twms/domain/reports/ReportQueries.hbm.xml"/>
+				 <entry key="9" value="tavant/twms/domain/reports/TREADReportQueries.hbm.xml"/>
+				 <entry key="10" value="tavant/twms/domain/claim/payment/PaymentModifierQueries.hbm.xml"/>
+				
+			</map>
+		</constructor-arg>
+	</bean>
+
+	<bean name="ClaimProcessing.annotated.classes"
+		class="java.util.HashMap">
+		<constructor-arg>
+			<map key-type="java.lang.Integer" value-type="java.lang.String">
+				 <entry key="1" value="tavant.twms.domain.campaign.Campaign"/>
+				 <entry key="2" value="tavant.twms.domain.campaign.FieldModUpdateAudit"/>
+				 <entry key="3" value="tavant.twms.domain.campaign.CampaignAudit"/>
+				 <entry key="4" value="tavant.twms.domain.campaign.HussPartsToReplace"/>
+				 <entry key="5" value="tavant.twms.domain.campaign.CampaignClass"/>
+				 <entry key="6" value="tavant.twms.domain.campaign.CampaignCoverage"/>
+				 <entry key="7" value="tavant.twms.domain.campaign.CampaignRangeCoverage"/>
+				 <entry key="8" value="tavant.twms.domain.campaign.CampaignSerialNumberCoverage"/>
+				 <entry key="9" value="tavant.twms.domain.campaign.CampaignSerialRange"/>
+				 <entry key="10" value="tavant.twms.domain.campaign.CampaignSerialNumbers"/>
+				 <entry key="11" value="tavant.twms.domain.campaign.CampaignNotification"/>
+				 <entry key="12" value="tavant.twms.domain.campaign.CampaignStatus"/>
+				 <entry key="13" value="tavant.twms.domain.campaign.OEMPartToReplace"/>
+				 <entry key="14" value="tavant.twms.domain.campaign.NonOEMPartToReplace"/>
+				 <entry key="15" value="tavant.twms.domain.campaign.CampaignServiceDetail"/>
+				 <entry key="16" value="tavant.twms.domain.campaign.CampaignTravelDetail"/>
+				 <entry key="17" value="tavant.twms.domain.campaign.CampaignLaborDetail"/>
+				 <entry key="18" value="tavant.twms.domain.claim.Claim"/>
+				 <entry key="19" value="tavant.twms.domain.claim.payment.rates.LaborRateRepairDateAudit"/>
+				 <entry key="20" value="tavant.twms.domain.claim.payment.rates.LaborRateAudit"/>
+				 <entry key="21" value="tavant.twms.domain.claim.MachineClaim"/>
+                 <entry key="22" value="tavant.twms.domain.claim.AttachmentClaim"/>
+				 <entry key="23" value="tavant.twms.domain.claim.PartsClaim"/>
+				 <entry key="24" value="tavant.twms.domain.claim.CampaignClaim"/>
+				 <entry key="25" value="tavant.twms.domain.claim.ClaimAudit"/>
+                 <entry key="26" value="tavant.twms.domain.claim.ClaimSnapshot"/>
+				 <entry key="27" value="tavant.twms.domain.query.SavedQuery"/>
+				 <entry key="28" value="tavant.twms.domain.claim.UserComment"/>
+				 <entry key="29" value="tavant.twms.domain.claim.ServiceInformation"/>
+				 <entry key="30" value="tavant.twms.domain.claim.ServiceDetail"/>
+				 <entry key="31" value="tavant.twms.domain.claim.OEMPartReplaced"/>
+			     <entry key="32" value="tavant.twms.domain.claim.HussmanPartsReplacedInstalled"/>
+				 <entry key="33" value="tavant.twms.domain.claim.ReplacedParts"/>
+				 <entry key="34" value="tavant.twms.domain.claim.InstalledParts"/>
+				 <entry key="35" value="tavant.twms.domain.claim.NonOEMPartReplaced"/>
+				 <entry key="36" value="tavant.twms.domain.claim.LaborDetail"/>
+				 <entry key="37" value="tavant.twms.domain.claim.TravelDetail"/>
+				 <entry key="38" value="tavant.twms.domain.claim.Job"/>
+				 <entry key="39" value="tavant.twms.domain.claim.JobDefinition"/>
+				 <entry key="40" value="tavant.twms.domain.claim.RuleFailure"/>
+				 <entry key="41" value="tavant.twms.domain.claim.payment.Payment"/>
+				 <entry key="42" value="tavant.twms.domain.claim.payment.PartPaymentInfo"/>
+				 <entry key="43" value="tavant.twms.domain.claim.payment.CreditMemo"/>
+				 <entry key="44" value="tavant.twms.domain.claim.payment.LineItem"/>
+				 <entry key="45" value="tavant.twms.domain.claim.payment.LineItemGroup"/>
+				 <entry key="46" value="tavant.twms.domain.claim.payment.AdditionalPaymentInfo"/>
+				 <entry key="47" value="tavant.twms.domain.claim.payment.CostCategory"/>
+				 <entry key="48" value="tavant.twms.domain.claim.payment.definition.modifiers.PaymentModifier"/>
+				 <entry key="49" value="tavant.twms.domain.claim.payment.definition.modifiers.PaymentVariable"/>
+				 <entry key="50" value="tavant.twms.domain.claim.payment.definition.modifiers.CriteriaBasedValue"/>
+				 <entry key="51" value="tavant.twms.domain.claim.payment.rates.ItemPriceModifier"/>
+				 <entry key="52" value="tavant.twms.domain.claim.payment.rates.AdministeredItemPrice"/>
+				 <entry key="53" value="tavant.twms.domain.claim.payment.rates.LaborRate"/>
+				 <entry key="54" value="tavant.twms.domain.claim.payment.rates.LaborRateValues"/>
+				 <entry key="55" value="tavant.twms.domain.laborType.LaborType"/>
+				 <entry key="56" value="tavant.twms.domain.laborType.LaborSplit"/>
+				 <entry key="57" value="tavant.twms.domain.laborType.LaborSplitDetailAudit"/>
+				 <entry key="58" value="tavant.twms.domain.claim.payment.rates.LaborRates"/>
+				 <entry key="59" value="tavant.twms.domain.claim.payment.rates.TravelRate"/>
+				 <entry key="60" value="tavant.twms.domain.claim.payment.rates.TravelRateValues"/>
+				 <entry key="61" value="tavant.twms.domain.claim.payment.rates.TravelRateValues"/>
+				 <entry key="62" value="tavant.twms.domain.claim.payment.rates.TravelRates"/>
+				 <entry key="63" value="tavant.twms.domain.claim.payment.definition.PaymentVariableLevel"/>
+				 <entry key="64" value="tavant.twms.domain.claim.payment.definition.PaymentDefinition"/>
+				 <entry key="65" value="tavant.twms.domain.claim.payment.definition.PaymentSection"/>
+				 <entry key="66" value="tavant.twms.domain.claim.payment.definition.Section"/>
+				 <entry key="67" value="tavant.twms.domain.claim.payment.definition.I18NSectionText"/>
+				 <entry key="68" value="tavant.twms.domain.claim.payment.definition.PolicyCriteria"/>
+				 <entry key="69" value="tavant.twms.domain.alarmcode.AlarmCode"/>
+				 <entry key="70" value="tavant.twms.domain.campaign.relateCampaigns.RelateCampaign"/>
+				 <entry key="71" value="tavant.twms.domain.policy.PolicyDefinition"/>
+				 <entry key="72" value="tavant.twms.domain.policy.PolicyDefinitionAudit"/>
+				 <entry key="73" value="tavant.twms.domain.policy.RegisteredPolicy"/>
+				 <entry key="74" value="tavant.twms.domain.policy.RegisteredPolicyAudit"/>
+				 <entry key="75" value="tavant.twms.domain.policy.ApplicablePolicy"/>
+				 <entry key="76" value="tavant.twms.domain.policy.PolicyRatesCriteria"/>
+				 <entry key="77" value="tavant.twms.domain.policy.PolicyRate"/>
+				 <entry key="78" value="tavant.twms.domain.policy.PolicyRates"/>
+				 <entry key="79" value="tavant.twms.domain.policy.PolicyFees"/>
+				 <entry key="80" value="tavant.twms.domain.policy.MarketType"/>
+				 <entry key="81" value="tavant.twms.domain.policy.I18NMarketTypeText"/>
+				 <entry key="82" value="tavant.twms.domain.policy.CompetitionType"/>
+				 <entry key="83" value="tavant.twms.domain.policy.I18NCompetitionTypeText"/>
+				 <entry key="84" value="tavant.twms.domain.policy.CompetitorMake"/>
+				 <entry key="85" value="tavant.twms.domain.policy.I18NCompetitorMakeText"/>
+				 <entry key="86" value="tavant.twms.domain.policy.CompetitorModel"/>
+				 <entry key="87" value="tavant.twms.domain.policy.I18NCompetitorModelText"/>
+				 <entry key="88" value="tavant.twms.domain.policy.MarketingInformation"/>
+				 <entry key="90" value="tavant.twms.domain.policy.MarketingInformation"/>
+				 <entry key="91" value="tavant.twms.domain.policy.WarrantyType"/>
+				 <entry key="92" value="tavant.twms.domain.claim.foc.FocOrder"/>
+				 <entry key="93" value="tavant.twms.domain.policy.Customer"/>
+				 <entry key="94" value="tavant.twms.domain.policy.Warranty"/>
+				 <entry key="95" value="tavant.twms.domain.policy.WarrantyCoverageRequest"/>
+				 <entry key="96" value="tavant.twms.domain.policy.WarrantyCoverageRequestAudit"/>
+				 <entry key="97" value="tavant.twms.domain.policy.OwnershipState"/>
+				 <entry key="98" value="tavant.twms.domain.watchlist.WatchedDealership"/>
+				 <entry key="99" value="tavant.twms.domain.watchlist.WatchedPart"/>
+				 <entry key="100" value="tavant.twms.domain.query.view.InboxView"/>
+				 <entry key="101" value="tavant.twms.domain.view.DefaultFolderView"/>
+				 <entry key="102" value="tavant.twms.domain.claim.ClaimedItem"/>
+				 <entry key="103" value="tavant.twms.domain.claim.MatchReadInfo"/>
+				 <entry key="104" value="tavant.twms.domain.claim.ClaimNumberPattern"/>
+				 <entry key="105" value="tavant.twms.domain.claim.RecoveryClaim"/>
+				 <entry key="106" value="tavant.twms.domain.claim.RecoveryClaimAudit"/>
+				 <entry key="107" value="tavant.twms.domain.claim.payment.RecoveryPayment"/>
+				<!--value>tavant.twms.domain.configuration.ConfigParam</value-->
+				<!--value>tavant.twms.domain.configuration.ConfigValue</value-->
+				 <entry key="108" value="tavant.twms.domain.claim.ClaimAttributes"/>
+				 <entry key="109" value="tavant.twms.domain.policy.AddressForTransfer"/>
+				 <entry key="110" value="tavant.twms.domain.integration.SyncTracker"/>
+				 <entry key="111" value="tavant.twms.domain.integration.SyncStatus"/>
+				 <entry key="112" value="tavant.twms.domain.integration.SyncType"/>
+				 <entry key="113" value="tavant.twms.domain.orgmodel.MSA"/>
+				 <entry key="114" value="tavant.twms.domain.orgmodel.Country"/>
+                 <entry key="115" value="tavant.twms.domain.WarrantyTask.WarrantyTaskInstance"/>
+                 <entry key="116" value="tavant.twms.domain.policy.WarrantyAudit"/>
+                 <entry key="117" value="tavant.twms.domain.policy.ApplicableCustomerTypes"/>
+                 <entry key="118" value="tavant.twms.domain.uom.UomMappings"/>
+                 <entry key="119" value="tavant.twms.domain.uom.I18nUomMappingValues"/>
+                 <entry key="120" value="tavant.twms.domain.policy.AdditionalMarketingInfo"/>
+                 <entry key="121" value="tavant.twms.domain.policy.SelectedAdditionalMarketingInfo"/>
+                 <entry key="122" value="tavant.twms.domain.policy.AdditionalMarketingInfoOptions"/>
+                 <entry key="123" value="tavant.twms.domain.common.Oem"/>
+                 <entry key="124" value="tavant.twms.domain.policy.ExtendedWarrantyNotification"/>
+                 <entry key="125" value="tavant.twms.domain.policy.I18NCompetitorModelText"/>
+                 <entry key="126" value="tavant.twms.domain.policy.I18NCompetitorModelText"/>
+                 <entry key="127" value="tavant.twms.domain.policy.I18NCompetitorModelText"/>
+                  <entry key="128" value="tavant.twms.domain.stateMandates.StateMandates"/>
+                  <entry key="129" value="tavant.twms.domain.stateMandates.StateMndteCostCtgyMapping"/>
+                  <entry key="130" value="tavant.twms.domain.claim.payment.IndividualLineItem"/>
+                  <entry key="131" value="tavant.twms.domain.stateMandates.StateMandateOtherCategories" />
+                <entry key="132" value="tavant.twms.domain.common.BUSettings" />
+                 <entry key="133" value="tavant.twms.domain.policy.PolicyProductMapping" />
+                 <entry key="134" value="tavant.twms.domain.stateMandates.StateMandateAudit" />
+                 <entry key="135" value="tavant.twms.domain.stateMandates.StateMndteCostCtgyAudit" />
+                 <entry key="136" value="tavant.twms.domain.claim.payment.rates.PartPrices" />
+                 <entry key="137" value="tavant.twms.domain.claim.payment.rates.PartPrice" />
+                 <entry key="138" value="tavant.twms.domain.claim.payment.rates.PartPriceValues" />
+                 <entry key="139" value="tavant.twms.domain.claim.payment.rates.PartPriceAudit" />
+                 <entry key="140" value="tavant.twms.domain.claim.payment.rates.PartPriceRepairDateAudit" />
+                 <entry key="141" value="tavant.twms.domain.claim.MarketingGroupsLookup" />
+            </map>
+
+		</constructor-arg>
+	</bean>
+
+	<bean name="PartReturn.hbm.xmls" class="java.util.HashMap">
+		<constructor-arg>
+            <map key-type="java.lang.Integer" value-type="java.lang.String">
+				 <entry key="1" value="tavant/twms/domain/partreturn/PartReturnDefinitionQueries.hbm.xml"/>
+			</map>
+		</constructor-arg>
+	</bean>
+
+	<bean name="PartReturn.annotated.classes"
+		class="java.util.HashMap">
+		<constructor-arg>
+			<map key-type="java.lang.Integer" value-type="java.lang.String">
+				 <entry key="1" value="tavant.twms.domain.partreturn.Location"/>
+				 <entry key="2" value="tavant.twms.domain.partreturn.Warehouse"/>
+				 <entry key="3" value="tavant.twms.domain.partreturn.Carrier"/>
+				 <entry key="4" value="tavant.twms.domain.partreturn.WarehouseShippers"/>
+				 <entry key="5" value="tavant.twms.domain.partreturn.BasePartReturn"/>
+				 <entry key="6" value="tavant.twms.domain.partreturn.PartReturn"/>
+				 <entry key="7" value="tavant.twms.domain.partreturn.PartReturnDefinition"/>
+				 <entry key="8" value="tavant.twms.domain.partreturn.PartReturnConfiguration"/>
+				 <entry key="9" value="tavant.twms.domain.partreturn.InspectionResult"/>
+				 <entry key="10" value="tavant.twms.domain.partreturn.PaymentCondition"/>
+				 <entry key="11" value="tavant.twms.domain.partreturn.Shipment"/>
+                 <entry key="12" value="tavant.twms.domain.partreturn.PartReturnAudit"/>
+                 <entry key="13" value="tavant.twms.domain.partreturn.PartReturnAction"/>
+                 <entry key="14" value="tavant.twms.domain.partreturn.PartReturnDefinitionAudit"/>
+                 <entry key="15" value="tavant.twms.domain.partreturn.Wpra"/>
+                 <entry key="16" value="tavant.twms.domain.partreturn.PartReturnInboxOrder"/>
+                 <entry key="17" value="tavant.twms.domain.partreturn.ShipmentLoadDimension" />
+                 <entry key="18" value="tavant.twms.domain.partreturn.WpraNumberPattern"/>
+            </map>
+		</constructor-arg>
+	</bean>
+
+	<bean name="SupplierRecovery.annotated.classes"
+		class="java.util.HashMap">
+		<constructor-arg>
+			<map key-type="java.lang.Integer" value-type="java.lang.String">
+				 <entry key="1" value="tavant.twms.domain.supplier.SupplierPartReturn"/>
+				 <entry key="2" value="tavant.twms.domain.supplier.CostLineItem"/>
+				 <entry key="3" value="tavant.twms.domain.supplier.ItemMapping"/>
+				 <entry key="4" value="tavant.twms.domain.supplier.contract.Contract"/>
+				 <entry key="5" value="tavant.twms.domain.supplier.contract.CompensationTerm"/>
+				 <entry key="6" value="tavant.twms.domain.supplier.contract.RecoveryFormula"/>
+				 <entry key="7" value="tavant.twms.domain.supplier.contract.CoverageCondition"/>
+                 <entry key="8" value="tavant.twms.domain.supplier.recovery.RecoverablePart"/>
+                 <entry key="9" value="tavant.twms.domain.supplier.recovery.RecoveryClaimInfo"/>
+                 <entry key="10" value="tavant.twms.domain.supplier.recovery.RecoveryInfo"/>
+                 <entry key="11" value="tavant.twms.domain.supplier.PartRecoveryAudit"/>
+            </map>
+		</constructor-arg>
+	</bean>
+
+	 <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+        <property name="host" value="${tavant.email.smtp-server}"/>
+    </bean>
+
+	<bean id="domainSessionFactory" abstract="true"
+		class="tavant.twms.infra.EnhancedAnnotationSessionFactoryBean">
+		<property name="moduleWiseHbmXmls">
+            <map key-type="java.lang.Integer" value-type="java.util.HashMap">
+                <entry key="2" value-ref="Common.hbm.xmls" />
+                <entry key="3" value-ref="CatalogManagement.hbm.xmls" />
+                <entry key="4" value-ref="ClaimProcessing.hbm.xmls" />
+                <entry key="5" value-ref="PartReturn.hbm.xmls" />
+
+			</map>
+		</property>
+		<property name="moduleWiseAnnotatedClasses">
+            <map key-type="java.lang.Integer" value-type="java.util.HashMap">
+                <entry key="1" value-ref="Common.annotated.classes" />
+                <entry key="2" value-ref="OrgModel.annotated.classes" />
+                <entry key="3" value-ref="CatalogManagement.annotated.classes" />
+                <entry key="4" value-ref="ClaimProcessing.annotated.classes" />
+                <entry key="5" value-ref="PartReturn.annotated.classes" />
+                <entry key="6" value-ref="SupplierRecovery.annotated.classes" />
+			</map>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					${hibernate.dialect}
+				</prop>
+				<prop key="hibernate.show_sql">
+					${hibernate.show_sql}
+				</prop>
+				<prop key="hibernate.format_sql">
+					${hibernate.format_sql}
+				</prop>
+				<prop key="hibernate.use_sql_comments">
+					${hibernate.use_sql_comments}
+				</prop>
+				<prop key="hibernate.generate_statistics">true</prop>
+				<prop key="hibernate.bytecode.provider">cglib</prop>				
+				<prop key="hibernate.default_batch_fetch_size">25</prop>
+				<prop key="hibernate.jdbc.batch_size">0</prop>				
+				<prop key="hibernate.hbm2ddl.auto">
+					${hibernate.hbm2ddl}
+				</prop>
+				<prop key="hibernate.cglib.use_reflection_optimizer">
+					false
+				</prop>
+				<prop
+					key="hibernate.validator.autoregister_listeners">
+					false
+				</prop>
+                <prop key="hibernate.id.optimizer.pooled.prefer_lo">true</prop>
+				<prop key="hibernate.cache.use_second_level_cache">
+					${hibernate.use_secondlevel_cache}
+				</prop>
+				<prop key="hibernate.cache.use_query_cache">
+					${hibernate.use_query_cache}
+				</prop>				
+				<prop key="hibernate.cache.region.factory_class">
+        			net.sf.ehcache.hibernate.SingletonEhCacheRegionFactory 
+    			</prop>
+     			<prop key="javax.persistence.validation.mode">none</prop>
+     			
+			</props>
+		</property>
+		<property name="entityInterceptor">
+			<ref bean="nestedSetInterceptor" />
+		</property>
+		<property name="eventListeners">
+			<map>
+				<entry key="pre-insert">
+					<list>
+						<ref bean="auditListener" />
+						<ref bean="claimAuditListener" />
+						<!--  todo-Following listener is not working because of some circular dependency   -->
+						<!--
+							<ref bean="claimAuditPersistenceListener" />
+							<ref bean="i18nEventListener" />
+						-->
+						
+					</list>
+				</entry>
+				<entry key="pre-update">
+					<list>
+						<ref bean="claimAuditListener" />
+						<ref bean="auditListener" />
+						<!-- <ref bean="claimUpdateListener" />  -->
+					</list>
+				</entry>
+				<entry key="post-load">
+					<list>
+						<!--  todo-Following listener is not working because of some circular dependency  -->
+						
+						<ref bean="claimAuditPersistenceListener" />
+						<ref bean="partReturnPersistenceListener" />
+						<!--   <ref bean="i18nEventListener" /> --> 
+						
+					</list>
+				</entry>
+				<entry key="delete">
+					<list>
+						<ref bean="twmsDeleteEventListener" />												
+					</list>
+				</entry>
+			
+			</map>
+
+		</property>
+	</bean>
+
+	<bean name="auditListener"
+		class="tavant.twms.security.CreateUpdateAuditor" />
+
+	<!--bean name="i18nEventListener"
+		class="tavant.twms.domain.common.i18n.I18NEventListener"
+-->
+	
+	<bean name="twmsDeleteEventListener" class="tavant.twms.infra.TWMSCustomerHibernateDeleteListener" />
+	
+	<bean name="claimAuditListener" class="tavant.twms.security.ClaimCreateUpdateAuditor" />
+
+	<bean name="claimUpdateListener"
+		class="tavant.twms.domain.claim.ClaimUpdateListener" />
+
+	<bean name="nestedSetInterceptor"
+		class="tavant.twms.infra.NestedSetInterceptor" />
+
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<!-- enable the configuration of transactional behavior based on annotations
+-->
+	<tx:annotation-driven transaction-manager="transactionManager" />
+
+	<bean id="repository" class="tavant.twms.infra.RepositoryImpl" />
+	<bean id="xmlSerializer"
+		class="tavant.twms.domain.rules.XStreamRuleSerializer" />
+	<bean id="domainPredicateRepository"
+		class="tavant.twms.domain.rules.DomainPredicateRepositoryImpl" />
+	
+	<bean id="additionalLaborRepo"
+		class="tavant.twms.domain.orgmodel.AdditionalLaborEligibilityRepositoryImpl" />
+		
+	<bean id="minimumLaborRoundUpRepo"
+		class="tavant.twms.domain.orgmodel.MinimumLaborRoundUpRepositoryImpl" />
+
+
+	<bean id="savedQueryRepository"
+		class="tavant.twms.domain.query.SavedQueryRepositoryImpl" />
+	<bean id="domainRuleRepository"
+		class="tavant.twms.domain.rules.DomainRuleRepositoryImpl" />
+	<bean id="domainRuleActionRepository"
+		class="tavant.twms.domain.rules.DomainRuleActionRepositoryImpl" />
+	<bean id="domainRuleGroupRepository" class="tavant.twms.domain.rules.group.DomainRuleGroupRepositoryImpl" />
+    <bean id="assignmentRuleActionRepository"
+		class="tavant.twms.domain.rules.AssignmentRuleActionRepositoryImpl" />
+	<bean id="ruleAdministrationService"
+		class="tavant.twms.domain.rules.RuleAdministrationServiceImpl" />
+    <bean id="ruleGroupAdministrationService"
+          class="tavant.twms.domain.rules.group.RuleGroupAdministrationServiceImpl" />
+    <bean id="predicateAdministrationService"
+		class="tavant.twms.domain.rules.PredicateAdministrationServiceImpl" />
+	<bean id="savedQueryService"
+		class="tavant.twms.domain.query.SavedQueryServiceImpl" />		
+	<bean id="ruleElementsPersistenceListener"
+		class="tavant.twms.domain.rules.DomainRuleElementsPersistenceListener">
+		<property name="ignoreErrors" value="true" />
+	</bean>
+	<bean id="predicateEvaluator"
+		class="tavant.twms.domain.rules.OGNLBasedPredicateEvaluator" />
+	<bean id="ruleExecutionTemplate"
+		class="tavant.twms.domain.rules.RuleExecutionTemplate" depends-on="businessObjectModelFactory"/>
+	<bean id="paymentComponentComputerHelper"
+		class="tavant.twms.domain.claim.payment.PaymentComponentComputerHelper"/>
+    <bean id="duplicateCheckQueryGenerator"
+        class="tavant.twms.domain.rules.DuplicateCheckQueryGeneratorImpl" />
+    <bean id="predicateEvaluationActionFactory"
+          class="tavant.twms.domain.rules.WarrantyPredicateEvaluationActionFactory" />
+    <bean id="businessObjectModelFactory"
+          class="tavant.twms.domain.businessobject.WarrantyBusinessObjectModelFactory" />
+
+	<bean id="currencyExchangeRateRepository"
+		class="tavant.twms.domain.common.CurrencyExchangeRateRepositoryImpl" />
+	<bean id="currencyExchangeRateService"
+		class="tavant.twms.domain.common.CurrencyExchangeRateServiceImpl" />
+	
+	<bean id="currencyConversionFactorRepository"
+		class="tavant.twms.domain.common.CurrencyConversionFactorRepositoryImpl" />
+	<bean id="currencyConversionFactorService"
+		class="tavant.twms.domain.common.CurrencyConversionFactorServiceImpl" />
+
+	<bean id="criteriaEvaluationPrecedenceRepository"
+		class="tavant.twms.domain.common.CriteriaEvaluationPrecedenceRepositoryImpl" />
+	<bean id="relevanceScoreComputerService"
+		class="tavant.twms.infra.RelevanceScoreComputerServiceImpl" />
+
+	<bean id="currencyFieldCollector"
+		class="tavant.twms.domain.common.CurrencyFieldCollector" />
+
+	<bean id="purposeRepository"
+		class="tavant.twms.domain.common.PurposeRepositoryImpl" />
+	<bean id="purposeService"
+		class="tavant.twms.domain.common.PurposeServiceImpl" />
+
+	
+	<bean id="claimCurrencyConversionAdvice"
+		class="tavant.twms.domain.claim.ClaimCurrencyConversionAdvice" />
+
+	<bean id="claimService"
+		class="tavant.twms.domain.claim.ClaimServiceImpl" />
+	<bean id="recoveryClaimService"
+		class="tavant.twms.domain.claim.RecoveryClaimServiceImpl" />
+	<bean id="claimRepository"
+		class="tavant.twms.domain.claim.ClaimRepositoryImpl" />
+	<bean id="recoveryClaimRepository"
+		class="tavant.twms.domain.claim.RecoveryClaimRepositoryImpl" />
+	<bean id="jobCodeRepository"
+		class="tavant.twms.domain.claim.JobCodeRepositoryImpl" />
+	
+	<bean id="machineClaimSubmissionUtil"
+		class="tavant.twms.domain.claim.claimsubmission.MachineClaimSubmissionUtil" />
+	<bean id="partsClaimSubmissionUtil"
+		class="tavant.twms.domain.claim.claimsubmission.PartsClaimSubmissionUtil" />
+	<bean id="claimSubmissionUtil"
+		class="tavant.twms.domain.claim.claimsubmission.ClaimSubmissionUtil" />
+	<bean id="majorCompRegUtil"
+		class="tavant.twms.domain.warranty.MajorCompRegUtil" />
+	<bean id="fieldModificationClaimSubmissionUtil"
+		class="tavant.twms.domain.claim.claimsubmission.FieldModificationClaimSubmissionUtil" />
+
+	<!-- Consumer complaints and field reports -->
+	<bean id="complaintsService"
+		class="tavant.twms.domain.complaints.ComplaintsServiceImpl" />
+	<bean id="complaintsRepository"
+		class="tavant.twms.domain.complaints.ComplaintsRepositoryImpl" />
+	<bean id="countryStateService"
+		class="tavant.twms.domain.complaints.CountryStateServiceImpl" />
+	<bean id="countryStateRepository"
+		class="tavant.twms.domain.complaints.CountryStateRepositoryImpl" />
+
+	<!--  Catalog related repository / services -->
+	<bean id="inventoryItemUtil"
+		class="tavant.twms.domain.inventory.InventoryItemUtil" />
+	<bean id="catalogService"
+		class="tavant.twms.domain.catalog.CatalogServiceImpl" />
+	<bean id="catalogRepository"
+		class="tavant.twms.domain.catalog.CatalogRepositoryImpl" />
+	<bean id="itemSchemeRepository"
+		class="tavant.twms.domain.catalog.ItemSchemeRepositoryImpl" />
+	<bean id="itemSchemeService"
+		class="tavant.twms.domain.catalog.ItemSchemeServiceImpl" />
+	<bean id="itemGroupRepository"
+		class="tavant.twms.domain.catalog.ItemGroupRepositoryImpl" />
+	<bean id="itemGroupService"
+		class="tavant.twms.domain.catalog.ItemGroupServiceImpl" />
+	<bean id="itemBasePriceService"
+		class="tavant.twms.domain.catalog.ItemBasePriceServiceImpl" />
+	<bean id="itemBasePriceRepository"
+		class="tavant.twms.domain.catalog.ItemBasePriceRepositoryImpl" />
+		
+		
+
+
+	<bean id="customerService"
+		class="tavant.twms.domain.policy.CustomerServiceImpl" />
+	<bean id="customerRepository"
+		class="tavant.twms.domain.policy.CustomerRepositoryImpl" />
+	<bean id="engineTierCtryMappingService"
+		class="tavant.twms.domain.inventory.EngineTierCtryMappingServiceImpl" />
+	<bean id="engineTierCtryMappingRepository"
+		class="tavant.twms.domain.inventory.EngineTierCtryMappingRepositoryImpl" />
+	<bean id="dieselTierWaiverService"
+		class="tavant.twms.domain.inventory.DieselTierWaiverServiceImpl" />
+	<bean id="dieselTierWaiverRepository"
+		class="tavant.twms.domain.inventory.DieselTierWaiverRepositoryImpl" />
+	<bean id="inventoryService"
+		class="tavant.twms.domain.inventory.InventoryServiceImpl" />
+	<bean id="inventoryItemRepository"
+		class="tavant.twms.domain.inventory.InventoryItemRepositoryImpl" />	
+	
+	<bean id="additionalMarketingInfoService"
+		class="tavant.twms.domain.policy.AdditionalMarketingInfoServiceImpl" />
+	<bean id="additionalMarketingInfoRepository"
+		class="tavant.twms.domain.policy.AdditionalMarketingInfoRepositoryImpl" />
+	<bean id="itemTypeMappingRepository"
+		class="tavant.twms.domain.catalog.ItemTypeMappingRepositoryImpl" />
+	<bean id="itemTypeMappingService"
+		class="tavant.twms.domain.catalog.ItemTypeMappingServiceImpl" />
+
+	<bean id="orgService" class="tavant.twms.domain.orgmodel.OrgServiceImpl" />
+	<bean id="additionalLaborService" 
+	                class="tavant.twms.domain.orgmodel.AdditionalLaborEligibilityServiceImpl" />
+	<bean id="minimumLaborRoundUpService" 
+	                class="tavant.twms.domain.orgmodel.MinimumLaborRoundUpServiceImpl" />
+	<bean id="organizationRepository" class="tavant.twms.domain.orgmodel.OrganizationRepositoryImpl" />
+	<bean id="userRepository" class="tavant.twms.domain.orgmodel.UserRepositoryImpl" init-method="init"/>
+	<bean id="technicianRepository" class="tavant.twms.domain.orgmodel.TechnicianRepositoryImpl" />
+	<bean id="roleRepository" class="tavant.twms.domain.orgmodel.RoleRepositoryImpl" />
+	<bean id="userGroupRepository" class="tavant.twms.domain.orgmodel.UserGroupRepositoryImpl" />
+	<bean id="dealershipRepository" class="tavant.twms.domain.orgmodel.DealershipRepositoryImpl" />
+	<bean id="serviceProviderRepository" class="tavant.twms.domain.orgmodel.ServiceProviderRepositoryImpl" />
+	<bean id="thirdPartyRepository" class="tavant.twms.domain.orgmodel.ThirdPartyRepositoryImpl" />
+    <bean id="userAuthenticationRepository" class="tavant.twms.domain.orgmodel.UserAuthenticationRepositoryImpl" />
+   	<bean id="marketingGroupRepository" class="tavant.twms.domain.orgmodel.MarketingGroupRepositoryImpl" />
+   	<bean id="brandRepository" class="tavant.twms.domain.orgmodel.BrandRepositoryImpl" />
+    <bean id="brandItemRepository" class="tavant.twms.domain.catalog.BrandItemRepositoryImpl" />
+    <bean id="supersessionItemRepository" class="tavant.twms.domain.catalog.SupersessionItemRepositoryImpl" />  
+    <bean id="warrantyRepository"
+		class="tavant.twms.domain.policy.WarrantyRepositoryImpl" />
+	<bean id="warrantyService"
+		class="tavant.twms.domain.policy.WarrantyServiceImpl" />
+	<bean id="policyDefinitionService"
+		class="tavant.twms.domain.policy.PolicyDefinitionServiceImpl" />
+	<bean id="bestApplicablePolicyEvaluator"
+		class="tavant.twms.domain.policy.SimpleBestApplicablePolicyEvaluator" />
+	<bean id="policyService"
+		class="tavant.twms.domain.policy.PolicyServiceImpl" />
+	<bean id="policyAdminService"
+		class="tavant.twms.domain.policy.PolicyAdminServiceImpl" />
+	<bean id="policyDefinitionRepository"
+		class="tavant.twms.domain.policy.PolicyDefinitionRepositoryImpl" />
+	<bean id="policyRepository"
+		class="tavant.twms.domain.policy.PolicyRepositoryImpl" />
+	<bean id="ownershipStateRepository"
+		class="tavant.twms.domain.policy.OwnershipStateRepositoryImpl" />
+	<bean id="policyRatesRepository"
+		class="tavant.twms.domain.policy.PolicyRatesRepositoryImpl" />
+	<bean id="policyRatesAdminService"
+		class="tavant.twms.domain.policy.PolicyRatesAdminServiceImpl" />
+	<bean id="businessUnitService"
+		class="tavant.twms.domain.bu.BusinessUnitServiceImpl" />
+	<bean id="businessUnitRepository"
+		class="tavant.twms.domain.bu.BusinessUnitRepositoryImpl" />
+	<bean id="logicalGroupRepository"
+		class="tavant.twms.domain.bu.LogicalGroupRepositoryImpl" />
+	<bean id="logicalGroupService"
+		class="tavant.twms.domain.bu.LogicalGroupServiceImpl" />
+	<bean id="configValueRepository"
+		class="tavant.twms.domain.bu.ConfigValueRepositoryImpl" />
+	<bean id="configValueService"
+		class="tavant.twms.domain.bu.ConfigValueServiceImpl" />
+	<bean id="sourceSystemBuMappingRepository"
+		class="tavant.twms.domain.bu.SourceSystemBuMappingRepositoryImpl" />
+	<bean id="extnWntyNotificationRepository"
+		class="tavant.twms.domain.policy.ExtnWntyNotificationRepositoryImpl" />
+		
+	<bean id="inventoryClassService"
+		class="tavant.twms.domain.inventory.InventoryClassServiceImpl"/>
+	<bean id="inventoryClassRepository"
+		class="tavant.twms.domain.inventory.InventoryClassRepositoryImpl"/>
+		
+	<bean id="invClassDlrMappingService"
+		class="tavant.twms.domain.inventory.InvClassDealerMappingServiceImpl"/>
+	<bean id="invClassDlrMappingRepository"
+		class="tavant.twms.domain.inventory.InvClassDealerMappingRepositoryImpl"/>
+
+	<!-- reports -->
+	<bean id="claimReportRepository"
+		class="tavant.twms.domain.reports.ClaimReportRepositoryImpl" />
+	<bean id="reportService"
+		class="tavant.twms.domain.reports.ReportServiceImpl" />
+	<bean id="treadReportService"
+		class="tavant.twms.domain.reports.TREADReportServiceImpl" />
+	<bean id="treadReportRepository"
+		class="tavant.twms.domain.reports.TREADReportRepositoryImpl" />
+		
+		<!--  beans for PDI  -->
+	<bean id="pdiService"
+		class="tavant.twms.domain.common.PdiServiceImpl" />
+	<bean id="pdiRepository"
+		class="tavant.twms.domain.common.PdiRepositoryImpl" />
+		
+	<bean id="twmsCommonUtil"
+		class="tavant.twms.common.TWMSCommonUtil" />	
+
+	<!--  Manage Uploads/Downloads -->
+	<bean id="uploadManagementService"
+		class="tavant.twms.domain.upload.controller.UploadManagementServiceImpl" />
+	<bean id="uploadManagementRepository"
+		class="tavant.twms.domain.upload.controller.UploadManagementRepositoryImpl" />
+	<bean id="warrantyReportGeneratorFactory"
+		class="tavant.twms.domain.download.WarrantyReportGeneratorFactory">
+		<property name="userReportGenerators">
+			<map>
+				<entry key="ClaimData">
+					<bean class="tavant.twms.domain.download.claim.ClaimReportGenerator">
+						<property name="reportContext" value="ClaimData" />
+					</bean>
+				</entry>
+				<entry key="ClaimPartsData">
+					<bean class="tavant.twms.domain.download.claim.ClaimReportGenerator">
+						<property name="reportContext" value="ClaimPartsData" />
+					</bean>
+				</entry>
+				<entry key="ClaimDetailData">
+					<bean class="tavant.twms.domain.download.claim.ClaimReportGenerator">
+						<property name="reportContext" value="ClaimDetailData" />
+					</bean>
+				</entry>
+				<entry key="ExtWntyClaimData">
+					<bean class="tavant.twms.domain.download.claim.ClaimReportGenerator">
+						<property name="reportContext" value="ExtWntyClaimData" />
+					</bean>
+				</entry>
+				<entry key="RecoveryReport">
+					<bean class="tavant.twms.domain.download.claim.RecoveryClaimReportGenerator">
+						<property name="reportContext" value="RecoveryReport" />
+					</bean>
+				</entry>
+				<entry key="RecoveryPartsReport">
+					<bean class="tavant.twms.domain.download.claim.RecoveryClaimReportGenerator">
+						<property name="reportContext" value="RecoveryPartsReport" />
+					</bean>
+				</entry>
+				<entry key="UnderwriterClaimData">
+					<bean class="tavant.twms.domain.download.claim.RecoveryClaimReportGenerator">
+						<property name="reportContext" value="UnderwriterClaimData" />
+					</bean>
+				</entry>
+				<entry key="MachineRetailReport">
+					<bean class="tavant.twms.domain.download.inventory.InventoryReportGenerator">
+						<property name="reportContext" value="MachineRetailReport" />
+					</bean>
+				</entry>
+				<entry key="EWPReport">
+					<bean class="tavant.twms.domain.download.inventory.InventoryReportGenerator">
+						<property name="reportContext" value="EWPReport" />
+					</bean>
+				</entry>
+				<entry key="ClaimFinancialReportData">
+					<bean class="tavant.twms.domain.download.claim.ClaimReportGenerator">
+						<property name="reportContext" value="ClaimFinancialReportData" />
+					</bean>
+				</entry>
+				<entry key="CustomerData">
+					<bean class="tavant.twms.domain.download.customer.CustomerReportGenerator">
+						<property name="reportContext" value="CustomerData" />
+					</bean>
+				</entry>
+				<entry key="PendingExtensions">
+					<bean class="tavant.twms.domain.download.extensions.ExtensionsReportGenerator">
+						<property name="reportContext" value="PendingExtensions" />
+					</bean>
+				</entry>
+			</map>
+		</property>
+	</bean>
+
+	<!-- reports -->
+
+	<bean id="failureStructureService"
+		class="tavant.twms.domain.failurestruct.FailureStructureServiceImpl" />
+	<bean id="failureStructureRepository"
+		class="tavant.twms.domain.failurestruct.FailureStructureRepositoryImpl" />
+
+	<bean id="watchListService"
+		class="tavant.twms.domain.watchlist.WatchListServiceImpl" />
+	<bean id="watchListRepository"
+		class="tavant.twms.domain.watchlist.WatchListRepositoryImpl" />
+
+	<bean id="typeSystem" class="tavant.twms.domain.rules.TypeSystem" />
+	<bean id="ruleRepository"
+		class="tavant.twms.rules.model.RuleRepositoryImpl" />
+	<bean id="sqlScript" class="tavant.twms.infra.SQLScript" />
+
+	<!-- Replaced & Installed Parts-Hussmann -->
+	<bean id="replacedInstalledPartsRepository"
+		class="tavant.twms.domain.claim.ReplacedInstalledPartsRepositoryImpl" />
+	<bean id="replacedInstalledPartsService"
+		class="tavant.twms.domain.claim.ReplacedInstalledPartsServiceImpl" />
+	
+	<!-- Part Return Services and Repository -->
+	<bean id="locationRepository"
+		class="tavant.twms.domain.partreturn.LocationRepositoryImpl" />
+	<bean id="warehouseRepository"
+		class="tavant.twms.domain.partreturn.WarehouseRepositoryImpl" />
+	<bean id="warehouseService"
+		class="tavant.twms.domain.partreturn.WarehouseServiceImpl" />
+	<bean id="carrierRepository"
+		class="tavant.twms.domain.partreturn.CarrierRepositoryImpl" />
+	<bean id="partReturnDefinitionRepository"
+		class="tavant.twms.domain.partreturn.PartReturnDefinitionRepositoryImpl" />
+	<bean id="partReplacedService"
+		class="tavant.twms.domain.claim.PartReplacedServiceImpl" />
+	<bean id="shipmentService"
+		class="tavant.twms.domain.partreturn.ShipmentServiceImpl" />
+	<bean id="shipmentRepository"
+		class="tavant.twms.domain.partreturn.ShipmentRepositoryImpl" />
+	<bean id="partReturnRepository"
+		class="tavant.twms.domain.partreturn.PartReturnRepositoryImpl" />
+	<bean id="carrierService" class="tavant.twms.domain.partreturn.CarrierServiceImpl"/>
+	<bean id="partReturnService"
+		class="tavant.twms.domain.partreturn.PartReturnServiceImpl">
+		<property name="paymentConditionEvaluators">
+			<map>
+				<entry key="PAY">
+					<bean
+						class="tavant.twms.domain.partreturn.PayWithNoReturnEvaluator" />
+				</entry>
+				<entry key="PAY_ON_RETURN">
+					<bean
+						class="tavant.twms.domain.partreturn.PayOnlyWithReturnEvaluator" />
+				</entry>
+				<entry key="PAY_ON_INSPECTION">
+					<bean
+						class="tavant.twms.domain.partreturn.PayOnlyWithInspectionEvaluator" />
+				</entry>
+			</map>
+		</property>
+	</bean>
+    <bean id="wpraService"
+		class="tavant.twms.domain.partreturn.WpraServiceImpl" />
+	<bean id="wpraRepository"
+		class="tavant.twms.domain.partreturn.WpraRepositoryImpl" />
+
+	<!-- Utility bean that provides convenience functions for manipulating criteria objects
+-->
+	<bean id="criteriaHelper" class="tavant.twms.infra.CriteriaHelper" />
+
+
+	<!-- Inbox views -->
+		<bean id="inboxViewRepository" class="tavant.twms.domain.query.view.InboxViewRepositoryImpl"/>
+		<bean id="inboxViewService" class="tavant.twms.domain.query.view.InboxViewServiceImpl"/>
+        <bean id="inboxViewFieldsFactory" class="tavant.twms.domain.query.view.WarrantyInboxViewFieldsFactory"/>
+	
+	<!-- default folder views -->
+		<bean id="defaultFolderViewRepository" class="tavant.twms.domain.view.DefaultFolderViewRepositoryImpl"/>
+		<bean id="defaultFolderViewService" class="tavant.twms.domain.view.DefaultFolderViewServiceImpl"/>
+	
+	
+	<!-- Utility bean that provides convenience functions for manipulating security objects
+-->
+	<bean id="securityHelper"
+		class="tavant.twms.security.SecurityHelper" />
+	<bean id="domainRepository"
+		class="tavant.twms.infra.DomainRepositoryImpl" />
+
+	<!-- Supplier related services -->
+	<bean id="itemMappingRepository"
+		class="tavant.twms.domain.supplier.ItemMappingRepositoryImpl" />
+	<bean id="supplierItemLocationRepository"
+		class="tavant.twms.domain.supplier.SupplierItemLocationRepositoryImpl" />
+	<bean id="contractRepository"
+		class="tavant.twms.domain.supplier.contract.ContractRepositoryImpl" />
+	<bean id="costLineItemRepository"
+		class="tavant.twms.domain.supplier.CostLineItemRepositoryImpl" />
+	<bean id="contractService"
+		class="tavant.twms.domain.supplier.contract.ContractServiceImpl" />
+	<bean id="contractShipmentService"
+		class="tavant.twms.domain.supplier.shipment.ContractShipmentServiceImpl" />
+
+	<!-- For Dealer Groupings -->
+	<bean id="dealerGroupRepository"
+		class="tavant.twms.domain.orgmodel.DealerGroupRepositoryImpl" />
+	<bean id="dealerGroupService"
+		class="tavant.twms.domain.orgmodel.DealerGroupServiceImpl" />
+	<bean id="dealerSchemeRepository"
+		class="tavant.twms.domain.orgmodel.DealerSchemeRepositoryImpl" />
+	<bean id="dealerSchemeService"
+		class="tavant.twms.domain.orgmodel.DealerSchemeServiceImpl" />
+
+	<!-- For User Groupings -->
+	<bean id="userClusterRepository"
+		class="tavant.twms.domain.orgmodel.UserClusterRepositoryImpl" />
+	<bean id="userClusterService"
+		class="tavant.twms.domain.orgmodel.UserClusterServiceImpl" />
+	<bean id="userSchemeRepository"
+		class="tavant.twms.domain.orgmodel.UserSchemeRepositoryImpl" />
+	<bean id="loaService"
+		class="tavant.twms.domain.loa.LimitOfAuthoritySchemeServiceImpl" />	
+	<bean id="limitOfAuthoritySchemeRepository"
+		class="tavant.twms.domain.loa.LimitOfAuthoritySchemeRepositoryImpl" />			
+		
+	
+	<bean id="userSchemeService"
+		class="tavant.twms.domain.orgmodel.UserSchemeServiceImpl" />
+
+	<!--  Category related repository / services -->
+	<bean id="categoryService"
+		class="tavant.twms.domain.category.CategoryServiceImpl" />
+	<bean id="categoryRepository"
+		class="tavant.twms.domain.category.CategoryRepositoryImpl" />
+    <bean id="dealerSummaryService"
+        class="tavant.twms.domain.claim.payment.definition.modifiers.DealerSummaryServiceImpl"/>
+
+	<!-- For Campaign -->
+	
+	<bean id="campaignValidationService"
+		class="tavant.twms.domain.campaign.validation.CampaignValidationServiceImpl" />
+	<bean id="campaignClaimValidationService"
+		class="tavant.twms.domain.campaign.validation.CampaignClaimValidationService" />
+	<bean id="campaignAdminService"
+		class="tavant.twms.domain.campaign.CampaignAdminServiceImpl" />
+	<bean id="campaignRepository"
+		class="tavant.twms.domain.campaign.CampaignRepositoryImpl" />
+	<bean id="campaignAssignmentRepository"
+		class="tavant.twms.domain.campaign.CampaignAssignmentRepositoryImpl" />
+	<bean id="campaignAssignmentService"
+		class="tavant.twms.domain.campaign.CampaignAssignmentServiceImpl" />
+	<bean id="campaignStatusService"
+		class="tavant.twms.domain.campaign.CampaignStatusServiceImpl" />
+	<bean id="campaignStatusRepository"
+		class="tavant.twms.domain.campaign.CampaignStatusRepositoryImpl" />
+	<bean id="campaignService" class="tavant.twms.domain.campaign.CampaignServiceImpl" />
+	
+	<!-- For Document Upload -->
+	<bean id="documentRepository"
+		class="tavant.twms.domain.common.DocumentRepositoryImpl" />
+	<bean id="documentService"
+		class="tavant.twms.domain.common.DocumentServiceImpl" /> 
+	<!-- For Upload History -->
+	<bean id="uploadHistoryRepository"
+		class="tavant.twms.domain.upload.history.UploadHistoryRepositoryImpl" />
+	<bean id="uploadHistoryService"
+		class="tavant.twms.domain.upload.history.UploadHistoryServiceImpl" />
+
+	<!-- For Login History -->
+	<bean id="loginHistoryRepository" class="tavant.twms.domain.login.LoginHistoryRepositoryImpl" />
+	<bean id="loginHistoryService" class="tavant.twms.domain.login.LoginHistoryServiceImpl"/>
+
+	<!-- For Admin Retail Use case will move these to Inventory Service later.
+-->
+	<bean id="retailItemsRepository"
+		class="tavant.twms.domain.inventory.RetailItemsRepositoryImpl" />
+	<bean id="retailItemsService"
+		class="tavant.twms.domain.inventory.RetailItemsServiceImpl" />
+    <bean id="dealerSummaryRepository"
+          class="tavant.twms.domain.claim.payment.definition.modifiers.DealerSummaryRepositoryImpl"/>
+
+    <!-- For Admin upload Functionality -->
+	<bean id="dataUploadController" class="tavant.twms.domain.upload.controller.DataUploadController" />
+	<bean id="fileReceiver" class="tavant.twms.domain.upload.staging.FileReceiverImpl" />
+	<bean id="dataUploader" class="tavant.twms.domain.upload.staging.DataUploader" />
+	<bean id="dataValidator" class="tavant.twms.domain.upload.staging.DataValidator" />
+	<bean id="dataPopulator" class="tavant.twms.domain.upload.staging.DataPopulator" />
+	<bean id="blobUtil" class="tavant.twms.domain.upload.controller.BlobUtil" />
+	<bean id="dbLock" class="tavant.twms.domain.upload.connection.DbLock" scope="prototype" />
+	<bean id="stagingDataUploader" class="tavant.twms.domain.upload.staging.StagingDataUploader" />
+	<bean id="stagingDAOFactory" class="tavant.twms.domain.upload.staging.StagingDAOFactory" />
+	
+	<bean id="postUplaodActionFactory" class="tavant.twms.domain.upload.controller.PostUplaodActionFactory">
+		<property name="transformPostUploadActions">
+			<map>
+				<entry key="Cost Price Upload">
+					<bean class="tavant.twms.domain.upload.controller.CostPricePostUploadAction">
+						<property name="stagingTable" value="STG_COST_PRICE" />
+					</bean>
+				</entry>
+				
+				<entry key="Supplier Decision Upload">
+					<bean class="tavant.twms.integration.layer.upload.SupplierDecisionUploadAction">
+						<property name="stagingTable" value="STG_COST_PRICE" />
+					</bean>
+				</entry>
+			</map>
+		</property>
+	</bean>
+	
+	<bean id="errorReportGeneratorFactory" class="tavant.twms.domain.upload.errormgt.ErrorReportGeneratorFactory">
+		<property name="defaultErrorReportGenerator">
+			<bean class="tavant.twms.domain.upload.errormgt.WarrantyErrorReportGenerator" />
+		</property>
+	</bean>
+
+	<bean id="templateTransformerFactory"
+		class="tavant.twms.domain.upload.controller.TemplateTransformerFactory">
+		<property name="templateWiseTransformers">
+			<map>
+				<entry key="Cost Price Upload">
+					<bean class="tavant.twms.domain.upload.controller.MetadataBasedTemplateTransformer">
+					<property name="stagingTable" value="STG_COST_PRICE" />
+					</bean>
+				</entry>
+				<entry key="Warranty Coverages Upload">
+					<bean class="tavant.twms.domain.upload.controller.MetadataBasedTemplateTransformer">
+						<property name="stagingTable" value="STG_WARRANTY_COVERAGES" />
+					</bean>
+				</entry>
+			</map>
+		</property>
+	</bean>
+
+	<bean id="dataUploadConfig"
+		class="tavant.twms.domain.upload.controller.DataUploadConfig">
+		<property name="uploadRecordsLimit">
+			<value>${uploadRecordsLimit}</value>
+		</property>
+		<property name="exportRecordsLimit">
+			<value>${exportRecordsLimit}</value>
+		</property>
+		<property name="exclusiveLockingMode">
+			<value>${exclusiveLockingMode}</value>
+		</property>
+		<property name="schemaName">
+			<value>${databaseSchemaName}</value>
+		</property>
+		<property name="tempLocation">
+			<value>${tmp.deafault.location}</value>
+		</property>
+	</bean>
+	<!-- For Admin upload Functionality -->
+
+    <!--  For bean to XML Version -->
+   <!--bean id="lineItemGroupAuditXMLConverter" class="tavant.twms.domain.claim.payment.LineItemGroupAuditXmlConverter" /-->
+   <bean id="partyXMLConverter" class="tavant.twms.domain.orgmodel.PartyXMLConverter" />
+   <bean id="userXMLConverter" class="tavant.twms.domain.orgmodel.UserXMLConverter" />
+   <bean id="inventoryItemXMLConverter" class="tavant.twms.domain.inventory.InventoryItemXMLConverter" />
+   <bean id="itemXMLConverter" class="tavant.twms.domain.catalog.ItemXMLConverter" />
+   <bean id="dealershipXMLConverter" class="tavant.twms.domain.orgmodel.DealershipXMLConverter" />
+   <bean id="faultCodeDefinitionConverter" class="tavant.twms.domain.failurestruct.FaultCodeDefinitionConverter" />
+   <bean id="serviceProcedureDefinitionConverter" class="tavant.twms.domain.failurestruct.ServiceProcedureDefinitionConverter" />
+   <bean id="xmlBeanConverter" abstract="true" class="tavant.twms.infra.xstream.XMLBeanConverter" />
+   <bean id="inventoryScrapTransactionXMLConverter" class="tavant.twms.domain.inventory.InventoryScrapTransactionXMLConverter" init-method="initialize" />
+   <bean id="inventoryStolenTransactionXMLConverter" class="tavant.twms.domain.inventory.InventoryStolenTransactionXMLConverter" init-method="initialize" />
+   <bean id="listOfValuesXMLConverter" class="tavant.twms.domain.common.ListOfValuesXMLConverter" />
+   <bean id="claimXMLConverter" class="tavant.twms.domain.claim.ClaimXMLConverter" init-method="initialize">   
+    <property name="customXMLConverters">
+		<list>
+			<ref bean="userXMLConverter" />
+			<ref bean="dealershipXMLConverter" />
+			<ref bean="inventoryItemXMLConverter" />
+			<ref bean="itemXMLConverter" />
+            <!-- ref bean="lineItemGroupAuditXMLConverter" /-->
+            <ref bean="partyXMLConverter" />
+            <ref bean="listOfValuesXMLConverter" />
+        </list>
+	</property>
+	</bean>
+	<bean id="policyXMLConverter"
+		class="tavant.twms.domain.policy.PolicyXMLConverter"
+		init-method="initialize" />
+	<bean id="ruleXMLConverter"
+		class="tavant.twms.domain.rules.RuleXMLConverter"
+		init-method="initialize" />
+	<bean id="claimAuditPersistenceListener"
+		class="tavant.twms.domain.claim.ClaimAuditPersistenceListener" />
+	<bean id="partReturnPersistenceListener"
+		class="tavant.twms.domain.partreturn.PartReturnPersistenceListener" />	
+
+	<bean id="lovRepository"
+		class="tavant.twms.domain.common.LovRepositoryImpl">
+		<property name="repoMap">
+			<map>
+				<entry key="SmrReason">
+					<bean
+						class="tavant.twms.infra.GenericRepositoryImpl">
+						<property name="entityType">
+							<value type="java.lang.Class">
+								tavant.twms.domain.common.SmrReason
+							</value>
+						</property>
+					</bean>
+				</entry>
+				<entry key="DocumentType">
+					<bean
+						class="tavant.twms.infra.GenericRepositoryImpl">
+						<property name="entityType">
+							<value type="java.lang.Class">
+								tavant.twms.domain.common.DocumentType
+							</value>
+						</property>
+					</bean>
+				</entry>
+				
+				<entry key="ClaimCompetitorModel">
+					<bean
+						class="tavant.twms.infra.GenericRepositoryImpl">
+						<property name="entityType">
+							<value type="java.lang.Class">
+								tavant.twms.domain.common.ClaimCompetitorModel
+							</value>
+						</property>
+					</bean>
+				</entry>
+				<entry key="FieldModificationInventoryStatus">
+					<bean
+						class="tavant.twms.infra.GenericRepositoryImpl">
+						<property name="entityType">
+							<value type="java.lang.Class">
+								tavant.twms.domain.campaign.FieldModificationInventoryStatus
+										</value>
+			</property>
+					</bean>
+				</entry>
+				<entry key="Suppliers">
+					<bean
+						class="tavant.twms.infra.GenericRepositoryImpl">
+						<property name="entityType">
+							<value type="java.lang.Class">
+								tavant.twms.domain.common.Suppliers
+							</value>
+						</property>
+					</bean>
+				</entry>
+				<entry key="AccountabilityCode">
+					<bean
+						class="tavant.twms.infra.GenericRepositoryImpl">
+						<property name="entityType">
+							<value type="java.lang.Class">
+								tavant.twms.domain.common.AccountabilityCode
+							</value>
+						</property>
+					</bean>
+				</entry>
+
+				<entry key="RejectionReason">
+					<bean
+						class="tavant.twms.infra.GenericRepositoryImpl">
+						<property name="entityType">
+							<value type="java.lang.Class">
+								tavant.twms.domain.common.RejectionReason
+							</value>
+						</property>
+					</bean>
+				</entry>
+				<entry key="AcceptanceReason">
+					<bean
+						class="tavant.twms.infra.GenericRepositoryImpl">
+						<property name="entityType">
+							<value type="java.lang.Class">
+								tavant.twms.domain.common.AcceptanceReason
+							</value>
+						</property>
+					</bean>
+				</entry>
+				<entry key="LaborRateType">
+					<bean
+						class="tavant.twms.infra.GenericRepositoryImpl">
+						<property name="entityType">
+							<value type="java.lang.Class">
+								tavant.twms.domain.common.LaborRateType
+							</value>
+						</property>
+					</bean>
+				</entry>
+				<entry key="AcceptanceReasonForCP">
+					<bean
+						class="tavant.twms.infra.GenericRepositoryImpl">
+						<property name="entityType">
+							<value type="java.lang.Class">
+								tavant.twms.domain.common.AcceptanceReasonForCP
+							</value>
+						</property>
+					</bean>
+				</entry>
+				<entry key="FailureReason">
+					<bean
+						class="tavant.twms.infra.GenericRepositoryImpl">
+						<property name="entityType">
+							<value type="java.lang.Class">
+								tavant.twms.domain.partreturn.FailureReason
+							</value>
+						</property>
+					</bean>
+				</entry>
+				
+				<entry key="PartAcceptanceReason">
+					<bean
+						class="tavant.twms.infra.GenericRepositoryImpl">
+						<property name="entityType">
+							<value type="java.lang.Class">
+								tavant.twms.domain.partreturn.PartAcceptanceReason
+							</value>
+						</property>
+					</bean>
+				</entry>
+				<entry key="SupplierPartAcceptanceReason">
+					<bean
+						class="tavant.twms.infra.GenericRepositoryImpl">
+						<property name="entityType">
+							<value type="java.lang.Class">
+								tavant.twms.domain.partreturn.SupplierPartAcceptanceReason
+							</value>
+						</property>
+					</bean>
+				</entry>
+				<entry key="SupplierPartRejectionReason">
+					<bean
+						class="tavant.twms.infra.GenericRepositoryImpl">
+						<property name="entityType">
+							<value type="java.lang.Class">
+								tavant.twms.domain.partreturn.SupplierPartRejectionReason
+							</value>
+						</property>
+					</bean>
+				</entry>
+				<entry key="RecoveryClaimAcceptanceReason">
+					<bean class="tavant.twms.infra.GenericRepositoryImpl">
+						<property name="entityType">
+						<value type="java.lang.Class">tavant.twms.domain.common.RecoveryClaimAcceptanceReason</value>
+						</property>
+					</bean>
+				</entry>
+				<entry key="RecoveryClaimRejectionReason">
+					<bean class="tavant.twms.infra.GenericRepositoryImpl">
+						<property name="entityType">
+							<value type="java.lang.Class">tavant.twms.domain.common.RecoveryClaimRejectionReason</value>
+						</property>
+					</bean>
+				</entry>
+				<entry key="RecoveryClaimCannotRecoverReason">
+					<bean class="tavant.twms.infra.GenericRepositoryImpl">
+						<property name="entityType">
+						<value type="java.lang.Class">tavant.twms.domain.common.RecoveryClaimCannotRecoverReason</value>
+						</property>
+					</bean>
+				</entry>
+				<entry key="ManufacturingSiteInventory">
+					<bean
+						class="tavant.twms.infra.GenericRepositoryImpl">
+						<property name="entityType">
+							<value type="java.lang.Class">
+								tavant.twms.domain.common.ManufacturingSiteInventory
+							</value>
+						</property>
+					</bean>
+				</entry>
+				<entry key="CampaignClass">
+					<bean class="tavant.twms.infra.GenericRepositoryImpl">
+						<property name="entityType">
+							<value type="java.lang.Class">
+								tavant.twms.domain.campaign.CampaignClass
+							</value>
+						</property>
+					</bean>
+				</entry>
+
+                <entry key="SellingEntity">
+					<bean class="tavant.twms.infra.GenericRepositoryImpl">
+						<property name="entityType">
+							<value type="java.lang.Class">
+								tavant.twms.domain.common.SellingEntity
+							</value>
+						</property>
+					</bean>
+				</entry>
+				
+				<entry key="ReportType">
+					<bean class="tavant.twms.infra.GenericRepositoryImpl">
+						<property name="entityType">
+							<value type="java.lang.Class">
+								tavant.twms.domain.common.ReportType
+							</value>
+						</property>
+					</bean>
+				</entry>
+				<entry key="Oem">
+					<bean class="tavant.twms.infra.GenericRepositoryImpl">
+						<property name="entityType">
+							<value type="java.lang.Class">
+								tavant.twms.domain.common.Oem
+							</value>
+						</property>
+					</bean>
+				</entry>
+				<entry key="AdditionalComponentType">
+					<bean class="tavant.twms.infra.GenericRepositoryImpl">
+						<property name="entityType">
+						<value type="java.lang.Class">tavant.twms.domain.common.AdditionalComponentType</value>
+						</property>
+					</bean>
+				</entry>
+				<entry key="AdditionalComponentSubType">
+					<bean class="tavant.twms.infra.GenericRepositoryImpl">
+						<property name="entityType">
+						<value type="java.lang.Class">tavant.twms.domain.common.AdditionalComponentSubType</value>
+						</property>
+					</bean>
+				</entry>
+				<entry key="UnitDocumentType">
+					<bean
+						class="tavant.twms.infra.GenericRepositoryImpl">
+						<property name="entityType">
+							<value type="java.lang.Class">
+								tavant.twms.domain.common.UnitDocumentType
+							</value>
+						</property>
+					</bean>
+				</entry>
+				<entry key="PutOnHoldReason">
+					<bean
+						class="tavant.twms.infra.GenericRepositoryImpl">
+						<property name="entityType">
+							<value type="java.lang.Class">
+								tavant.twms.domain.common.PutOnHoldReason
+							</value>
+						</property>
+					</bean>
+				</entry>
+				<entry key="RequestInfoFromUser">
+					<bean
+						class="tavant.twms.infra.GenericRepositoryImpl">
+						<property name="entityType">
+							<value type="java.lang.Class">
+								tavant.twms.domain.common.RequestInfoFromUser
+							</value>
+						</property>
+					</bean>
+				</entry>
+				<entry key="RecoveryClaimDocumentType">
+					<bean
+						class="tavant.twms.infra.GenericRepositoryImpl">
+						<property name="entityType">
+							<value type="java.lang.Class">
+								tavant.twms.domain.common.RecoveryClaimDocumentType
+							</value>
+						</property>
+					</bean>
+				</entry>
+				<entry key="DiscountType">
+					<bean
+						class="tavant.twms.infra.GenericRepositoryImpl">
+						<property name="entityType">
+							<value type="java.lang.Class">
+								tavant.twms.domain.common.DiscountType
+							</value>
+						</property>
+					</bean>
+				</entry>
+            </map>
+		</property>
+		<property name="classMap">
+			<map>
+				<entry key="SmrReason">
+					<value type="java.lang.Class">
+						tavant.twms.domain.common.SmrReason
+					</value>
+				</entry>
+				<entry key="DocumentType">
+					<value type="java.lang.Class">
+						tavant.twms.domain.common.DocumentType
+					</value>
+				</entry>
+				<entry key="ClaimCompetitorModel">
+					<value type="java.lang.Class">
+						tavant.twms.domain.common.ClaimCompetitorModel
+					</value>
+				</entry>
+				<entry key="FieldModificationInventoryStatus">
+					<value type="java.lang.Class">
+						tavant.twms.domain.campaign.FieldModificationInventoryStatus
+					</value>
+				</entry>
+				<entry key="Suppliers">
+					<value type="java.lang.Class">
+						tavant.twms.domain.common.Suppliers
+					</value>
+				</entry>
+				<entry key="AccountabilityCode">
+					<value type="java.lang.Class">
+						tavant.twms.domain.common.AccountabilityCode
+					</value>
+				</entry>
+				<entry key="FailureReason">
+					<value type="java.lang.Class">
+						tavant.twms.domain.partreturn.FailureReason
+					</value>
+				</entry>
+				<entry key="AcceptanceReason">
+					<value type="java.lang.Class">
+						tavant.twms.domain.common.AcceptanceReason
+					</value>
+				</entry>
+				<entry key="LaborRateType">
+					<value type="java.lang.Class">
+						tavant.twms.domain.common.LaborRateType
+					</value>
+				</entry>
+				<entry key="AcceptanceReasonForCP">
+					<value type="java.lang.Class">
+						tavant.twms.domain.common.AcceptanceReasonForCP
+					</value>
+				</entry>
+				<entry key="RejectionReason">
+					<value type="java.lang.Class">
+						tavant.twms.domain.common.RejectionReason
+					</value>
+				</entry>
+				<entry key="PartAcceptanceReason">
+					<value type="java.lang.Class">
+						tavant.twms.domain.partreturn.PartAcceptanceReason
+					</value>
+				</entry>
+				<entry key="SupplierPartAcceptanceReason">
+					<value type="java.lang.Class">
+						tavant.twms.domain.partreturn.SupplierPartAcceptanceReason
+					</value>
+				</entry>
+				<entry key="SupplierPartRejectionReason">
+					<value type="java.lang.Class">
+						tavant.twms.domain.partreturn.SupplierPartRejectionReason
+					</value>
+				</entry>
+				<entry key="RecoveryClaimAcceptanceReason">
+					<value type="java.lang.Class">tavant.twms.domain.common.RecoveryClaimAcceptanceReason</value>
+				</entry>
+				<entry key="RecoveryClaimRejectionReason">
+					<value type="java.lang.Class">tavant.twms.domain.common.RecoveryClaimRejectionReason</value>
+				</entry>
+				<entry key="RecoveryClaimCannotRecoverReason">
+					<value type="java.lang.Class">tavant.twms.domain.common.RecoveryClaimCannotRecoverReason</value>
+				</entry>
+				<entry key="ManufacturingSiteInventory">
+					<value type="java.lang.Class">tavant.twms.domain.common.ManufacturingSiteInventory</value>
+				</entry>
+				<entry key="CampaignClass">
+					<value type="java.lang.Class">
+						tavant.twms.domain.campaign.CampaignClass
+					</value>
+				</entry>
+                <entry key="SellingEntity">
+                    <value type="java.lang.Class">tavant.twms.domain.common.SellingEntity</value>
+                </entry>
+                <entry key="ReportType">
+                    <value type="java.lang.Class">tavant.twms.domain.common.ReportType</value>
+                </entry>
+                <entry key="Oem">
+                    <value type="java.lang.Class">tavant.twms.domain.common.Oem</value>
+                </entry>
+                 <entry key="AdditionalComponentType">
+                    <value type="java.lang.Class">tavant.twms.domain.common.AdditionalComponentType</value>
+                </entry>
+                 <entry key="AdditionalComponentSubType">
+                    <value type="java.lang.Class">tavant.twms.domain.common.AdditionalComponentSubType</value>
+                </entry>
+                <entry key="UnitDocumentType">
+					<value type="java.lang.Class">
+						tavant.twms.domain.common.UnitDocumentType
+					</value>
+				</entry>
+				<entry key="PutOnHoldReason">
+					<value type="java.lang.Class">
+						tavant.twms.domain.common.PutOnHoldReason
+					</value>
+				</entry>
+				<entry key="RequestInfoFromUser">
+					<value type="java.lang.Class">
+						tavant.twms.domain.common.RequestInfoFromUser
+					</value>
+				</entry>
+				<entry key="RecoveryClaimDocumentType">
+					<value type="java.lang.Class">
+						tavant.twms.domain.common.RecoveryClaimDocumentType
+					</value>
+				</entry>
+				<entry key="DiscountType">
+					<value type="java.lang.Class">
+						tavant.twms.domain.common.DiscountType
+					</value>
+				</entry>
+            </map>
+		</property>
+	</bean>
+
+	<bean id="localizedMessagesRepository"
+		class="tavant.twms.infra.i18n.LocalizedMessagesRepositoryImpl" />
+	<bean id="localizedMessagesService"
+		class="tavant.twms.infra.i18n.LocalizedMessagesServiceImpl">
+		<property name="messageRepositoryEnabled"
+			value="${i18n.repository.enabled}" />
+	</bean>
+
+	<bean id="defaultLocale"
+		class="tavant.twms.infra.i18n.UserLocale">
+		<constructor-arg index="0" value="en" />
+		<constructor-arg index="1" value="US" />
+	</bean>
+
+	<bean id="labelRepository"
+		class="tavant.twms.domain.common.LabelRepositoryImpl" />
+	<bean id="labelService"
+		class="tavant.twms.domain.common.LabelServiceImpl" />
+
+	<!-- Security Related -->
+	<bean id="domainAwareContext"
+		class="tavant.twms.security.condition.context.DomainAwareContext" />
+	<!--  Claim Payment -->
+	
+	<bean id="costCategoryRepository"
+		class="tavant.twms.domain.claim.payment.CostCategoryRepositoryImpl" init-method="init" />
+	<bean id="paymentAmountNamingConvention"
+		class="tavant.twms.domain.claim.payment.DefaultNamingConvention" />
+	<bean id="paymentService"
+		class="tavant.twms.domain.claim.payment.PaymentServiceImpl">
+		<property name="paymentComputers">
+			<map>
+			<entry key="Claim Amount">
+				<bean
+					class="tavant.twms.domain.claim.payment.TotalClaimPaymentComputer" />
+			</entry>
+				<entry key="Oem Parts">
+					<bean
+						class="tavant.twms.domain.claim.payment.OEMPaymentComputer">
+						<property name="externalServiceEnabled"
+							value="${pricecheck.externalservice.enabled}" />
+					</bean>
+				</entry>
+				<entry key="Non Oem Parts">
+					<bean 
+						class="tavant.twms.domain.claim.payment.NonOEMPaymentComputer"  />
+				</entry>
+				<entry key="Travel By Distance">
+					<bean
+						class="tavant.twms.domain.claim.payment.TravelByDistancePaymentComputer" />
+				</entry>
+				<entry key="Travel by Hours">
+					<bean
+						class="tavant.twms.domain.claim.payment.TravelByHoursPaymentComputer" />
+				</entry>
+				<entry key="Additional Travel Hours">
+					<bean
+						class="tavant.twms.domain.claim.payment.TravelByAdditionalHoursPaymentComputer" />
+				</entry>
+				<entry key="Travel By Trip">
+					<bean
+						class="tavant.twms.domain.claim.payment.TravelByTripPaymentComputer" />
+				</entry>
+				<entry key="Labor">
+					<bean
+						class="tavant.twms.domain.claim.payment.LaborPaymentComputer" />
+				</entry>
+				<entry key="Item Freight And Duty">
+					<bean
+						class="tavant.twms.domain.claim.payment.ItemFreightDutyComputer" />
+				</entry>
+				<entry key="Meals">
+					<bean
+						class="tavant.twms.domain.claim.payment.MealsExpenseComputer" />
+				</entry>
+				<entry key="Parking">
+					<bean
+						class="tavant.twms.domain.claim.payment.ParkingExpenseComputer" />
+				</entry>				
+				<entry key="Miscellaneous Parts">
+					<bean
+						class="tavant.twms.domain.claim.payment.MiscPartsPaymentComputer" />
+				</entry>
+				<entry key="Per Diem">
+					<bean
+						class="tavant.twms.domain.claim.payment.PerDiemComputer" />
+				</entry>
+				<entry key="Rental Charges">
+					<bean
+						class="tavant.twms.domain.claim.payment.RentalChargesComputer" />
+				</entry>
+				<entry key="Local Purchase">
+					<bean
+						class="tavant.twms.domain.claim.payment.FlatRatesComputer">
+						<property name="costCategoryCode"
+							value="LOCAL_PURCHASE" />
+					</bean>
+				</entry>
+				<entry key="Tolls">
+					<bean
+						class="tavant.twms.domain.claim.payment.FlatRatesComputer">
+						<property name="costCategoryCode"
+							value="TOLLS" />
+					</bean>
+				</entry>
+				<entry key="Other Freight And Duty">
+					<bean
+						class="tavant.twms.domain.claim.payment.FlatRatesComputer">
+						<property name="costCategoryCode"
+							value="OTHER_FREIGHT_DUTY" />
+					</bean>
+				</entry>
+				<entry key="Others">
+					<bean
+						class="tavant.twms.domain.claim.payment.FlatRatesComputer">
+						<property name="costCategoryCode"
+							value="OTHERS" />
+					</bean>
+				</entry>
+				<entry key="Handling Fee">
+					<bean
+						class="tavant.twms.domain.claim.payment.HandlingFeeComputer" />
+				</entry>
+				<entry key="Transportation">
+					<bean
+						class="tavant.twms.domain.claim.payment.TransportationExpenseComputer" />
+				</entry>
+				<entry key="Travel">
+					<bean
+						class="tavant.twms.domain.claim.payment.TravelTotalPaymentComputer" />
+				</entry>
+				<entry key="Late Fee">
+					<bean
+						class="tavant.twms.domain.claim.payment.LateFeeComputer" />
+				</entry>				
+
+			</map>
+		</property>
+	</bean>
+	<!--<bean id="extendedPaymentService"-->
+		<!--class="tavant.twms.domain.claim.payment.ExtendedPaymentServiceImpl">-->
+		<!--<property name="paymentComputers">-->
+			<!--<map>-->
+				<!--<entry key="AdditionalCostCategory">-->
+					<!--<bean class="tavant.twms.domain.claim.payment.computers.AdditionalCostCategoriesPaymentComputer" />-->
+				<!--</entry>-->
+			<!--</map>-->
+		<!--</property>-->
+	<!--</bean>-->
+	<!--  Claim Payment definition -->
+	<bean id="criteriaBasedValueRepository"
+		class="tavant.twms.domain.claim.payment.definition.modifiers.CriteriaBasedValueRepositoryImpl" />
+	<bean id="paymentModifierRepository"
+		class="tavant.twms.domain.claim.payment.definition.modifiers.PaymentModifierRepositoryImpl" />
+	<bean id="paymentModifierAdminService"
+		class="tavant.twms.domain.claim.payment.definition.modifiers.PaymentModifierAdminServiceImpl" />
+
+	<bean id="paymentDefinitionRepository"
+		class="tavant.twms.domain.claim.payment.definition.PaymentDefinitionRepositoryImpl" />
+	<bean id="paymentSectionRepository"
+		class="tavant.twms.domain.claim.payment.definition.PaymentSectionRepositoryImpl" />
+	<bean id="paymentDefinitionAdminService"
+		class="tavant.twms.domain.claim.payment.definition.PaymentDefinitionAdminServiceImpl" />
+
+	<!--  Claim Payment Rates -->
+	<bean id="itemPriceAdminService"
+		class="tavant.twms.domain.claim.payment.rates.ItemPriceAdminServiceImpl">
+	</bean>
+	<bean id="administeredItemPriceRepository"
+		class="tavant.twms.domain.claim.payment.rates.AdministeredItemPriceRepositoryImpl" />
+
+	<bean id="businessUnitFilter"
+		class="tavant.twms.domain.bu.BusinessUnitFilter">
+	</bean>
+	
+	<bean id="serviceProviderFilter"
+		class="tavant.twms.domain.inventory.ServiceProviderFilter">
+	</bean>
+
+	<bean id="disableDeactivationFilter"
+		class="tavant.twms.domain.common.DisableDeactivationFilter">
+	</bean>
+	
+	<bean id="disableSpecificBuSelectionFilter"
+		class="tavant.twms.domain.common.DisableSpecificBuSelectionFilter">
+	</bean>
+
+	<bean id="laborRatesRepository"
+		class="tavant.twms.domain.claim.payment.rates.LaborRatesRepositoryImpl" />
+
+	<bean id="laborRatesAdminService"
+		class="tavant.twms.domain.claim.payment.rates.LaborRatesAdminServiceImpl" />
+		
+	 <bean id="laborHistoryRepository" class="tavant.twms.domain.claim.payment.rates.LaborHistoryRepositoryImpl"/>
+	 
+	 <bean id="partPricesRepository"
+		class="tavant.twms.domain.claim.payment.rates.PartPricesRepositoryImpl" />
+
+	<bean id="partPriceAdminService"
+		class="tavant.twms.domain.claim.payment.rates.PartPriceAdminServiceImpl" />
+		
+	 <bean id="partPriceHistoryRepository" class="tavant.twms.domain.claim.payment.rates.PartPriceHistoryRepositoryImpl"/>
+
+	<bean id="travelRatesRepository"
+		class="tavant.twms.domain.claim.payment.rates.TravelRatesRepositoryImpl" />
+	<bean id="travelRatesAdminService"
+		class="tavant.twms.domain.claim.payment.rates.TravelRatesAdminServiceImpl" />
+
+	<bean id="criteriaHibernateHelper"
+		class="tavant.twms.domain.claim.CriteriaHibernateHelper" />
+
+	<!--  Inventory Transaction -->
+	<bean id="invTransactionRepository"
+		class="tavant.twms.domain.inventory.InventoryTransactionRepositoryImpl" />
+	<bean id="invTransactionService"
+		class="tavant.twms.domain.inventory.InventoryTransactionServiceImpl" />
+	<!-- Claim Number Generation -->
+	<bean id="claimNumberPatternRepository"
+		class="tavant.twms.domain.claim.ClaimNumberPatternRepositoryImpl" />
+	<bean id="claimNumberPatternService"
+		class="tavant.twms.domain.claim.ClaimNumberPatternServiceImpl" />
+	<!-- WPRA Number Generation -->
+	<bean id="wpraNumberPatternRepository"
+		class="tavant.twms.domain.partreturn.WpraNumberPatternRepositoryImpl" />	
+	<bean id="wpraNumberPatternService"
+		class="tavant.twms.domain.partreturn.WpraNumberPatternServiceImpl" />
+
+	<!-- For Addres Book -->
+	<bean id ="addressBookService" class="tavant.twms.domain.orgmodel.AddressBookServiceImpl"/>
+	<bean id="addressBookRepository" class="tavant.twms.domain.orgmodel.AddressBookRepositoryImpl" />
+    <bean id="addressBookAddressMappingRepository" class="tavant.twms.domain.orgmodel.AddressBookAddressMappingRepositoryImpl"/>
+    <bean id ="msaService" class="tavant.twms.domain.orgmodel.MSAServiceImpl"/>
+	<bean id="msaRepository" class="tavant.twms.domain.orgmodel.MSARepositoryImpl" init-method="init" />
+    
+    <bean id="supplierRepository" class="tavant.twms.domain.orgmodel.SupplierRepositoryImpl"></bean>
+    <bean id="supplierService" class="tavant.twms.domain.orgmodel.SupplierServiceImpl"></bean>
+    <bean id="itemMappingService" class="tavant.twms.domain.supplier.ItemMappingServiceImpl"></bean> 
+    <bean id="supplierItemLocationService" class="tavant.twms.domain.supplier.SupplierItemLocationServiceImpl"></bean>
+    
+    
+    <!-- For Additional Attributes -->
+    <bean id="additionalAttributesRepository" class="tavant.twms.domain.additionalAttributes.AdditionalAttributeRepositoryImpl"></bean>
+    <bean id="additionalAttributesService" class="tavant.twms.domain.additionalAttributes.AdditionalAttributesServiceImpl"></bean>
+    <bean id="attributeAssociationRepository" class="tavant.twms.domain.additionalAttributes.AttributeAssociationRepositoryImpl"></bean>
+    <bean id="attributeAssociationService" class="tavant.twms.domain.additionalAttributes.AttributeAssociationServiceImpl"></bean>
+
+    
+    <!--  BU Configuration -->
+    <bean id="configParamService" class="tavant.twms.domain.configuration.ConfigParamServiceImpl" />
+    <bean id="configParamRepository" class="tavant.twms.domain.configuration.ConfigParamRepositoryImpl" />
+    
+    <!--For Service Campaign -->
+    <bean id="campaignNotificationRepository" class="tavant.twms.domain.campaign.CampaignNotificationRepositoryImpl"></bean>
+    
+    <!--For i18n of Failure Messages -->
+    	<bean id="productLocaleRepository" class="tavant.twms.infra.i18n.ProductLocaleRepositoryImpl"></bean>
+    	<bean id="productLocaleService" class="tavant.twms.infra.i18n.ProductLocaleServiceImpl"></bean>    	    	
+    <!--For InventoryAttributes -->
+    <bean id="attributeService" class="tavant.twms.domain.orgmodel.AttributeServiceImpl"></bean>
+    <bean id="attributeRepository" class="tavant.twms.domain.orgmodel.AttributeRepositoryImpl"></bean>
+    <bean id="inventoryItemAttributeValueService" class="tavant.twms.domain.inventory.InventoryItemAttributeValueServiceImpl"></bean>
+    <bean id="inventoryItemAttributeValueRepository" class="tavant.twms.domain.inventory.InventoryItemAttributeValueRepositoryImpl"></bean>
+    <!-- Google Maps Related -->
+ 	  <bean id="googleMapsSettings" class="tavant.twms.infra.googlemaps.GoogleMapsSettings">
+ 	        <property name="apiKey" value="${googleMaps.apiKey}" />
+ 	        <property name="clientId" value="${googleMapsAPI.business.clientId}" />   
+ 	  </bean>
+
+ 	  
+ 	<!--  General Application Related property holder -->  
+     <bean id="applicationSettings" class="tavant.twms.infra.ApplicationSettingsHolder">
+		    <property name="logoutRequired" value="${logout.required}" />
+			<property name="googleAnalyticsCode" value="${googleAnalyticsCode}" />		  
+			<property name="googleAnalyticsEnabled" value="${googleAnalyticsEnabled}" />
+ 	        <property name="externalUrl" value="${externalUrl}" />
+ 	        <property name="captureShipentDateForMajorComp" value="${captureShipentDateForMajorComp}"/>
+            <property name="ldapAuthenticationEnabled" value="${ldap.authentication.enable}"/>
+            <property name="cmsUrl" value="${cms.prefix.url}" />
+            <property name="emailWpraTemplate" value="${emailWpraTemplate}"/>
+            <property name="emailCannotShipTemplate" value="${emailCannotShipTemplate}"/>
+            <property name="fromAddress" value="${fromEmailAddress}"/>
+	        <property name="externalUrlForEmail" value="${externalUrl}"/>
+	        <property name="defaultLocation" value="${tmp.deafault.location}"/>
+	        <property name="appSSOEnabled" value="${appSSOEnabled}"/>
+ 	  </bean>
+	<bean id="syncTrackerDAO" class="tavant.twms.domain.integration.SyncTrackerDAOImpl"/> 
+	<bean id="syncDAO" class="tavant.twms.domain.integration.SyncDAOImpl"/>
+
+ 	<bean id="syncTrackerService" class="tavant.twms.domain.integration.SyncTrackerServiceImpl"/>   
+ 	
+ 	<!-- added for Role Scheme -->
+ 	<bean id="roleSchemeService" class="tavant.twms.domain.orgmodel.RoleSchemeServiceImpl"/>
+ 	<bean id="roleSchemeRepository" class="tavant.twms.domain.orgmodel.RoleSchemeRepositoryImpl"/>
+ 	
+ 	<!-- added for Role Group -->
+ 	<bean id="roleGroupService" class="tavant.twms.domain.orgmodel.RoleGroupServiceImpl"/>
+ 	<bean id="roleGroupRepository" class="tavant.twms.domain.orgmodel.RoleGroupRepositoryImpl"/>
+ 	
+ 	<bean id="healthCheckService" class="tavant.twms.common.HealthCheckServiceImpl"/>  
+ 	<bean id="healthCheckRepository" class="tavant.twms.common.HealthCheckRepositoryImpl"/> 
+   
+	
+    <!--Warranty flow related beans -->
+    <bean id="warrantyTaskInstanceService" class="tavant.twms.domain.WarrantyTask.WarrantyTaskInstanceServiceImpl"/>
+    <bean id="warrantyTaskInstanceRepository" class="tavant.twms.domain.WarrantyTask.WarrantyTaskInstanceRepositoryImpl"/>
+    
+    <!--Labor Type related beans -->
+    <bean id="laborTypeService"	class="tavant.twms.domain.laborType.LaborTypeServiceImpl" />
+	<bean id="laborTypeRepository"	class="tavant.twms.domain.laborType.LaborTypeRepositoryImpl" />	
+	   
+	 <!--State Mandates related beans -->
+	 <bean id="stateMandatesService" class="tavant.twms.domain.stateMandates.StateMandatesServiceImpl" />
+	<bean id="stateMandatesRepository"	class="tavant.twms.domain.stateMandates.StateMandatesRepositoryImpl" />
+	<bean id="stateMandateAuditRepository"	class="tavant.twms.domain.stateMandates.StateMandateAuditRepositoryImpl" />	   
+	   
+	 <!--  Request for extension -->  
+	<bean id="warrantyCoverageRequestService" class="tavant.twms.domain.policy.WarrantyCoverageRequestServiceImpl"/>
+    <bean id="warrantyCoverageRequestRepository" class="tavant.twms.domain.policy.WarrantyCoverageRequestRepositoryImpl"/>
+
+    <!-- Custom Report related beans -->
+    <bean id="customReportRepository" class="tavant.twms.domain.customReports.CustomReportRepositoryImpl"/>
+    <bean id="customReportService" class="tavant.twms.domain.customReports.CustomReportServiceImpl"/>
+    
+    <!--  UOM -->
+	<bean id="uomMappingsService" class="tavant.twms.domain.uom.UomMappingsServiceImpl"/>
+    <bean id="uomMappingsRepository" class="tavant.twms.domain.uom.UomMappingsRepositoryImpl"/>
+
+    <!--  Miscellaneous Parts -->    
+	<bean id="miscellaneousItemConfigRepository"  class="tavant.twms.domain.catalog.MiscellaneousItemConfigRepositoryImpl"/>
+	<bean id="miscellaneousItemConfigService"  class="tavant.twms.domain.catalog.MiscellaneousItemConfigServiceImpl"/>	   	  
+
+
+	<!--  E-mail Notification merge Start -->
+    <bean id="eventService" class="tavant.twms.domain.notification.EventServiceImpl"/>
+	<bean id="eventRepository" class="tavant.twms.domain.notification.EventRepositoryImpl" />
+	<bean id="eventStateService" class="tavant.twms.domain.notification.EventStateServiceImpl"/>
+	<bean id="eventStateRepository" class="tavant.twms.domain.notification.EventStateRepositoryImpl" />
+    <bean id="sendEmailService" class="tavant.twms.domain.email.SendEmailServiceImpl" />
+	<bean id="sendEmailForOverdue" class="tavant.twms.domain.email.SendEmailServiceExtended" />
+    <bean id="testEmailRepository" class="tavant.twms.domain.email.TestEmailRepositoryImpl" />
+    <bean id="emailAddressChangeAspect" class="tavant.twms.domain.email.EmailAddressChangeAspect" >
+        <property name="emailEnvironment" value="${emailSendingEnv}" />
+        <property name="defaultFallBackEmailAddress" value="${defaultFallBackEmailAddress}" />
+    </bean>
+ 	 <bean id="googleMapDistanceCalculaterdomain" class="tavant.twms.domain.claim.claimsubmission.GoogleMapDistanceCalculater" >
+        <property name="clientId" value="${googleMapsAPI.business.clientId}" /> 
+        <property name="cryptoKey" value="${googleMapsAPI.business.cryptoKey}" />        
+    </bean> 
+	<bean id="notificationService" class="tavant.twms.domain.email.NotificationServiceImpl">
+		<property name="fromAddress" value="${fromEmailAddress}"/>
+		<property name="externalUrlForEmail" value="${externalUrl}"/>
+	</bean>
+	<bean id="emailMessageRepository" class="tavant.twms.domain.email.EmailMessageRepositoryImpl" />
+	<bean id="eventSubscriptionService" class="tavant.twms.domain.notification.EventSubscriptionServiceImpl"/>
+	<bean id="eventMessageUtil" class="tavant.twms.domain.email.EventMessageUtil"/>
+	
+	
+	<bean id="velocityEngine" class="org.springframework.ui.velocity.VelocityEngineFactoryBean">
+	<property name="velocityProperties">
+	    <value>
+		resource.loader=class
+		class.resource.loader.class=org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+	    </value>
+	</property>
+    	</bean>
+	
+	<!--  E-mail Notification merge End -->
+	   	   
+    <!--  Selling Entity and Source Warehouse -->
+	<bean id="sourceWarehouseRepository"  class="tavant.twms.domain.claim.SourceWarehouseRepositoryImpl"/>
+	<bean id="sourceWarehouseService"  class="tavant.twms.domain.claim.SourceWarehouseServiceImpl"/>
+	<bean id="focService"  class="tavant.twms.domain.claim.foc.FocServiceImpl"/>
+	<bean id="focRepository"  class="tavant.twms.domain.claim.foc.FocRepositoryImpl"/>	   	  
+	<bean id="sellingEntityRepository"  class="tavant.twms.domain.claim.SellingEntityRepositoryImpl"/>
+	
+	<!-- Vendor Recovery Extract -->
+	<bean id="vendorRecoveryRepository"  class="tavant.twms.domain.reports.VendorRecoveryRepositoryImpl"/>
+	<bean id="vendorRecoveryService"  class="tavant.twms.domain.reports.VendorRecoveryServiceImpl"/>
+
+    <!--  Service Class for Reporting and Task -->
+	<bean id="reportTaskDAO" class="tavant.twms.domain.upload.connection.ReportTaskDAOImpl"/> 
+
+    <!--  System configured rule -->
+	<bean id="campaignCostCategoryValidator" class="tavant.twms.domain.rules.custom.CampaignCostCategoryValidator"/>
+    <bean id="claimCostCategoryValidator" class="tavant.twms.domain.rules.custom.ClaimCostCategoryValidator"/>
+    <bean id="faultCodeJobCodeValidator" class="tavant.twms.domain.rules.custom.FaultCodeJobCodeValidator"/>
+
+    <!-- bean id="lineItemGroupAuditRepository"  class="tavant.twms.domain.claim.payment.LineItemGroupAuditRepositoryImpl"/-->
+
+<!-- 
+	<bean id="jbossCache" class="tavant.twms.infra.util.jbosscache.JBossCacheFactoryBean">
+		<property name="configFile" value=""/>
+		<property name="clusterName" value=""/>
+		<property name="cacheMode" value=""/>
+		<property name="fetchInMemoryState" value=""/>
+	</bean>
+-->
+
+    <!-- Added repository for Market Information -->
+	<bean id="marketRepository" class="tavant.twms.domain.policy.MarketRepositoryImpl"/>
+    <bean id="marketService" class="tavant.twms.domain.policy.MarketServiceImpl"/>
+    
+   	<bean id="userAttributeValueRepository" class="tavant.twms.domain.orgmodel.UserAttributeValueRepositoryImpl"></bean>
+	<bean id="userAttributeValueService" class="tavant.twms.domain.orgmodel.UserAttributeValueServiceImpl"></bean>
+	<bean id="claimAttributesRepository" class="tavant.twms.domain.claim.ClaimAttributesRepositoryImpl"></bean>
+
+    <!-- Added for the RecoveryInfo for the Supplier Recovery flow-->
+    <bean id="recoveryInfoRepository" class="tavant.twms.domain.supplier.recovery.RecoveryInfoRepositoryImpl"/>
+    <bean id="recoveryInfoService" class="tavant.twms.domain.supplier.recovery.RecoveryInfoServiceImpl"/>
+    
+    <!-- Added AlarmCode beans injection -->
+    <bean id="alarmCodeRepository" class="tavant.twms.domain.alarmcode.AlarmCodeRepositoryImpl"/>
+    <bean id="alarmCodeService" class="tavant.twms.domain.alarmcode.AlarmCodeServiceImpl"/>
+    <!-- Added RelateCampaign beans injection -->
+    <bean id="relateCampaignService" class="tavant.twms.domain.campaign.relateCampaigns.RelateCampaignServiceImpl"/>
+    <bean id="relateCampaignRepository" class="tavant.twms.domain.campaign.relateCampaigns.RelateCampaignRepositoryImpl"/>
+    
+	
+	<!-- Added for warranty Util -->
+	<bean id="warrantyUtil" class="tavant.twms.domain.warranty.WarrantyUtil" />
+	<!-- Added for payment -->
+	<bean id="modifierService" class="tavant.twms.domain.claim.payment.ModifierService" />
+	<bean id="abstractPaymentService" class="tavant.twms.domain.claim.payment.AbstractPaymentComponentComputer" abstract="true"></bean>
+	<bean id="travelPaymentComputer"  class="tavant.twms.domain.claim.payment.TravelPaymentComputer" abstract="true"></bean>
+
+    <bean id="roleService"
+          class="tavant.twms.domain.admin.RoleServiceImpl" />
+    <bean id="adminRoleRepository"
+          class="tavant.twms.domain.admin.RoleRepositoryImpl" />
+     <bean id="buConfigSchedulerTaskService" class="tavant.twms.process.BuConfigSchedulerTaskServiceImpl" >
+       <property name="emailPendingOverDueDaysExceedTemplate" value="${emailPendingOverDueDaysExceedTemplate}"/>
+       <property name="fromAddress" value="${fromEmailAddress}"/>
+	   <property name="externalUrlForEmail" value="${externalUrl}"/>
+     </bean>
+     
+     <bean id="coreCertificationRepository" class="tavant.twms.domain.orgmodel.CoreCertificationRepositoryImpl" />
+   	<bean id="seriesCertificationRepository" class="tavant.twms.domain.orgmodel.SeriesCertificationRepositoryImpl" />
+   	<bean id ="certificateService" class="tavant.twms.domain.orgmodel.CertificateServiceImpl"/>
+	<bean id="seriesRefCertificationRepository" class="tavant.twms.domain.orgmodel.SeriesRefCertificationRepositoryImpl" />
+	
+     <bean id="technicianCertificationRepository" class="tavant.twms.domain.orgmodel.TechnicianCertificationRepositoryImpl" />
+     <bean id="technicianCertificationService" class="tavant.twms.domain.orgmodel.TechnicianCertificationServiceImpl" />
+     <bean id="generateWpraScheduler" class="tavant.twms.process.GenerateWpraSchedulerImpl" >
+       <property name="emailWpraTemplate" value="${emailWpraTemplate}"/>
+       <property name="fromAddress" value="${fromEmailAddress}"/>
+	   <property name="externalUrlForEmail" value="${externalUrl}"/>
+     </bean>
+       <bean id="overDueDaysExceedEmailScheduler" class="tavant.twms.process.OverDueDaysExceedEmailSchedulerImpl" >
+       <property name="emailPendingOverDueDaysExceedTemplate" value="${emailPendingOverDueDaysExceedTemplate}"/>
+       <property name="fromAddress" value="${fromEmailAddress}"/>
+	   <property name="externalUrlForEmail" value="${externalUrl}"/>
+     </bean> 
+     
+     <!--<bean id="supplierInitialResponseEmailScheduler" class="tavant.twms.process.SupplierInitialResponseEmailSchedulerImpl" >
+       <property name="emailSupplierInitialResponseTemplate" value="${emailSupplierInitialResponseTemplate}"/>
+       <property name="fromAddress" value="${fromEmailAddress}"/>
+	   <property name="externalUrlForEmail" value="${externalUrl}"/>
+     </bean>
+     <bean id="supplierFinalResponseEmailScheduler" class="tavant.twms.process.SupplierFinalResponseEmailSchedulerImpl" >
+       <property name="emailSupplierFinalResponseTemplate" value="${emailSupplierFinalResponseTemplate}"/>
+       <property name="fromAddress" value="${fromEmailAddress}"/>
+	   <property name="externalUrlForEmail" value="${externalUrl}"/>
+     </bean>-->
+
+    <bean id="removeDealerNotCollectedPartsScheduler" class="tavant.twms.process.RemoveDealerNotCollectedPartsImplScheduler" />
+    
+    	<bean id="bookingsService" class="tavant.twms.domain.bookings.BookingsServiceImpl" />
+	   	<bean id="bookingsRepository" class="tavant.twms.domain.bookings.BookingsRepositoryImpl" />
+	   	<bean id="rejectedPartsScheduler" class="tavant.twms.process.RejectedPartsSchedulerImpl" />
+   
+
+</beans>

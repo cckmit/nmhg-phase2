@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process-definition name="MailServiceProcess">
+	<start-state name="start">
+		<transition name="" to="NotifyPayment"></transition>
+	</start-state>
+
+	<serviceNode name="NotifyPayment">
+		<transition name="" to="accept" />
+		<beanName>emailNotificationAction</beanName>
+		<methodName>notifyUser</methodName>
+		<parameters>
+			<element>claim.filedBy</element>
+			<element>claim</element>
+		</parameters>
+		<postProcess>user.setName(result)</postProcess>
+	</serviceNode>
+
+	<end-state name="accept"></end-state>
+
+</process-definition>

@@ -1,0 +1,121 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <artifactId>server</artifactId>
+    <groupId>tavant.twms.TSA_DEV</groupId>
+    <version>0.5-SNAPSHOT</version>
+  </parent>
+
+  <artifactId>functional</artifactId>
+  <name>server-functional</name>
+
+  <dependencies>
+	<dependency>
+      <groupId>tavant.twms.TSA_DEV</groupId>
+      <artifactId>common</artifactId>
+    </dependency>
+	
+	<dependency>
+      <groupId>tavant.twms.TSA_DEV</groupId>
+      <artifactId>common-test</artifactId>
+	  <scope>test</scope>
+    </dependency>
+    
+	<dependency>
+		<groupId>tavant.twms.TWMS_DEV</groupId>
+		<artifactId>domain-core</artifactId>
+        <version>0.5-SNAPSHOT</version>
+    </dependency>
+	
+    <dependency>
+		<groupId>tavant.twms.TSA_DEV</groupId>
+		<artifactId>domain</artifactId>
+	</dependency>
+
+	<dependency>
+		<groupId>tavant.twms.TSA_DEV</groupId>
+		<artifactId>engine</artifactId>
+	</dependency>
+
+	<dependency>
+		<groupId>tavant.twms.TSA_DEV</groupId>
+		<artifactId>integration-layer</artifactId>
+	</dependency>
+
+    <dependency>
+        <groupId>org.aspectj</groupId>
+        <artifactId>aspectjrt</artifactId>
+		<version>1.6.1</version>
+    </dependency>
+
+    <dependency>
+        <groupId>org.aspectj</groupId>
+        <artifactId>aspectjweaver</artifactId>
+		<version>1.6.1</version>
+    </dependency>
+
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-test</artifactId>
+    </dependency>
+
+    <dependency>
+        <groupId>oracle</groupId>
+        <artifactId>ojdbc14</artifactId>
+        <version>10.2.0.2</version>
+        <scope>provided</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+	  <plugin>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <configuration>
+          <skip>false</skip>
+          <excludes>
+		  <exclude>**/IntegrationTestCase*.java</exclude>
+		  </excludes>
+          <argLine>-Xms256m -Xmx512m -XX:MaxPermSize=128m</argLine>
+          <systemProperties>
+		  <property>
+		      <name>hibernate.bytecode.provider</name>
+		      <value>cglib</value>
+		  </property>
+          </systemProperties>
+          
+        </configuration>
+      </plugin>
+      
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <executions>
+          <execution>
+            <goals>
+              <goal>testCompile</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <source>1.6</source>
+          <target>1.6</target>
+        </configuration>
+      </plugin>
+			
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-resources-plugin</artifactId>
+        <executions>
+          <execution>
+            <goals>
+              <goal>testResources</goal>
+            </goals>
+          </execution>
+        </executions>				
+      </plugin>
+    </plugins>
+  </build>
+
+</project>

@@ -1,0 +1,65 @@
+[OPTIONS]
+Compiled File=DSM.chm
+Title=DSM
+Contents File=DSM.hhc
+Index File=DSM.hhk
+Default topic=
+Default Window=
+Error log file=
+Display compile progress=No
+Display compile notes=No
+Full-text search=Yes
+Binary Index=Yes
+Auto Index=No
+Enhanced decompilation=No
+Binary TOC=No
+Flat=No
+
+[WINDOWS]
+
+[FILES]
+Claims\Advice_Request.htm
+Claims\Service_Manager_Review.htm
+Claims\Claim_Folders.htm
+Before_you_Begin\common_application_features.htm
+Before_you_Begin\index.htm
+Settings\index.htm
+Inventory\index.htm
+Claims\index.htm
+Field_Modifications\index.htm
+Part_Returns\index.htm
+Reports\Download_Management.htm
+Items\index.htm
+Before_you_Begin\Before_you_Begin.htm
+Before_you_Begin\Introduction.htm
+Reports\Upload_Management.htm
+Part_Returns\Search_Parts.htm
+Reports\index.htm
+Before_you_Begin\Copyright.htm
+Claims\Claim_Details.htm
+Inventory\Equipment_Details.htm
+Inventory\Inventory.htm
+Inventory\Search_Inventory.htm
+Reports\Reports.htm
+Settings\Profile.htm
+Settings\Email_Subscription.htm
+Items\Search_Items.htm
+Claims\Claim_Validation.htm
+Claims\Policy_Details.htm
+Claims\Search_Claims.htm
+Field_Modifications\Search_Campaigns.htm
+eHelp.xml
+RoboHHRE.lng
+
+DSM.glo
+DSM.brs
+[ALIAS]
+#include DSM.ali
+
+[MAP]
+#include BSSCDefault.h
+
+[TEXT POPUPS]
+BSSCDefault.h
+
+

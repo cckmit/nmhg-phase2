@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="http://www.tavant.com/oagis"
+	xmlns="http://www.tavant.com/oagis"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="CustomerNumber" type="xs:string" />
+	<xs:element name="ItemMappings">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="ItemNumber" type="xs:string" />
+				<xs:element name="OEMItemNumber" type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="OEMDealer" type="xs:string" />
+	<xs:element name="OEMXREF">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="CustomerNumber" />
+				<xs:element ref="OEMDealer" />
+				<xs:element ref="ItemMappings" maxOccurs="unbounded" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="OEMXREFSyncRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="OEMXREF" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

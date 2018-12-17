@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="adminAttributes" extends="struts-twms-default">
+		<action name="list_attributes"
+			class="tavant.twms.web.admin.additionalAttributes.AdditionalAttributeAction">
+			<interceptor-ref name="adminParamsPrepareWithoutValidation" />
+			<result name="success">pages/secure/admin/additonalAttribute/additionalAttribute_inbox.jsp</result>
+		</action>		
+		<action name="attributes_table_body"
+			class="tavant.twms.web.admin.additionalAttributes.AdditionalAttributeAction"
+			method="tableBody">
+			<interceptor-ref name="adminParamsPrepareWithoutValidation" />
+			<result name="success">pages/secure/home/json.jsp</result>
+		</action>
+		<action name="attributes_detail"
+			class="tavant.twms.web.admin.additionalAttributes.AdditionalAttributeAction" method="detail">
+			<interceptor-ref name="adminParamsPrepareWithoutValidation" />
+			<result name="success">pages/secure/admin/additonalAttribute/attributeDetail.jsp</result>
+		</action>
+		<action name="internationalizeAttributeName"
+			class="tavant.twms.web.admin.additionalAttributes.AdditionalAttributeAction" >
+			<interceptor-ref name="adminParamsPrepareWithoutValidation" />
+			<result name="success">pages/secure/admin/additonalAttribute/i18NAttributeName.jsp</result>
+		</action>
+		<action name="updateAttributeName"
+			class="tavant.twms.web.admin.additionalAttributes.AdditionalAttributeAction" method="updateAtrributeName">
+			<interceptor-ref name="adminParamsPrepareWithoutValidation" />
+			<result name="input">pages/secure/admin/additonalAttribute/i18NAttributeName.jsp</result>
+			<result name="success">pages/secure/admin/additonalAttribute/attributeSuccess.jsp</result>
+		</action>
+		
+		<action name="attributes_preview"
+			class="tavant.twms.web.admin.additionalAttributes.AdditionalAttributeAction" method="preview">
+			<interceptor-ref name="adminParamsPrepareWithoutValidation" />
+			<result name="success">pages/secure/admin/additonalAttribute/attribute.jsp</result>
+		</action>
+		<action name="attributes_create"
+			class="tavant.twms.web.admin.additionalAttributes.AdditionalAttributeAction" method="createOrUpdate">
+			<interceptor-ref name="adminTwmsParamsPrepareParams" />
+			<result name="input">pages/secure/admin/additonalAttribute/attributeDetail.jsp</result>
+			<result name="success">pages/secure/admin/additonalAttribute/attributeSuccess.jsp</result>
+		</action>
+		<action name="attributes_delete"
+			class="tavant.twms.web.admin.additionalAttributes.AdditionalAttributeAction" method="softDelete">
+			<interceptor-ref name="adminTwmsParamsPrepareParams" />
+			<result name="input">pages/secure/admin/additonalAttribute/attributeDetail.jsp</result>
+			<result name="success">pages/secure/admin/additonalAttribute/attributeSuccess.jsp</result>
+		</action>
+		<action name="exportattributesListToExcel"
+			class="tavant.twms.web.admin.additionalAttributes.AdditionalAttributeAction"
+			method="downloadListingData">
+			<interceptor-ref name="adminParamsPrepareWithoutValidation" />
+		</action>
+		<action name="exportJobCodeAttributesListToExcel"
+			class="tavant.twms.web.admin.additionalAttributes.AdditionalAttributeAction"
+			method="downloadListingData">
+			<interceptor-ref name="adminParamsPrepareWithoutValidation" />
+			<param name="attributePurpose">JOB_CODE_PURPOSE</param>
+		</action>
+		<action name="exportClaimedInventoryAttributesListToExcel"
+			class="tavant.twms.web.admin.additionalAttributes.AdditionalAttributeAction"
+			method="downloadListingData">
+			<interceptor-ref name="adminParamsPrepareWithoutValidation" />
+			<param name="attributePurpose">CLAIMED_INVENTORY_PURPOSE</param>
+		</action>
+		
+		<!-- Attribute Association for Job codes  -->
+		<action name="list_job_code_attributes"
+			class="tavant.twms.web.admin.additionalAttributes.AdditionalAttributeAction">
+			<interceptor-ref name="adminParamsPrepareWithoutValidation" />
+			<result name="success">pages/secure/admin/additonalAttribute/additionalAttributeJobCodePurpose_inbox.jsp</result>
+		</action>		
+		<action name="attributes_job_code_table_body"
+			class="tavant.twms.web.admin.additionalAttributes.AdditionalAttributeAction"
+			method="tableBody">
+			<interceptor-ref name="adminParamsPrepareWithoutValidation" />
+			<param name="attributePurpose">JOB_CODE_PURPOSE</param>
+			<result name="success">pages/secure/home/json.jsp</result>
+		</action>
+		<action name="attributes_job_code_detail"
+			class="tavant.twms.web.admin.additionalAttributes.AttributeAssociationAction" method="detail">
+			<interceptor-ref name="adminParamsPrepareWithoutValidation" />
+			<param name="attributePurpose">JOB_CODE_PURPOSE</param>
+			<result name="success">pages/secure/admin/additonalAttribute/jobCodeAssociationDetail.jsp</result>
+		</action>
+		<action name="attributes_job_code_preview"
+			class="tavant.twms.web.admin.additionalAttributes.AttributeAssociationAction" method="preview">
+			<interceptor-ref name="adminParamsPrepareWithoutValidation" />
+			<param name="attributePurpose">JOB_CODE_PURPOSE</param>
+			<result name="success">pages/secure/admin/additonalAttribute/jobCodeAssociationPreview.jsp</result>
+		</action>
+		<action name="list_product_for_association"
+			class="tavant.twms.web.admin.additionalAttributes.AttributeAssociationAction" method="findProducts">
+			 <interceptor-ref name="adminParamsPrepareWithoutValidation"/>
+            <result name="success">pages/secure/home/json.jsp</result>
+		</action>
+		<action name="list_model_for_association"
+			class="tavant.twms.web.admin.additionalAttributes.AttributeAssociationAction" method="findModels">
+			 <interceptor-ref name="adminParamsPrepareWithoutValidation"/>
+            <result name="success">pages/secure/home/json.jsp</result>
+		</action>
+		
+		<action name="list_faultCode_tree_for_association"
+			class="tavant.twms.web.admin.additionalAttributes.AttributeAssociationAction" method="findJsonFaultCodeTree">
+			 <interceptor-ref name="adminParamsPrepareWithoutValidation"/>
+            <result name="success">pages/secure/home/json.jsp</result>
+		</action>
+		
+		<action name="list_jobCode_tree_for_association"
+			class="tavant.twms.web.admin.additionalAttributes.AttributeAssociationAction" method="findJsonServiceProcedureTree">
+			 <interceptor-ref name="adminParamsPrepareWithoutValidation"/>
+            <result name="success">pages/secure/home/json.jsp</result>
+		</action>
+		
+		<action name="attributes_job_code_associate"
+			class="tavant.twms.web.admin.additionalAttributes.AttributeAssociationAction" method="associate">
+			<interceptor-ref name="adminTwmsParamsPrepareRepeatTableParams" />
+			<param name="attributePurpose">JOB_CODE_PURPOSE</param>
+			<result name="success">pages/secure/admin/additonalAttribute/attributeSuccess.jsp</result>
+			<result name="input">pages/secure/admin/additonalAttribute/jobCodeAssociationDetail.jsp</result>
+		</action>
+		
+		<!-- Attribute association for claimed inventory -->
+		<action name="list_claimed_inventory_attributes"
+			class="tavant.twms.web.admin.additionalAttributes.AdditionalAttributeAction">
+			<interceptor-ref name="adminParamsPrepareWithoutValidation" />
+			<result name="success">pages\secure\admin\additonalAttribute\additionalAttributeInventoryPurpose_inbox.jsp</result>
+			
+		</action>
+		<action name="attributes_claimed_inventory_table_body"
+			class="tavant.twms.web.admin.additionalAttributes.AdditionalAttributeAction"
+			method="tableBody">
+			<interceptor-ref name="adminParamsPrepareWithoutValidation" />
+			<param name="attributePurpose">CLAIMED_INVENTORY_PURPOSE</param>
+			<result name="success">pages/secure/home/json.jsp</result>
+		</action>	
+		<action name="attributes_claimed_inventory_association_detail"
+			class="tavant.twms.web.admin.additionalAttributes.AttributeAssociationAction" method="detail">
+			<interceptor-ref name="adminParamsPrepareWithoutValidation" />
+			<param name="attributePurpose">CLAIMED_INVENTORY_PURPOSE</param>
+			<result name="success">pages/secure/admin/additonalAttribute/claimedInventoryAssociationDetail.jsp</result>
+		</action>	
+		<action name="attributes_claimed_inventory_preview"
+			class="tavant.twms.web.admin.additionalAttributes.AttributeAssociationAction" method="preview">
+			<interceptor-ref name="adminParamsPrepareWithoutValidation" />
+			<param name="attributePurpose">CLAIMED_INVENTORY_PURPOSE</param>
+			<result name="success">pages/secure/admin/additonalAttribute/claimedInventoryAssociationPreview.jsp</result>
+		</action>
+		<action name="list_product_for_inventory_association"
+			class="tavant.twms.web.admin.additionalAttributes.AttributeAssociationAction" method="findProducts">
+			 <interceptor-ref name="adminParamsPrepareWithoutValidation"/>
+            <result name="success">pages/secure/home/json.jsp</result>
+		</action>
+		<action name="list_model_for__inventory_association"
+			class="tavant.twms.web.admin.additionalAttributes.AttributeAssociationAction" method="findModels">
+			 <interceptor-ref name="adminParamsPrepareWithoutValidation"/>
+            <result name="success">pages/secure/home/json.jsp</result>
+		</action>
+		<action name="attributes_Claimed_inventory_associate"
+			class="tavant.twms.web.admin.additionalAttributes.AttributeAssociationAction" method="associate">
+			<interceptor-ref name="adminTwmsParamsPrepareRepeatTableParams" />
+			<param name="attributePurpose">CLAIMED_INVENTORY_PURPOSE</param>
+			<result name="success">pages/secure/admin/additonalAttribute/attributeSuccess.jsp</result>
+			<result name="input">pages/secure/admin/additonalAttribute/claimedInventoryAssociationDetail.jsp</result>
+		</action>
+		
+		
+		<!-- Attribute association for part -->
+		<action name="list_claimed_part_attributes"
+			class="tavant.twms.web.admin.additionalAttributes.AdditionalAttributeAction">
+			<interceptor-ref name="adminParamsPrepareWithoutValidation" />
+			<result name="success">pages/secure/admin/additonalAttribute/additionalAttributePartPurpose_inbox.jsp</result>
+			
+		</action>		
+		<action name="attributes_part_table_body"
+			class="tavant.twms.web.admin.additionalAttributes.AdditionalAttributeAction"
+			method="tableBody">
+			<interceptor-ref name="adminParamsPrepareWithoutValidation" />
+			<param name="attributePurpose">PART_SOURCING_PURPOSE</param>
+			<result name="success">pages/secure/home/json.jsp</result>
+		</action>
+		<action name="attributes_part_association_detail"
+			class="tavant.twms.web.admin.additionalAttributes.AttributeAssociationAction" method="detail">
+			<interceptor-ref name="adminParamsPrepareWithoutValidation" />
+			<param name="attributePurpose">PART_SOURCING_PURPOSE</param>
+			<result name="success">pages/secure/admin/additonalAttribute/attributeAssociation.jsp</result>
+		</action>
+		<action name="exportPartAttributesListToExcel"
+			class="tavant.twms.web.admin.additionalAttributes.AdditionalAttributeAction"
+			method="downloadListingData">
+			<interceptor-ref name="adminParamsPrepareWithoutValidation" />
+			<param name="attributePurpose">PART_SOURCING_PURPOSE</param>
+		</action>
+		<action name="attributes_part_associate"
+			class="tavant.twms.web.admin.additionalAttributes.AttributeAssociationAction" method="associate">
+			<interceptor-ref name="adminTwmsParamsPrepareRepeatTableParams" />
+			<param name="attributePurpose">PART_SOURCING_PURPOSE</param>
+			<result name="success">pages/secure/admin/additonalAttribute/attributeSuccess.jsp</result>
+			<result name="input">pages/secure/admin/additonalAttribute/attributeAssociation.jsp</result>
+		</action>
+		
+		<action name="list_part_for_association"
+			class="tavant.twms.web.admin.additionalAttributes.AttributeAssociationAction" method="listParts">
+			 <interceptor-ref name="adminParamsPrepareWithoutValidation"/>
+            <result name="success">pages/secure/home/json.jsp</result>
+		</action>
+		
+		<action name="attributes_part_association_preview"
+			class="tavant.twms.web.admin.additionalAttributes.AttributeAssociationAction" method="preview">
+			<interceptor-ref name="adminParamsPrepareWithoutValidation" />
+			<result name="success">pages/secure/admin/additonalAttribute/partAssociationPreview.jsp</result>
+		</action>
+		
+		<!-- Attribute association for Claim -->
+		<action name="list_claim_attributes"
+			class="tavant.twms.web.admin.additionalAttributes.AdditionalAttributeAction">
+			<interceptor-ref name="adminParamsPrepareWithoutValidation" />
+			<result name="success">pages/secure/admin/additonalAttribute/additionalAttributeClaimPurpose_inbox.jsp</result>
+			
+		</action>
+			<action name="attributes_claim_table_body"
+			class="tavant.twms.web.admin.additionalAttributes.AdditionalAttributeAction"
+			method="tableBody">
+			<interceptor-ref name="adminParamsPrepareWithoutValidation" />
+			<param name="attributePurpose">CLAIM_PURPOSE</param>
+			<result name="success">pages/secure/home/json.jsp</result>
+		</action>
+		<action name="attributes_claim_association_detail"
+			class="tavant.twms.web.admin.additionalAttributes.AttributeAssociationAction" method="detail">
+			<interceptor-ref name="adminParamsPrepareWithoutValidation" />
+			<param name="attributePurpose">CLAIM_PURPOSE</param>
+			<result name="success">pages/secure/admin/additonalAttribute/claimAssociationDetail.jsp</result>
+		</action>	
+		<action name="attributes_claim_preview"
+			class="tavant.twms.web.admin.additionalAttributes.AttributeAssociationAction" method="preview">
+			<interceptor-ref name="adminParamsPrepareWithoutValidation" />
+			<param name="attributePurpose">CLAIM_PURPOSE</param>
+			<result name="success">pages/secure/admin/additonalAttribute/claimAssociationPreview.jsp</result>
+		</action>
+		<action name="attributes_Claim_associate"
+			class="tavant.twms.web.admin.additionalAttributes.AttributeAssociationAction" method="associate">
+			<interceptor-ref name="adminTwmsParamsPrepareRepeatTableParams" />
+			<param name="attributePurpose">CLAIM_PURPOSE</param>
+			<result name="success">pages/secure/admin/additonalAttribute/attributeSuccess.jsp</result>
+			<result name="input">pages/secure/admin/additonalAttribute/claimAssociationDetail.jsp</result>
+		</action>
+			<action name="list_product_for_claim_association"
+			class="tavant.twms.web.admin.additionalAttributes.AttributeAssociationAction" method="findProducts">
+			 <interceptor-ref name="adminParamsPrepareWithoutValidation"/>
+            <result name="success">pages/secure/home/json.jsp</result>
+		</action>
+		
+		<action name="list_oem_part_details"
+			class="tavant.twms.web.admin.additionalAttributes.AttributeAssociationAction"
+			method="getOEMPartDetails">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result>pages/secure/home/json.jsp</result>
+		</action>
+</package>
+</struts>		

@@ -1,0 +1,33 @@
+--Purpose    : Patch to upload/download attachments for custom reports
+--Author     : Jitesh Jain
+--Created On : 21-Apr-09
+
+CREATE TABLE Report_Answer_ATTACHMENTS
+(
+  Custom_Report_Answer NUMBER,
+  ATTACHMENTS NUMBER
+)
+/
+ALTER TABLE Report_Answer_ATTACHMENTS
+ADD CONSTRAINT REPORTANSWER_CUSTREPORT_FK1 FOREIGN KEY
+(
+  Custom_Report_Answer
+)
+REFERENCES CUSTOM_REPORT_ANSWER
+(
+ID
+) 
+/
+ALTER TABLE Report_Answer_ATTACHMENTS
+ADD CONSTRAINT ATTACH_DOCUMENT_FK1 FOREIGN KEY
+(
+  ATTACHMENTS
+)
+REFERENCES DOCUMENT
+(
+ID
+) 
+/
+COMMIT
+/
+

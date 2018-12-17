@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<claim>
+	<id>4</id>
+	<type></type>
+	<failureDate>2006-8-2</failureDate>
+	<repairDate>2006-8-4</repairDate>
+	<hoursInService>0</hoursInService>
+	<forItem>
+		<serialNumber>ABCD123456</serialNumber>
+		<registrationDate>2005-1-6</registrationDate>
+		<deliveryDate></deliveryDate>
+		<ofType>
+			<make>Dell</make>
+			<model>Latitude</model>
+			<number>D6060</number>
+		</ofType>
+		<ownedBy>
+			<name>sandy</name>
+			<address>
+				<addressLine1>632 WEST AVENUE</addressLine1>
+				<addressLine2></addressLine2>
+				<city>MILFORD</city>
+				<state></state>
+				<country>USA</country>
+				<zipCode>12345</zipCode>
+			</address>
+		</ownedBy>
+	</forItem>
+	<state></state>
+	<applicablePolicy>
+		<code>STD-01</code>
+		<description>Standard warranty  (2000 hours / 2years)</description>
+		<serviceHoursCovered>2000</serviceHoursCovered>
+		<monthsCoveredFromRegistration>24</monthsCoveredFromRegistration>
+	</applicablePolicy>
+	<serviceInformation>
+		<faultCode>PP-001</faultCode>
+		<causalPart>
+			<number>P4566</number>
+		</causalPart>
+		<faultFound>Processor failure</faultFound>
+		<causedBy>overHeating</causedBy>
+		<serviceDetail>
+			<laborPerformed>
+				
+			<laborDetail>
+					<jobPerformed>
+						<jobCode>PP-001-replaced</jobCode>
+						<expectedNumberOfHours>2</expectedNumberOfHours>
+					</jobPerformed>
+				</laborDetail><laborDetail>
+					<jobPerformed>
+						<jobCode>PP-001-repaired</jobCode>
+						<expectedNumberOfHours>4</expectedNumberOfHours>
+					</jobPerformed>
+				</laborDetail></laborPerformed>
+			<oEMPartsReplaced>
+				
+			<OEMPartReplaced>
+					<itemReplaced>
+						<number>SG5200</number>
+					</itemReplaced>
+					<pricePerUnit>
+						<amount>100.00</amount>
+						<currency>USD</currency>
+					</pricePerUnit>
+					<numberOfUnits>1</numberOfUnits>
+				</OEMPartReplaced><OEMPartReplaced>
+					<itemReplaced>
+						<number>P4566</number>
+					</itemReplaced>
+					<pricePerUnit>
+						<amount>300.00</amount>
+						<currency>USD</currency>
+					</pricePerUnit>
+					<numberOfUnits>1</numberOfUnits>
+				</OEMPartReplaced></oEMPartsReplaced>
+			<travelDetails>
+				<hours>2</hours>
+				<distance>100</distance>
+				<trips>1</trips>
+				<location>LA</location>
+			</travelDetails>
+		</serviceDetail>
+	</serviceInformation>
+	<serviceManagerRequest>false</serviceManagerRequest>
+	<probableCause></probableCause>
+	<workPerformed></workPerformed>
+	<otherComments></otherComments>
+	<filedBy>
+		<name>bishop</name>
+		<address>
+			<addressLine1>2302 CREEKVIEW DRIVE, #1</addressLine1>
+			<addressLine2></addressLine2>
+			<city>ANKENY</city>
+			<state></state>
+			<country>USA</country>
+			<zipCode>12345</zipCode>
+		</address>
+	</filedBy>
+	<probableCause></probableCause>
+	<workPerformed></workPerformed>
+	<otherComments></otherComments>
+	<payment>
+		<paymentComponents>
+			<paymentComponent>
+				<forCategory>
+					<name>OEM Parts</name>
+					<code>OEM_PARTS</code>
+					<description>OEM Parts Total</description>
+				</forCategory>
+				<claimedAmount>
+					<amount>70.00</amount>
+					<currency>USD</currency>
+				</claimedAmount>
+				<paymentModifications>
+					<paymentModification>
+						<description>OEM Parts Discount</description>
+						<changeInCost>
+							<amount>-7.00</amount>
+							<currency>USD</currency>
+						</changeInCost>
+					</paymentModification>
+				</paymentModifications>
+				<finalAmount>
+					<amount>63.00</amount>
+					<currency>USD</currency>
+				</finalAmount>
+			</paymentComponent><paymentComponent>
+				<forCategory>
+					<name>Travel</name>
+					<code>TRAVEL</code>
+					<description>Travel Total</description>
+				</forCategory>
+				<claimedAmount>
+					<amount>650.00</amount>
+					<currency>USD</currency>
+				</claimedAmount>
+				<finalAmount>
+					<amount>650.00</amount>
+					<currency>USD</currency>
+				</finalAmount>
+
+			</paymentComponent><paymentComponent>
+				<forCategory>
+					<name>Labor</name>
+					<code>LABOR</code>
+					<description>Labor Total</description>
+				</forCategory>
+				<claimedAmount>
+					<amount>400.00</amount>
+					<currency>USD</currency>
+				</claimedAmount>
+				<finalAmount>
+					<amount>400.00</amount>
+					<currency>USD</currency>
+				</finalAmount>
+			</paymentComponent></paymentComponents>
+		<claimedAmount>
+			<amount>1120.00</amount>
+			<currency>USD</currency>
+		</claimedAmount>
+		<paymentModification>
+			<description>Claim Bonus</description>
+			<changeInCost>
+				<amount>-111.30</amount>
+				<currency>USD</currency>
+			</changeInCost>
+		</paymentModification>
+		<totalAmount>
+			<amount>1001.70</amount>
+			<currency>USD</currency>
+		</totalAmount>
+	</payment>
+	<forDealer>
+		<name>A-L-L EQUIPMENT </name>
+		<address>
+			<addressLine1>123 Harbor Boulevard</addressLine1>
+			<addressLine2></addressLine2>
+			<city>Orange County</city>
+			<state></state>
+			<country>USA</country>
+			<zipCode>12345</zipCode>
+		</address>
+	</forDealer>
+	<coverage>
+		<startDate>2005-1-6</startDate>
+		<endDate>2007-1-6</endDate>
+	</coverage>
+</claim>

@@ -1,0 +1,15 @@
+<!DOCTYPE root>
+<excel>
+  <sheet sheetName="Sheet1" type="tavant.twms.web.admin.dto.InventoryDTO" startRow="1">
+    <block>
+      <column-mapping column="0" expression="serialNumber" />
+      <column-mapping column="1" expression="itemNumber" convertorName="itemConvertor" />
+      <column-mapping column="2" expression="dealer" convertorName="dealerConvertor"/>
+      <column-mapping column="3" expression="usage" />
+      <column-mapping column="4" expression="dateOfShipment" />
+    </block>
+
+    <block-break column="0"/>
+    <sheet-end/>
+  </sheet>
+</excel>

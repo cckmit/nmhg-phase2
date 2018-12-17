@@ -1,0 +1,9 @@
+How to use Version Manager
+
+1.Run "patchTableCreation.sql" patch, if you are using version manager for the first time in a database.
+2.Create a patch file with appropiate name. For example, PATCH_MATCHCASEREAD.sql (.sql extension should always be in lower case). Please refer to PATCH_TEST_VM.sql for the format. 
+3.Add the patch file under *\dbpatches\patches\tavant\dbPatches folder
+4.Add an entry for the patch file (added in Step 1) in patchCatalog.txt under the same folder
+5.Set the properties in the vm.properties 
+6.Open a command prompt and navigate to *\dbpatches\versionmanager and run ant. ex. D:\TK Marine\SVN\SourceCode\TSA_DEV\dbpatches\versionmanager
+7.Refer to "SchemaManagement.txt" under the same folder for logs.

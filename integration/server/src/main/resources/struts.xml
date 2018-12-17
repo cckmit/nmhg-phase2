@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC 
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="default" extends="struts-default">        
+        <action name="Home" class="tavant.twms.integration.server.web.action.HomeAction" >
+            <result name="success">/jsp/index.jsp</result>
+            <result name="error">/jsp/login.jsp</result>
+            <result name="input">/jsp/login.jsp</result>
+        </action>
+<!--		<action name="FileTracker" class="tavant.twms.integration.server.web.action.SyncFileAction">
+			<result>/jsp/syncfile.jsp</result>
+			<result name="input">/jsp/syncfile.jsp</result>
+		</action>-->
+		<action name="SyncTracker" class="tavant.twms.integration.server.web.action.SyncTrackerAction">
+			<result>/jsp/synctracker.jsp</result>
+			<result name="input">/jsp/synctracker.jsp</result>
+			<result name="errormessage">/jsp/errormessage.jsp</result>
+			<result name="payload">/jsp/payload.jsp</result>
+		</action>
+        <action name="listSchedulers" class="tavant.twms.integration.server.web.action.QuartzAdminAction"
+        method="listSchedulers" >                
+            <interceptor-ref name="defaultStack"/>    
+        </action>
+        
+        <action name="schedulerDetail" class="tavant.twms.integration.server.web.action.SchedulerDetailAction">                
+            <interceptor-ref name="paramsPrepareParamsStack"/>    
+            <result>/quartzadmin/jobDetails.jsp</result>
+        </action>
+
+        <action name="showCreateJob" class="tavant.twms.integration.server.web.action.SchedulerDetailAction" method="createJob">                
+            <interceptor-ref name="paramsPrepareParamsStack"/>    
+            <result>/quartzadmin/createJob.jsp</result>
+        </action>
+        
+        <action name="listJobDetails" class="tavant.twms.integration.server.web.action.SchedulerDetailAction" method="listJobDetails">                
+            <interceptor-ref name="paramsPrepareParamsStack"/>    
+        </action>
+        
+        <action name="createJob" class="tavant.twms.integration.server.web.action.JobAction" method="createJob">                
+            <interceptor-ref name="paramsPrepareParamsStack"/> 
+            <result name="success">/quartzadmin/jobDetails.jsp</result>
+            <result name="input">/quartzadmin/createJob.jsp</result>
+        </action>
+        <action name="handleJobAction" class="tavant.twms.integration.server.web.action.JobAction" method="handleJobAction">                
+            <interceptor-ref name="paramsPrepareParamsStack"/> 
+            <result name="showJobDetails">/quartzadmin/jobDetails.jsp</result>
+            <result name="editJob">/quartzadmin/createJob.jsp</result>
+        </action>
+
+	</package>
+</struts>

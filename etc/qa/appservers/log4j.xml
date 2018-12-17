@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+    <appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+          <param name="ConversionPattern" value="%-5p %c %x: %m%n" />
+        </layout>
+    </appender>
+	
+	<appender name="TWMS_LOG" class="org.apache.log4j.RollingFileAppender">        
+	    <param name="File" value="../logs/twms.log"/>
+    	<param name="MaxFileSize" value="10MB"/>
+        <param name="MaxBackupIndex" value="10"/>    		
+        <param name="Append" value="false" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%-5p %c{2} - %l %m %n"/>
+        </layout>
+    </appender>
+    
+    <appender name="STRUTS2_LOG" class="org.apache.log4j.RollingFileAppender">
+	    <param name="File" value="../logs/struts.log"/>
+    	<param name="MaxFileSize" value="10MB"/>
+        <param name="MaxBackupIndex" value="10"/>    		
+        <param name="Append" value="false" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%-5p %c{2} - %l %m %n"/>
+        </layout>      
+    </appender>
+	
+	<appender name="JGROUPS_LOG" class="org.apache.log4j.FileAppender">
+        <param name="File" value="../logs/jgroups.log"/>
+        <param name="Append" value="false"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="[%d] %-5p %c{2} - %l %m %n"/>
+        </layout>
+    </appender>
+
+	<logger name="org.jgroups.protocols" additivity="false">
+          <level value="TRACE"/>
+          <appender-ref ref="JGROUPS_LOG"/>
+    </logger>
+	
+    <logger name="tavant.twms" additivity="false">
+        <level value="DEBUG"/>
+        <appender-ref ref="TWMS_LOG"/>
+    </logger>
+
+    <logger name="com.opensymphony" additivity="false">
+        <level value="ERROR"/>
+        <appender-ref ref="STRUTS2_LOG"/>
+    </logger>
+
+    <logger name="org.apache.struts2" additivity="false">
+        <level value="ERROR"/>
+        <appender-ref ref="STRUTS2_LOG"/>
+    </logger>
+
+    <root>
+        <level value="ERROR"/>
+        <appender-ref ref="TWMS_LOG"/>
+        <appender-ref ref="CONSOLE"/>
+    </root>
+</log4j:configuration>

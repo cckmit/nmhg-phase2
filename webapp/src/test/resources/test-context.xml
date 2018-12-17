@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd"
+	default-autowire="byName">
+
+    <bean scope="prototype" name="basicFailureSt" class="tavant.twms.domain.failurestruct.FailureStructure">
+        <property name="id">
+            <value>1</value>
+        </property>
+        <property name="name">
+            <value>Failure1</value>
+        </property>
+        <property name="forItemGroup">
+            <ref bean="basicItemGroup"/>
+        </property>
+    </bean>
+
+    <bean scope="prototype" name="basicItemGroup" class="tavant.twms.domain.catalog.ItemGroup">
+        <property name="name">
+            <value>Basic Item Group</value>
+        </property>
+    </bean>
+
+    <bean scope="prototype" name="basicFaultCodeDefinition" class="tavant.twms.domain.failurestruct.FaultCodeDefinition">
+        <property name="id">
+            <value>11</value>
+        </property>
+        <property name="code">
+            <value>Dummy code</value>
+        </property>
+    </bean>
+
+    <bean scope="prototype" name="basicTreadBucket" class="tavant.twms.domain.failurestruct.TreadBucket">
+        <property name="code">
+            <value>13</value>
+        </property>
+        <property name="description">
+            <value>Tread bucket 13</value>
+        </property>
+    </bean>
+
+    <bean scope="prototype" name="basicFaultCode" class="tavant.twms.domain.failurestruct.FaultCode">
+        <property name="id">
+            <value>1</value>
+        </property>
+        <property name="definition">
+            <ref bean="basicFaultCodeDefinition"/>
+        </property>
+        <property name="treadBucket">
+            <ref bean="basicTreadBucket"/>
+        </property>
+    </bean>
+
+    <bean scope="prototype" name="basicAsmNode" class="tavant.twms.domain.failurestruct.Assembly">
+        <property name="id">
+            <value>10</value>
+        </property>
+        <property name="definition">
+            <ref bean="asmDefinition1"/>
+        </property>
+    </bean>
+
+    <bean scope="prototype" name="asmDefinition1" class="tavant.twms.domain.failurestruct.AssemblyDefinition">
+        <property name="id">
+            <value>100</value>
+        </property>
+        <property name="name">
+            <value>Asm Definition 1</value>
+        </property>
+        <property name="code">
+            <value>AsmDef100</value>
+        </property>
+    </bean>
+
+    <bean scope="prototype" name="asmDefinition2" class="tavant.twms.domain.failurestruct.AssemblyDefinition">
+        <property name="id">
+            <value>200</value>
+        </property>
+        <property name="name">
+            <value>Asm Definition 2</value>
+        </property>
+        <property name="code">
+            <value>AsmDef200</value>
+        </property>
+    </bean>
+
+    <bean scope="prototype" name="basicAction" class="tavant.twms.domain.failurestruct.ActionNode">
+        <property name="id">
+            <value>1000</value>
+        </property>
+        <property name="definedFor">
+            <ref bean="basicAsmNode"/>
+        </property>
+        <property name="definition">
+            <ref bean="actionDefinition1"/>
+        </property>
+        <property name="serviceProcedure">
+            <ref bean="basicServiceProcedure"/>
+        </property>
+    </bean>
+
+    <bean scope="prototype" name="basicServiceProcedure" class="tavant.twms.domain.failurestruct.ServiceProcedure">
+        <property name="forCampaigns">
+            <value>false</value>
+        </property>
+        <property name="suggestedLabourHours">
+            <value>10</value>
+        </property>
+     </bean>
+        
+    <bean scope="prototype" name="actionDefinition1" class="tavant.twms.domain.failurestruct.ActionDefinition">
+        <property name="id">
+            <value>10000</value>
+        </property>
+        <property name="name">
+            <value>Service Pro 10000</value>
+        </property>
+        <property name="code">
+            <value>SP10000</value>
+        </property>
+    </bean>
+
+    <bean scope="prototype" name="actionDefinition2" class="tavant.twms.domain.failurestruct.ActionDefinition">
+        <property name="id">
+            <value>20000</value>
+        </property>
+        <property name="name">
+            <value>Service Pro 20000</value>
+        </property>
+        <property name="code">
+            <value>SP20000</value>
+        </property>
+    </bean>
+
+    <bean scope="prototype" name="partialFailureStWith2AsmChildren" parent="failureStWith2AsmChildren"
+          class="tavant.twms.domain.failurestruct.FailureStructure">
+        <property name="assemblies">
+            <set>
+                <ref bean="basicAsmNode"/>
+            </set>
+        </property>
+    </bean>
+
+    <bean scope="prototype" name="partialFailureStWith1ChildrenHaving1AsmAnd2ActionChildren"
+          parent="failureStWith1ChildrenHaving1AsmAnd2ActionChildren" class="tavant.twms.domain.failurestruct.FailureStructure">
+        <property name="assemblies">
+            <set>
+                <bean scope="prototype" parent="asmNodeWith2ActionNodes">
+                    <property name="actions">
+                        <set>
+                            <ref bean="basicAction"/>
+                        </set>
+                    </property>
+                </bean>
+            </set>
+        </property>
+    </bean>
+
+    <bean scope="prototype" name="failureStWith2AsmChildren" parent="basicFailureSt"
+		class="tavant.twms.domain.failurestruct.FailureStructure">
+        <property name="assemblies">
+			<set>
+                <ref bean="basicAsmNode"/>
+                <bean scope="prototype" parent="basicAsmNode" class="tavant.twms.domain.failurestruct.Assembly">
+                    <property name="id">
+                        <value>20</value>
+                    </property>
+                    <property name="definition">
+                        <ref bean="asmDefinition2"/>
+                    </property>
+                </bean>
+            </set>
+		</property>
+	</bean>
+
+    <bean scope="prototype" name="failureStWith1ChildHaving2AsmChildren" parent="basicFailureSt"
+        class="tavant.twms.domain.failurestruct.FailureStructure">
+        <property name="assemblies">
+			<set>
+                <bean scope="prototype" parent="basicAsmNode" class="tavant.twms.domain.failurestruct.Assembly">
+                    <property name="composedOfAssemblies">
+                        <set>
+                            <ref bean="basicAsmNode"/>
+                            <bean scope="prototype" parent="basicAsmNode" class="tavant.twms.domain.failurestruct.Assembly">
+                                <property name="id">
+                                    <value>30</value>
+                                </property>
+                                <property name="definition">
+                                    <ref bean="asmDefinition2"/>
+                                </property>
+                            </bean>
+                        </set>
+                    </property>
+                </bean>
+            </set>
+		</property>
+    </bean>
+
+    <bean scope="prototype" name="failureStWith1ChildrenHaving1AsmAnd2ActionChildren" parent="basicFailureSt"
+        class="tavant.twms.domain.failurestruct.FailureStructure">
+        <property name="assemblies">
+            <set>
+                <ref bean="asmNodeWith2ActionNodes"/>
+            </set>
+        </property>
+    </bean>
+
+    <bean scope="prototype" name="asmNodeWith2ActionNodes" parent="basicAsmNode" class="tavant.twms.domain.failurestruct.Assembly">
+        <property name="id">
+            <value>40</value>
+        </property>
+        <property name="faultCode">
+            <ref bean="basicFaultCode"/>
+        </property>
+        <property name="definition">
+            <ref bean="asmDefinition2"/>
+        </property>
+        <property name="composedOfAssemblies">
+            <set>
+                <ref bean="basicAsmNode"/>
+            </set>
+        </property>
+        <property name="actions">
+            <set>
+                <ref bean="basicAction"/>
+                <bean scope="prototype" parent="basicAction" class="tavant.twms.domain.failurestruct.ActionNode">
+                    <property name="id">
+                        <value>1001</value>
+                    </property>
+<!--                     <property name="suggestedLabourHours">
+                        <value>12</value>
+                    </property>
+                    <property name="forCampaigns">
+                        <value>true</value>
+                    </property>  -->
+                    <property name="definition">
+                        <ref bean="actionDefinition2"/>
+                    </property>
+                </bean>
+            </set>
+        </property>
+    </bean>
+</beans>

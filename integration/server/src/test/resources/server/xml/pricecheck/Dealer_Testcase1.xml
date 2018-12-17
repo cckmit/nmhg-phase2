@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomerSyncRequest xmlns="http://www.tavant.com/globalsync/customersync">
+	<ApplicationArea>
+		<Sender>
+			<Task>SLMS</Task>
+			<LogicalId>NOMS</LogicalId>
+			<ReferenceId>INT100561303121311000014</ReferenceId>
+		</Sender>
+		<BODId>INT10</BODId>
+		<InterfaceNumber>INT10</InterfaceNumber>
+		<CreationDateTime>2013-03-11T12.10.28</CreationDateTime>
+	</ApplicationArea>
+	<DataArea>
+		<Customer>
+			<CustomerName>Integration Site2</CustomerName>
+			<BusinessUnits>
+				<BUName>056</BUName>
+			</BusinessUnits>
+			<CustomerNumber>052054486123456766666666</CustomerNumber>
+			<Status>A</Status>
+			<CompanyType>DEALER</CompanyType>
+			<Currency>EUR</Currency>
+			<DealerFamilyCode />
+			<RegionCode />
+			<BrandInfo>
+				<BrandCode>HYSTER</BrandCode>
+			</BrandInfo>
+			<MarketingGroupCode>052</MarketingGroupCode>
+			<PrimaryContactPerson>
+				<FirstName />
+				<LastName />
+			</PrimaryContactPerson>
+			<BillToAddress>
+				<FirstName />
+				<MiddleName />
+				<LastName />
+				<Addressline1 />
+				<Addressline2 />
+				<Addressline3 />
+				<Addressline4 />
+				<SiteNumber />
+				<City />
+				<State />
+				<CountyCode />
+				<Country />
+				<Zipcode />
+				<ZipExtension />
+				<Email />
+				<Phone />
+				<PhoneExt />
+				<SecondaryPhone />
+				<SecondaryPhoneExt />
+				<Fax />
+				<Status />
+				<Currency />
+			</BillToAddress>
+			<ShipToLocations>
+				<ShipToLocation>
+					<Address>
+						<FirstName />
+						<MiddleName />
+						<LastName />
+						<Addressline1>4. KATSENELSON ST.</Addressline1>
+						<Addressline2 />
+						<Addressline3 />
+						<Addressline4 />
+						<SiteNumber></SiteNumber>
+						<City></City>
+						<State />
+						<CountyCode />
+						<Country>IL</Country>
+						<Zipcode />
+						<ZipExtension />
+						<Email />
+						<Phone>--</Phone>
+						<PhoneExt />
+						<SecondaryPhone />
+						<SecondaryPhoneExt />
+						<Fax>--</Fax>
+						<Status>A</Status>
+						<Currency>EUR</Currency>
+						<SicCode />
+						<IsEndCustomer>Y</IsEndCustomer>
+						<IsPrimary>N</IsPrimary>
+					</Address>
+				</ShipToLocation>
+			</ShipToLocations>
+			<SellingLocation />
+			<BusinessArea />
+			<FleetBusinessArea />
+			<ServiceProviderType />
+			<ServiceProviderDesc />
+			<DualBrandDealer />
+			<XmlacknowledgementFooter />
+			<Network />
+			<Language />
+			<ShipToChanged>Y</ShipToChanged>
+			<SalesTerritoryName />
+		</Customer>
+	</DataArea>
+</CustomerSyncRequest>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping SYSTEM
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="tavant.twms.domain.catalog">
+    <query name="modelsForItemGroup">
+        <![CDATA[
+    	select ig from ItemGroup ig 
+    		where ig.itemGroupType = 'MODEL' 
+    			and ig.nodeInfo.treeId=:treeId 
+    			and :lft < ig.nodeInfo.lft 
+    			and ig.nodeInfo.rgt < :rgt 
+    			order by ig.nodeInfo.depth, ig.nodeInfo.lft
+    ]]>
+    </query>
+    <query name="modelForProduct">
+        <![CDATA[
+          select ig from ItemGroup ig
+              where ig.itemGroupType = 'MODEL'
+                  and ig.nodeInfo.treeId=:treeId
+                  and :lft < ig.nodeInfo.lft
+                  and ig.nodeInfo.rgt < :rgt
+                  and ig.isPartOf=:isPartOf
+                  and upper(ig.groupCode)=:modelCode
+      ]]>
+    </query>
+    <query name="productFamilyForProduct">
+        <![CDATA[
+          select ig from ItemGroup ig
+              where ig.itemGroupType = 'PRODUCT FAMILY' 
+                  and ig.nodeInfo.treeId=:treeId
+                  and :lft > ig.nodeInfo.lft
+                  and ig.nodeInfo.rgt > :rgt
+                  and ig.groupCode=:productFamilyCode
+      ]]>
+    </query>
+    
+    <query name="productTypeFamilyForProduct">
+        <![CDATA[
+          select ig from ItemGroup ig
+              where ig.itemGroupType = 'PRODUCT FAMILY' 
+                  and ig.nodeInfo.treeId=:treeId
+                  and :lft < ig.nodeInfo.lft
+                  and ig.nodeInfo.rgt < :rgt
+                  and ig.groupCode=:productFamilyCode
+      ]]>
+    </query>
+</hibernate-mapping>

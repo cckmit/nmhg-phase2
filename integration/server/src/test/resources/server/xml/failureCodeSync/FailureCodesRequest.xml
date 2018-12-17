@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<FailureCodesSync>
+    <ApplicationArea>
+        <Sender>
+            <Task>TavantWMS</Task>
+            <LogicalId>SAP</LogicalId>
+            <ReferenceId>W-20015396_C</ReferenceId>
+        </Sender>
+        <BODId>INT01</BODId>
+        <InterfaceNumber />
+        <CreationDateTime>2008-03-14T11:15:03-08:00</CreationDateTime>
+    </ApplicationArea>
+    <DataArea>
+	    <BUName>Thermo King TSA</BUName>
+        <WarrantyCodes>
+        </WarrantyCodes>		
+        <FailureCodes>
+			<FailureCode>
+                <ProductCode>ATTACHMENT</ProductCode>
+                <ModelCode>63008-408241</ModelCode>
+                <System>00025</System>
+                <System-Name>T_ENGINE1</System-Name>
+                <Sub-System>3</Sub-System>
+                <Sub-System-Name>FUEL SYSTEM_T</Sub-System-Name>
+                <Component>0092</Component>
+                <Component-Name>DIFFERENTIAL LOCK</Component-Name>
+				<Sub-Component>06</Sub-Component>
+                <Sub-Component-Name>SUB COMMON RAIL_T</Sub-Component-Name>
+                <Status>INACTIVE</Status>
+            </FailureCode>	
+        </FailureCodes>
+    </DataArea>
+</FailureCodesSync>

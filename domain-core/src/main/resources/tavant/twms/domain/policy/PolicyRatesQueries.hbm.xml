@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping SYSTEM
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="tavant.twms.domain.policy">
+	<query name="policyRateLookupQuery">
+		<![CDATA[ 
+select 
+ policyRate.value
+from 
+ PolicyRate policyRate join policyRate.policyRates policyRates  
+ left outer join policyRates.forCriteria.dealerCriterion.dealerGroup specifiedDealerGroup,  
+ DealerGroup dealerGroup join dealerGroup.includedDealers dealerInGroup
+where  
+ policyRate.duration.fromDate <= :asOfDate and :asOfDate <= policyRate.duration.tillDate  and 
+ ( policyRates.forCriteria.productType is null or policyRates.forCriteria.productType=:productType ) and 
+ ( policyRates.forCriteria.warrantyRegistrationType=:allRegistrationTypes or 
+   policyRates.forCriteria.warrantyRegistrationType=:registrationType 
+ ) and 
+ ( policyRates.forCriteria.customerState is null or 
+   policyRates.forCriteria.customerState=:state
+ ) and 
+ ( policyRates.forCriteria.warrantyType is null or policyRates.forCriteria.warrantyType=:warrantyType ) and 
+ ( policyRates.forCriteria.dealerCriterion.dealer is null or 
+   policyRates.forCriteria.dealerCriterion.dealer=:dealer 
+ )  and 
+ ( specifiedDealerGroup is null  or 
+   ( specifiedDealerGroup.nodeInfo.treeId=dealerGroup.nodeInfo.treeId and 
+     specifiedDealerGroup.nodeInfo.lft <= dealerGroup.nodeInfo.lft and 
+     dealerGroup.nodeInfo.rgt <= specifiedDealerGroup.nodeInfo.rgt and 
+     :dealer = dealerInGroup
+   ) 
+ and
+ ( not exists elements(policyRates.policyDefinitions) or 
+   :policyDefinition in ( select id from policyRates.policyDefinitions) )
+ ) 
+		]]>
+	</query>
+</hibernate-mapping>

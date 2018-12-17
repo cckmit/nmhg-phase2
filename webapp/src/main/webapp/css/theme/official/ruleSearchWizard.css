@@ -1,0 +1,25 @@
+.collapsableLabel {
+	background: #777777;
+	border-bottom: 1px dotted #CCCCCC;
+}
+.collapsableContent {
+	background: #FFF;
+	border-right: 1px dotted #CCCCCC;
+	border-left: 1px dotted #CCCCCC;
+	border-bottom: 1px dotted #CCCCCC;
+}
+.closeButton {
+    background: url("../../../image/CloseRuleWizard.gif");
+    width : 21px;
+    height: 17px;
+    display: block;
+    cursor: pointer;
+}
+.loading {
+    background: url("../../../image/indicator.gif");
+    width : 21px;
+    height: 17px;
+    display: block;
+    cursor: wait;
+    
+}

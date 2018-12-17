@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="external" extends="struts-twms-default">
+
+		<!-- This one action class is to manually simulate the external web service -->
+		<action name="asyncPayment" 
+			class="tavant.twms.external.PaymentAsyncAction">
+			<result name="success">pages/secure/claims/claim_show_payment_pending.jsp</result>
+		</action>
+		
+		<action name="paymentAsyncActionAcknowledge" 
+			class="tavant.twms.external.PaymentAsyncAction"
+			method="syncPaymentMade">
+			<result name="success">asyncPayment.action</result>
+		</action>
+		
+		<action name="paymentAsyncAcknowledgeSRPmt" 
+			class="tavant.twms.external.PaymentAsyncAction"
+			method="syncPaymentMadeForSRClaims">
+			<result name="success">asyncPayment.action</result>
+		</action>
+		
+		<action name="autoDebit" 
+			class="tavant.twms.external.AsyncAutoDebitAction">
+			<result name="success">pages/secure/claims/autoDebit.jsp</result>
+		</action>
+		
+		<action name="autoDebitExecute" 
+			class="tavant.twms.external.AsyncAutoDebitAction"
+			method="autoDebit">
+			<result name="success">autoDebit.action</result>
+		</action>
+		
+		<action name="generateClaimXml" 
+			class="tavant.twms.external.GenerateClaimXmlAction"
+			method="generateClaimAsXml">
+			<result name="success">pages/secure/claims/generateClaimXml.jsp</result>
+		</action>
+		
+		<action name="displayErrorXmlClaims" 
+			class="tavant.twms.external.GenerateClaimXmlAction"
+			method="displayMismatchedClaims">
+			<result name="success">pages/secure/claims/generateClaimXml.jsp</result>
+		</action>
+		
+		<action name="displaySyncTrackerRecords" 
+			class="tavant.twms.web.integration.ManageSyncTrackerAction"
+			method="displaySearchRecords">
+			<interceptor-ref name="twmsParamsPrepareParams" />
+			<result name="success">pages/secure/integration/displaySearchRecords.jsp</result>
+			<result name="input">pages/error.jsp</result>
+		</action>
+		
+		<action name="showRecordInfo" 
+			class="tavant.twms.web.integration.ManageSyncTrackerAction"
+			method="showRecordInfo">
+			<interceptor-ref name="twmsParamsPrepareParams" />
+			<result name="success">pages/secure/integration/syncTrackerRecord.jsp</result>
+			<result name="input">pages/error.jsp</result>
+		</action>
+		
+		<action name="processRecoveryForClaims" 
+			class="tavant.twms.external.ProcessRecoveryForClaims">
+			<result name="success">pages/secure/claims/generateClaimXml.jsp</result>
+		</action>
+		
+		<action name="processRecoveryForClaimsAsIs" 
+			class="tavant.twms.external.ProcessRecoveryForClaims" method="createRecoveryAsIs">
+			<result name="success">pages/secure/claims/generateClaimXml.jsp</result>
+		</action>
+		
+	</package>
+</struts>

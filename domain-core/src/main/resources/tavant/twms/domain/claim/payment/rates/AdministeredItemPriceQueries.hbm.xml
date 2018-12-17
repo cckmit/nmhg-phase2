@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping SYSTEM
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="tavant.twms.domain.claim.payment.rates">
+  <query name="itemPriceModifierLookupQuery">
+    <![CDATA[ 
+ select 
+  itemPriceModifier 
+ from 
+  ItemPriceModifier itemPriceModifier join itemPriceModifier.parent administeredPrice 
+   left outer join administeredPrice.itemCriterion.itemGroup specifiedItemGroup    
+   left outer join administeredPrice.forCriteria.dealerCriterion.dealerGroup specifiedDealerGroup,  
+   DealerGroup dealerGroup join dealerGroup.includedDealers dealerInGroup,
+   ItemGroup itemGroup join itemGroup.includedItems itemInGroup 
+ where  
+ itemPriceModifier.duration.fromDate <= :asOfDate and :asOfDate <= itemPriceModifier.duration.tillDate  and 
+ (    administeredPrice.itemCriterion.item=:item  or 
+      (	:item = itemInGroup and 
+        itemGroup.nodeInfo.treeId=specifiedItemGroup.nodeInfo.treeId and  
+		specifiedItemGroup.nodeInfo.lft <= itemGroup.nodeInfo.lft and itemGroup.nodeInfo.rgt <= specifiedItemGroup.nodeInfo.rgt  
+	)  
+   )  and 
+ ( administeredPrice.forCriteria.productType is null or administeredPrice.forCriteria.productType=:productType ) and 
+ ( administeredPrice.forCriteria.claimType is null or administeredPrice.forCriteria.claimType=:claimType )  and 
+ ( administeredPrice.forCriteria.warrantyType is null or administeredPrice.forCriteria.warrantyType=:warrantyType )  and 
+ ( administeredPrice.forCriteria.dealerCriterion.dealer is null or administeredPrice.forCriteria.dealerCriterion.dealer=:dealer )  and 
+ ( specifiedDealerGroup is null  or 
+	  (  specifiedDealerGroup.nodeInfo.treeId=dealerGroup.nodeInfo.treeId and 
+	     specifiedDealerGroup.nodeInfo.lft <= dealerGroup.nodeInfo.lft and 
+	     dealerGroup.nodeInfo.rgt <= specifiedDealerGroup.nodeInfo.rgt and 
+	     :dealer = dealerInGroup  
+      ) 
+  ) order by  
+  administeredPrice.forCriteria.relevanceScore desc, 
+  specifiedItemGroup.nodeInfo.depth desc,
+  specifiedDealerGroup.nodeInfo.depth desc
+    ]]>
+  </query>
+</hibernate-mapping>

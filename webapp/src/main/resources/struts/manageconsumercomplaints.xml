@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <package name="manageconsumercomplaints" extends="struts-twms-default">
+
+		<!-- Actions for the create complaint flow. -->
+        <action name="showNewConsumerComplaintForm"
+            class="tavant.twms.web.complaints.NewComplaintAction" method="showForm">
+            <result name="success">pages/secure/complaints/new_consumer_complaint_page1.jsp</result>
+        </action>
+        <action name="showConsumerIncidentForm"
+            class="tavant.twms.web.complaints.NewComplaintAction" method="showCompleteForm">
+            <result name="success">pages/secure/complaints/new_consumer_complaint_page2.jsp</result>
+        </action>        
+        <action name="saveConsumerComplaint"
+            class="tavant.twms.web.complaints.NewComplaintAction" method="saveComplaint">
+            <interceptor-ref name="twmsParamsPrepareParams" />
+            <result name="success">pages/secure/common/successListingRefresh.jsp</result>
+            <result name="input">pages/secure/complaints/new_consumer_complaint_page2.jsp</result>
+        </action>
+
+		<!-- Actions for the view complaint flow. -->
+        <action name="viewComplaints"
+            class="tavant.twms.web.complaints.ComplaintsAction">
+            <interceptor-ref name="paramsPrepare" />
+            <result name="success">pages/secure/complaints/complaintsInboxView.jsp</result>
+        </action>
+
+        <action name="complaintsBody"
+            class="tavant.twms.web.complaints.ComplaintsAction" method="tableBody">
+            <interceptor-ref name="paramsPrepare" />
+            <result name="success">pages/secure/home/json.jsp</result>
+            <result name="input">error.jsp</result>
+        </action>
+
+        <action name="complaints_preview"
+                class="tavant.twms.web.complaints.ComplaintsAction" method="showPreview">
+            <interceptor-ref name="paramsPrepare"/>
+            <result name="success">pages/secure/complaints/preview.jsp</result>
+        </action>
+
+        <action name="complaints_detail"
+                class="tavant.twms.web.complaints.ComplaintsAction" method="showPreview">
+            <interceptor-ref name="paramsPrepare"/>
+            <result name="success">pages/secure/complaints/detail.jsp</result>
+            <result name="input">pages/error.jsp</result>
+        </action>
+        
+        <action name="delete_complaint"
+                class="tavant.twms.web.complaints.ComplaintsAction" method="delete">
+            <interceptor-ref name="paramsPrepare"/>
+            <result name="success">pages/secure/common/successListingRefresh.jsp</result>
+        </action>
+        
+        <action name="update_complaint_page1"
+                class="tavant.twms.web.complaints.NewComplaintAction" method="showInitialUpdatePage">
+            <interceptor-ref name="paramsPrepare"/>
+            <result name="success">pages/secure/complaints/update_complaint_page1.jsp</result>
+        </action>
+        
+        <action name="update_complaint_page2"
+                class="tavant.twms.web.complaints.NewComplaintAction" method="showCompleteUpdatePage">
+            <interceptor-ref name="paramsPrepare"/>
+            <result name="success">pages/secure/complaints/update_complaint_page2.jsp</result>
+        </action>
+        
+        <action name="update_complaint"
+                class="tavant.twms.web.complaints.NewComplaintAction" method="updateComplaint">
+            <interceptor-ref name="twmsParamsPrepareParams"/>
+            <result name="success">pages/secure/common/successFullRefresh.jsp</result>
+        </action>
+        
+    </package>
+</struts>
+

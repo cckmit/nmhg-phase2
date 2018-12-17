@@ -1,0 +1,100 @@
+<?xml version="1.0"?>
+<!-- This project will have most of the common code -->
+<project>
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <artifactId>server</artifactId>
+    <groupId>tavant.twms.TSA_DEV</groupId>
+    <version>0.5-SNAPSHOT</version>
+  </parent>
+
+  <artifactId>package</artifactId>
+  <name>server-package</name>
+  
+  <dependencies>
+    <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>webapp</artifactId>
+      <version>${version.to.package}</version>
+	  <type>war</type>
+    </dependency>
+    
+  </dependencies>
+  
+  <build>
+    <finalName>twms-install-${project.version}</finalName>
+    <plugins>
+
+	  <plugin>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <configuration>
+          <skip>false</skip>
+        </configuration>
+      </plugin>
+
+	  <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-release-plugin</artifactId>
+      </plugin>
+	  
+	  <!-- 
+		For getting database dump, assumes mysql is a command available 
+		Command to be executed is,
+		mysqldump -u root/welcome  (double hyphen) databases warranty > filename
+	  -->
+	  <plugin>
+		<groupId>org.codehaus.mojo</groupId>
+		<artifactId>exec-maven-plugin</artifactId>
+		<executions>
+			<execution>
+				<phase>compile</phase>
+				<goals>
+					<goal>exec</goal>
+				</goals>
+			</execution>
+		</executions>
+		<configuration>
+			<executable>${mysql.executable}</executable>
+			<arguments>
+				<argument>-u</argument>
+				<argument>${mysql.user}</argument>
+				<argument>-p${mysql.pwd}</argument>
+				<argument>-B</argument>
+				<argument>${mysql.db}</argument>
+				<argument>&gt;</argument>
+				<argument>
+					target/${sql.dump}
+				</argument>
+			</arguments>
+		</configuration>
+	  </plugin>
+	  
+	  <plugin>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <executions>
+          <execution>
+            <goals>
+              <goal>attached</goal>
+            </goals>
+            <phase>package</phase>
+          </execution>
+        </executions>
+        <configuration>
+          <descriptor>src/main/assembly/deployment-descriptor.xml</descriptor>
+        </configuration>   
+      </plugin>
+	  
+	  
+    </plugins>    
+  </build>
+  
+  <properties>
+	<svn.executable>svn</svn.executable>
+	<mysql.executable>mysqldump</mysql.executable>
+	<mysql.user>root</mysql.user>
+	<mysql.pwd>welcome</mysql.pwd>
+	<mysql.db>warranty</mysql.db>
+	<sql.dump>02-twms-db-setup.sql</sql.dump>
+	<version.to.package>${project.version}</version.to.package>
+  </properties>
+</project>

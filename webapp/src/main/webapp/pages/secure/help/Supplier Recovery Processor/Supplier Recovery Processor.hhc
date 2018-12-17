@@ -1,0 +1,211 @@
+<html>
+<!-- Sitemap 1.0 -->
+<object type="text/site properties">
+  <param name="SiteType" value="toc">
+  <param name="Image Width" value="16">
+  <param name="Window Styles" value="0x800002">
+  <param name="ExWindow Styles" value="0x100">
+</object>
+<ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Supplier Recovery Processor">
+  </object>
+  <ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="Before you Begin">
+    </object>
+    <ul>
+      <li><object type="text/sitemap">
+        <param name="Name" value="Introduction">
+        <param name="Local" value="Before_you_Begin\Introduction.htm">
+      </object>
+      <li><object type="text/sitemap">
+        <param name="Name" value="Copyright">
+        <param name="Local" value="Before_you_Begin\Copyright.htm">
+      </object>
+      <li><object type="text/sitemap">
+        <param name="Name" value="Before you Begin">
+        <param name="Local" value="Before_you_Begin\Before_you_Begin.htm">
+      </object>
+      <li><object type="text/sitemap">
+        <param name="Name" value="Common Application Features">
+        <param name="Local" value="Before_you_Begin\common_application_features.htm">
+      </object>
+      </ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="Claims">
+    </object>
+    <ul>
+      <li><object type="text/sitemap">
+        <param name="Name" value="Search Claims">
+        <param name="Local" value="Claims\Search_Claims.htm">
+      </object>
+      <li><object type="text/sitemap">
+        <param name="Name" value="Claim Details">
+        <param name="Local" value="Claims\Claim_Details.htm">
+      </object>
+      <li><object type="text/sitemap">
+        <param name="Name" value="Policy Details">
+        <param name="Local" value="Claims\Policy_Details.htm">
+      </object>
+      </ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="Inventory">
+    </object>
+    <ul>
+      <li><object type="text/sitemap">
+        <param name="Name" value="Inventory">
+        <param name="Local" value="Inventory\Inventory.htm">
+      </object>
+      <li><object type="text/sitemap">
+        <param name="Name" value="Search Inventory">
+        <param name="Local" value="Inventory\Search_Inventory.htm">
+      </object>
+      <li><object type="text/sitemap">
+        <param name="Name" value="Truck Details">
+        <param name="Local" value="Inventory\Equipment_Details.htm">
+      </object>
+      </ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="Field Product Improvement">
+    </object>
+    <ul>
+      <li><object type="text/sitemap">
+        <param name="Name" value="Search Campaigns">
+        <param name="Local" value="Field_Modifications\Search_Campaigns.htm">
+      </object>
+      </ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="Part Returns">
+    </object>
+    <ul>
+      <li><object type="text/sitemap">
+        <param name="Name" value="Search Parts">
+        <param name="Local" value="Part_Returns\Search_Parts.htm">
+      </object>
+      </ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="Parts Recovery">
+    </object>
+    <ul>
+      <li><object type="text/sitemap">
+        <param name="Name" value="Parts Recovery">
+        <param name="Local" value="Parts_Recovery\Parts_Recovery.htm">
+      </object>
+      <li><object type="text/sitemap">
+        <param name="Name" value="Awaiting Shipment">
+        <param name="Local" value="Parts_Recovery\Awaiting_Shipment.htm">
+      </object>
+      <li><object type="text/sitemap">
+        <param name="Name" value="Awaiting Shipment To Warehouse">
+        <param name="Local" value="Parts_Recovery\Awaiting_Shipment_To_Warehouse.htm">
+      </object>
+      <li><object type="text/sitemap">
+        <param name="Name" value="Part Not In Warehouse">
+        <param name="Local" value="Parts_Recovery\Part_Not_In_Warehouse.htm">
+      </object>
+      <li><object type="text/sitemap">
+        <param name="Name" value="Search Parts">
+        <param name="Local" value="Part_Returns\Search_Parts.htm">
+      </object>
+      </ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="Supplier Recovery">
+    </object>
+    <ul>
+      <li><object type="text/sitemap">
+        <param name="Name" value="Supplier Recovery">
+        <param name="Local" value="Supplier_Recovery\Supplier_Recovery.htm">
+      </object>
+      <li><object type="text/sitemap">
+        <param name="Name" value="Claims Due for Recovery">
+        <param name="Local" value="Supplier_Recovery\Claims_Due_for_Recovery.htm">
+      </object>
+      <li><object type="text/sitemap">
+        <param name="Name" value="Claims Under Recovery">
+        <param name="Local" value="Supplier_Recovery\Claims_Under_Recovery.htm">
+      </object>
+      <li><object type="text/sitemap">
+        <param name="Name" value="Multi Claim Maintenance">
+        <param name="Local" value="Supplier_Recovery\Multi_Claim_Maintenance.htm">
+      </object>
+      <li><object type="text/sitemap">
+        <param name="Name" value="Search Supplier Recovery Claims">
+        <param name="Local" value="Supplier_Recovery\Search_Supplier_Recovery_Claims.htm">
+      </object>
+      </ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="Contract Admin">
+    </object>
+    <ul>
+      <li><object type="text/sitemap">
+        <param name="Name" value="Maintain Supplier Contracts">
+        <param name="Local" value="Contract_Admin\Maintain_Supplier_Contracts.htm">
+      </object>
+      <li><object type="text/sitemap">
+        <param name="Name" value="Manage Business Conditions">
+        <param name="Local" value="Contract_Admin\Manage_Business_Conditions.htm">
+      </object>
+      <li><object type="text/sitemap">
+        <param name="Name" value="Manage Business Rules">
+        <param name="Local" value="Contract_Admin\Manage_Business_Rules.htm">
+      </object>
+      <li><object type="text/sitemap">
+        <param name="Name" value="Manage Suppliers">
+        <param name="Local" value="Contract_Admin\Manage_Suppliers.htm">
+      </object>
+      <li><object type="text/sitemap">
+        <param name="Name" value="User Groups">
+        <param name="Local" value="Contract_Admin\User_Groups.htm">
+      </object>
+      <li><object type="text/sitemap">
+        <param name="Name" value="View Part Source History">
+        <param name="Local" value="Contract_Admin\View_Part_Source_History.htm">
+      </object>
+      <li><object type="text/sitemap">
+        <param name="Name" value="View Suppliers">
+        <param name="Local" value="Contract_Admin\View_Suppliers.htm">
+      </object>
+      </ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="Items">
+    </object>
+    <ul>
+      <li><object type="text/sitemap">
+        <param name="Name" value="Search Items">
+        <param name="Local" value="Items\Search_Items.htm">
+      </object>
+      </ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="Reports">
+    </object>
+    <ul>
+      <li><object type="text/sitemap">
+        <param name="Name" value="Reports">
+        <param name="Local" value="Reports\Reports.htm">
+      </object>
+      <li><object type="text/sitemap">
+        <param name="Name" value="Vendor Recovery Report">
+        <param name="Local" value="Reports\Vendor_Recovery_Report.htm">
+      </object>
+      <li><object type="text/sitemap">
+        <param name="Name" value="Download Management">
+        <param name="Local" value="Reports\Download_Management.htm">
+      </object>
+      <li><object type="text/sitemap">
+        <param name="Name" value="Upload Management">
+        <param name="Local" value="Reports\Upload_Management.htm">
+      </object>
+      </ul>
+    <li><object type="text/sitemap">
+      <param name="Name" value="Settings">
+    </object>
+    <ul>
+      <li><object type="text/sitemap">
+        <param name="Name" value="Profile">
+        <param name="Local" value="Settings\Profile.htm">
+      </object>
+      </ul>
+    </ul>
+</ul>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE validators PUBLIC
+        "-//Apache Struts//XWork Validator 1.0.2//EN"
+        "http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+<validators>
+
+    <field name="domainPredicate.name">
+        <field-validator type="requiredstring">
+            <param name="trim">true</param>
+            <message key="error.manageBusinessCondition.nonEmptyNameRequired"/>
+        </field-validator>
+    </field>
+
+    <field name="expressionSelected">
+        <field-validator type="requiredstring">
+            <param name="trim">true</param>
+            <message key="error.manageBusinessCondition.invalidExpression"/>
+        </field-validator>
+    </field>
+
+</validators>

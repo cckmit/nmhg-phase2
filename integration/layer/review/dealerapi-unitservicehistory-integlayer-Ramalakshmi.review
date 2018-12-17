@@ -1,0 +1,454 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Review id="dealerapi-unitservicehistory-integlayer">
+  <ReviewIssue id="G454FR96">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-07 :: 11:22:19:386 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-21 :: 17:55:04:510 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ramalakshmi</ReviewerId>
+    <AssignedTo>Naveen</AssignedTo>
+    <File line="29">src/main/java/tavant/twms/integration/layer/DealerIntegrationServiceImpl.java</File>
+    <Type>item.type.label.codingStandards</Type>
+    <Severity>item.severity.label.normal</Severity>
+    <Summary>Write try/catch block around transform method call</Summary>
+    <Description>Write try/catch block around transform method call so that we send proper error code/message when the request itself is not in correct format.&#13;
+Also the method name can be more meaningful like convertXMLToRequestDTO</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.resolved</Status>
+  </ReviewIssue>
+  <ReviewIssue id="G454LGAR">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-07 :: 11:26:45:123 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-08 :: 21:15:38:746 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ramalakshmi</ReviewerId>
+    <AssignedTo>Naveen</AssignedTo>
+    <File line="89">src/main/java/tavant/twms/integration/layer/transformer/global/dealerinterfaces/unitservicehistory/UnitServiceHistoryTransformer.java</File>
+    <Type>item.type.label.codingStandards</Type>
+    <Severity>item.label.unset</Severity>
+    <Summary>Rename method to convertBeanToResponseDTO</Summary>
+    <Description>Rename method to convertBeanToResponseDTO</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.resolved</Status>
+  </ReviewIssue>
+  <ReviewIssue id="G454RVH4">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-07 :: 11:31:44:728 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-07 :: 11:32:29:143 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ramalakshmi</ReviewerId>
+    <AssignedTo>Naveen</AssignedTo>
+    <File line="95">src/main/java/tavant/twms/integration/layer/transformer/global/dealerinterfaces/unitservicehistory/UnitServiceHistoryTransformer.java</File>
+    <Type>item.type.label.programLogic</Type>
+    <Severity>item.severity.label.major</Severity>
+    <Summary>Dealer should be allowed to see manufacturing site details based on Bu Configuration parameter</Summary>
+    <Description>Parameter name:Allow dealer to search based on Manufacturing Site</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="G454UDRY">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-07 :: 11:33:41:758 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-08 :: 21:15:17:637 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ramalakshmi</ReviewerId>
+    <AssignedTo>Naveen</AssignedTo>
+    <File line="95">src/main/java/tavant/twms/integration/layer/transformer/global/dealerinterfaces/unitservicehistory/UnitServiceHistoryTransformer.java</File>
+    <Type>item.type.label.clarity</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>Can method call setRetailingDealerInfo be moved down for more readability?</Summary>
+    <Description>Can method call setRetailingDealerInfo be moved down for more readability?</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.resolved</Status>
+  </ReviewIssue>
+  <ReviewIssue id="G454VWD0">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-07 :: 11:34:52:500 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-08 :: 21:15:09:715 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ramalakshmi</ReviewerId>
+    <AssignedTo>Naveen</AssignedTo>
+    <File line="109">src/main/java/tavant/twms/integration/layer/transformer/global/dealerinterfaces/unitservicehistory/UnitServiceHistoryTransformer.java</File>
+    <Type>item.type.label.codingStandards</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>Rename variable manufacturingSiteBean to manufacturingSite</Summary>
+    <Description>manufacturingSiteBean</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.resolved</Status>
+  </ReviewIssue>
+  <ReviewIssue id="G454ZUDK">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-07 :: 11:37:56:552 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-08 :: 16:33:39:403 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ramalakshmi</ReviewerId>
+    <AssignedTo>Naveen</AssignedTo>
+    <File line="94">src/main/java/tavant/twms/integration/layer/transformer/global/dealerinterfaces/unitservicehistory/UnitServiceHistoryTransformer.java</File>
+    <Type>item.type.label.irrelevant</Type>
+    <Severity>item.label.unset</Severity>
+    <Summary>Sorting is not required here as the APIs in InventoryItem has logic to sort already</Summary>
+    <Description>Sorting is not required here as the APIs in InventoryItem has logic to sort already</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.resolved</Status>
+  </ReviewIssue>
+  <ReviewIssue id="G45514RT">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-07 :: 11:38:56:681 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-08 :: 16:33:29:076 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ramalakshmi</ReviewerId>
+    <AssignedTo>Naveen</AssignedTo>
+    <File line="104">src/main/java/tavant/twms/integration/layer/transformer/global/dealerinterfaces/unitservicehistory/UnitServiceHistoryTransformer.java</File>
+    <Type>item.type.label.codingStandards</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>Rename variable previousCliamsBean to previousClaims</Summary>
+    <Description></Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.resolved</Status>
+  </ReviewIssue>
+  <ReviewIssue id="G4555C6G">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-07 :: 11:42:12:904 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-08 :: 16:33:15:638 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ramalakshmi</ReviewerId>
+    <AssignedTo>Naveen</AssignedTo>
+    <File line="183">src/main/java/tavant/twms/integration/layer/transformer/global/dealerinterfaces/unitservicehistory/UnitServiceHistoryTransformer.java</File>
+    <Type>item.type.label.programLogic</Type>
+    <Severity>item.severity.label.normal</Severity>
+    <Summary>Avoid population claim DTO when there are no claims</Summary>
+    <Description>Avoid population claim DTO when there are no claims.Cross check all such DTOs (field mod,warranty coverage) as well</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.resolved</Status>
+  </ReviewIssue>
+  <ReviewIssue id="G4556IX5">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-07 :: 11:43:08:297 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-07 :: 11:43:36:431 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ramalakshmi</ReviewerId>
+    <AssignedTo>Naveen</AssignedTo>
+    <File line="185">src/main/java/tavant/twms/integration/layer/transformer/global/dealerinterfaces/unitservicehistory/UnitServiceHistoryTransformer.java</File>
+    <Type>item.type.label.codingStandards</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>Any specific reason why the DTO is ClaimHistory rather than ClaimHistoryDTO?</Summary>
+    <Description></Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="G455AQ4Q">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-07 :: 11:46:24:266 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-07 :: 11:46:48:184 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ramalakshmi</ReviewerId>
+    <AssignedTo>Naveen</AssignedTo>
+    <File line="210">src/main/java/tavant/twms/integration/layer/transformer/global/dealerinterfaces/unitservicehistory/UnitServiceHistoryTransformer.java</File>
+    <Type>item.type.label.codingStandards</Type>
+    <Severity>item.severity.label.normal</Severity>
+    <Summary>Can this be changed to a for loop?</Summary>
+    <Description>Can this be changed to a for loop?</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="G455BJ9L">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-07 :: 11:47:02:025 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-07 :: 11:47:22:350 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ramalakshmi</ReviewerId>
+    <AssignedTo>Naveen</AssignedTo>
+    <File line="211">src/main/java/tavant/twms/integration/layer/transformer/global/dealerinterfaces/unitservicehistory/UnitServiceHistoryTransformer.java</File>
+    <Type>item.type.label.codingStandards</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>Can we directly call toArray on the collection claims to achieve this?</Summary>
+    <Description></Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="G455CS9Z">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-07 :: 11:48:00:359 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-08 :: 16:32:31:265 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ramalakshmi</ReviewerId>
+    <AssignedTo>Naveen</AssignedTo>
+    <File line="213">src/main/java/tavant/twms/integration/layer/transformer/global/dealerinterfaces/unitservicehistory/UnitServiceHistoryTransformer.java</File>
+    <Type>item.type.label.codingStandards</Type>
+    <Severity>item.severity.label.normal</Severity>
+    <Summary>Rename variable invList to inventoryTransactionList</Summary>
+    <Description>Rename variable invList to inventoryTransactionList</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.resolved</Status>
+  </ReviewIssue>
+  <ReviewIssue id="G455IOL9">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-07 :: 11:52:35:517 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-08 :: 21:14:38:982 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ramalakshmi</ReviewerId>
+    <AssignedTo>Naveen</AssignedTo>
+    <File line="287">src/main/java/tavant/twms/integration/layer/transformer/global/dealerinterfaces/unitservicehistory/UnitServiceHistoryTransformer.java</File>
+    <Type>item.type.label.codingStandards</Type>
+    <Severity>item.severity.label.normal</Severity>
+    <Summary>Cross check how ServiceProviderDTO takes PartyDTO for address</Summary>
+    <Description></Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.resolved</Status>
+  </ReviewIssue>
+  <ReviewIssue id="G455LJY7">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-07 :: 11:54:49:471 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-08 :: 16:31:32:829 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ramalakshmi</ReviewerId>
+    <AssignedTo>Naveen</AssignedTo>
+    <File line="314">src/main/java/tavant/twms/integration/layer/transformer/global/dealerinterfaces/unitservicehistory/UnitServiceHistoryTransformer.java</File>
+    <Type>item.type.label.codingStandards</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>Rename variable listSize to inventoryTrnxListSize</Summary>
+    <Description>Rename variable listSize to inventoryTrnxListSize.Cross check all such variables in the class</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.resolved</Status>
+  </ReviewIssue>
+  <ReviewIssue id="G455UZW0">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-07 :: 12:02:10:032 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-08 :: 16:31:28:095 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ramalakshmi</ReviewerId>
+    <AssignedTo>Naveen</AssignedTo>
+    <File line="418">src/main/java/tavant/twms/integration/layer/transformer/global/dealerinterfaces/unitservicehistory/UnitServiceHistoryTransformer.java</File>
+    <Type>item.type.label.codingStandards</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>Use StringUtils to check for null and empty values</Summary>
+    <Description>Use StringUtils to check for null and empty values</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.resolved</Status>
+  </ReviewIssue>
+  <ReviewIssue id="G4565RMD">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-07 :: 12:10:32:533 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-21 :: 17:54:42:714 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ramalakshmi</ReviewerId>
+    <AssignedTo>Naveen</AssignedTo>
+    <File line="201">src/main/java/tavant/twms/integration/layer/transformer/global/dealerinterfaces/unitservicehistory/UnitServiceHistoryTransformer.java</File>
+    <Type>item.type.label.programLogic</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>Claim History Population</Summary>
+    <Description>1.Cross check in the JSP and add the correct variable.BTSLaborHours is not the correct variable for Hours In Service&#13;
+2.TotalAmount credited is not shown to add dealers in the application&#13;
+3.Cross check OEMPartReplaced logic should also be different. We don't show the Supplier </Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.resolved</Status>
+  </ReviewIssue>
+  <ReviewIssue id="G456GW15">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-07 :: 12:19:11:465 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-08 :: 21:14:00:280 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ramalakshmi</ReviewerId>
+    <AssignedTo>Naveen</AssignedTo>
+    <File line="288">src/main/java/tavant/twms/integration/layer/transformer/global/dealerinterfaces/unitservicehistory/UnitServiceHistoryTransformer.java</File>
+    <Type>item.type.label.codingStandards</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>Rename Campaign to FieldModification</Summary>
+    <Description></Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.resolved</Status>
+  </ReviewIssue>
+  <ReviewIssue id="G456KKHC">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-07 :: 12:22:03:120 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-08 :: 21:13:40:874 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ramalakshmi</ReviewerId>
+    <AssignedTo>Naveen</AssignedTo>
+    <File line="31">src/main/java/tavant/twms/integration/layer/component/global/dealerinterfaces/unitservicehistory/UnitServiceHistoryHandler.java</File>
+    <Type>item.type.label.codingStandards</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>Use messages.properties</Summary>
+    <Description>Read this message from messages.properties</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.resolved</Status>
+  </ReviewIssue>
+  <ReviewIssue id="G456MJT7">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-07 :: 12:23:35:563 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-08 :: 21:13:28:844 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ramalakshmi</ReviewerId>
+    <AssignedTo>Naveen</AssignedTo>
+    <File line="68">src/main/java/tavant/twms/integration/layer/component/global/dealerinterfaces/unitservicehistory/UnitServiceHistoryHandler.java</File>
+    <Type>item.type.label.programLogic</Type>
+    <Severity>item.label.unset</Severity>
+    <Summary>Add a try catch block for exception other than ItemNotFoundException</Summary>
+    <Description>Add a try catch block for exception other than ItemNotFoundException</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.resolved</Status>
+  </ReviewIssue>
+  <ReviewIssue id="G4CGPV0T">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-12 :: 14:40:29:453 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-21 :: 17:54:55:589 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ramalakshmi</ReviewerId>
+    <AssignedTo>Naveen</AssignedTo>
+    <File line="58">src/main/java/tavant/twms/integration/layer/component/global/dealerinterfaces/unitservicehistory/UnitServiceHistoryHandler.java</File>
+    <Type>item.type.label.codingStandards</Type>
+    <Severity>item.severity.label.major</Severity>
+    <Summary>Optimization</Summary>
+    <Description>Abstract the error handling into a private method and cal from both the catch block.&#13;
+Also in the catch block for Exception e, log the exception as well so that we know what error has happened. Response being "Error_Occured" is fine. But we need to log the error for our purpose</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.resolved</Status>
+  </ReviewIssue>
+  <ReviewIssue id="G4CH1QQK">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-12 :: 14:49:43:772 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-12 :: 14:50:15:100 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ramalakshmi</ReviewerId>
+    <AssignedTo>Naveen</AssignedTo>
+    <File line="384">src/main/java/tavant/twms/integration/layer/transformer/global/dealerinterfaces/unitservicehistory/UnitServiceHistoryTransformer.java</File>
+    <Type>item.type.label.codingStandards</Type>
+    <Severity>item.severity.label.normal</Severity>
+    <Summary>Use the constants introduced in InventoryItemUtil</Summary>
+    <Description>Use the constants introduced in InventoryItemUtil</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="G4P3M05Z">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-21 :: 10:54:34:775 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-21 :: 17:54:20:449 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ramalakshmi</ReviewerId>
+    <AssignedTo>Naveen</AssignedTo>
+    <File line="81">src/main/java/tavant/twms/integration/layer/DealerIntegrationServiceImpl.java</File>
+    <Type>item.type.label.programLogic</Type>
+    <Severity>item.severity.label.major</Severity>
+    <Summary>Change API isOrganizationOnLoginSet logic</Summary>
+    <Description>1. Rename isOrganizationOnLoginSet to setCurrentActiveOrganization&#13;
+2. If user is mapped to only one organization and currentlyActiveOrganizationNumber is emtpy, set the organization to currentlyActiveOrganizationNumber &#13;
+3. If user is mapped to more than one organization and currentlyActiveOrganizationNumber is emtpy error out&#13;
+4. Remove redundant sorting logic&#13;
+5.CurrentActive Organization will be the ServiceProvider Number and not the ID.&#13;
+</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.resolved</Status>
+  </ReviewIssue>
+  <ReviewIssue id="G4P3QWNK">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-21 :: 10:58:23:504 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-21 :: 16:08:56:667 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ramalakshmi</ReviewerId>
+    <AssignedTo>Naveen</AssignedTo>
+    <File line="115">src/main/java/tavant/twms/integration/layer/DealerIntegrationServiceImpl.java</File>
+    <Type>item.type.label.programLogic</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>Remove redundant methods </Summary>
+    <Description>getSelectedBusinessUnit/setBusinessUnitOnLogin/getWarrantyAdminSelectedBusinessUnit/isLoggedInUserAnAdmin/isLoggedInUserContractAdmin</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.resolved</Status>
+  </ReviewIssue>
+  <ReviewIssue id="G4P3UC9J">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-21 :: 11:01:03:703 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-21 :: 16:13:33:080 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ramalakshmi</ReviewerId>
+    <AssignedTo>Naveen</AssignedTo>
+    <File line="50">src/main/java/tavant/twms/integration/layer/authentication/PasswordHandler.java</File>
+    <Type>item.type.label.codingStandards</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>Clean up PasswordHandler.java</Summary>
+    <Description>Remove SOPs and add proper Java Docs</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.resolved</Status>
+  </ReviewIssue>
+  <ReviewIssue id="G4P3ZL4U">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-21 :: 11:05:08:478 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-21 :: 16:13:13:737 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ramalakshmi</ReviewerId>
+    <AssignedTo>Naveen</AssignedTo>
+    <File line="94">src/main/java/tavant/twms/integration/layer/authentication/dealerinterfaces/DealerInterfaceAuthenticationHandler.java</File>
+    <Type>item.type.label.codingStandards</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>Use Constants in DealerInterfaceAuthenticationHandler</Summary>
+    <Description>DealerInterfaceAuthenticationHandler and change code to check for null password ( not username again)</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.resolved</Status>
+  </ReviewIssue>
+  <ReviewIssue id="G4P42VG9">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-21 :: 11:07:41:817 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-21 :: 15:54:49:210 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ramalakshmi</ReviewerId>
+    <AssignedTo>Naveen</AssignedTo>
+    <File line="84">src/main/java/tavant/twms/integration/layer/authentication/dealerinterfaces/DealerInterfaceAuthenticationHandler.java</File>
+    <Type>item.type.label.programLogic</Type>
+    <Severity>item.severity.label.major</Severity>
+    <Summary>Catch appropiate exceptions</Summary>
+    <Description>Catch AuthenticationException to set DAPI06 and general exception to throw DAPI02</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.resolved</Status>
+  </ReviewIssue>
+</Review>

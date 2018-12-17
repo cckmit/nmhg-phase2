@@ -1,0 +1,1786 @@
+<PriceFetchResponse>
+
+  <ApplicationArea>
+
+    <Sender>
+
+      <Task>ESAORACLEAPPS</Task>
+
+      <LogicalId>TavantWMS</LogicalId>
+
+      <ReferenceId>7654</ReferenceId>
+
+    </Sender>
+
+    <BODId>INT03</BODId>
+
+    <InterfaceNumber/>
+
+    <CreationDateTime>2009-01-13T07:05:00.865Z</CreationDateTime>
+
+  </ApplicationArea>
+
+  <Status>
+
+    <code>SUCCESS</code>
+
+    <errorMessage/>
+
+  </Status>
+
+  <PriceCheckResponse>
+
+    <LineItem>
+
+      <Status>
+
+        <code>SUCCESS</code>
+
+        <errorMessage/>
+
+      </Status>
+
+      <PartNo>03149234#100</PartNo>
+
+      <Quantity>1</Quantity>
+
+      <ListPrice>9.83</ListPrice>
+
+      <AdjustedListPrice>6.88</AdjustedListPrice>
+
+      <MaterialCost/>
+
+      <StandardCost/>
+
+      <UOM>EACH</UOM>
+
+    </LineItem>
+
+    <LineItem>
+
+      <Status>
+
+        <code>SUCCESS</code>
+
+        <errorMessage/>
+
+      </Status>
+
+      <PartNo>92468354#100</PartNo>
+
+      <Quantity>1</Quantity>
+
+      <ListPrice>36</ListPrice>
+
+      <AdjustedListPrice>21.6</AdjustedListPrice>
+
+      <MaterialCost/>
+
+      <StandardCost/>
+
+      <UOM>EACH</UOM>
+
+    </LineItem>
+
+    <LineItem>
+
+      <Status>
+
+        <code>SUCCESS</code>
+
+        <errorMessage/>
+
+      </Status>
+
+      <PartNo>03578374#101</PartNo>
+
+      <Quantity>1</Quantity>
+
+      <ListPrice>2.45</ListPrice>
+
+      <AdjustedListPrice>1.71</AdjustedListPrice>
+
+      <MaterialCost/>
+
+      <StandardCost/>
+
+      <UOM>EACH</UOM>
+
+    </LineItem>
+
+    <LineItem>
+
+      <Status>
+
+        <code>SUCCESS</code>
+
+        <errorMessage/>
+
+      </Status>
+
+      <PartNo>80103799#100</PartNo>
+
+      <Quantity>1</Quantity>
+
+      <ListPrice>89</ListPrice>
+
+      <AdjustedListPrice>53.4</AdjustedListPrice>
+
+      <MaterialCost/>
+
+      <StandardCost/>
+
+      <UOM>EACH</UOM>
+
+    </LineItem>
+
+    <LineItem>
+
+      <Status>
+
+        <code>SUCCESS</code>
+
+        <errorMessage/>
+
+      </Status>
+
+      <PartNo>10563724#100</PartNo>
+
+      <Quantity>1</Quantity>
+
+      <ListPrice>213</ListPrice>
+
+      <AdjustedListPrice>127.8</AdjustedListPrice>
+
+      <MaterialCost/>
+
+      <StandardCost/>
+
+      <UOM>EACH</UOM>
+
+    </LineItem>
+
+    <LineItem>
+
+      <Status>
+
+        <code>SUCCESS</code>
+
+        <errorMessage/>
+
+      </Status>
+
+      <PartNo>91488775#100</PartNo>
+
+      <Quantity>1</Quantity>
+
+      <ListPrice>14</ListPrice>
+
+      <AdjustedListPrice>8.4</AdjustedListPrice>
+
+      <MaterialCost/>
+
+      <StandardCost/>
+
+      <UOM>EACH</UOM>
+
+    </LineItem>
+
+    <LineItem>
+
+      <Status>
+
+        <code>FAILURE</code>
+
+        <errorMessage>Error! Item Does Not Exists.</errorMessage>
+
+      </Status>
+
+      <PartNo>41SA8LPQ4-EU</PartNo>
+
+      <Quantity>1</Quantity>
+
+      <ListPrice/>
+
+      <AdjustedListPrice/>
+
+      <MaterialCost/>
+
+      <StandardCost/>
+
+      <UOM>EACH</UOM>
+
+    </LineItem>
+
+    <LineItem>
+
+      <Status>
+
+        <code>SUCCESS</code>
+
+        <errorMessage/>
+
+      </Status>
+
+      <PartNo>03373198#100</PartNo>
+
+      <Quantity>1</Quantity>
+
+      <ListPrice>14.75</ListPrice>
+
+      <AdjustedListPrice>10.32</AdjustedListPrice>
+
+      <MaterialCost/>
+
+      <StandardCost/>
+
+      <UOM>EACH</UOM>
+
+    </LineItem>
+
+    <LineItem>
+
+      <Status>
+
+        <code>SUCCESS</code>
+
+        <errorMessage/>
+
+      </Status>
+
+      <PartNo>03771086#100</PartNo>
+
+      <Quantity>1</Quantity>
+
+      <ListPrice>107.7</ListPrice>
+
+      <AdjustedListPrice>75.39</AdjustedListPrice>
+
+      <MaterialCost/>
+
+      <StandardCost/>
+
+      <UOM>EACH</UOM>
+
+    </LineItem>
+
+    <LineItem>
+
+      <Status>
+
+        <code>SUCCESS</code>
+
+        <errorMessage/>
+
+      </Status>
+
+      <PartNo>03054087#100</PartNo>
+
+      <Quantity>1</Quantity>
+
+      <ListPrice>3.12</ListPrice>
+
+      <AdjustedListPrice>2.18</AdjustedListPrice>
+
+      <MaterialCost/>
+
+      <StandardCost/>
+
+      <UOM>EACH</UOM>
+
+    </LineItem>
+
+    <LineItem>
+
+      <Status>
+
+        <code>SUCCESS</code>
+
+        <errorMessage/>
+
+      </Status>
+
+      <PartNo>56741762#100</PartNo>
+
+      <Quantity>1</Quantity>
+
+      <ListPrice>194.28</ListPrice>
+
+      <AdjustedListPrice>194.28</AdjustedListPrice>
+
+      <MaterialCost/>
+
+      <StandardCost/>
+
+      <UOM>EACH</UOM>
+
+    </LineItem>
+
+    <LineItem>
+
+      <Status>
+
+        <code>SUCCESS</code>
+
+        <errorMessage/>
+
+      </Status>
+
+      <PartNo>01328590#100</PartNo>
+
+      <Quantity>1</Quantity>
+
+      <ListPrice>99</ListPrice>
+
+      <AdjustedListPrice>59.4</AdjustedListPrice>
+
+      <MaterialCost/>
+
+      <StandardCost/>
+
+      <UOM>EACH</UOM>
+
+    </LineItem>
+
+    <LineItem>
+
+      <Status>
+
+        <code>SUCCESS</code>
+
+        <errorMessage/>
+
+      </Status>
+
+      <PartNo>22039432#100</PartNo>
+
+      <Quantity>1</Quantity>
+
+      <ListPrice>490</ListPrice>
+
+      <AdjustedListPrice>294</AdjustedListPrice>
+
+      <MaterialCost/>
+
+      <StandardCost/>
+
+      <UOM>EACH</UOM>
+
+    </LineItem>
+
+    <LineItem>
+
+      <Status>
+
+        <code>SUCCESS</code>
+
+        <errorMessage/>
+
+      </Status>
+
+      <PartNo>92468826#100</PartNo>
+
+      <Quantity>1</Quantity>
+
+      <ListPrice>10</ListPrice>
+
+      <AdjustedListPrice>6</AdjustedListPrice>
+
+      <MaterialCost/>
+
+      <StandardCost/>
+
+      <UOM>EACH</UOM>
+
+    </LineItem>
+
+    <LineItem>
+
+      <Status>
+
+        <code>SUCCESS</code>
+
+        <errorMessage/>
+
+      </Status>
+
+      <PartNo>01365253#100</PartNo>
+
+      <Quantity>1</Quantity>
+
+      <ListPrice>108</ListPrice>
+
+      <AdjustedListPrice>64.8</AdjustedListPrice>
+
+      <MaterialCost/>
+
+      <StandardCost/>
+
+      <UOM>EACH</UOM>
+
+    </LineItem>
+
+    <LineItem>
+
+      <Status>
+
+        <code>SUCCESS</code>
+
+        <errorMessage/>
+
+      </Status>
+
+      <PartNo>92468347#100</PartNo>
+
+      <Quantity>1</Quantity>
+
+      <ListPrice>35</ListPrice>
+
+      <AdjustedListPrice>21</AdjustedListPrice>
+
+      <MaterialCost/>
+
+      <StandardCost/>
+
+      <UOM>EACH</UOM>
+
+    </LineItem>
+
+    <LineItem>
+
+      <Status>
+
+        <code>SUCCESS</code>
+
+        <errorMessage/>
+
+      </Status>
+
+      <PartNo>92468230#100</PartNo>
+
+      <Quantity>1</Quantity>
+
+      <ListPrice>36</ListPrice>
+
+      <AdjustedListPrice>21.6</AdjustedListPrice>
+
+      <MaterialCost/>
+
+      <StandardCost/>
+
+      <UOM>EACH</UOM>
+
+    </LineItem>
+
+    <LineItem>
+
+      <Status>
+
+        <code>SUCCESS</code>
+
+        <errorMessage/>
+
+      </Status>
+
+      <PartNo>92536044#100</PartNo>
+
+      <Quantity>1</Quantity>
+
+      <ListPrice>78</ListPrice>
+
+      <AdjustedListPrice>46.8</AdjustedListPrice>
+
+      <MaterialCost/>
+
+      <StandardCost/>
+
+      <UOM>EACH</UOM>
+
+    </LineItem>
+
+    <LineItem>
+
+      <Status>
+
+        <code>SUCCESS</code>
+
+        <errorMessage/>
+
+      </Status>
+
+      <PartNo>01352186#100</PartNo>
+
+      <Quantity>1</Quantity>
+
+      <ListPrice>57.5</ListPrice>
+
+      <AdjustedListPrice>34.5</AdjustedListPrice>
+
+      <MaterialCost/>
+
+      <StandardCost/>
+
+      <UOM>EACH</UOM>
+
+    </LineItem>
+
+    <LineItem>
+
+      <Status>
+
+        <code>SUCCESS</code>
+
+        <errorMessage/>
+
+      </Status>
+
+      <PartNo>04371985#100</PartNo>
+
+      <Quantity>1</Quantity>
+
+      <ListPrice>18.64</ListPrice>
+
+      <AdjustedListPrice>14.91</AdjustedListPrice>
+
+      <MaterialCost/>
+
+      <StandardCost/>
+
+      <UOM>EACH</UOM>
+
+    </LineItem>
+
+    <LineItem>
+
+      <Status>
+
+        <code>SUCCESS</code>
+
+        <errorMessage/>
+
+      </Status>
+
+      <PartNo>04374336#100</PartNo>
+
+      <Quantity>1</Quantity>
+
+      <ListPrice>18.64</ListPrice>
+
+      <AdjustedListPrice>14.91</AdjustedListPrice>
+
+      <MaterialCost/>
+
+      <StandardCost/>
+
+      <UOM>EACH</UOM>
+
+    </LineItem>
+
+    <LineItem>
+
+      <Status>
+
+        <code>SUCCESS</code>
+
+        <errorMessage/>
+
+      </Status>
+
+      <PartNo>91136259#100</PartNo>
+
+      <Quantity>1</Quantity>
+
+      <ListPrice>11</ListPrice>
+
+      <AdjustedListPrice>6.6</AdjustedListPrice>
+
+      <MaterialCost/>
+
+      <StandardCost/>
+
+      <UOM>EACH</UOM>
+
+    </LineItem>
+
+    <LineItem>
+
+      <Status>
+
+        <code>SUCCESS</code>
+
+        <errorMessage/>
+
+      </Status>
+
+      <PartNo>91136291#100</PartNo>
+
+      <Quantity>1</Quantity>
+
+      <ListPrice>14</ListPrice>
+
+      <AdjustedListPrice>8.4</AdjustedListPrice>
+
+      <MaterialCost/>
+
+      <StandardCost/>
+
+      <UOM>EACH</UOM>
+
+    </LineItem>
+
+    <LineItem>
+
+      <Status>
+
+        <code>SUCCESS</code>
+
+        <errorMessage/>
+
+      </Status>
+
+      <PartNo>01328582#100</PartNo>
+
+      <Quantity>1</Quantity>
+
+      <ListPrice>260</ListPrice>
+
+      <AdjustedListPrice>156</AdjustedListPrice>
+
+      <MaterialCost/>
+
+      <StandardCost/>
+
+      <UOM>EACH</UOM>
+
+    </LineItem>
+
+    <LineItem>
+
+      <Status>
+
+        <code>SUCCESS</code>
+
+        <errorMessage/>
+
+      </Status>
+
+      <PartNo>01328558#100</PartNo>
+
+      <Quantity>1</Quantity>
+
+      <ListPrice>93</ListPrice>
+
+      <AdjustedListPrice>55.8</AdjustedListPrice>
+
+      <MaterialCost/>
+
+      <StandardCost/>
+
+      <UOM>EACH</UOM>
+
+    </LineItem>
+
+    <LineItem>
+
+      <Status>
+
+        <code>SUCCESS</code>
+
+        <errorMessage/>
+
+      </Status>
+
+      <PartNo>92536036#100</PartNo>
+
+      <Quantity>1</Quantity>
+
+      <ListPrice>64</ListPrice>
+
+      <AdjustedListPrice>38.4</AdjustedListPrice>
+
+      <MaterialCost/>
+
+      <StandardCost/>
+
+      <UOM>EACH</UOM>
+
+    </LineItem>
+
+    <LineItem>
+
+      <Status>
+
+        <code>SUCCESS</code>
+
+        <errorMessage/>
+
+      </Status>
+
+      <PartNo>03788510#100</PartNo>
+
+      <Quantity>1</Quantity>
+
+      <ListPrice>6.7</ListPrice>
+
+      <AdjustedListPrice>4.69</AdjustedListPrice>
+
+      <MaterialCost/>
+
+      <StandardCost/>
+
+      <UOM>EACH</UOM>
+
+    </LineItem>
+
+    <LineItem>
+
+      <Status>
+
+        <code>SUCCESS</code>
+
+        <errorMessage/>
+
+      </Status>
+
+      <PartNo>92468362#100</PartNo>
+
+      <Quantity>1</Quantity>
+
+      <ListPrice>55</ListPrice>
+
+      <AdjustedListPrice>33</AdjustedListPrice>
+
+      <MaterialCost/>
+
+      <StandardCost/>
+
+      <UOM>EACH</UOM>
+
+    </LineItem>
+
+    <LineItem>
+
+      <Status>
+
+        <code>SUCCESS</code>
+
+        <errorMessage/>
+
+      </Status>
+
+      <PartNo>80171853#100</PartNo>
+
+      <Quantity>1</Quantity>
+
+      <ListPrice>126</ListPrice>
+
+      <AdjustedListPrice>75.6</AdjustedListPrice>
+
+      <MaterialCost/>
+
+      <StandardCost/>
+
+      <UOM>EACH</UOM>
+
+    </LineItem>
+
+    <LineItem>
+
+      <Status>
+
+        <code>SUCCESS</code>
+
+        <errorMessage/>
+
+      </Status>
+
+      <PartNo>01337625#100</PartNo>
+
+      <Quantity>1</Quantity>
+
+      <ListPrice>520.15</ListPrice>
+
+      <AdjustedListPrice>312.09</AdjustedListPrice>
+
+      <MaterialCost/>
+
+      <StandardCost/>
+
+      <UOM>EACH</UOM>
+
+    </LineItem>
+
+    <LineItem>
+
+      <Status>
+
+        <code>SUCCESS</code>
+
+        <errorMessage/>
+
+      </Status>
+
+      <PartNo>45484755#100</PartNo>
+
+      <Quantity>1</Quantity>
+
+      <ListPrice>160</ListPrice>
+
+      <AdjustedListPrice>96</AdjustedListPrice>
+
+      <MaterialCost/>
+
+      <StandardCost/>
+
+      <UOM>EACH</UOM>
+
+    </LineItem>
+
+    <LineItem>
+
+      <Status>
+
+        <code>SUCCESS</code>
+
+        <errorMessage/>
+
+      </Status>
+
+      <PartNo>01371624#100</PartNo>
+
+      <Quantity>1</Quantity>
+
+      <ListPrice>220</ListPrice>
+
+      <AdjustedListPrice>132</AdjustedListPrice>
+
+      <MaterialCost/>
+
+      <StandardCost/>
+
+      <UOM>EACH</UOM>
+
+    </LineItem>
+
+    <LineItem>
+
+      <Status>
+
+        <code>SUCCESS</code>
+
+        <errorMessage/>
+
+      </Status>
+
+      <PartNo>03149234#100</PartNo>
+
+      <Quantity>1</Quantity>
+
+      <ListPrice>9.83</ListPrice>
+
+      <AdjustedListPrice>6.88</AdjustedListPrice>
+
+      <MaterialCost/>
+
+      <StandardCost/>
+
+      <UOM>EACH</UOM>
+
+    </LineItem>
+
+    <LineItem>
+
+      <Status>
+
+        <code>SUCCESS</code>
+
+        <errorMessage/>
+
+      </Status>
+
+      <PartNo>20035903#100</PartNo>
+
+      <Quantity>1</Quantity>
+
+      <ListPrice>37.17</ListPrice>
+
+      <AdjustedListPrice>37.17</AdjustedListPrice>
+
+      <MaterialCost/>
+
+      <StandardCost/>
+
+      <UOM>EACH</UOM>
+
+    </LineItem>
+
+    <LineItem>
+
+      <Status>
+
+        <code>SUCCESS</code>
+
+        <errorMessage/>
+
+      </Status>
+
+      <PartNo>03625514#100</PartNo>
+
+      <Quantity>1</Quantity>
+
+      <ListPrice>5.2</ListPrice>
+
+      <AdjustedListPrice>3.64</AdjustedListPrice>
+
+      <MaterialCost/>
+
+      <StandardCost/>
+
+      <UOM>EACH</UOM>
+
+    </LineItem>
+
+    <LineItem>
+
+      <Status>
+
+        <code>SUCCESS</code>
+
+        <errorMessage/>
+
+      </Status>
+
+      <PartNo>80152085#100</PartNo>
+
+      <Quantity>1</Quantity>
+
+      <ListPrice>8.32</ListPrice>
+
+      <AdjustedListPrice>5.82</AdjustedListPrice>
+
+      <MaterialCost/>
+
+      <StandardCost/>
+
+      <UOM>EACH</UOM>
+
+    </LineItem>
+
+    <LineItem>
+
+      <Status>
+
+        <code>SUCCESS</code>
+
+        <errorMessage/>
+
+      </Status>
+
+      <PartNo>03801586#100</PartNo>
+
+      <Quantity>1</Quantity>
+
+      <ListPrice>5.2</ListPrice>
+
+      <AdjustedListPrice>3.64</AdjustedListPrice>
+
+      <MaterialCost/>
+
+      <StandardCost/>
+
+      <UOM>EACH</UOM>
+
+    </LineItem>
+
+    <LineItem>
+
+      <Status>
+
+        <code>SUCCESS</code>
+
+        <errorMessage/>
+
+      </Status>
+
+      <PartNo>89939060#100</PartNo>
+
+      <Quantity>1</Quantity>
+
+      <ListPrice>675</ListPrice>
+
+      <AdjustedListPrice>405</AdjustedListPrice>
+
+      <MaterialCost/>
+
+      <StandardCost/>
+
+      <UOM>EACH</UOM>
+
+    </LineItem>
+
+    <LineItem>
+
+      <Status>
+
+        <code>SUCCESS</code>
+
+        <errorMessage/>
+
+      </Status>
+
+      <PartNo>03663929#100</PartNo>
+
+      <Quantity>1</Quantity>
+
+      <ListPrice>15.42</ListPrice>
+
+      <AdjustedListPrice>10.79</AdjustedListPrice>
+
+      <MaterialCost/>
+
+      <StandardCost/>
+
+      <UOM>EACH</UOM>
+
+    </LineItem>
+
+  </PriceCheckResponse>
+
+  <CostCheckResponse>
+
+    <LineItem>
+
+      <Status>
+
+        <code>SUCCESS</code>
+
+        <errorMessage/>
+
+      </Status>
+
+      <PartNo>30296552#100</PartNo>
+
+      <Quantity>1</Quantity>
+
+      <ListPrice CurrencyCode="EUR"/>
+
+      <AdjustedListPrice CurrencyCode="EUR"/>
+
+      <MaterialCost CurrencyCode="EUR">.52</MaterialCost>
+
+      <StandardCost CurrencyCode="EUR">.61</StandardCost>
+
+      <UOM>EACH</UOM>
+
+    </LineItem>
+
+  </CostCheckResponse>
+
+</PriceFetchResponse>
+
+ 
+
+Thanks & Regards,
+
+ 
+
+Arnab Mitra
+
+Ingersoll Rand - Enterprise Services ESA
+
+170/175 Lakeview Drive
+
+Airside Business Park
+
+Swords, Co. Dublin
+
+Ireland
+
+ 
+
+Office   (+353) 1 870 7066
+
+Fax      (+353) 1 870 7001
+
+Email    arnab_mitra@eu.irco.com
+
+ 
+
+From: Mitra, Arnab 
+Sent: 15 January 2009 17:59
+To: Bhaskara Kiran Kumar K
+Subject: FW: XML sample
+
+ 
+
+Hi Bhaskara,
+
+ 
+
+Milton is using this xml for his testing, it has some valid / some invalid values. Hope this is helpful for you.
+
+ 
+
+Thanks & Regards,
+
+ 
+
+Arnab Mitra
+
+Ingersoll Rand - Enterprise Services ESA
+
+170/175 Lakeview Drive
+
+Airside Business Park
+
+Swords, Co. Dublin
+
+Ireland
+
+ 
+
+Office   (+353) 1 870 7066
+
+Fax      (+353) 1 870 7001
+
+Email    arnab_mitra@eu.irco.com
+
+ 
+
+From: Gonsalves, Milton 
+Sent: 15 January 2009 15:38
+To: Mitra, Arnab
+Subject: XML load testing 
+
+ 
+
+<?xml version="1.0" encoding="utf-8"?>
+
+<PriceFetch>
+
+<ApplicationArea>
+
+<Sender>
+
+<Task>ESAORACLEAPPS</Task>
+
+<LogicalId>TavantWMS</LogicalId>                                
+
+<ReferenceId>7654</ReferenceId>
+
+</Sender>
+
+<BODId>INT03</BODId>   
+
+<InterfaceNumber></InterfaceNumber>
+
+<CreationDateTime>2009-01-13T07:05:00.865Z</CreationDateTime>
+
+</ApplicationArea>
+
+<DataArea>
+
+<BUNAME>NMHG-US</BUName>
+
+<PriceCheckRequest>            
+
+<WarrantyType>STANDARD</WarrantyType>            
+
+<DateOfRepair>2009-01-13T07Z</DateOfRepair>
+
+<DealerNo>117057</DealerNo>
+
+<CurrencyCode>USD</CurrencyCode>
+
+<ReplacedParts>
+
+<!--Element LineItem, maxOccurs=unbounded-->
+
+  <LineItem>                             
+
+    <PartNumber>03149234#100</PartNumber>
+
+    <Quantity>1</Quantity>
+
+    <ManufacturingLocation>BGN</ManufacturingLocation>
+
+    <UOM>EACH</UOM>
+
+    <DivisionCode>31201</DivisionCode>
+
+  </LineItem>
+
+  <LineItem>                             
+
+    <PartNumber>92468354#100</PartNumber>
+
+    <Quantity>1</Quantity>
+
+    <ManufacturingLocation>BGN</ManufacturingLocation>
+
+    <UOM>EACH</UOM>
+
+    <DivisionCode>31201</DivisionCode>
+
+  </LineItem>
+
+  <LineItem>                             
+
+    <PartNumber>03578374#101</PartNumber>
+
+    <Quantity>1</Quantity>
+
+    <ManufacturingLocation>BGN</ManufacturingLocation>
+
+    <UOM>EACH</UOM>
+
+    <DivisionCode>31201</DivisionCode>
+
+  </LineItem>
+
+  <LineItem>                             
+
+    <PartNumber>80103799#100</PartNumber>
+
+    <Quantity>1</Quantity>
+
+    <ManufacturingLocation>BGN</ManufacturingLocation>
+
+    <UOM>EACH</UOM>
+
+    <DivisionCode>31201</DivisionCode>
+
+  </LineItem>
+
+  <LineItem>                             
+
+    <PartNumber>10563724#100</PartNumber>
+
+    <Quantity>1</Quantity>
+
+    <ManufacturingLocation>BGN</ManufacturingLocation>
+
+    <UOM>EACH</UOM>
+
+    <DivisionCode>31201</DivisionCode>
+
+  </LineItem>
+
+  <LineItem>                             
+
+    <PartNumber>91488775#100</PartNumber>
+
+    <Quantity>1</Quantity>
+
+    <ManufacturingLocation>BGN</ManufacturingLocation>
+
+    <UOM>EACH</UOM>
+
+    <DivisionCode>31201</DivisionCode>
+
+  </LineItem>
+
+  <LineItem>                             
+
+    <PartNumber>41SA8LPQ4-EU</PartNumber>
+
+    <Quantity>1</Quantity>
+
+    <ManufacturingLocation>BGN</ManufacturingLocation>
+
+    <UOM>EACH</UOM>
+
+    <DivisionCode>31201</DivisionCode>
+
+  </LineItem>
+
+  <LineItem>                             
+
+    <PartNumber>03373198#100</PartNumber>
+
+    <Quantity>1</Quantity>
+
+    <ManufacturingLocation>BGN</ManufacturingLocation>
+
+    <UOM>EACH</UOM>
+
+    <DivisionCode>31201</DivisionCode>
+
+  </LineItem>
+
+  <LineItem>                             
+
+    <PartNumber>03771086#100</PartNumber>
+
+    <Quantity>1</Quantity>
+
+    <ManufacturingLocation>BGN</ManufacturingLocation>
+
+    <UOM>EACH</UOM>
+
+    <DivisionCode>31201</DivisionCode>
+
+  </LineItem>
+
+  <LineItem>                             
+
+    <PartNumber>03054087#100</PartNumber>
+
+    <Quantity>1</Quantity>
+
+    <ManufacturingLocation>BGN</ManufacturingLocation>
+
+    <UOM>EACH</UOM>
+
+    <DivisionCode>31201</DivisionCode>
+
+  </LineItem>
+
+  <LineItem>                             
+
+    <PartNumber>56741762#100</PartNumber>
+
+    <Quantity>1</Quantity>
+
+    <ManufacturingLocation>BGN</ManufacturingLocation>
+
+    <UOM>EACH</UOM>
+
+    <DivisionCode>31201</DivisionCode>
+
+  </LineItem>
+
+  <LineItem>                             
+
+    <PartNumber>01328590#100</PartNumber>
+
+    <Quantity>1</Quantity>
+
+    <ManufacturingLocation>BGN</ManufacturingLocation>
+
+    <UOM>EACH</UOM>
+
+    <DivisionCode>31201</DivisionCode>
+
+  </LineItem>
+
+  <LineItem>                             
+
+    <PartNumber>22039432#100</PartNumber>
+
+    <Quantity>1</Quantity>
+
+    <ManufacturingLocation>BGN</ManufacturingLocation>
+
+    <UOM>EACH</UOM>
+
+    <DivisionCode>31201</DivisionCode>
+
+  </LineItem>
+
+  <LineItem>                             
+
+    <PartNumber>92468826#100</PartNumber>
+
+    <Quantity>1</Quantity>
+
+    <ManufacturingLocation>BGN</ManufacturingLocation>
+
+    <UOM>EACH</UOM>
+
+    <DivisionCode>31201</DivisionCode>
+
+  </LineItem>
+
+  <LineItem>                             
+
+    <PartNumber>01365253#100</PartNumber>
+
+    <Quantity>1</Quantity>
+
+    <ManufacturingLocation>BGN</ManufacturingLocation>
+
+    <UOM>EACH</UOM>
+
+    <DivisionCode>31201</DivisionCode>
+
+  </LineItem>
+
+  <LineItem>                             
+
+    <PartNumber>92468347#100</PartNumber>
+
+    <Quantity>1</Quantity>
+
+    <ManufacturingLocation>BGN</ManufacturingLocation>
+
+    <UOM>EACH</UOM>
+
+    <DivisionCode>31201</DivisionCode>
+
+  </LineItem>
+
+  <LineItem>                             
+
+    <PartNumber>92468230#100</PartNumber>
+
+    <Quantity>1</Quantity>
+
+    <ManufacturingLocation>BGN</ManufacturingLocation>
+
+    <UOM>EACH</UOM>
+
+    <DivisionCode>31201</DivisionCode>
+
+  </LineItem>
+
+  <LineItem>                             
+
+    <PartNumber>92536044#100</PartNumber>
+
+    <Quantity>1</Quantity>
+
+    <ManufacturingLocation>BGN</ManufacturingLocation>
+
+    <UOM>EACH</UOM>
+
+    <DivisionCode>31201</DivisionCode>
+
+  </LineItem>
+
+  <LineItem>                             
+
+    <PartNumber>01352186#100</PartNumber>
+
+    <Quantity>1</Quantity>
+
+    <ManufacturingLocation>BGN</ManufacturingLocation>
+
+    <UOM>EACH</UOM>
+
+    <DivisionCode>31201</DivisionCode>
+
+  </LineItem>
+
+  <LineItem>                             
+
+    <PartNumber>04371985#100</PartNumber>
+
+    <Quantity>1</Quantity>
+
+    <ManufacturingLocation>BGN</ManufacturingLocation>
+
+    <UOM>EACH</UOM>
+
+    <DivisionCode>31201</DivisionCode>
+
+  </LineItem>
+
+  <LineItem>                             
+
+    <PartNumber>04374336#100</PartNumber>
+
+    <Quantity>1</Quantity>
+
+    <ManufacturingLocation>BGN</ManufacturingLocation>
+
+    <UOM>EACH</UOM>
+
+    <DivisionCode>31201</DivisionCode>
+
+  </LineItem>
+
+  <LineItem>                             
+
+    <PartNumber>91136259#100</PartNumber>
+
+    <Quantity>1</Quantity>
+
+    <ManufacturingLocation>BGN</ManufacturingLocation>
+
+    <UOM>EACH</UOM>
+
+    <DivisionCode>31201</DivisionCode>
+
+  </LineItem>
+
+  <LineItem>                             
+
+    <PartNumber>91136291#100</PartNumber>
+
+    <Quantity>1</Quantity>
+
+    <ManufacturingLocation>BGN</ManufacturingLocation>
+
+    <UOM>EACH</UOM>
+
+    <DivisionCode>31201</DivisionCode>
+
+  </LineItem>
+
+  <LineItem>                             
+
+    <PartNumber>01328582#100</PartNumber>
+
+    <Quantity>1</Quantity>
+
+    <ManufacturingLocation>BGN</ManufacturingLocation>
+
+    <UOM>EACH</UOM>
+
+    <DivisionCode>31201</DivisionCode>
+
+  </LineItem>
+
+  <LineItem>                             
+
+    <PartNumber>01328558#100</PartNumber>
+
+    <Quantity>1</Quantity>
+
+    <ManufacturingLocation>BGN</ManufacturingLocation>
+
+    <UOM>EACH</UOM>
+
+    <DivisionCode>31201</DivisionCode>
+
+  </LineItem>
+
+  <LineItem>                             
+
+    <PartNumber>92536036#100</PartNumber>
+
+    <Quantity>1</Quantity>
+
+    <ManufacturingLocation>BGN</ManufacturingLocation>
+
+    <UOM>EACH</UOM>
+
+    <DivisionCode>31201</DivisionCode>
+
+  </LineItem>
+
+  <LineItem>                             
+
+    <PartNumber>03788510#100</PartNumber>
+
+    <Quantity>1</Quantity>
+
+    <ManufacturingLocation>BGN</ManufacturingLocation>
+
+    <UOM>EACH</UOM>
+
+    <DivisionCode>31201</DivisionCode>
+
+  </LineItem>
+
+  <LineItem>                             
+
+    <PartNumber>92468362#100</PartNumber>
+
+    <Quantity>1</Quantity>
+
+    <ManufacturingLocation>BGN</ManufacturingLocation>
+
+    <UOM>EACH</UOM>
+
+    <DivisionCode>31201</DivisionCode>
+
+  </LineItem>
+
+  <LineItem>                             
+
+    <PartNumber>80171853#100</PartNumber>
+
+    <Quantity>1</Quantity>
+
+    <ManufacturingLocation>BGN</ManufacturingLocation>
+
+    <UOM>EACH</UOM>
+
+    <DivisionCode>31201</DivisionCode>
+
+  </LineItem>
+
+  <LineItem>                             
+
+    <PartNumber>01337625#100</PartNumber>
+
+    <Quantity>1</Quantity>
+
+    <ManufacturingLocation>BGN</ManufacturingLocation>
+
+    <UOM>EACH</UOM>
+
+    <DivisionCode>31201</DivisionCode>
+
+  </LineItem>
+
+  <LineItem>                             
+
+    <PartNumber>45484755#100</PartNumber>
+
+    <Quantity>1</Quantity>
+
+    <ManufacturingLocation>BGN</ManufacturingLocation>
+
+    <UOM>EACH</UOM>
+
+    <DivisionCode>31201</DivisionCode>
+
+  </LineItem>
+
+  <LineItem>                             
+
+    <PartNumber>01371624#100</PartNumber>
+
+    <Quantity>1</Quantity>
+
+    <ManufacturingLocation>BGN</ManufacturingLocation>
+
+    <UOM>EACH</UOM>
+
+    <DivisionCode>31201</DivisionCode>
+
+  </LineItem>
+
+  <LineItem>                             
+
+    <PartNumber>03149234#100</PartNumber>
+
+    <Quantity>1</Quantity>
+
+    <ManufacturingLocation>BGN</ManufacturingLocation>
+
+    <UOM>EACH</UOM>
+
+    <DivisionCode>31201</DivisionCode>
+
+  </LineItem>
+
+  <LineItem>                             
+
+    <PartNumber>20035903#100</PartNumber>
+
+    <Quantity>1</Quantity>
+
+    <ManufacturingLocation>BGN</ManufacturingLocation>
+
+    <UOM>EACH</UOM>
+
+    <DivisionCode>31201</DivisionCode>
+
+  </LineItem>
+
+  <LineItem>                             
+
+    <PartNumber>03625514#100</PartNumber>
+
+    <Quantity>1</Quantity>
+
+    <ManufacturingLocation>BGN</ManufacturingLocation>
+
+    <UOM>EACH</UOM>
+
+    <DivisionCode>31201</DivisionCode>
+
+  </LineItem>
+
+  <LineItem>                             
+
+    <PartNumber>80152085#100</PartNumber>
+
+    <Quantity>1</Quantity>
+
+    <ManufacturingLocation>BGN</ManufacturingLocation>
+
+    <UOM>EACH</UOM>
+
+    <DivisionCode>31201</DivisionCode>
+
+  </LineItem>
+
+  <LineItem>                             
+
+    <PartNumber>03801586#100</PartNumber>
+
+    <Quantity>1</Quantity>
+
+    <ManufacturingLocation>BGN</ManufacturingLocation>
+
+    <UOM>EACH</UOM>
+
+    <DivisionCode>31201</DivisionCode>
+
+  </LineItem>
+
+  <LineItem>                             
+
+    <PartNumber>89939060#100</PartNumber>
+
+    <Quantity>1</Quantity>
+
+    <ManufacturingLocation>BGN</ManufacturingLocation>
+
+    <UOM>EACH</UOM>
+
+    <DivisionCode>31201</DivisionCode>
+
+  </LineItem>
+
+  <LineItem>                             
+
+    <PartNumber>03663929#100</PartNumber>
+
+    <Quantity>1</Quantity>
+
+    <ManufacturingLocation>BGN</ManufacturingLocation>
+
+    <UOM>EACH</UOM>
+
+    <DivisionCode>31201</DivisionCode>
+
+  </LineItem>
+
+</ReplacedParts>
+
+</PriceCheckRequest>
+
+<CostCheckRequest>            
+
+<WarrantyType>STANDARD</WarrantyType>            
+
+<DateOfRepair>2008-12-19-07Z</DateOfRepair>
+
+<SupplierNumber>50000149</SupplierNumber>
+
+<CurrencyCode>USD</CurrencyCode>
+
+<ReplacedParts>
+
+<!--Element LineItem, maxOccurs=unbounded-->
+
+  <LineItem>                             
+
+    <PartNumber>30296552#100</PartNumber>
+
+    <Quantity>1</Quantity>
+
+    <ManufacturingLocation>BGN</ManufacturingLocation>
+
+    <UOM>EACH</UOM>
+
+    <DivisionCode>31201</DivisionCode>
+
+  </LineItem>                   
+
+</ReplacedParts>
+
+</CostCheckRequest> 
+
+</DataArea>
+
+</PriceFetch>
+
+ 
+

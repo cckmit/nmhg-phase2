@@ -1,0 +1,59 @@
+<!DOCTYPE validators PUBLIC "-//Apache Struts//XWork Validator 1.0.2//EN"
+       "http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+<validators>
+    <field name="name">
+        <field-validator type="requiredstring" short-circuit="true">
+            <message key="error.customReport.questionNameRequired"/>
+        </field-validator>
+    </field>
+    
+     <validator type="expression">
+        <param name="expression">
+            <![CDATA[validAnswerType()]]>
+        </param>
+        <message key="error.customReport.invalidANswerType"/>
+    </validator>
+    
+    <validator type="expression">
+        <param name="expression">
+            <![CDATA[!answerOptionsRequired()]]>
+        </param>
+        <message key="error.customReport.answerOptionsRequired"/>
+    </validator>
+    
+    <validator type="expression">
+        <param name="expression">
+            <![CDATA[!answerOptionsNotAllowed()]]>
+        </param>
+        <message key="error.customReport.answerOptionsInvalid"/>
+    </validator>
+    
+    <validator type="expression" >
+         <param name="expression">
+            <![CDATA[!(answerType !=null && ( answerType.type=="Small Text" || answerType.type=="Large Text" || 
+            answerType.type=="Number" || answerType.type=="Date" ) && includeOtherAsAnOption )]]>
+        </param>
+        <message key="error.customReport.otherNotValid"/>
+    </validator>
+    
+     <validator type="visitor">
+        <param name="fieldName">answerOptions</param>
+        <param name="appendPrefix">true</param>
+        <message/>
+    </validator>
+    
+    <validator type="expression">
+        <param name="expression">
+            <![CDATA[!attachmentsExist()]]>
+        </param>
+        <message key="error.customReport.imagesNotAllowed"/>
+    </validator>
+    
+     <validator type="expression">
+        <param name="expression">
+            <![CDATA[!defaultValueIsValid()]]>
+        </param>
+        <message key="error.customReport.noOfDefaultAnswers"/>
+    </validator>
+    
+</validators>

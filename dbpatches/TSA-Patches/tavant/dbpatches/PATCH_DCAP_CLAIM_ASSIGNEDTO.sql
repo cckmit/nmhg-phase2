@@ -1,0 +1,11 @@
+--Purpose    : Patch for Adding assignedTo column in dcapclaim
+--Author     : saya.sudha	
+--Created On : 15-jan-2010
+
+ALTER TABLE DCAP_CLAIM ADD (ASSIGNED_TO NUMBER(19))
+/
+ALTER TABLE DCAP_CLAIM ADD 
+(CONSTRAINT DCAP_CLAIM_ASSIGNED_TO_FK FOREIGN KEY (ASSIGNED_TO) REFERENCES ORG_USER (ID))
+/
+COMMIT
+/

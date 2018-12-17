@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<tocdata>
+<book name="Supplier" >
+  <book name="Before you Begin" >
+    <item name="Introduction" url="Before_you_Begin/Introduction.htm" />
+    <item name="Before you Begin" url="Before_you_Begin/Before_you_Begin.htm" />
+    <item name="Copyright" url="Before_you_Begin/Copyright.htm" />
+    <item name="Common Application Features" url="Before_you_Begin/common_application_features.htm" />
+  </book>
+  <book name="Supplier Recovery" >
+    <item name="Supply Recovery" url="Supplier_Recovery/Supply_Recovery.htm" />
+    <item name="Reopened" url="Supplier_Recovery/Reopened.htm" />
+    <item name="Search Parts" url="Supplier_Recovery/Search_Parts.htm" />
+  </book>
+  <book name="Reports" >
+    <item name="Upload Management" url="Reports/Upload_Management.htm" />
+  </book>
+  <book name="Settings" >
+    <item name="Profile" url="Settings/Profile.htm" />
+    <item name="Site Management" url="Settings/Site_Management.htm" />
+  </book>
+</book>
+
+</tocdata>

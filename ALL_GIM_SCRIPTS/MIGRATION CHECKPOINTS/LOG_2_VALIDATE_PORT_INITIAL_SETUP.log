@@ -1,0 +1,29 @@
+
+Porting and Compiling TAV_GIM_INITIAL_SETUP.
+
+
+Package created.
+
+
+Package body created.
+
+
+'*********** Validation of TAV_GIM_INITIAL_SETUP ***********'
+
+
+OBJECT_NAME                    OBJECT_TYPE         STATUS  TIMESTAMP            
+------------------------------ ------------------- ------- -------------------  
+TAV_GIM_INITIAL_SETUP          PACKAGE             VALID   2011-07-15:12:01:26  
+TAV_GIM_INITIAL_SETUP          PACKAGE BODY        VALID   2011-07-15:12:01:28  
+
+2 rows selected.
+
+
+'*********** End of Validation of TAV_GIM_INITIAL_SETUP ***********'
+
+Message: Refer LOG_2_VALIDATE_PORT_INITIAL_SETUP.log before proceeding.
+
+Message: Next process ==> Create Synonyms using Schema name or DBLink.
+
+Message: Please Execute TAV_GIM_CREATE_SYNONYMS_AND_VALIDATE.bat to create synonyms and validate.
+

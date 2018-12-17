@@ -1,0 +1,143 @@
+Response Received ::::<?xml version="1.0"?>
+<PriceFetchResponse>
+  <ApplicationArea>
+    <Sender>
+      <LogicalId>CCT_WINDCHILL</LogicalId>
+      <Task>TavantWMS</Task>
+      <ReferenceId>0006</ReferenceId>
+    </Sender>
+    <BODId>ITEM_PRICE_RESPONSE_TAVANT</BODId>
+    <InterfaceNumber >USINT0802</InterfaceNumber >
+    <CreationDateTime>20081218081109</CreationDateTime>
+  </ApplicationArea>
+  <Status>
+    <code>SUCCESS</code>
+  </Status>
+  <PriceCheckResponse>
+    <LineItem>
+      <Status>
+        <code>ERROR</code>
+        <errorMessage>Cost not available</errorMessage>
+      </Status>
+      <PartNo>P700</PartNo>
+      <Quantity></Quantity>
+      <ListPrice CurrencyCode=""></ListPrice>
+      <AdjustedListPrice CurrencyCode=""></AdjustedListPrice>
+      <MaterialCost CurrencyCode=""></MaterialCost>
+      <StandardCost CurrencyCode=""></StandardCost>
+      <UOM></UOM>
+    </LineItem>
+    <LineItem>
+      <Status>
+        <code>ERROR</code>
+        <errorMessage>Cost not available</errorMessage>
+      </Status>
+      <PartNo>P600</PartNo>
+    </LineItem>
+    <LineItem>
+      <Status>
+        <code>ERROR</code>
+        <errorMessage>Cost not available</errorMessage>
+      </Status>
+      <PartNo>P500</PartNo>
+    </LineItem>
+    <LineItem>
+      <Status>
+        <code>ERROR</code>
+        <errorMessage>Cost not available</errorMessage>
+      </Status>
+      <PartNo>P400</PartNo>
+    </LineItem>
+    <LineItem>
+      <Status>
+        <code>ERROR</code>
+        <errorMessage>Cost not available</errorMessage>
+      </Status>
+      <PartNo>P300</PartNo>
+    </LineItem>
+    <LineItem>
+      <Status>
+        <code>ERROR</code>
+        <errorMessage>Cost not available</errorMessage>
+      </Status>
+      <PartNo>P200</PartNo>
+    </LineItem>
+    <LineItem>
+      <Status>
+        <code>ERROR</code>
+        <errorMessage>Cost not available</errorMessage>
+      </Status>
+      <PartNo>P100</PartNo>
+    </LineItem>
+    <LineItem>
+      <Status>
+        <code>SUCCESS</code>
+      </Status>
+      <PartNo>P700</PartNo>
+      <Quantity>1</Quantity>
+      <ListPrice CurrencyCode="USD"></ListPrice>
+      <StandardCost CurrencyCode="USD">700</StandardCost>
+      <UOM>EACH</UOM>
+    </LineItem>
+    <LineItem>
+      <Status>
+        <code>SUCCESS</code>
+      </Status>
+      <PartNo>P600</PartNo>
+      <Quantity>1</Quantity>
+      <ListPrice CurrencyCode="USD"></ListPrice>
+      <StandardCost CurrencyCode="USD">600</StandardCost>
+      <UOM>EACH</UOM>
+    </LineItem>
+    <LineItem>
+      <Status>
+        <code>SUCCESS</code>
+      </Status>
+      <PartNo>P500</PartNo>
+      <Quantity>1</Quantity>
+      <ListPrice CurrencyCode="USD"></ListPrice>
+      <StandardCost CurrencyCode="USD">500</StandardCost>
+      <UOM>EACH</UOM>
+    </LineItem>
+    <LineItem>
+      <Status>
+        <code>SUCCESS</code>
+      </Status>
+      <PartNo>P400</PartNo>
+      <Quantity>1</Quantity>
+      <ListPrice CurrencyCode="USD"></ListPrice>
+      <StandardCost CurrencyCode="USD">400</StandardCost>
+      <UOM>EACH</UOM>
+    </LineItem>
+    <LineItem>
+      <Status>
+        <code>SUCCESS</code>
+      </Status>
+      <PartNo>P300</PartNo>
+      <Quantity>1</Quantity>
+      <ListPrice CurrencyCode="USD"></ListPrice>
+      <StandardCost CurrencyCode="USD">300</StandardCost>
+      <UOM>EACH</UOM>
+    </LineItem>
+    <LineItem>
+      <Status>
+        <code>SUCCESS</code>
+      </Status>
+      <PartNo>P200</PartNo>
+      <Quantity>1</Quantity>
+      <ListPrice CurrencyCode="USD"></ListPrice>
+      <StandardCost CurrencyCode="USD">200</StandardCost>
+      <UOM>EACH</UOM>
+    </LineItem>
+    <LineItem>
+      <Status>
+        <code>SUCCESS</code>
+      </Status>
+      <PartNo>P100</PartNo>
+      <Quantity>1</Quantity>
+      <ListPrice CurrencyCode="USD"></ListPrice>
+      <StandardCost CurrencyCode="USD">100</StandardCost>
+      <UOM>EACH</UOM>
+    </LineItem>
+  </PriceCheckResponse>
+</PriceFetchResponse>

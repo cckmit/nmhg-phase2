@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ItemSyncRequest xmlns="http://www.tavant.com/oagis" xmlns:oa="http://www.openapplications.org/oagis/9">
+  <Item>
+    <ManufName>CCI</ManufName>
+    <ItemType>MACHINE</ItemType>
+    <ItemNumber>AM30002</ItemNumber>
+    <ItemStatus>Active</ItemStatus>
+    <ItemDescription>CUSTOM CAR, 310 LX</ItemDescription>
+    <ProductCode>UNIGY_50HZ</ProductCode>
+    <ModelCode>UNIGY_50HZ</ModelCode>
+    <SupplierId></SupplierId>
+  </Item>
+</ItemSyncRequest>

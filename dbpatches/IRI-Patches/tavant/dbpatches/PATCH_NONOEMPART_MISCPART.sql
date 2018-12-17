@@ -1,0 +1,11 @@
+-- Patch for referring Miscellanous Item from Non OEM Part Replaced
+-- Author: Ramalakshmi P
+-- Jun 11 2009
+
+ALTER TABLE non_oem_part_replaced ADD (MISC_ITEM NUMBER)
+/
+ALTER TABLE non_oem_part_replaced ADD CONSTRAINT NON_OEM_PART_REP_MISCITEM_FK 
+FOREIGN KEY (MISC_ITEM) REFERENCES MISC_ITEM(ID) ENABLE VALIDATE
+/
+ALTER TABLE MISC_ITEM_CRITERIA ADD (RELEVANCE_SCORE NUMBER)
+/

@@ -1,0 +1,1073 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE jasperReport PUBLIC "-//JasperReports//DTD JasperReport//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+
+<jasperReport name="recoveryClaim" pageWidth="800" pageHeight="1100" columnWidth="740" leftMargin="30" rightMargin="30" topMargin="20" bottomMargin="20" isFloatColumnFooter="true">
+	<property name="ireport.zoom" value="1.1"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="96"/>
+	<property name="ireport.scriptlethandling" value="0"/>
+	<property name="ireport.encoding" value="UTF-8"/>
+	<import value="net.sf.jasperreports.engine.*"/>
+	<import value="java.util.*"/>
+	<import value="net.sf.jasperreports.engine.data.*"/>
+	<parameter name="reportDirectory" class="java.io.File"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String">
+		<defaultValueExpression><![CDATA[".\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="RecoveryCostParam" class="java.util.List"/>
+	<parameter name="claim" class="java.lang.Object"/>
+	<parameter name="hasSupplierRole.toString()" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$F{hasSupplierRole.toString()}]]></defaultValueExpression>
+	</parameter>
+	<parameter name="addressInfo" class="java.lang.String"/>
+	<parameter name="claim.hoursOnPart.toString()" class="java.lang.String"/>
+	<field name="addressInfo" class="java.lang.String"/>
+	<field name="recoveryClaim.recoveryClaimNumber" class="java.lang.String"/>
+	<field name="recoveryClaim.contract.supplier.name" class="java.lang.String"/>
+	<field name="gifName" class="java.lang.String"/>
+	<field name="nmhgFooterGif" class="java.lang.String"/>
+	<field name="claim.claimNumber" class="java.lang.String"/>
+	<field name="claim.histClmNo" class="java.lang.String"/>
+	<field name="formatedfiledOnDate" class="java.lang.String"/>
+	<field name="formatedFailureDate" class="java.lang.String"/>
+	<field name="formattedRecoveryClaimDate" class="java.lang.String"/>
+	<field name="formatedRepairStartDate" class="java.lang.String"/>
+	<field name="formatedRepairDate" class="java.lang.String"/>
+	<field name="claim.partInstalled.toString()" class="java.lang.String"/>
+	<field name="claim.type.type" class="java.lang.String"/>
+	<field name="claim.partItemReference.referredItem.alternateNumber" class="java.lang.String"/>
+	<field name="claim.claimCompetitorModel.description" class="java.lang.String"/>
+	<field name="claim.servicingLocation.location" class="java.lang.String"/>
+	<field name="claim.serviceManagerRequest.toString()" class="java.lang.String"/>
+	<field name="claim.forDealer.name" class="java.lang.String"/>
+	<field name="claim.workOrderNumber" class="java.lang.String"/>
+	<field name="formatedInstallationDate" class="java.lang.String"/>
+	<field name="claim.partItemReference.referredItem.description" class="java.lang.String"/>
+	<field name="claim.hoursOnPart" class="java.math.BigDecimal"/>
+	<field name="claim.dateCode" class="java.lang.String"/>
+	<field name="formatedPurchaseDate" class="java.lang.String"/>
+	<field name="claim.reasonForServiceManagerRequest.description" class="java.lang.String"/>
+	<field name="claim.partItemReference.referredInventoryItem" class="java.lang.Object"/>
+	<field name="claim.partItemReference.referredInventoryItem.serialNumber" class="java.lang.String"/>
+	<field name="claim.claimCompetitorModel" class="java.lang.String"/>
+	<field name="claim.invoiceNumber" class="java.lang.String"/>
+	<field name="displayCPFlagOnClaimPgOne" class="java.lang.Boolean"/>
+	<field name="claim.commercialPolicy.toString()" class="java.lang.String"/>
+	<field name="dealerOrSp" class="java.lang.String"/>
+	<field name="claim.claimedItems" class="java.lang.Object"/>
+	<field name="claim.matchReadInfo.id" class="java.lang.Long"/>
+	<field name="isOwnerInfoDisplayNeeded.toString()" class="java.lang.String"/>
+	<field name="ownerCountry" class="java.lang.String"/>
+	<field name="ownerZipCode" class="java.lang.String"/>
+	<field name="ownerState" class="java.lang.String"/>
+	<field name="ownerCity" class="java.lang.String"/>
+	<field name="ownerName" class="java.lang.String"/>
+	<field name="showEquipmentInfoSection.toString()" class="java.lang.String"/>
+	<field name="laborSplitEnabled.toString()" class="java.lang.String"/>
+	<field name="claim.claimeditems[0].itemReference.referredInventoryItem.type.type" class="java.lang.String"/>
+	<field name="claim.serviceInformation.oemDealerCausalPart" class="java.lang.String"/>
+	<field name="claim.serviceInformation.causalPart.number" class="java.lang.String"/>
+	<field name="internalUser.toString()" class="java.lang.String"/>
+	<field name="claim.serviceInformation.oemDealerCausalPart.number" class="java.lang.String"/>
+	<field name="claim.serviceInformation.faultFound.name" class="java.lang.String"/>
+	<field name="faultLocationNameWithCode.toString()" class="java.lang.String"/>
+	<field name="claim.serviceInformation.causalPart.description" class="java.lang.String"/>
+	<field name="claim.serviceInformation.oemDealerCausalPart.description" class="java.lang.String"/>
+	<field name="isRootCauseVisible.toString()" class="java.lang.String"/>
+	<field name="claim.serviceInformation.rootCause.name" class="java.lang.String"/>
+	<field name="showServiceProcedureSection.toString()" class="java.lang.String"/>
+	<field name="claim.serviceInformation.serviceDetail.laborPerformed" class="java.lang.Object"/>
+	<field name="claim.serviceInformation.serviceDetail.laborSplit" class="java.lang.Object"/>
+	<field name="laborSplitOption.toString()" class="java.lang.String"/>
+	<field name="isPartReplacedInstalledSectionVisible.toString()" class="java.lang.String"/>
+	<field name="buTitle" class="java.lang.String"/>
+	<field name="isNonOEMPartsSectionVisible.toString()" class="java.lang.String"/>
+	<field name="claim.miscPartsConfig.toString()" class="java.lang.String"/>
+	<field name="hussmannPartReplacedInstalledDTOList" class="java.lang.Object"/>
+	<field name="buPartReplacedByNonBUPart.toString()" class="java.lang.String"/>
+	<field name="claim.cmsTicketNumber" class="java.lang.String"/>
+	<field name="claim.cmsAuthCheck.toString()" class="java.lang.String"/>
+	<field name="claim.authNumber" class="java.lang.String"/>
+	<field name="claim.ncr.toString()" class="java.lang.String"/>
+	<field name="claim.ncrWith30Days.toString()" class="java.lang.String"/>
+	<field name="isOEMReplacedPartPresent.toString()" class="java.lang.String"/>
+	<field name="claim.serviceInformation.serviceDetail.nonOEMPartsReplaced" class="java.lang.Object"/>
+	<field name="claim.serviceInformation.serviceDetail.oEMPartsReplaced" class="java.lang.Object"/>
+	<field name="claim.serviceInformation.serviceDetail.miscPartsReplaced" class="java.lang.Object"/>
+	<field name="claim.workPerformed" class="java.lang.String"/>
+	<field name="claim.otherComments" class="java.lang.String"/>
+	<field name="claim.conditionFound" class="java.lang.String"/>
+	<field name="recoveryClaim.contract.physicalShipmentRequired.toString()" class="java.lang.String"/>
+	<field name="recoveryClaim.costLineItems" class="java.lang.Object"/>
+	<field name="recoveryClaim.recoveryPayment.activeCreditMemo.creditMemoNumber" class="java.lang.String"/>
+	<field name="recoveryClaim.recoveryPayment.previousCreditMemos" class="java.lang.Object"/>
+	<field name="recoveryClaim.recoveryPayment.activeCreditMemo.formattedCreditMemoDate.toString()" class="java.lang.String"/>
+	<field name="recoveryClaim.recoveryPayment.activeCreditMemo.paidAmount.toString()" class="java.lang.String"/>
+	<field name="recoveryClaim.recoveryPayment.activeCreditMemo.crDrFlag" class="java.lang.String"/>
+	<field name="recoveryClaim.recoveryPayment.activeCreditMemo.taxAmount.toString()" class="java.lang.String"/>
+	<field name="recoveryClaim.recoveryClaimInfo.recoverableParts" class="java.lang.Object"/>
+	<field name="recoveryClaim.contract.name" class="java.lang.String"/>
+	<field name="recoveryClaim.hasAskedAmount.toString()" class="java.lang.String"/>
+	<field name="recoveryClaim.recoveryClaimState.state" class="java.lang.String"/>
+	<field name="recoveryClaim.currentAssignee" class="java.lang.String"/>
+	<field name="recoveryClaim.recoveryClaimState.state.toString()" class="java.lang.String"/>
+	<field name="claimProcessedAs" class="java.lang.String"/>
+	<field name="claim.partReturnStatus" class="java.lang.String"/>
+	<field name="claim.state.state.equalsIgnoreCase(&apos;draft&apos;).toString()" class="java.lang.String"/>
+	<field name="&apos;SERVICE_MANAGER_REVIEW&apos;.equalsIgnoreCase(claim.state).toString()" class="java.lang.String"/>
+	<field name="claim.serviceManagerAccepted.toString()" class="java.lang.String"/>
+	<field name="claim.sourceWarehouse.name" class="java.lang.String"/>
+	<field name="isClaimAssigneeShownToDealer.toString()" class="java.lang.String"/>
+	<field name="recoveryCostLineItems" class="java.lang.Object"/>
+	<field name="recoveryCostLineItems.length()" class="java.lang.Number"/>
+	<field name="recoveryCostLineItems[0].contractValue.toString()" class="java.lang.String"/>
+	<field name="recoveryLineItems" class="java.lang.Object"/>
+	<field name="hasSupplierRole.toString()" class="java.lang.String"/>
+	<field name="claim.state.state" class="java.lang.String"/>
+	<field name="claim.serviceInformation.serviceDetail.stdLaborEnabled.toString()" class="java.lang.String"/>
+	<field name="claim.recoveryClaims" class="java.lang.Object"/>
+	<field name="recoveryClaim.recoveryClaimAudits" class="java.lang.Object"/>
+	<field name="datePatternForLoggedInUser.toString()" class="java.lang.String"/>
+	<field name="loggedInUserId" class="java.lang.String"/>
+	<field name="printDate" class="java.lang.String"/>
+	<field name="recoveryClaim.recoveryClaimAcceptanceReason.description" class="java.lang.String"/>
+	<field name="recoveryClaim.recoveryClaimRejectionReason.description" class="java.lang.String"/>
+	<field name="dealerJobNumberEnabled" class="java.lang.Boolean"/>
+	<field name="supplierView" class="java.lang.Boolean"/>
+	<field name="recoveryClaim.comments" class="java.lang.String"/>
+	<field name="recoveryClaim.contract.supplier.address.addressLine1" class="java.lang.String"/>
+	<field name="recoveryClaim.contract.supplier.address.addressLine2" class="java.lang.String"/>
+	<field name="recoveryClaim.contract.supplier.address.country" class="java.lang.String"/>
+	<field name="recoveryClaim.contract.supplier.address.city" class="java.lang.String"/>
+	<field name="recoveryClaim.contract.supplier.address.state" class="java.lang.String"/>
+	<field name="recoveryClaim.contract.supplier.address.zipCode" class="java.lang.String"/>
+	<field name="claim.hoursOnPart.toString()" class="java.lang.String"/>
+	<field name="actualValueForTravel.toString()" class="java.lang.String"/>
+	<field name="claim.serviceInformation.serviceDetail.travelDetails.hours.toString()" class="java.lang.String"/>
+	<field name="showTravelSection" class="java.lang.Boolean"/>
+	<field name="showMiscellaneousExpenseSection" class="java.lang.Boolean"/>
+	<field name="sectionHide" class="java.lang.Boolean"/>
+	<field name="miscellaneousPartsObjectList" class="java.lang.Object"/>
+	<field name="claim.partItemReference.referredInventoryItem.ofType.description" class="java.lang.String"/>
+	<field name="claim.claimeditems[0].itemReference.referredInventoryItem.serialNumber" class="java.lang.String"/>
+	<field name="claim.claimeditems[0].itemReference.unserializedItem.number" class="java.lang.String"/>
+	<field name="claim.claimeditems[0].itemReference.unserializedItem.make" class="java.lang.String"/>
+	<field name="claim.claimeditems[0].itemReference.unserializedItem.model.name" class="java.lang.String"/>
+	<field name="claim.claimeditems[0].itemReference.unserializedItem.product.name" class="java.lang.String"/>
+	<field name="claim.claimeditems[0].itemReference.model.isPartOf.name" class="java.lang.String"/>
+	<field name="claim.claimeditems[0].itemReference.serialized.toString()" class="java.lang.String"/>
+	<field name="hoursInService" class="java.math.BigDecimal"/>
+	<field name="claim.claimeditems[0].itemReference.model.name" class="java.lang.String"/>
+	<field name="formatedWarrantyStartDate" class="java.lang.String"/>
+	<field name="claim.claimeditems[0].itemReference.unserializedItem.getDescriptionForPrint()" class="java.lang.String"/>
+	<field name="claim.claimeditems[0].itemReference.unszdSlNo" class="java.lang.String"/>
+	<field name="claim.claimeditems[0].itemReference.referredInventoryItem.ofType.description" class="java.lang.String"/>
+	<field name="claim.claimeditems[0].itemReference.unserializedItem.description" class="java.lang.String"/>
+	<field name="claim.claimedItems[0].itemReference.referredInventoryItem" class="java.lang.String"/>
+	<field name="isBuConfigAMER().toString()" class="java.lang.String"/>
+	<field name="recoveryClaim.externalComments" class="java.lang.String"/>
+	<field name="recoveryClaim.documentNumber" class="java.lang.String"/>
+	<group name="dummygroup">
+		<groupExpression><![CDATA[]]></groupExpression>
+		<groupHeader>
+			<band height="218">
+				<staticText>
+					<reportElement key="staticText-186" positionType="Float" mode="Transparent" x="5" y="0" width="225" height="18" isRemoveLineWhenBlank="true"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+					<textElement>
+						<font size="12" isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<text><![CDATA[Recovery  Details:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement key="staticText-187" positionType="Float" mode="Transparent" x="10" y="17" width="130" height="25" isRemoveLineWhenBlank="true"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<text><![CDATA[Recovery Claim Number:]]></text>
+				</staticText>
+				<textField isBlankWhenNull="false" hyperlinkType="None">
+					<reportElement key="textField-80" positionType="Float" mode="Transparent" x="157" y="17" width="164" height="25" isRemoveLineWhenBlank="true"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{recoveryClaim.recoveryClaimNumber}!=null?$F{recoveryClaim.documentNumber}!=null?$F{recoveryClaim.recoveryClaimNumber}.concat("-").concat($F{recoveryClaim.documentNumber}):$F{recoveryClaim.recoveryClaimNumber}:"--"]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement key="staticText-188" positionType="Float" mode="Transparent" x="394" y="17" width="47" height="25" isRemoveLineWhenBlank="true"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<text><![CDATA[Supplier:]]></text>
+				</staticText>
+				<textField isBlankWhenNull="false" hyperlinkType="None">
+					<reportElement key="textField-81" positionType="Float" mode="Transparent" x="489" y="17" width="208" height="25" isRemoveLineWhenBlank="true"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{recoveryClaim.contract.supplier.name}!=null?$F{recoveryClaim.contract.supplier.name}:"--"]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement key="staticText-189" positionType="Float" mode="Transparent" x="395" y="42" width="81" height="25" isRemoveLineWhenBlank="true"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<text><![CDATA[Address: ]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="false" hyperlinkType="None">
+					<reportElement key="textField-82" positionType="Float" mode="Transparent" x="490" y="42" width="215" height="25" isRemoveLineWhenBlank="true"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle"/>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{addressInfo}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement key="staticText-190" positionType="Float" mode="Transparent" x="11" y="42" width="128" height="25" isRemoveLineWhenBlank="true"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<text><![CDATA[Date Of Recovery Claim:]]></text>
+				</staticText>
+				<textField isBlankWhenNull="false" hyperlinkType="None">
+					<reportElement key="textField-83" positionType="Float" mode="Transparent" x="158" y="42" width="161" height="25" isRemoveLineWhenBlank="true"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{formattedRecoveryClaimDate}!=null?$F{formattedRecoveryClaimDate}:"--"]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement key="line-19" positionType="Float" mode="Transparent" x="0" y="16" width="740" height="1" isRemoveLineWhenBlank="true"/>
+					<graphicElement/>
+				</line>
+				<staticText>
+					<reportElement key="staticText-191" positionType="Float" mode="Transparent" x="5" y="73" width="138" height="20" isRemoveLineWhenBlank="true"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+					<textElement>
+						<font size="12" isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<text><![CDATA[Claim Information:]]></text>
+				</staticText>
+				<line>
+					<reportElement key="line-20" positionType="Float" mode="Opaque" x="5" y="93" width="735" height="1" isRemoveLineWhenBlank="true"/>
+					<graphicElement/>
+				</line>
+				<staticText>
+					<reportElement key="staticText-192" positionType="Float" mode="Transparent" x="5" y="93" width="170" height="25" isRemoveLineWhenBlank="true"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<text><![CDATA[Claim Number:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement key="staticText-193" positionType="Float" mode="Transparent" x="5" y="168" width="170" height="25" isRemoveLineWhenBlank="true"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<text><![CDATA[Historical / Dealer Claim Number:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement key="staticText-194" positionType="Float" mode="Transparent" x="375" y="93" width="125" height="25" isRemoveLineWhenBlank="true"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<text><![CDATA[Claim Type:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement key="staticText-195" positionType="Float" mode="Transparent" x="5" y="118" width="170" height="25" isRemoveLineWhenBlank="true"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<text><![CDATA[Date of Claim:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement key="staticText-196" positionType="Float" mode="Transparent" x="375" y="118" width="125" height="25" isRemoveLineWhenBlank="true"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<text><![CDATA[Date of Failure:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement key="staticText-197" positionType="Float" mode="Transparent" x="375" y="143" width="125" height="25" isRemoveLineWhenBlank="true"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<text><![CDATA[Repair End Date:]]></text>
+				</staticText>
+				<textField isBlankWhenNull="false" hyperlinkType="None">
+					<reportElement key="textField-84" positionType="Float" mode="Transparent" x="185" y="93" width="180" height="25" isRemoveLineWhenBlank="true"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle"/>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{claim.claimNumber}!=null?$F{claim.claimNumber}:"Draft"]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="false" hyperlinkType="None">
+					<reportElement key="textField-85" positionType="Float" mode="Transparent" x="185" y="168" width="180" height="25" isRemoveLineWhenBlank="true"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle"/>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{claim.histClmNo}!=null?$F{claim.histClmNo}:""]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="false" hyperlinkType="None">
+					<reportElement key="textField-86" positionType="Float" mode="Transparent" x="185" y="118" width="180" height="25" isRemoveLineWhenBlank="true"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle"/>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{formatedfiledOnDate}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="false" hyperlinkType="None">
+					<reportElement key="textField-87" positionType="Float" mode="Transparent" x="525" y="118" width="215" height="25" isRemoveLineWhenBlank="true">
+						<printWhenExpression><![CDATA[$F{claim.type.type} != "Campaign"?Boolean.TRUE:Boolean.FALSE]]></printWhenExpression>
+					</reportElement>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle"/>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{formatedFailureDate}!=null?$F{formatedFailureDate}:"--"]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="false" hyperlinkType="None">
+					<reportElement key="textField-88" positionType="Float" mode="Transparent" x="525" y="143" width="215" height="25" isRemoveLineWhenBlank="true"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle"/>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{formatedRepairDate}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="false" hyperlinkType="None">
+					<reportElement key="textField-89" positionType="Float" mode="Transparent" x="525" y="93" width="215" height="25" isRemoveLineWhenBlank="true"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle"/>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{claim.type.type}=="Campaign"?$R{label.claimType.campaign}:$F{claim.type.type}=="Machine"?$R{label.claimType.machine}:$F{claim.type.type}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement key="staticText-198" positionType="Float" mode="Transparent" x="5" y="143" width="170" height="25" isRemoveLineWhenBlank="true"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<text><![CDATA[Repair Start Date:]]></text>
+				</staticText>
+				<textField isBlankWhenNull="false" hyperlinkType="None">
+					<reportElement key="textField-90" positionType="Float" mode="Transparent" x="185" y="143" width="180" height="25" isRemoveLineWhenBlank="true"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle"/>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{formatedRepairStartDate}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement key="staticText-199" positionType="Float" mode="Transparent" x="375" y="168" width="125" height="25" isRemoveLineWhenBlank="true">
+						<printWhenExpression><![CDATA[$F{formatedInstallationDate}!=null?Boolean.TRUE:Boolean.FALSE]]></printWhenExpression>
+					</reportElement>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<text><![CDATA[Part Fitted Date:]]></text>
+				</staticText>
+				<textField isBlankWhenNull="false" hyperlinkType="None">
+					<reportElement key="textField-91" positionType="Float" mode="Transparent" x="525" y="168" width="215" height="25" isRemoveLineWhenBlank="true">
+						<printWhenExpression><![CDATA[$F{formatedInstallationDate}!=null?Boolean.TRUE:Boolean.FALSE]]></printWhenExpression>
+					</reportElement>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle"/>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{formatedInstallationDate}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="false" hyperlinkType="None">
+					<reportElement key="textField-92" positionType="Float" mode="Transparent" x="185" y="193" width="180" height="25" isRemoveLineWhenBlank="true">
+						<printWhenExpression><![CDATA[$F{claim.type.type} != "Campaign" && $F{isBuConfigAMER().toString()}=="true" ?Boolean.TRUE:Boolean.FALSE]]></printWhenExpression>
+					</reportElement>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+					<textElement>
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{claim.serviceInformation.oemDealerCausalPart}==null?$F{claim.serviceInformation.causalPart.number}:$F{internalUser.toString()}=="false"?$F{claim.serviceInformation.oemDealerCausalPart.number}:$F{claim.serviceInformation.causalPart.number}+"(" + $F{claim.serviceInformation.oemDealerCausalPart.number}+")"]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement key="staticText-200" positionType="Float" mode="Transparent" x="5" y="193" width="170" height="25" isRemoveLineWhenBlank="true">
+						<printWhenExpression><![CDATA[$F{isBuConfigAMER().toString()}=="true"?Boolean.TRUE:Boolean.FALSE]]></printWhenExpression>
+					</reportElement>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+					<textElement>
+						<font isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<text><![CDATA[Problem Part:]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="300">
+				<staticText>
+					<reportElement key="staticText-221" positionType="Float" mode="Transparent" x="3" y="0" width="207" height="20" isRemoveLineWhenBlank="true"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+					<textElement>
+						<font size="12" isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<text><![CDATA[Recoverable Parts:]]></text>
+				</staticText>
+				<line direction="BottomUp">
+					<reportElement key="line-26" positionType="Float" mode="Transparent" x="5" y="20" width="735" height="1" isRemoveLineWhenBlank="true"/>
+					<graphicElement/>
+				</line>
+				<staticText>
+					<reportElement key="staticText-222" positionType="Float" mode="Transparent" x="4" y="21" width="83" height="30" isRemoveLineWhenBlank="true"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<text><![CDATA[Supplier Part #]]></text>
+				</staticText>
+				<staticText>
+					<reportElement key="staticText-223" positionType="Float" mode="Transparent" x="158" y="21" width="52" height="30" isRemoveLineWhenBlank="true"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<text><![CDATA[Quantity]]></text>
+				</staticText>
+				<staticText>
+					<reportElement key="staticText-224" positionType="Float" mode="Transparent" x="685" y="21" width="40" height="30" isRemoveLineWhenBlank="true"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<text><![CDATA[RGA#]]></text>
+				</staticText>
+				<staticText>
+					<reportElement key="staticText-225" positionType="Float" mode="Transparent" x="420" y="21" width="77" height="28" isRemoveLineWhenBlank="true"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<text><![CDATA[Component Serial No.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement key="staticText-226" positionType="Float" mode="Transparent" x="517" y="21" width="60" height="28" isRemoveLineWhenBlank="true"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<text><![CDATA[Component Date Code]]></text>
+				</staticText>
+				<staticText>
+					<reportElement key="staticText-227" positionType="Float" mode="Transparent" x="217" y="21" width="62" height="30" isRemoveLineWhenBlank="true"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<text><![CDATA[Description]]></text>
+				</staticText>
+				<staticText>
+					<reportElement key="staticText-228" positionType="Float" mode="Transparent" x="85" y="21" width="73" height="30" isRemoveLineWhenBlank="true"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<text><![CDATA[NMHG Part #]]></text>
+				</staticText>
+				<subreport isUsingCache="true">
+					<reportElement key="subreport-5" positionType="Float" mode="Opaque" x="-14" y="51" width="740" height="15" isRemoveLineWhenBlank="true"/>
+					<subreportParameter name="SUPPLIER_VIEW">
+						<subreportParameterExpression><![CDATA[$F{supplierView}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="SUPPLIER_ROLE">
+						<subreportParameterExpression><![CDATA[$F{hasSupplierRole.toString()}]]></subreportParameterExpression>
+					</subreportParameter>
+					<dataSourceExpression><![CDATA[$F{recoveryClaim.recoveryClaimInfo.recoverableParts}]]></dataSourceExpression>
+					<subreportExpression class="java.lang.String"><![CDATA[$P{reportDirectory}.getCanonicalPath() + java.io.File.separator + "recoverablePartsDetails.jasper"]]></subreportExpression>
+				</subreport>
+				<staticText>
+					<reportElement key="staticText-229" positionType="Float" mode="Transparent" x="606" y="21" width="66" height="30" isRemoveLineWhenBlank="true"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<text><![CDATA[Std. Cost]]></text>
+				</staticText>
+				<staticText>
+					<reportElement key="staticText-230" positionType="Float" mode="Transparent" x="1" y="71" width="388" height="18" isRemoveLineWhenBlank="true">
+						<printWhenExpression><![CDATA[$F{miscellaneousPartsObjectList}!=null]]></printWhenExpression>
+					</reportElement>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+					<textElement>
+						<font size="12" isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<text><![CDATA[Miscellaneous Expense & Outside Services:]]></text>
+				</staticText>
+				<line direction="BottomUp">
+					<reportElement key="line-28" positionType="Float" mode="Transparent" x="0" y="87" width="740" height="3" isRemoveLineWhenBlank="true"/>
+					<graphicElement/>
+				</line>
+				<staticText>
+					<reportElement key="staticText-231" positionType="Float" mode="Transparent" x="249" y="91" width="122" height="20" isRemoveLineWhenBlank="true">
+						<printWhenExpression><![CDATA[$F{miscellaneousPartsObjectList}!=null]]></printWhenExpression>
+					</reportElement>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<text><![CDATA[Amount]]></text>
+				</staticText>
+				<staticText>
+					<reportElement key="staticText-232" positionType="Float" mode="Transparent" x="7" y="91" width="111" height="20" isRemoveLineWhenBlank="true">
+						<printWhenExpression><![CDATA[$F{miscellaneousPartsObjectList}!=null]]></printWhenExpression>
+					</reportElement>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<text><![CDATA[Description]]></text>
+				</staticText>
+				<staticText>
+					<reportElement key="staticText-233" positionType="Float" mode="Transparent" x="128" y="91" width="59" height="20" isRemoveLineWhenBlank="true">
+						<printWhenExpression><![CDATA[$F{miscellaneousPartsObjectList}!=null]]></printWhenExpression>
+					</reportElement>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<text><![CDATA[Quantity]]></text>
+				</staticText>
+				<subreport isUsingCache="true">
+					<reportElement key="subreport-6" positionType="Float" mode="Transparent" x="-15" y="111" width="740" height="15" isRemoveLineWhenBlank="true">
+						<printWhenExpression><![CDATA[$F{miscellaneousPartsObjectList}!=null]]></printWhenExpression>
+					</reportElement>
+					<dataSourceExpression><![CDATA[$F{miscellaneousPartsObjectList}]]></dataSourceExpression>
+					<subreportExpression class="java.lang.String"><![CDATA[$P{reportDirectory}.getCanonicalPath() + java.io.File.separator + "nonOEMPartsReplaced.jasper"]]></subreportExpression>
+				</subreport>
+				<staticText>
+					<reportElement key="staticText-234" positionType="Float" mode="Transparent" x="0" y="132" width="180" height="16" isRemoveLineWhenBlank="true">
+						<printWhenExpression><![CDATA[$F{showTravelSection}]]></printWhenExpression>
+					</reportElement>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+					<textElement>
+						<font size="12" isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<text><![CDATA[Travel:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement key="staticText-235" positionType="Float" mode="Transparent" x="7" y="150" width="71" height="20" isRemoveLineWhenBlank="true">
+						<printWhenExpression><![CDATA[$F{showTravelSection}]]></printWhenExpression>
+					</reportElement>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<text><![CDATA[Hours:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement key="staticText-236" positionType="Float" mode="Transparent" x="191" y="150" width="82" height="20" isRemoveLineWhenBlank="true">
+						<printWhenExpression><![CDATA[$F{showTravelSection}]]></printWhenExpression>
+					</reportElement>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<text><![CDATA[Amount:]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="false" hyperlinkType="None">
+					<reportElement key="textField-100" positionType="Float" mode="Transparent" x="91" y="150" width="81" height="20" isRemoveLineWhenBlank="true">
+						<printWhenExpression><![CDATA[$F{showTravelSection}]]></printWhenExpression>
+					</reportElement>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle"/>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{claim.serviceInformation.serviceDetail.travelDetails.hours.toString()}!=null
+&& $F{claim.serviceInformation.serviceDetail.travelDetails.hours.toString()}!=""
+? $F{claim.serviceInformation.serviceDetail.travelDetails.hours.toString()}
+: "--"]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="false" hyperlinkType="None">
+					<reportElement key="textField-101" positionType="Float" mode="Transparent" x="281" y="150" width="94" height="20" isRemoveLineWhenBlank="true">
+						<printWhenExpression><![CDATA[$F{showTravelSection}]]></printWhenExpression>
+					</reportElement>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle"/>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{actualValueForTravel.toString()}!=null&& $F{actualValueForTravel.toString()}!=""
+? $F{actualValueForTravel.toString()}: "--"]]></textFieldExpression>
+				</textField>
+				<line direction="BottomUp">
+					<reportElement key="line-30" positionType="Float" mode="Transparent" x="5" y="148" width="735" height="1" isRemoveLineWhenBlank="true">
+						<printWhenExpression><![CDATA[$F{showTravelSection}]]></printWhenExpression>
+					</reportElement>
+					<graphicElement/>
+				</line>
+				<staticText>
+					<reportElement key="staticText-237" positionType="Float" mode="Transparent" x="3" y="179" width="223" height="21" isRemoveLineWhenBlank="true"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+					<textElement>
+						<font size="12" isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<text><![CDATA[Recoverable  Amount:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement key="staticText-238" positionType="Float" mode="Transparent" x="3" y="204" width="127" height="20" isRemoveLineWhenBlank="true"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<text><![CDATA[Cost Element]]></text>
+				</staticText>
+				<staticText>
+					<reportElement key="staticText-239" positionType="Float" mode="Transparent" x="135" y="204" width="110" height="20" isRemoveLineWhenBlank="true">
+						<printWhenExpression><![CDATA[!$F{supplierView}]]></printWhenExpression>
+					</reportElement>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<text><![CDATA[Warranty Claim Value]]></text>
+				</staticText>
+				<staticText>
+					<reportElement key="staticText-240" positionType="Float" mode="Transparent" x="292" y="204" width="105" height="20" isRemoveLineWhenBlank="true">
+						<printWhenExpression><![CDATA[!$F{supplierView}]]></printWhenExpression>
+					</reportElement>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<text><![CDATA[Contract Value]]></text>
+				</staticText>
+				<staticText>
+					<reportElement key="staticText-241" positionType="Float" mode="Transparent" x="434" y="204" width="105" height="20" isRemoveLineWhenBlank="true">
+						<printWhenExpression><![CDATA[!$F{supplierView}]]></printWhenExpression>
+					</reportElement>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<text><![CDATA[Asked Value]]></text>
+				</staticText>
+				<staticText>
+					<reportElement key="staticText-242" positionType="Float" mode="Transparent" x="586" y="204" width="105" height="20" isRemoveLineWhenBlank="true"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<text><![CDATA[Value]]></text>
+				</staticText>
+				<subreport isUsingCache="false">
+					<reportElement key="subreport-7" positionType="Float" mode="Opaque" x="-23" y="224" width="740" height="18" isRemoveLineWhenBlank="true"/>
+					<subreportParameter name="SUPPLIER_ROLE">
+						<subreportParameterExpression><![CDATA[$F{hasSupplierRole.toString()}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="SUPPLIER_VIEW">
+						<subreportParameterExpression><![CDATA[$F{supplierView}]]></subreportParameterExpression>
+					</subreportParameter>
+					<dataSourceExpression><![CDATA[$F{recoveryCostLineItems}]]></dataSourceExpression>
+					<subreportExpression class="java.lang.String"><![CDATA[$P{reportDirectory}.getCanonicalPath() + java.io.File.separator + "recoveryCostLine.jasper"]]></subreportExpression>
+				</subreport>
+				<line direction="BottomUp">
+					<reportElement key="line-32" positionType="Float" mode="Transparent" x="5" y="199" width="735" height="1" isRemoveLineWhenBlank="true"/>
+					<graphicElement/>
+				</line>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="false" hyperlinkType="None">
+					<reportElement key="textField-102" positionType="Float" mode="Transparent" x="10" y="273" width="706" height="21" isRemoveLineWhenBlank="true"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle"/>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{recoveryClaim.externalComments}!=null?$F{recoveryClaim.externalComments}:"--"]]></textFieldExpression>
+				</textField>
+				<line direction="BottomUp">
+					<reportElement key="line-34" positionType="Float" mode="Transparent" x="5" y="270" width="735" height="1" isRemoveLineWhenBlank="true"/>
+					<graphicElement/>
+				</line>
+				<staticText>
+					<reportElement key="staticText-243" positionType="Float" mode="Transparent" x="7" y="247" width="207" height="18" isRemoveLineWhenBlank="true"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+					<textElement>
+						<font size="12" isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<text><![CDATA[Recovery Comments:]]></text>
+				</staticText>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="100">
+			<staticText>
+				<reportElement key="stText_recoveryClaim_title" positionType="Float" x="301" y="17" width="297" height="28" isRemoveLineWhenBlank="true"/>
+				<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="18" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[VENDOR WARRANTY CLAIM]]></text>
+			</staticText>
+			<image scaleImage="RetainShape" onErrorType="Blank" hyperlinkType="None">
+				<reportElement key="image-1" mode="Transparent" x="5" y="4" width="200" height="84"/>
+				<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+				<graphicElement/>
+				<imageExpression class="java.lang.String"><![CDATA[$P{reportDirectory}.getCanonicalPath() + java.io.File.separator + $F{gifName}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement key="staticText-81" isPrintRepeatedValues="false" x="520" y="67" width="90" height="20" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[$F{isBuConfigAMER().toString()}=="true"?Boolean.TRUE:Boolean.FALSE]]></printWhenExpression>
+				</reportElement>
+				<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Print Date :]]></text>
+			</staticText>
+			<textField evaluationTime="Report" pattern="dd-MMM-yyyy" isBlankWhenNull="false" hyperlinkType="None">
+				<reportElement key="textField-40" isPrintRepeatedValues="false" x="618" y="67" width="90" height="20" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[$F{isBuConfigAMER().toString()}=="true"?Boolean.TRUE:Boolean.FALSE]]></printWhenExpression>
+				</reportElement>
+				<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.util.Date"><![CDATA[new Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band/>
+	</pageHeader>
+	<columnHeader>
+		<band/>
+	</columnHeader>
+	<detail>
+		<band height="220">
+			<staticText>
+				<reportElement key="staticText-201" positionType="Float" mode="Transparent" x="299" y="21" width="92" height="20" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[$F{showEquipmentInfoSection.toString()} == "true"?Boolean.TRUE:Boolean.FALSE]]></printWhenExpression>
+				</reportElement>
+				<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Model]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-202" positionType="Float" mode="Transparent" x="622" y="21" width="106" height="20" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[$F{showEquipmentInfoSection.toString()} == "true"?Boolean.TRUE:Boolean.FALSE]]></printWhenExpression>
+				</reportElement>
+				<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Warranty Start Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-203" positionType="Float" mode="Transparent" x="411" y="21" width="91" height="20" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[$F{showEquipmentInfoSection.toString()} == "true"?Boolean.TRUE:Boolean.FALSE]]></printWhenExpression>
+				</reportElement>
+				<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Hours On Truck]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-204" positionType="Float" mode="Transparent" x="517" y="21" width="96" height="20" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[$F{claim.type.type}=="Parts" && $F{showEquipmentInfoSection.toString()} == "true"?Boolean.TRUE:Boolean.FALSE]]></printWhenExpression>
+				</reportElement>
+				<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Hours On Part]]></text>
+			</staticText>
+			<line>
+				<reportElement key="line-21" positionType="Float" mode="Transparent" x="5" y="20" width="735" height="1" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[$F{showEquipmentInfoSection.toString()} == "true"?Boolean.TRUE:Boolean.FALSE]]></printWhenExpression>
+				</reportElement>
+				<graphicElement/>
+			</line>
+			<staticText>
+				<reportElement key="staticText-205" positionType="Float" mode="Transparent" x="11" y="21" width="115" height="20" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[$F{showEquipmentInfoSection.toString()} == "true"&&$F{isBuConfigAMER().toString()}=="false"?Boolean.TRUE:Boolean.FALSE]]></printWhenExpression>
+				</reportElement>
+				<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Truck Serial Number]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-206" positionType="Float" mode="Transparent" x="5" y="0" width="231" height="20" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[$F{showEquipmentInfoSection.toString()} == "true"?Boolean.TRUE:Boolean.FALSE]]></printWhenExpression>
+				</reportElement>
+				<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+				<textElement>
+					<font size="12" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Equipment Information:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="false" hyperlinkType="None">
+				<reportElement key="textField-93" positionType="Float" mode="Transparent" x="121" y="67" width="230" height="25" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[$F{claim.type.type} != "Campaign"?Boolean.TRUE:Boolean.FALSE]]></printWhenExpression>
+				</reportElement>
+				<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{claim.serviceInformation.oemDealerCausalPart}==null?$F{claim.serviceInformation.causalPart.number}:$F{internalUser.toString()}=="false"?$F{claim.serviceInformation.oemDealerCausalPart.number}:$F{claim.serviceInformation.causalPart.number}+"(" + $F{claim.serviceInformation.oemDealerCausalPart.number}+")"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true" hyperlinkType="None">
+				<reportElement key="textField-94" positionType="Float" mode="Transparent" x="121" y="92" width="230" height="25" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[$F{claim.type.type} != "Campaign"?Boolean.TRUE:Boolean.FALSE]]></printWhenExpression>
+				</reportElement>
+				<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{claim.serviceInformation.faultFound.name}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="staticText-207" positionType="Float" mode="Transparent" x="5" y="67" width="100" height="25" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[$F{claim.type.type} != "Campaign"?Boolean.TRUE:Boolean.FALSE]]></printWhenExpression>
+				</reportElement>
+				<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Causal Part Number:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-208" positionType="Float" mode="Transparent" x="5" y="92" width="100" height="25" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[$F{claim.type.type} != "Campaign"?Boolean.TRUE:Boolean.FALSE]]></printWhenExpression>
+				</reportElement>
+				<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Fault Found:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-209" positionType="Float" mode="Transparent" x="2" y="49" width="172" height="18" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[$F{claim.type.type} != "Campaign"?Boolean.TRUE:Boolean.FALSE]]></printWhenExpression>
+				</reportElement>
+				<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Failure Information:]]></text>
+			</staticText>
+			<line>
+				<reportElement key="line-23" positionType="Float" mode="Transparent" x="5" y="67" width="735" height="1" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[$F{claim.type.type} != "Campaign"?Boolean.TRUE:Boolean.FALSE]]></printWhenExpression>
+				</reportElement>
+				<graphicElement/>
+			</line>
+			<staticText>
+				<reportElement key="staticText-210" positionType="Float" mode="Transparent" x="3" y="117" width="207" height="18" isRemoveLineWhenBlank="true"/>
+				<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Comments:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-211" positionType="Float" mode="Transparent" x="12" y="135" width="250" height="20" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[$F{isBuConfigAMER().toString()}=="false"?Boolean.TRUE:Boolean.FALSE]]></printWhenExpression>
+				</reportElement>
+				<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Condition Found:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="false" hyperlinkType="None">
+				<reportElement key="textField-95" positionType="Float" mode="Transparent" x="266" y="135" width="470" height="25" isRemoveLineWhenBlank="true"/>
+				<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{claim.conditionFound}!=null?$F{claim.conditionFound}:"--"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="staticText-212" positionType="Float" mode="Transparent" x="12" y="160" width="250" height="25" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[$F{isBuConfigAMER().toString()}=="false"?Boolean.TRUE:Boolean.FALSE]]></printWhenExpression>
+				</reportElement>
+				<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Work Performed:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-213" positionType="Float" mode="Transparent" x="12" y="185" width="250" height="25" isRemoveLineWhenBlank="true"/>
+				<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Claim Notes:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="false" hyperlinkType="None">
+				<reportElement key="textField-96" positionType="Float" mode="Transparent" x="266" y="185" width="470" height="25" isRemoveLineWhenBlank="true"/>
+				<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{claim.otherComments}!=null?$F{claim.otherComments}:"--"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="false" hyperlinkType="None">
+				<reportElement key="textField-97" positionType="Float" mode="Transparent" x="266" y="160" width="470" height="25" isRemoveLineWhenBlank="true"/>
+				<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{claim.workPerformed}!=null?$F{claim.workPerformed}:"--"]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true" hyperlinkType="None">
+				<reportElement key="textField-98" positionType="Float" mode="Transparent" x="529" y="92" width="200" height="25" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[$F{claim.type.type} != "Campaign"?Boolean.TRUE:Boolean.FALSE]]></printWhenExpression>
+				</reportElement>
+				<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{faultLocationNameWithCode.toString()}!=null?$F{faultLocationNameWithCode.toString()}:"--"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="false" hyperlinkType="None">
+				<reportElement key="textField-99" positionType="Float" mode="Transparent" x="529" y="67" width="199" height="25" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[$F{claim.type.type} != "Campaign"?Boolean.TRUE:Boolean.FALSE]]></printWhenExpression>
+				</reportElement>
+				<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{claim.serviceInformation.oemDealerCausalPart}==null?$F{claim.serviceInformation.causalPart.description}:$F{internalUser.toString()}=="false"?$F{claim.serviceInformation.oemDealerCausalPart.description}:$F{claim.serviceInformation.causalPart.description}+"(" + $F{claim.serviceInformation.oemDealerCausalPart.description}+")"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="staticText-215" positionType="Float" mode="Transparent" x="385" y="67" width="124" height="25" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[$F{claim.type.type} != "Campaign"?Boolean.TRUE:Boolean.FALSE]]></printWhenExpression>
+				</reportElement>
+				<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Causal Part Description:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-216" positionType="Float" mode="Transparent" x="157" y="21" width="73" height="20" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[$F{showEquipmentInfoSection.toString()} == "true"?Boolean.TRUE:Boolean.FALSE]]></printWhenExpression>
+				</reportElement>
+				<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Item# Desc]]></text>
+			</staticText>
+			<subreport isUsingCache="true">
+				<reportElement key="subreport-4" positionType="Float" mode="Transparent" x="-20" y="39" width="740" height="10" isRemoveLineWhenBlank="true"/>
+				<subreportParameter name="Hours On Part">
+					<subreportParameterExpression><![CDATA[$F{claim.hoursOnPart.toString()}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SUPPLIER_VIEW">
+					<subreportParameterExpression><![CDATA[$F{supplierView}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SUPPLIER_ROLE">
+					<subreportParameterExpression><![CDATA[$F{hasSupplierRole.toString()}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[$F{claim.claimedItems}]]></dataSourceExpression>
+				<subreportExpression class="java.lang.String"><![CDATA[$P{reportDirectory}.getCanonicalPath() + java.io.File.separator + "recoveryClaimEquipmentForSupplier.jasper"]]></subreportExpression>
+			</subreport>
+			<line direction="BottomUp">
+				<reportElement key="line-25" positionType="Float" mode="Transparent" x="5" y="135" width="735" height="1" isRemoveLineWhenBlank="true"/>
+				<graphicElement/>
+			</line>
+			<staticText>
+				<reportElement key="staticText-218" positionType="Float" mode="Transparent" x="16" y="21" width="115" height="18" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[$F{showEquipmentInfoSection.toString()} == "true"&&$F{isBuConfigAMER().toString()}=="true"?Boolean.TRUE:Boolean.FALSE]]></printWhenExpression>
+				</reportElement>
+				<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Unit Serial Number]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-219" positionType="Float" mode="Transparent" x="11" y="133" width="250" height="25" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[$F{isBuConfigAMER().toString()}=="true"?Boolean.TRUE:Boolean.FALSE]]></printWhenExpression>
+				</reportElement>
+				<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Customer Complaint And Condition Found:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-220" positionType="Float" mode="Transparent" x="11" y="160" width="250" height="25" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[$F{isBuConfigAMER().toString()}=="true"?Boolean.TRUE:Boolean.FALSE]]></printWhenExpression>
+				</reportElement>
+				<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Corrective Action:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-245" positionType="Float" mode="Transparent" x="385" y="92" width="133" height="25" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[$F{claim.type.type} != "Campaign"?Boolean.TRUE:Boolean.FALSE]]></printWhenExpression>
+				</reportElement>
+				<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Fault Location:]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="90">
+			<staticText>
+				<reportElement key="staticText-246" positionType="Float" mode="Transparent" x="625" y="1" width="38" height="20"/>
+				<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+				<textElement>
+					<font isBold="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<text><![CDATA[   Page]]></text>
+			</staticText>
+			<textField isBlankWhenNull="false" hyperlinkType="None">
+				<reportElement key="textField-103" positionType="Float" x="667" y="1" width="66" height="20"/>
+				<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+				<textElement>
+					<font isBold="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false" hyperlinkType="None">
+				<reportElement key="textField-104" x="355" y="3" width="100" height="20"/>
+				<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+				<textElement>
+					<font isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{claim.claimNumber}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false" hyperlinkType="None">
+				<reportElement key="textField-105" x="41" y="1" width="149" height="20"/>
+				<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{loggedInUserId}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="staticText-247" positionType="Float" x="3" y="1" width="38" height="20"/>
+				<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+				<textElement/>
+				<text><![CDATA[User:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-248" x="305" y="3" width="50" height="20"/>
+				<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+				<textElement>
+					<font isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[Claim:]]></text>
+			</staticText>
+			<image scaleImage="RetainShape" hAlign="Right" vAlign="Bottom" hyperlinkType="None">
+				<reportElement key="image-2" positionType="FixRelativeToBottom" mode="Transparent" x="121" y="35" width="613" height="55">
+					<printWhenExpression><![CDATA[$F{isBuConfigAMER().toString()}=="false"?Boolean.TRUE:Boolean.FALSE]]></printWhenExpression>
+				</reportElement>
+				<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" rightBorder="None" rightBorderColor="#000000"/>
+				<graphicElement/>
+				<imageExpression class="java.lang.String"><![CDATA[$P{reportDirectory}.getCanonicalPath() + java.io.File.separator+$F{nmhgFooterGif}]]></imageExpression>
+			</image>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

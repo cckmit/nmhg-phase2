@@ -1,0 +1,74 @@
+[OPTIONS]
+Compiled File=PartShipper.chm
+Title=PartShipper
+Contents File=PartShipper.hhc
+Index File=PartShipper.hhk
+Default topic=
+Default Window=
+Error log file=
+Display compile progress=No
+Display compile notes=No
+Full-text search=Yes
+Binary Index=Yes
+Auto Index=No
+Enhanced decompilation=No
+Binary TOC=No
+Flat=No
+
+[WINDOWS]
+
+[FILES]
+Before_you_Begin\common_application_features.htm
+Parts_Recovery\index.htm
+Parts_Recovery\Shipment_Tag.htm
+Before_you_Begin\index.htm
+Parts_Recovery\Barcode_Feature_and_Search_by_Barcode.htm
+Part_Returns\index.htm
+Settings\index.htm
+Items\index.htm
+Claims\index.htm
+Before_you_Begin\Before_you_Begin.htm
+Inventory\index.htm
+Before_you_Begin\Copyright.htm
+Part_Returns\Search_Parts.htm
+Inventory\Search_Inventory.htm
+Before_you_Begin\Introduction.htm
+Claims\Policy_Details.htm
+Inventory\Equipment_Details.htm
+Claims\Claim_Details.htm
+Claims\Search_Claims.htm
+Part_Returns\Due_Parts_Inspection.htm
+Parts_Recovery\Shipment_Generated.htm
+Parts_Recovery\Supplier_Parts_Claimed.htm
+Parts_Recovery\Supplier_Parts_Shipped.htm
+Parts_Recovery\Search_Parts.htm
+Settings\Email_Subscription.htm
+Settings\Profile.htm
+Part_Returns\Due_Parts_Receipt.htm
+Items\Search_Items.htm
+Inventory\Inventory.htm
+Parts_Recovery\Parts_Recovery.htm
+Part_Returns\Shipment_Generated_for_Dealer.htm
+due_parts.htm
+Reports\Download_Management.htm
+Reports\Upload_Management.htm
+Reports\Vendor_Recovery_Report.htm
+Part_Returns\Dealer_Requested_Parts_Shipped.htm
+Reports\Reports.htm
+Reports\index.htm
+Part_Returns\Dealer_Requested_Part.htm
+eHelp.xml
+RoboHHRE.lng
+
+PartShipper.glo
+PartShipper.brs
+[ALIAS]
+#include PartShipper.ali
+
+[MAP]
+#include BSSCDefault.h
+
+[TEXT POPUPS]
+BSSCDefault.h
+
+

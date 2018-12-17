@@ -1,0 +1,122 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping SYSTEM
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="tavant.twms.domain.catalog">
+<query name="parts">
+<![CDATA[
+	select 
+	 distinct item 
+	from 
+		Item item, ItemGroup parent join parent.scheme.purposes purpose, ItemGroup child,Party party
+	where
+	    item in elements(child.includedItems)
+	    and child.nodeInfo.treeId=parent.nodeInfo.treeId
+	    and purpose.name='PRODUCT STRUCTURE'
+		and upper(parent.name) = 'PARTS'
+		and parent.itemGroupType = 'PRODUCT TYPE'
+		and (item.number like :number )
+		and item.ownedBy = party.id
+		and party.name='OEM'
+]]>
+</query>
+
+<query name="partsForItemGroup">
+<![CDATA[
+	select 
+	 distinct item 
+	from 
+		Item item, ItemGroup parent join parent.scheme.purposes purpose, ItemGroup child,Party party
+	where
+	    item in elements(child.includedItems)
+	    and child.nodeInfo.treeId=parent.nodeInfo.treeId
+	    and purpose.name='PRODUCT STRUCTURE'
+		and upper(parent.name) in (:itemGroup)
+		and parent.itemGroupType = 'PRODUCT TYPE'
+		and (item.number like :number )
+		and item.ownedBy = party.id
+		and party.name='OEM'
+]]>
+</query>
+
+ <sql-query name="partreturnDefinitionsForDealersSQL">
+    <return alias="item" class="Item"/>
+     <![CDATA[
+     FROM 
+     	Item item
+     WHERE
+     	item.Business_Unit_Info In (:businessUnitInfo) 
+     AND 
+        item.D_Active = 1 
+     AND
+        item.id IN (
+	     (
+			     SELECT /*+ INDEX(iig IG_ITEMS_IN_GROUP_IDX)*/
+			     	iig.item as item_id 
+			     FROM 
+			        Part_Return_Definition part_ret,
+			        Items_In_Group iig
+			    WHERE
+			        iig.item_group in (
+			        SELECT  item_grp.id 
+			        FROM  
+			        Item_Group item_grp
+			        START WITH item_grp.Id = part_ret.item_criterion_item_group
+			        CONNECT BY PRIOR  item_grp.Is_Part_Of = item_grp.Id)
+		        AND (
+		            part_ret.Dealer IS Null 
+		            or part_ret.dealer= :dealerId
+		        ) 
+		         AND (
+		            part_ret.dealer_group IS NULL 
+		            OR part_ret.dealer_group IN
+		             (
+		                SELECT dealerGrp.id 
+		                FROM
+		                    Dealer_Group dealerGrp
+		                    START WITH dealerGrp.Id IN (SELECT dig.dealer_group FROM 
+                          dealers_in_group dig where dig.dealer in (:dealerId))
+		                    CONNECT BY PRIOR  dealerGrp.Is_Part_Of = dealerGrp.Id        
+		            )
+		        ) 
+		        AND part_ret.for_criteria_product_type is null
+		        AND part_ret.claim_type='ALL' 
+		        AND part_ret.Warranty_Type Is Null
+		        AND part_ret.Business_Unit_Info In (:businessUnitInfo ) 
+		        AND part_ret.D_Active = 1 
+		        AND part_ret.Item_Criterion_Item Is Null        
+ 		 )
+         UNION 
+		(
+			SELECT
+		        part_ret.item_criterion_item as item_id
+		    FROM
+		        part_return_definition part_ret
+		    WHERE
+		        part_ret.Business_Unit_Info IN  (:businessUnitInfo ) 
+		        AND part_ret.d_active = 1 
+		        AND (
+		            part_ret.Dealer Is Null 
+		            or part_ret.dealer= :dealerId
+		        ) 
+		        AND (
+		            part_ret.dealer_group is null 
+		            or part_ret.dealer_group in (
+		                select dealerGrp.id 
+		                from
+		                    Dealer_Group dealerGrp
+		                    Start With dealerGrp.Id in (SELECT dig.dealer_group FROM 
+                          dealers_in_group dig where dig.dealer in (:dealerId))
+		                    Connect By Prior dealerGrp.Is_Part_Of = dealerGrp.Id        
+		            )
+		        ) 
+		        AND part_ret.for_criteria_product_type is null
+		        AND part_ret.claim_type='ALL' 
+		        AND part_ret.warranty_type is null
+		        AND part_ret.item_criterion_item_group is null
+		  )
+	) 
+     ]]>
+</sql-query>
+</hibernate-mapping>

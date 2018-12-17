@@ -1,0 +1,84 @@
+<!DOCTYPE validators PUBLIC 
+    "-//Apache Struts//XWork Validator 1.0.2//EN"   
+    "http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+<validators>
+	<field name="contract.name">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>		
+			<message key="error.sra.contract.name"/>
+		</field-validator>
+	</field>
+	
+	<field name="contract.supplier.id">
+		<field-validator type="required" >
+			<message key="error.sra.contract.supplier"/>
+		</field-validator>		
+	</field>	
+	
+	<field name="contract.location.code">
+		<field-validator type="required">
+			<message key="error.sra.contract.shipmentLocation"/>
+		</field-validator>		
+	</field>	
+	
+	<field name="contract.validityPeriod.fromDate">
+		<field-validator type="required">
+			<message key="error.sra.contract.fromDate"/>
+		</field-validator>		
+	</field>	
+	<field name="contract.validityPeriod.tillDate">
+		<field-validator type="required">
+			<message key="error.sra.contract.toDate"/>
+		</field-validator>		
+	</field>	
+	
+	<field name="contract.coverageConditions[0].units">
+		<field-validator type="required">
+			<message key="error.sra.contract.months"/>
+		</field-validator>		
+		<field-validator type="int" >
+           <param name="min">0</param>
+           <message key="error.sra.contract.months.nonnegative"/>
+        </field-validator> 
+	</field>
+	
+	<field name="coverageEnergyUnits">
+		<field-validator type="int" >
+           <param name="min">0</param>
+           <message key="error.sra.contract.energyUnits"/>
+        </field-validator> 
+	</field>
+
+	<field name="contract.carrier.code">
+		<field-validator type="required">
+			<message key="error.sra.contract.carrier"/>
+		</field-validator>		
+	</field>
+
+	<field name="contract.supplierResponsePeriod">
+		<field-validator type="required">
+			<message key="error.sra.contract.responsePeriod"/>
+		</field-validator>		
+		<field-validator type="int" >
+           <param name="min">1</param>
+           <message key="error.contractAdmin.supplierResponsePeriod"/>
+        </field-validator> 
+	</field>
+
+	<field name="contract.supplierDisputePeriod">
+		<field-validator type="required">
+			<message key="error.sra.contract.disputePeriod"/>
+		</field-validator>		
+		<field-validator type="int" >
+           <param name="min">1</param>
+           <message key="error.contractAdmin.supplierDisputePeriod"/>
+        </field-validator> 
+	</field>	
+	
+	<validator type="dateRange" >
+		<param name="startDateField">contract.validityPeriod.fromDate</param>
+		<param name="endDateField">contract.validityPeriod.tillDate</param>
+		<message key="error.sra.contract.fromDateToDate"/>
+	</validator>
+	
+</validators>

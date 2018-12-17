@@ -1,0 +1,7 @@
+--PURPOSE    : PATCH FOR UPDATING SUBMITTED
+--AUTHOR     : GHANASHYAM DAS
+--CREATED ON : 07-JUL-11
+update battery_info set submitted=1
+/
+COMMIT
+/

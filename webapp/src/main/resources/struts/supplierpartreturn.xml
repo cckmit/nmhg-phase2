@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <package name="supplierpartreturn" extends="struts-twms-default">
+
+        <default-interceptor-ref name="supplierParamsPrepareWithoutValidation" />
+
+        <action name="duePartsForSupplier"
+                class="tavant.twms.web.supplier.DuePartForSupplierToNMHG">
+            <result name="success">pages/secure/supplier/supplier_recovery_inbox_view.jsp</result>
+             <result name="input">pages/secure/supplier/supplier_recovery_inbox_view.jsp</result>
+        </action>
+
+        <action name="duePartsForSupplier_table_body"
+                class="tavant.twms.web.supplier.DuePartForSupplierToNMHG"
+                method="tableBody">
+           <!--<interceptor-ref name="supplierParamsPrepareWithoutValidation" />-->
+            <param name="taskName">Parts for Return To NMHG</param>
+            <result name="success">pages/secure/home/json.jsp</result>
+            <result name="input">pages/error.jsp</result>
+        </action>
+
+        <action name="duePartsForSupplier_preview"
+                class="tavant.twms.web.supplier.DuePartForSupplierToNMHG"
+                method="showPreview">
+            <!--<interceptor-ref name="supplierParamsPrepareWithoutValidation" />-->
+            <param name="taskName">Parts for Return To NMHG</param>
+            <result name="success">
+                pages/secure/admin/supplier/partReturnToNMHGDetail.jsp
+            </result>
+        </action>
+
+        <action name="duePartsForSupplier_detail"
+                class="tavant.twms.web.supplier.DuePartForSupplierToNMHG"
+                method="showPreview">
+           <!-- <interceptor-ref name="supplierParamsPrepareWithoutValidation" />-->
+            <param name="taskName">Parts for Return To NMHG</param>
+            <result name="success">
+                pages/secure/admin/supplier/partReturnToNMHGDetail.jsp
+            </result>
+            <result name="input">pages/secure/admin/supplier/partReturnToNMHGDetail.jsp</result>
+        </action>
+
+        <action name="duePartsForSupplier_submit"
+                class="tavant.twms.web.supplier.DuePartForSupplierToNMHG"
+                method="submit">            
+            <interceptor-ref name="twmsParamsPrepareParamsForPartReturn" />
+            <param name="taskName">Parts for Return To NMHG</param>
+            <result name="success">pages/secure/admin/supplier/sraReviewResponse.jsp</result>
+            <result name="input">pages/secure/admin/supplier/partReturnToNMHGDetail.jsp</result>
+        </action>
+        <!-- Export to excel -->
+        <action name="duePartsForSupplier_exportToExcel"
+                class="tavant.twms.web.supplier.DuePartForSupplierToNMHG"
+                method="downloadListingData">
+            <!--<interceptor-ref name="supplierParamsPrepareWithoutValidation" />-->
+            <param name="taskName">Parts for Return To NMHG</param>
+        </action>
+
+	<!--Shipment Generated From Supplier to NMHG related action  -->
+	
+	<action name="shipmentGeneratedToNMHG"
+                class="tavant.twms.web.supplier.ShipmentGeneratedForSupplierToNMHG">
+                  <!--<interceptor-ref name="supplierParamsPrepareWithoutValidation" />-->
+            <result name="success">pages/secure/supplier/supplier_recovery_inbox_view.jsp</result>
+             <result name="input">pages/secure/supplier/supplier_recovery_inbox_view.jsp</result>
+        </action>
+
+        <action name="shipmentGeneratedToNMHG_table_body"
+                class="tavant.twms.web.supplier.ShipmentGeneratedForSupplierToNMHG"
+                method="tableBody">
+            <!--<interceptor-ref name="supplierParamsPrepareWithoutValidation" />-->
+            <param name="taskName">Shipment Generated To NMHG</param>
+            <result name="success">pages/secure/home/json.jsp</result>
+            <result name="input">pages/error.jsp</result>
+        </action>
+
+        <action name="shipmentGeneratedToNMHG_preview"
+                class="tavant.twms.web.supplier.ShipmentGeneratedForSupplierToNMHG"
+                method="showPreview">
+            <!--<interceptor-ref name="supplierParamsPrepareWithoutValidation" />-->
+            <param name="taskName">Shipment Generated To NMHG</param>
+            <result name="success">
+                pages/secure/admin/supplier/shipmentGeneratedForSupplierrToNMHGDetail.jsp
+            </result>
+        </action>
+
+        <action name="shipmentGeneratedToNMHG_detail"
+                class="tavant.twms.web.supplier.ShipmentGeneratedForSupplierToNMHG"
+                method="showPreview">
+            <!--<interceptor-ref name="supplierParamsPrepareWithoutValidation" />-->
+            <param name="taskName">Shipment Generated To NMHG</param>
+            <result name="success">
+                pages/secure/admin/supplier/shipmentGeneratedForSupplierrToNMHGDetail.jsp
+            </result>
+            <result name="input">pages/secure/admin/supplier/shipmentGeneratedForSupplierrToNMHGDetail.jsp</result>
+        </action>
+
+        <action name="shipmentGeneratedToNMHG_submit"
+                class="tavant.twms.web.supplier.ShipmentGeneratedForSupplierToNMHG"
+                method="submit">
+            <interceptor-ref name="twmsParamsPrepareParamsForPartReturn" />
+            <param name="taskName">Shipment Generated To NMHG</param>
+            <result name="success">pages/secure/admin/supplier/shipmentGeneratedForSupplierrToNMHGSuccess.jsp</result>
+            <result name="input">pages/secure/admin/supplier/shipmentGeneratedForSupplierrToNMHGDetail.jsp</result>
+        </action>
+        <!-- Export to excel -->
+        <action name="shipmentGeneratedToNMHG_exportToExcel"
+                class="tavant.twms.web.supplier.ShipmentGeneratedForSupplierToNMHG"
+                method="downloadListingData">
+           <!-- <interceptor-ref name="paramsPrepareWithoutValidation" />-->
+            <param name="taskName">Shipment Generated To NMHG</param>
+        </action>
+        
+        <!--Parts Shipped to NMHG related action  -->
+	
+	<action name="partShippedToNMHG"
+                class="tavant.twms.web.supplier.ShipmentGeneratedForSupplierToNMHG">
+            <result name="success">pages/secure/supplier/supplier_recovery_inbox_view.jsp</result>
+        </action>
+
+        <action name="partShippedToNMHG_table_body"
+                class="tavant.twms.web.supplier.ShipmentGeneratedForSupplierToNMHG"
+                method="tableBody">            
+            <param name="taskName">Parts Shipped to NMHG</param>
+            <result name="success">pages/secure/home/json.jsp</result>
+            <result name="input">pages/error.jsp</result>
+        </action>
+
+        <action name="partShippedToNMHG_preview"
+                class="tavant.twms.web.supplier.ShipmentGeneratedForSupplierToNMHG"
+                method="showPreview">           
+            <param name="taskName">Parts Shipped to NMHG</param>
+            <result name="success">
+                pages/secure/admin/supplier/partsShippedForSupplierToNMHGDetail.jsp
+            </result>
+        </action>
+        <action name="partShippedToNMHG_detail"
+                class="tavant.twms.web.supplier.ShipmentGeneratedForSupplierToNMHG"
+                method="showPreview">
+         <param name="taskName">Parts Shipped to NMHG</param>
+            <result name="success">
+                pages/secure/admin/supplier/partsShippedForSupplierToNMHGDetail.jsp
+            </result>
+            <result name="input">pages/secure/admin/supplier/partsShippedForSupplierToNMHGDetail.jsp</result>
+        </action>
+
+        <action name="partShippedToNMHG_exportToExcel"
+                class="tavant.twms.web.supplier.ShipmentGeneratedForSupplierToNMHG"
+                method="downloadListingData">
+            <!-- <interceptor-ref name="paramsPrepareWithoutValidation" />-->
+            <param name="taskName">Parts Shipped to NMHG</param>
+        </action>
+        
+        <action name="supplierPartsReceipt"
+                class="tavant.twms.web.supplier.SupplierPartsReceipt">
+            <result name="success">pages/secure/supplier/supplier_recovery_inbox_view.jsp</result>
+        </action>
+
+        <action name="supplierPartsReceipt_table_body"
+                class="tavant.twms.web.supplier.SupplierPartsReceipt"
+                method="tableBody">
+           <!-- <interceptor-ref name="paramsPrepareWithoutValidation" />-->
+            <param name="taskName">Supplier Parts Receipt</param>
+            <result name="success">pages/secure/home/json.jsp</result>
+            <result name="input">pages/error.jsp</result>
+        </action>
+
+        <action name="supplierPartsReceipt_preview"
+                class="tavant.twms.web.supplier.SupplierPartsReceipt"
+                method="preview">
+            <!--<interceptor-ref name="supplierParamsPrepareWithoutValidation" />-->
+            <param name="taskName">Supplier Parts Receipt</param>
+            <result name="success">
+                pages/secure/supplier/preview/detail/supplierPartsReceipt.jsp
+            </result>
+        </action>
+
+        <action name="supplierPartsReceipt_detail"
+                class="tavant.twms.web.supplier.SupplierPartsReceipt"
+                method="showPreview">
+            <!--<interceptor-ref name="supplierParamsPrepareWithoutValidation" />-->
+            <param name="taskName">Supplier Parts Receipt</param>
+            <result name="success">
+                pages/secure/admin/supplier/detail/supplierPartsReceipt.jsp
+            </result>
+            <result name="input">pages/secure/admin/supplier/detail/supplierPartsReceipt.jsp</result>
+        </action>
+
+        <action name="supplierPartsReceipt_submit"
+                class="tavant.twms.web.supplier.SupplierPartsReceipt"
+                method="submit">
+            <interceptor-ref name="twmsParamsPrepareParamsForPartReturn" />
+            <param name="taskName">Supplier Parts Receipt</param>
+            <result name="success">pages/secure/admin/supplier/sraReviewResponse.jsp</result>
+            <result name="input">pages/secure/admin/supplier/detail/supplierPartsReceipt.jsp</result>
+        </action>
+        <!-- Export to excel -->
+        <action name="supplierPartsReceipt_exportToExcel"
+                class="tavant.twms.web.supplier.SupplierPartsReceipt"
+                method="downloadListingData">
+           <!-- <interceptor-ref name="paramsPrepareWithoutValidation" />-->
+            <param name="taskName">Supplier Parts Receipt</param>
+        </action>
+
+
+        <action name="supplierPartsInspection"
+                class="tavant.twms.web.supplier.SupplierPartsInspection">
+            <result name="success">pages/secure/supplier/supplier_recovery_inbox_view.jsp</result>
+        </action>
+
+        <action name="supplierPartsInspection_table_body"
+                class="tavant.twms.web.supplier.SupplierPartsInspection"
+                method="tableBody">
+            <interceptor-ref name="paramsPrepareWithoutValidation" />
+            <param name="taskName">Supplier Parts Inspection</param>
+            <result name="success">pages/secure/home/json.jsp</result>
+            <result name="input">pages/error.jsp</result>
+        </action>
+
+        <action name="supplierPartsInspection_preview"
+                class="tavant.twms.web.supplier.SupplierPartsInspection"
+                method="preview">
+            <!--<interceptor-ref name="supplierParamsPrepareWithoutValidation" />-->
+            <param name="taskName">Supplier Parts Inspection</param>
+            <result name="success">
+                pages/secure/supplier/preview/detail/supplierPartsInspection.jsp
+            </result>
+        </action>
+
+        <action name="supplierPartsInspection_detail"
+                class="tavant.twms.web.supplier.SupplierPartsInspection"
+                method="showPreview">
+            <!--<interceptor-ref name="supplierParamsPrepareWithoutValidation" />-->
+            <param name="taskName">Supplier Parts Inspection</param>
+            <result name="success">
+                pages/secure/admin/supplier/detail/supplierPartsInspection.jsp
+            </result>
+            <result name="input">pages/secure/admin/supplier/detail/supplierPartsInspection.jsp</result>
+        </action>
+
+        <action name="supplierPartsInspection_submit"
+                class="tavant.twms.web.supplier.SupplierPartsInspection"
+                method="submit">
+            <interceptor-ref name="twmsParamsPrepareParamsForPartReturn" />
+            <param name="taskName">Supplier Parts Inspection</param>
+            <result name="success">pages/secure/admin/supplier/sraReviewResponse.jsp</result>
+            <result name="input">pages/secure/admin/supplier/detail/supplierPartsInspection.jsp</result>
+        </action>
+        <!-- Export to excel -->
+        <action name="supplierPartsInspection_exportToExcel"
+                class="tavant.twms.web.supplier.SupplierPartsInspection"
+                method="downloadListingData">
+            <!--<interceptor-ref name="paramsPrepareWithoutValidation" />-->
+            <param name="taskName">Supplier Parts Inspection</param>
+        </action>
+    
+    </package>
+</struts>

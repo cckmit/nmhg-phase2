@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--Created with Liquid XML Studio 2012 Developer Edition (Trial) 10.1.2.4113 (http://www.liquid-technologies.com)-->
+<xs:schema xmlns="http://www.tavant.com/globalsync/pricefetchrequest" xmlns:oa="http://www.openapplications.org/oagis/9" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.tavant.com/globalsync/pricefetchrequest" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:include schemaLocation="../../Resources/Nouns/global/ApplicationAreaType.xsd" />
+    <xs:element name="PriceFetch">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="ApplicationArea" type="ApplicationAreaType" />
+                <xs:element name="DataArea" type="PriceCheckDataAreaType" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:complexType name="PriceCheckDataAreaType">
+        <xs:sequence>
+            <xs:element ref="BUName" />
+			<xs:element ref="ClaimType"/>
+            <xs:element name="PriceCheckRequest" type="PriceCheckRequestType" />
+            <xs:element name="CostCheckRequest" type="CostCheckRequestType" minOccurs="0" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="BUName">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:maxLength value="20" />
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:complexType name="PriceCheckRequestType">
+        <xs:sequence>
+        	<xs:element ref="WarrantyType"/>        
+            <xs:element ref="DateOfRepair" />
+            <xs:element ref="DealerNo" />
+            <xs:element ref="CurrencyCode" />
+            <xs:element name="ReplacedParts" type="ReplacedPartsType" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="WarrantyType">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="50"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+    <xs:element name="ClaimType">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:maxLength value="50" />
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="DateOfRepair" type="xs:date" />
+    <xs:element name="DealerSiteNumber">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:maxLength value="100" />
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="DealerNo">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:maxLength value="100" />
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <!--CurrencyCode : EUR,USD,CAD,ZAR,GBP -->
+    <xs:element name="CurrencyCode">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:maxLength value="3" />
+              <xs:enumeration value="ZAR" />
+				<xs:enumeration value="GBP"/>
+				<xs:enumeration value="EUR"/>
+				<xs:enumeration value="CAD"/>
+				<xs:enumeration value="USD"/>
+				<xs:enumeration value="DKK"/>
+				<xs:enumeration value="SEK"/>
+				<xs:enumeration value="JPY"/>
+				<xs:enumeration value="CHF"/>
+				<xs:enumeration value="AUD"/>
+				<xs:enumeration value="MXN"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:complexType name="ReplacedPartsType">
+        <xs:sequence>
+            <xs:element name="LineItem" type="RequestLineItemType" maxOccurs="unbounded" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RequestLineItemType">
+        <xs:sequence>
+            <xs:element name="PartNumber">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="Quantity" type="xs:int" />
+            <xs:element name="ManufacturingLocation">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <!--UOM : ACTIVE,BX,CS,DRUM,EACH,FEET,GALLON,GRAM,INCH,KILOGRAM,KT,LITRE,LT,METER,MILLILITRE,MILLIMETER, PACK OF 10,PACK OF 12,PACK OF 2,PACK OF 25,PACK OF 4,PACK OF 5,PACK OF 50,PACK OF 6,PACK OF 8,PAIL,PALLET,PC,PK,POUND,QUART,SQUARE FEET,SQUARE METER,ST,SI,OZ,KIT,PR,BF,NU,MEA,KG,HR,M3,LB,GL,PT,RL,CCF,CEA,SET,M,EA,OZT,SH,FT,SF,IN,QT,SM,CWT,L,BOT,FL,A,NA,GA -->
+            <xs:element name="UOM">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="DivisionCode">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="InvoiceCheck">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:maxLength value="1" />
+                        <xs:enumeration value="0" />
+                        <xs:enumeration value="1" />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element ref="SupplierNumber" />
+            <xs:element ref="CurrencyCode" />
+            <xs:element name="OrderNumber">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="OrderNoRequired">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="1" />
+                        <xs:enumeration value="0" />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="ItemPriceLimit" type="xs:decimal" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="CostCheckRequestType">
+        <xs:sequence>
+        	<xs:element ref="WarrantyType"/>
+            <xs:element ref="DateOfRepair" />
+            <xs:element ref="DealerSiteNumber" />
+            <xs:element name="ReplacedParts" type="ReplacedPartsType" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="SupplierNumber">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:maxLength value="100" />
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+</xs:schema>

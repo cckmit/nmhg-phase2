@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE server>
+<server>
+    <classpath archives="wrapper.jar" codebase="../../lib"/>
+    
+    <mbean code="org.tanukisoftware.wrapper.jmx.WrapperManager"
+           name="JavaServiceWrapper:service=WrapperManager"/>
+    
+    <mbean code="org.tanukisoftware.wrapper.jmx.WrapperManagerTesting"
+           name="JavaServiceWrapper:service=WrapperManagerTesting"/>
+</server>

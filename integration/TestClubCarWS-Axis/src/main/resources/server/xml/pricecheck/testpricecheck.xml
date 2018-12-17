@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PriceFetch lang="en" evnironment="Test" revision="1.0">
+  <ApplicationArea>
+    <Sender>
+      <LogicalId>100000002</LogicalId>
+      <Task>98-572-4553</Task>
+    </Sender>
+    <CreationDateTime>2004-06-30</CreationDateTime>
+  </ApplicationArea>
+  <DataArea>
+	<PriceCheckRequest>
+		<DealerNo>393520</DealerNo>
+		<WarrantyType>STANDARD</WarrantyType>
+		<CurrencyCode>USD</CurrencyCode>
+		<DateOfRepair>2004-06-26</DateOfRepair>
+		<BUName>CCI</BUName>
+		<ReplacedParts>
+			<LineItem>
+				<PartNumber>332</PartNumber>
+				<Quantity>1</Quantity>
+			</LineItem>
+			<LineItem>
+				<PartNumber>NS41118011</PartNumber>
+				<Quantity>2</Quantity>
+			</LineItem>
+		</ReplacedParts>
+	</PriceCheckRequest>
+  </DataArea>
+</PriceFetch>

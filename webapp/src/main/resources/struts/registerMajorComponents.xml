@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <package name="registerMajorComponents" extends="struts-twms-default">
+        
+         <action name="showRegisterMajorComponentsForm"
+            class="tavant.twms.web.registerMajorComponent.RegisterMajorComponentAction">
+            <interceptor-ref name="paramsPrepareWithoutValidation"/>
+            <result name="success">pages/secure/registerMajorComponent/registerMajorComponentForm.jsp</result>
+        </action>
+        
+        <action name="list_unit_serial_nos"
+        	class="tavant.twms.web.registerMajorComponent.RegisterMajorComponentAction" method="listUnitSerialNumbers">
+        	<interceptor-ref name="paramsPrepareWithoutValidation"/>
+        </action>
+        
+        <action name="showOwnerInformation"
+        	class="tavant.twms.web.registerMajorComponent.RegisterMajorComponentAction" method="getOwnerInformation">
+        	<interceptor-ref name="paramsPrepareWithoutValidation"/>
+        	<result name="success">pages/secure/registerMajorComponent/ownerData.jsp</result>        
+        </action>
+        
+        <action name="list_certified_service_providers"
+        	class="tavant.twms.web.registerMajorComponent.RegisterMajorComponentAction" method="getCertifiedServiceProviderNames">
+        	<interceptor-ref name="paramsPrepareWithoutValidation"/>
+        	 <result name="success">pages/secure/home/json.jsp</result>
+        	 <result name="input">pages/secure/registerMajorComponent/registerMajorComponentForm.jsp</result>
+        </action>
+        
+        <action name="getMatching_nonCertifiedInstallers_for_majorCompReg" 
+               class="tavant.twms.web.actions.ManageCustomer" method="searchCustomers">
+			<interceptor-ref name="paramsPrepareWithoutValidation"/>
+			<result name="success">pages/secure/warranty/customer_search.jsp</result>
+		</action>
+        
+        <action name="show_nonCertifiedInstallerDetails_for_majorCompReg"
+			class="tavant.twms.web.registerMajorComponent.RegisterMajorComponentAction" method="showNonCertifiedInstaller">
+			<interceptor-ref name="paramsPrepareWithoutValidation" />
+			<result name="success">pages/secure/registerMajorComponent/nonCertifiedInstaller_details_for_majorCompReg.jsp</result>
+		</action>
+		
+		<action name="getMatching_endCustomers_for_majorCompReg"
+			class="tavant.twms.web.actions.ManageCustomer" method="searchCustomers">
+			<interceptor-ref name="paramsPrepareWithoutValidation"/>
+			<result name="success">pages/secure/registerMajorComponent/endCustomer_search_for_majorCompReg.jsp</result>
+		</action>
+		
+		 <action name="show_endCustomerDetails_for_majorCompReg"
+			class="tavant.twms.web.registerMajorComponent.RegisterMajorComponentAction" method="showEndCustomerForMajorComponent">
+			<interceptor-ref name="paramsPrepareWithoutValidation" />
+			<result name="success">pages/secure/registerMajorComponent/endCustomer_details_for_majorCompReg.jsp</result>
+		</action>
+        
+         <action name="confirmMajorComRegistration"
+			class="tavant.twms.web.registerMajorComponent.RegisterMajorComponentAction" method="confirmMajorCompRegistration">
+			<interceptor-ref name="twmsParamsPrepareParams" />
+			<result name="success">pages/secure/registerMajorComponent/registerMajorComponentForm.jsp</result>
+			<result name="input">pages/secure/registerMajorComponent/registerMajorComponentForm.jsp</result>
+		</action>
+		
+		 <action name="register_major_com"
+			class="tavant.twms.web.registerMajorComponent.RegisterMajorComponentAction" method="registerMajorComponent">
+			<interceptor-ref name="paramsPrepareWithoutValidation" />
+			<result name="success">pages/secure/registerMajorComponent/majorComRegSuccess.jsp</result>
+			<result name="input">pages/secure/registerMajorComponent/registerMajorComponentForm.jsp</result>
+		</action>
+		
+		 <!-- Editing Major Components on a unit -->
+		 
+		<action name="viewMajorComponentsForUnit" class="tavant.twms.web.actions.InventoryAction"
+		        method="showMajorComponentsForUnit">
+		    <result name="success">pages/secure/registerMajorComponent/viewMajorComponentsForUnit.jsp</result>	
+		</action>
+		
+		<action name="displayReplacedPartsHistory" class="tavant.twms.web.registerMajorComponent.RegisterMajorComponentAction"
+		        method="showReplacedPartsHistoryForMajorComp">
+		        <interceptor-ref name="paramsPrepareWithoutValidation" />
+		    <result name="success">pages/secure/registerMajorComponent/replacedPartsHistoryOfMajorComp.jsp</result>	
+		</action>
+		
+		<action name="showAuditHistoryForMajorComponent" class="tavant.twms.web.registerMajorComponent.RegisterMajorComponentAction"
+		        method="showAuditHistoryForMajorComponent">
+		        <interceptor-ref name="adminTwmsParamsWithoutPrepareAndValidate" />
+		    <result name="success">pages/secure/registerMajorComponent/replacedPartsHistoryOfMajorComp.jsp</result>	
+		</action>
+		
+		<action name="editSerialNoOfMajorComp" class="tavant.twms.web.registerMajorComponent.RegisterMajorComponentAction"
+		        method="showReplacedPartsHistoryForMajorComp">
+		        <interceptor-ref name="paramsPrepareWithoutValidation" />
+		    <result name="success">pages/secure/registerMajorComponent/editSerialNoOfMajorComp.jsp</result>	
+		</action>
+		
+		<action name="updateMajorCompFromEditPage" class="tavant.twms.web.registerMajorComponent.RegisterMajorComponentAction"
+		        method="updateMajorCompFromEditPage">
+		        <interceptor-ref name="paramsPrepareWithoutValidation" />
+		    <result name="input">pages/secure/registerMajorComponent/editSerialNoOfMajorComp.jsp</result>
+		    <result name="success">pages/secure/registerMajorComponent/editSerialNoOfMajorComp.jsp</result>
+		</action>
+        
+    </package>
+</struts>  

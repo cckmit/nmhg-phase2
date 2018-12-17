@@ -1,0 +1,86 @@
+<html>
+<!-- Sitemap 1.0 -->
+<object type="text/site properties">
+  <param name="SiteType" value="index">
+</object>
+<ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Equipment Details">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Service Manager Review">
+    <param name="Name" value="Service Manager Review">
+    <param name="Local" value="Claims\Service_Manager_Review.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Causal Part">
+    <param name="Name" value="Service Manager Review">
+    <param name="Local" value="Claims\Service_Manager_Review.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Fault Code">
+    <param name="Name" value="Service Manager Review">
+    <param name="Local" value="Claims\Service_Manager_Review.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Fault Location">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Claim Details">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Service Information">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Manage Documents">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Failure Information">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Job Code">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Payment Details">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Policy details">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Advice Request">
+    <param name="Name" value="Advice Request">
+    <param name="Local" value="Claims\Advice_Request.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Claim Validation">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Dealer Transfer">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Extended Warranty Purchase">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Inventory">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Address Book">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Equipment Transfer Report">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Download Management">
+    <param name="Name" value="Download Management">
+    <param name="Local" value="Reports\Download_Management.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Upload Management">
+    <param name="Name" value="Upload Management">
+    <param name="Local" value="Reports\Upload_Management.htm">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Profile">
+  </object>
+</ul>
+</html>

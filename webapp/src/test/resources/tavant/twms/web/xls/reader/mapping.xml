@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<excel>
+  <sheet sheetName="Test Sheet2"
+    type="tavant.twms.web.xls.reader.InvItemBean" startRow="1">
+    <block>
+      <column-mapping column="4" expression="date"/>
+      <column-mapping column="0" expression="serialNumber"/>
+      <column-mapping column="1" expression="itemNumber"/>
+      <column-mapping column="2" expression="dealer"/>
+      <column-mapping column="3" expression="usage"/>
+    </block>
+    <block-break column="0"/>
+    <sheet-end />
+  </sheet>
+</excel>

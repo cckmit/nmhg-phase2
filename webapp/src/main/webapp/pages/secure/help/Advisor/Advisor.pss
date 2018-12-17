@@ -1,0 +1,61 @@
+[MAS SUPPORT]
+SupportMas_Prj=1
+[Target:WebHelp]
+SupportMas_Prj=1
+ResultFileName=!SSL!\WebHelp\Advisor.htm
+SSLayoutType=2
+CreateProjectTime=10:07, August 30, 2011
+CreateProjectUser=jyoti.patwal
+SupportMas_MPJ=1
+ActionID For Generation=1002
+Remove Folder with prompt=1
+ViewFileName=!SSL!\WebHelp\Advisor.htm
+ResultStatus=0
+BuildTimeHi=30172878
+BuildTimeLow=-1738820587
+[Target:WebHelp Pro]
+SupportMas_Prj=1
+ResultFileName=!SSL!\WebHelp_Pro\Advisor.htm
+SSLayoutType=32
+ServerProjectName=Advisor
+CreateProjectTime=
+CreateProjectUser=
+SupportMas_MPJ=1
+[Target:Microsoft HTML Help]
+ResultFileName=!SSL!\Microsoft_HTML_Help\Advisor.chm
+SSLayoutType=1
+CreateProjectTime=
+CreateProjectUser=
+SupportMas_MPJ=1
+[Target:FlashHelp]
+ResultFileName=!SSL!\FlashHelp\Advisor.htm
+SSLayoutType=2
+CreateProjectTime=
+CreateProjectUser=
+SupportMas_MPJ=1
+[Target:Printed Documentation]
+ResultFileName=!SSL!\Printed_Documentation\Advisor.doc
+SSLayoutType=7
+[Target:XML Output]
+ResultFileName=!SSL!\XML_Output\Advisor.xml
+SSLayoutType=8192
+[PreSingleSource]
+Html Help Project=D:\Jyoti\Final IR Project\Advisor\Advisor.hhp
+Table Of Content=D:\Jyoti\Final IR Project\Advisor\Advisor.hhc
+Index=D:\Jyoti\Final IR Project\Advisor\Advisor_merged$.hhk
+See Also Index=D:\Jyoti\Final IR Project\Advisor\Advisor.hha
+Browse Sequence=D:\Jyoti\Final IR Project\Advisor\Advisor.brs
+Topic Properties=D:\Jyoti\Final IR Project\Advisor\Advisor.trs
+Active Folders=D:\Jyoti\Final IR Project\Advisor\Advisor.trf
+Baggage Files=D:\Jyoti\Final IR Project\Advisor\Advisor.trb
+Skin List=D:\Jyoti\Final IR Project\Advisor\Advisor.trk
+OriginalHhk=D:\Jyoti\Final IR Project\Advisor\Advisor.hhk
+Active Layout Names=D:\Jyoti\Final IR Project\Advisor\Advisor.trl
+Default Topic=D:\Jyoti\Final IR Project\Advisor\Before_you_Begin\common_application_features.htm
+Build Tags0=17209;Print | Online
+Build Tags=
+Build Expression=
+Language ID=1033
+Language Name=English
+Language=D:\Jyoti\Final IR Project\Advisor\RoboHHRE.lng
+Stop List=D:\Jyoti\Final IR Project\Advisor\Advisor.stp

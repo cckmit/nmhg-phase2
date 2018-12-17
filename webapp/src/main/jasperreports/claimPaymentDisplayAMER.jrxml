@@ -1,0 +1,568 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="claimPaymentDisplay" language="java" pageWidth="850" pageHeight="1400" columnWidth="790" leftMargin="30" rightMargin="30" topMargin="20" bottomMargin="20" uuid="d9ba88c7-29d7-4918-959c-8745926023a3">
+	<property name="ireport.zoom" value="4.177248169415671"/>
+	<property name="ireport.x" value="1416"/>
+	<property name="ireport.y" value="0"/>
+	<property name="ireport.scriptlethandling" value="0"/>
+	<property name="ireport.encoding" value="UTF-8"/>
+	<import value="net.sf.jasperreports.engine.*"/>
+	<import value="java.util.*"/>
+	<import value="net.sf.jasperreports.engine.data.*"/>
+	<parameter name="reportDirectory" class="java.io.File">
+		<defaultValueExpression><![CDATA[$P{reportDirectory}]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String">
+		<defaultValueExpression><![CDATA[".\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="stateMondate_Enabled" class="java.lang.String"/>
+	<parameter name="warranty_Amount" class="java.lang.String"/>
+	<parameter name="cp_Amount" class="java.lang.String"/>
+	<parameter name="internalUser.toString()" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[$F{internalUser.toString()}]]></defaultValueExpression>
+	</parameter>
+	<parameter name="claim.state.state" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[$F{claim.state.state}]]></defaultValueExpression>
+	</parameter>
+	<parameter name="claim.payment.stateMandateActive" class="java.lang.Boolean" isForPrompting="false">
+		<defaultValueExpression><![CDATA[$F{claim.payment.stateMandateActive}]]></defaultValueExpression>
+	</parameter>
+	<parameter name="claim.isGoodWillPolicy()" class="java.lang.Boolean" isForPrompting="false">
+		<defaultValueExpression><![CDATA[$F{claim.isGoodWillPolicy()}]]></defaultValueExpression>
+	</parameter>
+	<parameter name="claim.netAcceptancePercentageForPayment" class="java.math.BigDecimal" isForPrompting="false"/>
+	<parameter name="claim.payment.totalAmountPaidAfterTax.breachEncapsulationOfAmount().toString()" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="claim.payment.totalAmountPaidAfterTax.breachEncapsulationOfCurrency().toString()" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="claim.payment.activeCreditMemo.taxAmount.breachEncapsulationOfAmount().toString()" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="claim.payment.activeCreditMemo.taxAmount.breachEncapsulationOfCurrency().toString()" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="claim.payment.activeCreditMemo.creditMemoNumber.toString()" class="java.lang.String" isForPrompting="false"/>
+	<field name="name" class="java.lang.String"/>
+	<field name="value.toString()" class="java.lang.String"/>
+	<field name="cpValue.toString()" class="java.lang.String"/>
+	<field name="bold.toString()" class="java.lang.String"/>
+	<field name="newLine.toString()" class="java.lang.String"/>
+	<field name="firstLine.toString()" class="java.lang.String"/>
+	<field name="claimedValue.toString()" class="java.lang.String"/>
+	<field name="advisorEnabled.toString()" class="java.lang.String"/>
+	<field name="askedQtyHrs.toString()" class="java.lang.String"/>
+	<field name="acceptedQtyHrs.toString()" class="java.lang.String"/>
+	<field name="percentageAcceptance.toString()" class="java.lang.String"/>
+	<field name="currencyCode.toString()" class="java.lang.String"/>
+	<field name="stateMondateAmount.toString()" class="java.lang.String"/>
+	<field name="reviwedAmount.toString()" class="java.lang.String"/>
+	<field name="totalAcceptStateMdtChkbox.toString()" class="java.lang.String"/>
+	<field name="totalAcceptanceChkbox.toString()" class="java.lang.String"/>
+	<field name="totalClaimAmountCheckBox.toString()" class="java.lang.String"/>
+	<field name="stateMondateEnabled.toString()" class="java.lang.String"/>
+	<field name="internalUser.toString()" class="java.lang.String"/>
+	<field name="claim.getStateMandate()" class="java.lang.Object"/>
+	<field name="claim.isGoodWillPolicy()" class="java.lang.Boolean"/>
+	<field name="claim.state.state" class="java.lang.String"/>
+	<field name="claim.payment.stateMandateActive" class="java.lang.Boolean"/>
+	<field name="claimedValueDisplay" class="java.lang.Boolean"/>
+	<field name="rateValueDisplay" class="java.lang.Boolean"/>
+	<field name="rateValue" class="java.lang.String"/>
+	<field name="rateClaimedValue" class="java.lang.String"/>
+	<field name="stateMondateRateValue" class="java.lang.String"/>
+	<field name="claim.payment.totalAmountPaidAfterTax.breachEncapsulationOfAmount().toString()" class="java.lang.String"/>
+	<field name="claim.payment.totalAmountPaidAfterTax.breachEncapsulationOfCurrency().toString()" class="java.lang.String"/>
+	<field name="claim.netAcceptancePercentageForPayment" class="java.math.BigDecimal"/>
+	<field name="claim.payment.activeCreditMemo.taxAmount.breachEncapsulationOfAmount().toString()" class="java.lang.String"/>
+	<field name="claim.payment.activeCreditMemo.taxAmount.breachEncapsulationOfCurrency().toString()" class="java.lang.String"/>
+	<field name="claim.payment.activeCreditMemo.creditMemoNumber.toString()" class="java.lang.String"/>
+	<background>
+		<band height="2" splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="30" splitType="Stretch">
+			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
+				<reportElement uuid="ec3d5476-2304-48e3-bf64-1b9e3bfa4871" key="textField-2" positionType="Float" mode="Transparent" x="607" y="0" width="75" height="30" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[$F{bold.toString()}=="false"&&($P{claim.state.state}.equalsIgnoreCase("Accepted and Closed")||$P{claim.state.state}.equalsIgnoreCase("Denied and Closed")||$P{claim.state.state}.equalsIgnoreCase("Closed")||$P{internalUser.toString()}=="true")?Boolean.TRUE:Boolean.FALSE]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="10" isBold="false" pdfFontName="Helvetica"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($F{currencyCode.toString()}!=null && $F{reviwedAmount.toString()}!=null) ?$F{currencyCode.toString()}+$F{reviwedAmount.toString()}:$F{rateValueDisplay} ? $F{rateClaimedValue}:""]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
+				<reportElement uuid="d743d9f9-309a-423c-ae76-62f6fbae6a20" key="textField-3" positionType="Float" mode="Transparent" x="20" y="0" width="150" height="30" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[$F{bold.toString()}=="true"? Boolean.TRUE : Boolean.FALSE]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="10" isBold="true" pdfFontName="Helvetica-Bold"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
+				<reportElement uuid="b179c74c-5b39-4d4c-960f-2eb0208e959a" key="textField-6" positionType="Float" mode="Transparent" x="355" y="0" width="70" height="30" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[$F{bold.toString()}=="false"&&($P{claim.state.state}.equalsIgnoreCase("Accepted and Closed")||$P{claim.state.state}.equalsIgnoreCase("Denied and Closed")||$P{claim.state.state}.equalsIgnoreCase("Closed")||$P{internalUser.toString()}=="true")?Boolean.TRUE:Boolean.FALSE]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="10" isBold="false" pdfFontName="Helvetica"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($F{currencyCode.toString()}!=null && $F{value.toString()}!=null) ?$F{currencyCode.toString()}+$F{value.toString()}:$F{rateValueDisplay} ? $F{rateClaimedValue}:""]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
+				<reportElement uuid="062783bf-ddee-404b-8ee4-222467c69157" key="textField" positionType="Float" mode="Transparent" x="215" y="0" width="65" height="30" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[$F{bold.toString()}=="true"&&($P{claim.state.state}.equalsIgnoreCase("Accepted and Closed")||$P{claim.state.state}.equalsIgnoreCase("Denied and Closed")||$P{claim.state.state}.equalsIgnoreCase("Closed")||$P{internalUser.toString()}=="true")?Boolean.TRUE:Boolean.FALSE]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="10" isBold="true" pdfFontName="Helvetica-Bold"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{askedQtyHrs.toString()}==null ?"":$F{askedQtyHrs.toString()}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
+				<reportElement uuid="7ba48288-a92b-4cbe-8c92-c5b2e6a79f05" key="textField-10" positionType="Float" mode="Transparent" x="280" y="0" width="75" height="30" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[$F{bold.toString()}=="false"&&($P{claim.state.state}.equalsIgnoreCase("Accepted and Closed")||$P{claim.state.state}.equalsIgnoreCase("Denied and Closed")||$P{claim.state.state}.equalsIgnoreCase("Closed")||$P{internalUser.toString()}=="true")?Boolean.TRUE:Boolean.FALSE]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="10" isBold="false" pdfFontName="Helvetica"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{claimedValueDisplay} ?($F{currencyCode.toString()}+$F{claimedValue.toString()}):$F{rateValueDisplay} ? $F{rateValue}:""]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
+				<reportElement uuid="8b509d18-41ac-4195-8a33-e87589203467" key="textField-11" positionType="Float" mode="Transparent" x="512" y="0" width="75" height="30" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[$F{bold.toString()}=="false"&&($P{claim.state.state}.equalsIgnoreCase("Accepted and Closed")||$P{claim.state.state}.equalsIgnoreCase("Denied and Closed")||$P{claim.state.state}.equalsIgnoreCase("Closed")||$P{internalUser.toString()}=="true")?Boolean.TRUE:Boolean.FALSE]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="10" isBold="false" pdfFontName="Helvetica"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{percentageAcceptance.toString()}==null ?"":$F{percentageAcceptance.toString()}+"%"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
+				<reportElement uuid="bb21a43c-77ac-40ab-b92c-78569d9026d2" key="textField-12" positionType="Float" mode="Transparent" x="440" y="0" width="50" height="30" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[$F{bold.toString()}=="true"&&($P{claim.state.state}.equalsIgnoreCase("Accepted and Closed")||$P{claim.state.state}.equalsIgnoreCase("Denied and Closed")||$P{claim.state.state}.equalsIgnoreCase("Closed")||$P{internalUser.toString()}=="true")?Boolean.TRUE:Boolean.FALSE]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true" pdfFontName="Helvetica-Bold"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{askedQtyHrs.toString()}==null ?"":$F{askedQtyHrs.toString()}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
+				<reportElement uuid="3fd1aea8-1566-4884-ba9c-d5bb9f3bd321" key="textField-13" positionType="Float" mode="Transparent" x="280" y="0" width="75" height="30" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[$F{bold.toString()}=="true"&&($P{claim.state.state}.equalsIgnoreCase("Accepted and Closed")||$P{claim.state.state}.equalsIgnoreCase("Denied and Closed")||$P{claim.state.state}.equalsIgnoreCase("Closed")||$P{internalUser.toString()}=="true")?Boolean.TRUE:Boolean.FALSE]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="10" isBold="true" pdfFontName="Helvetica-Bold"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{claimedValueDisplay} ?($F{currencyCode.toString()}+$F{claimedValue.toString()}):$F{rateValueDisplay} ? $F{rateValue}:""]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
+				<reportElement uuid="f0a73c92-41b7-4628-b1dc-8cd692172866" key="textField-14" positionType="Float" mode="Transparent" x="355" y="0" width="70" height="30" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[$F{bold.toString()}=="true"&&($P{claim.state.state}.equalsIgnoreCase("Accepted and Closed")||$P{claim.state.state}.equalsIgnoreCase("Denied and Closed")||$P{claim.state.state}.equalsIgnoreCase("Closed")||$P{internalUser.toString()}=="true")?Boolean.TRUE:Boolean.FALSE]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="10" isBold="true" pdfFontName="Helvetica-Bold"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($F{currencyCode.toString()}!=null && $F{value.toString()}!=null) ?$F{currencyCode.toString()}+$F{value.toString()}:$F{rateValueDisplay} ? $F{rateClaimedValue}:""]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
+				<reportElement uuid="184fd6c1-0975-4241-8dda-2c4d571b0731" key="textField-15" positionType="Float" mode="Transparent" x="0" y="0" width="150" height="30" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[$F{bold.toString()}=="false" ? Boolean.TRUE : Boolean.FALSE]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="10" isBold="false" pdfFontName="Helvetica"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
+				<reportElement uuid="f4db7522-324b-4132-96dc-1b97f44ccc51" key="textField-16" positionType="Float" mode="Transparent" x="215" y="0" width="65" height="30" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[$F{bold.toString()}=="false"&&($P{claim.state.state}.equalsIgnoreCase("Accepted and Closed")||$P{claim.state.state}.equalsIgnoreCase("Denied and Closed")||$P{claim.state.state}.equalsIgnoreCase("Closed")||$P{internalUser.toString()}=="true")?Boolean.TRUE:Boolean.FALSE]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="10" isBold="false" pdfFontName="Helvetica"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{askedQtyHrs.toString()}==null ?"":$F{askedQtyHrs.toString()}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
+				<reportElement uuid="4f023808-028e-4974-9609-ff8d7397c6b8" key="textField-17" positionType="Float" mode="Transparent" x="440" y="0" width="50" height="30" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[$F{bold.toString()}=="false"&&($P{claim.state.state}.equalsIgnoreCase("Accepted and Closed")||$P{claim.state.state}.equalsIgnoreCase("Denied and Closed")||$P{claim.state.state}.equalsIgnoreCase("Closed")||$P{internalUser.toString()}=="true")?Boolean.TRUE:Boolean.FALSE]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="false" pdfFontName="Helvetica"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{askedQtyHrs.toString()}==null ?"":$F{askedQtyHrs.toString()}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
+				<reportElement uuid="c1089904-f966-4845-9ca1-109856e6c963" key="textField-18" positionType="Float" mode="Transparent" x="512" y="0" width="75" height="30" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[$F{bold.toString()}=="true"&&($P{claim.state.state}.equalsIgnoreCase("Accepted and Closed")||$P{claim.state.state}.equalsIgnoreCase("Denied and Closed")||$P{claim.state.state}.equalsIgnoreCase("Closed")||$P{internalUser.toString()}=="true")?Boolean.TRUE:Boolean.FALSE]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="10" isBold="true" pdfFontName="Helvetica-Bold"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{percentageAcceptance.toString()}==null ?" ":($F{percentageAcceptance.toString()}+"%")]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
+				<reportElement uuid="9bf70076-b38a-4e33-97d6-76c36d9fab3c" key="textField-19" positionType="Float" mode="Transparent" x="607" y="0" width="75" height="30" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[$F{bold.toString()}=="true"&&($P{claim.state.state}.equalsIgnoreCase("Accepted and Closed")||$P{claim.state.state}.equalsIgnoreCase("Denied and Closed")||$P{claim.state.state}.equalsIgnoreCase("Closed")||$P{internalUser.toString()}=="true")?Boolean.TRUE:Boolean.FALSE]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="10" isBold="true" pdfFontName="Helvetica-Bold"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($F{currencyCode.toString()}!=null && $F{reviwedAmount.toString()}!=null) ?$F{currencyCode.toString()}+$F{reviwedAmount.toString()}:$F{rateValueDisplay} ? $F{rateClaimedValue}:""]]></textFieldExpression>
+			</textField>
+			<line direction="BottomUp">
+				<reportElement uuid="6be4b222-0d80-40aa-9ca4-6251751fc84f" key="line-1" positionType="Float" mode="Transparent" x="20" y="29" width="640" height="1" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[$F{bold.toString()}=="true"&&$F{newLine.toString()}=="true"?Boolean.TRUE:Boolean.FALSE]]></printWhenExpression>
+				</reportElement>
+			</line>
+			<line>
+				<reportElement uuid="1d40bcdf-cbc5-4d15-965b-058c438b2926" key="line-2" mode="Transparent" x="665" y="29" width="72" height="1" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[$F{bold.toString()}=="true"&&$F{newLine.toString()}=="true"&&($P{claim.payment.stateMandateActive}&&!$P{claim.isGoodWillPolicy()})&&($P{claim.state.state}.equalsIgnoreCase("Accepted and Closed")||$P{claim.state.state}.equalsIgnoreCase("Denied and Closed")||$P{claim.state.state}.equalsIgnoreCase("Closed")||$P{internalUser.toString()}=="true")?Boolean.TRUE:Boolean.FALSE]]></printWhenExpression>
+				</reportElement>
+			</line>
+			<image>
+				<reportElement uuid="4a17ed00-3385-4219-a567-81659fa0f168" key="image-2" x="592" y="14" width="8" height="8">
+					<printWhenExpression><![CDATA[$F{totalClaimAmountCheckBox.toString()}.trim().equals("Total Claim Amount")&&$P{internalUser.toString()}=="true"?Boolean.TRUE :Boolean.FALSE]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<imageExpression><![CDATA[$F{totalClaimAmountCheckBox.toString()}.trim().equals("Total Claim Amount")&&$F{totalAcceptanceChkbox.toString()}=="true"?$P{reportDirectory}.getCanonicalPath() + java.io.File.separator + "checkedcheckBox.jpg" :$P{reportDirectory}.getCanonicalPath() + java.io.File.separator + "checkbox.PNG"]]></imageExpression>
+			</image>
+			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
+				<reportElement uuid="c93d9ade-3c4a-48ab-a088-b06ede5c5715" key="textField-23" positionType="Float" mode="Transparent" x="707" y="0" width="75" height="30" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[$F{bold.toString()}=="false"&&($P{claim.payment.stateMandateActive}&&!$P{claim.isGoodWillPolicy()})&&($P{claim.state.state}.equalsIgnoreCase("Accepted and Closed")||$P{claim.state.state}.equalsIgnoreCase("Denied and Closed")||$P{claim.state.state}.equalsIgnoreCase("Closed")||$P{internalUser.toString()}=="true")?Boolean.TRUE:Boolean.FALSE]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="10" isBold="false" pdfFontName="Helvetica"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{stateMondateAmount.toString()}!=null ? $F{currencyCode.toString()}+$F{stateMondateAmount.toString()}:$F{rateValueDisplay}?$F{stateMondateRateValue}:""]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
+				<reportElement uuid="fae1e00e-9d1d-40f6-bd0b-963dab177b06" key="textField-24" positionType="Float" mode="Transparent" x="707" y="0" width="75" height="30" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[$F{bold.toString()}=="true"&&$P{claim.payment.stateMandateActive}&&!$P{claim.isGoodWillPolicy()}&& ($P{claim.state.state}.equalsIgnoreCase("Accepted and Closed")||$P{claim.state.state}.equalsIgnoreCase("Denied and Closed")||$P{claim.state.state}.equalsIgnoreCase("Closed")||$P{internalUser.toString()}=="true")?Boolean.TRUE:Boolean.FALSE]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="10" isBold="true" pdfFontName="Helvetica-Bold"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($F{currencyCode.toString()}!=null && $F{stateMondateAmount.toString()}!=null) ? $F{currencyCode.toString()}+$F{stateMondateAmount.toString()}:$F{rateValueDisplay}?$F{stateMondateRateValue}:""]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement uuid="b66fd6c0-8010-4512-aa56-f80316aff816" key="image-3" x="689" y="13" width="8" height="8">
+					<printWhenExpression><![CDATA[$F{totalClaimAmountCheckBox.toString()}.trim().equals("Total Claim Amount") &&$P{claim.payment.stateMandateActive}&&!$P{claim.isGoodWillPolicy()}&&$P{internalUser.toString()}=="true"?Boolean.TRUE :Boolean.FALSE]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<imageExpression><![CDATA[$F{totalClaimAmountCheckBox.toString()}.trim().equals("Total Claim Amount")&&$F{totalAcceptStateMdtChkbox.toString()}=="true"?$P{reportDirectory}.getCanonicalPath() + java.io.File.separator + "checkedcheckBox.jpg" :$P{reportDirectory}.getCanonicalPath() + java.io.File.separator + "checkbox.PNG"]]></imageExpression>
+			</image>
+			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
+				<reportElement uuid="aa6ee22e-43e1-408b-afe9-bd08126cd309" key="textField-26" positionType="Float" mode="Transparent" x="580" y="0" width="70" height="30" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[$P{internalUser.toString()}=="false"&&$F{bold.toString()}=="true"&&(!($P{claim.state.state}.equalsIgnoreCase("Accepted and Closed")||$P{claim.state.state}.equalsIgnoreCase("Denied and Closed")||$P{claim.state.state}.equalsIgnoreCase("Closed")))?Boolean.TRUE:Boolean.FALSE]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="10" isBold="false" pdfFontName="Helvetica"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($F{currencyCode.toString()}!=null && $F{value.toString()}!=null) ?$F{currencyCode.toString()}+$F{value.toString()}:$F{rateValueDisplay} ? $F{rateClaimedValue}:""]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
+				<reportElement uuid="f7ae56ce-9fd4-4e72-b825-ff1aaee4c8b8" key="textField-27" positionType="Float" mode="Transparent" x="380" y="0" width="65" height="30" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[$P{internalUser.toString()}=="false"&&$F{bold.toString()}=="false"&&(!($P{claim.state.state}.equalsIgnoreCase("Accepted and Closed")||$P{claim.state.state}.equalsIgnoreCase("Denied and Closed")||$P{claim.state.state}.equalsIgnoreCase("Closed")))?Boolean.TRUE:Boolean.FALSE]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="10" isBold="false" pdfFontName="Helvetica"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{askedQtyHrs.toString()}==null ?"":$F{askedQtyHrs.toString()}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
+				<reportElement uuid="6041bede-6273-48fb-82ae-cb089d0db514" key="textField-28" positionType="Float" mode="Transparent" x="380" y="0" width="65" height="30" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[$P{internalUser.toString()}=="false"&&$F{bold.toString()}=="true"&&(!($P{claim.state.state}.equalsIgnoreCase("Accepted and Closed")||$P{claim.state.state}.equalsIgnoreCase("Denied and Closed")||$P{claim.state.state}.equalsIgnoreCase("Closed")))?Boolean.TRUE:Boolean.FALSE]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="10" isBold="false" pdfFontName="Helvetica"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{askedQtyHrs.toString()}==null ?"":$F{askedQtyHrs.toString()}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
+				<reportElement uuid="15d8f110-95e8-45cb-887b-f49cf57bf560" key="textField-29" positionType="Float" mode="Transparent" x="580" y="0" width="70" height="30" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[$P{internalUser.toString()}=="false"&&$F{bold.toString()}=="false"&&(!($P{claim.state.state}.equalsIgnoreCase("Accepted and Closed")||$P{claim.state.state}.equalsIgnoreCase("Denied and Closed")||$P{claim.state.state}.equalsIgnoreCase("Closed")))?Boolean.TRUE:Boolean.FALSE]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="10" isBold="false" pdfFontName="Helvetica"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($F{currencyCode.toString()}!=null && $F{value.toString()}!=null) ?$F{currencyCode.toString()}+$F{value.toString()}:$F{rateValueDisplay} ? $F{rateClaimedValue}:""]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="100" splitType="Stretch">
+			<textField isBlankWhenNull="false">
+				<reportElement uuid="459235aa-3f14-4045-8f19-bd07718a12b6" key="textField-31" positionType="Float" x="355" y="76" width="350" height="20" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[($P{claim.state.state}.equalsIgnoreCase("Accepted and Closed")||$P{claim.state.state}.equalsIgnoreCase("Denied and Closed")||$P{claim.state.state}.equalsIgnoreCase("Closed")) ?Boolean.TRUE:Boolean.FALSE]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font size="10" isBold="true" isItalic="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{claim.netAcceptancePercentageForPayment}!=null ? $P{claim.netAcceptancePercentageForPayment}+"%":"--"]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="1b23c064-70ae-4d31-995b-99818a52afd5" key="textField-32" positionType="Float" x="355" y="53" width="350" height="20" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[($P{claim.state.state}.equalsIgnoreCase("Accepted and Closed")||$P{claim.state.state}.equalsIgnoreCase("Denied and Closed")||$P{claim.state.state}.equalsIgnoreCase("Closed")) ?Boolean.TRUE:Boolean.FALSE]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font size="10" isBold="true" isItalic="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{claim.payment.totalAmountPaidAfterTax.breachEncapsulationOfAmount().toString()}!=null?$P{claim.payment.totalAmountPaidAfterTax.breachEncapsulationOfCurrency().toString()}+$P{claim.payment.totalAmountPaidAfterTax.breachEncapsulationOfAmount().toString()}:"--"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="3db007ca-4b04-43a7-8f36-38c35078426a" key="staticText-1" positionType="Float" x="0" y="53" width="250" height="20" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[($P{claim.state.state}.equalsIgnoreCase("Accepted and Closed")||$P{claim.state.state}.equalsIgnoreCase("Denied and Closed")||$P{claim.state.state}.equalsIgnoreCase("Closed")) ?Boolean.TRUE:Boolean.FALSE]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Amount paid after tax:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4de08646-1b97-45f3-bb1d-0e15b33bb23d" key="staticText-2" positionType="Float" x="0" y="28" width="250" height="20" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[($P{claim.state.state}.equalsIgnoreCase("Accepted and Closed")||$P{claim.state.state}.equalsIgnoreCase("Denied and Closed")||$P{claim.state.state}.equalsIgnoreCase("Closed")||$P{internalUser.toString()}=="true")&&$P{claim.payment.activeCreditMemo.taxAmount.breachEncapsulationOfAmount().toString()}!=null?Boolean.TRUE:Boolean.FALSE]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement/>
+				<text><![CDATA[Tax:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="c999fbb7-4ea1-4760-93b6-51705e7605e4" key="textField-33" positionType="Float" x="355" y="28" width="350" height="20" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[($P{claim.state.state}.equalsIgnoreCase("Accepted and Closed")||$P{claim.state.state}.equalsIgnoreCase("Denied and Closed")||$P{claim.state.state}.equalsIgnoreCase("Closed")||$P{internalUser.toString()}=="true")&&$P{claim.payment.activeCreditMemo.taxAmount.breachEncapsulationOfAmount().toString()}!=null?Boolean.TRUE:Boolean.FALSE]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{claim.payment.activeCreditMemo.taxAmount.breachEncapsulationOfAmount().toString()}!=null?$P{claim.payment.activeCreditMemo.taxAmount.breachEncapsulationOfCurrency().toString()}+$P{claim.payment.activeCreditMemo.taxAmount.breachEncapsulationOfAmount().toString()}:"--"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="12167cc2-e4bb-45b0-8cec-a46afe357dbc" key="staticText-3" positionType="Float" x="0" y="0" width="250" height="20" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[($P{claim.state.state}.equalsIgnoreCase("Accepted and Closed")||$P{claim.state.state}.equalsIgnoreCase("Denied and Closed")||$P{claim.state.state}.equalsIgnoreCase("Closed")||$P{internalUser.toString()}=="true")&&$P{claim.payment.activeCreditMemo.creditMemoNumber.toString()}!=null?Boolean.TRUE:Boolean.FALSE]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement/>
+				<text><![CDATA[Credit Memo Number:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="ab57b113-525d-40af-b2f2-a308be930637" key="textField-34" positionType="Float" x="355" y="0" width="350" height="20" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[($P{claim.state.state}.equalsIgnoreCase("Accepted and Closed")||$P{claim.state.state}.equalsIgnoreCase("Denied and Closed")||$P{claim.state.state}.equalsIgnoreCase("Closed")||$P{internalUser.toString()}=="true")&&$P{claim.payment.activeCreditMemo.creditMemoNumber.toString()}!=null?Boolean.TRUE:Boolean.FALSE]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{claim.payment.activeCreditMemo.creditMemoNumber.toString()}!=null?$P{claim.payment.activeCreditMemo.creditMemoNumber.toString()}:"--"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="61488b4f-954c-43d3-b788-91c415258139" key="staticText-4" positionType="Float" x="2" y="78" width="250" height="20" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[($P{claim.state.state}.equalsIgnoreCase("Accepted and Closed")||$P{claim.state.state}.equalsIgnoreCase("Denied and Closed")||$P{claim.state.state}.equalsIgnoreCase("Closed")) ?Boolean.TRUE:Boolean.FALSE]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Percentage Accepted:]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

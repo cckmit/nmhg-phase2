@@ -1,0 +1,33 @@
+<!DOCTYPE validators PUBLIC 
+    "-//OpenSymphony Group//XWork Validator 1.0//EN"   
+    "http://www.opensymphony.com/xwork/xwork-validator-1.0.2.dtd">
+<validators>
+	<field name="startDate">
+		<field-validator type="required">
+			<message>start date is required</message>
+		</field-validator>
+		<field-validator type="date">
+			<message>
+				date should have the proper format yyyy-mm-dd
+			</message>
+		</field-validator>
+	</field>
+	
+	<field name="endDate">
+		<field-validator type="required">
+			<message>end date is required</message>
+		</field-validator>
+		<field-validator type="date">
+			<message>
+				date should have the proper format yyyy-mm-dd
+			</message>
+		</field-validator>
+	</field>
+
+	<validator type="dateRange" >
+		<param name="startDateField">startDate</param>
+		<param name="endDateField">endDate</param>
+		<message>'Start' date cannot be later than 'End' date</message>
+	</validator>
+		
+</validators>

@@ -1,0 +1,456 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process-definition name="PartsReturn">
+
+  <swimlane name="dealer">
+    <assignment
+      class="tavant.twms.jbpm.assignment.ExpressionAssignmentHandler">
+      <expression>actor=ognl{claim.filedBy.userType.equals("ENTERPRISE USER") ? filedBy.belongsToOrganizations[0].id : filedBy.name}</expression>
+    </assignment>
+  </swimlane>
+
+  <swimlane name="receiver">
+    <assignment
+		class="tavant.twms.jbpm.assignment.ScriptAssignmentHandler">
+		<beanName>warehouseService</beanName>
+		<methodName>getReceiverAtLocation</methodName>
+		<parameters>
+			<parameter>partReturn.returnLocation</parameter>
+		</parameters>
+	</assignment>
+  </swimlane>
+
+  <swimlane name="inspector">
+    <assignment
+		class="tavant.twms.jbpm.assignment.ScriptAssignmentHandler">
+		<beanName>warehouseService</beanName>
+		<methodName>getInspectorAtLocation</methodName>
+		<parameters>
+			<parameter>partReturn.returnLocation</parameter>
+		</parameters>
+	</assignment>
+  </swimlane>
+
+  <swimlane name="partshipper">
+    <assignment
+    class="tavant.twms.jbpm.assignment.ScriptAssignmentHandler">
+    <beanName>warehouseService</beanName>
+    <methodName>getPartShipperForPart</methodName>
+    <parameters>
+      <parameter>partReturn.oemPartReplaced</parameter>
+    </parameters>
+  </assignment>
+  </swimlane>
+
+  <swimlane name="processor">
+    <assignment
+      class="tavant.twms.jbpm.assignment.RuleBasedAssignmentHandler">
+      <ruleSet>ProcessorAssignment</ruleSet>
+      <variables>
+        <variable>claim</variable>
+      </variables>
+    </assignment>
+  </swimlane>
+  
+   <swimlane name="cevaProcessor">
+        <assignment
+                class="tavant.twms.jbpm.assignment.ScriptAssignmentHandler">
+            <beanName>orgService</beanName>
+            <methodName>getCevaProcessor</methodName>
+            <parameters>
+                <parameter>claim</parameter>
+            </parameters>
+        </assignment>
+    </swimlane>
+
+   <swimlane name="supplier">
+    <assignment
+            class="tavant.twms.jbpm.assignment.ExpressionAssignmentHandler">
+        <expression>actor=ognl{partReturn.oemPartReplaced.userIfRecoveryClaimIsCreated.name}</expression>
+    </assignment>
+  </swimlane>
+  
+  <start-state name="Start">
+    <transition name="checkIfPartIsToBeReturned" to="IsPartToBeReturned"></transition>
+    <transition name="Returned Rejected Part" to="IsRejectedPartsAvailable"></transition>
+    <transition name="Initiate Return To Dealer By Processor" to="Dealer Requested Part">
+        <script>partReturn.setStatus(tavant.twms.domain.partreturn.PartReturnStatus.PART_TO_BE_SHIPPED_TO_DEALER)</script>
+    </transition>
+  </start-state>
+
+  <decision name="IsPartToBeReturned">
+  	<transition name="No" to="End">
+  		<condition>#{!partReturn.oemPartReplaced.partToBeReturned}</condition>
+  	</transition>  	
+  	<transition name="ShipmentToOEM" to="Due Parts for Shipment">
+  		<condition>#{partReturn.oemPartReplaced.partToBeReturned and claim.thirdPartyClaim == false and isThroughWPRA == "false"}</condition>
+  	</transition>
+    <transition name="AddtoPartsToWpraInbox" to="toWPRAFork">
+  		<condition>#{partReturn.oemPartReplaced.partToBeReturned and claim.thirdPartyClaim == false and isThroughWPRA == "true"}</condition>
+  	</transition>
+	<transition name="ThirdPartyShipment" to="Due Parts for Third Party">
+  		<condition>#{partReturn.oemPartReplaced.partToBeReturned and claim.thirdPartyClaim == true}</condition>
+  	</transition>  	
+  </decision>
+
+  <task-node name="Due Parts for Shipment">
+    <task name="Due Parts" swimlane="dealer" >
+      <timer duedate="20 business hours">
+        <action class="tavant.twms.jbpm.action.TaskInstanceEndAction">
+          <transition>Part Overdue</transition>
+        </action>
+      </timer>
+      <event type="timer-create">
+        <action class="tavant.twms.jbpm.action.OverduePartAction" />
+      </event>
+      <forms>
+	    <actionUrl>dueParts</actionUrl>
+	  </forms>
+    </task>
+    <transition name="toEnd" to="End"/>
+    <transition name="Part Overdue" to="GenerateEmailNotifications">
+        <script>partReturn.setStatus(tavant.twms.domain.partreturn.PartReturnStatus.PART_MOVED_TO_OVERDUE)</script>
+    </transition>
+    <transition name="Generate Shipment" to="Shipment Generated">
+    	<script>partReturn.setStatus(tavant.twms.domain.partreturn.PartReturnStatus.SHIPMENT_GENERATED)</script>
+    </transition>
+  </task-node>
+  
+  <serviceNode name="GenerateEmailNotifications">
+    <transition name="goToOverdueParts" to="Overdue Parts for Shipment"/>
+    <beanName>sendEmailForOverdue</beanName>
+    <methodName>createEmailEventForOverdue</methodName>
+    <parameters>
+      <variable>claim</variable>
+      <variable>partReturn</variable>
+    </parameters>
+  </serviceNode>
+  
+  <task-node name="Due Parts for Third Party">
+    <task name="Third Party Due Parts" swimlane="dealer" >
+      <forms>
+	    <actionUrl>thirdPartyDueParts</actionUrl>
+	  </forms>
+    </task>
+    <transition name="toEnd" to="End"/>
+    <transition name="Generate Shipment" to="Shipment Generated">
+    	<script>partReturn.setStatus(tavant.twms.domain.partreturn.PartReturnStatus.SHIPMENT_GENERATED)</script>
+    </transition>
+  </task-node>
+
+  <task-node name="Overdue Parts for Shipment">
+    <task name="Overdue Parts" swimlane="dealer" >
+      <forms>
+      <actionUrl>OverdueParts</actionUrl>
+    </forms>
+    </task>
+    <transition name="toEnd" to="End"/>
+    <transition name="Generate Shipment" to="Shipment Generated">
+      <script>partReturn.setStatus(tavant.twms.domain.partreturn.PartReturnStatus.SHIPMENT_GENERATED)</script>
+    </transition>
+  </task-node>
+
+ <task-node name="Shipment Generated">
+    <task name="Shipment Generated" swimlane="dealer">
+      <forms>
+	    <actionUrl>shipmentGenerated</actionUrl>
+	  </forms>
+    </task>
+    <transition name="Submit" to="CheckForCEVAFlow">
+    	<!--<script>partReturn.setStatus(tavant.twms.domain.partreturn.PartReturnStatus.PART_SHIPPED)</script>-->
+    </transition>
+    <transition name="Remove Part" to="CheckIfOverdue">
+    	<script>partReturn.setStatus(tavant.twms.domain.partreturn.PartReturnStatus.PART_TO_BE_SHIPPED)</script>
+    </transition>
+    <transition name="toEnd" to="End"/>
+    <transition name="autoConfirmed" to="End">
+        <script>partReturn.setStatus(tavant.twms.domain.partreturn.PartReturnStatus.PART_RECEIVED_BY_SUPPLIER)</script>
+    </transition>
+  </task-node>
+
+  <decision name="CheckIfOverdue">
+  	<transition name="Yes" to="Overdue Parts for Shipment">
+  		<condition>#{partReturn.isPartOverDue == true}</condition>
+  	</transition>
+  	<transition name="No" to="Due Parts for Shipment">
+  		<condition>#{partReturn.isPartOverDue == false}</condition>
+  	</transition>
+  </decision>
+
+    <decision name="CheckForCEVAFlow">
+        <transition name="Yes" to="CEVATrackingInfo">
+            <condition>#{isThroughWPRA == "true"}</condition>
+            <script>partReturn.setStatus(tavant.twms.domain.partreturn.PartReturnStatus.WAITING_FOR_CEVA_TRACKING_INFO)</script>
+        </transition>
+        <transition name="No" to="CheckIfReturnToSupplier">
+            <condition>#{isThroughWPRA == "false"}</condition>
+            <script>partReturn.setStatus(tavant.twms.domain.partreturn.PartReturnStatus.PART_SHIPPED)</script>
+        </transition>
+    </decision>
+
+    <decision name="CheckIfReturnToSupplier">
+        <transition name="Yes" to="PartsShippedToSupplierFork">
+            <condition>#{partReturn.oemPartReplaced.returnDirectlyToSupplier == true}</condition>
+        </transition>
+        <transition name="No" to="PartsShippedFork">
+            <condition>#{partReturn.oemPartReplaced.returnDirectlyToSupplier == false}</condition>
+        </transition>
+    </decision>
+
+  <fork name="PartsShippedFork">
+    <transition name="Parts Shipped" to="Due Parts Shipped" />
+    <transition name="Parts Received" to="Due Parts Received" />
+  </fork>
+
+<!-- Need to revisit the naming convention-->
+
+  <task-node name="Due Parts Shipped">
+    <task name="Parts Shipped" swimlane="dealer" >
+      <forms>
+      <actionUrl>duePartsShipped</actionUrl>
+    </forms>
+    </task>
+    <transition name="To SingleTokenJoin" to="joinByTakingDecision" />
+    <transition name="toEnd" to="End" />
+  </task-node>
+
+  <decision name="joinByTakingDecision">
+      <transition name="join receiver response" to="JoinAfterPartReceiverResponse">
+          <condition>#{partReturn.oemPartReplaced.returnDirectlyToSupplier == false}</condition>
+      </transition>
+      <transition name="join supplier response" to="End">
+          <condition>#{partReturn.oemPartReplaced.returnDirectlyToSupplier == true}</condition>
+      </transition>
+  </decision>
+
+  <task-node name="Due Parts Received">
+    <task name="Due Parts Receipt" swimlane="receiver">
+	  <forms>
+	    <actionUrl>duePartsReceipt</actionUrl>
+	  </forms>
+    </task>
+    <transition name="Received Due Parts" to="JoinAfterPartReceiverResponse" />
+  </task-node>
+
+  <single-token-join name="JoinAfterPartReceiverResponse" >
+    <transition name="checkReceiverAction" to="Check Receiver Action"/>    
+  </single-token-join>  
+
+  <decision name="Check Receiver Action">
+    <transition name="Send to Clone" to="Clone">
+       	<condition>#{partReturn.paymentCondition.code == "PAY_ON_RETURN" and transition=="Send for Inspection"}</condition>
+       	<script>partReturn.setStatus(tavant.twms.domain.partreturn.PartReturnStatus.PART_RECEIVED)</script>
+    </transition>
+    <transition name="Send for Inspection" to="Due Parts For Inspection">
+       	<condition>#{partReturn.paymentCondition.code != "PAY_ON_RETURN" and transition=="Send for Inspection"}</condition>
+       	<script>partReturn.setStatus(tavant.twms.domain.partreturn.PartReturnStatus.PART_RECEIVED)</script>
+    </transition>
+    <transition name="Part Not Received" to="Due Parts for Shipment">
+    	<condition>#{transition=="Part Not Received"}</condition>
+    	<script>partReturn.setStatus(tavant.twms.domain.partreturn.PartReturnStatus.PART_TO_BE_SHIPPED)</script>
+    </transition>
+    <transition name="Inspected" to="End">
+    	<condition>#{transition=="Inspected"}</condition>
+   </transition>
+  </decision>
+
+  <decision name="Clone">
+  	<transition name="Send for Inspection" to="Due Parts For Inspection">
+  	</transition>
+  	<transition name="Notify Payment On Receipt" to="End">
+  	</transition>
+  </decision>
+
+  <task-node name="Due Parts For Inspection">
+    <task name="Due Parts Inspection" swimlane="inspector">
+      <forms>
+	    <actionUrl>duePartsInspection</actionUrl>
+	  </forms>
+    </task>    
+    <transition name="Mark for Reuse or Scrap" to="End">
+    </transition>
+  </task-node>
+
+  <decision name="IsRejectedPartsAvailable">
+    <transition name="Add to Rejected Part Inbox" to="Rejected Parts">
+       	<condition>#{partReturn.status == tavant.twms.domain.partreturn.PartReturnStatus.PART_ACCEPTED || partReturn.status == tavant.twms.domain.partreturn.PartReturnStatus.PART_REJECTED}</condition>
+    </transition>
+    <transition name="toEnd" to="End" />
+  </decision>
+
+  <task-node name="Rejected Parts">
+    <task name="Rejected Parts" swimlane="dealer">
+      <forms>
+	    <actionUrl>rejectedParts</actionUrl>
+	  </forms>
+    </task>
+    <transition name="toEnd" to="End"/>
+    <transition name="Request Rejected Part" to="Dealer Requested Part">
+        <script>partReturn.setStatus(tavant.twms.domain.partreturn.PartReturnStatus.PART_TO_BE_SHIPPED_TO_DEALER)</script>
+    </transition>
+  </task-node>
+
+  <task-node name="Dealer Requested Part">
+    <task name="Dealer Requested Part" swimlane="partshipper">
+      <forms>
+	    <actionUrl>dealerRequestedPart</actionUrl>
+	  </forms>
+    </task>
+    <transition name="toEnd" to="End"/>
+    <transition name="Generate Shipment For Dealer" to="Shipment Generated For Dealer">
+         <script>partReturn.setStatus(tavant.twms.domain.partreturn.PartReturnStatus.NMHG_TO_DEALER_SHIPMENT_GENERATED)</script>
+    </transition>
+  </task-node>
+
+  <task-node name="Shipment Generated For Dealer">
+    <task name="Shipment Generated For Dealer" swimlane="partshipper">
+      <forms>
+	    <actionUrl>generateShipmentForDealer</actionUrl>
+	  </forms>
+    </task>
+    <transition name="SubmitShipment" to="PartsShippedToDealerFork">
+    	<script>partReturn.setStatus(tavant.twms.domain.partreturn.PartReturnStatus.NMHG_TO_DEALER_PART_SHIPPED)</script>
+    </transition>
+    <transition name="toEnd" to="End"/>
+  </task-node>
+
+  <fork name="PartsShippedToDealerFork">
+    <transition name="Dealer Parts Shipped" to="Dealer Requested Parts Shipped" />
+    <transition name="Dealer Parts Received" to="Claimed Parts Received" />
+  </fork>
+
+
+  <task-node name="Dealer Requested Parts Shipped">
+    <task name="Dealer Requested Parts Shipped" swimlane="partshipper" >
+      <forms>
+      <actionUrl>dealerRequestedPartsShipped</actionUrl>
+    </forms>
+    </task>
+      <transition name="toEnd" to="End"/>
+   <!-- <transition name="ToSingleTokenJoinAfterShipment" to="JoinAfterDealerReceiveResponse" />-->
+  </task-node>
+
+
+  <task-node name="Claimed Parts Received">
+    <task name="Claimed Parts Receipt" swimlane="dealer">
+	  <forms>
+	    <actionUrl>dealerRequestedPartsReceipt</actionUrl>
+	  </forms>
+    </task>
+    <transition name="toEnd" to="End"/>
+
+    <!--<transition name="ToSingleTokenJoinAfterShipment" to="JoinAfterDealerReceiveResponse" />-->
+  </task-node>
+
+<!--  <single-token-join name="JoinAfterDealerReceiveResponse" >
+    <transition name="toEnd" to="End"/>
+  </single-token-join>-->
+
+  <fork name="toWPRAFork">
+    <transition name="Required Parts" to="Required Parts From Dealer" />
+    <transition name="Prepare Due Parts" to="Prepare Due Parts" />
+  </fork>
+
+  <task-node name="Required Parts From Dealer">
+    <task name="Required Parts From Dealer" swimlane="processor">
+	  <forms>
+	    <actionUrl>requiredPartsFromDealer</actionUrl>
+	  </forms>
+    </task>
+   <transition name="toEnd" to="End">
+      <script>partReturn.setStatus(tavant.twms.domain.partreturn.PartReturnStatus.REMOVED_BY_PROCESSOR)</script>
+   </transition>
+   <transition name="moveToWPRAGeneratedForPartsFork" to="WPRAGeneratedForPartsFork">
+       <script>partReturn.setStatus(tavant.twms.domain.partreturn.PartReturnStatus.WPRA_GENERATED)</script>
+   </transition>
+  </task-node>
+
+  <task-node name="Prepare Due Parts">
+    <task name="Prepare Due Parts" swimlane="dealer">
+	  <forms>
+	    <actionUrl>dealerPrepareDuePartInbox</actionUrl>
+	  </forms>
+    </task>
+   <transition name="toEnd" to="End"/>
+   <transition name="toJoinAfterWPRAisGenerated" to="JoinAfterWPRAisGenerated"></transition>
+  </task-node>
+
+  <single-token-join name="JoinAfterWPRAisGenerated" >
+      <transition name="toEnd" to="End"/>
+  </single-token-join>
+
+  <fork name="WPRAGeneratedForPartsFork">
+    <transition name="To WPRA Generated For Parts" to="WPRA Generated For Parts" />
+    <transition name="ShipmentToOEM" to="Due Parts for Shipment" />
+  </fork>
+
+  <task-node name="WPRA Generated For Parts">
+      <task name="WPRA Generated For Parts" swimlane="processor">
+          <forms>
+            <actionUrl>wpraGeneratedForParts</actionUrl>
+          </forms>
+      </task>
+ <transition name="toEnd" to="End">
+     <script>partReturn.setStatus(tavant.twms.domain.partreturn.PartReturnStatus.REMOVED_BY_PROCESSOR)</script>
+ </transition>
+ <transition name="toJoinAfterWPRAisGenerated" to="JoinAfterWPRAisGenerated"/>
+ <transition name="endWpra" to="End"/>
+ </task-node>
+
+ <fork name="PartsShippedToSupplierFork">
+    <transition name="Parts Shipped" to="Due Parts Shipped" />
+    <transition name="Confirm Dealer Part Return" to="ConfirmDealerPartReturns" />
+ </fork>
+
+<!--<single-token-join name="JoinAfterSupplierPartReceiverResponse" >
+    <transition name="checkSupplierReceiverAction" to="Check Supplier Receiver Action"/>
+</single-token-join>-->
+
+ <!--<decision name="Check Supplier Receiver Action">
+    <transition name="Received" to="End">
+        <condition>#{transition=="Received"}</condition>
+        <script>partReturn.setStatus(tavant.twms.domain.partreturn.PartReturnStatus.PART_RECEIVED_BY_SUPPLIER)</script>
+    </transition>
+    <transition name="Not Received" to="Due Parts for Shipment">
+        <condition>#{transition=="Not Received"}</condition>
+        <script>partReturn.setStatus(tavant.twms.domain.partreturn.PartReturnStatus.PART_TO_BE_SHIPPED);partReturn.setShipment(null)</script>
+    </transition>
+ </decision>-->
+
+ <task-node name="ConfirmDealerPartReturns">
+    <task name="Confirm Dealer Part Returns" swimlane="supplier">
+        <forms>
+            <actionUrl>supplierPartReceiptFromDealer</actionUrl>
+        </forms>
+        <event type="task-create">
+            <action class="tavant.twms.jbpm.action.SupplierPartReceivedSchedulerAction"/>
+        </event>
+    </task>
+    <transition name="Received" to="End">
+         <script>partReturn.setStatus(tavant.twms.domain.partreturn.PartReturnStatus.PART_RECEIVED_BY_SUPPLIER)</script>
+     </transition>
+     <transition name="Not Received" to="Due Parts for Shipment">
+         <script>partReturn.setStatus(tavant.twms.domain.partreturn.PartReturnStatus.PART_TO_BE_SHIPPED);partReturn.setShipment(null)</script>
+     </transition>
+ </task-node>
+
+    <task-node name="CEVATrackingInfo">
+        <task name="CEVA Tracking" swimlane="cevaProcessor">
+            <forms>
+                <actionUrl>provideCEVATrackingInfo</actionUrl>
+            </forms>
+        </task>
+        <transition name="toEnd" to="End">
+            <script>partReturn.setStatus(tavant.twms.domain.partreturn.PartReturnStatus.REMOVED_BY_PROCESSOR)</script>
+        </transition>
+        <transition name="Cancel" to="End">
+            <script>partReturn.setStatus(tavant.twms.domain.partreturn.PartReturnStatus.REMOVED_BY_PROCESSOR)</script>
+        </transition>
+        <transition name="Submit" to="CheckIfReturnToSupplier">
+            <script>partReturn.setStatus(tavant.twms.domain.partreturn.PartReturnStatus.PART_SHIPPED)</script>
+        </transition>
+    </task-node>
+
+  <end-state name="End"></end-state>
+
+</process-definition>

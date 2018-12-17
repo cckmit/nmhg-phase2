@@ -1,0 +1,22 @@
+--Purpose    : DDL for NMHGSLMS-427 : Canadian Dealers
+--Author     : Arpitha Nadig AR
+--Created On : 26-FEB-2014
+--------------------------------------------------------
+--  DDL for Table MKTG_GROUPS_LOOKUP
+--------------------------------------------------------
+CREATE TABLE "MKTG_GROUPS_LOOKUP"
+(
+	"ID" NUMBER(19,0) PRIMARY KEY NOT NULL,
+	"TRUCK_MKTG_GROUP_CODE" VARCHAR2(255 BYTE), 
+	"CLAIM_TYPE" VARCHAR2(255 BYTE), 
+	"WARRANTY_TYPE" VARCHAR2(255 BYTE), 
+	"DEALER_MKTG_GROUP_CODE" VARCHAR2(255 BYTE), 
+	"D_CREATED_ON" DATE, 
+	"D_UPDATED_ON" DATE, 
+	"D_INTERNAL_COMMENTS" VARCHAR2(255 BYTE), 
+	"D_ACTIVE" NUMBER(1,0) DEFAULT 1, 
+	"D_LAST_UPDATED_BY" NUMBER(19,0), 
+	"D_CREATED_TIME" TIMESTAMP (6), 
+	"D_UPDATED_TIME" TIMESTAMP (6)
+)
+/

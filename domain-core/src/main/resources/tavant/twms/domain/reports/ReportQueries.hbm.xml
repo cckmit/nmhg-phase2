@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping SYSTEM
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="tavant.twms.domain.reports">
+
+ 
+  <query name="findAllDuePartReturnsQuery">
+    <![CDATA[
+		select 
+		    sum(case when (current_date-partReturn.dueDate) >=0
+	    		 and (current_date - partReturn.dueDate) <=5 then 1 else 0 end ) as pdwCount5,
+	    	sum(case when (current_date - partReturn.dueDate) >5
+	    		 and (current_date - partReturn.dueDate) <=15 then 1 else 0 end ) as pdwCount10,
+	        sum(case when (current_date - partReturn.dueDate) >15
+	    		 and (current_date - partReturn.dueDate) <=30 then 1 else 0 end ) as pdwCount15,
+	    	sum(case when (current_date-partReturn.dueDate) >30 then 1 else 0 end ) as pdwCount30,
+	    	sum(case when (partReturn.dueDate-current_date) >=0
+	    		 and (partReturn.dueDate-current_date) <=5 then 1 else 0 end ) as powCount5,
+	    	sum(case when (partReturn.dueDate-current_date) >5
+	    		 and (partReturn.dueDate-current_date) <=15 then 1 else 0 end ) as powCount10,
+	    	sum(case when (partReturn.dueDate-current_date) >15
+	    		 and (partReturn.dueDate-current_date) <=30 then 1 else 0 end ) as powCount15,
+	    	sum(case when (partReturn.dueDate-current_date) >30 then 1 else 0 end ) as powCount30,
+	    		 partReturn.returnedBy.name as dealer from Claim claim left outer join
+	    		 claim.activeClaimAudit.serviceInformation.serviceDetail.oemPartsReplaced as partReplaced left outer join
+				 partReplaced.partReturns as partReturn where UPPER(claim.activeClaimAudit.state) !='DRAFT'and
+				 partReturn.returnedBy.id in (:ids) and partReturn is not null	 group by partReturn.returnedBy.name 
+    ]]>
+  </query>
+  <query name="findPartReturnsQuery">
+    <![CDATA[
+		select 
+		    sum( case when shipment is  null then 1 else 0 end )as notReturned,
+            sum( case when shipment is not null and partReturn.dueDate >= shipment.shipmentDate then 1 else 0 end ) as outsideReturn, 
+		    sum( case when shipment is not null and partReturn.dueDate < shipment.shipmentDate then 1 else 0 end ) as withinReturn,
+			    partReturn.returnedBy.name as dealer from OEMPartReplaced partReplaced left outer join 
+                partReplaced.shipment as shipment left outer join partReplaced.partReturns as partReturn 
+				where partReturn.returnedBy.id in (:ids) and partReturn.dueDate  >= :startDate and partReturn.dueDate  <= :endDate
+                group by partReturn.returnedBy.name
+    ]]>
+  </query>
+  
+   
+  <!--<query name="findDealersCountQuery">
+    <![CDATA[
+		select
+		        count(*) as count,partReplaced.partReturn.returnedBy.name   as dealer from OEMPartReplaced partReplaced
+		        where partReplaced.partReturn.returnedBy.id in (:ids) and 
+		        partReplaced.partReturn.dueDate  >= :startDate and partReplaced.partReturn.dueDate <= :endDate
+				group by partReplaced.partReturn.returnedBy.name
+    ]]>
+  </query>
+  -->
+  <query name="findClaimsForProcessingEfficiencyQuery">
+    <![CDATA[
+		select
+	       sum( case when claim.processedAutomatically=true then 1 else 0 end )as accepted,
+	       sum( case when claim.processedAutomatically is null 
+	       	          OR claim.processedAutomatically=false then 1 else 0 end )as rejected,
+	            monthname(filedOnDate) as month,year(filedOnDate) as year from Claim claim where 
+	            claim.filedOnDate >= :startDate and claim.filedOnDate <= :endDate
+	            group by monthname(filedOnDate),year(filedOnDate)
+  ]]>
+  </query>
+  
+ <query name="findSupplierRecoveryQuery">
+    <![CDATA[
+   		select  	
+   				costLineItem.costAfterApplyingContract as costAfterApplyingContract, 
+   	            costLineItem.recoveredCost as recoveredCost,
+	           	recoveryClaim.contract.supplier.name as supplier 
+	           	from Claim claim left outer join 
+				claim.recoveryClaims recoveryClaim left outer join
+	           	recoveryClaim.costLineItems costLineItem 
+	           	where recoveryClaim.contract.supplier.id in (:ids) and 
+	           	(UPPER(recoveryClaim.recoveryClaimState) ='CLOSED_RECOVERED' OR  
+	           	UPPER(recoveryClaim.recoveryClaimState) ='NO_RESPONSE_AND_AUTO_DEBITTED' OR
+				UPPER(recoveryClaim.recoveryClaimState) ='DISPUTED_AND_AUTO_DEBITTED' OR 
+				UPPER(recoveryClaim.recoveryClaimState) ='AUTO_CLOSED' OR 
+				UPPER(recoveryClaim.recoveryClaimState) ='NO_RESPONSE_AND_AUTO_DEBITTED_CLOSED' OR 
+				UPPER(recoveryClaim.recoveryClaimState) ='DISPUTED_AND_AUTO_DEBITTED_CLOSED' OR 
+				UPPER(recoveryClaim.recoveryClaimState) ='DEBITTED_AND_CLOSED') and
+	            claim.filedOnDate >= :startDate and claim.filedOnDate <= :endDate
+	]]>
+  </query>
+ 
+  <query name="warrantyPayoutForMonthQuery">
+    <![CDATA[
+		select 
+            sum(case when year(claim.filedOnDate)-:lastYear=0  and claim.name='Oem Parts'
+                     then (claim.acceptedAmt * claim.exchangeRate) else 0 end ) as oemPartLastYear,
+            sum(case when year(claim.filedOnDate)-:curYear=0  and claim.name='Oem Parts'
+                     then (claim.acceptedAmt * claim.exchangeRate) else 0 end ) as oemPartCurrYear,
+            sum(case when year(claim.filedOnDate)-:lastYear=0 and claim.name='Non Oem Parts'
+                     then (claim.acceptedAmt * claim.exchangeRate) else 0 end ) as nonOemPartLastYear,
+            sum(case when year(claim.filedOnDate)-:curYear=0  and claim.name='Non Oem Parts'
+                     then (claim.acceptedAmt * claim.exchangeRate) else 0 end ) as nonOemPartCurrYear,
+            sum(case when year(claim.filedOnDate)-:lastYear=0 and claim.name='Labor'
+                     then (claim.acceptedAmt * claim.exchangeRate) else 0 end ) as laborLastYear,
+            sum(case when year(claim.filedOnDate)-:curYear=0  and claim.name='Labor'
+                     then (claim.acceptedAmt * claim.exchangeRate) else 0 end ) as laborCurrYear,
+            sum(case when year(claim.filedOnDate)-:lastYear=0 and claim.name='Travel By Trip'
+                     then (claim.acceptedAmt * claim.exchangeRate) else 0 end ) as travelByTripLastYear,
+            sum(case when year(claim.filedOnDate)-:curYear=0  and claim.name='Travel By Trip'
+                     then (claim.acceptedAmt * claim.exchangeRate) else 0 end ) as travelByTripCurrYear,
+	        sum(case when year(claim.filedOnDate)-:lastYear=0 and claim.name='Travel by Hours'
+	                 then (claim.acceptedAmt * claim.exchangeRate) else 0 end ) as travelByHrsLastYear,
+            sum(case when year(claim.filedOnDate)-:curYear=0  and claim.name='Travel by Hours'
+                     then (claim.acceptedAmt * claim.exchangeRate) else 0 end ) as travelByHrsCurrYear,
+            sum(case when year(claim.filedOnDate)-:lastYear=0 and claim.name='Travel By Distance'
+                     then (claim.acceptedAmt * claim.exchangeRate) else 0 end ) as travelByDistLastYear,
+            sum(case when year(claim.filedOnDate)-:curYear=0  and claim.name='Travel By Distance'
+                     then (claim.acceptedAmt * claim.exchangeRate) else 0 end ) as travelByDistCurrYear,
+	        sum(case when year(claim.filedOnDate)-:lastYear=0 and claim.name='Item Freight And Duty'
+	                 then (claim.acceptedAmt * claim.exchangeRate) else 0 end ) as itemFreightDutyLastYear,
+            sum(case when year(claim.filedOnDate)-:curYear=0  and claim.name='Item Freight And Duty'
+                     then (claim.acceptedAmt * claim.exchangeRate) else 0 end ) as itemFreightDutyCurrYear,
+            sum(case when year(claim.filedOnDate)-:lastYear=0 and claim.name='Meals'
+                     then (claim.acceptedAmt * claim.exchangeRate) else 0 end ) as mealsLastYear,
+            sum(case when year(claim.filedOnDate)-:curYear=0  and claim.name='Meals'
+                     then (claim.acceptedAmt * claim.exchangeRate) else 0 end ) as mealsCurrYear,
+	        sum(case when year(claim.filedOnDate)-:lastYear=0 and claim.name='Parking'
+	                 then (claim.acceptedAmt * claim.exchangeRate) else 0 end ) as parkingLastYear,
+            sum(case when year(claim.filedOnDate)-:curYear=0  and claim.name='Parking'
+                     then (claim.acceptedAmt * claim.exchangeRate) else 0 end ) as parkingCurrYear, 
+            sum(case when year(claim.filedOnDate)-:lastYear=0 and claim.name='Miscellaneous Parts'
+	                 then (claim.acceptedAmt * claim.exchangeRate) else 0 end ) as miscPartsLastYear,
+            sum(case when year(claim.filedOnDate)-:curYear=0  and claim.name='Miscellaneous Parts'
+                     then (claim.acceptedAmt * claim.exchangeRate) else 0 end ) as miscPartsCurrYear,                          
+            sum(case when year(claim.filedOnDate)-:lastYear=0 and claim.name='Per Diem'
+	                 then (claim.acceptedAmt * claim.exchangeRate) else 0 end ) as perDiemLastYear,
+            sum(case when year(claim.filedOnDate)-:curYear=0  and claim.name='Per Diem'
+                     then (claim.acceptedAmt * claim.exchangeRate) else 0 end ) as perDiemCurrYear, 
+            sum(case when year(claim.filedOnDate)-:lastYear=0 and claim.name='Rental Charges'
+	                 then (claim.acceptedAmt * claim.exchangeRate) else 0 end ) as rentalLastYear,
+            sum(case when year(claim.filedOnDate)-:curYear=0  and claim.name='Rental Charges'
+                     then (claim.acceptedAmt * claim.exchangeRate) else 0 end ) as rentalCurrYear,         
+            sum(case when year(claim.filedOnDate)-:lastYear=0 and claim.name='Additional Travel Hours'
+	                 then (claim.acceptedAmt * claim.exchangeRate) else 0 end ) as addTravelLastYear,
+            sum(case when year(claim.filedOnDate)-:curYear=0  and claim.name='Additional Travel Hours'
+                     then (claim.acceptedAmt * claim.exchangeRate) else 0 end ) as addTravelCurrYear, 
+            sum(case when year(claim.filedOnDate)-:lastYear=0 and claim.name='Local Purchase'
+	                 then (claim.acceptedAmt * claim.exchangeRate) else 0 end ) as localPurchaseLastYear,
+            sum(case when year(claim.filedOnDate)-:curYear=0  and claim.name='Local Purchase'
+                     then (claim.acceptedAmt * claim.exchangeRate) else 0 end ) as localPurchaseCurrYear,                  
+            sum(case when year(claim.filedOnDate)-:lastYear=0 and claim.name='Other Freight And Duty'
+	                 then (claim.acceptedAmt * claim.exchangeRate) else 0 end ) as otherFreightLastYear,
+            sum(case when year(claim.filedOnDate)-:curYear=0  and claim.name='Other Freight And Duty'
+                     then (claim.acceptedAmt * claim.exchangeRate) else 0 end ) as otherFreightCurrYear, 
+            sum(case when year(claim.filedOnDate)-:lastYear=0 and claim.name='Others'
+	                 then (claim.acceptedAmt * claim.exchangeRate) else 0 end ) as othersLastYear,
+            sum(case when year(claim.filedOnDate)-:curYear=0  and claim.name='Others'
+                     then (claim.acceptedAmt * claim.exchangeRate) else 0 end ) as othersCurrYear,                           
+            sum(case when year(claim.filedOnDate)-:lastYear=0 and claim.name='Tolls'
+	                 then (claim.acceptedAmt * claim.exchangeRate) else 0 end ) as tollsLastYear,
+            sum(case when year(claim.filedOnDate)-:curYear=0  and claim.name='Tolls'
+                     then (claim.acceptedAmt * claim.exchangeRate) else 0 end ) as tollsCurrYear,                                    
+            month(claim.filedOnDate) as month 
+            from WarrantyPayoutView claim
+			group by month(claim.filedOnDate) 
+        ]]>
+  </query>
+  <query name="warrantyPayoutForQuarterQuery">
+    <![CDATA[
+select 
+            sum(case when year(claim.filedOnDate)-:lastYear=0  and claim.name='Oem Parts'
+                     then (claim.acceptedAmt * claim.exchangeRate) else 0 end ) as oemPartLastYear,
+            sum(case when year(claim.filedOnDate)-:curYear=0  and claim.name='Oem Parts'
+                     then (claim.acceptedAmt * claim.exchangeRate) else 0 end ) as oemPartCurrYear,
+            sum(case when year(claim.filedOnDate)-:lastYear=0 and claim.name='Non Oem Parts'
+                     then (claim.acceptedAmt * claim.exchangeRate) else 0 end ) as nonOemPartLastYear,
+            sum(case when year(claim.filedOnDate)-:curYear=0  and claim.name='Non Oem Parts'
+                     then (claim.acceptedAmt * claim.exchangeRate) else 0 end ) as nonOemPartCurrYear,
+            sum(case when year(claim.filedOnDate)-:lastYear=0 and claim.name='Labor'
+                     then (claim.acceptedAmt * claim.exchangeRate) else 0 end ) as laborLastYear,
+            sum(case when year(claim.filedOnDate)-:curYear=0  and claim.name='Labor'
+                     then (claim.acceptedAmt * claim.exchangeRate) else 0 end ) as laborCurrYear,
+            sum(case when year(claim.filedOnDate)-:lastYear=0 and claim.name='Travel By Trip'
+                     then (claim.acceptedAmt * claim.exchangeRate) else 0 end ) as travelByTripLastYear,
+            sum(case when year(claim.filedOnDate)-:curYear=0  and claim.name='Travel By Trip'
+                     then (claim.acceptedAmt * claim.exchangeRate) else 0 end ) as travelByTripCurrYear,
+	        sum(case when year(claim.filedOnDate)-:lastYear=0 and claim.name='Travel by Hours'
+	                 then (claim.acceptedAmt * claim.exchangeRate) else 0 end ) as travelByHrsLastYear,
+            sum(case when year(claim.filedOnDate)-:curYear=0  and claim.name='Travel by Hours'
+                     then (claim.acceptedAmt * claim.exchangeRate) else 0 end ) as travelByHrsCurrYear,
+            sum(case when year(claim.filedOnDate)-:lastYear=0 and claim.name='Travel By Distance'
+                     then (claim.acceptedAmt * claim.exchangeRate) else 0 end ) as travelByDistLastYear,
+            sum(case when year(claim.filedOnDate)-:curYear=0  and claim.name='Travel By Distance'
+                     then (claim.acceptedAmt * claim.exchangeRate) else 0 end ) as travelByDistCurrYear,
+	        sum(case when year(claim.filedOnDate)-:lastYear=0 and claim.name='Item Freight And Duty'
+	                 then (claim.acceptedAmt * claim.exchangeRate) else 0 end ) as itemFreightDutyLastYear,
+            sum(case when year(claim.filedOnDate)-:curYear=0  and claim.name='Item Freight And Duty'
+                     then (claim.acceptedAmt * claim.exchangeRate) else 0 end ) as itemFreightDutyCurrYear,
+            sum(case when year(claim.filedOnDate)-:lastYear=0 and claim.name='Meals'
+                     then (claim.acceptedAmt * claim.exchangeRate) else 0 end ) as mealsLastYear,
+            sum(case when year(claim.filedOnDate)-:curYear=0  and claim.name='Meals'
+                     then (claim.acceptedAmt * claim.exchangeRate) else 0 end ) as mealsCurrYear,
+	        sum(case when year(claim.filedOnDate)-:lastYear=0 and claim.name='Parking'
+	                 then (claim.acceptedAmt * claim.exchangeRate) else 0 end ) as parkingLastYear,
+            sum(case when year(claim.filedOnDate)-:curYear=0  and claim.name='Parking'
+                     then (claim.acceptedAmt * claim.exchangeRate) else 0 end ) as parkingCurrYear, 
+            sum(case when year(claim.filedOnDate)-:lastYear=0 and claim.name='Miscellaneous Parts'
+	                 then (claim.acceptedAmt * claim.exchangeRate) else 0 end ) as miscPartsLastYear,
+            sum(case when year(claim.filedOnDate)-:curYear=0  and claim.name='Miscellaneous Parts'
+                     then (claim.acceptedAmt * claim.exchangeRate) else 0 end ) as miscPartsCurrYear,                          
+            sum(case when year(claim.filedOnDate)-:lastYear=0 and claim.name='Per Diem'
+	                 then (claim.acceptedAmt * claim.exchangeRate) else 0 end ) as perDiemLastYear,
+            sum(case when year(claim.filedOnDate)-:curYear=0  and claim.name='Per Diem'
+                     then (claim.acceptedAmt * claim.exchangeRate) else 0 end ) as perDiemCurrYear, 
+            sum(case when year(claim.filedOnDate)-:lastYear=0 and claim.name='Rental Charges'
+	                 then (claim.acceptedAmt * claim.exchangeRate) else 0 end ) as rentalLastYear,
+            sum(case when year(claim.filedOnDate)-:curYear=0  and claim.name='Rental Charges'
+                     then (claim.acceptedAmt * claim.exchangeRate) else 0 end ) as rentalCurrYear,         
+            sum(case when year(claim.filedOnDate)-:lastYear=0 and claim.name='Additional Travel Hours'
+	                 then (claim.acceptedAmt * claim.exchangeRate) else 0 end ) as addTravelLastYear,
+            sum(case when year(claim.filedOnDate)-:curYear=0  and claim.name='Additional Travel Hours'
+                     then (claim.acceptedAmt * claim.exchangeRate) else 0 end ) as addTravelCurrYear, 
+            sum(case when year(claim.filedOnDate)-:lastYear=0 and claim.name='Local Purchase'
+	                 then (claim.acceptedAmt * claim.exchangeRate) else 0 end ) as localPurchaseLastYear,
+            sum(case when year(claim.filedOnDate)-:curYear=0  and claim.name='Local Purchase'
+                     then (claim.acceptedAmt * claim.exchangeRate) else 0 end ) as localPurchaseCurrYear,                  
+            sum(case when year(claim.filedOnDate)-:lastYear=0 and claim.name='Other Freight And Duty'
+	                 then (claim.acceptedAmt * claim.exchangeRate) else 0 end ) as otherFreightLastYear,
+            sum(case when year(claim.filedOnDate)-:curYear=0  and claim.name='Other Freight And Duty'
+                     then (claim.acceptedAmt * claim.exchangeRate) else 0 end ) as otherFreightCurrYear, 
+            sum(case when year(claim.filedOnDate)-:lastYear=0 and claim.name='Others'
+	                 then (claim.acceptedAmt * claim.exchangeRate) else 0 end ) as othersLastYear,
+            sum(case when year(claim.filedOnDate)-:curYear=0  and claim.name='Others'
+                     then (claim.acceptedAmt * claim.exchangeRate) else 0 end ) as othersCurrYear,                           
+            sum(case when year(claim.filedOnDate)-:lastYear=0 and claim.name='Tolls'
+	                 then (claim.acceptedAmt * claim.exchangeRate) else 0 end ) as tollsLastYear,
+            sum(case when year(claim.filedOnDate)-:curYear=0  and claim.name='Tolls'
+                     then (claim.acceptedAmt * claim.exchangeRate) else 0 end ) as tollsCurrYear,                                    
+            round(((month(claim.filedOnDate)+1)/3)) as month 
+            from WarrantyPayoutView claim
+			group by round(((month(claim.filedOnDate)+1)/3)) 
+    ]]>
+  </query>
+  <query name="findTaxAmountQuery">
+    <![CDATA[
+	     select
+		   sum(case when year(claim.filedOnDate)-:lastYear=0 then claim.activeClaimAudit.payment.totalAmount.amount else 0 end ) as totalAmountLastYear,
+           sum(case when year(claim.filedOnDate)-:curYear=0  then claim.activeClaimAudit.payment.totalAmount.amount else 0 end ) as totalAmountCurrentYear,
+           sum(case when year(claim.filedOnDate)-:lastYear=0 then claim.activeClaimAudit.payment.activeCreditMemo.taxAmount.amount else 0 end ) as taxLastYear,
+           sum(case when year(claim.filedOnDate)-:curYear=0  then claim.activeClaimAudit.payment.activeCreditMemo.taxAmount.amount else 0 end ) as taxCurrentYear,
+           month(claim.filedOnDate) as month from Claim claim  where UPPER(claim.activeClaimAudit.state.state) ='ACCEPTED_AND_CLOSED'
+           group by month(claim.filedOnDate) 
+    ]]>
+  </query>
+
+	
+  <!--query name="findClaimsPerProductQuery">
+    <![CDATA[
+		select  child.id,
+			parent.name as productName,child.name as modelName,count(item) as modelCount,
+			sum(claim.payment.claimedAmount.amount) as modelSum	from Claim claim ,Item item,ItemGroup parent,
+			ItemGroup child where item.productType = child and parent.itemGroupType ='PRODUCT' 
+			and child.itemGroupType ='MODEL' and parent.nodeInfo.lft < child.nodeInfo.lft and 
+		    child.nodeInfo.rgt < parent.nodeInfo.rgt 
+			and claim.filedOnDate >= :startDate and claim.filedOnDate <= :endDate and 
+			UPPER(claim.state.state) !='DRAFT' group by child.id,child.name
+    ]]>
+  </query-->
+
+  <query name="findClaimsPerProductQuery">
+    <![CDATA[
+		select item.product.groupCode as productName,item.model.name as modelName,count(item) as modelCount,
+			sum(claim.activeClaimAudit.payment.totalAmount.amount) as modelSum from Claim claim
+			left outer join claim.claimedItems as claimedItems
+			left outer join claimedItems.itemReference.unserializedItem as item
+			where claim.filedOnDate >= :startDate and claim.filedOnDate <= :endDate and 
+			UPPER(claim.activeClaimAudit.state.state) !='DRAFT' group by item.product.groupCode, item.model.name
+    ]]>
+  </query>
+
+</hibernate-mapping>

@@ -1,0 +1,12 @@
+--Purpose    : Patch for dropping & updating the constraint 'SPR_LC_ITM_FK'.
+--Author     : Suneetha Nagaboyina
+--Created On : 24-APR-2013
+
+ALTER TABLE  SUPPLIER_ITEM_LOCATION DISABLE CONSTRAINT  SPR_LC_ITM_FK
+/
+ALTER TABLE SUPPLIER_ITEM_LOCATION ADD item_mapping NUMBER
+/
+ALTER TABLE SUPPLIER_ITEM_LOCATION ADD  constraint SPR_LC_ITM_MAPNG_FK  FOREIGN KEY ( item_mapping ) REFERENCES item_mapping (ID)
+/
+ALTER TABLE SUPPLIER_ITEM_LOCATION DROP COLUMN item
+/

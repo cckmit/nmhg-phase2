@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans default-autowire="byName">
+
+	<bean id="filterChainProxy"
+		class="org.acegisecurity.util.FilterChainProxy">
+		<property name="filterInvocationDefinitionSource">
+			<value>
+				CONVERT_URL_TO_LOWERCASE_BEFORE_COMPARISON
+				PATTERN_TYPE_APACHE_ANT
+				/**/*.js=#NONE#
+				/dwr/exec/validator.*=#NONE#
+				/**/*.css=#NONE#
+                /**/*.png=#NONE#
+                /favicon.ico=#NONE#
+				/**/*.jp*g=#NONE#
+				/**/*.gif=#NONE#
+				/**/*.htm*=#NONE#
+				/dev/**=#NONE#
+				/healthcheck=#NONE#
+                /clearcache.action=#NONE#
+				/twmsservices/*=#NONE#
+                /integration/*=#NONE#
+				/repositoryremote=#NONE#
+				/pages/unsecure/**/*.jsp=#NONE#
+				/pages/error.jsp=#NONE#
+				/show_registration.action=#NONE#
+				/register_customer.action=#NONE#
+				/logout.action=#NONE#
+				/loginaftertimeout.action=#NONE#
+				/managesso.action=#NONE#
+				/fleetredirect.jsp=#NONE#
+				/viewequipmenthistory.action=#NONE#
+                /**=httpOrgUserSimulationFilter,httpSessionContextIntegrationFilter,logoutFilter,authenticationProcessingFilter,securityContextHolderAwareRequestFilter,anonymousProcessingFilter,exceptionTranslationFilter,filterInvocationInterceptor
+			</value>
+		</property>
+	</bean>
+
+    <bean id="httpSessionContextIntegrationFilter"
+		class="tavant.twms.web.security.authn.filter.StrictHttpSessionContextIntegrationFilter" />
+
+    <bean id="httpOrgUserSimulationFilter"
+		class="tavant.twms.web.security.authn.filter.HttpOrgUserSimulationFilter" />
+
+	<bean id="logoutFilter"
+		class="org.acegisecurity.ui.logout.LogoutFilter">
+		<!-- URL redirected to after logout -->
+		<constructor-arg value="/logout.action" />
+		<constructor-arg>
+			<list>
+				<ref local="logoutHandler" />
+			</list>
+		</constructor-arg>
+	</bean>
+
+    <bean id="logoutHandler" class="tavant.twms.web.security.authn.logout.LogoutHandler" >
+		<property name="sessionAttributesToBeCleared">
+            <list>
+                <value>WW_TRANS_I18N_LOCALE</value>
+                <value>WW_TRANS_I18N_LOCALE_XML</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="authenticationProcessingFilter"
+		class="tavant.twms.web.security.authn.filter.OrgAwareAuthenticationProcessingFilter">
+		<property name="authenticationManager" ref="authenticationManager" />
+		<property name="authenticationFailureUrl" value="/login.action" />
+		<property name="defaultTargetUrl" value="/home.action" />
+		<property name="alwaysUseDefaultTargetUrl" value="true" />
+		<!-- i18N interceptor will take care of picking it from the session and showing the correct locale -->
+		<property name="sessionLocaleAttributeName" value="WW_TRANS_I18N_LOCALE" />
+        <property name="authenticationDetailsSource" ref="authenticationDetailsSource" />
+        <property name="aesUsernameDecrypter" ref="aesBasedUsernameDecrypter" />
+        <property name="desUsernameDecrypter" ref="desBasedUsernameDecrypter" />
+        <property name="filterProcessesUrl" value="/authenticateUser" />
+        <property name="usernameRequestParamName" value="user" />
+    </bean>
+
+    <!-- For CORP Ext -->
+    <!--<bean id="initialDirContextFactory1" class="org.acegisecurity.ldap.DefaultInitialDirContextFactory">
+        <constructor-arg value="ldap://${ldap.server.1}:${ldap.port.1}/${ldap.base.dn.1}"/>
+        <property name="managerDn" value="${ldap.manager.dn.1}"/>
+        <property name="managerPassword" value="${ldap.manager.password.1}"/>
+        <property name="extraEnvVars">
+            <map>
+                &lt;!&ndash; Allow ldap searches across domains. If this is not set to 'follow', you would get a
+                 "javax.naming.PartialResultException: Unprocessed Continuation Reference(s);" error when trying to
+                  do cross-domain searches such as those for IR
+                &ndash;&gt;
+                <entry key="java.naming.referral" value="follow"/>
+            </map>
+        </property>
+    </bean>
+
+    <bean id="userSearch1" class="org.acegisecurity.ldap.search.FilterBasedLdapUserSearch">
+        <constructor-arg index="0" value=""/>
+        <constructor-arg index="1" value="(sAMAccountName={0})"/>
+        <constructor-arg index="2" ref="initialDirContextFactory1"/>
+        <property name="searchSubtree" value="true"/>
+        <property name="searchTimeLimit" value="10000"/>
+    </bean>
+
+    <bean id="ldapAuthenticationProvider1" class="tavant.twms.web.security.authn.provider.TavantLdapAuthenticationProvider">
+        <constructor-arg>
+            <bean class="org.acegisecurity.providers.ldap.authenticator.BindAuthenticator">
+                <constructor-arg>
+                    <ref local="initialDirContextFactory1"/>
+                </constructor-arg>
+                <property name="userSearch" ref="userSearch1"/>
+            </bean>
+        </constructor-arg>
+      <property name="userDetailsService" ref="userDetailsService" />
+      &lt;!&ndash; Property enable/disable Ldap authentication &ndash;&gt;
+      <property name="ldapAuthenticationEnabled" value="${ldap.authentication.enable}" />
+    </bean>
+-->
+    <!-- For CORP -->
+    <!--<bean id="initialDirContextFactory2" class="org.acegisecurity.ldap.DefaultInitialDirContextFactory">
+        <constructor-arg value="ldap://${ldap.server.2}:${ldap.port.2}/${ldap.base.dn.2}"/>
+        <property name="managerDn" value="${ldap.manager.dn.2}"/>
+        <property name="managerPassword" value="${ldap.manager.password.2}"/>
+        <property name="extraEnvVars">
+            <map>
+                &lt;!&ndash; Allow ldap searches across domains. If this is not set to 'follow', you would get a
+                 "javax.naming.PartialResultException: Unprocessed Continuation Reference(s);" error when trying to
+                  do cross-domain searches such as those for IR
+                &ndash;&gt;
+                <entry key="java.naming.referral" value="follow"/>
+            </map>
+        </property>
+    </bean>
+
+    <bean id="userSearch2" class="org.acegisecurity.ldap.search.FilterBasedLdapUserSearch">
+        <constructor-arg index="0" value=""/>
+        <constructor-arg index="1" value="(sAMAccountName={0})"/>
+        <constructor-arg index="2" ref="initialDirContextFactory2"/>
+        <property name="searchSubtree" value="true"/>
+        <property name="searchTimeLimit" value="10000"/>
+    </bean>
+
+    <bean id="ldapAuthenticationProvider2" class="tavant.twms.web.security.authn.provider.TavantLdapAuthenticationProvider">
+        <constructor-arg>
+            <bean class="org.acegisecurity.providers.ldap.authenticator.BindAuthenticator">
+                <constructor-arg>
+                    <ref local="initialDirContextFactory2"/>
+                </constructor-arg>
+                <property name="userSearch" ref="userSearch2"/>
+            </bean>
+        </constructor-arg>
+      <property name="userDetailsService" ref="userDetailsService" />
+      &lt;!&ndash; Property enable/disable Ldap authentication &ndash;&gt;
+      <property name="ldapAuthenticationEnabled" value="${ldap.authentication.enable}" />
+    </bean>-->
+
+    <bean id="authenticationDetailsSource" class="org.acegisecurity.ui.AuthenticationDetailsSourceImpl">
+        <property name="clazz" value="tavant.twms.web.security.authn.TrustAwareWebAuthenticationDetails" />
+    </bean>
+    
+   <bean id="desBasedUsernameDecrypter" class="tavant.twms.web.security.authn.decrypter.DesBasedUsernameDecrypter">
+        <constructor-arg value="someKey"/>
+    </bean>
+
+    <bean id="securityContextHolderAwareRequestFilter"
+		class="org.acegisecurity.wrapper.SecurityContextHolderAwareRequestFilter" />
+
+	<bean id="anonymousProcessingFilter"
+		class="org.acegisecurity.providers.anonymous.AnonymousProcessingFilter">
+		<property name="key" value="classified" />
+		<property name="userAttribute" value="anonymous,ROLE_ANONYMOUS" />
+	</bean>
+
+	<bean id="exceptionTranslationFilter"
+		class="org.acegisecurity.ui.ExceptionTranslationFilter">
+		<property name="authenticationEntryPoint">
+			<bean
+				class="org.acegisecurity.ui.webapp.AuthenticationProcessingFilterEntryPoint">
+				<property name="loginFormUrl" value="/redirectToLogin.jsp" />
+				<property name="forceHttps" value="false" />
+			</bean>
+		</property>
+		<property name="accessDeniedHandler">
+			<bean
+				class="org.acegisecurity.ui.AccessDeniedHandlerImpl">
+				<property name="errorPage"
+					value="/unauthorizedAccess.jsp" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="filterInvocationInterceptor"
+		class="org.acegisecurity.intercept.web.FilterSecurityInterceptor">
+		<property name="authenticationManager"
+			ref="authenticationManager" />
+		<property name="accessDecisionManager">
+			<bean class="org.acegisecurity.vote.AffirmativeBased">
+				<property name="allowIfAllAbstainDecisions"
+					value="false" />
+				<property name="decisionVoters">
+					<list>
+						<bean class="org.acegisecurity.vote.RoleVoter" />
+						<bean
+							class="org.acegisecurity.vote.AuthenticatedVoter" />
+					</list>
+				</property>
+			</bean>
+		</property>
+		<property name="objectDefinitionSource">
+			<value>
+				CONVERT_URL_TO_LOWERCASE_BEFORE_COMPARISON
+				PATTERN_TYPE_APACHE_ANT
+				/redirecttologin.jsp=IS_AUTHENTICATED_ANONYMOUSLY
+				/login.action=IS_AUTHENTICATED_ANONYMOUSLY
+				/redirectpartnerpavilion.jsp=IS_AUTHENTICATED_ANONYMOUSLY
+				/fire_the_nukes/**=ROLE_dealer
+				/**=IS_AUTHENTICATED_FULLY
+			</value>
+		</property>
+	</bean>
+
+	
+	<bean id="authenticationManager"
+		class="org.acegisecurity.providers.ProviderManager">
+		<property name="providers">
+			<list>
+				<ref local="trustAwareDaoAuthenticationProvider" />
+				<!--<ref local="ldapAuthenticationProvider1"/>
+                <ref local="ldapAuthenticationProvider2"/>-->
+				<bean
+					class="org.acegisecurity.providers.anonymous.AnonymousAuthenticationProvider">
+					<property name="key" value="classified" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="passwordEncoder" class="tavant.twms.web.security.authn.provider.TWMSPasswordEncoder"/>
+	<bean id="saltSource" class="tavant.twms.web.security.authn.provider.TWMSPasswordEncryptionSaltSource"/>
+
+	<bean id="trustAwareDaoAuthenticationProvider"
+		class="tavant.twms.web.security.authn.provider.TrustAwareDaoAuthenticationProvider">
+		<property name="userDetailsService" ref="userDetailsService" />          
+        <property name="dbAuthenticationEnabled" value="${db.authentication.enable}" />      
+        <property name="passwordEncoder" ref="passwordEncoder"/>
+		<property name="saltSource" ref="saltSource"/>
+	</bean>
+	
+	<bean id="ehCacheBasedUserCache" class="org.acegisecurity.providers.dao.cache.EhCacheBasedUserCache">
+       <property name="cache" ref="ehCacheFactoryBean"/>
+    </bean>
+
+	<bean id="ehCacheFactoryBean" class="org.springframework.cache.ehcache.EhCacheFactoryBean">
+        <property name="overflowToDisk" value="false" />
+        <property name="cacheManager" ref="cacheManager"/>
+        <property name="cacheName" value="userCache"/>
+    </bean>
+	
+	<!-- Fetches User through Org API -->
+	<bean id="userDetailsService"
+		class="tavant.twms.security.model.OrgAwareUserDetailsService" />
+	
+	<!-- For use by the security tags -->
+    <bean id="strutsAwareConditionEvaluator"
+          class="tavant.twms.web.security.authz.condition.evaluator.StrutsAwareConditionEvaluator"/>
+
+    <bean class="org.acegisecurity.intercept.method.aopalliance.MethodDefinitionSourceAdvisor">
+        <constructor-arg>
+            <ref bean="methodSecurityInterceptor" />
+        </constructor-arg>
+    </bean>
+
+    <bean id="authenticatedVoter" class="org.acegisecurity.vote.AuthenticatedVoter" />
+
+    <bean id="dhSecurityVoter"
+          class="tavant.twms.web.security.authz.voter.SecurityVoter" >
+        <property name="authorizationManager" ref="authorizationManager" />
+    </bean>
+
+    <bean id="authorizationManager"
+          class="tavant.twms.security.authz.impl.AuthorizationManagerImpl" >
+        <property name="resourceManager" ref="auth.resourceManager"/>
+        <property name="authorizationService" ref="authorizationService"/>
+    </bean>
+
+    <bean id="authorizationService" class="tavant.twms.security.authz.impl.AuthorizationServiceImpl">
+        <property name="resourceManager" ref="auth.resourceManager"/>
+    </bean>
+
+    <bean id="httpRequestAccessDecisionManager" class="org.acegisecurity.vote.AffirmativeBased" >
+        <property name="allowIfAllAbstainDecisions">
+            <value>false</value>
+        </property>
+        <property name="decisionVoters">
+            <list>
+                <ref bean="authenticatedVoter"/>
+                <ref bean="dhSecurityVoter"/>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="methodSecurityInterceptor" class="org.acegisecurity.intercept.method.aopalliance.MethodSecurityInterceptor">
+        <property name="authenticationManager">
+            <ref bean="authenticationManager"/>
+        </property>
+        <property name="accessDecisionManager">
+            <ref bean="httpRequestAccessDecisionManager"/>
+        </property>
+        <property name="objectDefinitionSource">
+            <ref bean="securedMethodList" />
+        </property>
+    </bean>
+
+    <bean id="securedMethodList"
+          class="tavant.twms.web.security.authz.util.SecuredMethodFactory">
+        <property name="resourceManager" ref="auth.resourceManager"/>
+    </bean>
+
+    <bean id="auth.resourceManager"
+          name="tavant.twms.security.authz.resource.ResourceManager"
+          class="tavant.twms.security.authz.resource.impl.ResourceManagerImpl">
+        <property name="resources" ref="auth.resourceParser"/>
+    </bean>
+
+    <bean id="auth.resourceParser"
+          name="tavant.twms.web.security.authz.resource.mapping.ResourceMapParser"
+          class="tavant.twms.web.security.authz.resource.mapping.ResourceMapParser">
+        <property name="securityConfigs">
+            <set>
+                <value>classpath:securityconfig/security-*.xml</value>
+            </set>
+        </property>
+    </bean>
+    
+</beans>

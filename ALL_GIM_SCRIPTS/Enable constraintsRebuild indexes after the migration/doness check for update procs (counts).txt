@@ -1,0 +1,54 @@
+DECLARE
+V_EXEC_43 VARCHAR(4000);
+V_EXEC_STG VARCHAR(4000);
+V_CNT NUMBER;
+V_CNT_43 NUMBER;
+V_CNT_STG NUMBER;
+v_count number:=0;
+BEGIN
+
+FOR I IN 
+(
+select CYC_REF_TABLE,CYC_REF_COLUMN,ignore from TAV_GIM_CYCLIC_REF
+)
+LOOP
+
+V_CNT := 0;
+V_CNT_43 :=0;
+V_CNT_STG:=0;
+v_count := v_count + 1;
+
+DBMS_OUTPUT.NEW_LINE;
+DBMS_OUTPUT.PUT_LINE(v_count || '. TABLE.COLUMN > ' || I.CYC_REF_TABLE || '.' || I.CYC_REF_COLUMN );
+
+V_EXEC_43 := 'select count(1) from ' || I.CYC_REF_TABLE || 
+' a where ' || I.CYC_REF_COLUMN  || ' is not null 
+ and exists (select 1 from TG_' || I.CYC_REF_TABLE || ' b where b.old_43_id = a.id)';
+
+V_EXEC_STG := 'select count(1) from TG_' || I.CYC_REF_TABLE || ' where ' || I.CYC_REF_COLUMN  || ' is not null';
+
+BEGIN 
+EXECUTE IMMEDIATE V_EXEC_43 INTO V_CNT_43;
+EXCEPTION WHEN OTHERS THEN
+DBMS_OUTPUT.PUT_LINE('Exception for :' || I.CYC_REF_TABLE || '>' || I.CYC_REF_COLUMN || SQLERRM );
+continue;
+END;
+
+begin
+execute immediate V_EXEC_stg into v_cnt_stg;
+EXCEPTION WHEN OTHERS THEN
+DBMS_OUTPUT.PUT_LINE('Exception for TG_:' || I.CYC_REF_TABLE || '.' || I.CYC_REF_COLUMN || SQLERRM );
+continue;
+END;
+
+v_cnt := V_CNT_43 - v_cnt_stg;
+
+IF V_CNT > 0 THEN
+DBMS_OUTPUT.PUT_LINE('FAIL ! Counts mistmatch (4.3 count/stg count) :' || V_CNT_43 || '/' || V_CNT_STG  );
+ELSE
+DBMS_OUTPUT.PUT_LINE('SUCEESS ! Counts match (4.3 count/stg count) :' || V_CNT_43 || '/' || V_CNT_STG  );
+end if;
+
+end loop;
+
+end;

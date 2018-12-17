@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PriceFetch lang="en" evnironment="Test" revision="1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <ApplicationArea>
+        <Sender>
+            <Task>CCT_WINDCHILL</Task>
+            <LogicalId>TavantWMS</LogicalId>            	    
+            <ReferenceId>3421</ReferenceId>
+        </Sender>
+        <BODId>INT03</BODId>   
+        <InterfaceNumber></InterfaceNumber>
+        <CreationDateTime>2008-12-31T15:05:00.865Z</CreationDateTime>
+    </ApplicationArea>
+    <DataArea>
+    	<BUNAME>NMHG-US</BUName>
+        <PriceCheckRequest>            
+            <WarrantyType>STANDARD</WarrantyType>            
+            <DateOfRepair>2008-12-31-07Z</DateOfRepair>
+            <DealerNo>01-10</DealerNo>
+            <CurrencyCode>USD</CurrencyCode>
+            <ReplacedParts>
+				<!--Element LineItem, maxOccurs=unbounded-->
+				<LineItem>	                    
+					<PartNumber>001835-0008</PartNumber>
+					<Quantity>1</Quantity>
+					<ManufacturingLocation>MTY</ManufacturingLocation>
+					<UOM>EACH</UOM>
+					<DivisionCode>Hussmann</DivisionCode>
+				</LineItem>
+				<LineItem>	                    
+					<PartNumber>001835-0008</PartNumber>
+					<Quantity>1</Quantity>
+					<ManufacturingLocation>BGN</ManufacturingLocation>
+					<UOM>EACH</UOM>
+					<DivisionCode>Hussmann</DivisionCode>
+				</LineItem>
+				<LineItem>	                    
+					<PartNumber>1,101,501</PartNumber>
+					<Quantity>1</Quantity>
+					<ManufacturingLocation>MTY</ManufacturingLocation>
+					<UOM>EACH</UOM>
+					<DivisionCode>Hussmann</DivisionCode>
+				</LineItem>			
+				<LineItem>	                    
+					<PartNumber>1101501</PartNumber>
+					<Quantity>1</Quantity>
+					<ManufacturingLocation>BGN</ManufacturingLocation>
+					<UOM>EACH</UOM>
+					<DivisionCode>Hussmann</DivisionCode>
+				</LineItem>
+		            </ReplacedParts>
+        </PriceCheckRequest>
+        <CostCheckRequest>            
+			    <WarrantyType>STANDARD</WarrantyType>            
+			    <DateOfRepair>2008-12-31-07Z</DateOfRepair>
+			    <SupplierNumber>1024</SupplierNumber>
+			    <CurrencyCode>USD</CurrencyCode>
+				 <ReplacedParts>
+								<!--Element LineItem, maxOccurs=unbounded-->
+								<LineItem>	                    
+									<PartNumber>001835-0008</PartNumber>
+									<Quantity>1</Quantity>
+									<ManufacturingLocation>MTY</ManufacturingLocation>
+									<UOM>EACH</UOM>
+									<DivisionCode>Hussmann</DivisionCode>
+								</LineItem>
+								<LineItem>	                    
+									<PartNumber>001835-0008</PartNumber>
+									<Quantity>1</Quantity>
+									<ManufacturingLocation>BGN</ManufacturingLocation>
+									<UOM>EACH</UOM>
+									<DivisionCode>Hussmann</DivisionCode>
+								</LineItem>
+								<LineItem>	                    
+									<PartNumber>1,101,501</PartNumber>
+									<Quantity>1</Quantity>
+									<ManufacturingLocation>MTY</ManufacturingLocation>
+									<UOM>EACH</UOM>
+									<DivisionCode>Hussmann</DivisionCode>
+								</LineItem>			
+								<LineItem>	                    
+									<PartNumber>1101501</PartNumber>
+									<Quantity>1</Quantity>
+									<ManufacturingLocation>BGN</ManufacturingLocation>
+									<UOM>EACH</UOM>
+									<DivisionCode>Hussmann</DivisionCode>
+								</LineItem>
+		            </ReplacedParts>
+        </CostCheckRequest> 
+    </DataArea>
+</PriceFetch>
+
+
+

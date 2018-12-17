@@ -1,0 +1,64 @@
+[MAS SUPPORT]
+SupportMas_Prj=1
+[Target:WebHelp]
+SupportMas_Prj=1
+ResultFileName=!SSL!\WebHelp\Dealer.htm
+SSLayoutType=2
+CreateProjectTime=16:14, June 12, 2013
+CreateProjectUser=alka.arora
+SupportMas_MPJ=1
+ActionID For Generation=1002
+Remove Folder with prompt=1
+ViewFileName=!SSL!\WebHelp\Dealer.htm
+ResultStatus=0
+BuildTimeHi=30304089
+BuildTimeLow=-952999155
+[Target:WebHelp Pro]
+SupportMas_Prj=1
+ResultFileName=!SSL!\WebHelp_Pro\Dealer.htm
+SSLayoutType=32
+ServerProjectName=Dealer
+CreateProjectTime=
+CreateProjectUser=
+SupportMas_MPJ=1
+[Target:Microsoft HTML Help]
+ResultFileName=!SSL!\Microsoft_HTML_Help\Dealer.chm
+SSLayoutType=1
+CreateProjectTime=
+CreateProjectUser=
+SupportMas_MPJ=1
+[Target:FlashHelp]
+ResultFileName=!SSL!\FlashHelp\Dealer.htm
+SSLayoutType=2
+CreateProjectTime=
+CreateProjectUser=
+SupportMas_MPJ=1
+[Target:Printed Documentation]
+ResultFileName=!SSL!\Printed_Documentation\Dealer.doc
+SSLayoutType=7
+[Target:XML Output]
+ResultFileName=!SSL!\XML_Output\Dealer.xml
+SSLayoutType=8192
+[PreSingleSource]
+Html Help Project=D:\Alka\Alka_Backup\Projects\NACCO\Phase 1\Online Help\Dealer\Dealer.hhp
+Table Of Content=D:\Alka\Alka_Backup\Projects\NACCO\Phase 1\Online Help\Dealer\Dealer.hhc
+Index=D:\Alka\Alka_Backup\Projects\NACCO\Phase 1\Online Help\Dealer\Dealer_merged$.hhk
+See Also Index=D:\Alka\Alka_Backup\Projects\NACCO\Phase 1\Online Help\Dealer\Dealer.hha
+Browse Sequence=D:\Alka\Alka_Backup\Projects\NACCO\Phase 1\Online Help\Dealer\Dealer.brs
+Topic Properties=D:\Alka\Alka_Backup\Projects\NACCO\Phase 1\Online Help\Dealer\Dealer.trs
+Active Folders=D:\Alka\Alka_Backup\Projects\NACCO\Phase 1\Online Help\Dealer\Dealer.trf
+Baggage Files=D:\Alka\Alka_Backup\Projects\NACCO\Phase 1\Online Help\Dealer\Dealer.trb
+Skin List=D:\Alka\Alka_Backup\Projects\NACCO\Phase 1\Online Help\Dealer\Dealer.trk
+OriginalHhk=D:\Alka\Alka_Backup\Projects\NACCO\Phase 1\Online Help\Dealer\Dealer.hhk
+Active Layout Names=D:\Alka\Alka_Backup\Projects\NACCO\Phase 1\Online Help\Dealer\Dealer.trl
+Default Topic=D:\Alka\Alka_Backup\Projects\NACCO\Phase 1\Online Help\Dealer\introduction.htm
+Build Tags0=15916;Print | Online
+Build Tags=
+Build Expression=
+Language ID=1033
+Language Name=English
+Language=D:\Alka\Alka_Backup\Projects\NACCO\Phase 1\Online Help\Dealer\RoboHHRE.lng
+Stop List=D:\Alka\Alka_Backup\Projects\NACCO\Phase 1\Online Help\Dealer\Dealer.stp
+[Layout Settings]
+MRULayoutCount=1
+MRULayout0=WebHelp]11/08/12]4

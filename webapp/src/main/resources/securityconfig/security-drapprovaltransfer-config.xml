@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<functionalareas xmlns="http://www.tavant.com/twms/security/resource"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.tavant.com/twms/security/resource
+			http://www.tavant.com/twms/security/resource">
+	<functionalarea name="drapprovaltransfer" defaultpolicy="none">
+
+	<!-- Resources for update or Read Only -->
+	
+		<resource type="ui" value="dRApproval/TransferDRApproval/TransferTab" operation="OR">
+			<permissions>dRApproval/Transfer:dRApproval/TransferDRApproval/TransferTab:update,dRApproval/Transfer:dRApproval/TransferDRApproval/TransferTab:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="dRApproval/TransferDeliveryReport" operation="OR">
+			<permissions>dRApproval/Transfer:dRApproval/TransferDeliveryReport:update,dRApproval/Transfer:dRApproval/TransferDeliveryReport:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="dRApproval/TransferDraft" operation="OR">
+			<permissions>dRApproval/Transfer:dRApproval/TransferDraft:update,dRApproval/Transfer:dRApproval/TransferDraft:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="dRApproval/TransferPendingforApproval" operation="OR">
+			<permissions>dRApproval/Transfer:dRApproval/TransferPendingforApproval:update,dRApproval/Transfer:dRApproval/TransferPendingforApproval:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="dRApproval/TransferForwardedToDealer" operation="OR">
+			<permissions>dRApproval/Transfer:dRApproval/TransferForwardedToDealer:update,dRApproval/Transfer:dRApproval/TransferForwardedToDealer:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="dRApproval/TransferRejected" operation="OR">
+			<permissions>dRApproval/Transfer:dRApproval/TransferRejected:update,dRApproval/Transfer:dRApproval/TransferRejected:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="dRApproval/TransferReplies" operation="OR">
+			<permissions>dRApproval/Transfer:dRApproval/TransferReplies:update,dRApproval/Transfer:dRApproval/TransferReplies:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="dRApproval/TransferResubmitted" operation="OR">
+			<permissions>dRApproval/Transfer:dRApproval/TransferResubmitted:update,dRApproval/Transfer:dRApproval/TransferResubmitted:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="dRApproval/TransferUnitTransfer" operation="OR">
+			<permissions>dRApproval/Transfer:dRApproval/TransferUnitTransfer:update,dRApproval/Transfer:dRApproval/TransferUnitTransfer:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="dRApproval/TransferDeleted" operation="OR">
+			<permissions>dRApproval/Transfer:dRApproval/TransferDeleted:update,dRApproval/Transfer:dRApproval/TransferDeleted:view
+			</permissions>
+		</resource>
+	
+	<!-- Resources for Read Only-->
+	
+		<resource type="ui" value="dRApproval/TransferDRApproval/TransferTabReadOnlyView">
+			<permissions>dRApproval/Transfer:dRApproval/TransferDRApproval/TransferTab:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="dRApproval/TransferDeliveryReportReadOnlyView">
+			<permissions>dRApproval/Transfer:dRApproval/TransferDeliveryReport:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="dRApproval/TransferDraftReadOnlyView">
+			<permissions>dRApproval/Transfer:dRApproval/TransferDraft:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="dRApproval/TransferPendingforApprovalReadOnlyView">
+			<permissions>dRApproval/Transfer:dRApproval/TransferPendingforApproval:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="dRApproval/TransferForwardedToDealerReadOnlyView">
+			<permissions>dRApproval/Transfer:dRApproval/TransferForwardedToDealer:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="dRApproval/TransferRejectedReadOnlyView">
+			<permissions>dRApproval/Transfer:dRApproval/TransferRejected:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="dRApproval/TransferRepliesReadOnlyView">
+			<permissions>dRApproval/Transfer:dRApproval/TransferReplies:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="dRApproval/TransferResubmittedReadOnlyView">
+			<permissions>dRApproval/Transfer:dRApproval/TransferResubmitted:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="dRApproval/TransferUnitTransferReadOnlyView">
+			<permissions>dRApproval/Transfer:dRApproval/TransferUnitTransfer:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="dRApproval/TransferDeletedReadOnlyView">
+			<permissions>dRApproval/Transfer:dRApproval/TransferDeleted:view
+			</permissions>
+		</resource>
+        
+	</functionalarea>
+
+</functionalareas>

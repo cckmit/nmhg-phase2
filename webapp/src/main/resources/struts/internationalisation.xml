@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="internationalisation" extends="struts-twms-default">
+		<action name="list_localised_files"
+			class="tavant.twms.web.common.InternationalisationAction"
+			method="listLocalisedFiles">
+			<interceptor-ref name="paramsPrepare" />
+			<result name="success">
+				pages/secure/common/localisedFiles.jsp
+			</result>
+		</action>
+		
+		<action name="download_properties_file"
+			class="tavant.twms.web.common.InternationalisationAction"
+			method="downloadFile">
+			<interceptor-ref name="paramsPrepare" />
+		</action>
+		
+		<action name="upload_properties_file"
+			class="tavant.twms.web.common.InternationalisationAction"
+			method="uploadFile">
+			<interceptor-ref name="twmsParamsPrepareParams"/>
+			<result name="success">
+				pages/secure/common/localisedFiles.jsp
+			</result>
+			<result name="input">
+				pages/secure/common/localisedFiles.jsp
+			</result>
+		</action>
+		
+	</package>
+</struts>

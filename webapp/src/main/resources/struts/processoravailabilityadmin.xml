@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+    
+<struts>
+	<package name="processoravailabilityadmin" extends="struts-twms-default">
+		<!-- Actions for Job Code maintenance -->
+        <default-interceptor-ref name="adminTwmsParamsWithoutPrepare"/>
+
+        <action name="showProcessorAvailability" 
+        class="tavant.twms.web.admin.processoravailability.ManageProcessorsAvailability" >
+        	<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">pages/secure/admin/processoravailability/processorAvailabilityInboxView.jsp</result>
+        </action>
+        
+        <action name="processorAvailableBody" 
+        class="tavant.twms.web.admin.processoravailability.ManageProcessorsAvailability" method="tableBody">
+        	<interceptor-ref name="adminParamsPrepare" />
+		    <result name="success">pages/secure/home/json.jsp</result>	
+        </action>
+        
+        <action name="processor_avail_preview" 
+        class="tavant.twms.web.admin.processoravailability.ManageProcessorsAvailability" method="preview">
+        	<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">pages/secure/admin/processoravailability/processorAvailabilityPreview.jsp</result>
+        </action>
+        
+        <action name="processor_avail_detail" 
+        class="tavant.twms.web.admin.processoravailability.ManageProcessorsAvailability" method="detail">
+        	<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">pages/secure/admin/processoravailability/processorAvailabilityDetail.jsp</result>
+			<result name="input">pages/secure/admin/processoravailability/processorAvailabilityDetail.jsp</result>
+        </action>
+        
+        <action name="update_processor_avail" 
+        class="tavant.twms.web.admin.processoravailability.ManageProcessorsAvailability" method="updateProcessor">
+        	<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">pages/secure/admin/success.jsp</result>
+			<result name="input">pages/secure/admin/processoravailability/processorAvailabilityDetail.jsp</result>
+        </action>
+
+        <action name="export_processor_avail_to_excel" 
+        class="tavant.twms.web.admin.processoravailability.ManageProcessorsAvailability" method="downloadListingData">
+			<interceptor-ref name="adminParamsPrepare" />
+        </action>
+        
+    </package>
+</struts>	

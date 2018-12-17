@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd" 
+	default-autowire="byName">
+	
+	<bean id="sessionFactory" parent="domainSessionFactory"
+		class="tavant.twms.infra.EnhancedAnnotationSessionFactoryBean">
+		<property name="moduleWiseHbmXmls">
+            <map key-type="java.lang.Integer" value-type="java.util.HashMap" merge="true">
+                <entry key="1" value-ref="Engine-Core.hbm.xmls" />
+                <entry key="2" value-ref="Engine.hbm.xmls" />
+            </map>
+		</property>
+	</bean>
+</beans>	

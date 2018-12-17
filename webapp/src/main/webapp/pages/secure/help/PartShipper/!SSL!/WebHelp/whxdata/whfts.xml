@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<fts>
+<chunkinfo url="whfwdata0.xml" first="08" last="distanc"/>
+<chunkinfo url="whfwdata1.xml" first="divid" last="modify"/>
+<chunkinfo url="whfwdata2.xml" first="month" last="show"/>
+<chunkinfo url="whfwdata3.xml" first="shown" last="zip"/>
+
+<tchunkinfo first="0" last="38" url="whftdata0.xml" />
+
+</fts>

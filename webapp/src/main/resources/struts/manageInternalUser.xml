@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="manageinternaluser" extends="struts-twms-default">
+		<!--  Internal User Maintenance -->
+
+		<action name="show_internal_user"
+			class="tavant.twms.web.actions.ManageInternalUserAction" method="forwardToCreateInternalUser">
+			<interceptor-ref name="adminParamsPrepareWithoutValidation"/>
+			<result name="success">pages/secure/admin/manageInternalUser.jsp</result>
+		</action>
+		
+		<action name="create_internal_user"
+			class="tavant.twms.web.actions.ManageInternalUserAction"
+			method="create">
+			<interceptor-ref name="adminTwmsParamsPrepareParams" />
+			<result name="input">pages/secure/admin/manageInternalUser.jsp</result>
+			<result name="success">pages/secure/admin/manageInternalUserResult.jsp</result>
+		</action>
+		<action name="forward_to_search_internal_user"
+				class="tavant.twms.web.actions.ManageInternalUserAction">
+            <interceptor-ref name="paramsPrepareWithoutValidation"/>
+            <result name="success">pages/secure/admin/searchInternalUser.jsp</result>
+            <result name="input">pages/secure/admin/searchInternalUser.jsp</result>
+        </action>
+		
+		 <action name="search_internal_user"
+				class="tavant.twms.web.actions.ManageInternalUserAction" method="search">
+			<interceptor-ref name="paramsPrepareWithoutValidation"/>
+			<result name="input">pages/secure/admin/searchInternalUser.jsp</result>
+            <result name="success">pages/secure/admin/updateInternalUser.jsp</result>
+        </action>  
+        
+        <action name="update_internal_user"
+				class="tavant.twms.web.actions.ManageInternalUserAction" method="update">
+			<interceptor-ref name="adminTwmsParamsPrepareParams"/>
+			<result name="input">pages/secure/admin/updateInternalUser.jsp</result>
+            <result name="success">pages/secure/admin/manageInternalUserResult.jsp</result>
+        </action>     
+	</package>
+</struts>

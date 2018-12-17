@@ -1,0 +1,163 @@
+div.deleteButton {
+	background: url(../../../image/remove.gif);
+	width: 16px;
+	height: 15px;
+	vertical-align: bottom;
+	background-repeat: no-repeat;
+    float: right;
+    cursor:pointer;
+}
+
+div.addButton {
+	background: url(../../../image/addRow_new.gif);
+	width: 16px;
+	height: 15px;
+	vertical-align: bottom;
+	background-repeat: no-repeat;
+    cursor:pointer;
+}
+div.loadingIndicator {
+	background: url(../../../image/indicator.gif);
+	width: 16px;
+	height: 15px;
+	vertical-align: bottom;
+	background-repeat: no-repeat;
+    cursor:wait;
+    visibility:hidden;
+}
+table.editor {
+	background: #DDDDDD;
+	width: 100%;
+	border: 5px;
+}
+table.editorBody {
+	background: #EEEEEE;
+	width: 100%;
+}
+td.operatorHolder {
+    /*Place Holder*/
+}
+
+td {
+	font-family:Arial,Helvetica,sans-serif;
+	font-size:9pt;    
+}
+
+tr.expressionRow {
+	width: 100%;
+	border-right: 1px !important;
+	border-left: 1px !important;
+	border-bottom: 1px !important;
+}
+
+tr.expressionRow:hover {
+    background-color: #eeeeff;
+}
+
+span.collectionSelectorComboBoxSpan input {
+	width: 50px;
+}
+
+span.lhsComboBoxSpan input {
+	width: 300px;
+}
+
+span.operatorComboBoxSpan input {
+	width: 50px;
+}
+
+td.indentIndicatorTd {
+    /*Place Holder*/
+}
+
+td.foldingTogglerTd {
+    /*Place Holder*/
+}
+
+td.collectionSelectorTd {
+    /*Place Holder*/
+}
+
+td.lhsComboBoxTd {
+    /*Place Holder*/
+}
+td.operatorComboBoxTd {
+    /*Place Holder*/
+}
+
+td.rhsTd {
+    /*Place Holder*/
+}
+
+div.searchPrebuiltExpressions {
+	background: url(../../../image/addWA.gif);
+	width: 20px;
+	height: 20px;
+	vertical-align: bottom;
+	background-repeat: no-repeat;
+    cursor:pointer;
+}
+
+td.ruleBuilder  {
+	padding-top: 0;
+	padding-bottom: 0;
+    vertical-align: bottom;
+}
+
+div.indentIndicator {
+    background: url(../../../image/L_small.png);
+	width: 20px;
+	height: 25px;
+    vertical-align: top;
+	background-repeat: no-repeat;    
+}
+
+div.collapseSubRows {
+    background: url(../../../image/minus_t.gif);
+	width: 15px;
+	height: 12px;
+    vertical-align: middle;
+	background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+div.expandSubRows {
+    background: url(../../../image/plus_t.gif);
+	width: 15px;
+	height: 12px;
+    vertical-align: middle;
+	background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+span.intervalSeparator {
+    vertical-align: bottom;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+span.durationSeparator {
+    padding-left: 5px;
+    padding-right: 0px;
+}
+
+input.durationInput {
+    vertical-align: bottom;
+}
+
+td.invertPredicate {
+    vertical-align:middle;
+    background-color:#F5F5F5;
+}
+
+span.readOnlySummarySection {
+    cursor: pointer;
+    background-color: #e9e9e9;
+    color: #bfbfbf;
+    margin-left: 5px;
+}
+
+table.bgColor {
+    padding: 10px 0 0 5px;
+    width: 99%;
+}

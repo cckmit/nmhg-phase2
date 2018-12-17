@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/*
+ *   Copyright (c)2006 Tavant Technologies
+ *   All Rights Reserved.
+ *
+ *   This software is furnished under a license and may be used and copied
+ *   only  in  accordance  with  the  terms  of such  license and with the
+ *   inclusion of the above copyright notice. This software or  any  other
+ *   copies thereof may not be provided or otherwise made available to any
+ *   other person. No title to and ownership of  the  software  is  hereby
+ *   transferred.
+ *
+ *   The information in this software is subject to change without  notice
+ *   and  should  not be  construed as a commitment  by Tavant Technologies.
+ */  
+-->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<artifactId>server</artifactId>
+		<groupId>tavant.twms.TSA_DEV</groupId>
+		<version>0.5-SNAPSHOT</version>
+	</parent>
+	<artifactId>integration</artifactId>
+	<name>server-integration</name>
+	<packaging>pom</packaging>
+
+	<profiles>
+	    <profile>
+	      <id>ci</id>
+	      <modules>
+			<module>bods</module>
+			<module>layer</module>
+	      </modules>
+	    </profile>
+		<!-- Build bods for dailyqabuild because we clean snapshots every day for all twms projects -->
+		<profile>
+	      <id>dailyqabuild</id>
+	      <modules>
+			<module>bods</module>
+			<module>layer</module>
+	      </modules>
+	    </profile>
+	</profiles>
+	
+	<modules>
+		<module>layer</module>
+	</modules>
+
+	<!--dependencies>
+		<dependency>
+			<groupId>org.dbunit</groupId>
+			<artifactId>dbunit</artifactId>
+		</dependency>
+	</dependencies-->
+<properties>
+	      <maven.test.skip>true</maven.test.skip>
+</properties>
+</project>

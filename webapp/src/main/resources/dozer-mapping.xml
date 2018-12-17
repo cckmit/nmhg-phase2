@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mappings PUBLIC "-//DOZER//DTD MAPPINGS//EN"
+    "http://dozer.sourceforge.net/dtd/dozerbeanmapping.dtd">
+<mappings>
+
+	<configuration>
+		<date-format>dd/MM/yyyy</date-format>
+		<custom-converters>
+			<converter
+				type="tavant.twms.web.claimdto.converters.OEMConverter">
+				<class-a>
+					tavant.twms.domain.claim.OEMPartReplaced
+				</class-a>
+				<class-b>
+					tavant.twms.web.uploadclaims.dto.OemPartReplacedDTO
+				</class-b>
+			</converter>
+			<converter
+				type="tavant.twms.web.claimdto.converters.CausalPartToItemConverter">
+				<class-a>tavant.twms.domain.catalog.Item</class-a>
+				<class-b>java.lang.String</class-b>
+			</converter>
+			<converter
+				type="tavant.twms.web.claimdto.converters.LaborDetailConversion">
+				<class-a>tavant.twms.domain.claim.LaborDetail</class-a>
+				<class-b>
+					tavant.twms.web.uploadclaims.dto.LaborDetailDTO
+				</class-b>
+			</converter>
+			<converter
+				type="tavant.twms.web.claimdto.converters.ItemReferenceConverter">
+				<class-a>
+					tavant.twms.domain.catalog.ItemReference
+				</class-a>
+				<class-b>
+					tavant.twms.web.uploadclaims.dto.ItemReferenceDTO
+				</class-b>
+			</converter>
+			<converter
+				type="tavant.twms.web.claimdto.converters.DateConverter">
+				<class-a>com.domainlanguage.time.CalendarDate</class-a>
+				<class-b>java.lang.String</class-b>
+			</converter>
+		</custom-converters>
+	</configuration>
+
+	<mapping>
+		<class-a>tavant.twms.domain.claim.PartsClaim</class-a>
+		<class-b>tavant.twms.web.uploadclaims.dto.ClaimDTO</class-b>
+		<field>
+			<a>type</a>
+			<b>claimType</b>
+		</field>
+	</mapping>
+
+	<mapping>
+		<class-a>tavant.twms.domain.claim.MachineClaim</class-a>
+		<class-b>tavant.twms.web.uploadclaims.dto.ClaimDTO</class-b>
+		<field>
+			<a>type</a>
+			<b>claimType</b>
+		</field>
+	</mapping>
+
+	<mapping>
+		<class-a>tavant.twms.domain.claim.ServiceInformation</class-a>
+		<class-b>
+			tavant.twms.web.uploadclaims.dto.ServiceInformationDTO
+		</class-b>
+	</mapping>
+
+	<mapping>
+		<class-a>tavant.twms.domain.catalog.ItemReference</class-a>
+		<class-b>
+			tavant.twms.web.uploadclaims.dto.ItemReferenceDTO
+		</class-b>
+	</mapping>
+
+	<mapping>
+		<class-a>tavant.twms.domain.claim.OEMPartReplaced</class-a>
+		<class-b>
+			tavant.twms.web.uploadclaims.dto.OemPartReplacedDTO
+		</class-b>
+		<field>
+			<a>numberOfUnits</a>
+			<b>quantity</b>
+		</field>
+	</mapping>
+
+	<mapping>
+		<class-a>tavant.twms.domain.claim.NonOEMPartReplaced</class-a>
+		<class-b>
+			tavant.twms.web.uploadclaims.dto.NonOemPartReplacedDTO
+		</class-b>
+		<field>
+			<a>description</a>
+			<b>itemNumber</b>
+		</field>
+		<field>
+			<a>numberOfUnits</a>
+			<b>quantity</b>
+		</field>
+	</mapping>
+
+	<mapping>
+		<class-a>tavant.twms.domain.claim.LaborDetail</class-a>
+		<class-b>
+			tavant.twms.web.uploadclaims.dto.LaborDetailDTO
+		</class-b>
+	</mapping>
+
+	<mapping>
+		<class-a>tavant.twms.domain.claim.TravelDetail</class-a>
+		<class-b>
+			tavant.twms.web.uploadclaims.dto.TravelDetailDTO
+		</class-b>
+	</mapping>
+</mappings>

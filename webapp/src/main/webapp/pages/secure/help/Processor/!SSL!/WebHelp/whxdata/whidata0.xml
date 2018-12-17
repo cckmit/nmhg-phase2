@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<indexdata>
+<key name="Business Conditions" >
+  <topic name="Business Conditions" url="Contract_Admin/Business_Conditions.htm" />
+</key>
+<key name="Causal Part" >
+  <topic name="Processor Review" url="Claims/Processor_Review.htm" />
+</key>
+<key name="Claim Submission" >
+  <topic name="Claim Submission" url="Claims/Claim_Submission.htm" />
+</key>
+<key name="Claims" >
+  <topic name="Claim Submission" url="Claims/Claim_Submission.htm" />
+</key>
+<key name="Claims Due for Recovery" >
+  <topic name="Claims Due for Recovery" url="Supplier_Recovery/Claims_Due_for_Recovery.htm" />
+</key>
+<key name="Claims Under Recovery" >
+  <topic name="Claims Under Recovery" url="Supplier_Recovery/Claims_Under_Recovery.htm" />
+</key>
+<key name="Components Replaced" >
+  <topic name="Processor Review" url="Claims/Processor_Review.htm" />
+</key>
+<key name="Download Management" >
+  <topic name="Download Management" url="Reports/Download_Management.htm" />
+</key>
+<key name="Equipment Transfer Reports" >
+  <topic name="Equipment Transfer Report" url="Inventory/Equipment_Transfer_Report.htm" />
+</key>
+<key name="Forward Internally" >
+  <topic name="Processor Review" url="Claims/Processor_Review.htm" />
+  <topic name="Requested for Information" url="Claims/Requested_for_Information.htm" />
+</key>
+<key name="Forwarded Externally" >
+  <topic name="Processor Review" url="Claims/Processor_Review.htm" />
+  <topic name="Requested for Information" url="Claims/Requested_for_Information.htm" />
+</key>
+<key name="Inventory" >
+  <topic name="Inventory" url="Inventory/Inventory.htm" />
+  <topic name="Search Inventory" url="Inventory/Search_Inventory.htm" />
+</key>
+<key name="Manage Documents" >
+  <topic name="Equipment Transfer Report" url="Inventory/Equipment_Transfer_Report.htm" />
+  <topic name="Processor Review" url="Claims/Processor_Review.htm" />
+</key>
+<key name="Multi Claim Maintenance" >
+  <topic name="Multi Claim Maintenance" url="Supplier_Recovery/Multi_Claim_Maintenance.htm" />
+</key>
+<key name="Pending Recovery Initiation" >
+  <topic name="Pending Recovery Initiation" url="Supplier_Recovery/Pending_Recovery_Initiation.htm" />
+</key>
+<key name="Policy Details" >
+  <topic name="Policy Details" url="Claims/Policy_Details.htm" />
+</key>
+<key name="Processor Review" >
+  <topic name="Processor Review" url="Claims/Processor_Review.htm" />
+</key>
+<key name="Schemas" >
+  <topic name="User Groups" url="Contract_Admin/User_Groups.htm" />
+</key>
+<key name="Upload Management" >
+  <topic name="Upload Management" url="Reports/Upload_Management.htm" />
+</key>
+<key name="User Groups" >
+  <topic name="User Groups" url="Contract_Admin/User_Groups.htm" />
+</key>
+<key name="Vendor Recovery Report" >
+  <topic name="Vendor Recovery Report" url="Reports/Vendor_Recovery_Report.htm" />
+</key>
+
+</indexdata>

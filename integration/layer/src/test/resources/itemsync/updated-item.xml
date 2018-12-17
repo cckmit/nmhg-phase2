@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ItemSyncRequest xmlns="http://www.tavant.com/oagis" xmlns:oa="http://www.openapplications.org/oagis/9" >
+	<Item>
+		<ManufName>CCI</ManufName> <!-- Hardcoded to CCI for Club Car -->
+		<ItemType>MACHINE</ItemType> <!-- UserItemType - -ItemType -->
+		<ItemNumber>AM30002</ItemNumber> <!--ItemNumber - -ItemNumber -->
+		<ItemStatus>Active</ItemStatus> <!-- ItemStatus - - itemStatus -->
+		<ItemDescription>updated descripion</ItemDescription>  <!-- Description - - englishDesc -->
+		<ProductCode>COUGAR_50HZ</ProductCode> <!-- ProductCode - - mtlCategoriesSegment1 -->
+		<ModelCode>COUGAR_50HZ</ModelCode> <!-- ModelCode - - mtlCategoriesSegment5 -->
+		<SupplierId>7</SupplierId>
+	</Item>
+</ItemSyncRequest>

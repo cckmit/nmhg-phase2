@@ -1,0 +1,13 @@
+<!DOCTYPE root>
+<excel>
+  <sheet sheetName="Sheet1" type="tavant.twms.web.admin.dto.ItemPriceDTO" startRow="1">
+    <block>
+      <column-mapping column="0" expression="item" convertorName="itemConvertor"/>
+      <column-mapping column="1" expression="fromDate" />
+      <column-mapping column="2" expression="tillDate" />
+      <column-mapping column="3" expression="newValue"/>
+    </block>
+  <block-break column="0"/>
+  <sheet-end/>
+  </sheet>
+</excel>

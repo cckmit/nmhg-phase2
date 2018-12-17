@@ -1,0 +1,1 @@
+sqlplus %1/%2@%3 @RECREATE_USER_SEQUENCES.sql

@@ -1,0 +1,62 @@
+[MAS SUPPORT]
+SupportMas_Prj=1
+[Target:WebHelp]
+SupportMas_Prj=1
+ResultFileName=!SSL!\WebHelp\Admin.htm
+SSLayoutType=2
+CreateProjectTime=17:06, April 11, 2013
+CreateProjectUser=alka.arora
+SupportMas_MPJ=1
+ActionID For Generation=1002
+Remove Folder with prompt=1
+ViewFileName=!SSL!\WebHelp\Admin.htm
+ResultStatus=0
+BuildTimeHi=30291624
+BuildTimeLow=-628187709
+Enable Result Dialog=1
+[Target:WebHelp Pro]
+SupportMas_Prj=1
+ResultFileName=!SSL!\WebHelp_Pro\Admin.htm
+SSLayoutType=32
+ServerProjectName=Admin
+CreateProjectTime=
+CreateProjectUser=
+SupportMas_MPJ=1
+[Target:Microsoft HTML Help]
+ResultFileName=!SSL!\Microsoft_HTML_Help\Admin.chm
+SSLayoutType=1
+CreateProjectTime=
+CreateProjectUser=
+SupportMas_MPJ=1
+[Target:FlashHelp]
+ResultFileName=!SSL!\FlashHelp\Admin.htm
+SSLayoutType=2
+CreateProjectTime=
+CreateProjectUser=
+SupportMas_MPJ=1
+[Target:Printed Documentation]
+ResultFileName=!SSL!\Printed_Documentation\Admin.doc
+SSLayoutType=7
+[Target:XML Output]
+ResultFileName=!SSL!\XML_Output\Admin.xml
+SSLayoutType=8192
+[PreSingleSource]
+Html Help Project=D:\Alka_Backup\Projects\NACCO\Phase 1\Online Help\Admin\Admin.hhp
+Table Of Content=D:\Alka_Backup\Projects\NACCO\Phase 1\Online Help\Admin\Admin.hhc
+Index=D:\Alka_Backup\Projects\NACCO\Phase 1\Online Help\Admin\Admin_merged$.hhk
+See Also Index=D:\Alka_Backup\Projects\NACCO\Phase 1\Online Help\Admin\Admin.hha
+Browse Sequence=D:\Alka_Backup\Projects\NACCO\Phase 1\Online Help\Admin\Admin.brs
+Topic Properties=D:\Alka_Backup\Projects\NACCO\Phase 1\Online Help\Admin\Admin.trs
+Active Folders=D:\Alka_Backup\Projects\NACCO\Phase 1\Online Help\Admin\Admin.trf
+Baggage Files=D:\Alka_Backup\Projects\NACCO\Phase 1\Online Help\Admin\Admin.trb
+Skin List=D:\Alka_Backup\Projects\NACCO\Phase 1\Online Help\Admin\Admin.trk
+OriginalHhk=D:\Alka_Backup\Projects\NACCO\Phase 1\Online Help\Admin\Admin.hhk
+Active Layout Names=D:\Alka_Backup\Projects\NACCO\Phase 1\Online Help\Admin\Admin.trl
+Default Topic=D:\Alka_Backup\Projects\NACCO\Phase 1\Online Help\Admin\Before_you_Begin\Introduction.htm
+Build Tags0=12083;Print | Online
+Build Tags=
+Build Expression=
+Language ID=1033
+Language Name=English
+Language=D:\Alka_Backup\Projects\NACCO\Phase 1\Online Help\Admin\RoboHHRE.lng
+Stop List=D:\Alka_Backup\Projects\NACCO\Phase 1\Online Help\Admin\Admin.stp

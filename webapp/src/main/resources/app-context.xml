@@ -1,0 +1,4103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+  default-autowire="byName">
+
+  <bean id="sessionFactory" parent="domainSessionFactory"
+    class="tavant.twms.infra.EnhancedAnnotationSessionFactoryBean" depends-on="cacheManager">
+    <property name="moduleWiseHbmXmls">
+      <map key-type="java.lang.Integer" value-type="java.util.HashMap" merge="true">
+        <entry key="6" value-ref="Engine-Core.hbm.xmls" />
+        <entry key="7" value-ref="Engine.hbm.xmls" />
+      </map>
+    </property>
+  </bean>
+
+  <bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean" >
+    <property name="configLocation" value="file:${TWMS_HOME}/${TWMS_ENV_MODE}/hibernate-ehcache.xml"/>
+    <property name="shared" value="true"/>
+  </bean>
+
+  <bean name="taskViewService"
+    class="tavant.twms.web.xforms.TaskViewServiceImpl" />
+    
+  <bean name="eventSubscriptionService"
+    class="tavant.twms.domain.notification.EventSubscriptionServiceImpl" />
+
+  <bean name="preDefinedClaimsSearchFormData"
+    class="tavant.twms.web.search.PreDefinedClaimsSearchFormData" />
+
+    <bean id="quartzMonitor" class="tavant.twms.web.mbean.QuartzMonitor" >
+        <property name="scheduler" ref="quartzScheduler"/>
+        <property name="autoStartUpEnabled" value="${autoStartupValue}" />
+    </bean>
+    
+    <bean id="log4jManager" class="tavant.twms.web.mbean.Log4JManagerMBean" />	
+
+    <bean id="mBeanExporter" class="org.springframework.jmx.export.MBeanExporter">
+        <property name="assembler" ref="assembler"/>
+        <property name="namingStrategy" ref="jmxNamingStrategy"/>
+        <property name="autodetect" value="true"/>
+    </bean>
+    
+    <bean id="jmxAttributeSource"
+      class="org.springframework.jmx.export.annotation.AnnotationJmxAttributeSource"/>
+
+    <!-- will create management interface using annotation metadata -->
+    <bean id="assembler"
+          class="org.springframework.jmx.export.assembler.MetadataMBeanInfoAssembler">
+        <property name="attributeSource" ref="jmxAttributeSource"/>
+    </bean>
+
+    <!-- will pick up the ObjectName from the annotation -->
+    <bean id="jmxNamingStrategy"
+          class="org.springframework.jmx.export.naming.MetadataNamingStrategy">
+        <property name="attributeSource" ref="jmxAttributeSource"/>
+    </bean>
+    
+  <bean name="xlsWriter"
+    class="tavant.twms.web.xls.writer.XLSWriterImpl" />
+
+    <bean name="assemblyTreeJsonifier"
+    class="tavant.twms.web.admin.jobcode.AssemblyTreeJSONifier" />
+
+    <bean name="mergedTreeJsonifier"
+    class="tavant.twms.web.admin.jobcode.MergedTreeJSONifier" />
+
+    <bean name="failureTypeAssocSerializer"
+    	class="tavant.twms.web.admin.failuretype.FailureTypeAssocSerializer" />
+
+  <!--
+    TODO: This xml file is way too verbose, I will need to read latest spring documents from Spring
+    to reduce the verbosity
+  -->
+  <bean name="partReturnFields" class="java.util.HashMap">
+    <constructor-arg>
+      <map>
+        <entry key="Due Parts">
+          <list>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.dueParts.return_location" />
+              <constructor-arg value="location.code" />
+              <constructor-arg value="15" />
+              <constructor-arg value="string" />
+              <constructor-arg value="location.code" />
+              <constructor-arg value="true" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.dueParts.return_location_id" />
+              <constructor-arg value="location.id" />
+              <constructor-arg value="10" />
+              <constructor-arg value="string" />
+              <constructor-arg value="location.id" />
+              <constructor-arg value="false" />
+              <constructor-arg value="true" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+            </bean>           
+          </list>
+        </entry>
+        
+        <entry key="WPRA Part View">
+          <list>           
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.dueParts.wpraNumber" />
+              <constructor-arg value="wpra.wpraNumber" />
+              <constructor-arg value="15" />
+              <constructor-arg value="string" />
+              <constructor-arg value="wpra.wpraNumber" />
+              <constructor-arg value="true" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+            </bean>
+             <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.dueParts.return_location" />
+              <constructor-arg value="wpra.destination.code" />
+              <constructor-arg value="15" />
+              <constructor-arg value="string" />
+              <constructor-arg value="wpra.destination.code" />
+              <constructor-arg value="true" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.dueParts.return_location_id" />
+              <constructor-arg value="wpra.destination.id" />
+              <constructor-arg value="10" />
+              <constructor-arg value="string" />
+              <constructor-arg value="wpra.destination.id" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />            
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.dueParts.return_location_id" />
+              <constructor-arg value="wpra.id" />
+              <constructor-arg value="1" />
+              <constructor-arg value="string" />
+              <constructor-arg value="wpra.id" />
+              <constructor-arg value="false" />
+              <constructor-arg value="true" />
+              <constructor-arg value="true" />
+              <constructor-arg value="true" />            
+            </bean>            
+             <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.common.dealerName" />
+              <constructor-arg value="wpra.shippedBy.name" />
+              <constructor-arg value="16" />
+              <constructor-arg value="string" />
+              <constructor-arg value="wpra.shippedBy.name" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.wpra.wpra_date" />
+              <constructor-arg value="wpra.generateDate" />
+              <constructor-arg value="16" />
+              <constructor-arg value="date" />
+              <constructor-arg value="wpra.generateDateForDisplay" />
+            </bean>
+              
+          </list>
+        </entry>
+        <entry key="Dealer Requested Part">
+          <list>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.common.dealerName" />
+              <constructor-arg value="serviceprovider.name" />
+              <constructor-arg value="15" />
+              <constructor-arg value="string" />
+              <constructor-arg value="serviceprovider.name" />
+              <constructor-arg value="true" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.dealerRequestedPart.location_id" />
+              <constructor-arg value="serviceprovider.id" />
+              <constructor-arg value="10" />
+              <constructor-arg value="string" />
+              <constructor-arg value="serviceprovider.id" />
+              <constructor-arg value="false" />
+              <constructor-arg value="true" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+            </bean>
+          </list>
+        </entry>
+        <entry key="Prepare Due Parts">
+          <list>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.dueParts.return_location" />
+              <constructor-arg value="location.code" />
+              <constructor-arg value="15" />
+              <constructor-arg value="string" />
+              <constructor-arg value="location.code" />
+              <constructor-arg value="true" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.dueParts.return_location_id" />
+              <constructor-arg value="location.id" />
+              <constructor-arg value="10" />
+              <constructor-arg value="string" />
+              <constructor-arg value="location.id" />
+              <constructor-arg value="false" />
+              <constructor-arg value="true" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+            </bean>
+          </list>
+        </entry>
+        
+        
+        <entry key="Required Parts From Dealer">
+          <list>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.common.dealerName" />
+              <constructor-arg value="serviceprovider.name" />
+              <constructor-arg value="15" />
+              <constructor-arg value="string" />
+              <constructor-arg value="serviceprovider.name" />
+              <constructor-arg value="true" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.dealerRequestedPart.location_id" />
+              <constructor-arg value="serviceprovider.id" />
+              <constructor-arg value="10" />
+              <constructor-arg value="string" />
+              <constructor-arg value="serviceprovider.id" />
+              <constructor-arg value="false" />
+              <constructor-arg value="true" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+            </bean>
+          </list>
+        </entry>
+        <entry key="WPRA Generated For Parts">
+          <list>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.common.wpra" />
+              <constructor-arg value="wpra.wpraNumber" />
+              <constructor-arg value="15" />
+              <constructor-arg value="string" />
+              <constructor-arg value="wpra.wpraNumber" />
+              <constructor-arg value="true" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.common.wpraid" />
+              <constructor-arg value="wpra.id" />
+              <constructor-arg value="10" />
+              <constructor-arg value="number" />
+              <constructor-arg value="wpra.id" />
+              <constructor-arg value="false" />
+              <constructor-arg value="true" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.wpra.wpra_date" />
+              <constructor-arg value="wpra.generateDate" />
+              <constructor-arg value="16" />
+              <constructor-arg value="date" />
+              <constructor-arg value="wpra.generateDateForDisplay" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.dueParts.return_location" />
+              <constructor-arg value="wpra.destination.code" />
+              <constructor-arg value="16" />
+              <constructor-arg value="string" />
+              <constructor-arg value="wpra.destination.code" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+            </bean>
+             <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.common.dealerName" />
+              <constructor-arg value="wpra.shippedBy.name" />
+              <constructor-arg value="16" />
+              <constructor-arg value="string" />
+              <constructor-arg value="wpra.shippedBy.name" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+            </bean>
+          </list>
+        </entry>
+        <entry key="WPRA Search For Parts">
+          <list>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.common.wpra" />
+              <constructor-arg value="pr.wpra.wpraNumber" />
+              <constructor-arg value="15" />
+              <constructor-arg value="number" />
+              <constructor-arg value="pr.wpra.wpraNumber" />
+              <constructor-arg value="true" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.common.wpraid" />
+              <constructor-arg value="pr.wpra.id" />
+              <constructor-arg value="10" />
+              <constructor-arg value="string" />
+              <constructor-arg value="pr.wpra.id" />
+              <constructor-arg value="false" />
+              <constructor-arg value="true" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.wpra.wpra_date" />
+              <constructor-arg value="pr.wpra.generateDate" />
+              <constructor-arg value="16" />
+              <constructor-arg value="date" />
+              <constructor-arg value="pr.wpra.generateDateForDisplay" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.dueParts.return_location" />
+              <constructor-arg value="pr.wpra.destination.code" />
+              <constructor-arg value="10" />
+              <constructor-arg value="string" />
+              <constructor-arg value="pr.wpra.destination.code" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+            </bean>
+             <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.common.dealerName" />
+              <constructor-arg value="pr.wpra.shippedBy.name" />
+              <constructor-arg value="16" />
+              <constructor-arg value="string" />
+              <constructor-arg value="pr.wpra.shippedBy.name" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+            </bean>
+            <!--<bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.common.height" />
+              <constructor-arg value="pr.shipment.height" />
+              <constructor-arg value="8" />
+              <constructor-arg value="string" />
+              <constructor-arg value="pr.shipment.height" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.common.weight" />
+              <constructor-arg value="pr.shipment.weight" />
+              <constructor-arg value="8" />
+              <constructor-arg value="string" />
+              <constructor-arg value="pr.shipment.weight" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.common.breadth" />
+              <constructor-arg value="pr.shipment.breadth" />
+              <constructor-arg value="8" />
+              <constructor-arg value="string" />
+              <constructor-arg value="pr.shipment.breadth" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.common.length" />
+              <constructor-arg value="pr.shipment.length" />
+              <constructor-arg value="8" />
+              <constructor-arg value="string" />
+              <constructor-arg value="pr.shipment.length" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+            </bean>-->
+          </list>
+        </entry>
+        <entry key="Third Party Due Parts">
+          <list>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.dueParts.return_location" />
+              <constructor-arg value="location.code" />
+              <constructor-arg value="15" />
+              <constructor-arg value="string" />
+              <constructor-arg value="location.code" />
+              <constructor-arg value="true" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.dueParts.return_location_id" />
+              <constructor-arg value="location.id" />
+              <constructor-arg value="10" />
+              <constructor-arg value="string" />
+              <constructor-arg value="location.id" />
+              <constructor-arg value="false" />
+              <constructor-arg value="true" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+            </bean>
+          </list>
+        </entry>
+        <entry key="Overdue Parts"><!--  Duplication. Need to fix it. -->
+          <list>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.dueParts.return_location" />
+              <constructor-arg value="location.code" />
+              <constructor-arg value="15" />
+              <constructor-arg value="string" />
+              <constructor-arg value="location.code" />
+              <constructor-arg value="true" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.dueParts.return_location_id" />
+              <constructor-arg value="location.id" />
+              <constructor-arg value="10" />
+              <constructor-arg value="string" />
+              <constructor-arg value="location.id" />
+              <constructor-arg value="false" />
+              <constructor-arg value="true" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+            </bean>
+          </list>
+        </entry>
+        <entry key="Shipment Generated">
+          <list>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.shipmentGenerated.shipment_no" />
+              <constructor-arg value="shipment.transientId" />
+              <constructor-arg value="16" />
+              <constructor-arg value="string" />
+              <constructor-arg value="shipment.transientId" />
+              <constructor-arg value="true" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.duePartsReceipt.shipment_id" />
+              <constructor-arg value="shipment.id" />
+              <constructor-arg value="0" />
+              <constructor-arg value="string" />
+              <constructor-arg value="shipment.id" />
+              <constructor-arg value="false" />
+              <constructor-arg value="true" />
+              <constructor-arg value="true" />
+              <constructor-arg value="false" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.dueParts.return_location" />
+              <constructor-arg value="shipment.destination.code" />
+              <constructor-arg value="16" />
+              <constructor-arg value="string" />
+              <constructor-arg value="shipment.destination.code" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+            </bean>
+          </list>
+        </entry>
+        <entry key="Due Parts Receipt_claim">
+          <list>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.dueParts.claim_no" />
+              <constructor-arg value="claim.id" />
+              <constructor-arg value="16" />
+              <constructor-arg value="number" />
+              <constructor-arg value="claim.id" />
+              <constructor-arg value="false" />
+              <constructor-arg value="true" />
+              <constructor-arg value="true" />
+              <constructor-arg value="false" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.dueParts.claim_no" />
+              <constructor-arg value="claim.claimNumber" />
+              <constructor-arg value="16" />
+              <constructor-arg value="string" />
+              <constructor-arg value="claim.claimNumber" />
+              <constructor-arg value="true" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.dueParts.serial_no" />
+              <constructor-arg
+                value="claim.itemReference.referredInventoryItem.serialNumber" />
+              <constructor-arg value="16" />
+              <constructor-arg value="String" />
+              <constructor-arg value="claim.itemReference.referredInventoryItem.serialNumber" />
+              <constructor-arg value="48" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.dueParts.model_no" />
+              <constructor-arg
+                value="claim.itemReference.unserializedItem.model.name" />
+              <constructor-arg value="16" />
+              <constructor-arg value="String" />
+              <constructor-arg value="claim.itemReference.unserializedItem.model.name" />
+              <constructor-arg value="48" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.common.dealerName" />
+              <constructor-arg value="claim.forDealer.name" />
+              <constructor-arg value="16" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.duePartsInspection.causalpart" />
+              <constructor-arg
+                value="claim.serviceInformation.causalPart.number" />
+              <constructor-arg value="16" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.duePartsInspection.faultcode" />
+              <constructor-arg
+                value="claim.serviceInformation.faultCode" />
+              <constructor-arg value="16" />
+            </bean>
+          </list>
+        </entry>
+        <entry key="Due Parts Receipt_shipment">
+          <list>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.duePartsReceipt.shipment_no" />
+              <constructor-arg value="shipment.transientId" />
+              <constructor-arg value="16" />
+              <constructor-arg value="string" />
+              <constructor-arg value="shipment.transientId" />
+              <constructor-arg value="true" />
+              <constructor-arg value="true" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.dueParts.return_location" />
+              <constructor-arg value="shipment.destination.code" />
+              <constructor-arg value="16" />
+              <constructor-arg value="string" />
+              <constructor-arg value="shipment.destination.code" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.duePartsReceipt.carrier" />
+              <constructor-arg value="shipment.carrier.name" />
+              <constructor-arg value="16" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.duePartsReceipt.tracking_no" />
+              <constructor-arg value="shipment.trackingId" />
+              <constructor-arg value="16" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.common.dealerName" />
+              <constructor-arg value="shipment.shippedBy.name" />
+              <constructor-arg value="18" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.duePartsReceipt.dealerPartShipDate" />
+              <constructor-arg value="shipment.shipmentDate" />
+              <constructor-arg value="16" />
+              <constructor-arg value="date" />
+              <constructor-arg value="shipment.shipmentDateForDisplay" />
+            </bean>
+          </list>
+        </entry>
+        
+               <!--  Supplier Recovery CR TKTSA-817 -->
+        
+        <entry key="New_recoveryClaim">
+          <list>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.common.recClaimNo" />
+              <constructor-arg value="id" />
+              <constructor-arg value="16" />
+              <constructor-arg value="number" />
+              <constructor-arg value="id" />
+              <constructor-arg value="false" />
+              <constructor-arg value="true" />
+              <constructor-arg value="true" />
+              <constructor-arg value="false" />
+            </bean>            
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.common.recClaimNo" />
+              <constructor-arg value="recoveryClaimNumber" />
+              <constructor-arg value="16" />
+              <constructor-arg value="string" />
+              <constructor-arg value="recoveryClaimNumber" />
+              <constructor-arg value="true" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+            </bean>
+             <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.supplier.recoveryAmount" />
+              <constructor-arg value="totalRecoveredAmount" />
+              <constructor-arg value="15" />
+              <constructor-arg value="Money" />
+              <constructor-arg value="totalRecoveredAmount" />
+              <constructor-arg value="48" />
+            </bean>         
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.newClaim.createdOn" />
+              <constructor-arg value="d.createdOn" />
+              <constructor-arg value="16" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="label.inboxView.lastModifiedStatusDate" />
+              <constructor-arg value="updatedDate" />
+              <constructor-arg value="18" />
+            </bean>
+             <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.common.status" />
+              <constructor-arg value="recoveryClaimState.state" />
+              <constructor-arg value="18" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.sraReview.location" />
+              <constructor-arg value="returnLocation" />
+              <constructor-arg value="18" />
+            </bean>            
+          </list>
+        </entry>
+        <entry key="On Hold For Part Return_recoveryClaim">
+          <list>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.common.recClaimNo" />
+              <constructor-arg value="id" />
+              <constructor-arg value="0" />
+              <constructor-arg value="number" />
+              <constructor-arg value="id" />
+              <constructor-arg value="false" />
+              <constructor-arg value="true" />
+              <constructor-arg value="true" />
+              <constructor-arg value="false" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.common.recClaimNo" />
+              <constructor-arg value="recoveryClaimNumber" />
+              <constructor-arg value="15" />
+              <constructor-arg value="string" />
+              <constructor-arg value="recoveryClaimNumber" />
+              <constructor-arg value="true" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.supplier.recoveryAmount" />
+              <constructor-arg value="totalRecoveredAmount" />
+              <constructor-arg value="15" />
+              <constructor-arg value="Money" />
+              <constructor-arg value="totalRecoveredAmount" />
+              <constructor-arg value="48" />
+            </bean>         
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.newClaim.createdOn" />
+              <constructor-arg value="d.createdOn" />
+              <constructor-arg value="16" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="label.inboxView.lastModifiedStatusDate" />
+              <constructor-arg value="updatedDate" />
+              <constructor-arg value="18" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.common.status" />
+              <constructor-arg value="recoveryClaimState.state" />
+              <constructor-arg value="18" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.sraReview.location" />
+              <constructor-arg value="returnLocation" />
+              <constructor-arg value="18" />
+            </bean>
+          </list>
+       </entry>
+       <entry key="On Hold For Part Return">
+          <list>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.common.recClaimNo" />
+              <constructor-arg value="id" />
+              <constructor-arg value="0" />
+              <constructor-arg value="number" />
+              <constructor-arg value="id" />
+              <constructor-arg value="false" />
+              <constructor-arg value="true" />
+              <constructor-arg value="true" />
+              <constructor-arg value="false" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.common.recClaimNo" />
+              <constructor-arg value="recoveryClaimNumber" />
+              <constructor-arg value="15" />
+              <constructor-arg value="string" />
+              <constructor-arg value="recoveryClaimNumber" />
+              <constructor-arg value="true" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.supplier.recoveryAmount" />
+              <constructor-arg value="totalRecoveredAmount" />
+              <constructor-arg value="15" />
+              <constructor-arg value="Money" />
+              <constructor-arg value="totalRecoveredAmount" />
+              <constructor-arg value="48" />
+            </bean>         
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.newClaim.createdOn" />
+              <constructor-arg value="d.createdOn" />
+              <constructor-arg value="16" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="label.inboxView.lastModifiedStatusDate" />
+              <constructor-arg value="updatedDate" />
+              <constructor-arg value="18" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.common.status" />
+              <constructor-arg value="recoveryClaimState.state" />
+              <constructor-arg value="18" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.sraReview.location" />
+              <constructor-arg value="returnLocation" />
+              <constructor-arg value="18" />
+            </bean>
+          </list>
+       </entry>
+      	<entry key="New_part">
+		<list>
+		<bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.requiredPartsReturn.partNumber" />
+              <constructor-arg value="id" />
+              <constructor-arg value="0" />
+              <constructor-arg value="number" />
+              <constructor-arg value="id" />
+              <constructor-arg value="true" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+            </bean>
+		
+		<bean class="tavant.twms.web.inbox.SummaryTableColumn">
+			<constructor-arg value="columnTitle.requiredPartsReturn.partNumber"/>
+			<constructor-arg value="recoverablePart.supplierItem.number" />
+			<constructor-arg value="16" />
+			<constructor-arg value="string" />
+			<constructor-arg value="false" />
+			<constructor-arg value="true" />
+			<constructor-arg value="false" />
+			<constructor-arg value="false" />	
+			<constructor-arg value="48" />
+		</bean>
+		<bean class="tavant.twms.web.inbox.SummaryTableColumn">
+			<constructor-arg value="columnTitle.partInventory.partDescrition"/>
+			<constructor-arg value="recoverablePart.supplierItem.description" />
+			<constructor-arg value="16" />
+			<constructor-arg value="string" />
+			<constructor-arg value="false" />
+			<constructor-arg value="false" />
+			<constructor-arg value="false" />
+			<constructor-arg value="false" />
+			<constructor-arg value="48" />
+		</bean>
+		<bean class="tavant.twms.web.inbox.SummaryTableColumn">
+			<constructor-arg value="columnTitle.newClaim.createdOn" />
+			<constructor-arg value="d.createdOn" />
+			<constructor-arg value="18" />
+            <constructor-arg value="date" />
+		</bean>
+		<bean class="tavant.twms.web.inbox.SummaryTableColumn">
+			<constructor-arg value="label.inboxView.lastModifiedStatusDate" />
+			<constructor-arg value="d.updatedOn" />
+			<constructor-arg value="18" />
+            <constructor-arg value="date" />
+		</bean>
+		<bean class="tavant.twms.web.inbox.SummaryTableColumn">
+			<constructor-arg value="columnTitle.common.status" />
+			<constructor-arg value="status.status" />
+			<constructor-arg value="18" />
+			<constructor-arg value="string" />
+		</bean>
+		</list>
+  	</entry>
+   <!--  Supplier Recovery CR -->
+        
+        
+        <entry key="Parts Shipped">
+          <list>
+             <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.duePartsReceipt.shipment_id" />
+              <constructor-arg value="shipment.id" />
+              <constructor-arg value="0" />
+              <constructor-arg value="string" />
+              <constructor-arg value="shipment.id" />
+              <constructor-arg value="false" />
+              <constructor-arg value="true" />
+              <constructor-arg value="true" />
+              <constructor-arg value="false" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.duePartsReceipt.shipment_no" />
+              <constructor-arg value="shipment.transientId" />
+              <constructor-arg value="16" />
+              <constructor-arg value="string" />
+              <constructor-arg value="shipment.transientId" />
+              <constructor-arg value="true" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.dueParts.return_location" />
+              <constructor-arg value="shipment.destination.code" />
+              <constructor-arg value="16" />
+              <constructor-arg value="string" />
+              <constructor-arg value="shipment.destination.code" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.duePartsReceipt.carrier" />
+              <constructor-arg value="shipment.carrier.name" />
+              <constructor-arg value="16" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.duePartsReceipt.tracking_no" />
+              <constructor-arg value="shipment.trackingId" />
+              <constructor-arg value="16" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.duePartsReceipt.shipment_date" />
+              <constructor-arg value="shipment.shipmentDateForPartsCollected" />
+              <constructor-arg value="16" />
+              <constructor-arg value="date" />
+            </bean>
+          </list>
+        </entry>
+        <entry key="Due Parts Inspection_claim">
+          <list>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.dueParts.claim_no" />
+              <constructor-arg value="claim.id" />
+              <constructor-arg value="16" />
+              <constructor-arg value="number" />
+              <constructor-arg value="claim.id" />
+              <constructor-arg value="false" />
+              <constructor-arg value="true" />
+              <constructor-arg value="true" />
+              <constructor-arg value="false" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.dueParts.claim_no" />
+              <constructor-arg value="claim.claimNumber" />
+              <constructor-arg value="16" />
+              <constructor-arg value="string" />
+              <constructor-arg value="claim.claimNumber" />
+              <constructor-arg value="true" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.dueParts.serial_no" />
+              <constructor-arg
+                value="claim.itemReference.referredInventoryItem.serialNumber" />
+              <constructor-arg value="16" />
+              <constructor-arg value="String" />
+              <constructor-arg value="claim.itemReference.referredInventoryItem.serialNumber" />
+              <constructor-arg value="48" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.dueParts.model_no" />
+              <constructor-arg
+                value="claim.itemReference.unserializedItem.model.name" />
+              <constructor-arg value="16" />
+              <constructor-arg value="String" />
+              <constructor-arg value="claim.itemReference.unserializedItem.model.name" />
+              <constructor-arg value="48" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.common.dealerName" />
+              <constructor-arg value="claim.forDealer.name" />
+              <constructor-arg value="16" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.duePartsInspection.causalpart" />
+              <constructor-arg
+                value="claim.serviceInformation.causalPart.number" />
+              <constructor-arg value="16" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.duePartsInspection.faultcode" />
+              <constructor-arg
+                value="claim.serviceInformation.faultCode" />
+              <constructor-arg value="16" />
+            </bean>
+          </list>
+        </entry>
+        <entry key="Due Parts Inspection_shipment">
+          <list>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.duePartsReceipt.shipment_no" />
+              <constructor-arg value="shipment.transientId" />
+              <constructor-arg value="12" />
+              <constructor-arg value="string" />
+              <constructor-arg value="shipment.transientId" />
+              <constructor-arg value="true" />
+              <constructor-arg value="true" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.dueParts.return_location" />
+              <constructor-arg value="shipment.destination.code" />
+              <constructor-arg value="16" />
+              <constructor-arg value="string" />
+              <constructor-arg value="shipment.destination.code" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.duePartsReceipt.carrier" />
+              <constructor-arg value="shipment.carrier.name" />
+              <constructor-arg value="10" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.duePartsReceipt.tracking_no" />
+              <constructor-arg value="shipment.trackingId" />
+              <constructor-arg value="12" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.common.dealerName" />
+              <constructor-arg value="shipment.shippedBy.name" />
+              <constructor-arg value="18" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.duePartsReceipt.dealerPartShipDate" />
+              <constructor-arg value="shipment.shipmentDate" />
+              <constructor-arg value="16" />
+              <constructor-arg value="date" />
+              <constructor-arg value="shipment.shipmentDateForDisplay" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.duePartsReceipt.receiptDate" />
+              <constructor-arg value="shipment.receiptDate" />
+              <constructor-arg value="16" />
+              <constructor-arg value="date" />
+              <constructor-arg value="shipment.receiptDateForDisplay" />
+            </bean>
+          </list>
+        </entry>
+        <entry key="For Recovery">
+          <list>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.common.recClaimNo" />
+              <constructor-arg value="id" />
+              <constructor-arg value="0" />
+              <constructor-arg value="number" />
+              <constructor-arg value="id" />
+              <constructor-arg value="false" />
+              <constructor-arg value="true" />
+              <constructor-arg value="true" />
+              <constructor-arg value="false" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.common.recClaimNo" />
+              <constructor-arg value="recoveryClaimNumber" />
+              <constructor-arg value="15" />
+              <constructor-arg value="string" />
+              <constructor-arg value="recoveryClaimNumber" />
+              <constructor-arg value="true" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+            </bean>            
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.listContracts.supplier_name" />
+              <constructor-arg value="contract.supplier.name" />
+              <constructor-arg value="20" />
+              <constructor-arg value="string" />
+              <constructor-arg value="contract.supplier.name" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.supplier.supplierNumber" />
+              <constructor-arg value="contract.supplier.supplierNumber" />
+              <constructor-arg value="15" />
+              <constructor-arg value="string" />
+              <constructor-arg value="contract.supplier.supplierNumber" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.supplier.recoveryAmount" />
+              <constructor-arg value="totalRecoveredAmount" />
+              <constructor-arg value="15" />
+              <constructor-arg value="Money" />
+              <constructor-arg value="totalRecoveredAmount" />
+              <constructor-arg value="48" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.newClaim.createdOn" />
+              <constructor-arg value="d.createdOn" />
+              <constructor-arg value="10" />
+              <constructor-arg value="date" />
+              <constructor-arg value="d.createdOn" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="label.inboxView.claimPartReturnStatus" />
+              <constructor-arg value="partReturnStatus" />
+              <constructor-arg value="15" />
+              <constructor-arg value="String" />
+              <constructor-arg value="partReturnStatus" />
+              <constructor-arg value="48" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.common.status" />
+              <constructor-arg value="recoveryClaimState.state" />
+              <constructor-arg value="15" />
+                <constructor-arg value="String" />
+              <constructor-arg value="recoveryClaimState.state" />
+              <constructor-arg value="48" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="label.inboxView.lastModifiedStatusDate" />
+              <constructor-arg value="updatedDate" />
+              <constructor-arg value="10" />
+              <constructor-arg value="date" />
+              <constructor-arg value="updatedDate" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.sraReview.location" />
+              <constructor-arg value="returnLocation" />
+              <constructor-arg value="16" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.itemSearch.description" />
+              <constructor-arg value="claim.itemReference.unserializedItem.product.name" />
+              <constructor-arg value="15" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.common.model" />
+              <constructor-arg value="claim.itemReference.unserializedItem.model.name" />
+              <constructor-arg value="15" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.duePartsInspection.faultcode" />
+              <constructor-arg value="claim.serviceInformation.faultCode" />
+              <constructor-arg value="15" />
+            </bean>
+          </list>
+        </entry>
+        <entry key="On Hold">
+          <list>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.common.recClaimNo" />
+              <constructor-arg value="id" />
+              <constructor-arg value="20" />
+              <constructor-arg value="number" />
+              <constructor-arg value="id" />
+              <constructor-arg value="false" />
+              <constructor-arg value="true" />
+              <constructor-arg value="true" />
+              <constructor-arg value="false" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.common.recClaimNo" />
+              <constructor-arg value="recoveryClaimNumber" />
+              <constructor-arg value="15" />
+              <constructor-arg value="string" />
+              <constructor-arg value="recoveryClaimNumber" />
+              <constructor-arg value="true" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+            </bean>            
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.listContracts.supplier_name" />
+              <constructor-arg value="contract.supplier.name" />
+              <constructor-arg value="20" />
+              <constructor-arg value="string" />
+              <constructor-arg value="contract.supplier.name" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.supplier.supplierNumber" />
+              <constructor-arg value="contract.supplier.supplierNumber" />
+              <constructor-arg value="15" />
+              <constructor-arg value="string" />
+              <constructor-arg value="contract.supplier.supplierNumber" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.duePartsInspection.causalpart" />
+              <constructor-arg value="claim.serviceInformation.causalPart.number" />
+              <constructor-arg value="15" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.supplier.recoveryAmount" />
+              <constructor-arg value="totalRecoveredAmount" />
+              <constructor-arg value="15" />
+              <constructor-arg value="Money" />
+              <constructor-arg value="totalRecoveredAmount" />
+              <constructor-arg value="48" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.newClaim.createdOn" />
+              <constructor-arg value="d.createdOn" />
+              <constructor-arg value="10" />
+              <constructor-arg value="date" />
+              <constructor-arg value="d.createdOn" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="label.inboxView.claimPartReturnStatus" />
+              <constructor-arg value="partReturnStatus" />
+              <constructor-arg value="15" />
+              <constructor-arg value="String" />
+              <constructor-arg value="partReturnStatus" />
+              <constructor-arg value="48" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="label.inboxView.lastModifiedStatusDate" />
+              <constructor-arg value="updatedDate" />
+              <constructor-arg value="10" />
+              <constructor-arg value="date" />
+              <constructor-arg value="updatedDate" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.common.status" />
+              <constructor-arg value="recoveryClaimState.state" />
+              <constructor-arg value="15" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.sraReview.location" />
+              <constructor-arg value="returnLocation" />
+              <constructor-arg value="16" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.supplyRecoveryAdmin.product" />
+              <constructor-arg value="claim.itemReference.unserializedItem.product.name" />
+              <constructor-arg value="15" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.common.model" />
+              <constructor-arg value="claim.itemReference.unserializedItem.model.name" />
+              <constructor-arg value="15" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.duePartsInspection.faultcode" />
+              <constructor-arg value="claim.serviceInformation.faultCode" />
+              <constructor-arg value="15" />
+            </bean>
+          </list>
+        </entry>
+        <entry key="Transferred">
+          <list>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.supplyRecoveryAdmin.claim_no" />
+              <constructor-arg value="id" />
+              <constructor-arg value="0" />
+              <constructor-arg value="number" />
+              <constructor-arg value="id" />
+              <constructor-arg value="false" />
+              <constructor-arg value="true" />
+              <constructor-arg value="true" />
+              <constructor-arg value="false" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.supplyRecoveryAdmin.recoveryClaim_no" />
+              <constructor-arg value="recoveryClaimNumber" />
+              <constructor-arg value="15" />
+              <constructor-arg value="string" />
+              <constructor-arg value="recoveryClaimNumber" />
+              <constructor-arg value="true" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+            </bean>            
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.listContracts.supplier_name" />
+              <constructor-arg value="contract.supplier.name" />
+              <constructor-arg value="20" />
+               <constructor-arg value="string" />
+              <constructor-arg value="contract.supplier.name" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.supplier.supplierNumber" />
+              <constructor-arg value="contract.supplier.supplierNumber" />
+              <constructor-arg value="10" />
+              <constructor-arg value="string" />
+              <constructor-arg value="contract.supplier.supplierNumber" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.duePartsInspection.causalpart" />
+              <constructor-arg value="claim.serviceInformation.causalPart.number" />
+              <constructor-arg value="10" />
+              <constructor-arg value="string" />
+              <constructor-arg value="claim.serviceInformation.causalPart.number" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.supplier.recoveryAmount" />
+              <constructor-arg value="totalRecoveredAmount" />
+              <constructor-arg value="15" />
+              <constructor-arg value="Money" />
+              <constructor-arg value="totalRecoveredAmount" />
+              <constructor-arg value="48" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.newClaim.createdOn" />
+              <constructor-arg value="d.createdOn" />
+              <constructor-arg value="10" />
+              <constructor-arg value="date" />
+              <constructor-arg value="d.createdOn" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="label.inboxView.claimPartReturnStatus" />
+              <constructor-arg value="partReturnStatus" />
+              <constructor-arg value="15" />
+              <constructor-arg value="String" />
+              <constructor-arg value="partReturnStatus" />
+              <constructor-arg value="48" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="label.inboxView.lastModifiedStatusDate" />
+              <constructor-arg value="updatedDate" />
+              <constructor-arg value="10" />
+              <constructor-arg value="date" />
+              <constructor-arg value="updatedDate" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.common.status" />
+              <constructor-arg value="recoveryClaimState.state" />
+              <constructor-arg value="15" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.sraReview.location" />
+              <constructor-arg value="returnLocation" />
+              <constructor-arg value="16" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.supplyRecoveryAdmin.product" />
+              <constructor-arg value="claim.itemReference.unserializedItem.product.name" />
+              <constructor-arg value="15" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.common.model" />
+              <constructor-arg value="claim.itemReference.unserializedItem.model.name" />
+              <constructor-arg value="15" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.duePartsInspection.faultcode" />
+              <constructor-arg value="claim.serviceInformation.faultCode" />
+              <constructor-arg value="15" />
+            </bean>
+          </list>
+        </entry>
+        <entry key="Not For Recovery">
+          <list>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.supplyRecoveryAdmin.claim_no" />
+              <constructor-arg value="id" />
+              <constructor-arg value="0" />
+              <constructor-arg value="number" />
+              <constructor-arg value="id" />
+              <constructor-arg value="false" />
+              <constructor-arg value="true" />
+              <constructor-arg value="true" />
+              <constructor-arg value="false" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.common.recClaimNo" />
+              <constructor-arg value="recoveryClaimNumber" />
+              <constructor-arg value="15" />
+              <constructor-arg value="string" />
+              <constructor-arg value="recoveryClaimNumber" />
+              <constructor-arg value="true" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+            </bean>            
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.listContracts.supplier_name" />
+              <constructor-arg value="contract.supplier.name" />
+              <constructor-arg value="20" />
+              <constructor-arg value="string" />
+              <constructor-arg value="contract.supplier.name" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.supplier.supplierNumber" />
+              <constructor-arg value="contract.supplier.supplierNumber" />
+              <constructor-arg value="15" />
+              <constructor-arg value="string" />
+              <constructor-arg value="contract.supplier.supplierNumber" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.duePartsInspection.causalpart" />
+              <constructor-arg value="claim.serviceInformation.causalPart.number" />
+              <constructor-arg value="15" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.supplier.recoveryAmount" />
+              <constructor-arg value="totalRecoveredAmount" />
+              <constructor-arg value="15" />
+              <constructor-arg value="Money" />
+              <constructor-arg value="totalRecoveredAmount" />
+              <constructor-arg value="48" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.newClaim.createdOn" />
+              <constructor-arg value="d.createdOn" />
+              <constructor-arg value="10" />
+              <constructor-arg value="date" />
+              <constructor-arg value="d.createdOn" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="label.inboxView.lastModifiedStatusDate" />
+              <constructor-arg value="d.updatedOn" />
+              <constructor-arg value="10" />
+              <constructor-arg value="date" />
+              <constructor-arg value="d.updatedOn" />
+              <constructor-arg value="48" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.common.status" />
+              <constructor-arg value="recoveryClaimState.state" />
+              <constructor-arg value="15" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.sraReview.location" />
+              <constructor-arg value="returnLocation" />
+              <constructor-arg value="15" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.supplyRecoveryAdmin.product" />
+              <constructor-arg value="claim.itemReference.unserializedItem.product.name" />
+              <constructor-arg value="15" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.common.model" />
+              <constructor-arg value="claim.itemReference.unserializedItem.model.name" />
+              <constructor-arg value="15" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.duePartsInspection.faultcode" />
+              <constructor-arg value="claim.serviceInformation.faultCode" />
+              <constructor-arg value="15" />
+            </bean>
+          </list>
+        </entry>
+        <entry key="Not For Recovery Response">
+          <list>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.common.recClaimNo" />
+              <constructor-arg value="id" />
+              <constructor-arg value="0" />
+              <constructor-arg value="number" />
+              <constructor-arg value="id" />
+              <constructor-arg value="false" />
+              <constructor-arg value="true" />
+              <constructor-arg value="true" />
+              <constructor-arg value="false" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.common.recClaimNo" />
+              <constructor-arg value="recoveryClaimNumber" />
+              <constructor-arg value="15" />
+              <constructor-arg value="string" />
+              <constructor-arg value="recoveryClaimNumber" />
+              <constructor-arg value="true" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+            </bean>            
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.listContracts.supplier_name" />
+              <constructor-arg value="contract.supplier.name" />
+              <constructor-arg value="20" />
+              <constructor-arg value="string" />
+              <constructor-arg value="contract.supplier.name" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.supplier.supplierNumber" />
+              <constructor-arg value="contract.supplier.supplierNumber" />
+              <constructor-arg value="10" />
+              <constructor-arg value="string" />
+              <constructor-arg value="contract.supplier.supplierNumber" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.duePartsInspection.causalpart" />
+              <constructor-arg value="claim.serviceInformation.causalPart.number" />
+              <constructor-arg value="15" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.supplier.recoveryAmount" />
+              <constructor-arg value="totalRecoveredAmount" />
+              <constructor-arg value="15" />
+              <constructor-arg value="Money" />
+              <constructor-arg value="totalRecoveredAmount" />
+              <constructor-arg value="48" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="label.inboxView.claimPartReturnStatus" />
+              <constructor-arg value="partReturnStatus" />
+              <constructor-arg value="15" />
+              <constructor-arg value="String" />
+              <constructor-arg value="partReturnStatus" />
+              <constructor-arg value="48" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.common.status" />
+              <constructor-arg value="recoveryClaimState.state" />
+              <constructor-arg value="15" />
+              <constructor-arg value="String" />
+              <constructor-arg value="recoveryClaimState.state" />
+              <constructor-arg value="48" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.newClaim.createdOn" />
+              <constructor-arg value="d.createdOn" />
+              <constructor-arg value="10" />
+              <constructor-arg value="date" />
+              <constructor-arg value="d.createdOn" />
+              <constructor-arg value="48" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="label.inboxView.lastModifiedStatusDate" />
+              <constructor-arg value="updatedDate" />
+              <constructor-arg value="10" />
+              <constructor-arg value="date" />
+              <constructor-arg value="updatedDate" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.supplyRecoveryAdmin.product" />
+              <constructor-arg value="claim.itemReference.unserializedItem.product.name" />
+              <constructor-arg value="15" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.common.model" />
+              <constructor-arg value="claim.itemReference.unserializedItem.model.name" />
+              <constructor-arg value="15" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.duePartsInspection.faultcode" />
+              <constructor-arg value="claim.serviceInformation.faultCode" />
+              <constructor-arg value="15" />
+            </bean>
+           </list>
+        </entry>
+        <entry key="Not For Recovery Request">
+          <list>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.supplyRecoveryAdmin.claim_no" />
+              <constructor-arg value="id" />
+              <constructor-arg value="0" />
+              <constructor-arg value="number" />
+              <constructor-arg value="id" />
+              <constructor-arg value="false" />
+              <constructor-arg value="true" />
+              <constructor-arg value="true" />
+              <constructor-arg value="false" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.common.recClaimNo" />
+              <constructor-arg value="recoveryClaimNumber" />
+              <constructor-arg value="15" />
+              <constructor-arg value="string" />
+              <constructor-arg value="recoveryClaimNumber" />
+              <constructor-arg value="true" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+            </bean>            
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.listContracts.supplier_name" />
+              <constructor-arg value="contract.supplier.name" />
+              <constructor-arg value="20" />
+              <constructor-arg value="string" />
+              <constructor-arg value="contract.supplier.name" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.supplier.supplierNumber" />
+              <constructor-arg value="contract.supplier.supplierNumber" />
+               <constructor-arg value="15" />
+               <constructor-arg value="string" />
+              <constructor-arg value="contract.supplier.supplierNumber" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.duePartsInspection.causalpart" />
+              <constructor-arg value="claim.serviceInformation.causalPart.number" />
+              <constructor-arg value="15" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.supplier.recoveryAmount" />
+              <constructor-arg value="totalRecoveredAmount" />
+              <constructor-arg value="15" />
+              <constructor-arg value="Money" />
+              <constructor-arg value="totalRecoveredAmount" />
+              <constructor-arg value="48" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.newClaim.createdOn" />
+              <constructor-arg value="recoveryClaim.d.createdOn" />
+              <constructor-arg value="10" />
+              <constructor-arg value="date" />
+              <constructor-arg value="d.createdOn" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="label.inboxView.claimPartReturnStatus" />
+              <constructor-arg value="partReturnStatus" />
+              <constructor-arg value="15" />
+              <constructor-arg value="String" />
+              <constructor-arg value="partReturnStatus" />
+              <constructor-arg value="48" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="label.inboxView.lastModifiedStatusDate" />
+              <constructor-arg value="updatedDate" />
+              <constructor-arg value="10" />
+              <constructor-arg value="date" />
+              <constructor-arg value="updatedDate" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.common.status" />
+              <constructor-arg value="recoveryClaimState.state" />
+              <constructor-arg value="15" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.sraReview.location" />
+              <constructor-arg value="returnLocation" />
+              <constructor-arg value="16" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.supplyRecoveryAdmin.product" />
+              <constructor-arg value="claim.itemReference.unserializedItem.product.name" />
+              <constructor-arg value="15" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.common.model" />
+              <constructor-arg value="claim.itemReference.unserializedItem.model.name" />
+              <constructor-arg value="15" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.duePartsInspection.faultcode" />
+              <constructor-arg value="claim.serviceInformation.faultCode" />
+              <constructor-arg value="15" />
+            </bean>
+          </list>
+        </entry>
+		<entry key="Awaiting Shipment">
+			<list>
+				<bean class="tavant.twms.web.inbox.SummaryTableColumn">
+					<constructor-arg value="columnTitle.common.recClaimNo" />
+					<constructor-arg value="taskInstance.id" />
+					<constructor-arg value="0" />
+					<constructor-arg value="id" />
+					<constructor-arg value="id" />
+					<constructor-arg value="false" />
+					<constructor-arg value="true" />
+					<constructor-arg value="true" />
+					<constructor-arg value="false" />
+				</bean>
+				<bean class="tavant.twms.web.inbox.SummaryTableColumn">
+					<constructor-arg
+						value="columnTitle.common.recClaimNo" />
+					<constructor-arg value="recoveryClaim.recoveryClaimNumber" />
+					<constructor-arg value="15" />
+					<constructor-arg value="string" />
+					<constructor-arg
+						value="getVariable('recoveryClaim').recoveryClaimNumber" />
+					<constructor-arg value="true" />
+					<constructor-arg value="false" />
+					<constructor-arg value="false" />
+					<constructor-arg value="false" />
+				</bean>
+				<bean class="tavant.twms.web.inbox.SummaryTableColumn">
+					<constructor-arg value="columnTitle.claimsSentToShipper.product" />
+					<constructor-arg
+						value="claimedItems.itemReference.unserializedItem.product.name" />
+					<constructor-arg value="12" />
+					<constructor-arg value="string" />
+					<constructor-arg
+						value="claim.itemReference.unserializedItem.product.name" />
+					<constructor-arg value="true" />
+					<constructor-arg value="false" />
+					<constructor-arg value="false" />
+					<constructor-arg value="false" />
+				</bean>
+				<bean class="tavant.twms.web.inbox.SummaryTableColumn">
+					<constructor-arg value="columnTitle.claimsSentToShipper.model" />
+					<constructor-arg value="claimedItems.itemReference.unserializedItem.model.name" />
+					<constructor-arg value="12" />
+					<constructor-arg value="string" />
+					<constructor-arg
+						value="claim.itemReference.unserializedItem.model.name" />
+					<constructor-arg value="true" />
+					<constructor-arg value="false" />
+					<constructor-arg value="false" />
+					<constructor-arg value="false" />
+				</bean>
+				<bean class="tavant.twms.web.inbox.SummaryTableColumn">
+					<constructor-arg
+						value="columnTitle.common.status" />
+					<constructor-arg value="recoveryClaim.recoveryClaimState" />
+					<constructor-arg value="12" />
+					<constructor-arg value="string" />
+					<constructor-arg
+						value="getVariable('recoveryClaim').recoveryClaimState.state" />
+					<constructor-arg value="true" />
+					<constructor-arg value="false" />
+					<constructor-arg value="false" />
+					<constructor-arg value="false" />
+				</bean>
+				<bean class="tavant.twms.web.inbox.SummaryTableColumn">
+					<constructor-arg value="columnTitle.requiredPartsReturn.partNumber"></constructor-arg>
+					<constructor-arg value="opr.itemReference.unserializedItem.number" />
+					<constructor-arg value="12" />
+					<constructor-arg value="string" />
+					<constructor-arg
+						value="getVariable('supplierPartReturn').recoverablePart.oemPart.itemReference.unserializedItem.number" />
+					<constructor-arg value="true" />
+					<constructor-arg value="false" />
+					<constructor-arg value="false" />
+					<constructor-arg value="false" />
+				</bean>
+				
+			</list>
+		</entry>
+
+        <entry key="Part Not In Warehouse">
+          <list>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.supplyRecoveryAdmin.claim_no" />
+              <constructor-arg value="id" />
+              <constructor-arg value="0" />
+              <constructor-arg value="string" />
+              <constructor-arg value="id" />
+              <constructor-arg value="false" />
+              <constructor-arg value="true" />
+              <constructor-arg value="true" />
+              <constructor-arg value="false" />
+            </bean>
+             <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.common.recClaimNo" />
+              <constructor-arg value="recoveryClaimNumber" />
+              <constructor-arg value="15" />
+              <constructor-arg value="string" />
+              <constructor-arg value="recoveryClaimNumber" />
+              <constructor-arg value="true" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+            </bean>
+             <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.claimsSentToShipper.dealer_name" />
+              <constructor-arg value="claim.forDealer.name" />
+              <constructor-arg value="15" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.claimsSentToShipper.product" />
+              <constructor-arg
+                value="claim.itemReference.unserializedItem.product.name" />
+              <constructor-arg value="15" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.claimsSentToShipper.model" />
+              <constructor-arg
+                value="claim.itemReference.unserializedItem.model.name" />
+              <constructor-arg value="12" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.claimsSentToShipper.causal_part" />
+              <constructor-arg
+                value="claim.serviceInformation.causalPart.number" />
+              <constructor-arg value="15" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.claimsSentToShipper.fault_code" />
+              <constructor-arg
+                value="claim.serviceInformation.faultCode" />
+              <constructor-arg value="15" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.claimsSentToShipper.status" />
+              <constructor-arg value="recoveryClaimState.state" />
+              <constructor-arg value="10" />
+            </bean>
+          </list>
+        </entry>
+        <entry key="Awaiting Shipment To WareHouse">
+          <list>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.supplyRecoveryAdmin.claim_no" />
+              <constructor-arg value="id" />
+              <constructor-arg value="0" />
+              <constructor-arg value="number" />
+              <constructor-arg value="id" />
+              <constructor-arg value="false" />
+              <constructor-arg value="true" />
+              <constructor-arg value="true" />
+              <constructor-arg value="false" />
+            </bean>
+             <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.common.recClaimNo" />
+              <constructor-arg value="recoveryClaimNumber" />
+              <constructor-arg value="15" />
+              <constructor-arg value="string" />
+              <constructor-arg value="recoveryClaimNumber" />
+              <constructor-arg value="true" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.claimsSentToShipper.dealer_name" />
+              <constructor-arg value="claim.forDealer.name" />
+              <constructor-arg value="15" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.claimsSentToShipper.product" />
+              <constructor-arg
+                value="claim.itemReference.unserializedItem.product.name" />
+              <constructor-arg value="15" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.claimsSentToShipper.model" />
+              <constructor-arg
+                value="claim.itemReference.unserializedItem.model.name" />
+              <constructor-arg value="12" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.claimsSentToShipper.fault_code" />
+              <constructor-arg
+                value="claim.serviceInformation.faultCode" />
+              <constructor-arg value="15" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.claimsSentToShipper.status" />
+              <constructor-arg value="recoveryClaimState.state" />
+              <constructor-arg value="10" />
+            </bean>
+          </list>
+        </entry>
+	    <entry key="Routed to NMHG">
+          <list>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+					<constructor-arg value="columnTitle.common.recClaimNo" />
+					<constructor-arg value="id" />
+					<constructor-arg value="0" />
+					<constructor-arg value="id" />
+					<constructor-arg value="id" />
+					<constructor-arg value="false" />
+					<constructor-arg value="true" />
+					<constructor-arg value="true" />
+					<constructor-arg value="false" />
+				</bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+					<constructor-arg
+						value="columnTitle.common.recClaimNo" />
+					<constructor-arg value="recoveryClaim.recoveryClaimNumber" />
+					<constructor-arg value="15" />
+					<constructor-arg value="string" />
+					<constructor-arg
+						value="recoveryClaimNumber" />
+					<constructor-arg value="true" />
+					<constructor-arg value="false" />
+					<constructor-arg value="false" />
+					<constructor-arg value="false" />
+			</bean>
+			<bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.listContracts.supplier_name" />
+              <constructor-arg value="recoveryClaim.contract.supplier.name" />
+              <constructor-arg value="20" />
+              <constructor-arg value="string" />
+              <constructor-arg value="contract.supplier.name" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="recoveryClaim.columnTitle.supplier.supplierNumber" />
+              <constructor-arg value="recoveryClaim.contract.supplier.supplierNumber" />
+              <constructor-arg value="15" />
+               <constructor-arg value="string" />
+              <constructor-arg value="contract.supplier.supplierNumber" />
+            </bean>
+			<bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.supplier.recoveryAmount" />
+              <constructor-arg value="recoveryClaim.totalRecoveredAmount" />
+              <constructor-arg value="10" />
+              <constructor-arg value="Money" />
+              <constructor-arg value="totalRecoveredAmount" />
+              <constructor-arg value="48" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="label.inboxView.claimPartReturnStatus" />
+              <constructor-arg value="partReturnStatus" />
+              <constructor-arg value="15" />
+              <constructor-arg value="String" />
+              <constructor-arg value="partReturnStatus" />
+              <constructor-arg value="48" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.common.dealerName" />
+              <constructor-arg value="recoveryClaim.claim.forDealer.name" />
+              <constructor-arg value="15" />
+              <constructor-arg value="string" />
+              <constructor-arg value="claim.forDealer.name" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.common.status" />
+              <constructor-arg value="recoveryClaim.activeRecoveryClaimAudit.recoveryClaimState" />
+              <constructor-arg value="15" />
+              <constructor-arg value="string" />
+              <constructor-arg value="activeRecoveryClaimAudit.recoveryClaimState" />
+              <constructor-arg value="48" />
+            </bean>
+           </list>
+          </entry>
+        <entry key="Awaiting Supplier Response">
+          <list>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.common.recClaimNo" />
+              <constructor-arg value="id" />
+              <constructor-arg value="0" />
+              <constructor-arg value="number" />
+              <constructor-arg value="id" />
+              <constructor-arg value="false" />
+              <constructor-arg value="true" />
+              <constructor-arg value="true" />
+              <constructor-arg value="false" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.supplyRecoveryAdmin.recoveryClaim_no" />
+              <constructor-arg value="recoveryClaimNumber" />
+              <constructor-arg value="15" />
+              <constructor-arg value="string" />
+              <constructor-arg value="recoveryClaimNumber" />
+              <constructor-arg value="true" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+            </bean>            
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.listContracts.supplier_name" />
+              <constructor-arg value="contract.supplier.name" />
+              <constructor-arg value="20" />
+              <constructor-arg value="string" />
+              <constructor-arg value="contract.supplier.name" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.supplier.supplierNumber" />
+              <constructor-arg value="contract.supplier.supplierNumber" />
+              <constructor-arg value="15" />
+               <constructor-arg value="string" />
+              <constructor-arg value="contract.supplier.supplierNumber" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.duePartsInspection.causalpart" />
+              <constructor-arg value="claim.serviceInformation.causalPart.number" />
+              <constructor-arg value="10" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.supplier.recoveryAmount" />
+              <constructor-arg value="totalRecoveredAmount" />
+              <constructor-arg value="15" />
+              <constructor-arg value="Money" />
+              <constructor-arg value="totalRecoveredAmount" />
+              <constructor-arg value="48" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.newClaim.createdOn" />
+              <constructor-arg value="d.createdOn" />
+              <constructor-arg value="10" />
+              <constructor-arg value="date" />
+              <constructor-arg value="d.createdOn" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="label.inboxView.claimPartReturnStatus" />
+              <constructor-arg value="partReturnStatus" />
+              <constructor-arg value="15" />
+              <constructor-arg value="String" />
+              <constructor-arg value="partReturnStatus" />
+              <constructor-arg value="48" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="label.inboxView.lastModifiedStatusDate" />
+              <constructor-arg value="updatedDate" />
+              <constructor-arg value="10" />
+              <constructor-arg value="date" />
+              <constructor-arg value="updatedDate" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.common.status" />
+              <constructor-arg value="recoveryClaimState.state" />
+              <constructor-arg value="15" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.sraReview.location" />
+              <constructor-arg value="returnLocation" />
+              <constructor-arg value="15" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.supplyRecoveryAdmin.product" />
+              <constructor-arg value="claim.itemReference.unserializedItem.product.name" />
+              <constructor-arg value="15" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.common.model" />
+              <constructor-arg value="claim.itemReference.unserializedItem.model.name" />
+              <constructor-arg value="15" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.duePartsInspection.faultcode" />
+              <constructor-arg value="claim.serviceInformation.faultCode" />
+              <constructor-arg value="15" />
+            </bean>
+          </list>
+          </entry>
+        <entry key="Supplier Accepted">
+          <list>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.supplyRecoveryAdmin.claim_no" />
+              <constructor-arg value="id" />
+              <constructor-arg value="20" />
+              <constructor-arg value="number" />
+              <constructor-arg value="id" />
+              <constructor-arg value="false" />
+              <constructor-arg value="true" />
+              <constructor-arg value="true" />
+              <constructor-arg value="false" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.common.recClaimNo" />
+              <constructor-arg value="recoveryClaimNumber" />
+              <constructor-arg value="15" />
+              <constructor-arg value="string" />
+              <constructor-arg value="recoveryClaimNumber" />
+              <constructor-arg value="true" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+            </bean>            
+          
+           <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.listContracts.supplier_name" />
+              <constructor-arg value="contract.supplier.name" />
+              <constructor-arg value="20" />
+              <constructor-arg value="string" />
+              <constructor-arg value="contract.supplier.name" />
+            </bean>         
+          
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.supplier.supplierNumber" />
+              <constructor-arg value="contract.supplier.supplierNumber" />
+              <constructor-arg value="15" />
+              <constructor-arg value="string" />
+              <constructor-arg value="contract.supplier.supplierNumber" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.duePartsInspection.causalpart" />
+              <constructor-arg value="claim.serviceInformation.causalPart.number" />
+              <constructor-arg value="15" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.supplier.recoveryAmount" />
+              <constructor-arg value="totalRecoveredAmount" />
+              <constructor-arg value="15" />
+              <constructor-arg value="Money" />
+              <constructor-arg value="totalRecoveredAmount" />
+              <constructor-arg value="48" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.newClaim.createdOn" />
+              <constructor-arg value="d.createdOn" />
+              <constructor-arg value="10" />
+              <constructor-arg value="date" />
+              <constructor-arg value="d.createdOn" />
+            </bean>
+           <!--  <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="label.inboxView.claimPartReturnStatus" />
+              <constructor-arg value="partReturnStatus" />
+              <constructor-arg value="15" />
+              <constructor-arg value="String" />
+              <constructor-arg value="partReturnStatus" />
+              <constructor-arg value="48" />
+            </bean> -->
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.common.status" />
+              <constructor-arg value="recoveryClaimState.state" />
+              <constructor-arg value="15" />
+              <constructor-arg value="string" />
+              <constructor-arg value="recoveryClaimState.state" />
+              <constructor-arg value="48" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="label.inboxView.lastModifiedStatusDate" />
+              <constructor-arg value="updatedDate" />
+              <constructor-arg value="10" />
+              <constructor-arg value="date" />
+              <constructor-arg value="updatedDate" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.common.status" />
+              <constructor-arg value="recoveryClaimState.state" />
+              <constructor-arg value="15" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.sraReview.location" />
+              <constructor-arg value="returnLocatione" />
+              <constructor-arg value="15" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.supplyRecoveryAdmin.product" />
+              <constructor-arg value="claim.itemReference.unserializedItem.product.name" />
+              <constructor-arg value="15" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.common.model" />
+              <constructor-arg value="claim.itemReference.unserializedItem.model.name" />
+              <constructor-arg value="15" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.duePartsInspection.faultcode" />
+              <constructor-arg value="claim.serviceInformation.faultCode" />
+              <constructor-arg value="15" />
+            </bean>
+          </list>
+        </entry>
+
+        <entry key="Reopened">
+          <list>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.supplyRecoveryAdmin.claim_no" />
+              <constructor-arg value="id" />
+              <constructor-arg value="16" />
+              <constructor-arg value="number" />
+              <constructor-arg value="id" />
+              <constructor-arg value="false" />
+              <constructor-arg value="true" />
+              <constructor-arg value="true" />
+              <constructor-arg value="false" />
+            </bean>
+              <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.supplyRecoveryAdmin.recoveryClaim_no" />
+              <constructor-arg value="recoveryClaimNumber" />
+              <constructor-arg value="22" />
+              <constructor-arg value="string" />
+              <constructor-arg value="recoveryClaimNumber" />
+              <constructor-arg value="true" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+            </bean>
+           <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+		      <constructor-arg value="columnTitle.claimsSentToShipper.product" />
+              <constructor-arg value="claim.claimedItems.itemReference.unserializedItem.product.name" />
+              <constructor-arg value="15" />
+              <constructor-arg value="string" />
+              <constructor-arg value="claim.itemReference.unserializedItem.product.name" />
+			</bean>
+				
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">            
+              <constructor-arg value="columnTitle.claimsSentToShipper.model" />				  
+              <constructor-arg value="claim.claimedItems.itemReference.unserializedItem.model.name" />
+              <constructor-arg value="12" />                         
+              <constructor-arg value="String" />
+              <constructor-arg value="claim.itemReference.unserializedItem.model.name" />
+               </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.claimsSentToShipper.causal_part" />
+              <constructor-arg
+                value="claim.serviceInformation.causalPart.number" />
+              <constructor-arg value="15" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.claimsSentToShipper.fault_code" />
+              <constructor-arg
+                value="claim.serviceInformation.faultCode" />
+              <constructor-arg value="15" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.common.status" />
+              <constructor-arg value="recoveryClaimState.state" />
+              <constructor-arg value="15" />                         
+              <constructor-arg value="String" />
+              <constructor-arg value="recoveryClaimState.state" />
+              <constructor-arg value="48" />
+            </bean>
+          </list>
+        </entry>
+
+        <entry key="Reopened Claims">
+          <list>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.supplyRecoveryAdmin.claim_no" />
+              <constructor-arg value="id" />
+              <constructor-arg value="16" />
+              <constructor-arg value="number" />
+              <constructor-arg value="id" />
+              <constructor-arg value="false" />
+              <constructor-arg value="true" />
+              <constructor-arg value="true" />
+              <constructor-arg value="false" />
+            </bean>
+              <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.supplyRecoveryAdmin.recoveryClaim_no" />
+              <constructor-arg value="recoveryClaimNumber" />
+              <constructor-arg value="22" />
+              <constructor-arg value="string" />
+              <constructor-arg value="recoveryClaimNumber" />
+              <constructor-arg value="true" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.claimsSentToShipper.product" />
+              <constructor-arg
+                value="claim.itemReference.unserializedItem.product.name" />
+              <constructor-arg value="15" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.claimsSentToShipper.model" />
+              <constructor-arg
+                value="claim.itemReference.unserializedItem.model.name" />
+              <constructor-arg value="12" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.claimsSentToShipper.causal_part" />
+              <constructor-arg
+                value="claim.serviceInformation.causalPart.number" />
+              <constructor-arg value="15" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.claimsSentToShipper.fault_code" />
+              <constructor-arg
+                value="claim.serviceInformation.faultCode" />
+              <constructor-arg value="15" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.common.status" />
+              <constructor-arg
+                value="recoveryClaimState.state" />
+              <constructor-arg value="15" />
+            </bean>
+          </list>
+        </entry>
+
+        <entry key="Debited">
+          <list>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.supplyRecoveryAdmin.claim_no" />
+              <constructor-arg value="id" />
+              <constructor-arg value="16" />
+              <constructor-arg value="number" />
+              <constructor-arg value="id" />
+              <constructor-arg value="false" />
+              <constructor-arg value="true" />
+              <constructor-arg value="true" />
+              <constructor-arg value="false" />
+            </bean>
+               <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.supplyRecoveryAdmin.recoveryClaim_no" />
+              <constructor-arg value="recoveryClaimNumber" />
+              <constructor-arg value="22" />
+              <constructor-arg value="string" />
+              <constructor-arg value="recoveryClaimNumber" />
+              <constructor-arg value="true" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.claimsSentToShipper.product" />
+              <constructor-arg
+                value="claim.itemReference.unserializedItem.product.name" />
+              <constructor-arg value="15" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.claimsSentToShipper.model" />
+              <constructor-arg
+                value="claim.itemReference.unserializedItem.model.name" />
+              <constructor-arg value="12" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.claimsSentToShipper.causal_part" />
+              <constructor-arg
+                value="claim.serviceInformation.causalPart.number" />
+              <constructor-arg value="15" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.claimsSentToShipper.fault_code" />
+              <constructor-arg
+                value="claim.serviceInformation.faultCode" />
+              <constructor-arg value="15" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.common.status" />
+              <constructor-arg
+                value="recoveryClaimState.state" />
+              <constructor-arg value="15" />
+            </bean>
+          </list>
+        </entry>
+
+        <entry key="Ready For Debit">
+          <list>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.supplyRecoveryAdmin.claim_no" />
+              <constructor-arg value="id" />
+              <constructor-arg value="20" />
+              <constructor-arg value="number" />
+              <constructor-arg value="id" />
+              <constructor-arg value="false" />
+              <constructor-arg value="true" />
+              <constructor-arg value="true" />
+              <constructor-arg value="false" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.supplyRecoveryAdmin.recoveryClaim_no" />
+              <constructor-arg value="recoveryClaimNumber" />
+              <constructor-arg value="20" />
+              <constructor-arg value="string" />
+              <constructor-arg value="recoveryClaimNumber" />
+              <constructor-arg value="true" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+            </bean>            
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.listContracts.supplier_name" />
+              <constructor-arg value="contract.supplier.name" />
+              <constructor-arg value="20" />
+              <constructor-arg value="string" />
+              <constructor-arg value="contract.supplier.name"/>
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.supplier.supplierNumber" />
+              <constructor-arg value="contract.supplier.supplierNumber" />
+              <constructor-arg value="15" />
+              <constructor-arg value="string" />
+              <constructor-arg value="contract.supplier.supplierNumber"/>
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.duePartsInspection.causalpart" />
+              <constructor-arg value="claim.serviceInformation.causalPart.number" />
+              <constructor-arg value="15" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.supplier.recoveryAmount" />
+              <constructor-arg value="totalRecoveredAmount" />
+              <constructor-arg value="10" />
+              <constructor-arg value="Money" />
+              <constructor-arg value="totalRecoveredAmount" />
+              <constructor-arg value="48" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.newClaim.createdOn" />
+              <constructor-arg value="d.createdOn" />
+              <constructor-arg value="10" />
+              <constructor-arg value="date" />
+              <constructor-arg value="d.createdOn" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="label.inboxView.claimPartReturnStatus" />
+              <constructor-arg value="partReturnStatus" />
+              <constructor-arg value="15" />
+              <constructor-arg value="String" />
+              <constructor-arg value="partReturnStatus" />
+              <constructor-arg value="48" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="label.inboxView.lastModifiedStatusDate" />
+              <constructor-arg value="updatedDate" />
+              <constructor-arg value="10" />
+              <constructor-arg value="date" />
+              <constructor-arg value="updatedDate" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.common.status" />
+              <constructor-arg value="recoveryClaimState.state" />
+              <constructor-arg value="15" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.sraReview.location" />
+              <constructor-arg value="returnLocation" />
+              <constructor-arg value="16" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.supplyRecoveryAdmin.product" />
+              <constructor-arg value="claim.itemReference.unserializedItem.product.name" />
+              <constructor-arg value="15" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.common.model" />
+              <constructor-arg value="claim.itemReference.unserializedItem.model.name" />
+              <constructor-arg value="15" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.duePartsInspection.faultcode" />
+              <constructor-arg value="claim.serviceInformation.faultCode" />
+              <constructor-arg value="15" />
+            </bean>
+          </list>
+        </entry>
+
+        <entry key="Accepted">
+          <list>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.common.recClaimNo" />
+              <constructor-arg value="id" />
+              <constructor-arg value="0" />
+              <constructor-arg value="number" />
+              <constructor-arg value="id" />
+              <constructor-arg value="false" />
+              <constructor-arg value="true" />
+              <constructor-arg value="true" />
+              <constructor-arg value="false" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.common.recClaimNo" />
+              <constructor-arg value="recoveryClaimNumber" />
+              <constructor-arg value="15" />
+              <constructor-arg value="string" />
+              <constructor-arg value="recoveryClaimNumber" />
+              <constructor-arg value="true" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+            </bean>            
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.listContracts.supplier_name" />
+              <constructor-arg value="contract.supplier.name" />
+              <constructor-arg value="20" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.supplier.supplierNumber" />
+              <constructor-arg value="contract.supplier.supplierNumber" />
+              <constructor-arg value="15" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.supplier.recoveryAmount" />
+              <constructor-arg value="totalRecoveredAmount" />
+              <constructor-arg value="15" />
+              <constructor-arg value="Money" />
+              <constructor-arg value="totalRecoveredAmount" />
+              <constructor-arg value="48" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.newClaim.createdOn" />
+              <constructor-arg value="d.createdOn" />
+              <constructor-arg value="10" />
+              <constructor-arg value="date" />
+              <constructor-arg value="d.createdOn" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="label.inboxView.lastModifiedStatusDate" />
+              <constructor-arg value="updatedDate" />
+              <constructor-arg value="10" />
+              <constructor-arg value="date" />
+              <constructor-arg value="updatedDate" />
+            </bean>
+               <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.common.status" />
+              <constructor-arg value="recoveryClaimState.state" />
+              <constructor-arg value="15" />
+            </bean>    
+            
+             
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.supplyRecoveryAdmin.product" />
+              <constructor-arg value="claim.itemReference.unserializedItem.product.name" />
+              <constructor-arg value="15" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.common.model" />
+              <constructor-arg value="claim.itemReference.unserializedItem.model.name" />
+              <constructor-arg value="15" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.duePartsInspection.faultcode" />
+              <constructor-arg value="claim.serviceInformation.faultCode" />
+              <constructor-arg value="15" />
+            </bean>
+          </list>
+        </entry>
+        <entry key="Shipment from Dealer">
+ 		  <list>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.supplyRecoveryAdmin.claim_no" />
+              <constructor-arg value="id" />
+              <constructor-arg value="20" />
+              <constructor-arg value="string" />
+              <constructor-arg value="id" />
+              <constructor-arg value="true" />
+              <constructor-arg value="true" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.supplyRecoveryAdmin.product" />
+              <constructor-arg
+                value="claim.itemReference.unserializedItem.product.name" />
+              <constructor-arg value="15" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.common.model" />
+              <constructor-arg
+                value="claim.itemReference.unserializedItem.model.name" />
+              <constructor-arg value="15" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.duePartsInspection.causalpart" />
+              <constructor-arg
+                value="claim.serviceInformation.causalPart.number" />
+              <constructor-arg value="15" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.duePartsInspection.faultcode" />
+              <constructor-arg
+                value="claim.serviceInformation.faultCode" />
+              <constructor-arg value="15" />
+            </bean>
+          </list>
+        </entry>
+        <entry key="New">
+          <list>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.common.recClaimNo" />
+              <constructor-arg value="id" />
+              <constructor-arg value="0" />
+              <constructor-arg value="number" />
+              <constructor-arg value="id" />
+              <constructor-arg value="false" />
+              <constructor-arg value="true" />
+              <constructor-arg value="true" />
+              <constructor-arg value="false" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.common.recClaimNo" />
+              <constructor-arg value="recoveryClaimNumber" />
+              <constructor-arg value="15" />
+              <constructor-arg value="string" />
+              <constructor-arg value="recoveryClaimNumber" />
+              <constructor-arg value="true" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+            </bean>            
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.supplier.recoveryAmount" />
+              <constructor-arg value="totalRecoveredAmount" />
+              <constructor-arg value="15" />
+              <constructor-arg value="Money" />
+              <constructor-arg value="totalRecoveredAmount" />
+              <constructor-arg value="48" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.newClaim.createdOn" />
+              <constructor-arg value="d.createdOn" />
+              <constructor-arg value="10" />
+              <constructor-arg value="date" />
+              <constructor-arg value="d.createdOn" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="label.inboxView.lastModifiedStatusDate" />
+              <constructor-arg value="updatedDate" />
+              <constructor-arg value="10" />
+              <constructor-arg value="date" />
+              <constructor-arg value="updatedDate" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.common.status" />
+              <constructor-arg value="recoveryClaimState.state" />
+              <constructor-arg value="15" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.sraReview.location" />
+              <constructor-arg value="returnLocation" />
+              <constructor-arg value="15" />
+            </bean>
+          </list>
+        </entry>
+       <entry key="Disputed">
+          <list>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.supplyRecoveryAdmin.claim_no" />
+              <constructor-arg value="id" />
+              <constructor-arg value="20" />
+              <constructor-arg value="number" />
+              <constructor-arg value="id" />
+              <constructor-arg value="false" />
+              <constructor-arg value="true" />
+              <constructor-arg value="true" />
+              <constructor-arg value="false" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.common.recClaimNo" />
+              <constructor-arg value="recoveryClaimNumber" />
+              <constructor-arg value="15" />
+              <constructor-arg value="string" />
+              <constructor-arg value="recoveryClaimNumber" />
+              <constructor-arg value="true" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+            </bean>            
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.listContracts.supplier_name" />
+              <constructor-arg value="contract.supplier.name" />
+              <constructor-arg value="20" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.supplier.supplierNumber" />
+              <constructor-arg value="contract.supplier.supplierNumber" />
+              <constructor-arg value="15" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.supplier.recoveryAmount" />
+              <constructor-arg value="totalRecoveredAmount" />
+              <constructor-arg value="15" />
+              <constructor-arg value="Money" />
+              <constructor-arg value="totalRecoveredAmount" />
+              <constructor-arg value="48" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.newClaim.createdOn" />
+              <constructor-arg value="d.createdOn" />
+              <constructor-arg value="10" />
+              <constructor-arg value="date" />
+              <constructor-arg value="d.createdOn" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="label.inboxView.lastModifiedStatusDate" />
+              <constructor-arg value="updatedDate" />
+              <constructor-arg value="10" />
+              <constructor-arg value="date" />
+              <constructor-arg value="updatedDate" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.common.status" />
+              <constructor-arg value="recoveryClaimState.state" />
+              <constructor-arg value="15" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.sraReview.location" />
+              <constructor-arg value="returnLocation" />
+              <constructor-arg value="15" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.supplyRecoveryAdmin.product" />
+              <constructor-arg value="claim.itemReference.unserializedItem.product.name" />
+              <constructor-arg value="15" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.common.model" />
+              <constructor-arg value="claim.itemReference.unserializedItem.model.name" />
+              <constructor-arg value="15" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.duePartsInspection.faultcode" />
+              <constructor-arg value="claim.serviceInformation.faultCode" />
+              <constructor-arg value="15" />
+            </bean>
+          </list>
+        </entry><!-- here -->
+        <entry key="In Progress">
+          <list>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.supplyRecoveryAdmin.claim_no" />
+              <constructor-arg value="id" />
+              <constructor-arg value="20" />
+              <constructor-arg value="number" />
+              <constructor-arg value="id" />
+              <constructor-arg value="false" />
+              <constructor-arg value="true" />
+              <constructor-arg value="true" />
+              <constructor-arg value="false" />
+            </bean>
+               <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.supplyRecoveryAdmin.recoveryClaim_no" />
+              <constructor-arg value="recoveryClaimNumber" />
+              <constructor-arg value="22" />
+              <constructor-arg value="string" />
+              <constructor-arg value="recoveryClaimNumber" />
+              <constructor-arg value="true" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.supplyRecoveryAdmin.product" />
+              <constructor-arg
+                value="claim.itemReference.unserializedItem.product.name" />
+              <constructor-arg value="15" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.common.model" />
+              <constructor-arg
+                value="claim.itemReference.unserializedItem.model.name" />
+              <constructor-arg value="15" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.duePartsInspection.causalpart" />
+              <constructor-arg
+                value="claim.serviceInformation.causalPart.number" />
+              <constructor-arg value="15" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.duePartsInspection.faultcode" />
+              <constructor-arg
+                value="claim.serviceInformation.faultCode" />
+              <constructor-arg value="15" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.common.status" />
+              <constructor-arg
+                value="recoveryClaimState.state" />
+              <constructor-arg value="15" />
+            </bean>
+          </list>
+        </entry>
+      <entry key="Parts for Return To NMHG">
+      <list>
+      <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+          <constructor-arg value="columnTitle.common.recClaimNo" />
+          <constructor-arg value="id" />
+          <constructor-arg value="0" />
+          <constructor-arg value="recoveryClaimNumber" />
+          <constructor-arg value="id" />
+          <constructor-arg value="false" />
+          <constructor-arg value="true" />
+          <constructor-arg value="true" />
+          <constructor-arg value="false" />
+      </bean>
+      <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+          <constructor-arg value="columnTitle.common.recClaimNo" />
+          <constructor-arg value="recoveryClaimNumber" />
+          <constructor-arg value="15" />
+          <constructor-arg value="string" />
+          <constructor-arg value="recoveryClaimNumber" />
+          <constructor-arg value="true" />
+          <constructor-arg value="false" />
+          <constructor-arg value="false" />
+          <constructor-arg value="false" />
+      </bean>
+      </list>
+      </entry>
+      <entry key="Shipment Generated To NMHG">
+      <list>
+      <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+          <constructor-arg value="columnTitle.common.recClaimNo" />
+          <constructor-arg value="id" />
+          <constructor-arg value="0" />
+          <constructor-arg value="recoveryClaimNumber" />
+          <constructor-arg value="id" />
+          <constructor-arg value="false" />
+          <constructor-arg value="true" />
+          <constructor-arg value="true" />
+          <constructor-arg value="false" />
+      </bean>
+      <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+          <constructor-arg value="columnTitle.common.recClaimNo" />
+          <constructor-arg value="recoveryClaimNumber" />
+          <constructor-arg value="15" />
+          <constructor-arg value="string" />
+          <constructor-arg value="recoveryClaimNumber" />
+          <constructor-arg value="true" />
+          <constructor-arg value="false" />
+          <constructor-arg value="false" />
+          <constructor-arg value="false" />
+      </bean>
+      </list>
+      </entry>
+      <entry key="Parts Shipped to NMHG">
+      <list>
+      <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+          <constructor-arg value="columnTitle.common.recClaimNo" />
+          <constructor-arg value="id" />
+          <constructor-arg value="0" />
+          <constructor-arg value="recoveryClaimNumber" />
+          <constructor-arg value="id" />
+          <constructor-arg value="false" />
+          <constructor-arg value="true" />
+          <constructor-arg value="true" />
+          <constructor-arg value="false" />
+      </bean>
+      <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+          <constructor-arg value="columnTitle.common.recClaimNo" />
+          <constructor-arg value="recoveryClaimNumber" />
+          <constructor-arg value="15" />
+          <constructor-arg value="string" />
+          <constructor-arg value="recoveryClaimNumber" />
+          <constructor-arg value="true" />
+          <constructor-arg value="false" />
+          <constructor-arg value="false" />
+          <constructor-arg value="false" />
+      </bean>
+      </list>
+      </entry>
+      
+        <entry key="Supplier Response">
+          <list>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.common.recClaimNo" />
+              <constructor-arg value="id" />
+              <constructor-arg value="0" />
+              <constructor-arg value="recoveryClaimNumber" />
+              <constructor-arg value="id" />
+              <constructor-arg value="false" />
+              <constructor-arg value="true" />
+              <constructor-arg value="true" />
+              <constructor-arg value="false" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.common.recClaimNo" />
+              <constructor-arg value="recoveryClaimNumber" />
+              <constructor-arg value="15" />
+              <constructor-arg value="string" />
+              <constructor-arg value="recoveryClaimNumber" />
+              <constructor-arg value="true" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+            </bean>            
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.listContracts.supplier_name" />
+              <constructor-arg value="contract.supplier.name" />
+              <constructor-arg value="20" />
+              <constructor-arg value="string" />
+              <constructor-arg value="contract.supplier.name" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.supplier.supplierNumber" />
+              <constructor-arg value="contract.supplier.supplierNumber" />
+              <constructor-arg value="10" />
+               <constructor-arg value="string" />
+              <constructor-arg value="contract.supplier.supplierNumber" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.supplier.recoveryAmount" />
+              <constructor-arg value="totalRecoveredAmount" />
+              <constructor-arg value="15" />
+              <constructor-arg value="Money" />
+              <constructor-arg value="totalRecoveredAmount" />
+              <constructor-arg value="48" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="label.inboxView.claimPartReturnStatus" />
+              <constructor-arg value="partReturnStatus" />
+              <constructor-arg value="15" />
+              <constructor-arg value="String" />
+              <constructor-arg value="partReturnStatus" />
+              <constructor-arg value="48" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.sraReview.location" />
+              <constructor-arg value="returnLocation" />
+              <constructor-arg value="15" />
+              <constructor-arg value="string" />
+              <constructor-arg value="returnLocation" />
+              <constructor-arg value="48" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.common.status" />
+              <constructor-arg value="recoveryClaimState.state" />
+              <constructor-arg value="15" />
+              <constructor-arg value="string" />
+              <constructor-arg value="recoveryClaimState.state" />
+              <constructor-arg value="48" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.newClaim.createdOn" />
+              <constructor-arg value="d.createdOn" />
+              <constructor-arg value="10" />
+              <constructor-arg value="date" />
+              <constructor-arg value="d.createdOn" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="label.inboxView.lastModifiedStatusDate" />
+              <constructor-arg value="updatedDate" />
+              <constructor-arg value="10" />
+              <constructor-arg value="date" />
+              <constructor-arg value="updatedDate" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.supplyRecoveryAdmin.product" />
+              <constructor-arg value="claim.itemReference.unserializedItem.product.name" />
+              <constructor-arg value="15" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.common.model" />
+              <constructor-arg value="claim.itemReference.unserializedItem.model.name" />
+              <constructor-arg value="15" />
+            </bean>
+            <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.duePartsInspection.faultcode" />
+              <constructor-arg value="claim.serviceInformation.faultCode" />
+              <constructor-arg value="15" />
+            </bean>
+           </list>
+        </entry>
+		<entry key="Supplier Parts Claimed">
+			<list>
+				<bean class="tavant.twms.web.inbox.SummaryTableColumn">
+					<constructor-arg value="columnTitle.common.recClaimNo" />
+					<constructor-arg value="taskInstance.id" />
+					<constructor-arg value="0" />
+					<constructor-arg value="id" />
+					<constructor-arg value="id" />
+					<constructor-arg value="false" />
+					<constructor-arg value="true" />
+					<constructor-arg value="true" />
+					<constructor-arg value="false" />
+				</bean>
+
+				<bean class="tavant.twms.web.inbox.SummaryTableColumn">
+					<constructor-arg
+						value="columnTitle.common.recClaimNo" />
+					<constructor-arg value="recoveryClaim.recoveryClaimNumber" />
+					<constructor-arg value="15" />
+					<constructor-arg value="string" />
+					<constructor-arg
+						value="getVariable('recoveryClaim').recoveryClaimNumber" />
+					<constructor-arg value="true" />
+					<constructor-arg value="false" />
+					<constructor-arg value="false" />
+					<constructor-arg value="false" />
+				</bean>
+
+				<bean class="tavant.twms.web.inbox.SummaryTableColumn">
+					<constructor-arg value="columnTitle.requiredPartsReturn.partNumber"></constructor-arg>
+					<constructor-arg value="opr.itemReference.unserializedItem.number" />
+					<constructor-arg value="15" />
+					<constructor-arg value="string" />
+					<constructor-arg
+						value="getVariable('supplierPartReturn').recoverablePart.oemPart.itemReference.unserializedItem.number" />
+					<constructor-arg value="true" />
+					<constructor-arg value="false" />
+					<constructor-arg value="false" />
+					<constructor-arg value="false" />
+				</bean>
+
+				
+				
+				<bean class="tavant.twms.web.inbox.SummaryTableColumn">
+					<constructor-arg value="columnTitle.claimsSentToShipper.product" />
+					<constructor-arg
+						value="claim.itemReference.unserializedItem.product.name" />
+					<constructor-arg value="12" />
+					<constructor-arg value="string" />
+					<constructor-arg
+						value="getVariable('recoveryClaim').claim.itemReference.unserializedItem.product.name" />
+					<constructor-arg value="true" />
+					<constructor-arg value="false" />
+					<constructor-arg value="false" />
+					<constructor-arg value="false" />
+				</bean>
+				<bean class="tavant.twms.web.inbox.SummaryTableColumn">
+					<constructor-arg value="columnTitle.claimsSentToShipper.model" />
+					<constructor-arg value="claim.itemReference.unserializedItem.model.name" />
+					<constructor-arg value="12" />
+					<constructor-arg value="string" />
+					<constructor-arg
+						value="getVariable('recoveryClaim').claim.itemReference.unserializedItem.model.name" />
+					<constructor-arg value="true" />
+					<constructor-arg value="false" />
+					<constructor-arg value="false" />
+					<constructor-arg value="false" />
+				</bean>
+				
+
+				<bean class="tavant.twms.web.inbox.SummaryTableColumn">
+					<constructor-arg value="columnTitle.partShipperPartsShipped.supplier" />
+					<constructor-arg value="recoveryClaim.contract.supplier.name" />
+					<constructor-arg value="15" />
+					<constructor-arg value="string" />
+					<constructor-arg
+						value="getVariable('recoveryClaim').contract.supplier.name" />
+					<constructor-arg value="true" />
+					<constructor-arg value="false" />
+					<constructor-arg value="false" />
+					<constructor-arg value="false" />
+				</bean>
+
+				<bean class="tavant.twms.web.inbox.SummaryTableColumn">
+					<constructor-arg value="columnTitle.supplierDueParts.return_location" />
+					<constructor-arg value="basePartReturn.returnLocation.code" />
+					<constructor-arg value="15" />
+					<constructor-arg value="string" />
+					<constructor-arg
+						value="getVariable('supplierPartReturn').returnLocation.code" />
+					<constructor-arg value="true" />
+					<constructor-arg value="false" />
+					<constructor-arg value="false" />
+					<constructor-arg value="false" />
+				</bean>
+			</list>
+		</entry>
+		<entry key="Supplier Shipment Generated">
+			<list>
+				<bean class="tavant.twms.web.inbox.SummaryTableColumn">
+					<constructor-arg
+						value="columnTitle.partShipperPartsShipped.vpraNumber" />
+					<constructor-arg value="transientId" />
+					<constructor-arg value="10" />
+					<constructor-arg value="string" />
+					<constructor-arg value="transientId" />
+					<constructor-arg value="true" />
+					<constructor-arg value="true" />
+					<constructor-arg value="false" />
+					<constructor-arg value="false" />
+				</bean>
+				<bean class="tavant.twms.web.inbox.SummaryTableColumn">
+					<constructor-arg
+						value="columnTitle.partShipperShipmentGenerated.returnLocation" />
+					<constructor-arg value="destination.code" />
+					<constructor-arg value="30" />
+				</bean>
+			</list>
+		</entry>
+        <entry key="Supplier Parts Shipped">
+          <list>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.partShipperPartsShipped.vpraNumber" />
+              <constructor-arg value="transientId" />
+              <constructor-arg value="10" />
+              <constructor-arg value="string" />
+              <constructor-arg value="transientId" />
+              <constructor-arg value="true" />
+              <constructor-arg value="true" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+            </bean>
+            
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.partShipperPartsShipped.tracking_number" />
+              <constructor-arg value="trackingId" />
+              <constructor-arg value="16" />
+            </bean>
+
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.partShipperPartsShipped.carrier" />
+              <constructor-arg value="carrier.name" />
+              <constructor-arg value="16" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.partShipperPartsShipped.returnLocation" />
+              <constructor-arg value="destination.code" />
+              <constructor-arg value="16" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.partShipperPartsShipped.shipment_date"/>
+              <constructor-arg value="shipmentDate"/>
+              <constructor-arg value="16"/>
+              <constructor-arg value="date" />
+              <constructor-arg value="shipmentDateForDisplay" />
+            </bean>
+          </list>
+        </entry>
+
+        <entry key="Confirm Part Returns">
+          <list>
+              <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+                      <constructor-arg value="columnTitle.common.recClaimNo" />
+                      <constructor-arg value="taskInstance.claimId" />
+                      <constructor-arg value="0" />
+                      <constructor-arg value="id" />
+                      <constructor-arg value="claimId" />
+                      <constructor-arg value="false" />
+                      <constructor-arg value="false" />
+                      <constructor-arg value="true" />
+                      <constructor-arg value="false" />
+                      <constructor-arg value="16" />
+                  </bean>
+                    <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+							<constructor-arg value="columnTitle.partShipperPartsShipped.shipmentNumber" />
+							<constructor-arg value="supplierPartReturn.supplierShipment.transientId" />
+							<constructor-arg value="15" />
+							<constructor-arg value="string" />
+							<constructor-arg value="getVariable('supplierPartReturn').supplierShipment.transientId" />
+							<constructor-arg value="true" />
+							<constructor-arg value="true" />
+							<constructor-arg value="false" />
+							<constructor-arg value="false" />
+							<constructor-arg value="16" />
+						</bean>
+						<bean class="tavant.twms.web.inbox.SummaryTableColumn">
+							<constructor-arg value="columnTitle.partShipperPartsShipped.tracking_number" />
+							<constructor-arg value="supplierPartReturn.supplierShipment.trackingId" />
+							<constructor-arg value="10" />
+							<constructor-arg value="string" />
+							<constructor-arg value="getVariable('supplierPartReturn').supplierShipment.trackingId" />
+							<constructor-arg value="false" />
+							<constructor-arg value="false" />
+							<constructor-arg value="false" />
+							<constructor-arg value="false" />
+							<constructor-arg value="16" />
+						</bean>
+						<bean class="tavant.twms.web.inbox.SummaryTableColumn">
+							<constructor-arg value="columnTitle.partShipperPartsShipped.carrier" />
+							<constructor-arg value="supplierPartReturn.supplierShipment.carrier.name" />
+							<constructor-arg value="15" />
+							<constructor-arg value="string" />
+							<constructor-arg value="getVariable('supplierPartReturn').supplierShipment.carrier.name" />
+							<constructor-arg value="false" />
+							<constructor-arg value="false" />
+							<constructor-arg value="false" />
+							<constructor-arg value="false" />
+							<constructor-arg value="16" />
+						</bean>
+						<bean class="tavant.twms.web.inbox.SummaryTableColumn">
+							<constructor-arg value="columnTitle.partShipperPartsShipped.returnLocation" />
+							<constructor-arg value="supplierPartReturn.supplierShipment.destination.code" />
+							<constructor-arg value="15" />
+							<constructor-arg value="string" />
+							<constructor-arg value="getVariable('supplierPartReturn').supplierShipment.destination.code" />
+							<constructor-arg value="false" />
+							<constructor-arg value="false" />
+							<constructor-arg value="false" />
+							<constructor-arg value="false" />
+							<constructor-arg value="16" />
+						</bean>
+						<bean class="tavant.twms.web.inbox.SummaryTableColumn">
+							<constructor-arg value="columnTitle.partShipperPartsShipped.shipment_date" />
+							<constructor-arg value="supplierPartReturn.supplierShipment.shipmentDate" />
+							<constructor-arg value="10" />
+							<constructor-arg value="date" />
+							<constructor-arg value="getVariable('supplierPartReturn').supplierShipment.shipmentDate" />
+							<constructor-arg value="false" />
+							<constructor-arg value="false" />
+							<constructor-arg value="false" />
+							<constructor-arg value="false" />
+							<constructor-arg value="16" />
+						</bean>
+							<bean class="tavant.twms.web.inbox.SummaryTableColumn">
+							<constructor-arg value="columnTitle.partShipperPartsShipped.RGA_number" />
+							<constructor-arg value="supplierPartReturn.rgaNumber" />
+							<constructor-arg value="10" />
+							<constructor-arg value="string" />
+							<constructor-arg value="getVariable('supplierPartReturn').rgaNumber" />
+							<constructor-arg value="false" />
+							<constructor-arg value="false" />
+							<constructor-arg value="false" />
+							<constructor-arg value="false" />
+							<constructor-arg value="16" />
+						</bean>
+						<bean class="tavant.twms.web.inbox.SummaryTableColumn">
+                     		 <constructor-arg value="columnTitle.common.recClaimNo" />
+                      		 <constructor-arg value="recoveryClaim.recoveryClaimNumber" />
+                     		 <constructor-arg value="10" />
+                    		 <constructor-arg value="string" />
+                     		 <constructor-arg value="getVariable('recoveryClaim').recoveryClaimNumber" />
+                      		 <constructor-arg value="false" />
+                      		 <constructor-arg value="false" />
+                      		 <constructor-arg value="false" />
+                     		 <constructor-arg value="false" />
+                     		 <constructor-arg value="16" />
+					  </bean>
+					  	<bean class="tavant.twms.web.inbox.SummaryTableColumn">
+                      	<constructor-arg value="createClaim.label.dealer_name" />
+                      	<constructor-arg value="recoveryClaim.claim.forDealer.name" />
+                     	<constructor-arg value="15" />
+                      	<constructor-arg value="string" />
+                      	<constructor-arg value="getVariable('recoveryClaim').claim.forDealer.name" />
+                      	<constructor-arg value="false" />
+                      	<constructor-arg value="false" />
+                      	<constructor-arg value="false" />
+                      	<constructor-arg value="false" />
+                      	<constructor-arg value="16" />
+					  </bean>
+           </list>
+        </entry>
+
+
+        <entry key="Customer Warranty">
+          <list>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.warrantyId" />
+              <constructor-arg value="id" />
+              <constructor-arg value="0" />
+              <constructor-arg value="string" />
+              <constructor-arg value="id" />
+              <constructor-arg value="true" />
+              <constructor-arg value="true" />
+              <constructor-arg value="true" />
+              <constructor-arg value="false" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.serialNumber" />
+              <constructor-arg value="forItem.serialNumber" />
+              <constructor-arg value="20" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.common.product" />
+              <constructor-arg value="forItem.ofType.productType.name" />
+              <constructor-arg value="20" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg value="columnTitle.item.model" />
+              <constructor-arg value="forItem.ofType.model.name" />
+              <constructor-arg value="17" />
+            </bean>
+          </list>
+        </entry>
+        <entry key="Shipment Generated For Dealer">
+          <list>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.shipmentGenerated.shipment_no" />
+              <constructor-arg value="shipment.transientId" />
+              <constructor-arg value="16" />
+              <constructor-arg value="string" />
+              <constructor-arg value="shipment.transientId" />
+              <constructor-arg value="true" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.duePartsReceipt.shipment_id" />
+              <constructor-arg value="shipment.id" />
+              <constructor-arg value="0" />
+              <constructor-arg value="string" />
+              <constructor-arg value="shipment.id" />
+              <constructor-arg value="false" />
+              <constructor-arg value="true" />
+              <constructor-arg value="true" />
+              <constructor-arg value="false" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.dueParts.return_location" />
+              <constructor-arg value="shipment.shippedBy.name" />
+              <constructor-arg value="16" />
+              <constructor-arg value="string" />
+              <constructor-arg value="shipment.shippedBy.name" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+            </bean>
+          </list>
+        </entry>
+        <entry key="Dealer Requested Parts Shipped">
+          <list>
+             <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.duePartsReceipt.shipment_id" />
+              <constructor-arg value="shipment.id" />
+              <constructor-arg value="0" />
+              <constructor-arg value="string" />
+              <constructor-arg value="shipment.id" />
+              <constructor-arg value="false" />
+              <constructor-arg value="true" />
+              <constructor-arg value="true" />
+              <constructor-arg value="false" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.duePartsReceipt.shipment_no" />
+              <constructor-arg value="shipment.transientId" />
+              <constructor-arg value="16" />
+              <constructor-arg value="string" />
+              <constructor-arg value="shipment.transientId" />
+              <constructor-arg value="true" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.dueParts.return_location" />
+              <constructor-arg value="shipment.shippedBy.name" />
+              <constructor-arg value="16" />
+              <constructor-arg value="string" />
+              <constructor-arg value="shipment.shippedBy.name" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+            </bean>
+            <!-- Removed the carrier for NMHG to dealer flow as per SLMS-905 -->
+            <!--<bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.duePartsReceipt.carrier" />
+              <constructor-arg value="shipment.carrier.name" />
+              <constructor-arg value="16" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.duePartsReceipt.tracking_no" />
+              <constructor-arg value="shipment.trackingId" />
+              <constructor-arg value="16" />
+            </bean>-->
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="label.partReturnConfiguration.availableDate" />
+              <constructor-arg value="shipment.shipmentDate" />
+              <constructor-arg value="16" />
+              <constructor-arg value="date" />
+            </bean>
+          </list>
+        </entry>
+        <entry key="Claimed Parts Receipt">
+          <list>
+             <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.duePartsReceipt.shipment_id" />
+              <constructor-arg value="shipment.id" />
+              <constructor-arg value="0" />
+              <constructor-arg value="string" />
+              <constructor-arg value="shipment.id" />
+              <constructor-arg value="false" />
+              <constructor-arg value="true" />
+              <constructor-arg value="true" />
+              <constructor-arg value="false" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.duePartsReceipt.shipment_no" />
+              <constructor-arg value="shipment.transientId" />
+              <constructor-arg value="16" />
+              <constructor-arg value="string" />
+              <constructor-arg value="shipment.transientId" />
+              <constructor-arg value="true" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.manageWarehouse.wareHouseName" />
+              <constructor-arg value="shipment.destination.code" />
+              <constructor-arg value="16" />
+              <constructor-arg value="string" />
+              <constructor-arg value="shipment.destination.code" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+              <constructor-arg value="false" />
+            </bean>
+            <!--<bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.duePartsReceipt.carrier" />
+              <constructor-arg value="shipment.carrier.name" />
+              <constructor-arg value="16" />
+            </bean>
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="columnTitle.duePartsReceipt.tracking_no" />
+              <constructor-arg value="shipment.trackingId" />
+              <constructor-arg value="16" />
+            </bean>-->
+            <bean
+              class="tavant.twms.web.inbox.SummaryTableColumn">
+              <constructor-arg
+                value="label.partReturnConfiguration.availableDate" />
+              <constructor-arg value="shipment.shipmentDate" />
+              <constructor-arg value="16" />
+              <constructor-arg value="date" />
+            </bean>
+          </list>
+        </entry>
+
+          <entry key="Confirm Dealer Part Returns">
+  				<list>
+                   <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+                      <constructor-arg value="columnTitle.common.recClaimNo" />
+                      <constructor-arg value="taskInstance.claimId" />
+                      <constructor-arg value="0" />
+                      <constructor-arg value="id" />
+                      <constructor-arg value="claimId" />
+                      <constructor-arg value="false" />
+                      <constructor-arg value="true" />
+                      <constructor-arg value="true" />
+                      <constructor-arg value="false" />
+                      <constructor-arg value="16" />
+                  </bean>
+                    <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+							<constructor-arg value="columnTitle.partShipperPartsShipped.shipmentNumber" />
+							<constructor-arg value="partReturn.shipment.transientId" />
+							<constructor-arg value="10" />
+							<constructor-arg value="string" />
+							<constructor-arg value="getVariable('partReturn').shipment.transientId" />
+							<constructor-arg value="true" />
+							<constructor-arg value="true" />
+							<constructor-arg value="false" />
+							<constructor-arg value="false" />
+							<constructor-arg value="16" />
+						</bean>
+						<bean class="tavant.twms.web.inbox.SummaryTableColumn">
+							<constructor-arg value="columnTitle.partShipperPartsShipped.tracking_number" />
+							<constructor-arg value="partReturn.shipment.trackingId" />
+							<constructor-arg value="10" />
+							<constructor-arg value="string" />
+							<constructor-arg value="getVariable('partReturn').shipment.trackingId" />
+							<constructor-arg value="false" />
+							<constructor-arg value="false" />
+							<constructor-arg value="false" />
+							<constructor-arg value="false" />
+							<constructor-arg value="16" />
+						</bean>
+						<bean class="tavant.twms.web.inbox.SummaryTableColumn">
+							<constructor-arg value="columnTitle.partShipperPartsShipped.carrier" />
+							<constructor-arg value="partReturn.shipment.carrier.name" />
+							<constructor-arg value="15" />
+							<constructor-arg value="string" />
+							<constructor-arg value="getVariable('partReturn').shipment.carrier.name" />
+							<constructor-arg value="false" />
+							<constructor-arg value="false" />
+							<constructor-arg value="false" />
+							<constructor-arg value="false" />
+							<constructor-arg value="16" />
+							</bean>
+						<bean class="tavant.twms.web.inbox.SummaryTableColumn">
+							<constructor-arg value="columnTitle.partShipperPartsShipped.RGA_number" />
+							<constructor-arg value="partReturn.rmaNumber" />
+							<constructor-arg value="15" />
+							<constructor-arg value="string" />
+							<constructor-arg value="getVariable('partReturn').rmaNumber" />
+							<constructor-arg value="false" />
+							<constructor-arg value="false" />
+							<constructor-arg value="false" />
+							<constructor-arg value="false" />
+							<constructor-arg value="16" />
+						</bean>
+						<bean class="tavant.twms.web.inbox.SummaryTableColumn">
+							<constructor-arg value="columnTitle.partShipperPartsShipped.shipment_date" />
+							<constructor-arg value="partReturn.shipment.shipmentDate" />
+							<constructor-arg value="10" />
+							<constructor-arg value="date" />
+							<constructor-arg value="getVariable('partReturn').shipment.shipmentDate" />
+							<constructor-arg value="false" />
+							<constructor-arg value="false" />
+							<constructor-arg value="false" />
+							<constructor-arg value="false" />
+							<constructor-arg value="16" />
+						</bean>
+						<bean class="tavant.twms.web.inbox.SummaryTableColumn">
+                      	<constructor-arg value="columnTitle.common.returnlocation" />
+                      	<constructor-arg value="partReturn.shipment.destination.code" />
+                     	<constructor-arg value="15" />
+                      	<constructor-arg value="string" />
+                      	<constructor-arg value="getVariable('partReturn').shipment.destination.code" />
+                      	<constructor-arg value="false" />
+                      	<constructor-arg value="false" />
+                      	<constructor-arg value="false" />
+                      	<constructor-arg value="false" />
+                      	<constructor-arg value="16" />
+					  </bean>
+						<bean class="tavant.twms.web.inbox.SummaryTableColumn">
+                     		 <constructor-arg value="columnTitle.common.recClaimNo" />
+                      		 <constructor-arg value="partReturn.recClaimfromWarrantyClaim" />
+                     		 <constructor-arg value="10" />
+                    		 <constructor-arg value="string" />
+                     		 <constructor-arg value="getVariable('partReturn').recClaimfromWarrantyClaim" />
+                      		 <constructor-arg value="false" />
+                      		 <constructor-arg value="false" />
+                      		 <constructor-arg value="false" />
+                     		 <constructor-arg value="false" />
+                     		 <constructor-arg value="48" />
+					  </bean>
+					  	<bean class="tavant.twms.web.inbox.SummaryTableColumn">
+                      	<constructor-arg value="createClaim.label.dealer_name" />
+                      	<constructor-arg value="partReturn.shipment.shippedBy.name" />
+                     	<constructor-arg value="15" />
+                      	<constructor-arg value="string" />
+                      	<constructor-arg value="getVariable('partReturn').shipment.shippedBy.name" />
+                      	<constructor-arg value="false" />
+                      	<constructor-arg value="false" />
+                      	<constructor-arg value="false" />
+                      	<constructor-arg value="false" />
+                      	<constructor-arg value="16" />
+					  </bean>
+              </list>
+          </entry>
+          <entry key="Supplier Parts Receipt">
+              <list>
+                  <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+                      <constructor-arg value="columnTitle.common.recClaimNo" />
+                      <constructor-arg value="taskInstance.claimId" />
+                      <constructor-arg value="0" />
+                      <constructor-arg value="id" />
+                      <constructor-arg value="claimId" />
+                      <constructor-arg value="false" />
+                      <constructor-arg value="true" />
+                      <constructor-arg value="true" />
+                      <constructor-arg value="false" />
+                      <constructor-arg value="16" />
+                  </bean>
+
+                  <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+                      <constructor-arg
+                              value="columnTitle.common.recClaimNo" />
+                      <constructor-arg value="recoveryClaim.recoveryClaimNumber" />
+                      <constructor-arg value="10" />
+                      <constructor-arg value="string" />
+                      <constructor-arg
+                              value="getVariable('recoveryClaim').recoveryClaimNumber" />
+                      <constructor-arg value="true" />
+                      <constructor-arg value="false" />
+                      <constructor-arg value="false" />
+                      <constructor-arg value="false" />
+                      <constructor-arg value="16" />
+                  </bean>
+
+                  <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+                      <constructor-arg value="columnTitle.requiredPartsReturn.partNumber"></constructor-arg>
+                      <constructor-arg value="supplierPartReturn.recoverablePart.oemPart.itemReference.unserializedItem.number" />
+                      <constructor-arg value="10" />
+                      <constructor-arg value="string" />
+                      <constructor-arg
+                              value="getVariable('supplierPartReturn').recoverablePart.oemPart.itemReference.unserializedItem.number" />
+                      <constructor-arg value="true" />
+                      <constructor-arg value="false" />
+                      <constructor-arg value="false" />
+                      <constructor-arg value="false" />
+                      <constructor-arg value="16" />
+                  </bean>
+                  <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+                      <constructor-arg value="columnTitle.common.serialNo" />
+                      <constructor-arg
+                              value="recoveryClaim.claim.itemReference.referredInventoryItem.serialNumber" />
+                      <constructor-arg value="10" />
+                      <constructor-arg value="string" />
+                      <constructor-arg
+                              value="getVariable('recoveryClaim').claim.itemReference.referredInventoryItem.serialNumber" />
+                      <constructor-arg value="true" />
+                      <constructor-arg value="false" />
+                      <constructor-arg value="false" />
+                      <constructor-arg value="false" />
+                      <constructor-arg value="48" />
+                  </bean>
+                  <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+                      <constructor-arg value="columnTitle.itemSearch.description" />
+                      <constructor-arg
+                              value="recoveryClaim.claim.itemReference.unserializedItem.product.name" />
+                      <constructor-arg value="12" />
+                      <constructor-arg value="string" />
+                      <constructor-arg
+                              value="getVariable('recoveryClaim').claim.itemReference.unserializedItem.product.name" />
+                      <constructor-arg value="true" />
+                      <constructor-arg value="false" />
+                      <constructor-arg value="false" />
+                      <constructor-arg value="false" />
+                      <constructor-arg value="48" />
+                  </bean>
+                    <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+					<constructor-arg value="columnTitle.duePartsReceipt.dealerPartShipDate" />
+					<constructor-arg value="supplierPartReturn.recoverablePart.oemPart.dealerPartReturn.shipment.shipmentDate" />
+					<constructor-arg value="10" />
+					<constructor-arg value="date" />
+					<constructor-arg
+						value="getVariable('supplierPartReturn').recoverablePart.oemPart.dealerPartReturn.shipment.shipmentDate" />
+					<constructor-arg value="true" />
+					<constructor-arg value="false" />
+					<constructor-arg value="false" />
+					<constructor-arg value="false" />
+					<constructor-arg value="48" />
+					</bean>
+                  
+                  <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+                      <constructor-arg value="columnTitle.claimsSentToShipper.model" />
+                      <constructor-arg value="recoveryClaim.claim.itemReference.unserializedItem.model.name" />
+                      <constructor-arg value="10" />
+                      <constructor-arg value="string" />
+                      <constructor-arg
+                              value="getVariable('recoveryClaim').claim.itemReference.unserializedItem.model.name" />
+                      <constructor-arg value="true" />
+                      <constructor-arg value="false" />
+                      <constructor-arg value="false" />
+                      <constructor-arg value="false" />
+                      <constructor-arg value="48" />
+                  </bean>
+
+				  <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+                      <constructor-arg value="columnTitle.duePartsReceipt.tracking_no" />
+                      <constructor-arg value="shipment.trackingId" />
+                      <constructor-arg value="8" />
+                      <constructor-arg value="string" />
+                      <constructor-arg value="getVariable('supplierPartReturn').supplierShipment.trackingId" />
+                      <constructor-arg value="true" />
+                      <constructor-arg value="false" />
+                      <constructor-arg value="false" />
+                      <constructor-arg value="false" />
+                      <constructor-arg value="16" />
+                  </bean>
+
+                  <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+                      <constructor-arg value="columnTitle.partShipperPartsShipped.supplier" />
+                      <constructor-arg value="recoveryClaim.contract.supplier.name" />
+                      <constructor-arg value="18" />
+                      <constructor-arg value="string" />
+                      <constructor-arg
+                              value="getVariable('recoveryClaim').contract.supplier.name" />
+                      <constructor-arg value="true" />
+                      <constructor-arg value="false" />
+                      <constructor-arg value="false" />
+                      <constructor-arg value="false" />
+                      <constructor-arg value="16" />
+                  </bean>
+
+                 <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+                      <constructor-arg value="columnTitle.duePartsReceipt.supplierParShipDate" />
+                      <constructor-arg value="supplierPartReturn.supplierShipment.shipmentDate" />
+                      <constructor-arg value="10" />
+                      <constructor-arg value="string" />
+                      <constructor-arg
+                              value="getVariable('supplierPartReturn').supplierShipment.shipmentDate" />
+                      <constructor-arg value="true" />
+                      <constructor-arg value="false" />
+                      <constructor-arg value="false" />
+                      <constructor-arg value="false" />
+                      <constructor-arg value="16" />
+                  </bean>
+              </list>
+          </entry>
+
+          <entry key="Supplier Parts Inspection">
+              <list>
+              	  <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+                      <constructor-arg value="columnTitle.common.recClaimNo" />
+                      <constructor-arg value="taskInstance.claimId" />
+                      <constructor-arg value="0" />
+                      <constructor-arg value="id" />
+                      <constructor-arg value="claimId" />
+                      <constructor-arg value="false" />
+                      <constructor-arg value="true" />
+                      <constructor-arg value="true" />
+                      <constructor-arg value="false" />
+                  </bean>
+                  <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+                      <constructor-arg
+                              value="columnTitle.common.recClaimNo" />
+                      <constructor-arg value="recoveryClaim.recoveryClaimNumber" />
+                      <constructor-arg value="15" />
+                      <constructor-arg value="string" />
+                      <constructor-arg
+                              value="getVariable('recoveryClaim').recoveryClaimNumber" />
+                      <constructor-arg value="true" />
+                      <constructor-arg value="false" />
+                      <constructor-arg value="false" />
+                      <constructor-arg value="false" />
+                  </bean>
+                  <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+                      <constructor-arg value="columnTitle.partShipperPartsShipped.supplier" />
+                      <constructor-arg value="recoveryClaim.contract.supplier.name" />
+                      <constructor-arg value="25" />
+                      <constructor-arg value="string" />
+                      <constructor-arg
+                              value="getVariable('recoveryClaim').contract.supplier.name" />
+                      <constructor-arg value="true" />
+                      <constructor-arg value="false" />
+                      <constructor-arg value="false" />
+                      <constructor-arg value="false" />
+                  </bean>
+                  <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+                      <constructor-arg value="columnTitle.duePartsReceipt.dealerPartShipDate" />
+                      <constructor-arg value="shipment.shipmentDate" />
+                      <constructor-arg value="20" />
+                      <constructor-arg value="string" />
+                      <constructor-arg
+                              value="getVariable('supplierPartReturn').supplierShipment.shipmentDateForDisplay" />
+                      <constructor-arg value="true" />
+                      <constructor-arg value="false" />
+                      <constructor-arg value="false" />
+                      <constructor-arg value="false" />
+                  </bean>
+                  <bean class="tavant.twms.web.inbox.SummaryTableColumn">
+              		  <constructor-arg value="columnTitle.duePartsReceipt.receiptDate" />
+              		  <constructor-arg value="shipment.receiptDate" />
+              		  <constructor-arg value="20" />
+              		  <constructor-arg value="date" />
+              		  <constructor-arg
+                              value="getVariable('supplierPartReturn').supplierShipment.receiptDateForDisplay" />
+              		  <constructor-arg value="true" />
+                      <constructor-arg value="false" />
+                      <constructor-arg value="false" />
+                      <constructor-arg value="false" />
+            	  </bean>
+              </list>
+          </entry>
+      </map>
+    </constructor-arg>
+    </bean>
+	
+  <bean id ="i18nDomainTextReader" class="tavant.twms.web.i18n.I18nDomainTextReaderImpl"/>
+  <bean id="excelUtil" class="tavant.twms.web.exputils.ExcelUtilImpl" />
+  <bean id="treadReportAction"
+    class="tavant.twms.web.reports.TREADReportAction" />
+
+  <bean id="dealerConvertor"
+    class="tavant.twms.web.admin.upload.convertor.DealerConvertor" />
+  <bean id="itemRefConvertor"
+    class="tavant.twms.web.admin.upload.convertor.ItemReferenceConventor" />
+  <bean id="itemGroupConvertor"
+    class="tavant.twms.web.admin.upload.convertor.ItemGroupConvertor" />
+  <bean id="itemConvertor"
+    class="tavant.twms.web.admin.upload.convertor.ItemConvertor" />
+<!--  <bean id="uploadMessageResources"
+    class="tavant.twms.web.i18n.UploadMessageResources" />-->
+  <bean id="moneyConvertor"
+	class="tavant.twms.web.admin.upload.convertor.MoneyConvertor"/>
+  <bean id="serviceProcedureConvertor"
+	class="tavant.twms.web.admin.upload.convertor.ServiceProcedureConvertor"/>
+  <bean id ="nonOEMConvertor" 
+    class="tavant.twms.web.admin.upload.convertor.NonOEMConvertor"/>
+  <bean id ="invTransactionTypeConverter" 
+    class="tavant.twms.web.typeconverters.InvTransactionTypeConverter"/>
+    
+    <!--Email Notification Related Declarations-->
+    
+    <bean id="eventProcessor" class="tavant.twms.notification.handlers.EventProcessorImpl">
+		<property name="eventHandlerMap">
+			<map>
+				<entry key="defaultHandler">
+						<ref bean="defaultEmailEventHandler"/>
+				</entry>
+				<entry key="CLAIM_SUBMISSION_STATE">						
+						<ref bean="claimSubmittedEventHandler"/>
+				</entry>
+				<entry key="CLAIM_PROCESSOR_REVIEW">						
+						<ref bean="claimProcessorReviewEventHandler"/>
+				</entry>
+				<entry key="SERVICE_MANAGER_REVIEW">						
+						<ref bean="claimSubmittedEventHandler"/>
+				</entry>
+				<entry key="SERVICE_MANAGER_RESPONSE">						
+						<ref bean="claimSubmittedEventHandler"/>
+				</entry>
+				<entry key="CLAIM_FORWARDED">						
+						<ref bean="claimSubmittedEventHandler"/>
+				</entry>
+				<entry key="CLAIM_TRANSFERED">						
+						<ref bean="claimSubmittedEventHandler"/>
+				</entry>
+				<entry key="ADVICE_REQUEST">						
+						<ref bean="claimSubmittedEventHandler"/>
+				</entry>
+				<entry key="CLAIM_REPLIES">						
+						<ref bean="claimSubmittedEventHandler"/>
+				</entry>
+				<entry key="WAITING_FOR_PART_RETURNS">						
+						<ref bean="claimSubmittedEventHandler"/>
+				</entry>
+				<entry key="REJECTED_PART_RETURN">						
+						<ref bean="claimSubmittedEventHandler"/>
+				</entry>
+				<entry key="CLAIM_REACCEPTED">						
+						<ref bean="claimSubmittedEventHandler"/>
+				</entry>
+				<entry key="CLAIM_ACCEPTED_AND_CLOSED">						
+						<ref bean="claimClosedEventHandler"/>
+				</entry>
+				<entry key="CLAIM_DENIED_AND_CLOSED">						
+						<ref bean="claimClosedEventHandler"/>
+				</entry>
+				<entry key="CLAIM_APPEALED">						
+						<ref bean="claimSubmittedEventHandler"/>
+				</entry>				
+				<entry key="PARTS_REJECTED_ON_CLAIM">						
+						<ref bean="claimSubmittedEventHandler"/>
+				</entry>				
+				<entry key="CLAIM_DENIED_FOR_LACK_OF_PART_RETURNS">						
+						<ref bean="claimSubmittedEventHandler"/>
+				</entry>			
+				<entry key="WAITING_FOR_LABOR">						
+						<ref bean="claimSubmittedEventHandler"/>
+				</entry>				
+				<entry key="CP_REVIEW">						
+						<ref bean="claimSubmittedEventHandler"/>
+				</entry>
+				<entry key="CP_TRANSFER">						
+						<ref bean="claimSubmittedEventHandler"/>
+				</entry>
+				<entry key="PENDING_AUTHORIZATION">						
+						<ref bean="claimSubmittedEventHandler"/>
+				</entry>
+					
+				<entry key="parts">
+						<ref bean="partsEmailEventHandler"/>
+				</entry>
+				
+				<!--These are the handlers for Part Return Flow-->
+				
+				<entry key="PART_RETURN_SHIPPED">						
+						<ref bean="partReturnGenericEventHandler"/>
+				</entry>
+				<entry key="DUE_PART_RETURN_RECEIPT">						
+						<ref bean="partReturnGenericEventHandler"/>
+				</entry>
+				<entry key="START_PART_RETURN">						
+						<ref bean="partReturnGenericEventHandler"/>
+				</entry>
+				
+				<entry key="PART_MOVED_TO_OVERDUE">						
+						<ref bean="partReturnGenericEventHandler"/>
+				</entry>
+				
+				<!--End of handlers for Part Return Flow-->	
+				<entry key="MISMATCH_OF_COVERAGE">						
+						<ref bean="coverageMismatchEventHandler"/>
+				</entry>
+				
+			</map>				
+		</property>
+	</bean>
+	
+	<bean id="defaultEmailEventHandler" class="tavant.twms.notification.handlers.DefaultEmailEventHandler"/>
+	<bean id="claimSubmittedEventHandler" class="tavant.twms.notification.handlers.ClaimSubmittedEventHandler"/>
+	<bean id="claimClosedEventHandler" class="tavant.twms.notification.handlers.ClaimClosedEventHandler"/>		
+	<bean id="coverageMismatchEventHandler" class="tavant.twms.notification.handlers.CoverageMismatchEventHandler"/>	
+	<bean id="partsEmailEventHandler" class="tavant.twms.notification.handlers.PartsEmailEventHandler"/>
+	<bean id="claimProcessorReviewEventHandler" class="tavant.twms.notification.handlers.ClaimProcessorReviewEventHandler"/>
+    <bean id="partReturnGenericEventHandler" class="tavant.twms.notification.handlers.PartReturnGenericEventHandler"/>
+    
+    
+    <!-- End Of Email Notification Related Declarations-->
+     
+    
+    
+  <bean id="serializerFactory" class="tavant.twms.web.rules.SerializerFactory">
+  	<property name="serializers">
+  		<map>
+  			<entry key="PolicyRules">
+  				<bean id="PolicyRulesJSONSerializer" class="tavant.twms.web.rules.RuleJSONSerializer">  
+			  	    <constructor-arg value="PolicyRules"/>
+				</bean>
+  			</entry>
+  			<entry key="ContractApplicabilityRules">
+  				<bean id="ContractApplicabilityRulesJSONSerializer" class="tavant.twms.web.rules.RuleJSONSerializer">  
+			  	    <constructor-arg value="ContractApplicabilityRules"/>
+				</bean>
+  			</entry>
+  			<entry key="ClaimDuplicacyRules">
+  				<bean id="ClaimDuplicacyRulesJSONSerializer" class="tavant.twms.web.rules.RuleJSONSerializer">  
+			  	    <constructor-arg value="ClaimDuplicacyRules"/>
+				</bean>
+  			</entry>
+  			<entry key="ClaimRules">
+  				<bean id="ClaimRulesJSONSerializer" class="tavant.twms.web.rules.RuleJSONSerializer">  
+			  	    <constructor-arg value="ClaimRules"/>
+				</bean>
+  			</entry>
+  			<entry key="ClaimSearches">
+  				<bean id="ClaimSearchesJSONSerializer" class="tavant.twms.web.rules.RuleJSONSerializer">  
+			  	    <constructor-arg value="ClaimSearches"/>
+				</bean>
+  			</entry>
+  			<entry key="ClaimProcessorRouting">
+  				<bean id="ClaimProcessorRoutingJSONSerializer" class="tavant.twms.web.rules.RuleJSONSerializer">  
+			  	    <constructor-arg value="ClaimProcessorRouting"/>
+				</bean>
+  			</entry>
+  			<entry key="recClaimProcessorRouting">
+  				<bean id="recClaimProcessorRoutingJSONSerializer" class="tavant.twms.web.rules.RuleJSONSerializer">  
+			  	    <constructor-arg value="recClaimProcessorRouting"/>
+				</bean>
+  			</entry>
+  			<entry key="EntryValidationRules">
+  				<bean id="EntryValidationRulesJSONSerializer" class="tavant.twms.web.rules.RuleJSONSerializer">  
+			  	    <constructor-arg value="EntryValidationRules"/>
+				</bean>
+  			</entry>
+  			<entry key="InventorySearches">
+  				<bean id="InventorySearchesJSONSerializer" class="tavant.twms.web.rules.RuleJSONSerializer">  
+			  	    <constructor-arg value="InventorySearches"/>
+				</bean>
+  			</entry>
+  			<entry key="PartReturnSearches">
+  				<bean id="PartReturnSearchesJSONSerializer" class="tavant.twms.web.rules.RuleJSONSerializer">  
+			  	    <constructor-arg value="PartReturnSearches"/>
+				</bean>
+  			</entry>
+  			<entry key="RecoveryClaimSearches">
+  				<bean id="RecoveryClaimSearchesJSONSerializer" class="tavant.twms.web.rules.RuleJSONSerializer">  
+			  	    <constructor-arg value="RecoveryClaimSearches"/>
+				</bean>
+  			</entry>
+  			
+  			<entry key="ItemSearches">
+  				<bean id="ItemSearchesJSONSerializer" class="tavant.twms.web.rules.RuleJSONSerializer">  
+			  	    <constructor-arg value="ItemSearches"/>
+				</bean>
+  		    </entry>		
+
+  		</map>
+  	</property>
+  </bean>
+	<bean id="syncTrackerDAO" class="tavant.twms.domain.integration.SyncTrackerDAOImpl" />
+	<bean id="aesBasedUsernameDecrypter"
+		class="tavant.twms.web.security.authn.decrypter.AesBasedUsernameDecrypter">
+		<constructor-arg value="7vRbsM=M>*zaGg-oa+E5Guc]Hw=Rz}=T" />
+    </bean>
+    
+    <bean id="aesBasedDecrypterForCMS"
+		class="tavant.twms.web.security.authn.decrypter.AesBasedDecrypterForCMS">
+		<constructor-arg value="7vRbsM=M>*zaGg-oa+E5Guc]Hw=Rz}=T" />
+    </bean>
+</beans>

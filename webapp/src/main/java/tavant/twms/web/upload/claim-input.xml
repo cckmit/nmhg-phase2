@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<workbook>
+	<worksheet name="Claims">
+		<loop startRow="1" endRow="3" items="claims" var="claim" varType="tavant.twms.domain.claim.Claim">
+			<section startRow="1" endRow="3">
+				<mapping row="2" col="2">itemReference.unserializedItem.number </mapping>
+				<mapping row="" col=""></mapping>
+				<mapping row="" col=""></mapping>
+				<mapping row="" col=""></mapping>
+				<mapping row="" col=""></mapping>
+				<mapping row="" col=""></mapping>
+				<mapping row="" col=""></mapping>
+				<mapping row="" col=""></mapping>
+				<mapping row="" col=""></mapping>
+				<mapping row="" col=""></mapping>
+				<mapping row="" col=""></mapping>
+			</section>
+		</loop>
+	</worksheet>
+</workbook>

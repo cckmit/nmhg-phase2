@@ -1,0 +1,60 @@
+[OPTIONS]
+Compiled File=Advisor.chm
+Title=Advisor
+Contents File=Advisor.hhc
+Index File=Advisor.hhk
+Default topic=
+Default Window=
+Error log file=
+Display compile progress=No
+Display compile notes=No
+Full-text search=Yes
+Binary Index=Yes
+Auto Index=No
+Enhanced decompilation=No
+Binary TOC=No
+Flat=No
+
+[WINDOWS]
+
+[FILES]
+Before_you_Begin\common_application_features.htm
+Claims\Claim_Details.htm
+Claims\index.htm
+Inventory\Equipment_Details.htm
+Before_you_Begin\index.htm
+Field_Modifications\index.htm
+Part_Returns\index.htm
+Inventory\index.htm
+Part_Returns\Search_Parts.htm
+Items\index.htm
+Settings\Profile.htm
+Settings\index.htm
+Reports\Reports.htm
+Reports\index.htm
+Reports\Upload_Management.htm
+Reports\Download_Management.htm
+Items\Search_Items.htm
+Inventory\Search_Inventory.htm
+Field_Modifications\Search_Campaigns.htm
+Claims\Search_Claims.htm
+Claims\Advice_Request.htm
+Before_you_Begin\Introduction.htm
+Before_you_Begin\Copyright.htm
+Before_you_Begin\Before_you_Begin.htm
+Settings\Email_Subscription.htm
+eHelp.xml
+RoboHHRE.lng
+
+Advisor.glo
+Advisor.brs
+[ALIAS]
+#include Advisor.ali
+
+[MAP]
+#include BSSCDefault.h
+
+[TEXT POPUPS]
+BSSCDefault.h
+
+

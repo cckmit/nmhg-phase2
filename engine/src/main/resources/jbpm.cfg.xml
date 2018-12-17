@@ -1,0 +1,25 @@
+<jbpm-configuration>
+  <!-- This has to be in sync for each and every jbpm update with the default.jbpm.cfg.xml -->
+  <jbpm-context>
+    <service name="persistence" factory="tavant.twms.jbpm.infra.PersistenceServiceFactory" />    	
+    <service name="message" factory="org.jbpm.msg.db.DbMessageServiceFactory" />
+    <service name="scheduler" factory="org.jbpm.scheduler.db.DbSchedulerServiceFactory" />
+    <service name="authentication" factory="org.jbpm.security.authentication.DefaultAuthenticationServiceFactory" />
+  </jbpm-context>
+  
+  <!-- configuration resource files pointing to default configuration files in jbpm-{version}.jar -->
+  <string name="resource.business.calendar" value="org/jbpm/calendar/jbpm.business.calendar.properties" />
+  <string name="resource.default.modules" value="org/jbpm/graph/def/jbpm.default.modules.properties" />
+  <string name="resource.converter" value="org/jbpm/db/hibernate/jbpm.converter.properties" />
+  <string name="resource.action.types" value="action.types.extended.xml" />
+  <string name="resource.node.types" value="engine-node.types.xml" />
+  <string name="resource.parsers" value="org/jbpm/jpdl/par/jbpm.parsers.xml" />
+  <string name="resource.varmapping" value="org/jbpm/context/exe/jbpm.varmapping.xml" />
+
+  <int name="jbpm.byte.block.size" value="1024" singleton="true" />
+  <bean name="jbpm.task.instance.factory" class="tavant.twms.jbpm.infra.CustomTaskInstanceFactoryImpl" singleton="true" />
+  <bean name="jbpm.variable.resolver" class="tavant.twms.jbpm.infra.ExtendedJbpmVariableResolver" singleton="true" />
+  <bean name="jbpm.sub.process.resolver" class="tavant.twms.jbpm.infra.DBSubProcessResolver" singleton="true" />
+  <long name="jbpm.msg.wait.timout" value="5000" singleton="true" />
+
+</jbpm-configuration>

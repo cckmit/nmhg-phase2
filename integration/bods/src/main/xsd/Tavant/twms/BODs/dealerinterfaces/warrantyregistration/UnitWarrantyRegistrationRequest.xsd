@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://www.tavant.com/dealerinterfaces/warrantyregistration/request" xmlns:xs="http://www.w3.org/2001/XMLSchema" 		 
+	xmlns:ns="http://www.tavant.com/dealerinterfaces/warrantyregistration/request" 		
+	targetNamespace="http://www.tavant.com/dealerinterfaces/warrantyregistration/request" 
+	elementFormDefault="qualified" 
+	attributeFormDefault="unqualified">
+		
+	<xs:element name="UnitWarrantyRegistrationRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<!-- Name of the Business Unit to which inventory belongs to-->
+				<xs:element name="BUName" default="Thermo King TSA" nillable="false">
+					<xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:enumeration value="Thermo King TSA"/>
+                            <xs:enumeration value="Hussmann"/>
+                            <xs:enumeration value="AIR"/>
+							<xs:enumeration value="Club Car"/>
+							<xs:enumeration value="Clubcar ESA"/>
+							<xs:enumeration value="TFM"/>
+							<xs:enumeration value="TK"/>
+							<xs:enumeration value="Transport Solutions ESA"/>
+							<xs:enumeration value="ITS"/>
+                        </xs:restriction>
+                     </xs:simpleType>
+				</xs:element>
+				
+				<!-- Organization Number w.r.t which dealer is performing the action. Mandatory if the dealer is working for more than one organization -->
+				<xs:element name="CurrentlyActiveOrganizationNumber" type="xs:string"  nillable="true"/>
+				
+				<!-- Should be true if the claim needs to be saved in draft state and not submitted -->
+				<xs:element name="ForceToDraft" type="xs:boolean" nillable="false"/>
+				
+				<!-- Machine Serial Number-->
+				<xs:element name="InventorySerialNumber" nillable="false">
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:minLength value="1" />        
+								</xs:restriction>
+							</xs:simpleType>
+				</xs:element>
+				
+				<!-- Machine Item Number-->
+				<xs:element name="InventoryItemNumber" nillable="false">
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:minLength value="1" />        
+								</xs:restriction>
+							</xs:simpleType>
+				</xs:element>
+				
+				<!-- Type of the customer to whom inventory is being registered. Possible values are 	 
+				              DirectCustomer,InterCompany,NationalAccount,Dealer and End Customer-->
+				
+				<xs:element name="CustomerType" nillable="false">
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:minLength value="1" />        
+								</xs:restriction>
+							</xs:simpleType>
+				</xs:element>
+				<!-- Customer ID of the customer -->
+				
+				<xs:element name="CustomerID" nillable="false">
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:minLength value="1" />        
+								</xs:restriction>
+							</xs:simpleType>
+				</xs:element>
+				<!-- Type of the operator-->
+				
+				<xs:element name="OperatorType" type="xs:string" nillable="true"/>
+				<!-- Id of the operator -->
+				
+				<xs:element name="OperatorId" type="xs:string" nillable="true"/>
+				<!-- Type of the transaction-->
+				<xs:element name="TransactionType" nillable="false">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="Cash Sales"/>
+							<xs:enumeration value="Installment Sale"/>
+							<xs:enumeration value="Lease"/>
+							<xs:enumeration value="Long Term Rental"/>
+							<xs:enumeration value="Short Term Rental"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				
+				<xs:element name="MarketType" type="xs:string" nillable="true"/>
+				
+				<xs:element name="CompetitionType" type="xs:string" nillable="true"/>
+				
+				<xs:element name="FirstTimeOwner" type="xs:boolean" nillable="false"/>
+				
+				<xs:element name="IfPreviousOwner" type="xs:string" nillable="true"/>
+				
+				<xs:element name="ModelNo" type="xs:string" nillable="true"/>
+				
+				<xs:element name="CompetitorMake" type="xs:string" nillable="true"/>
+				
+				<!-- Number of months leased or rented.Mandatory if Transaction Type is  one of Lease/Long Term Rental/Short Term Rental-->
+				<xs:element name="NoOfMonths" type="xs:nonNegativeInteger" minOccurs="0" maxOccurs="1" />
+				
+				<!-- Number of years leased or rented-->
+				<xs:element name="NoOfYears" type="xs:nonNegativeInteger" minOccurs="0" maxOccurs="1" />
+				
+				<xs:element name="Comments" type="xs:string" nillable="true"/>
+				
+				<!-- Dealer Number of the installing Dealer -->
+				<xs:element name="InstallingDealer" nillable="false">
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:minLength value="1" />        
+								</xs:restriction>
+							</xs:simpleType>
+				</xs:element>
+				
+				<xs:element name="DateOfDelivery" type="xs:date" nillable="false"/>
+				
+				<xs:element name="DateOfInstallation" type="xs:date" nillable="false"/>
+				
+				<xs:element name="HoursInService" type="xs:nonNegativeInteger" nillable="false"/>
+				
+				<!-- VIN number or the ID of the equipment on which the product was installed. -->
+				<xs:element name="EquipmentVINID" type="xs:string" nillable="true"/>
+				
+				<!-- Number of the truck or trailer on which the product was installed-->
+				<xs:element name="TruckTrailerNumber" type="xs:string" nillable="true"/>
+				
+				<xs:element name="OEM" type="xs:string" nillable="true"/>
+				
+				<!-- Major Component that are contained in this inventory-->
+				<xs:element name="MajorComponents" type="MajorComponentsType" nillable="true" minOccurs="0"/>
+				
+				<!-- Attributes that are specific to the product type of the inventory being registered -->
+				<xs:element name="ProductMarketInformation" type="ProductMarketInformationType" nillable="true" minOccurs="0"/>
+				
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="MajorComponentsType">
+		<xs:sequence>
+			<xs:element name="EachMajorComponent" type="EachMajorComponent" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="EachMajorComponent">
+		<xs:sequence>
+			<xs:element name="ItemNumber" nillable="false">
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:minLength value="1" />        
+								</xs:restriction>
+							</xs:simpleType>
+			</xs:element>
+			<xs:element name="SerialNumber" nillable="false">
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:minLength value="1" />        
+								</xs:restriction>
+							</xs:simpleType>
+			</xs:element>
+			
+			<xs:element name="DateofInstallation" type="xs:date" nillable="false" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ProductMarketInformationType">
+		<xs:sequence>
+			<xs:element name="EachAttribute" type="EachAttribute" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="EachAttribute">
+		<xs:sequence>
+			<xs:element name="AttributeName" nillable="false">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:minLength value="1" />        
+						</xs:restriction>
+					</xs:simpleType>
+			</xs:element>
+			<xs:element name="AttributeValue" nillable="false">
+						<xs:simpleType>
+							<xs:restriction base="xs:string">
+								<xs:minLength value="1" />        
+							</xs:restriction>
+						</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

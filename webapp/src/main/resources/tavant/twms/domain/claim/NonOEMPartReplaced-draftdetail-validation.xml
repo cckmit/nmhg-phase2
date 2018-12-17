@@ -1,0 +1,41 @@
+<!DOCTYPE validators PUBLIC "-//Apache Struts//XWork Validator 1.0.2//EN"
+       "http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+<validators>
+	
+	<field name="description">
+        <field-validator type="required">
+            <message key="error.newClaim.invalidNonOEMDescription"/>
+        </field-validator>
+    </field>
+
+	<field name="description">
+    	<field-validator type="fieldexpression" short-circuit="true">
+        	<param name="expression"><![CDATA[ 
+				!description.equals("")
+        	]]></param>
+            <message  key="error.newClaim.invalidNonOEMDescription">
+            </message>
+         </field-validator>        
+    </field>	
+   
+    <field name="numberOfUnits">
+    	<field-validator type="fieldexpression" short-circuit="true">
+        	<param name="expression"><![CDATA[
+        		numberOfUnits != null && numberOfUnits.intValue() >=1
+        	]]></param>
+            <message  key="error.newClaim.invalidNonOEMPartUnits">
+            </message>
+         </field-validator>        
+    </field>
+        
+    <field name="pricePerUnit">
+    	<field-validator type="fieldexpression" short-circuit="true">
+        	<param name="expression"><![CDATA[
+        		pricePerUnit != null
+        	]]></param>
+            <message  key="error.newClaim.invalidNonOEMPrice">
+            </message>
+         </field-validator>        
+    </field>   
+	 
+</validators>

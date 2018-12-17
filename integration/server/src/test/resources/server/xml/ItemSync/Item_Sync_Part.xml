@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SyncItemMaster xmlns="http://www.tavant.com/globalsync/itemsync">
+  <ApplicationArea>
+    <Sender>
+      <LogicalId>SAP</LogicalId>
+      <Task>TavantWMS</Task>
+      <ReferenceId>12571767#1E59957H01#5518793</ReferenceId>
+    </Sender>
+    <CreationDateTime>2008-03-14T11:15:03-08:00</CreationDateTime>
+    <BODId>12571767#1E59957H01#5518793</BODId>
+    <InterfaceNumber>USINT0805</InterfaceNumber>
+  </ApplicationArea>
+  <DataArea>
+    <ItemMaster>
+      <Header>
+        <ItemId>
+          <Id>1E59957H01</Id>
+        </ItemId>
+        <Type>PART</Type>
+        <Status>
+          <Code>ACTIVE</Code>
+        </Status>
+        <UOM>ea</UOM>
+        <Description>Description</Description>
+        <UserArea>
+          <ManufName>TMWS</ManufName>
+          <DivisionCode>Thermo King TSA</DivisionCode>
+          <DivisionCodeDescription>TMWS</DivisionCodeDescription>
+          <ClassCode>NS</ClassCode>
+          <ProductCode>PART</ProductCode>
+          <ModelCode>PART</ModelCode>
+          <ItemNumberSegment1>1E59957H01</ItemNumberSegment1>
+          <SerialStatusEnabled>N</SerialStatusEnabled>
+          <ServicePart>N</ServicePart>
+        </UserArea>
+      </Header>
+    </ItemMaster>
+  </DataArea>
+</SyncItemMaster>

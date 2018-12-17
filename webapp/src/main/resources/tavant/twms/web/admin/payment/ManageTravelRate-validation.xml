@@ -1,0 +1,65 @@
+<!DOCTYPE validators PUBLIC 
+    "-//Apache Struts//XWork Validator 1.0.2//EN"   
+    "http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+<validators><!--
+  <validator type="expression">
+    <param name="expression">rates.size > 0</param>
+    <message key="error.manageRates.moreRateConfigRequired" />
+  </validator>
+
+  <validator type="expression">
+    <param name="expression">rates.{? #this.duration == null}.size == 0</param>
+    <message key="error.manageRates.durationNotSpecified" />
+  </validator>
+
+  <validator type="expression">
+    <param name="expression">
+      rates.{? #this.duration != null and #this.duration.fromDate == null}.size == 0
+    </param>
+    <message key="error.manageRates.startDateNotSpecified" />
+  </validator>
+
+  <validator type="expression">
+    <param name="expression">
+      rates.{? #this.duration != null and #this.duration.tillDate == null}.size == 0
+    </param>
+        <message key="error.manageRates.endDateNotSpecified" />
+  </validator>
+  
+  <validator type="expression">
+  	 <param name="expression">
+      rates.{? (#this.value.hourlyRate == null or #this.value.hourlyRate.breachEncapsulationOfAmount().signum() == 0) 
+	      and (#this.value.distanceRate == null or #this.value.distanceRate.breachEncapsulationOfAmount().signum() == 0) 
+	      and (#this.value.tripRate == null or #this.value.tripRate.breachEncapsulationOfAmount().signum() == 0)}.size == 0	
+	 </param>
+	 <message key="error.manageRates.enterAtLeastOneRate" />
+  </validator>
+  
+  <validator type="expression">
+    <param name="expression">
+      rates.{? #this.value.distanceRate != null and #this.value.distanceRate.breachEncapsulationOfAmount().signum() == -1}.size == 0
+    </param>
+    <message key="error.manageRates.invalidDistanceRate" />
+  </validator>
+  
+  <validator type="expression">
+    <param name="expression">
+      rates.{? #this.value.hourlyRate != null and #this.value.hourlyRate.breachEncapsulationOfAmount().signum() == -1}.size == 0
+    </param>
+    <message key="error.manageRates.invalidHourlyRate" />
+  </validator>
+  
+  <validator type="expression">
+    <param name="expression">
+      rates.{? #this.value.tripRate != null and #this.value.tripRate.breachEncapsulationOfAmount().signum() == -1}.size == 0
+    </param>
+    <message key="error.manageRates.invalidTripRate" />
+  </validator>
+  
+  --><validator type="visitor">
+        <param name="fieldName"></param>
+        <param name="appendPrefix"></param>
+        <message/>
+  </validator>
+   
+</validators>

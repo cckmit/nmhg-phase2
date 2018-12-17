@@ -1,0 +1,772 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <artifactId>server</artifactId>
+        <groupId>tavant.twms.TSA_DEV</groupId>
+        <version>0.5-SNAPSHOT</version>
+    </parent>
+    <artifactId>webapp</artifactId>
+    <name>server-webapp</name>
+    <packaging>war</packaging>
+    <scm>
+        <connection>
+            scm:svn:http://svn.corp.tavant.com/twms/app/server/branches/TWMS_IRI_HUSS_DEV/
+        </connection>
+        <developerConnection>
+            scm:svn:http://svn.corp.tavant.com/twms/app/server/branches/TWMS_IRI_HUSS_DEV/
+        </developerConnection>
+        <url>
+            scm:svn:http://svn.corp.tavant.com/twms/app/server/branches/TWMS_IRI_HUSS_DEV/
+        </url>
+    </scm>
+    <dependencies>
+
+        <dependency>
+            <groupId>tavant.twms.TSA_DEV</groupId>
+            <artifactId>common</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.mail</groupId>
+            <artifactId>mail</artifactId>
+        </dependency>
+
+		<dependency>
+			<groupId>org.dbunit</groupId>
+			<artifactId>dbunit</artifactId>
+			<version>2.4.8</version>
+		</dependency>
+
+        <dependency>
+            <groupId>tavant.twms.TSA_DEV</groupId>
+            <artifactId>common-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>tavant.twms.TSA_DEV</groupId>
+            <artifactId>seeddata</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+		<dependency>
+            <groupId>tavant.twms.TWMS_DEV</groupId>
+            <artifactId>domain-core</artifactId>
+            <version>0.5-SNAPSHOT</version>
+        </dependency>
+		
+        <dependency>
+            <groupId>tavant.twms.TSA_DEV</groupId>
+            <artifactId>domain</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>tavant.twms.TSA_DEV</groupId>
+            <artifactId>engine</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>tavant.twms.TSA_DEV</groupId>
+            <artifactId>annotations</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>tavant.twms.TSA_DEV</groupId>
+            <artifactId>integration-layer</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-httpclient</groupId>
+            <artifactId>commons-httpclient</artifactId>
+        </dependency>
+ 
+         <dependency>
+            <groupId>org.apache.struts.xwork</groupId>
+            <artifactId>xwork-core</artifactId>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.apache.struts</groupId>
+            <artifactId>struts2-core</artifactId>
+        </dependency>
+
+		<dependency>
+			<groupId>org.apache.struts</groupId>
+			<artifactId>struts2-dojo-plugin</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.struts</groupId>
+			<artifactId>struts2-dwr-plugin</artifactId>
+			<version>${strutsVersion}</version>
+		</dependency>			
+			
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.lowagie</groupId>
+                    <artifactId>itext</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>itext</groupId>
+            <artifactId>itext</artifactId>
+            <version>2.1.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.struts</groupId>
+            <artifactId>struts2-spring-plugin</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.struts</groupId>
+            <artifactId>struts2-jasperreports-plugin</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.struts</groupId>
+            <artifactId>struts2-pell-multipart-plugin</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-collections</groupId>
+            <artifactId>commons-collections</artifactId>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjrt</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+        </dependency> 
+
+        <!--
+                  Having a dependency like this, will cause the
+                  jar to be included in the package. We cant say
+                  a dependency for scope "jetty:run". Until we
+                  get maven plugin, this is how it will be.
+        -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jsp-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>net.sf.dozer</groupId>
+            <artifactId>dozer</artifactId>
+        </dependency>
+
+         <dependency>
+            <groupId>com.thoughtworks.xstream</groupId>
+            <artifactId>xstream</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>uk.ltd.getahead</groupId>
+            <artifactId>dwr</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>net.sf.barbecue</groupId>
+            <artifactId>barbecue</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>jasperreports</groupId>
+            <artifactId>jasperreports</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>eclipse</groupId>
+                    <artifactId>jdtcore</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>net.sourceforge.jexcelapi</groupId>
+            <artifactId>jxl</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.keypoint</groupId>
+            <artifactId>png-encoder</artifactId>
+            <scope>compile</scope>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+        </dependency> 
+
+<!--         <dependency>
+            <groupId>xmlbeans</groupId>
+            <artifactId>xbean</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>xmlbeans</groupId>
+            <artifactId>xmlbeans-jsr173-api</artifactId>
+        </dependency> -->
+
+         <dependency>
+            <groupId>opensymphony</groupId>
+            <artifactId>pell-multipart</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-fileupload</groupId>
+            <artifactId>commons-fileupload</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>net.sf.jxls</groupId>
+            <artifactId>jxls-core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>net.sf.jxls</groupId>
+            <artifactId>jxls-reader</artifactId>
+        </dependency>
+
+
+        <dependency>
+            <groupId>commons-jexl</groupId>
+            <artifactId>commons-jexl</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-dbcp</groupId>
+            <artifactId>commons-dbcp</artifactId>
+            <version>1.2.1</version>
+            <exclusions>
+            <exclusion>
+                    <groupId>xerces</groupId>
+                    <artifactId>xerces</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>xerces</groupId>
+                    <artifactId>xercesImpl</artifactId>
+                </exclusion>
+			</exclusions>
+        </dependency> 
+
+        <dependency>
+            <groupId>com.oracle</groupId>
+            <artifactId>ojdbc6</artifactId>
+            <version>11.2.0.1.0</version>
+            <scope>provided</scope>
+        </dependency>
+
+       <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>2.0</version>
+        </dependency>
+        <dependency>
+            <groupId>ecs</groupId>
+            <artifactId>ecs</artifactId>
+            <version>1.4.2</version>
+        </dependency>        
+		<dependency>
+			<groupId>cglib</groupId>
+			<artifactId>cglib</artifactId>
+		</dependency>	    
+           <dependency>
+               <groupId>velocity</groupId>
+               <artifactId>velocity-dep</artifactId>
+               <version>1.4</version>
+           </dependency>
+        <dependency>
+            <groupId>com.domainlanguage</groupId>
+            <artifactId>timeandmoney</artifactId>
+            <version>0.5.1</version>
+            <type>jar</type>
+        </dependency> 
+
+        <!-- Fop dependency -->
+        <dependency>
+            <groupId>org.apache.xmlgraphics</groupId>
+            <artifactId>fop</artifactId>
+            <version>1.0</version>
+            <exclusions>
+            <exclusion>
+                    <groupId>xalan</groupId>
+	                <artifactId>xalan</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>xerces</groupId>
+                    <artifactId>xercesImpl</artifactId>
+                </exclusion>
+			</exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>net.sf.barcode4j</groupId>
+            <artifactId>barcode4j-fop-ext-complete</artifactId>
+            <version>2.0</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>xerces</groupId>
+                    <artifactId>xercesImpl</artifactId>
+                </exclusion>
+			</exclusions>
+       </dependency> 
+
+        <dependency>
+            <groupId>net.coobird</groupId>
+            <artifactId>thumbnailator</artifactId>
+            <version>0.4.2</version>
+        </dependency>
+    </dependencies>
+ 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <dependencies>
+                    <!-- <dependency>
+                        <groupId>xmlbeans</groupId>
+                        <artifactId>xbean</artifactId>
+                        <version>2.2.0</version>
+                    </dependency>  -->
+                    <dependency>
+			<groupId>org.apache.xmlbeans</groupId>
+			<artifactId>xmlbeans</artifactId>
+			<version>2.6.0</version>
+		</dependency>
+                    
+                </dependencies>
+                <configuration>
+                    <skip>true</skip>
+                    <excludes>
+                        <exclude>
+                            **/ClaimValidationServiceImplTest.java
+                        </exclude>
+                        <exclude>**/XmlBeanWrapperTest.java</exclude>
+                        <exclude>**/*IntegrationTest*.java</exclude>
+                        <exclude>**/*PaymentActionTest.java</exclude>
+                        <exclude>**/*ManagePolicyTest.java</exclude>
+                        <exclude>
+                            **/*ExcelToXMLConverterTest.java
+                        </exclude>
+                        <exclude>**/rules/*Test.java</exclude>
+                        <exclude>**/SearchPolicyRule*.java</exclude>
+                        <exclude>**/UploadClaimTest*.java</exclude>
+                        <exclude>
+                            **/UploadClaimReaderTest*.java
+                        </exclude>
+                    </excludes>
+                    <forkMode>once</forkMode>
+                    <argLine>-Xmx256m</argLine>
+                </configuration>
+			    </plugin>
+			
+			
+				<plugin>
+					<groupId>org.mortbay.jetty</groupId>
+					<artifactId>maven-jetty-plugin</artifactId>
+					<version>6.1.1</version>
+					<dependencies>
+						<dependency>
+							<groupId>com.oracle</groupId>
+							<artifactId>ojdbc6</artifactId>
+							<version>11.2.0.1.0</version>
+						</dependency>
+					</dependencies>
+					<configuration>
+						<scanIntervalSeconds>
+							${jetty.scanInterval}
+						</scanIntervalSeconds>
+					<contextPath>/twms</contextPath>
+						<connectors>
+							<connector implementation="org.mortbay.jetty.nio.SelectChannelConnector">
+								<port>8081</port>
+							</connector>
+						</connectors>
+						<webDefaultXml>
+							src/main/resources/webdefault.xml
+						</webDefaultXml>
+						<systemProperties>
+							<property>
+								<name>TWMS_ENV_MODE</name>
+								<value>dev</value>
+							</property>
+							<property>
+								<name>TWMS_HOME</name>
+								<value>${basedir}/../etc</value>
+							</property>
+							<property>
+								<name>TWMS_DB</name>
+								<value>oracle</value>
+							</property>
+							<property>
+								<name>hibernate.bytecode.provider</name>
+								<value>cglib</value>
+							</property>
+						</systemProperties>
+			
+					</configuration>
+				</plugin>
+
+
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>jasperreports-maven-plugin</artifactId>
+                <version>1.0-beta-1</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>log4j</groupId>
+                        <artifactId>log4j</artifactId>
+                        <version>1.2.12</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>jasperreports</groupId>
+                        <artifactId>jasperreports</artifactId>
+                        <version>1.3.0</version>
+                    </dependency>
+                </dependencies>
+                <executions>
+                    <execution>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>compile-reports</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <xmlValidation>false</xmlValidation>
+					<sourceDirectory>
+						src/main/jasperreports
+					</sourceDirectory>
+                    <outputDirectory>
+                        src/main/webapp/reports
+                    </outputDirectory>
+                </configuration>
+            </plugin> 
+
+            <!--<plugin>
+                <groupId>org.apache.myfaces.tobago</groupId>
+                <artifactId>maven-apt-plugin</artifactId>
+                <configuration>
+                    <generated>target/gen</generated>
+                    <A>
+                        outFile=${basedir}/target/classes/struts/generatedActionMappings.xml,
+                        dtdPath=http://struts.apache.org/dtds/struts-2.0.dtd,
+                        createRequestViewWrapper=createRequestSuccessWrapper.jsp,
+                        createRequestInputViewWrapper=common/errorPage.jsp,
+                        createInputViewWrapper=createRequestSuccessWrapper.jsp,
+                        createSuccessViewWrapper=updateRequestSuccessWrapper.jsp,
+                        updateRequestViewWrapper=updateRequestSuccessWrapper.jsp,
+                        updateRequestInputViewWrapper=common/errorPage.jsp,
+                        updateInputViewWrapper=updateRequestSuccessWrapper.jsp,
+                        updateSuccessViewWrapper=updateRequestSuccessWrapper.jsp,
+                        deleteRequestViewWrapper=updateRequestSuccessWrapper.jsp,
+                        deleteRequestInputViewWrapper=common/errorPage.jsp,
+                        deleteInputViewWrapper=updateRequestSuccessWrapper.jsp,
+                        deleteSuccessViewWrapper=deleteSubmitSuccessWrapper.jsp,
+                        viewRequestViewWrapper=readOnlyRequestSuccessWrapper.jsp,
+                        viewRequestInputViewWrapper=common/errorPage.jsp,
+                        packageName=generatedActions,
+                        packageExtends=struts-twms-default,
+                        wrapperFileDirectoryPath=pages/secure/common/form
+                    </A>
+                    <resourceTargetPath>target</resourceTargetPath>
+                    <fork>false</fork>
+                    <force>true</force>
+                    <nocompile>true</nocompile>
+                    <showWarnings>true</showWarnings>
+                    <factory>tavant.twms.annotations.form.FormFrameworkAnnotationProcessorFactoryImpl</factory>
+                    <target>1.5</target>
+                    <includes>
+                        <include>**/*.java</include>
+                    </includes>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>execute</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>-->
+        </plugins>
+    </build>
+
+    <profiles>
+        <profile>
+            <id>debug</id>
+            <dependencies>
+                <dependency>
+                    <groupId>com.iterative</groupId>
+                    <artifactId>groovyServer</artifactId>
+                    <version>0.1-TWMS-SNAPSHOT</version>
+                </dependency>
+            </dependencies>
+        </profile>
+
+        <profile>
+            <id>dailyqabuild</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>buildnumber-maven-plugin</artifactId>
+                        <version>1.0-beta-3</version>
+                        <executions>
+                            <execution>
+                                <phase>validate</phase>
+                                <goals>
+                                    <goal>create</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <doCheck>false</doCheck>
+                            <doUpdate>false</doUpdate>
+                        </configuration>
+                    </plugin>
+					<plugin>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<version>1.7</version>
+						<executions>
+						  <execution>
+							<phase>process-test-classes</phase>
+							<goals>
+							  <goal>run</goal>
+							</goals>
+						  </execution>
+						</executions>
+						<configuration>
+							<target>
+								<ant antfile="${basedir}/build.xml">
+									<property name="fromJSFolder" value="${basedir}/src/main/webapp/scripts"/>
+									<property name="dist" value="${project.build.directory}/${artifactId}-${version}/${buildNumber}/scripts"/>
+									<property name="jspHtmlFolder" value="${project.build.directory}/${artifactId}-${version}"/>
+									<property name="find" value="scripts/"/>
+									<property name="replace" value="${buildNumber}/scripts/"/>
+									<target name="moveResources" />
+								</ant>
+							</target>
+						</configuration>
+					</plugin>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>jspc-maven-plugin</artifactId>
+						<configuration>
+							<warSourceDirectory>${project.build.directory}/${artifactId}-${version}</warSourceDirectory>
+							<outputWebXml>${project.build.directory}/${artifactId}-${version}/WEB-INF/web.xml</outputWebXml> 
+							<verbose>true</verbose>
+						</configuration>
+                        <executions>
+                            <execution>
+                                <id>jspc</id>
+								<phase>test</phase>
+                                <goals>
+                                    <goal>compile</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <dependencies>
+                            <dependency>
+                                <groupId>taglibs</groupId>
+                                <artifactId>standard</artifactId>
+                                <version>1.1.1</version>
+                            </dependency>    
+                             <dependency>
+                                <groupId>org.mortbay.jetty</groupId>
+                                <artifactId>jsp-api-2.1</artifactId>
+                                <version>6.1.0</version>
+                            </dependency>    
+                        </dependencies>
+                    </plugin>
+                    <plugin>
+                        <artifactId>maven-war-plugin</artifactId>
+                        <version>2.1.1</version>
+						<executions>
+                            <execution>
+                                <id>prepare-war</id>
+								<phase>test-compile</phase>
+                                <goals>
+                                    <goal>exploded</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
+							<useCache>true</useCache>
+							<!--warSourceExcludes>pages/secure/help/**</warSourceExcludes-->
+                            <manifest>
+                                <addDefaultImplementationEntries>
+                                    true
+                                </addDefaultImplementationEntries>
+                            </manifest>
+                            <archive>
+                                <manifestEntries>
+                                    <Implementation-Build>
+                                        ${buildNumber}
+                                    </Implementation-Build>
+                                    <Implementation-Version>
+                                        6.2.6.0
+                                    </Implementation-Version>
+                                </manifestEntries>
+                            </archive>
+                        </configuration>
+                    </plugin>
+					<plugin>
+						<groupId>net.alchim31.maven</groupId>
+                        <artifactId>yuicompressor-maven-plugin</artifactId>
+                        <version>1.1</version>
+						<executions>
+							<execution>
+								<phase>process-test-classes</phase>
+								<goals>
+									<goal>compress</goal>
+								</goals>
+							</execution>
+						</executions>        
+						<configuration>
+							<nosuffix>true</nosuffix>
+							<linebreakpos>2500</linebreakpos>
+							<excludes>
+								<exclude>**/help/**</exclude>
+								<exclude>**/scripts/jscalendar/lang/**</exclude>
+								<exclude>**/scripts/vendor/**</exclude>
+							</excludes>
+						</configuration>
+					</plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <profile>
+            <id>includeHelp</id>
+            <build>
+                <plugins>
+
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-dependency-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>unpack</id>
+                                <phase>process-resources</phase>
+                                <goals>
+                                    <goal>unpack</goal>
+                                </goals>
+                                <configuration>
+                                    <artifactItems>
+                                        <artifactItem>
+                                            <groupId>
+                                                tavant.twms.TSA_DEV
+                                            </groupId>
+                                            <artifactId>
+                                                help
+                                            </artifactId>
+                                            <version>1.0</version>
+                                            <type>jar</type>
+                                            <overWrite>true</overWrite>
+                                            <outputDirectory>
+                                                ${help-files-dir}
+                                            </outputDirectory>
+                                        </artifactItem>
+                                    </artifactItems>
+                                    <overWriteReleases>
+                                        true
+                                    </overWriteReleases>
+                                    <overWriteSnapshots>
+                                        true
+                                    </overWriteSnapshots>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <profile>
+            <id>includeTest</id>
+            <build>
+                <plugins>
+
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-antrun-plugin</artifactId>
+                        <version>1.1</version>
+                        <executions>
+                            <execution>
+                                <id>build-jar</id>
+                                <phase>package</phase>
+                                <configuration>
+                                    <tasks>
+                                        <jar destfile="${project.build.directory}/webapp-test-${project.version}.jar">
+                                            <fileset dir="target/test-classes"/>
+                                            <fileset dir="target/classes"/>
+                                        </jar>
+                                    </tasks>
+                                </configuration>
+                                <goals>
+                                    <goal>run</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-install-plugin</artifactId>
+                        <version>2.2</version>
+                        <executions>
+                            <execution>
+                                <id>install-jar</id>
+                                <phase>install</phase>
+                                <goals>
+                                    <goal>install-file</goal>
+                                </goals>
+                                <configuration>
+                                    <file>${project.build.directory}/webapp-test-${project.version}.jar</file>
+                                    <groupId>tavant.twms.TSA_DEV</groupId>
+                                    <artifactId>webapp-test</artifactId>
+                                    <version>${project.version}</version>
+                                    <packaging>maven-plugin</packaging>
+                                    <forkMode>once</forkMode>
+                                    <argLine>-Xmx256m</argLine>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
+    <properties>
+        <help-files-dir>
+            ${project.build.directory}/${project.build.finalName}/pages/secure/help
+        </help-files-dir>
+        <jetty.scanInterval>0</jetty.scanInterval>
+    </properties>
+</project>

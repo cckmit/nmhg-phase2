@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<tocdata>
+<book name="PartShipper" >
+  <book name="Before you Begin" >
+    <item name="Introduction" url="Before_you_Begin/Introduction.htm" />
+    <item name="Copyright" url="Before_you_Begin/Copyright.htm" />
+    <item name="Before you Begin" url="Before_you_Begin/Before_you_Begin.htm" />
+    <item name="Common Application Features" url="Before_you_Begin/common_application_features.htm" />
+  </book>
+  <book name="Claims" >
+    <item name="Search Claims" url="Claims/Search_Claims.htm" />
+    <item name="Claim Details" url="Claims/Claim_Details.htm" />
+    <item name="Policy Details" url="Claims/Policy_Details.htm" />
+  </book>
+  <book name="Inventory" >
+    <item name="Inventory" url="Inventory/Inventory.htm" />
+    <item name="Search Inventory" url="Inventory/Search_Inventory.htm" />
+    <item name="Truck Details" url="Inventory/Equipment_Details.htm" />
+  </book>
+  <book name="Part Returns" >
+    <item name="Due Parts Inspection" url="Part_Returns/Due_Parts_Inspection.htm" />
+    <item name="Due Parts Receipt" url="Part_Returns/Due_Parts_Receipt.htm" />
+    <item name="Dealer Requested Part" url="Part_Returns/Dealer_Requested_Part.htm" />
+    <item name="Dealer Requested Parts Shipped" url="Part_Returns/Dealer_Requested_Parts_Shipped.htm" />
+    <item name="Shipment Generated for Dealer" url="Part_Returns/Shipment_Generated_for_Dealer.htm" />
+    <item name="Search Parts" url="Part_Returns/Search_Parts.htm" />
+  </book>
+  <book name="Parts Recovery" >
+    <item name="Parts Recovery" url="Parts_Recovery/Parts_Recovery.htm" />
+    <item name="Supplier Parts Claimed" url="Parts_Recovery/Supplier_Parts_Claimed.htm" />
+    <item name="Supplier Parts Shipped" url="Parts_Recovery/Supplier_Parts_Shipped.htm" />
+    <item name="Shipment Generated" url="Parts_Recovery/Shipment_Generated.htm" />
+    <item name="Shipment Tag" url="Parts_Recovery/Shipment_Tag.htm" />
+  </book>
+  <book name="Items" >
+    <item name="Search Items" url="Items/Search_Items.htm" />
+  </book>
+  <book name="Reports" >
+    <item name="Reports" url="Reports/Reports.htm" />
+    <item name="Vendor Recovery Report" url="Reports/Vendor_Recovery_Report.htm" />
+    <item name="Upload Management" url="Reports/Upload_Management.htm" />
+    <item name="Download Management" url="Reports/Download_Management.htm" />
+  </book>
+  <book name="Settings" >
+    <item name="Profile" url="Settings/Profile.htm" />
+    <item name="Email Subscription" url="Settings/Email_Subscription.htm" />
+  </book>
+</book>
+
+</tocdata>

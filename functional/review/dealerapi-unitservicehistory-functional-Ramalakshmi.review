@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Review id="dealerapi-unitservicehistory-functional">
+  <ReviewIssue id="G45883LA">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-07 :: 13:08:20:590 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-07 :: 13:10:13:615 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ramalakshmi</ReviewerId>
+    <AssignedTo>Naveen</AssignedTo>
+    <ReviewTime>15</ReviewTime>
+    <File line="33">src/test/java/tavant/twms/worklist/DealerAPIIntegrationTest.java</File>
+    <Type>item.type.label.irrelevant</Type>
+    <Severity>item.severity.label.major</Severity>
+    <Summary>Remove business unit population logic</Summary>
+    <Description>Remove business unit population logic as login method should handle it ideally. Also write more APIs to test the various flows of the web service.</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+    <ReworkTime></ReworkTime>
+  </ReviewIssue>
+  <ReviewIssue id="G4589IZY">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-07 :: 13:09:27:214 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-07 :: 13:10:06:645 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ramalakshmi</ReviewerId>
+    <AssignedTo>Naveen</AssignedTo>
+    <ReviewTime>15</ReviewTime>
+    <File line="18">src/test/java/tavant/twms/worklist/DealerAPIIntegrationTest.java</File>
+    <Type>item.type.label.codingStandards</Type>
+    <Severity>item.severity.label.normal</Severity>
+    <Summary>Package structure</Summary>
+    <Description>Move DealerAPIIntegrationTest tp tavant.twms.dealerapi</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+    <ReworkTime></ReworkTime>
+  </ReviewIssue>
+</Review>

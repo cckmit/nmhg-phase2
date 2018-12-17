@@ -1,0 +1,14 @@
+Hi ${userName},<br/><br/> 
+
+Below claims are pending in overdue inbox please take an action:<br/><br/>
+
+Claim Details: ${emailDetailsForPendingOverDue}<br/><br/>
+     
+
+You can sign-in to <a href="${url}">NMHG Warranty System</a> to respond to the claim.<br/><br/>
+
+Thank you.<br/><br/>
+
+Please note that this email is an automated notification. Any reply to this email will not be received. 
+
+You can unsubscribe to this e-mail at any time via your user profile page.

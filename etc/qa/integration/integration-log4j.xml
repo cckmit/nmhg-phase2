@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+	<appender name="INTEGRATION_LOG" class="org.apache.log4j.RollingFileAppender">        
+	    <param name="File" value="/home/blrproj/apps/jboss-4.2.3.GA/etc/twms/qa/app_logs/integrationserver.log"/>
+    	<param name="MaxFileSize" value="10MB"/>
+        <param name="MaxBackupIndex" value="25"/>    		
+        <param name="Append" value="true" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="[%d] %-5p %m%n"/>
+        </layout>
+    </appender>
+
+	 <appender name="CREDIT_SUBMISSION_LOG" class="org.apache.log4j.FileAppender">
+        <param name="File" value="/home/blrproj/apps/jboss-4.2.3.GA/etc/twms/qa/app_logs/integrationBackgroundJob.log"/>
+        <param name="Append" value="false"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="[%d] %-5p %c{2} - %l %m %n"/>
+        </layout>
+    </appender>
+
+	
+	<logger name="tavant.twms.integration.server.quartz.job" additivity="false">
+        <level value="DEBUG"/>
+        <appender-ref ref="CREDIT_SUBMISSION_LOG"/>
+    </logger>
+
+    <root>
+        <level value="INFO"/>
+        <appender-ref ref="INTEGRATION_LOG"/>
+    </root>
+</log4j:configuration>

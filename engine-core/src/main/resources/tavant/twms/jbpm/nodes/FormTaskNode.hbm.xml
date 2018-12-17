@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+      "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+          "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping default-access="field">
+  <subclass name="tavant.twms.jbpm.nodes.FormTaskNode"
+    discriminator-value="A" extends="org.jbpm.graph.node.TaskNode">
+
+	<map name="formNodes" cascade="all" table="jbpm_form_nodes">
+		<key column="form_task_node_form_id"/>
+		<map-key type="java.lang.String" column="form_type"></map-key>
+		<element type="java.lang.String" column="form_value"></element>
+	</map>    
+
+    <list name="transitionConditions" table="TRANSITION_CONDITIONS">      
+      <key column="TASK_NODE"/>
+      <list-index column="LIST_INDEX" />
+      <composite-element class="tavant.twms.jbpm.nodes.TransitionCondition">
+        <property name="transitionName" column="TRANSITION_NAME"/>
+        <property name="expression" column="EXPRESSION" />
+      </composite-element>
+    </list>
+    
+  </subclass>
+</hibernate-mapping>

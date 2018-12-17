@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SyncItemPrice releaseID="1.0" xmlns="http://www.tavant.com/oagis" xmlns:oa="http://www.openapplications.org/oagis/9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.tavant.com/oagis D:/SVNROOT/TWMS/app/server-INTEGRATION/bods/src/main/xsd/Tavant/twms/BODs/SyncItemPrice.xsd">
+	<oa:ApplicationArea>											  
+		<oa:CreationDateTime>2007-02-19+05:30</oa:CreationDateTime>	  
+	</oa:ApplicationArea>											  
+	<DataArea>														  
+		<oa:Sync/>													  
+		<ItemPrice>													  
+			<ItemNumber>MC-COUGAR-50-HZ-1</ItemNumber>							  
+			<WarrantyType>comprehensive</WarrantyType>				  
+			<ForDuration>											  
+				<from>2007-10-10</from>								  
+				<to>2007-10-20</to>									  
+			</ForDuration>											  
+			<Price>												  
+				<Currency>INR</Currency>						  
+				<Amount>500</Amount>							  
+			</Price>											  
+	</ItemPrice>												  
+	</DataArea>														  
+</SyncItemPrice>
+
+	

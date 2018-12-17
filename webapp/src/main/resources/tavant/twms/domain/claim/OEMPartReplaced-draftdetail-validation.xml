@@ -1,0 +1,39 @@
+<!DOCTYPE validators PUBLIC "-//Apache Struts//XWork Validator 1.0.2//EN"
+       "http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+<validators>
+    <field name="numberOfUnits">
+    	<field-validator type="fieldexpression" short-circuit="true">
+        	<param name="expression"><![CDATA[
+        		numberOfUnits != null && numberOfUnits.intValue() >=1
+        	]]></param>
+            <message  key="error.campaign.oemPartsQuantityInvalid">
+            </message>
+         </field-validator>        
+    </field>
+
+	<field name="itemReference.referredItem">
+    	<field-validator type="fieldexpression" short-circuit="true">
+        	<param name="expression"><![CDATA[
+        		(itemReference!=null && itemReference.referredItem != null) && 
+				!(itemReference!=null && itemReference.referredItem!=null && 
+				itemReference.referredItem.number.equals(""))
+        	]]></param>
+            <message  key="error.oemParts.invalidPartNumber">
+            </message>
+         </field-validator>        
+    </field>	
+	<!-- TO-DO
+	Will be revisted 
+	<field name="serialNumberOfNewPart">
+		<field-validator type="fieldexpression" short-circuit="true">
+			<param name="expression"><![CDATA[!(itemReference.serialized == true && serialNumberOfNewPart == null)]]></param>
+			<message key="error.newClaim.serialNumberRequired"/>
+		</field-validator>
+	</field>
+	 -->
+    <validator type="oemPartReplaced" short-circuit="true">
+		<param name="expression">claim</param>
+		<message/>
+	</validator>
+    
+</validators>

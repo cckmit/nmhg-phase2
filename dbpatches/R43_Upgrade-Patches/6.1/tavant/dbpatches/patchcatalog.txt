@@ -1,0 +1,155 @@
+## The Tavant Database Patch catalog
+##
+## This file contains a sequential list of all the database patches along with logical database name.	
+## (both sql scripts and java programs) that must be run to properly
+## construct and maintain a database in conjunction with the version
+## of code represented by the current version of this file. Patch names
+## shall be relative to tavant/dbPatches
+##
+## Entries in this will look like this (but will be left-justfied):
+##    main/Patchyyyymmdd.[sql|java] tavant
+## or
+##    iri/Patchyyyymmdd.[sql|java] dba
+##
+##All entries in patchCatalog.txt would consist of both the patch name
+##followed by a 'logical' database/schema name (seperated by whitespace). This
+##would name no longer be optional.
+##Failure to provide a 'logical' db name for all patches is considered to be
+##an error.
+##Failure to define all 'logical' names in the external properties file is an
+##error.
+##  Ex)
+##
+## Here are some guidelines on how to create db patches. 
+## Please follow this strictly to avoid unnecessary issues when applying db patches via version manager.
+## 1. The .sql extension should be in lower case (never use .SQL)
+## 2. There should not be a ; (semicolon) after a sql statement.
+## 3. There should be / (forward slash) in the next line after every sql statement.
+## 4. There should not be any space or tab before or after the / (forward slash).
+## 
+## There is a sample patch file PATCH_TEST_VM.sql in versionmanager folder.
+## Also make sure none of these patches are applied manually on any database except DEV.
+
+PATCH_DCAP_STG_INSTALLBASE.sql main twms_owner
+UPLOAD_INSTALL_BASE_VALIDATION.sql main twms_owner
+UPLOAD_INSTALL_BASE_UPLOAD.sql main twms_owner
+PATCH_BATINFO_SUBMITTED.sql main twms_owner
+PATCH_BUGFIX-TWMS4.3U-341.sql main twms_owner
+##PATCH_FOR_UPDATING_DATES_IN_INVENTORY_ITEM_TABLE.sql main twms_owner
+PATCH_POLICY_EXPORT_ITS.sql main twms_owner
+##PREDICATE_UPDATE_FOR_PRODUCT.sql main twms_owner
+
+PATCH_UPDATE_BUVALUES.sql main twms_owner
+PATCH_BUGFIX_TSA-394.sql main twms_owner
+##PATCH_TWMS4.3U-380-PART-2.sql main twms_owner --Joseph needs to correct this patch
+PATCH_CUSTOMER_CLARIFICATION.sql main twms_owner
+TWMS4.3U-472_UPLOAD_DRAFT_CLAIM_VALIDATION.sql main twms_owner
+TWMS4.3U-473_COMMON_VALIDATION_UTILS_body.sql main twms_owner
+TWMS4.3U-489_DB_PATCH.sql main twms_owner
+PATCH_TWMS4.3U-429.sql main twms_owner
+PATCH_TWMS4.3U-508.sql main twms_owner
+##PATCH_ENABLE_INVENTORY_FULLVIES.sql main twms_owner
+PATCH_TWMS4.3U-212_BUG_FIX.sql main twms_owner
+PATCH_PERFFIXES_HOMEPAGE.sql main twms_owner
+PATCH_UPDATE_STATUS_DOMAIN_RULE_GROUP.sql main twms_owner
+PATCH_POPULATE_TRANSFERABLE_POLICY_FEES.sql main twms_owner
+PATCH_TWMS4.3U-191_BUG_FIX.sql main twms_owner
+PATCH_UPDATE_SCHEME_WITH_NO_PURPOSE.sql main twms_owner
+##PATCH_ITEM_TYPE_ALLOWED_FOR_PARTS_CLAIM_TWMS3.4U-47.sql main twms_owner
+ITEM_TYPE_ALLOWED_FOR_PARTS_CLAIM_TWMS3.4U-47_TWMS4.3U-589.sql main twms_owner
+##PATCH_DROP_TRIGGER_TWMS4.3U-550.sql main twms_owner  --moved to 6.0 folder
+PATCH_PERFFIXES_HOMEPAGE-Set2.sql main twms_owner
+PATCH_PERFFIXES_HOMEPAGE_WARRANTY.sql main twms_owner
+PATCH_BUG_540.sql main twms_owner
+PATCH_I18NDOMAIN_RULE_TEXT_PK.sql main twms_owner
+PATCH_TWMS4.3U-322+_BUG_FIX.sql main twms_owner
+PATCH+TO+UPDATE+PROC+UPLOAD_REQ_FOR_EXTN_VALIDATION.sql main twms_owner
+PATCH+TO+UPDATE+PROC+UPLOAD_WARRANTY_REG_UPLOAD.sql main twms_owner
+PATCH_PERFFIXES_CLMPAGE1TO2.sql main twms_owner
+PATCH_CHANGE_ORGUSER_USERTYPE_FOR_SUPPLIERS.sql main twms_owner
+PATCH_PERFFIXES_CLAIMVALIDATE.sql main twms_owner
+PATCH_ENABLE_SHIPMENT_TRIG.sql main twms_owner
+PATCH_PERFFIXES_CLAIMSUBMIT[1].sql main twms_owner
+PATCH_REMOVE_TKTSA_BU.sql main twms_owner
+PATCH+FOR+CREATING+INDEX+installed_parts_item_index+FOR+TABLE+installed_parts.sql main twms_owner
+PATCH_PROC_UPLOAD_COST_VALIDATION+TKTSA-870.sql main twms_owner
+PATCH_PROC_UPLOAD_COST_PRICE_UPLOAD+TKTSA-870.sql main twms_owner
+PATCH_TWMS4.3U-609+_BUG_FIX.sql main twms_owner
+PATCH_PERFFIXES_CLAIMSUBMIT-Set2.sql main twms_owner
+TWMS43U-473_COMMON_VALIDATION_UTILS_Merge_TSESA_319.sql main twms_owner
+TWMS43U-472_UPLOAD_DRAFT_CLAIM_VALIDATION_Merge_TSESA_319.sql main twms_owner
+PATCH_PERFFIXES_CLAIMSUBMIT-Set2_drop.sql main twms_owner
+PATCH_PERFFIXES_CLAIMSUBMIT-Set3.sql main twms_owner
+PATCH+FOR+DELETING+A+ROLE+FOR+USER+jgarcia.sql main twms_owner
+PATCH_UPDATE_HUSMAN_TKTSA_SEQ.sql main twms_owner
+TWMS4.3U-628_COPY_JC_FF_UPLOAD.sql main twms_owner
+TWMS4.3U-628_JOB_CODE_UPLOAD.sql main twms_owner
+TWMS4.3U-628_UPDATE_JOB_CODES_UPLOAD.sql main twms_owner
+WNTY_COVERAGE_UPLOAD_Merge-ESESA-1673.sql main twms_owner
+WNTY_EXCLUSION_UPLOAD_Merge-ESESA-1421.sql main twms_owner
+##PATCH_TWMS4.3U-643_BUG_FIX.sql main twms_owner
+Indexes+to+be+Created.sql main twms_owner
+Indexes+to+be+Created_1.sql main twms_owner
+Supplier_BU_Associations.sql main twms_owner
+TWMS4.3U-45_USER_BU_AVAILABILITY.sql main twms_owner
+Indexes_quick_inv_performance.sql main twms_owner
+TWMS4.3U-170_SUPPLIER_DECISION_UPLOAD.sql main twms_owner
+PATCH_REPLACE_PRICE_PER_UNIT.sql main twms_owner
+PATCH_FOR_PAYMENT_AMOUNT_MISMATCH_BUG_FIX.sql main twms_owner
+PATCH_CORRECT_CONFIG_PARAM_VALUE.sql main twms_owner
+Indexes_pre_def_search.sql main twms_owner
+PATCH_DELETE_DEALER_MAPPING_FOM_DEALERGROUP.sql main twms_owner
+PATCH+TO+INSERT+A+NEW+RECORD+IN+BU_USER_MAPPING.sql main twms_owner
+HUSSMAN_COUNT.sql main twms_owner
+PATCH_UPDATE_PAYMENT_CLAIMED_AMT.sql main twms_owner
+PATCH_CORRECT_INBOX_VIEW_FIELD_NAME.sql main twms_owner
+UPLOAD_WARRANTY_REG_VALIDATION.sql main twms_owner
+PATCH_DOMAIN_RULE_STATUS.sql main twms_owner
+Patch_remove_dup_address_from_supplier.sql main twms_owner
+Patch_inbox_view_sedinap_tjaecks.sql main twms_owner
+PATCH_UPDATE_INVENTORY_ITEM_DELIVERY_DATE_DML.sql main twms_owner
+PATCH_PROC_UPLOAD_COST_VALIDATION_TWMS43U_628.sql main twms_owner
+PATCH_PROC_UPLOAD_COST_PRICE_UPLOAD_TWMS43U_628.sql main twms_owner
+PATCH_UPDATE_BATTERY_INFO_SUBMITTED_DML.sql main twms_owner
+inventorydcapdetail_indexes.sql main twms_owner
+Patch_update_jbpm_timer.sql main twms_owner
+Patch_perf.sql main twms_owner
+HUSS-772_DEACTIVATE_CLAIM.sql main twms_owner
+patch_del_dup_metadata.sql main twms_owner
+orgbelongstoorg_duplicates.sql main twms_owner
+PATCH_JBPM_PAYMENT_WAIT_TASK_CORRECTION.sql main twms_owner
+##PREDICATE_UPDATE_FOR_PRODUCT_33.sql main twms_owner
+PATCH_ADD_ROLE_SUPP_REC_INITIATOR.sql main twms_owner
+##PATCH_UPDATE_CONFIG_PARAMS.sql main twms_owner
+COMMON_VALIDATION_UTILS+Body_Draft_Claim_Upload.sql main twms_owner
+UPLOAD_SN_DEACTIVATION.sql main twms_owner
+PATCH_PROCESS_DEFINITION_CLAIM-DML.sql main twms_owner
+THIRD_PARTY_UPLOAD.sql main twms_owner
+PATCH_TKTSA_896_FIX.sql main twms_owner
+COMMON_VALIDATION_UTILS-6.4.1.0.sql main twms_owner
+UPLOAD_IB_VALIDATION-6.4.1.0.sql main twms_owner
+UPLOAD_DRAFT_CLAIM_VALIDATION-6.4.1.0.sql main twms_owner
+PATCH_MULTIPLE_CUSTOMER_UPLOAD_1.sql main twms_owner
+PATCH_MULTIPLE_CUSTOMER_VALIDATION_1.sql main twms_owner
+PATCH_CUSTOMER_UPLOAD_SITE_NUMBERS.sql main twms_owner
+PATCH_ROLES_MULTIPLE_SITE_NUMBERS.sql main twms_owner
+PATCH_MULTI_DEALER_SITE_UPLOAD_ERROS.sql main twms_owner
+PATCH_UPLOADMGTUPLOADERRORS_FOR_MULTIPLE_SITE_NUMBERS_UPLOAD.sql main twms_owner
+PATCH_CUSTOMER_UPLOAD_NEW_FIELDS.sql main twms_owner
+PATCH_UPLOADMGTUPLOADERRORS_FOR_CUSTOMER_UPLOAD.sql main twms_owner
+PATCH_UPLOADMGTUPLOADERRORS_FOR_CUSTOMER_UPLOAD_DEALER_SITE.sql main twms_owner
+PATCH_MULTIPLE_CUSTOMER_VALIDATION_2.2.sql main twms_owner
+PATCH_MULTIPLE_CUSTOMER_UPLOAD_2.2.sql main twms_owner
+PATCH_CUSTOMER_UPLOAD_VALIDATION_2.2.sql main twms_owner
+PATCH_CUSTOMER_UPLOAD_ESESA1489_2.2.sql main twms_owner
+PATCH_CUSTOMER_UPLOAD_NEW_FIELDS_2.2.sql main twms_owner
+TSESA-621_DRAFT_CLAIM_UPLOAD.sql main twms_owner
+CLAIM_AUDIT_XML_MOVEMENT.sql main twms_owner
+PATCH_BUGFIX-TKTSA1304.sql main twms_owner
+STG_ALTER_SN_VALIDATION_ESESA_1895.sql main twms_owner
+PATCH_ESESA_1873.sql main twms_owner
+TWMS3.4U-383_DRAFT_CLAIM_UPLOAD_2.1.sql main twms_owner
+PATCH_LINE_ITEM_GROUP_HUSS-871.sql main twms_owner
+PATCH_UPDATE_CLAIMED_ITEM_HOURS_IN_SERVICE_DML.sql main twms_owner
+PATCH_UPDATE_INVENTORY_ITEM_HOURS_ON_MACHINE_DML.sql main twms_owner
+PATCH_UPDATE_EMAIL_NOTIFICATION_DML_HUSS-945.sql main twms_owner

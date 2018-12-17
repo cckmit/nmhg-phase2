@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+    
+<struts>
+	<package name="adminwarrantyreg" extends="struts-twms-default">
+		<action name="view_retail_item_preview"  method="showPreviewDeatil"
+			class="tavant.twms.web.actions.InventoryAction" >
+			<interceptor-ref name="adminParamsPrepare" />			
+			<result name="success">pages/secure/admin/warranty/previewRetail.jsp</result>
+			<result name="input">error.jsp</result>
+		</action>
+		
+		<action name="view_retail_item_detail"
+			class="tavant.twms.web.actions.InventoryAction" method="showPreviewDeatil">
+			<param name="isEquipHistoryPage">true</param>
+			<result name="success">pages/secure/inventory/inventoryequipmenthistory.jsp</result>
+			<result name="input">error.jsp</result>
+		</action>
+		
+		<action name="view_policy_audits_detail"
+			class="tavant.twms.web.actions.InventoryAction" method="showPolicyAudits">
+			<interceptor-ref name="adminParamsPrepareWithoutValidation" />			
+			<result name="success">pages/secure/inventory/policyAuditHistory.jsp</result>
+		</action>
+		
+		<action name="policy_history"
+			class="tavant.twms.web.actions.InventoryAction" method="showPolicyDetails">
+			<interceptor-ref name="adminParamsPrepareWithoutValidation" />			
+			<result name="success">pages/secure/inventory/policyHistory.jsp</result>
+		</action>
+		
+		<action name="policyHistory"
+			class="tavant.twms.web.actions.InventoryAction" method="showPolicyAudits">
+			<interceptor-ref name="adminParamsPrepareWithoutValidation" />			
+			<result name="success">pages/secure/inventory/policyAuditHistory.jsp</result>
+		</action>
+		
+		<action name="update_warranty"
+			class="tavant.twms.web.actions.InventoryAction" method="updatePolicies">
+			<interceptor-ref name="twmsParamsPrepareParams" />			
+			<result name="success">pages/secure/inventory/inventoryequipmenthistory.jsp</result>
+			<result name="input">pages/secure/inventory/inventoryequipmenthistory.jsp</result>
+		</action>
+		
+		<action name="update_warranty_majorComp"
+			class="tavant.twms.web.actions.InventoryAction" method="updatePolicies">
+			<interceptor-ref name="twmsParamsPrepareParams" />			
+			<result name="success">pages/secure/inventory/majorcomponent_equipmenthistory.jsp</result>
+			<result name="input">pages/secure/inventory/majorcomponent_equipmenthistory.jsp</result>
+		</action>
+	</package>
+</struts>	

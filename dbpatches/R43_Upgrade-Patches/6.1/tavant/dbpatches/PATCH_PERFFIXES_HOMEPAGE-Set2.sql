@@ -1,0 +1,6 @@
+--PURPOSE    : Created indexes home page work flow
+--AUTHOR     : Ramalakshmi P
+--CREATED ON : 28-APR-11
+
+CREATE INDEX JBPM_PROCESSDEF_IDX_NAMEVER ON JBPM_PROCESSDEFINITION(NAME_,VERSION_)
+/

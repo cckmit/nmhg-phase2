@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping SYSTEM
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="tavant.twms.domain.claim.payment.rates">
+    <query name="laborRateForDealerSummary">
+        <![CDATA[
+ select
+  distinct laborRate
+ from
+  LaborRates laborRates join laborRates.rates laborRate
+  left join laborRates.forCriteria.dealerCriterion.dealerGroup
+  specifiedDealerGroup,DealerGroup dealerGroup join dealerGroup.includedDealers dealerInGroup
+ where
+ ( laborRates.forCriteria.dealerCriterion.dealer is null or laborRates.forCriteria.dealerCriterion.dealer = :dealer ) and
+ ( specifiedDealerGroup is null  or
+	  (  specifiedDealerGroup.nodeInfo.treeId=dealerGroup.nodeInfo.treeId and
+	     specifiedDealerGroup.nodeInfo.lft <= dealerGroup.nodeInfo.lft and
+	     dealerGroup.nodeInfo.rgt <= specifiedDealerGroup.nodeInfo.rgt and
+	     :dealer = dealerInGroup
+      )
+  ) and laborRates.businessUnitInfo in (:buName) order by laborRate.duration.tillDate desc 
+    ]]>
+    </query>
+    <query name="travelRateForDealerSummary">
+        <![CDATA[
+  select
+  distinct travelRate
+   from
+  TravelRates travelRates join travelRates.rates travelRate
+   left outer join travelRates.forCriteria.dealerCriterion.dealerGroup specifiedDealerGroup,
+   DealerGroup dealerGroup join dealerGroup.includedDealers dealerInGroup where
+ ( travelRates.forCriteria.dealerCriterion.dealer is null or travelRates.forCriteria.dealerCriterion.dealer=:dealer )  and
+ ( specifiedDealerGroup is null  or
+	  (  specifiedDealerGroup.nodeInfo.treeId=dealerGroup.nodeInfo.treeId and
+	     specifiedDealerGroup.nodeInfo.lft <= dealerGroup.nodeInfo.lft and
+	     dealerGroup.nodeInfo.rgt <= specifiedDealerGroup.nodeInfo.rgt and
+	     :dealer = dealerInGroup
+      )
+  ) and travelRates.businessUnitInfo in (:buName) order by travelRate.duration.tillDate desc
+    ]]>
+    </query>
+    <query name="criteriaBasedValueForDealerSummary">
+        <![CDATA[
+    select
+        distinct criteriaBasedValue
+        from
+    CriteriaBasedValue criteriaBasedValue join criteriaBasedValue.parent paymentModifier join
+    paymentModifier.forPaymentVariable paymentVariable left outer join
+    paymentModifier.forCriteria.dealerCriterion.dealerGroup specifiedDealerGroup,
+    DealerGroup dealerGroup join dealerGroup.includedDealers dealerInGroup where
+    paymentModifier.d.active=1 and  
+    ( paymentModifier.forCriteria.dealerCriterion.dealer is null or
+    paymentModifier.forCriteria.dealerCriterion.dealer=:dealer )
+    and ( specifiedDealerGroup is null  or
+    (specifiedDealerGroup.nodeInfo.treeId=dealerGroup.nodeInfo.treeId and
+    specifiedDealerGroup.nodeInfo.lft <= dealerGroup.nodeInfo.lft and
+    dealerGroup.nodeInfo.rgt <= specifiedDealerGroup.nodeInfo.rgt and
+    :dealer = dealerInGroup)) and paymentVariable.businessUnitInfo in (:buName)
+     ]]>
+    </query>
+    <query name="parentsForServiceProvider">
+        <![CDATA[
+    select
+        distinct dealerGroup2
+        from 
+    DealerGroup dealerGroup2 join dealerGroup2.scheme scheme join
+    scheme.purposes purpose,DealerGroup dealerGroup1 join dealerGroup1.includedDealers dealerInGroup
+    where purpose.name = :purpose and dealerGroup2.nodeInfo.lft<=dealerGroup1.nodeInfo.lft and
+    dealerGroup2.nodeInfo.rgt>=dealerGroup1.nodeInfo.rgt and dealerGroup1.nodeInfo.treeId=dealerGroup2.nodeInfo.treeId
+    and :serviceProvider=dealerInGroup and dealerGroup2.businessUnitInfo in (:buName)
+    order by dealerGroup2.nodeInfo.lft
+      ]]>
+    </query>
+</hibernate-mapping>

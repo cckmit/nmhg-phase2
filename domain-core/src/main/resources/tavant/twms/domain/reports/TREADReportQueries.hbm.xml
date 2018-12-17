@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping SYSTEM
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="tavant.twms.domain.reports">
+  <!-- Queries for TREAD report -->
+  <query name="treadReport.claimsInfo">
+    <![CDATA[
+        select item.make as make, item.model as model, item.itemYear as year,
+               sum(case when claim.activeClaimAudit.serviceInformation.faultCodeRef.treadBucket.code = '01' then 1 else 0 end) as count_01,
+               sum(case when claim.activeClaimAudit.serviceInformation.faultCodeRef.treadBucket.code = '02' then 1 else 0 end) as count_02,
+               sum(case when claim.activeClaimAudit.serviceInformation.faultCodeRef.treadBucket.code = '03' then 1 else 0 end) as count_03,
+               sum(case when claim.activeClaimAudit.serviceInformation.faultCodeRef.treadBucket.code = '04' then 1 else 0 end) as count_04,
+               sum(case when claim.activeClaimAudit.serviceInformation.faultCodeRef.treadBucket.code = '05' then 1 else 0 end) as count_05,
+               sum(case when claim.activeClaimAudit.serviceInformation.faultCodeRef.treadBucket.code = '06' then 1 else 0 end) as count_06,
+               sum(case when claim.activeClaimAudit.serviceInformation.faultCodeRef.treadBucket.code = '07' then 1 else 0 end) as count_07,
+               sum(case when claim.activeClaimAudit.serviceInformation.faultCodeRef.treadBucket.code = '08' then 1 else 0 end) as count_08,
+               sum(case when claim.activeClaimAudit.serviceInformation.faultCodeRef.treadBucket.code = '09' then 1 else 0 end) as count_09,
+               sum(case when claim.activeClaimAudit.serviceInformation.faultCodeRef.treadBucket.code = '10' then 1 else 0 end) as count_10,
+               sum(case when claim.activeClaimAudit.serviceInformation.faultCodeRef.treadBucket.code = '11' then 1 else 0 end) as count_11,
+               sum(case when claim.activeClaimAudit.serviceInformation.faultCodeRef.treadBucket.code = '12' then 1 else 0 end) as count_12,
+               sum(case when claim.activeClaimAudit.serviceInformation.faultCodeRef.treadBucket.code = '13' then 1 else 0 end) as count_13,
+               sum(case when claim.activeClaimAudit.serviceInformation.faultCodeRef.treadBucket.code = '14' then 1 else 0 end) as count_14,
+               sum(case when claim.activeClaimAudit.serviceInformation.faultCodeRef.treadBucket.code = '15' then 1 else 0 end) as count_15,
+               sum(case when claim.activeClaimAudit.serviceInformation.faultCodeRef.treadBucket.code = '16' then 1 else 0 end) as count_16,
+               sum(case when claim.activeClaimAudit.serviceInformation.faultCodeRef.treadBucket.code = '17' then 1 else 0 end) as count_17,
+               sum(case when claim.activeClaimAudit.serviceInformation.faultCodeRef.treadBucket.code = '18' then 1 else 0 end) as count_18,
+               sum(case when claim.activeClaimAudit.serviceInformation.faultCodeRef.treadBucket.code = '19' then 1 else 0 end) as count_19,
+               sum(case when claim.activeClaimAudit.serviceInformation.faultCodeRef.treadBucket.code = '20' then 1 else 0 end) as count_20,
+               sum(case when claim.activeClaimAudit.serviceInformation.faultCodeRef.treadBucket.code = '21' then 1 else 0 end) as count_21,
+               sum(case when claim.activeClaimAudit.serviceInformation.faultCodeRef.treadBucket.code = '22' then 1 else 0 end) as count_22,
+               sum(case when claim.activeClaimAudit.serviceInformation.faultCodeRef.treadBucket.code = '23' then 1 else 0 end) as count_23,
+               sum(case when claim.activeClaimAudit.serviceInformation.faultCodeRef.treadBucket.code = '24' then 1 else 0 end) as count_24
+            from Claim claim join claim.claimedItems as claimedItems
+                join claimedItems.itemReference.unserializedItem as item
+            where year(claim.filedOnDate) = :year
+                    and round((month(claim.filedOnDate) + 1) / 3) = :quater
+                    and claim.activeClaimAudit.state.state != 'draft'
+            group by item.make, item.model, item.itemYear
+    ]]>
+  </query>
+
+  <query name="treadReport.productionInfo">
+    <![CDATA[
+         select inventoryItem.ofType.make as make,
+               inventoryItem.ofType.model as model,
+               inventoryItem.ofType.itemYear as year,
+               count(*) as total_production
+            from InventoryItem inventoryItem
+            where year(inventoryItem.builtOn) = :year
+                    and round((month(inventoryItem.builtOn) + 1) / 3) = :quater
+            group by inventoryItem.ofType.make,
+                    inventoryItem.ofType.model,
+                    inventoryItem.ofType.itemYear
+    ]]>
+  </query>
+
+  <query name="treadReport.complaints">
+    <![CDATA[
+        select case when complaint.itemReference.unserializedItem is not null
+                        then complaint.itemReference.unserializedItem.make
+                        else complaint.product
+                     end as make,
+               case when complaint.itemReference.unserializedItem is not null
+                        then complaint.itemReference.unserializedItem.model
+                        else complaint.model
+                     end as model,
+               case when complaint.itemReference.unserializedItem is not null
+                        then complaint.itemReference.unserializedItem.itemYear
+                        else complaint.year
+                     end as year,
+               sum(case when complaint.faultCodeRef.treadBucket.code = '01' then 1 else 0 end) as count_01,
+               sum(case when complaint.faultCodeRef.treadBucket.code = '02' then 1 else 0 end) as count_02,
+               sum(case when complaint.faultCodeRef.treadBucket.code = '03' then 1 else 0 end) as count_03,
+               sum(case when complaint.faultCodeRef.treadBucket.code = '04' then 1 else 0 end) as count_04,
+               sum(case when complaint.faultCodeRef.treadBucket.code = '05' then 1 else 0 end) as count_05,
+               sum(case when complaint.faultCodeRef.treadBucket.code = '06' then 1 else 0 end) as count_06,
+               sum(case when complaint.faultCodeRef.treadBucket.code = '07' then 1 else 0 end) as count_07,
+               sum(case when complaint.faultCodeRef.treadBucket.code = '08' then 1 else 0 end) as count_08,
+               sum(case when complaint.faultCodeRef.treadBucket.code = '09' then 1 else 0 end) as count_09,
+               sum(case when complaint.faultCodeRef.treadBucket.code = '10' then 1 else 0 end) as count_10,
+               sum(case when complaint.faultCodeRef.treadBucket.code = '11' then 1 else 0 end) as count_11,
+               sum(case when complaint.faultCodeRef.treadBucket.code = '12' then 1 else 0 end) as count_12,
+               sum(case when complaint.faultCodeRef.treadBucket.code = '13' then 1 else 0 end) as count_13,
+               sum(case when complaint.faultCodeRef.treadBucket.code = '14' then 1 else 0 end) as count_14,
+               sum(case when complaint.faultCodeRef.treadBucket.code = '15' then 1 else 0 end) as count_15,
+               sum(case when complaint.faultCodeRef.treadBucket.code = '16' then 1 else 0 end) as count_16,
+               sum(case when complaint.faultCodeRef.treadBucket.code = '17' then 1 else 0 end) as count_17,
+               sum(case when complaint.faultCodeRef.treadBucket.code = '18' then 1 else 0 end) as count_18,
+               sum(case when complaint.faultCodeRef.treadBucket.code = '19' then 1 else 0 end) as count_19,
+               sum(case when complaint.faultCodeRef.treadBucket.code = '20' then 1 else 0 end) as count_20,
+               sum(case when complaint.faultCodeRef.treadBucket.code = '21' then 1 else 0 end) as count_21,
+               sum(case when complaint.faultCodeRef.treadBucket.code = '22' then 1 else 0 end) as count_22,
+               sum(case when complaint.faultCodeRef.treadBucket.code = '23' then 1 else 0 end) as count_23,
+               sum(case when complaint.faultCodeRef.treadBucket.code = '24' then 1 else 0 end) as count_24
+            from Complaint complaint
+            where complaint.complaintType = 'Consumer'
+                    and year(complaint.incidentDate) = :year
+                    and round((month(complaint.incidentDate) + 1) / 3) = :quater
+            group by case when complaint.itemReference.unserializedItem is not null
+                        then complaint.itemReference.unserializedItem.make
+                        else complaint.product
+                     end,
+                    case when complaint.itemReference.unserializedItem is not null
+                        then complaint.itemReference.unserializedItem.model
+                        else complaint.model
+                     end,
+                     case when complaint.itemReference.unserializedItem is not null
+                        then complaint.itemReference.unserializedItem.itemYear
+                        else complaint.year
+                     end
+    ]]>
+  </query>
+
+  <query name="treadReport.fieldReports">
+    <![CDATA[
+        select case when complaint.itemReference.unserializedItem is not null
+                        then complaint.itemReference.unserializedItem.make
+                        else complaint.product
+                     end as make,
+               case when complaint.itemReference.unserializedItem is not null
+                        then complaint.itemReference.unserializedItem.model
+                        else complaint.model
+                     end as model,
+               case when complaint.itemReference.unserializedItem is not null
+                        then complaint.itemReference.unserializedItem.itemYear
+                        else complaint.year
+                     end as year,
+               sum(case when complaint.faultCodeRef.treadBucket.code = '01' then 1 else 0 end) as count_01,
+               sum(case when complaint.faultCodeRef.treadBucket.code = '02' then 1 else 0 end) as count_02,
+               sum(case when complaint.faultCodeRef.treadBucket.code = '03' then 1 else 0 end) as count_03,
+               sum(case when complaint.faultCodeRef.treadBucket.code = '04' then 1 else 0 end) as count_04,
+               sum(case when complaint.faultCodeRef.treadBucket.code = '05' then 1 else 0 end) as count_05,
+               sum(case when complaint.faultCodeRef.treadBucket.code = '06' then 1 else 0 end) as count_06,
+               sum(case when complaint.faultCodeRef.treadBucket.code = '07' then 1 else 0 end) as count_07,
+               sum(case when complaint.faultCodeRef.treadBucket.code = '08' then 1 else 0 end) as count_08,
+               sum(case when complaint.faultCodeRef.treadBucket.code = '09' then 1 else 0 end) as count_09,
+               sum(case when complaint.faultCodeRef.treadBucket.code = '10' then 1 else 0 end) as count_10,
+               sum(case when complaint.faultCodeRef.treadBucket.code = '11' then 1 else 0 end) as count_11,
+               sum(case when complaint.faultCodeRef.treadBucket.code = '12' then 1 else 0 end) as count_12,
+               sum(case when complaint.faultCodeRef.treadBucket.code = '13' then 1 else 0 end) as count_13,
+               sum(case when complaint.faultCodeRef.treadBucket.code = '14' then 1 else 0 end) as count_14,
+               sum(case when complaint.faultCodeRef.treadBucket.code = '15' then 1 else 0 end) as count_15,
+               sum(case when complaint.faultCodeRef.treadBucket.code = '16' then 1 else 0 end) as count_16,
+               sum(case when complaint.faultCodeRef.treadBucket.code = '17' then 1 else 0 end) as count_17,
+               sum(case when complaint.faultCodeRef.treadBucket.code = '18' then 1 else 0 end) as count_18,
+               sum(case when complaint.faultCodeRef.treadBucket.code = '19' then 1 else 0 end) as count_19,
+               sum(case when complaint.faultCodeRef.treadBucket.code = '20' then 1 else 0 end) as count_20,
+               sum(case when complaint.faultCodeRef.treadBucket.code = '21' then 1 else 0 end) as count_21,
+               sum(case when complaint.faultCodeRef.treadBucket.code = '22' then 1 else 0 end) as count_22,
+               sum(case when complaint.faultCodeRef.treadBucket.code = '23' then 1 else 0 end) as count_23,
+               sum(case when complaint.faultCodeRef.treadBucket.code = '24' then 1 else 0 end) as count_24
+            from Complaint complaint
+            where complaint.complaintType = 'FieldReport'
+                    and year(complaint.incidentDate) = :year
+                    and round((month(complaint.incidentDate) + 1) / 3) = :quater
+            group by case when complaint.itemReference.unserializedItem is not null
+                        then complaint.itemReference.unserializedItem.make
+                        else complaint.product
+                     end,
+                    case when complaint.itemReference.unserializedItem is not null
+                        then complaint.itemReference.unserializedItem.model
+                        else complaint.model
+                     end,
+                     case when complaint.itemReference.unserializedItem is not null
+                        then complaint.itemReference.unserializedItem.itemYear
+                        else complaint.year
+                     end
+    ]]>
+  </query>
+
+  <query name="treadReport.propertyDamages">
+    <![CDATA[
+        select case when complaint.itemReference.unserializedItem is not null
+                        then complaint.itemReference.unserializedItem.make
+                        else complaint.product
+                     end as make,
+               case when complaint.itemReference.unserializedItem is not null
+                        then complaint.itemReference.unserializedItem.model
+                        else complaint.model
+                     end as model,
+               case when complaint.itemReference.unserializedItem is not null
+                        then complaint.itemReference.unserializedItem.itemYear
+                        else complaint.year
+                     end as year,
+               sum(case when complaint.faultCodeRef.treadBucket.code = '01' then 1 else 0 end) as count_01,
+               sum(case when complaint.faultCodeRef.treadBucket.code = '02' then 1 else 0 end) as count_02,
+               sum(case when complaint.faultCodeRef.treadBucket.code = '03' then 1 else 0 end) as count_03,
+               sum(case when complaint.faultCodeRef.treadBucket.code = '04' then 1 else 0 end) as count_04,
+               sum(case when complaint.faultCodeRef.treadBucket.code = '05' then 1 else 0 end) as count_05,
+               sum(case when complaint.faultCodeRef.treadBucket.code = '06' then 1 else 0 end) as count_06,
+               sum(case when complaint.faultCodeRef.treadBucket.code = '07' then 1 else 0 end) as count_07,
+               sum(case when complaint.faultCodeRef.treadBucket.code = '08' then 1 else 0 end) as count_08,
+               sum(case when complaint.faultCodeRef.treadBucket.code = '09' then 1 else 0 end) as count_09,
+               sum(case when complaint.faultCodeRef.treadBucket.code = '10' then 1 else 0 end) as count_10,
+               sum(case when complaint.faultCodeRef.treadBucket.code = '11' then 1 else 0 end) as count_11,
+               sum(case when complaint.faultCodeRef.treadBucket.code = '12' then 1 else 0 end) as count_12,
+               sum(case when complaint.faultCodeRef.treadBucket.code = '13' then 1 else 0 end) as count_13,
+               sum(case when complaint.faultCodeRef.treadBucket.code = '14' then 1 else 0 end) as count_14,
+               sum(case when complaint.faultCodeRef.treadBucket.code = '15' then 1 else 0 end) as count_15,
+               sum(case when complaint.faultCodeRef.treadBucket.code = '16' then 1 else 0 end) as count_16,
+               sum(case when complaint.faultCodeRef.treadBucket.code = '17' then 1 else 0 end) as count_17,
+               sum(case when complaint.faultCodeRef.treadBucket.code = '18' then 1 else 0 end) as count_18,
+               sum(case when complaint.faultCodeRef.treadBucket.code = '19' then 1 else 0 end) as count_19,
+               sum(case when complaint.faultCodeRef.treadBucket.code = '20' then 1 else 0 end) as count_20,
+               sum(case when complaint.faultCodeRef.treadBucket.code = '21' then 1 else 0 end) as count_21,
+               sum(case when complaint.faultCodeRef.treadBucket.code = '22' then 1 else 0 end) as count_22,
+               sum(case when complaint.faultCodeRef.treadBucket.code = '23' then 1 else 0 end) as count_23,
+               sum(case when complaint.faultCodeRef.treadBucket.code = '24' then 1 else 0 end) as count_24
+            from Complaint complaint
+            where complaint.isPropertyDamaged = true
+                    and year(complaint.incidentDate) = :year
+                    and round((month(complaint.incidentDate) + 1) / 3) = :quater
+            group by case when complaint.itemReference.unserializedItem is not null
+                        then complaint.itemReference.unserializedItem.make
+                        else complaint.product
+                     end,
+                    case when complaint.itemReference.unserializedItem is not null
+                        then complaint.itemReference.unserializedItem.model
+                        else complaint.model
+                     end,
+                     case when complaint.itemReference.unserializedItem is not null
+                        then complaint.itemReference.unserializedItem.itemYear
+                        else complaint.year
+                     end
+    ]]>
+  </query>
+</hibernate-mapping>

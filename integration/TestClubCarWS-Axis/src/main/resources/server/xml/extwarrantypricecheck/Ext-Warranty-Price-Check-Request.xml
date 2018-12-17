@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ExtendedWarrantyPriceFetch lang="en" evnironment="Test" revision="1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <ApplicationArea>
+    <Sender>
+      <LogicalId>TWMS</LogicalId>
+      <Task>CCIMAPICS</Task>
+    </Sender>
+    <CreationDateTime>30-JUL-2006</CreationDateTime>
+  </ApplicationArea>
+  <DataArea>
+	<PriceCheckRequest>
+           <DealerNo>525520</DealerNo>
+            <UserItemType>Extended Warranty</UserItemType>
+            <ItemNumber>EXTD WARR REMAN</ItemNumber>
+            <Description>DS GOLF CAR GASOLINE</Description>
+            	<Plans>
+                	<LineItem>
+                    		<PlanCode>S04</PlanCode>
+                    	<PlanItemNumber>EXTD WARR REMAN</PlanItemNumber>
+               		 </LineItem>
+            	</Plans>
+	</PriceCheckRequest>
+  </DataArea>
+</ExtendedWarrantyPriceFetch>

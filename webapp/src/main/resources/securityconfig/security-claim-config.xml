@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<functionalareas xmlns="http://www.tavant.com/twms/security/resource"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.tavant.com/twms/security/resource
+			http://www.tavant.com/twms/security/resource">
+	<functionalarea name="claim" defaultpolicy="none">
+
+	<!-- Resources for update or Read Only -->
+	
+		<resource type="ui" value="claimsClaimTab" operation="OR">
+			<permissions>claims:claimsClaimTab:update,claims:claimsClaimTab:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="claimsMultiClaimMaintenance" operation="OR">
+			<permissions>claims:claimsMultiClaimMaintenance:update,claims:claimsMultiClaimMaintenance:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="claimsClaimAttributes" operation="OR">
+			<permissions>claims:claimsClaimAttributes:update,claims:claimsClaimAttributes:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="claimsTransfer/Re-process" operation="OR">
+			<permissions>claims:claimsTransfer/Re-process:update,claims:claimsTransfer/Re-process:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="claimsAdviceRequest" operation="OR">
+			<permissions>claims:claimsAdviceRequest:update,claims:claimsAdviceRequest:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="claimsAppeals" operation="OR">
+			<permissions>claims:claimsAppeals:update,claims:claimsAppeals:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="claimsDraftClaim" operation="OR">
+			<permissions>claims:claimsDraftClaim:update,claims:claimsDraftClaim:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="claimsForwardedExternally" operation="OR">
+			<permissions>claims:claimsForwardedExternally:update,claims:claimsForwardedExternally:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="claimsForwardedInternally" operation="OR">
+			<permissions>claims:claimsForwardedInternally:update,claims:claimsForwardedInternally:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="claimsInProgress" operation="OR">
+			<permissions>claims:claimsInProgress:update,claims:claimsInProgress:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="claimsOnHoldForPartReturn" operation="OR">
+			<permissions>claims:claimsOnHoldForPartReturn:update,claims:claimsOnHoldForPartReturn:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="claimsPartShippedNotReceived" operation="OR">
+			<permissions>claims:claimsPartShippedNotReceived:update,claims:claimsPartShippedNotReceived:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="claimsPendingAuthorization" operation="OR">
+			<permissions>claims:claimsPendingAuthorization:update,claims:claimsPendingAuthorization:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="claimsNew" operation="OR">
+			<permissions>claims:claimsNew:update,claims:claimsNew:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="claimsRejectedPartReturn" operation="OR">
+			<permissions>claims:claimsRejectedPartReturn:update,claims:claimsRejectedPartReturn:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="claimsReplies" operation="OR">
+			<permissions>claims:claimsReplies:update,claims:claimsReplies:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="claimsServiceManagerReview" operation="OR">
+			<permissions>claims:claimsServiceManagerReview:update,claims:claimsServiceManagerReview:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="claimsTransferred" operation="OR">
+			<permissions>claims:claimsTransferred:update,claims:claimsTransferred:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="claimsWaitingForLabor" operation="OR">
+			<permissions>claims:claimsWaitingForLabor:update,claims:claimsWaitingForLabor:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="claimsPendingRecoveryInitiation" operation="OR">
+			<permissions>claims:claimsPendingRecoveryInitiation:update,claims:claimsPendingRecoveryInitiation:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="claimsDefineSearchQuery" operation="OR">
+			<permissions>claims:claimsDefineSearchQuery:update,claims:claimsDefineSearchQuery:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="claimsPredefinedSearch" operation="OR">
+			<permissions>claims:claimsPredefinedSearch:update,claims:claimsPredefinedSearch:view
+			</permissions>
+		</resource>
+	
+	<!-- Resources for Read Only-->
+	
+		<resource type="ui" value="claimsClaimTabReadOnlyView">
+			<permissions>claims:claimsClaimTab:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="claimsMultiClaimMaintenanceReadOnlyView">
+			<permissions>claims:claimsMultiClaimMaintenance:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="claimsClaimAttributesReadOnlyView">
+			<permissions>claims:claimsClaimAttributes:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="claimsTransfer/Re-processReadOnlyView">
+			<permissions>claims:claimsTransfer/Re-process:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="claimsAdviceRequestReadOnlyView">
+			<permissions>claims:claimsAdviceRequest:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="claimsAppealsReadOnlyView">
+			<permissions>claims:claimsAppeals:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="claimsDraftClaimReadOnlyView">
+			<permissions>claims:claimsDraftClaim:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="claimsForwardedExternallyReadOnlyView">
+			<permissions>claims:claimsForwardedExternally:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="claimsForwardedInternallyReadOnlyView">
+			<permissions>claims:claimsForwardedInternally:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="claimsInProgressReadOnlyView">
+			<permissions>claims:claimsInProgress:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="claimsOnHoldForPartReturnReadOnlyView">
+			<permissions>claims:claimsOnHoldForPartReturn:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="claimsPartShippedNotReceivedReadOnlyView">
+			<permissions>claims:claimsPartShippedNotReceived:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="claimsPendingAuthorizationReadOnlyView">
+			<permissions>claims:claimsPendingAuthorization:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="claimsNewReadOnlyView">
+			<permissions>claims:claimsNew:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="claimsRejectedPartReturnReadOnlyView">
+			<permissions>claims:claimsRejectedPartReturn:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="claimsRepliesReadOnlyView">
+			<permissions>claims:claimsReplies:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="claimsServiceManagerReviewReadOnlyView">
+			<permissions>claims:claimsServiceManagerReview:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="claimsTransferredReadOnlyView">
+			<permissions>claims:claimsTransferred:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="claimsWaitingForLaborReadOnlyView">
+			<permissions>claims:claimsWaitingForLabor:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="claimsPendingRecoveryInitiationReadOnlyView">
+			<permissions>claims:claimsPendingRecoveryInitiation:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="claimsDefineSearchQueryReadOnlyView">
+			<permissions>claims:claimsDefineSearchQuery:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="claimsPredefinedSearchReadOnlyView">
+			<permissions>claims:claimsPredefinedSearch:view
+			</permissions>
+		</resource>
+	
+	</functionalarea>
+
+</functionalareas>

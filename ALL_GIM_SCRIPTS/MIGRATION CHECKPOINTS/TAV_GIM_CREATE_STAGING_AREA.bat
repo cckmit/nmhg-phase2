@@ -1,0 +1,1 @@
+sqlplus %1/%2@%3 @TAV_GIM_CREATE_STAGING_AREA.sql

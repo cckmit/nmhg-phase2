@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="adminlovs" extends="struts-twms-default">
+
+		<action name="list_lov_type"
+			class="tavant.twms.web.admin.lov.ListLovTypes">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">pages/secure/admin/lov/lovInboxView.jsp</result>
+		</action>
+
+		<action name="get_lov_type_body"
+			class="tavant.twms.web.admin.lov.ListLovTypes"
+			method="tableBody">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">pages/secure/home/json.jsp</result>
+		</action>
+
+		<action name="view_lov_type_preview"
+			class="tavant.twms.web.admin.lov.ListLovTypes" method="showLovType">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">pages/secure/admin/lov/previewLovType.jsp</result>
+		</action>
+
+		<action name="export_lov_type_to_excel"
+			class="tavant.twms.web.admin.lov.ListLovTypes"
+			method="downloadListingData">
+			<interceptor-ref name="adminParamsPrepare" />
+		</action>
+
+		<action name="list_lov"
+			class="tavant.twms.web.admin.lov.ListLOV">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">pages/secure/admin/lov/lovDetailInboxView.jsp</result>
+		</action>
+
+		<action name="get_lov_body"
+			class="tavant.twms.web.admin.lov.ListLOV"
+			method="tableBody">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">pages/secure/home/json.jsp</result>
+		</action>
+
+		<action name="view_lov_preview"
+			class="tavant.twms.web.admin.lov.ManageLOV" method="showLOV">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">pages/secure/admin/lov/previewLOV.jsp</result>
+		</action>
+
+		<action name="view_lov"
+			class="tavant.twms.web.admin.lov.ManageLOV" method="showLOV">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">pages/secure/admin/lov/detailLOV.jsp</result>
+		</action>
+
+		<action name="export_lov_detail_to_excel"
+			class="tavant.twms.web.admin.lov.ListLOV"
+			method="downloadListingData">
+			<interceptor-ref name="adminParamsPrepare" />
+		</action>
+
+		<action name="save_lov"
+			class="tavant.twms.web.admin.lov.ManageLOV" method="saveLOV">
+			<interceptor-ref name="adminTwmsParamsPrepareParams" />
+			<result name="success">pages/secure/admin/success.jsp</result>
+			<result name="input">pages/secure/admin/lov/createLOV.jsp</result>
+		</action>
+
+		<action name="update_lov"
+			class="tavant.twms.web.admin.lov.ManageLOV" method="updateLOV">
+			<interceptor-ref name="adminParamsPrepareWithoutValidation" />
+			<result name="success">pages/secure/admin/success.jsp</result>
+			<result name="input">pages/secure/admin/lov/detailLOV.jsp</result>
+		</action>
+
+		<action name="delete_lov"
+			class="tavant.twms.web.admin.lov.ManageLOV" method="deactivateLOV">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">pages/secure/admin/success.jsp</result>
+		</action>
+
+		<action name="activate_lov"
+			class="tavant.twms.web.admin.lov.ManageLOV" method="activateLOV">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">pages/secure/admin/success.jsp</result>
+		</action>
+
+		<action name="create_lov"
+			class="tavant.twms.web.admin.lov.ManageLOV" method="showLOV">
+			<interceptor-ref name="adminParamsPrepare" />
+			<result name="success">pages/secure/admin/lov/createLOV.jsp</result>
+		</action>
+
+
+	</package>
+</struts>

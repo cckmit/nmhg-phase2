@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Review id="TSADOMAINREVIEW">
+  <ReviewIssue id="G42GL8TX">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-05 :: 14:39:12:309 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-11 :: 11:33:06:250 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ramalakshmi</ReviewerId>
+    <AssignedTo>Ramalakshmi</AssignedTo>
+    <File line="164">src/main/java/tavant/twms/domain/policy/PolicyDefinition.java</File>
+    <Type>item.type.label.suggestion</Type>
+    <Severity>item.severity.label.normal</Severity>
+    <Summary>Table name renaming</Summary>
+    <Description>Can policy_for_providers table be called policy_for_serviceproviders so that its more apt?</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.resolved</Status>
+  </ReviewIssue>
+  <ReviewIssue id="G42GU94W">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-05 :: 14:46:12:608 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-11 :: 11:33:01:172 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Ramalakshmi</ReviewerId>
+    <AssignedTo>Ramalakshmi</AssignedTo>
+    <File line="2">src/main/java/tavant/twms/domain/policy/ServiceProviderCertificationStatus.java</File>
+    <Type>item.type.label.clarity</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>Package structure</Summary>
+    <Description>Can ServiceProviderCertificationStatus be moved to tavant.twms.domain.orgmodel package as that would make more sense?</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.resolved</Status>
+  </ReviewIssue>
+</Review>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC "-//Apache Struts//XWork Validator Config 1.0//EN" "http://struts.apache.org/dtds/xwork-validator-config-1.0.dtd">
+<validators>
+    <validator name="required" class="com.opensymphony.xwork2.validator.validators.RequiredFieldValidator"/>
+    <validator name="requiredstring" class="com.opensymphony.xwork2.validator.validators.RequiredStringValidator"/>
+    <validator name="int" class="com.opensymphony.xwork2.validator.validators.IntRangeFieldValidator"/>
+    <validator name="double" class="com.opensymphony.xwork2.validator.validators.DoubleRangeFieldValidator"/>
+    <validator name="date" class="com.opensymphony.xwork2.validator.validators.DateRangeFieldValidator"/>
+    <validator name="expression" class="com.opensymphony.xwork2.validator.validators.ExpressionValidator"/>
+    <validator name="fieldexpression" class="com.opensymphony.xwork2.validator.validators.FieldExpressionValidator"/>
+    <validator name="email" class="com.opensymphony.xwork2.validator.validators.EmailValidator"/>
+    <validator name="url" class="com.opensymphony.xwork2.validator.validators.URLValidator"/>
+    <validator name="visitor" class="com.opensymphony.xwork2.validator.validators.VisitorFieldValidator"/>
+    <validator name="conversion" class="com.opensymphony.xwork2.validator.validators.ConversionErrorFieldValidator"/>
+    <validator name="stringlength" class="com.opensymphony.xwork2.validator.validators.StringLengthFieldValidator"/>
+    <validator name="regex" class="com.opensymphony.xwork2.validator.validators.RegexFieldValidator"/>
+
+    <!-- TWMS Validators -->
+
+    <!--
+        Rejects anything that is not a long.
+        Additionally, if a min and/or max range is defined,
+        validates those constraints as well.
+    -->
+    <validator name="long" class="tavant.twms.web.validators.LongRangeFieldValidator"/>
+
+    <!-- A date range is considered as valid if:
+        (i)  either or both of the dates are null == OR ==
+        (ii) start date is before or on the same day as the end date.
+    -->
+    <validator name="dateRange" class="tavant.twms.web.validators.DateRangeValidator"/>
+    
+    <!-- Campaign admin validator 
+    	<validator name="campaign" class="tavant.twms.domain.campaign.CampaignValidator"/>
+    -->
+    
+    <!-- Claim Validators -->    
+    <validator name="oemPartReplaced" class="tavant.twms.domain.claim.OEMPartReplacedValidator"/>    
+    <validator name="oemPartReplacedInstalled" class="tavant.twms.domain.claim.OEMPartReplacedInstalledValidator"/>
+    <validator name="serviceInformation" class="tavant.twms.domain.claim.ServiceInformationValidator"/>
+
+	<!-- Part Return Definition Validators -->
+    <validator name="partReturn" class="tavant.twms.domain.partreturn.PartReturnDefinitionValidator"/>
+    
+    <!--
+        Rejects anything that is not a BigDecimal.
+        Additionally, if a min and/or max range is defined,
+        validates those constraints as well.
+    -->
+    <validator name="bigdecimal" class="tavant.twms.web.validators.BigDecimalRangeFieldValidator"/>
+    
+    <!-- Phone Validators -->
+    <validator name="phone" class="tavant.twms.orgmodel.PhoneValidator"/>
+</validators>

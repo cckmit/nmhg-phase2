@@ -1,0 +1,38 @@
+<!DOCTYPE validators PUBLIC "-//Apache Struts//XWork Validator 1.0.2//EN"
+       "http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+<validators>
+    <validator type="expression" short-circuit="true">
+        <param name="expression">
+            <![CDATA[name!=""]]>
+        </param>
+        <message key="error.customReport.customReportNameRequired"/>
+    </validator>
+    <validator type="expression" short-circuit="true">
+        <param name="expression">
+            <![CDATA[!(forItemGroups.size > 0 && forInventoryTypes.size <= 0)]]>
+        </param>
+        <message key="error.customReport.inventoryTypesRequired"/>
+    </validator>
+    
+    <field name="customReport.reportType" >
+        <field-validator type="required"  short-circuit="true">
+            <message key="error.customReport.reportTypeRequired"/>
+        </field-validator>
+    </field> 
+    
+    <validator type="expression" short-circuit="true">
+         <param name="expression">
+            <![CDATA[!(reportType !=null && reportType.code=="FAILURE REPORT" &&  !applicableParts.size > 0)]]>
+        </param>
+        <message key="error.customReport.applicablePartsRequired"/>
+    </validator>
+    
+     <validator type="expression" short-circuit="true">
+         <param name="expression">
+            <![CDATA[!(reportType !=null && reportType.code!="FAILURE REPORT" &&  applicableParts.size > 0)]]>
+        </param>
+        <message key="error.customReport.noapplicablePartsAllowed"/>
+    </validator>
+    
+    
+</validators>

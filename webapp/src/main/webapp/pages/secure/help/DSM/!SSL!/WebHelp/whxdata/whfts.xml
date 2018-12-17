@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<fts>
+<chunkinfo url="whfwdata0.xml" first="08" last="entity"/>
+<chunkinfo url="whfwdata1.xml" first="entri" last="past"/>
+<chunkinfo url="whfwdata2.xml" first="patent" last="visibl"/>
+<chunkinfo url="whfwdata3.xml" first="want" last="zip"/>
+
+<tchunkinfo first="0" last="29" url="whftdata0.xml" />
+
+</fts>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<InstallBaseSync>
+  <ApplicationArea>
+    <Sender>
+      <LogicalId>9528872210</LogicalId>
+      <Task>TavantWMS</Task>
+      <ReferenceId>9528872210_2_2009-01-21T13:51:08.910Z</ReferenceId>
+    </Sender>
+    <BODId>BOD058</BODId>
+    <InterfaceNumber>USINT0833</InterfaceNumber>
+    <CreationDateTime>2009-01-21T13:51:08.940Z</CreationDateTime>
+  </ApplicationArea>
+  <DataArea>
+    <InventorySync>
+      <SyncType>DROP SHIPMENT</SyncType>
+      <ShipFromNumber>14-49</ShipFromNumber>
+      <ShipFromLocation></ShipFromLocation>
+      <ShipToNumber>SNIDER20743COSTA</ShipToNumber>
+      <ShipToLocation></ShipToLocation>
+      <ShipToAddress>
+        <Address1></Address1>
+        <Address2></Address2>
+        <City>CAPITOL HEIGHTS          </City>
+        <State>MD</State>
+        <ZipCode>20743     </ZipCode>
+      </ShipToAddress>
+      <InventoryDetail>
+        <ItemNumber>00480</ItemNumber>
+        <BUNAME>NMHG-US</BUName>
+        <SerialNumber>C1690129</SerialNumber>
+        <ItemCondition>NEW        </ItemCondition>
+        <BuildDate>20080927000000</BuildDate>
+        <AdditionalAttributes></AdditionalAttributes>
+        <ManufacturingSite>BGN</ManufacturingSite>
+        <DCAPModel></DCAPModel>
+        <DCAPCode></DCAPCode>
+        <DCAPAccrualFlag></DCAPAccrualFlag>
+      </InventoryDetail>
+      <SalesOrderNumber>FCE2317-03  </SalesOrderNumber>
+      <SalesOrderLineNumber></SalesOrderLineNumber>
+      <FactoryOrderNumber>FCE2317-03  </FactoryOrderNumber>
+      <InvoiceNumber>FC0333329</InvoiceNumber>
+      <InvoiceDate>20081001000000</InvoiceDate>
+      <ShipFromOrgCode>HUSSMANN</ShipFromOrgCode>
+      <DeliveryDateTime></DeliveryDateTime>
+      <RegistrationDate></RegistrationDate>
+      <Organization></Organization>
+      <Division></Division>
+      <ProductCode></ProductCode>
+      <ModelCode></ModelCode>
+      <OperatingUnit></OperatingUnit>
+    </InventorySync>
+  </DataArea>
+</InstallBaseSync>

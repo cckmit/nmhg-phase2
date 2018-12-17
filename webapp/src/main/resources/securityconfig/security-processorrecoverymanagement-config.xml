@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<functionalareas xmlns="http://www.tavant.com/twms/security/resource"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.tavant.com/twms/security/resource
+			http://www.tavant.com/twms/security/resource">
+	<functionalarea name="processorrecoverymanagement" defaultpolicy="none">
+
+	<!-- Resources for update or Read Only -->
+	
+		<resource type="ui" value="processorRecoveryProcessorRecoveryTab" operation="OR">
+			<permissions>processorRecovery:processorRecoveryProcessorRecoveryTab:update,processorRecovery:processorRecoveryProcessorRecoveryTab:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="processorRecoveryClaimsDueForRecovery" operation="OR">
+			<permissions>processorRecovery:processorRecoveryClaimsDueForRecovery:update,processorRecovery:processorRecoveryClaimsDueForRecovery:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="processorRecoveryNew" operation="OR">
+			<permissions>processorRecovery:processorRecoveryNew:update,processorRecovery:processorRecoveryNew:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="processorRecoveryInProgress" operation="OR">
+			<permissions>processorRecovery:processorRecoveryInProgress:update,processorRecovery:processorRecoveryInProgress:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="processorRecoveryNotForRecoveryRequest" operation="OR">
+			<permissions>processorRecovery:processorRecoveryNotForRecoveryRequest:update,processorRecovery:processorRecoveryNotForRecoveryRequest:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="processorRecoveryNotForRecoveryResponse" operation="OR">
+			<permissions>processorRecovery:processorRecoveryNotForRecoveryResponse:update,processorRecovery:processorRecoveryNotForRecoveryResponse:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="processorRecoveryTransferred" operation="OR">
+			<permissions>processorRecovery:processorRecoveryTransferred:update,processorRecovery:processorRecoveryTransferred:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="processorRecoveryReopened" operation="OR">
+			<permissions>processorRecovery:processorRecoveryReopened:update,processorRecovery:processorRecoveryReopened:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="processorRecoveryClaimsUnderRecovery" operation="OR">
+			<permissions>processorRecovery:processorRecoveryClaimsUnderRecovery:update,processorRecovery:processorRecoveryClaimsUnderRecovery:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="processorRecoveryDisputed" operation="OR">
+			<permissions>processorRecovery:processorRecoveryDisputed:update,processorRecovery:processorRecoveryDisputed:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="processorRecoveryAccepted" operation="OR">
+			<permissions>processorRecovery:processorRecoveryAccepted:update,processorRecovery:processorRecoveryAccepted:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="processorRecoveryAwaitingSupplierResponse" operation="OR">
+			<permissions>processorRecovery:processorRecoveryAwaitingSupplierResponse:update,processorRecovery:processorRecoveryAwaitingSupplierResponse:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="processorRecoveryNotForRecovery" operation="OR">
+			<permissions>processorRecovery:processorRecoveryNotForRecovery:update,processorRecovery:processorRecoveryNotForRecovery:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="processorRecoveryMultiClaimMaintenance" operation="OR">
+			<permissions>processorRecovery:processorRecoveryMultiClaimMaintenance:update,processorRecovery:processorRecoveryMultiClaimMaintenance:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="processorRecoveryReadyForDebit" operation="OR">
+			<permissions>processorRecovery:processorRecoveryReadyForDebit:update,processorRecovery:processorRecoveryReadyForDebit:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="processorRecoveryDefineSearchQuery" operation="OR">
+			<permissions>processorRecovery:processorRecoveryDefineSearchQuery:update,processorRecovery:processorRecoveryDefineSearchQuery:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="processorRecoveryPreDefinedSearch" operation="OR">
+			<permissions>processorRecovery:processorRecoveryPreDefinedSearch:update,processorRecovery:processorRecoveryPreDefinedSearch:view
+			</permissions>
+		</resource>
+	
+	<!-- Resources for Read Only-->
+	
+		<resource type="ui" value="processorRecoveryProcessorRecoveryTabReadOnlyView">
+			<permissions>processorRecovery:processorRecoveryProcessorRecoveryTab:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="processorRecoveryClaimsDueForRecoveryReadOnlyView">
+			<permissions>processorRecovery:processorRecoveryClaimsDueForRecovery:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="processorRecoveryNewReadOnlyView">
+			<permissions>processorRecovery:processorRecoveryNew:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="processorRecoveryInProgressReadOnlyView">
+			<permissions>processorRecovery:processorRecoveryInProgress:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="processorRecoveryNotForRecoveryRequestReadOnlyView">
+			<permissions>processorRecovery:processorRecoveryNotForRecoveryRequest:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="processorRecoveryNotForRecoveryResponseReadOnlyView">
+			<permissions>processorRecovery:processorRecoveryNotForRecoveryResponse:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="processorRecoveryTransferredReadOnlyView">
+			<permissions>processorRecovery:processorRecoveryTransferred:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="processorRecoveryReopenedReadOnlyView">
+			<permissions>processorRecovery:processorRecoveryReopened:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="processorRecoveryClaimsUnderRecoveryReadOnlyView">
+			<permissions>processorRecovery:processorRecoveryClaimsUnderRecovery:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="processorRecoveryDisputedReadOnlyView">
+			<permissions>processorRecovery:processorRecoveryDisputed:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="processorRecoveryAcceptedReadOnlyView">
+			<permissions>processorRecovery:processorRecoveryAccepted:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="processorRecoveryAwaitingSupplierResponseReadOnlyView">
+			<permissions>processorRecovery:processorRecoveryAwaitingSupplierResponse:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="processorRecoveryNotForRecoveryReadOnlyView">
+			<permissions>processorRecovery:processorRecoveryNotForRecovery:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="processorRecoveryMultiClaimMaintenanceReadOnlyView">
+			<permissions>processorRecovery:processorRecoveryMultiClaimMaintenance:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="processorRecoveryReadyForDebitReadOnlyView">
+			<permissions>processorRecovery:processorRecoveryReadyForDebit:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="processorRecoveryDefineSearchQueryReadOnlyView">
+			<permissions>processorRecovery:processorRecoveryDefineSearchQuery:view
+			</permissions>
+		</resource>
+		
+		<resource type="ui" value="processorRecoveryPreDefinedSearchReadOnlyView">
+			<permissions>processorRecovery:processorRecoveryPreDefinedSearch:view
+			</permissions>
+		</resource>
+        
+	</functionalarea>
+
+</functionalareas>

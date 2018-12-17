@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process-definition xmlns="" name="ClaimSubmission">
+  <start-state name="start">
+    <transition name="" to="policyAndPaymentProcessState"></transition>
+  </start-state>
+  <process-state name="policyAndPaymentProcessState">
+    <transition name="" to="isSMR"/>
+    <sub-process name="ClaimServiceSubProcess"/>
+    <variable name="claim" access="read,write" mapped-name="claim"/>
+  </process-state>
+  <decision name="isSMR">
+    <transition name="No" to="ClaimProcessingRulesCheck"></transition>
+    <transition name="Yes" to="Submit SMR Response">
+      <condition>#{claim.isServiceManagerRequest}</condition>
+    </transition>
+  </decision>
+  <ruleDecision name="ClaimProcessingRulesCheck">
+    <transition name="Accept" to="Notify Payment">
+      <condition>#{accepted}</condition>
+    </transition>
+    <transition name="Reject" to="ManualClaimAdjudication">
+      <condition>#{!accepted}</condition>
+    </transition>
+    <ruleSet>ClaimValidationRule</ruleSet>
+    <input>
+      <variable>claim</variable>
+      <variable>claim.filedBy</variable>
+      <variable>claim.forDealer</variable>
+      <variable>claim.serviceInformation</variable>
+      <variable>claim.serviceInformation.serviceDetail</variable>
+      <variable>
+        claim.serviceInformation.serviceDetail.laborPerformed
+      </variable>
+      <variable>
+        claim.serviceInformation.serviceDetail.travelDetails
+      </variable>
+    </input>
+    <postProcess>claim.setOtherComments(otherComments)</postProcess>
+  </ruleDecision>
+  <task-node name='ManualClaimAdjudication'>
+    <task name="Assign claim to processor">      
+      <assignment
+        class="tavant.twms.jbpm.ExpressionAssignmentHandler">
+        <expression>pooledActor=processor</expression>
+      </assignment>
+      <controller>
+        <variable name="comment"></variable>
+      </controller>
+    </task>
+    <transition name="Accept" to="Notify Payment"></transition>
+    <transition name="Forward" to="Respond to forwarded claim"></transition>
+  </task-node>
+  <node name="Notify Payment">
+    <transition name="" to="end"></transition>
+  </node>
+  <end-state name="end"></end-state>
+  <task-node name="Respond to forwarded claim">
+    <task name="Forwarded claims">
+      <assignment
+        class="tavant.twms.jbpm.ExpressionAssignmentHandler">
+        <expression>actor=ognl{claim.dealer.name}</expression>
+      </assignment>
+      <controller>
+        <variable name="comment"></variable>
+      </controller>
+    </task>
+    <transition name="Submit" to="ManualClaimAdjudication"></transition>
+  </task-node>
+
+  <task-node name="Submit SMR Response">
+    <task name="Assign claim to SMR">      
+      <assignment
+        class="tavant.twms.jbpm.ExpressionAssignmentHandler">
+        <expression>pooledActor=dsm</expression>
+      </assignment>
+      <controller>
+        <variable name="smrComment"></variable>
+      </controller>
+    </task>
+    <transition name="Reject" to="Submit SMR Re-request"></transition>
+    <transition name="Accept" to="Submit claim"></transition>
+  </task-node>
+
+  <task-node name="Submit SMR Re-request">
+    <task name="Assign to Dealer">
+      <assignment
+        class="tavant.twms.jbpm.ExpressionAssignmentHandler">
+        <expression>actor=ognl{claim.dealer.name}</expression>
+      </assignment>
+      <controller>
+        <variable name="smrComment"></variable>
+      </controller>
+    </task>
+    <transition name="Re-Submit" to="Submit SMR Response"></transition>
+  </task-node>
+</process-definition>

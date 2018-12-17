@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Review id="supplier-recovery-engine">
+  <ReviewIssue id="G4DXNG3K">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-13 :: 15:22:16:448 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-13 :: 15:22:33:993 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Nanda</ReviewerId>
+    <AssignedTo>Kaustubh</AssignedTo>
+    <File line="409">src/main/java/tavant/twms/process/PartReturnProcessingServiceImpl.java</File>
+    <Type>item.type.label.clarity</Type>
+    <Severity>item.severity.label.minor</Severity>
+    <Summary>Remove this null and empty check</Summary>
+    <Description></Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="G4DXO1AI">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-13 :: 15:22:43:914 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-13 :: 15:24:28:921 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Nanda</ReviewerId>
+    <AssignedTo>Kaustubh</AssignedTo>
+    <File line="405">src/main/java/tavant/twms/process/PartReturnProcessingServiceImpl.java</File>
+    <Type>item.type.label.programLogic</Type>
+    <Severity>item.severity.label.normal</Severity>
+    <Summary>Workflow should only be started for recovery claims with RecoveryState as NEW. In createRecClaim method set the state to NEW</Summary>
+    <Description></Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="G4DXPMHD">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-13 :: 15:23:58:033 IST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2010-01-13 :: 15:24:20:125 IST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>Nanda</ReviewerId>
+    <AssignedTo>Kaustubh</AssignedTo>
+    <File line="412">src/main/java/tavant/twms/process/PartReturnProcessingServiceImpl.java</File>
+    <Type>item.type.label.programLogic</Type>
+    <Severity>item.severity.label.normal</Severity>
+    <Summary>Workflow should only be started for recovery claims with RecoveryState as NEW. In createRecClaim method set the state to NEW</Summary>
+    <Description></Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+</Review>

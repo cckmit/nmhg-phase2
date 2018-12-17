@@ -1,0 +1,235 @@
+
+html {
+	margin:0;
+	padding:0;
+	background-color:#FFFFFF
+}
+
+body {
+	margin:0px;
+	background-color:#FFFFFF;
+	scrollbar-base-color:#E8EDEF;
+	scrollbar-arrow-color:#000000;
+	scrollbar-track-color:#f6f6f6;
+	scrollbar-3dlight-color:#133173;
+	scrollbar-highlight-color:#FFFFFF;
+	scrollbar-darkshadow-color:#666666;
+	scrollbar-shadow-color:#CCCCCC;
+	scrollbar-face-color:#E8EDEF;
+	height:100%;
+	padding:0px;
+	overflow:auto
+}
+
+.centresubtitle{
+background-color:#DCE9F7;
+border-bottom:2px solid #EFEBF7;
+font-family:Arial, Helvetica, sans-serif;
+text-transform:uppercase;
+font-size:9pt;
+font-style:normal;
+font-weight:700;
+padding:2px;
+text-align:center;
+height:25px;
+color:#5577B4;
+}
+.fullsubtitle, .partssubtitle{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:8.5pt;
+	font-weight:normal;
+	text-transform:uppercase;
+	color:#636363;
+	padding-left:5px;
+	line-height:25px;
+	border: 1px solid #EFEBF7;
+
+}
+.fullsubtitle {
+	background-color:#DCE9F7;
+	margin-left:0px;
+	margin-right:0px;
+	margin-top:15px;	
+}
+
+.dealersubtitle {
+	background-color:#DCE9F7;
+	margin-left:5px;
+	margin-right:5px;
+	margin-top:15px;
+	width:100%;
+}
+
+
+table.dealertable, table.parttable {
+	margin-left:1px;
+	margin-right:1px;
+	border: 1px solid #c2c2c2;
+	padding-left:0px;
+	background-color:#F3FBFE;
+}
+table.dealertable {
+	width:100%;
+}
+.dealertable tr th{
+border:1px solid #ffffff;
+}
+.dealertable tr td {
+border:1px solid #EFEBF7;
+}
+
+table.parttable {
+	width:70%;
+	margin-left:50px;
+}
+
+
+
+.partssubtitle {
+	background-color:#DCE9F7;
+	width:100%;
+}
+.tableaddress{
+	float:right;
+	color:#545454;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:8.5pt;
+	font-weight:bold;
+	font-style:normal;
+	text-align:left;
+	line-height:10px;
+	align:left;
+	border:2px;
+	vertical-align:top;
+	width:100%;
+}
+
+.returnaddressdetails {
+	border-bottom: 1px solid #EFEBF7;
+	width:100%;
+
+}
+
+.detailswithoutborder, .returnaddressdetails {
+	width:100%;
+	height:75px;
+	margin-top:5px;
+}
+
+
+.barcodeimg{
+	float:left;
+	margin-top:0px;
+	margin-left:10px;
+}
+.colHeader {
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:8.5pt;
+	color:#545454;
+	font-weight:bold;
+	text-align:left;
+	text-decoration:none;
+	background-color:#F3FBFE;
+	padding-left:2px;
+}
+.tableDataWhiteBg {
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:9pt;
+	line-height:15px;
+	border:0px;
+	padding-left:0px;
+	text-align:left;
+
+}
+.tableDataAltRow {
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:9pt;
+	line-height:15px;
+	border:0px;
+	padding-left:2px;
+	text-align:left;
+	background-color:#F3FBFE;
+}
+.lineseparator {
+	border-bottom:1px solid #EFEBF7;
+	margin-top: 10px;
+}
+.separator {
+	padding-top:30px;
+}
+.dashedLine{
+	padding-top:20px;
+	border-bottom:1px dashed #EFEBF7;
+	margin-bottom:40px;
+}
+.buttonWrapperPrimary {
+	padding-top:7px;
+	padding-bottom:7px;
+	text-align:center
+}
+
+
+.buttonGeneric {
+	background:transparent url(../../../image/buttonBg_new.gif) repeat-x scroll left center;
+	border:1px solid #EFEBF7;
+	color:#545454;
+	cursor:pointer;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size:8.5pt;
+	font-style:normal;
+	overflow:visible;
+	height:20px;
+}
+
+.labelBold {
+	color:#545454;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:9pt;
+	font-weight:bold;
+	font-style:normal;
+	vertical-align:top;
+	padding-left:20px;
+	text-align:left;
+	line-height:20px
+}
+.labelBoldAndBig {
+	color:#545454;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:20pt;
+	font-weight:bold;
+	font-style:normal;
+	vertical-align:top;
+	padding-left:20px;
+	padding-bottom:5px;
+	padding-top:5px;
+	text-align:left;
+	line-height:20px
+}
+.labelLargeFont {
+	color:#545454;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11pt;
+	font-weight:bold;
+	font-style:normal;
+	vertical-align:top;
+	padding-left:20px;
+	text-align:left;
+	line-height:20px
+}
+
+
+.labelNormal {
+	color:#545454;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:9pt;
+	font-weight:normal;
+	font-style:normal;
+	vertical-align:middle;
+	padding-right:10px;
+	padding-top:5px;
+	text-align:left
+}
+
+@media print {
+input.noPrint { display: none; }
+}

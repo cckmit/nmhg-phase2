@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="layer">
+	<target name="moveResources">
+		<copy file="securityPolicy.xml" todir="src/main/resources/" filtering="yes" overwrite="yes" />
+		<replace file="src/main/resources/securityPolicy.xml" propertyFile="../../etc/dev/twms_oracle.properties">
+					<replacefilter token="pricefetchServiceUsernameToken" property="pricefetchServiceUsername" />
+					<replacefilter token="pricefetchServiceUsernameValue" property="pricefecthSerivicePassword" />
+				</replace>
+	</target>
+</project>

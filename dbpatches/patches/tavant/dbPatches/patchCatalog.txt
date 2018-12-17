@@ -1,0 +1,68 @@
+## The Tavant Database Patch catalog
+##
+## This file contains a sequential list of all the database patches along with logical database name.	
+## (both sql scripts and java programs) that must be run to properly
+## construct and maintain a database in conjunction with the version
+## of code represented by the current version of this file. Patch names
+## shall be relative to tavant/dbPatches
+##
+## Entries in this will look like this (but will be left-justfied):
+##    main/Patchyyyymmdd.[sql|java] tavant
+## or
+##    iri/Patchyyyymmdd.[sql|java] dba
+##
+##All entries in patchCatalog.txt would consist of both the patch name
+##followed by a 'logical' database/schema name (seperated by whitespace). This
+##would name no longer be optional.
+##Failure to provide a 'logical' db name for all patches is considered to be
+##an error.
+##Failure to define all 'logical' names in the external properties file is an
+##error.
+##  Ex)
+##    main/Patch20030402.sql tavant
+##    main/Patch20030403.sql dba
+##    main/Patch20030404.sql amc_staging
+##JBPM_CHECK_AMT_RECOVERY.sql main twms_owner
+##PATCH_TIMESTAMP_COLS.sql main twms_owner
+##PATCH_ADDITIONAL_TIME_COLS.sql main twms_owner
+##PATCH_CCI-605.sql main twms_owner
+##PATCH_RECCLAIMAUDIT_LISTINDEX.sql
+##partCollaboration/PATCH_ITEM_TK_SYNC_CHANGES.sql main twms_owner
+##partCollaboration/PATCH_PART_INVENTORY.sql main twms_owner
+##partCollaboration/PATCH_PART_INVENTORY_ROLE.sql main twms_owner
+##partCollaboration/PATCH_PART_INVENTORY_SEARCH_REPORT.sql main twms_owner
+##partCollaboration/PATCH_PARTS_UPLOAD.sql main twms_owner
+##partCollaboration/PATCH_TK_SYNC_CHANGES.sql main twms_owner
+##partCollaboration/PATCH_UPDATE_DEALER_GROUP_CODE.sql main twms_owner
+##partCollaboration/PATCH_UPDATE_SAVED_QUERY.sql main twms_owner
+##partCollaboration/PATCH_UPDATE_PART_INVENTORY_UPLOAD.sql main twms_owner
+##partCollaboration/UPDATE_PARTS_UPLOAD.sql main twms_owner
+##partCollaboration/UPDATE_PART_INVENTORY_SEARCH_REPORT.sql main twms_owner
+##partCollaboration/UPDATE_SAVED_QUERY.sql main twms_owner
+##partCollaboration/UPDATE_TK_SYNC.sql main twms_owner
+##partCollaboration/PATCH_STG_PARTS_INVENTORY.sql main twms_owner
+##partCollaboration/UPDATE_SAVED_QUERY.sql main twms_owner
+##partCollaboration/UPDATE_TK_SYNC.sql main twms_owner
+##partCollaboration/PATCH_STG_PARTS_INVENTORY.sql main twms_owner
+##partCollaboration/PATCH_MSA_INDEX.sql main twms_owner
+##partCollaboration/UPDATE_TK_SYNC_CHANGES.sql main twms_owner
+##partCollaboration/PATCH_UPDATE_PART_INVENTORY_SEARCH_REPORT.sql main twms_owner
+##partCollaboration/PATCH_ROLE_TAV_ADMIN.sql main twms_owner
+##partCollaboration/PATCH_UPDATE_TK_CHANGES.sql main twms_owner
+##partCollaboration/PATCH_BU_IMPLEMENTATION.sql main twms_owner
+##partCollaboration/PATCH_UPDATE_PART_INVENTORY_SYNC_CHANGE.sql main twms_owner
+##partCollaboration/PATCH_TAV_ERROR.sql main twms_owner
+##partCollaboration/PATCH_MSA_ADDRESS_INDEX_FOR_DISTANCE.sql main twms_owner
+##partCollaboration/PATCH_PART_INV_CSV.sql main twms_owner
+##partCollaboration/PATCH_TK_DEALERSHIP.sql main twms_owner
+##partCollaboration/PATCH_TK_DEALERSHIPS_DISTANCE.sql main twms_owner
+##partCollaboration/FUNC_GCD_HAVERSINE_FORMULA.sql main twms_owner
+##partCollaboration/PROC_XML_PARTS_XTRACTION_UTIL.sql main twms_owner
+##PATCH_CCI-846.sql main twms_owner
+##partCollaboration/PROC_XML_PARTS_XTRACTION.sql main twms_owner
+##partCollaboration/PROC_POPULATE_TK_DEALER_DISTANCE.sql main twms_owner
+##partCollaboration/PROC_STG_PART_INVENTORY_VALIDATION.sql main twms_owner
+##partCollaboration/PATCH_UPDATE_DEALERSHIP.sql main twms_owner
+##partCollaboration/PATCH_PARTS_UPLOAD_EMAIL.sql main twms_owner
+partCollaboration/PATCH_ENTITY_DEACTIVATION.sql main twms_owner
+

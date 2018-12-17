@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProcessIriInvoice lang="en" evnironment="Test" revision="1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <ApplicationArea>
+    <Sender>
+      <LogicalId>0200001999</LogicalId>
+      <Task>98-572-4553</Task>
+    </Sender>
+    <BODId>10016806_3</BODId>
+    <CreationDateTime>2004-06-30</CreationDateTime>
+  </ApplicationArea>
+  <DataArea>
+    <IriInvoice>
+      <DealerNumber>4811</DealerNumber>
+      <UserItemType>Extended Warranty</UserItemType>
+      <ItemNumber>523911038</ItemNumber>
+      <SerialNumber>128022112</SerialNumber>
+      <Description>Golf Car</Description>
+      <PurchaseDate>2004-06-30</PurchaseDate>
+      <PlansList>
+      	<Plan>
+      		<PlanCode>AB08</PlanCode>		
+      		<PlanItemNumber>1232344</PlanItemNumber>
+      		<Amount>39.38</Amount>      		
+      	</Plan>
+      	<Plan>
+	      	<PlanCode>CS04</PlanCode>		
+	      	<PlanItemNumber>324515566</PlanItemNumber>
+	      	<Amount>39.00</Amount>	      	
+	    </Plan>      	
+      </PlansList>
+    </IriInvoice>
+  </DataArea>
+</ProcessIriInvoice>

@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns="http://www.tavant.com/twms/security/resource"
+           targetNamespace="http://www.tavant.com/twms/security/resource"
+           elementFormDefault="unqualified" attributeFormDefault="unqualified">
+
+    <xs:element name="functionalareas">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="functionalarea" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="functionalarea">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="resource" maxOccurs="unbounded"/>
+            </xs:sequence>
+            <xs:attribute name="name" use="required">
+                <xs:annotation>
+                    <xs:documentation>
+                        Name of the Functional Area like Administration
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="defaultpolicy" use="optional">
+                <xs:annotation>
+                    <xs:documentation>
+                        This is bean refernce for the
+                        Policy class defined in spring.
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:whiteSpace value="collapse"/>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="defaultcontextbuilder" use="optional">
+                <xs:annotation>
+                    <xs:documentation>
+                        This is bean refernce for the
+                        Policy class defined in spring.
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:whiteSpace value="collapse"/>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="resource">
+        <xs:annotation>
+            <xs:documentation>
+                Resource name can be UI component or any method
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType mixed="true">
+            <xs:sequence>
+                <xs:element ref="permissions" minOccurs="0" maxOccurs="1"/>
+                <xs:element ref="policy-bean" minOccurs="0" maxOccurs="1"/>
+                <xs:element ref="context-builder-bean" minOccurs="0" maxOccurs="1"/>
+            </xs:sequence>
+            <xs:attribute name="type" use="required">
+                <xs:annotation>
+                    <xs:documentation>
+                        Represents the type of resource allowed
+                        types are url,api,menu,jsptag
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="url"/>
+                        <xs:enumeration value="method"/>
+                        <xs:enumeration value="ui"/>
+                        <xs:enumeration value="menu"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="prefix" use="optional">
+                <xs:annotation>
+                    <xs:documentation>
+                        This is for resources which belongs to the
+                        functional area and is independent of the
+                        individual permissions. Is specified only when
+                        the resource is authorized against functional area, not
+                        for each permission set.
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="Access Controls"/>
+                        <xs:enumeration value="Security Master"/>
+                        <xs:enumeration value="Account Opening"/>
+                        <xs:enumeration value="Account Maintenance"/>
+                        <xs:enumeration value="Approval Workflows"/>
+                        <xs:enumeration value="System functions"/>
+                        <xs:enumeration value="Stock Record"/>
+                        <xs:enumeration value="Order Management"/>
+                        <xs:enumeration value="Margin and Vetting"/>
+                        <xs:enumeration value="Firm Parameter"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="operation" use="required">
+                <xs:annotation>
+                    <xs:documentation>
+                        Represents the logical operations that needs
+                        to be performed on permission set for resource.
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="OR"/>
+                        <xs:enumeration value="AND"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="value" use="optional">
+                <xs:annotation>
+                    <xs:documentation>
+                        Name of the resource that needs to be protected.
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:whiteSpace value="collapse"/>
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="policy" use="optional">
+                <xs:annotation>
+                    <xs:documentation>
+                        Defines whether the policy for
+                        functional area has been overridden.
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:whiteSpace value="collapse"/>
+                        <xs:minLength value="1"/>
+                        <xs:enumeration value="none"/>
+                        <xs:enumeration value="default"/>
+                        <xs:enumeration value="defined"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="contextbuilder" use="optional">
+                <xs:annotation>
+                    <xs:documentation>
+                        Defines whether the context for
+                        functional area has been overridden.
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:whiteSpace value="collapse"/>
+                        <xs:minLength value="1"/>
+                        <xs:enumeration value="none"/>
+                        <xs:enumeration value="default"/>
+                        <xs:enumeration value="defined"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="permissions" type="xs:string">
+        <xs:annotation>
+            <xs:documentation>
+                Comma separated permissions.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="policy-bean" type="xs:string">
+        <xs:annotation>
+            <xs:documentation>
+                Overriden Policy bean class for the particular resource.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="context-builder-bean" type="xs:string">
+        <xs:annotation>
+            <xs:documentation>
+                Context Builder bean.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>        
+           
+</xs:schema>           

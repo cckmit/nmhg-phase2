@@ -1,0 +1,62 @@
+<!DOCTYPE validators PUBLIC "-//Apache Struts//XWork Validator 1.0.2//EN"
+       "http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+<validators>
+    <field name="travelDetails">
+        <field-validator type="visitor">
+            <param name="appendPrefix">true</param>
+            <param name="context">draftdetail</param>
+            <message></message>
+        </field-validator>
+    </field>
+
+    <field name="oemPartsReplaced">
+        <field-validator type="visitor">
+            <param name="appendPrefix">true</param>
+            <param name="context">draftdetail</param>
+            <message></message>
+        </field-validator>
+    </field>
+    
+    <field name="miscPartsReplaced">
+        <field-validator type="visitor">
+            <param name="appendPrefix">true</param>
+            <param name="context">miscPartsdraftdetail</param>
+            <message></message>
+        </field-validator>
+    </field>
+    
+    <field name="hussmanPartsReplacedInstalled">
+        <field-validator type="visitor">
+            <param name="appendPrefix">true</param>
+            <param name="context">draftdetail</param>
+            <message></message>
+        </field-validator>
+    </field> 
+    <field name="nonOEMPartsReplaced">
+        <field-validator type="visitor">
+            <param name="appendPrefix">true</param>
+            <param name="context">draftdetail</param>
+            <message></message>
+        </field-validator>
+    </field>
+    
+    <field name="mealsExpense">
+        <field-validator type="int">
+            <message key="error.newClaim.mealExpenseRequired"/>
+        </field-validator>
+    </field>
+     
+    
+    <field name="parkingAndTollExpense">
+        <field-validator type="int">
+            <message key="error.newClaim.parkingTollRequired"/>
+        </field-validator>
+    </field>
+    
+    <field name="itemFreightAndDuty">
+        <field-validator type="int">
+            <message key="error.newClaim.itemFrieghtDutyRequired"/>
+        </field-validator>
+    </field>
+    
+</validators>

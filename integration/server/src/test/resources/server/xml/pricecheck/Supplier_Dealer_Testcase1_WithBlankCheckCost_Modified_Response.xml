@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<PriceFetchResponse>
+  <ApplicationArea>
+    <Sender>
+      <LogicalId>CCT_WINDCHILL</LogicalId>
+      <Task>TavantWMS</Task>
+      <ReferenceId>1231</ReferenceId>
+    </Sender>
+    <BODId>ITEM_PRICE_RESPONSE_TAVANT</BODId>
+    <CreationDateTime>20081219122653</CreationDateTime>
+    <InterfaceNumber>USINT0802</InterfaceNumber>
+  </ApplicationArea>
+  <Status>
+    <code>SUCCESS</code>
+    <errorMessage></errorMessage>
+  </Status>
+  <PriceCheckResponse>
+    <LineItem>
+      <Status>
+        <code>SUCCESS</code>
+      </Status>
+      <PartNo>P100</PartNo>
+      <Quantity>1</Quantity>
+      <ListPrice CurrencyCode="USD">100</ListPrice>
+      <UOM>POUND</UOM>
+    </LineItem>
+  </PriceCheckResponse>
+</PriceFetchResponse>

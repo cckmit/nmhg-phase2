@@ -1,0 +1,12 @@
+<!DOCTYPE root>
+<excel>
+  <sheet sheetName="Sheet1" type="tavant.twms.web.admin.dto.ItemGroupDTO" startRow="1">
+    <block>
+      <column-mapping column="0" expression="itemCategory" />
+      <column-mapping column="1" expression="parentGroup" convertorName="itemGroupConvertor"/>
+      <column-mapping column="2" expression="type" />
+    </block>
+    <block-break column="0"/>
+    <sheet-end/>
+  </sheet>
+</excel>

@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE Configure PUBLIC "-//Mort Bay Consulting//DTD Configure//EN" "http://jetty.mortbay.org/configure.dtd">
+<Configure class="org.mortbay.jetty.webapp.WebAppContext">
+    <!-- Add a DataSource only valid for this webapp -->
+    <New class="org.mortbay.jetty.plus.naming.Resource" id="twms-ds">
+        <Arg>jdbc/twms-ds</Arg>
+        <Arg>
+            <New class="oracle.jdbc.pool.OracleDataSource">
+                <Set name="URL">jdbc:oracle:thin:@10.129.135.81:1521:NACDM1</Set>
+                <Set name="User">NACCO_DEV</Set>
+                <Set name="Password">NACCO_DEV</Set>
+                <!--<Set name="URL">jdbc:oracle:thin:@10.129.146.10:1521:NACDM2</Set>
+              	<Set name="User">NACCO_P2_TEST</Set>
+                <Set name="Password">NACCO_P2_TEST</Set>-->
+                <Set name="ImplicitCachingEnabled">true</Set>
+                <Set name="ConnectionCachingEnabled">true</Set>
+                <Set name="connectionCacheProperties">
+                    <New class="java.util.Properties">
+                        <Call name="setProperty">
+                            <Arg>MinLimit</Arg>
+                            <Arg>5</Arg>
+                        </Call>
+                        <Call name="setProperty">
+                            <Arg>MaxLimit</Arg>
+                            <Arg>10</Arg>
+                        </Call>
+                        <Call name="setProperty">
+                            <Arg type="java.lang.String">MaxStatementsLimit</Arg>
+                            <Arg type="java.lang.String">100</Arg>
+                        </Call>
+                    </New>
+                </Set>
+            </New>
+        </Arg>
+    </New>
+</Configure>

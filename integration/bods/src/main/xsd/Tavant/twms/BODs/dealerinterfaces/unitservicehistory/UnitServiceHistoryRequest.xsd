@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://www.tavant.com/dealerinterfaces/unitservicehistory/unitservicehistoryrequest" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.tavant.com/dealerinterfaces/unitservicehistory/unitservicehistoryrequest" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="UnitServiceHistoryRequest">
+		<xs:complexType>
+			<xs:sequence>				
+				<!-- Serial Number of the unit or major component -->
+				<xs:element name="SerialNumber" type="xs:string"/>
+				<!-- Either (serial number and item number ) or (container number and item number) are required to identify 
+				     a unit/major component uniquely -->
+				<!-- Item Number of the unit or major component -->
+				<xs:element name="ItemNumber" minOccurs="1" maxOccurs="1" nillable="false">
+					<xs:simpleType>
+      					<xs:restriction base="xs:string">
+        					 <xs:minLength value="1" />        
+      					</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<!-- Container Number of the unit -->
+				<xs:element name="ContainerNumber" type="xs:string"/>
+				<!-- Organization Number w.r.t which dealer is performing the action. Mandatory if the dealer is working for more than one organization -->
+				<xs:element name="CurrentlyActiveOrganizationNumber" type="xs:string" nillable="true"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

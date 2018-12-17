@@ -1,0 +1,166 @@
+## The Tavant Database Patch catalog
+##
+## This file contains a sequential list of all the database patches along with logical database name.	
+## (both sql scripts and java programs) that must be run to properly
+## construct and maintain a database in conjunction with the version
+## of code represented by the current version of this file. Patch names
+## shall be relative to tavant/dbPatches
+##
+## Entries in this will look like this (but will be left-justfied):
+##    main/Patchyyyymmdd.[sql|java] tavant
+## or
+##    iri/Patchyyyymmdd.[sql|java] dba
+##
+##All entries in patchCatalog.txt would consist of both the patch name
+##followed by a 'logical' database/schema name (seperated by whitespace). This
+##would name no longer be optional.
+##Failure to provide a 'logical' db name for all patches is considered to be
+##an error.
+##Failure to define all 'logical' names in the external properties file is an
+##error.
+##  Ex)
+
+PATCH_DLR_PART_RETURN_VISIBILITY.sql main twms_owner
+PATCH_SUPPLIER_RECOVERY.sql main twms_owner
+PATCH_SUPPLIER_RECOVERY_MAINTAIN_CONTRACT.sql main twms_owner
+PATCH_INV_COMP.sql main twms_owner
+PATCH_SERVICE_PROVIDER.sql main twms_owner
+PATCH_DLR_DLRGROUP_POLICY.sql main twms_owner
+PATCH_BARCD_PRTOFF_BU_CONFIG.sql main twms_owner
+PATCH_INV_ITEM_SOURCEOFPART.sql main twms_owner
+UPDATE_CONFIG_PARAM_DESC_PARTRETURN.sql main twms_owner
+PATCH_SERVICE_PROVIDERS_POLICY.sql main twms_owner
+PATCH_ITEM_GROUP_TYPE_NULLABLE.sql main twms_owner
+PATCH_BARCD_UNIQUE_CONSTRAINT.sql main twms_owner
+PATCH_PURPOSES.sql main twms_owner
+PATCH_RECOVERY_CLAIM.sql main twms_owner
+PATCH_RECOVERABLE_PART.sql main twms_owner
+PATCH_UPDATE_ALARM_CODE.sql main twms_owner
+PATCH_POLICY_DEFINITION.sql main twms_owner
+PATCH_BU_MODEL_CATEGORY.sql main twms_owner
+PATCH_BU_CONFIG_DCAP_INVENTORIES.sql main twms_owner
+PATCH_RECOVERY_INFO.sql main twms_owner
+PATCH_ERP_CURRENCY_BU_CONFIG.sql main twms_owner
+PATCH_RECOVERY_MODULE_RECOVERABLE_PARTS.sql main twms_owner
+PATCH_INCL_JOB_CODES_FAULT_CODE_PRT_CLASS.sql main twms_owner
+PATCH_RECOVERY_INFO_PART_LEVEL.sql main twms_owner
+PATCH_BU_CONFIG_WARRANTY_COVERAGE_PARTS.sql main twms_owner
+PATCH_DCAP_REVIEWER.sql main twms_owner
+PATCH_EMAIL_NOTIFICATION_DCAPCLAIM.sql main twms_owner
+PATCH_DCAP_DLRGRP_RDUSERGRP.sql main twms_owner
+PATCH_DCAP_CLAIM_ASSIGNEDTO.sql main twms_owner
+LIST_OF_VALUES_CLAIM_COMPETITOR_MODEL.sql main twms_owner
+PATCH_DOMAIN_CHANGES_SUPPLIER_RECOVERY.sql main twms_owner
+PATCH_UPDATE_SAVEDATPARTLEVEL_COLUMN_FOR_RECOVERY_INFO.sql main twms_owner
+PATCH_WR_ADDTL_MKT_INFO_CHANGES.sql main twms_owner
+PATCH_EMAIL_NOTIFICATION_ATTEMPTING_DUPLICATE_DCAP_CLAIM.sql main twms_owner
+PATCH_ADDN_LBR_ELIGIBLITY.sql main twms_owner
+PATCH_MINI_LBR_ROUND_UP.sql main twms_owner
+PATCH_PART_OFF_CHNGS.sql main twms_owner
+PATCH_SUPP_NEEDED_FOR_COSTFETCH_BU_CONFIG.sql main twms_owner
+PATCH_ENHANCED_COMPREPLACEMENT.sql main twms_owner
+PATCH_ITEM_SYNC_CHANGES.sql main twms_owner
+PATCH_LOA_SCHEME.sql main twms_owner
+PATCH_CLAIM_LABOR_ROUNDUP.sql main twms_owner
+PATCH_ADD_COL_LOA_SCHEME.sql main twms_owner
+PATCH_RECOVERY_MULTIPLE_COST_PRICES.sql main twms_owner
+PATCH_PURPOSE_BOOTSTRAP.sql main twms_owner
+PATCH_ADD_COL_ASSIGNMENT_RULE_ACTION.sql main twms_owner
+PATCH_ROUND_UP_JOB_CODE.sql main twms_owner
+PATCH_CVG_FOR_PARTS_CLAIM_BU_CONFIG.sql main twms_owner
+PATCH_CREATE_LOA_AMOUNT.sql main twms_owner
+PATCH_ADD_COL_CODE_LOA_SCHEME.sql main twms_owner
+PATCH_COL_LEN_LOA_SCHEME.sql main twms_owner
+PATCH_ALARMCODE.sql main twms_owner
+PATCH_DROPCONSTRAINT_LINEITEMGROUPAUDIT.sql main twms_owner
+PATCH_UPDATE_TREE_INFO.sql main twms_owner
+PATCH_ADD_FAILUREREPORT_PURPOSE.sql main twms_owner
+PATCH_CREATE_CUSTOMREPORT_APPLICABLE_PRT.sql main twms_owner
+PATCH_EXTN_WNTY_NOTIFICATION.sql main twms_owner
+PATCH_PURPOSE_DAYS_TO_REPAIR_CONFIG.sql main twms_owner
+PATCH_PURPOSE_DAYS_TO_FILE_THE_CLAIM_CONFIG.sql main twms_owner
+PATCH_ADD_COL_VIN_NUMBER_INVENTORY_ITEM.sql main twms_owner
+COMMERCIAL_POLICY_FOR_CLAIM.sql main twms_owner
+PATCH_MJR_COM_REGISTRATION.sql main twms_owner
+PATCH_DROP_DEALER_FAMILY_CODE.sql main twms_owner
+PATCH_ADD_COL_INV_ITEM.sql main twms_owner
+PATCH_FK_CONSTRAINT_ADDED_FOR_OEM.sql main twms_owner
+PATCH_ALARM_CODE_BU_CONFIG.sql main twms_owner
+PATCH_ADD_COL_VIN_NUMBER_CLAIMED_ITEM.sql main twms_owner
+PATCH_PAYMENT_REFACTORING_DDL.sql main twms_owner
+PATCH_DROP_PAYMENT_UNUSED_DDL.sql main twms_owner
+PATCH_UPDATE_SECTION_NAME_FOR_PARTS.sql main twms_owner
+PATCH_CLAIM_FAILURE_REPORT.sql main twms_owner
+PATCH_MODIFY_APPLICABILITY.sql main twms_owner
+PATCH_ADD_COL_LOA_SCHEME_CLAIM.sql main twms_owner
+PATCH_CLAIM_SOURCE.sql main twms_owner
+PATCH_BU_CONFIG_WARRANTY_REGISTRATION_MARKET_INFO.sql main twms_owner
+PATCH_ANSWER_DATE.sql main twms_owner
+PATCH_ADD_COL_WARRANTY.sql main twms_owner
+PATCH_SUPPLIER_PART_RETURN.sql main twms_owner
+PATCH_REC_PART_SUPPLIER_PART_RETURN.sql main twms_owner
+PATCH_SHIPMENT_SUPPLIER_PARTS.sql main twms_owner
+PATCH_RELATED_CAMPAIGN.sql main twms_owner
+PATCH_COSTCAT_APPL_PRODUCTS.sql main twms_owner
+PATCH_SHIPMENT_SUPPLIER_PARTS_DROPPED.sql main twms_owner
+PATCH_OEM_PART_REPLACED.sql main twms_owner
+PATCH_COMMON_VALIDATION_UTILS_PKC.sql main twms_owner
+PATCH_COMMON_VALIDATION_UTILS_BODY_PKC.sql main twms_owner
+PATCH_UPLOAD_DRAFT_CLAIM_VALIDATION.sql main twms_owner
+PATCH_ADD_COL_STG_DRAFT_CLAIM.sql main twms_owner
+PATCH_ADD_ROW_UPLOAD_MGT_BOOTSTRAP.sql main twms_owner
+PATCH_UPDATE_DESCRIPTION_RELATE_CAMPAIGN.sql main twms_owner
+PATCH_REPORT_QUESTION_MODIFY_COLS.sql main twms_owner
+PATCH_ADD_ROW_UPLOAD_ROLES_BOOTSTRAP.sql main twms_owner
+PATCH_ADD_ROWS_UPLOAD_ERROR.sql main twms_owner
+PATCH_ADD_COLS_MINI_LAB_ROU_UP.sql main twms_owner
+PATCH_CLAIM_NUMBER_PATTERN.sql main twms_owner
+PATCH_ADD_UPLOAD_RECOVERY_CLAIM.sql main twms_owner
+PATCH_ERROS_UPLOAD_RECOVERY_CLAIM.sql main twms_owner
+PATCH_UPDATE_INVENTORY_ITEM_SOURCE.sql main twms_owner
+SUPPLIER_DECISION_VALIDATION.sql main twms_owner
+PATCH_ADD_STG_DRAFT_CLAIM.sql main twms_owner
+PATCH_COMMON_VALIDATION_UTILS_PKC2.sql main twms_owner
+PATCH_COMMON_VALIDATION_UTILS_BODY_PKC2.sql main twms_owner
+PATCH_UPLOAD_DRAFT_CLAIM_VALIDATION2.sql main twms_owner
+PATCH_ADD_ROWS_UPLOAD_ERROR2.sql main twms_owner
+PATCH_CORRECT_ERRORCODES.sql main twms_owner
+PATCH_CUSTOMER_ADDRESS_BOOK_ADD_MAPPING_INDEX.sql main twms_owner
+PATCH_CREATE_SERVICE_SEQUENCES.sql main twms_owner
+PATCH_ADD_ROWS_UPLOAD_ERROR3.sql main twms_owner
+PATCH_CREATE_PART_RET_ACTION_SEQ.sql main twms_owner
+PATCH_UPLOAD_DRAFT_CLAIM_VALIDATION3.sql main twms_owner
+PATCH_ADD_STG_DRAFT_CLAIM2.sql main twms_owner
+PATCH_BU_CONFIG_WARRANTY_REGISTRATION_D2D_AND_INSTALLING_DEALER.sql main twms_owner
+PATCH_UPLOAD_DRAFT_CLAIM_VALIDATION4.sql main twms_owner
+PATCH_BUGFIX_TSA-394.sql main twms_owner
+PATCH_REPORTS_ENABLE_UPDATETSA598.sql main twms_owner
+PATCH_ADD_ROWS_UPLOAD_ERROR4.sql main twms_owner
+PATCH_ADD_STG_DRAFT_CLAIM3.sql main twms_owner
+PATCH_COMMON_VALIDATION_UTILS_PKC4.sql main twms_owner
+PATCH_COMMON_VALIDATION_UTILS_BODY_PKC4.sql main twms_owner
+PATCH_MODIFY_YEAR_ITEM.sql main twms_owner
+PATCH_ADD_ROWS_UPLOAD_ERROR5.sql main twms_owner
+PATCH_SYNC_TRACKER_STATUS.sql main twms_owner
+PATCH_CORRECT_ERRORCODES2.sql main twms_owner
+PATCH_ITEM_UPLOAD_PRC.sql main twms_owner
+PATCH_PERF_FIX_CLAIM_SEARCH.sql main twms_owner
+PATCH_ADD_ROWS_UPLOAD_ERROR6.sql main twms_owner
+PATCH_UPLOAD_DRAFT_CLAIM_VALIDATION6.sql main twms_owner
+PATCH_PERF_FIX_INV_VINSEARCH.sql main twms_owner
+PATCH_PERF_FIX_EXTWNTYNOTIFITICATION.sql main twms_owner
+PATCH_PERF_FIX_CLAIMVALIDATION.sql main twms_owner
+PATCH_FOR_RENAME_HOURS_COLUMN.sql main twms_owner
+PATCH_PERF_FIX_CLAIM_VALIDATE.sql main twms_owner
+PATCH_CLM_NUM_FMT_CHANGE.sql main twms_owner
+PATCH_MAX_NO_OF_DISPUTES.sql main twms_owner
+PATCH_BU_CONFIG_TSESA_221.sql main twms_owner
+PATCH_CONFIG_DEALER_PERFORM_RMT.sql main twms_owner
+PATCH_PERF_FIX_CLAIM_SUBMISSION_LOA.sql main twms_owner
+PATCH_BU_CONFIG_ALLOW_WNTY_REG_ON_OTHERS_STOCK.sql main twms_owner
+PATCH_ADDCOLUMN_ANSOPTION.sql main twms_owner
+PATCH_CHANGE_MISC_PARTS.sql main twms_owner
+PATCH_UPLOAD_DRAFT_CLAIM_VALIDATION7.sql main twms_owner
+PATCH_ADD_ROWS_UPLOAD_ERROR7.sql main twms_owner
+PATCH_DOMAIN_RULE_AUDIT_LISTINDEX.sql main twms_owner
+PATCH_BATINFO_SUBMITTED.sql main twms_owner

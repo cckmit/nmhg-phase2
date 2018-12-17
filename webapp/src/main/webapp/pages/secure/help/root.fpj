@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<rhpml majorversion="1" minorversion="0">
+	<folders>
+		<folder>
+			<name>Before_you_Begin</name>
+		</folder>
+		<folder>
+			<name>Claims</name>
+		</folder>
+		<folder>
+			<name>Inventory</name>
+		</folder>
+		<folder>
+			<name>Part_Returns</name>
+		</folder>
+		<folder>
+			<name>Reports</name>
+		</folder>
+		<folder>
+			<name>Settings</name>
+		</folder>
+		<folder>
+			<name>Warranty_Admin</name>
+		</folder>
+		<folder>
+			<name>Field_Modifications</name>
+		</folder>
+		<folder>
+			<name>Contract_Admin</name>
+		</folder>
+		<folder>
+			<name>Parts_Recovery</name>
+		</folder>
+		<folder>
+			<name>Supplier_Recovery</name>
+		</folder>
+		<folder>
+			<name>Items</name>
+		</folder>
+		<folder>
+			<name>Accounts</name>
+		</folder>
+	</folders>
+	<topics/>
+</rhpml>

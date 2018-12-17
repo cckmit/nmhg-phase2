@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="roles.xml" extends="struts-twms-default">
+
+	<!-- Start of Summary Table Actions -->
+	<action name="showRoles"
+		  class="tavant.twms.web.admin.roles.ManageRoles">
+		   <interceptor-ref name="adminParamsPrepareWithoutValidation" />
+      	  <result name="success">pages/secure/admin/roles/rolesInboxView.jsp</result>
+	</action>
+	
+		<action name="rolesBody" class="tavant.twms.web.admin.roles.ManageRoles"
+			method="tableBody">
+			<interceptor-ref name="adminParamsPrepare" />
+    		   <result name="success">pages/secure/home/json.jsp</result>		  
+	</action>
+	
+			
+
+	<action name="rolesDetail" class="tavant.twms.web.admin.roles.ManageRoles"
+	 		method="detail">  	
+      	 <interceptor-ref name="adminParamsPrepare" />	
+	     <result name="success">pages/secure/admin/roles/rolesDetail.jsp</result>	     
+	</action>
+	
+	<action name="rolesPreview" class="tavant.twms.web.admin.roles.ManageRoles"
+	 		method="preview">  	
+      	 <interceptor-ref name="adminParamsPrepare" />	
+	     <result name="success">pages/secure/admin/roles/rolesPreview.jsp</result>	     
+	</action>
+	
+	
+	
+	<action name="export_roles_to_excel" 	class="tavant.twms.web.admin.roles.ManageRoles" 
+			method="downloadListingData" />
+	<!-- End of Summary Table Actions -->
+     
+    <action name="createRole" class="tavant.twms.web.admin.roles.ManageRoles"  
+      method="createRoles">
+      	<interceptor-ref name="adminParamsPrepare" />	
+    	<result name="success">pages/secure/admin/roles/createRole.jsp</result>
+    </action> 
+
+    <action name="saveRole" class="tavant.twms.web.admin.roles.ManageRoles"  
+      method="saveRole">
+      	<interceptor-ref name="adminParamsPrepare" />	
+	    <result name="input">pages/secure/admin/roles/createRole.jsp</result>
+    	<result name="success">pages/secure/common/successFullRefresh.jsp</result>
+    </action>    
+    
+    <action name="updateRole" class="tavant.twms.web.admin.roles.ManageRoles"  
+      method="updateRole">
+      	<interceptor-ref name="adminParamsPrepare" />	
+	    <result name="input">pages/secure/admin/roles/rolesDetail.jsp</result>
+    	<result name="success">pages/secure/common/successFullRefresh.jsp</result>
+    </action>
+	<!-- Start of Summary Table Actions Assign Users to Role -->
+	<action name="showUsers_to_role"
+		  class="tavant.twms.web.admin.roles.AddUsersToRole">
+		   <interceptor-ref name="adminParamsPrepareWithoutValidation" />
+      	  <result name="success">pages/secure/admin/roles/assignedUsersInboxView.jsp</result>
+	</action>
+			
+	<action name="users_to_roleBody" class="tavant.twms.web.admin.roles.AddUsersToRole"
+			method="tableBody">
+			<interceptor-ref name="adminParamsPrepare" />
+    		   <result name="success">pages/secure/home/json.jsp</result>		  
+	</action>
+	
+	<action name="users_to_roleDetail" class="tavant.twms.web.admin.roles.AddUsersToRole"
+	 		method="detail">  	
+      	 <interceptor-ref name="adminParamsPrepare" />	
+	     <result name="success">pages/secure/admin/roles/assignUsers.jsp</result>	     
+	</action>
+	
+	<action name="users_to_rolePreview" class="tavant.twms.web.admin.roles.AddUsersToRole"
+	 		method="previewUsersToRole">  	
+      	 <interceptor-ref name="adminParamsPrepare" />	
+	     <result name="success">pages/secure/admin/roles/assignedUsersPreview.jsp</result>	     
+	</action>
+	
+
+	
+	 <action name="list_users"
+		class="tavant.twms.web.admin.roles.AddUsersToRole" method="listUsers">
+		<interceptor-ref name="adminParamsPrepare" />		
+	</action>	
+	
+	
+	
+	  <action name="updateUsersAssignedToRole" class="tavant.twms.web.admin.roles.AddUsersToRole"  
+      method="updateRole">
+      	<interceptor-ref name="adminParamsPrepare" />	
+	    <result name="input">pages/secure/admin/roles/assignedUsersDetail.jsp</result>
+    	<result name="success">pages/secure/common/successFullRefresh.jsp</result>
+    </action>
+	
+	<!-- End of Summary Table Actions -->
+	
+	     
+	
+	</package>
+</struts>	 
+	

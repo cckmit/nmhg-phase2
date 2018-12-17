@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PriceFetch lang="en" evnironment="Test" revision="1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <ApplicationArea>
+        <Sender>
+            <Task>CCT_WINDCHILL</Task>
+            <LogicalId>TavantWMS</LogicalId>            	    
+            <ReferenceId>2348</ReferenceId>
+        </Sender>
+        <BODId>INT03</BODId>   
+        <InterfaceNumber></InterfaceNumber>
+        <CreationDateTime>2008-12-29T15:05:00.865Z</CreationDateTime>
+    </ApplicationArea>
+    <DataArea>
+    	<BUNAME>NMHG-US</BUName>
+         <PriceCheckRequest>            
+	            <WarrantyType>STANDARD</WarrantyType>            
+	            <DateOfRepair>2008-12-19-07Z</DateOfRepair>
+	            <DealerNo>01-10</DealerNo>
+	            <CurrencyCode>USD</CurrencyCode>
+	           <ReplacedParts>
+		   	    							<!--Element LineItem, maxOccurs=unbounded-->
+		   	    					                <LineItem>	                    
+		   	    					                    <PartNumber>0000530</PartNumber>
+		   	    					                    <Quantity>1</Quantity>
+		   	    							    <ManufacturingLocation>BGN</ManufacturingLocation>
+		   	    							    <UOM>EACH</UOM>
+		   	    							    <DivisionCode>Hussmann</DivisionCode>
+		   	    					                </LineItem>
+		   	    							<LineItem>	                    
+		   	    								<PartNumber>0368104</PartNumber>
+		   	    								<Quantity>1</Quantity>
+		   	    								<ManufacturingLocation>BGN</ManufacturingLocation>
+		   	    								<UOM>EACH</UOM>
+		   	    								<DivisionCode>Hussmann</DivisionCode>
+		   	    							</LineItem>
+		   	    							<LineItem>	                    
+		   	    								<PartNumber>00000006</PartNumber>
+		   	    								<Quantity>1</Quantity>
+		   	    								<ManufacturingLocation>CHN</ManufacturingLocation>
+		   	    								<UOM>EACH</UOM>
+		   	    								<DivisionCode>Hussmann</DivisionCode>
+		   	    							</LineItem>
+		   	    							<LineItem>	                    
+		   	    								<PartNumber>0102581</PartNumber>
+		   	    								<Quantity>1</Quantity>
+		   	    								<ManufacturingLocation>CHN</ManufacturingLocation>
+		   	    								<UOM>EACH</UOM>
+		   	    								<DivisionCode>Hussmann</DivisionCode>
+		   	    							</LineItem>
+		   	    							<LineItem>	                    
+		   	    								<PartNumber>*VFD12MB313</PartNumber>
+		   	    								<Quantity>1</Quantity>
+		   	    								<ManufacturingLocation>KRK</ManufacturingLocation>
+		   	    								<UOM>EACH</UOM>
+		   	    								<DivisionCode>Hussmann</DivisionCode>
+		   	    							</LineItem>
+		   	    							<LineItem>	                    
+		   										<PartNumber>531389*MTR MOUNT LOC</PartNumber>
+		   										<Quantity>1</Quantity>
+		   										<ManufacturingLocation>KRK</ManufacturingLocation>
+		   										<UOM>EACH</UOM>
+		   										<DivisionCode>Hussmann</DivisionCode>
+		   	    							</LineItem>   							
+		   
+		   	    							<LineItem>	                    
+		   	    								<PartNumber>0000013</PartNumber>
+		   	    								<Quantity>1</Quantity>
+		   	    								<ManufacturingLocation>ATL</ManufacturingLocation>
+		   	    								<UOM>EACH</UOM>
+		   	    								<DivisionCode>Hussmann</DivisionCode>
+		   	    							</LineItem>				
+		   	    							<LineItem>	                    
+		   	    								<PartNumber>0001-01S</PartNumber>
+		   	    								<Quantity>1</Quantity>
+		   	    								<ManufacturingLocation>GLV</ManufacturingLocation>
+		   	    								<UOM>EACH</UOM>
+		   	    								<DivisionCode>Hussmann</DivisionCode>
+		   	    							</LineItem>
+		   	    							<LineItem>	                    
+		   	    								<PartNumber>06S155-2</PartNumber>
+		   	    								<Quantity>1</Quantity>
+		   	    								<ManufacturingLocation>GLV</ManufacturingLocation>
+		   	    								<UOM>EACH</UOM>
+		   	    								<DivisionCode>Hussmann</DivisionCode>
+		   	    							</LineItem>
+		   	    							<LineItem>	                    
+		   	    								<PartNumber>001835-0008</PartNumber>
+		   	    								<Quantity>1</Quantity>
+		   	    								<ManufacturingLocation>MTY</ManufacturingLocation>
+		   	    								<UOM>EACH</UOM>
+		   	    								<DivisionCode>Hussmann</DivisionCode>
+		   	    							</LineItem>
+		   	    							<LineItem>	                    
+		   	    								<PartNumber>1,101,501</PartNumber>
+		   	    								<Quantity>1</Quantity>
+		   	    								<ManufacturingLocation>MTY</ManufacturingLocation>
+		   	    								<UOM>EACH</UOM>
+		   	    								<DivisionCode>Hussmann</DivisionCode>
+		   	    							</LineItem>			
+		            </ReplacedParts>
+        </PriceCheckRequest>
+    </DataArea>
+</PriceFetch>
+
+
+

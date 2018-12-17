@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+     <p1:ClaimSubmission xmlns:p1="http://www.tavant.com/dealerinterfaces/claimsubmission/request" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+		 <p1:BUName>Thermo King TSA</p1:BUName>
+		 <p1:CurrentlyActiveOrganizationNumber></p1:CurrentlyActiveOrganizationNumber>
+		 <p1:ClaimType>MACHINE</p1:ClaimType>
+		 <p1:InventorySerialNumber>5001095006</p1:InventorySerialNumber>
+		 <p1:ContainerNumber></p1:ContainerNumber>
+		 <p1:InventoryModelNumber></p1:InventoryModelNumber>
+		 <p1:InventoryItemNumber></p1:InventoryItemNumber>
+		 <p1:PartItemNumber></p1:PartItemNumber>
+		 <p1:PartSerialNumber></p1:PartSerialNumber>
+		 <p1:CompetitorModel></p1:CompetitorModel>
+		 <p1:CustomerId>MIG-IRI-55231</p1:CustomerId>
+		 <p1:HoursInService>10.0</p1:HoursInService>
+		 <p1:RepairDate>2010-02-17</p1:RepairDate>
+		  <p1:FailureDate>2010-02-17</p1:FailureDate>
+		 <p1:PurchaseDate>2010-02-17</p1:PurchaseDate>
+		 <p1:WorkOrderNumber></p1:WorkOrderNumber>
+		  <p1:ConditionsFound>Condition1</p1:ConditionsFound>
+		 <p1:WorkPerformed>Fix</p1:WorkPerformed>
+		  <p1:ClaimNotes>25-02-2010 - Code Review</p1:ClaimNotes>
+		 <p1:ServicingLocationSiteNumber>91411</p1:ServicingLocationSiteNumber>
+		  <p1:CausalPart>552230</p1:CausalPart>
+		 <p1:CampaignCode></p1:CampaignCode>
+		  <p1:FaultLocation>OO-018</p1:FaultLocation>
+		 <p1:FaultFound>LEAKED</p1:FaultFound>
+		  <p1:FailureDetail>Leak # 1 Condenser coil inlet</p1:FailureDetail>
+		  <p1:TechnicianId>003402845</p1:TechnicianId>
+		 <p1:SMRClaim>false</p1:SMRClaim>
+		 <p1:ReasonforSMRClaim>Out of Warranty</p1:ReasonforSMRClaim>
+		 <p1:ForceToDraft>true</p1:ForceToDraft>
+		 <p1:CommercialPolicy>false</p1:CommercialPolicy>
+		 <p1:InvoiceNumber>Invoice1</p1:InvoiceNumber>
+		 <p1:TravelbyTrip>0</p1:TravelbyTrip>
+		 <p1:TravelLocation></p1:TravelLocation>
+		 <p1:ComponentsReplaced>			
+			<p1:IRReplacedParts>
+				<p1:PartItemNumber>900998</p1:PartItemNumber>
+				<p1:PartSerialNumber></p1:PartSerialNumber>
+				<p1:PartQuantity>1</p1:PartQuantity>
+			</p1:IRReplacedParts>
+			<p1:IRInstalledParts>
+				<p1:PartItemNumber>900999</p1:PartItemNumber>
+				<p1:PartSerialNumber>InvalidSerialNumber</p1:PartSerialNumber>
+				<p1:PartQuantity>1</p1:PartQuantity>
+			</p1:IRInstalledParts>
+		</p1:ComponentsReplaced>
+		 <p1:ReplacedNonIRParts>
+			<p1:EachPart>
+				<p1:NonIRPartDescription>Test Part</p1:NonIRPartDescription>
+				<p1:NonIRPartPrice>10.0</p1:NonIRPartPrice>
+				<p1:PartQuantity>1</p1:PartQuantity>
+			</p1:EachPart>
+		 </p1:ReplacedNonIRParts>
+		 <p1:AlarmCodes><p1:EachAlarmCode/></p1:AlarmCodes>
+		 <p1:JobCodes><p1:EachJobCode/></p1:JobCodes>
+		 <p1:MiscellanousParts>
+			<p1:EachMiscellanousPart>
+				<p1:PartItemNumber>123654</p1:PartItemNumber>
+				<p1:PartQuantity>1</p1:PartQuantity>
+			</p1:EachMiscellanousPart>
+		 </p1:MiscellanousParts>
+
+		 
+	 </p1:ClaimSubmission>
+

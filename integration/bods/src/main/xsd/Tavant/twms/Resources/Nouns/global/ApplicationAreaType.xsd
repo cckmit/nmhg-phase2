@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:oa="http://www.openapplications.org/oagis/9"
+	elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:complexType name="ApplicationAreaType">
+		<xs:sequence>
+			<xs:element name="Sender" type="SenderType" />
+			<xs:element ref="BODId" />
+			<xs:element ref="InterfaceNumber"/>
+			<xs:element ref="CreationDateTime" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SenderType">
+		<xs:sequence>
+			<xs:element ref="Task" />
+			<xs:element ref="LogicalId" />
+			<xs:element ref="ReferenceId"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Task" type="xs:string"/>
+	<xs:element name="LogicalId" type="xs:string"/>
+	<xs:element name="ReferenceId" type="xs:string"/>
+	<xs:element name="BODId" type="xs:string"/>
+	<xs:element name="InterfaceNumber" type="xs:string"/>
+	<xs:element name="CreationDateTime" type="xs:dateTime"/>
+</xs:schema>

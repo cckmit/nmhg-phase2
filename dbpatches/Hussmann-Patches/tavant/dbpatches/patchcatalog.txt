@@ -1,0 +1,67 @@
+# The Tavant Database Patch catalog
+#
+# This file contains a sequential list of all the database patches along with logical database name.	
+# (both sql scripts and java programs) that must be run to properly
+# construct and maintain a database in conjunction with the version
+# of code represented by the current version of this file. Patch names
+# shall be relative to tavant/dbPatches
+#
+# Entries in this will look like this (but will be left-justfied):
+#    main/Patchyyyymmdd.[sql|java] tavant
+# or
+#    iri/Patchyyyymmdd.[sql|java] dba
+#
+#All entries in patchCatalog.txt would consist of both the patch name
+#followed by a 'logical' database/schema name (seperated by whitespace). This
+#would name no longer be optional.
+#Failure to provide a 'logical' db name for all patches is considered to be
+#an error.
+#Failure to define all 'logical' names in the external properties file is an
+#error.
+#  Ex)
+#    main/Patch20030402.sql tavant
+#    main/Patch20030403.sql dba
+#    main/Patch20030404.sql amc_staging
+HUS-INV-CR02-(FACTORY-ORDER-NUMBER).sql main twms_owner
+CR-05-LaborSplitOption.sql main twms_owner
+IR-HUS-CLM-CR13(POLICY_DETERMINATION).sql main twms_owner
+CR-05-LaborSplitType.sql main twms_owner
+CR-05-LaborSplit.sql main twms_owner
+CR-05-EnableLaborSplit.sql main twms_owner
+CR02-EnableFactoryOrderNumber.sql main twms_owner
+PATCH_PARTSMAPPING_MODIFIED.SQL main twms_owner
+IR-HUS-CLM-CR16(THIRD-PARTY).sql main twms_owner
+DealerGroupChangePatches.sql main twms_ower
+Modify_SERV_PROV_FK.sql main twms_owner
+Modify_Dealership_ServPrvdr.SQL main twms_owner
+PATCH_JBPM_VALUES.sql main twms_owner
+PATCH_RECOVERY_CLAIM_ATTACHMENT.sql main twms_owner 
+PATCH_ETR_WORK_FLOW.sql main twms_owner
+PATCH_ETR_WORK_FLOW.sql main twms_owner
+PATCH_BU_BATTERY_LABOR_DETAIL.sql main twms_owner
+PATCH_EWD(CR).sql main twms_owner
+DbPatchForAcceptanceForCP.sql main twms_owner
+DummyDataForCP.sql main twms_owner
+CP AdvisorJBPMDbPatch.sql main twms_owner
+cpAdvisorPatch.sql main twms_owner
+IR-HUS-CLM-CR12-CreditSubmitPatch.sql main twms_owner
+IR-HUS-CLM-CR02 main twms_owner
+patch_incidentalCR main twms_owner
+PATCH_FLAT_RATE_IN_LINE_ITEM main twms_owner
+EmailNotification.sql
+EmailNotification-AdditionalDataSetup  main twms_owner
+EmailNotification-DataSetup.sql
+PROD_ADD_USER_TYPE.sql  main twms_owner
+PATCH_UPDATE_USER_TYPE_IN_ORG_USER.sql  main twms_owner
+PATCH_REPLACED_INSTALLED_PARTS_BU_CONFIG-PROD.sql main twms_owner
+PATCH_LABOR_SPLIT_DETAIL_AUDIT-PROD.sql main twms_owner
+UpdateUserEmailFromAdressTigger.sql main twms_owner
+EmailNotification-DataSetup-2.sql main twms_owner
+PATCH_MULTI_USER.sql main twms_owner
+PATCH_MODIFY_HUSSPARTSINSTALL_MULTICAR.SQL main twms_owner
+PATCH_EMAIL_OVERDUE.sql main twms_owner
+PATCH_DELETE_DOMAIN_RULES.sql main twms_owner
+PATCH-REPLACED-PART-SIZE.sql main twms_owner
+MODIFY_FOREIGN_KEY_REFERENCE.sql main twms_owner
+PATCH_PART_MAPPING_SUPPLIER_RECY.sql main twms_owner
+JBPM_AUTO_REPLY_TIMER_DELETE.sql main twms_owner

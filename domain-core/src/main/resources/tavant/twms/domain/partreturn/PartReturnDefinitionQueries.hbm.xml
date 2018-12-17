@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping SYSTEM
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="tavant.twms.domain.partreturn">
+  <query name="partReturnDefinitionLookupQuery">
+    <![CDATA[
+		SELECT prd
+		FROM
+  			  PartReturnDefinition AS prd
+		WHERE
+            	(
+            		prd.itemCriterion.item = :item OR 
+            		prd.itemCriterion.itemGroup IN 
+            										(		SELECT specifiedItemGroup 
+                                                            FROM ItemGroup specifiedItemGroup,
+                                                                 ItemGroup itemGroup
+                                                                 join itemGroup.includedItems itemInGroup
+                                                            WHERE
+                                                                 :item = itemInGroup AND
+                                                                 itemGroup.nodeInfo.treeId = specifiedItemGroup.nodeInfo.treeId AND  
+                                                                 specifiedItemGroup.nodeInfo.lft <= itemGroup.nodeInfo.lft AND 
+                                                                 itemGroup.nodeInfo.rgt <= specifiedItemGroup.nodeInfo.rgt
+                                                      )
+               )            
+         AND           
+               (
+               		(
+               			prd.forCriteria.dealerCriterion.dealer IS NULL OR prd.forCriteria.dealerCriterion.dealer = :dealer
+               		) 
+            		AND 
+		            (
+		            	prd.forCriteria.dealerCriterion.dealerGroup IS NULL OR
+		               	prd.forCriteria.dealerCriterion.dealerGroup IN 
+		               													(	SELECT specifiedDealerGroup
+		                                                            		FROM   DealerGroup specifiedDealerGroup,
+		                                                                 		   DealerGroup dealerGroup
+		                                                                           join dealerGroup.includedDealers dealerInGroup
+		                                                            		WHERE
+		                                                                           :dealer = dealerInGroup AND
+		                                                                           specifiedDealerGroup.nodeInfo.treeId = dealerGroup.nodeInfo.treeId AND 
+		                                                                           specifiedDealerGroup.nodeInfo.lft <= dealerGroup.nodeInfo.lft AND 
+		                                                                           dealerGroup.nodeInfo.rgt <= specifiedDealerGroup.nodeInfo.rgt
+		                                                                 )                              
+		            )
+              )
+         AND       
+           	 (
+            		prd.forCriteria.productType IS NULL OR prd.forCriteria.productType = :productType
+             ) 
+         AND 
+             (
+            		prd.forCriteria.claimType ='ALL' OR prd.forCriteria.claimType = :claimType
+             )
+         AND
+             (
+            		prd.forCriteria.warrantyType = 'ALL' OR prd.forCriteria.warrantyType = :warrantyType
+             )
+         AND prd.status = 'ACTIVE'
+         ORDER BY   
+              prd.forCriteria.relevanceScore DESC
+    ]]>
+  </query>
+  
+ 
+  
+</hibernate-mapping>

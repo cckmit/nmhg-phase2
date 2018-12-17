@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="managecustomer" extends="struts-twms-default">
+		<!-- Customer Action-->
+		<action name="customer"
+			class="tavant.twms.web.actions.CustomerAction">
+			<param name="taskName">Customer Warranty</param>
+			<result name="success">
+				pages/secure/customer/customer_inbox_view.jsp
+			</result>
+		</action>
+
+		<action name="customer_table_body"
+			class="tavant.twms.web.actions.CustomerAction" method="tableBody">
+			<interceptor-ref name="paramsPrepareWithoutValidation" />
+			<param name="taskName">Customer Warranty</param>
+			<result name="success">pages/secure/home/json.jsp</result>
+			<result name="input">error.jsp</result>
+		</action>
+
+		<action name="customer_preview"
+			class="tavant.twms.web.actions.CustomerAction" method="preview">
+			<interceptor-ref name="paramsPrepareWithoutValidation" />
+			<result name="success">
+				pages/secure/warranty/customer_warranty_details.jsp
+			</result>
+		</action>
+
+		<action name="customer_detail"
+			class="tavant.twms.web.actions.CustomerAction" method="preview">
+			<interceptor-ref name="paramsPrepareWithoutValidation" />
+			<result name="success">
+				pages/secure/warranty/customer_warranty_details.jsp
+			</result>
+		</action>
+
+		<action name="register_customer_product"
+			class="tavant.twms.web.actions.CustomerAction" method="execute">
+			<interceptor-ref name="paramsPrepareWithoutValidation" />
+			<result name="success">
+				customer_register_warranty.action
+			</result>
+		</action>
+
+		<action name="show_customer"
+			class="tavant.twms.web.actions.ManageCustomer"
+			method="newCustomer">
+			<interceptor-ref name="paramsPrepareWithoutValidation" />
+			<result name="success">
+				pages/secure/warranty/new_customer.jsp
+			</result>
+		</action>
+
+		<action name="create_customer"
+			class="tavant.twms.web.actions.ManageCustomer" method="create">
+			<interceptor-ref name="twmsParamsPrepareParams" />
+			<result name="success">
+				pages/secure/warranty/new_customer.jsp
+			</result>
+			<result name="input">
+				pages/secure/warranty/new_customer.jsp
+			</result>
+		</action>
+		
+		<action name="national_account"
+			class="tavant.twms.web.actions.ManageCustomer" method="getNationalAccount">
+			<interceptor-ref name="paramsPrepareWithoutValidation" />
+			<result name="success">
+				pages/secure/warranty/new_national_account_address.jsp
+			</result>
+		</action>
+		
+		<action name="update_national_account"
+			class="tavant.twms.web.actions.ManageCustomer" method="updateNationalAccount">
+			<interceptor-ref name="twmsParamsPrepareParams" />
+			<result name="success">
+				pages/secure/warranty/na_update_message.jsp
+			</result>
+			<result name="input">
+				pages/secure/warranty/new_national_account_address.jsp
+			</result>
+		</action>
+
+		<action name="register_customer"
+			class="tavant.twms.web.actions.ManageCustomer" method="create">
+			<interceptor-ref name="twmsParamsPrepareParams" />
+			<result name="success">
+				<param name="location">
+					<![CDATA[/j_acegi_security_check?j_username=${customer.name}&j_password=${customer.password}]]>
+				</param>
+				<param name="parse">true</param>
+			</result>
+			<result name="input">
+				pages/unsecure/customer/customer_registration.jsp
+			</result>
+		</action>
+
+		<action name="show_registration"
+			class="tavant.twms.web.actions.ManageCustomer" method="execute">
+			<interceptor-ref name="paramsPrepareWithoutValidation" />
+			<result name="success">
+				pages/unsecure/customer/customer_registration.jsp
+			</result>
+		</action>
+
+		<action name="show_update_customer"
+			class="tavant.twms.web.actions.ManageCustomer" method="prepareCustomerForEdit">
+			<interceptor-ref name="paramsPrepareWithoutValidation" />
+			<result name="success">pages/secure/warranty/new_customer.jsp</result>
+            <result name="input">pages/secure/warranty/readOnly_customer.jsp</result>
+        </action>
+
+		<action name="show_customer_details"
+			class="tavant.twms.web.actions.ManageCustomer"
+			method="showCustomerDetails">
+			<interceptor-ref name="paramsPrepareWithoutValidation" />
+			<result name="success">
+				pages/secure/warranty/new_customer.jsp
+			</result>
+		</action>
+
+		<action name="update_customer"
+			class="tavant.twms.web.actions.ManageCustomer" method="update">
+			<interceptor-ref name="twmsParamsPrepareParams" />
+			<result name="success">
+				pages/secure/warranty/new_customer.jsp
+			</result>
+			<result name="input">
+				pages/secure/warranty/new_customer.jsp
+			</result>
+		</action>
+
+		<!--  Delivery Report by Customer -->
+		<action name="customer_create_warranty"
+			class="tavant.twms.web.warranty.CustomerWarrantyRegistration"
+			method="show">
+			<interceptor-ref name="paramsPrepareWithoutValidation" />
+			<result name="success">
+				pages/secure/warranty/customer_warranty_registration.jsp
+			</result>
+		</action>
+
+		<action name="product_model_list"
+			class="tavant.twms.web.warranty.CustomerWarrantyRegistration"
+			method="listProductsAndModels">
+			<interceptor-ref name="paramsPrepareWithoutValidation" />
+			<result name="success">pages/secure/home/json.jsp</result>
+		</action>
+
+		<action name="get_inventory_item"
+			class="tavant.twms.web.warranty.CustomerWarrantyRegistration"
+			method="getInventoryItem">
+			<interceptor-ref name="twmsParamsPrepareParams" />
+			<result name="success">
+				pages/secure/warranty/inventory_item_details.jsp
+			</result>
+			<result name="input">
+				pages/secure/warranty/inventory_item_error.jsp
+			</result>
+		</action>
+
+		<action name="customer_register_warranty"
+			class="tavant.twms.web.warranty.CustomerWarrantyRegistration"
+			method="register">
+			<interceptor-ref name="twmsParamsPrepareParams" />
+			<result name="success">
+				pages/secure/warranty/customer_warranties_details.jsp
+			</result>
+			<result name="input">
+				pages/secure/warranty/customer_warranty_registration.jsp
+			</result>
+		</action>
+
+		<action name="purchase_extended_warranty"
+			class="tavant.twms.web.warranty.PurchaseExtendedWarranty"
+			method="show">
+			<interceptor-ref name="paramsPrepareWithoutValidation" />
+			<result name="success">
+				pages/secure/warranty/purchase_extended_warranty.jsp
+			</result>
+			<result name="input">
+				pages/secure/warranty/purchase_extended_warranty_error.jsp
+			</result>
+		</action>
+		
+		<action name="show_extended_warrantyplans"
+			class="tavant.twms.web.warranty.PurchaseExtendedWarranty" method="show">
+			<interceptor-ref name="twmsParamsPrepareParams" />
+			<result name="success">pages/secure/warranty/purchase_extended_warranty.jsp</result>
+			<result name="none">pages/secure/inventory/machineScrapped.jsp</result>
+			<result name="input">
+				pages/secure/warranty/purchase_extended_warranty_error.jsp
+			</result>
+			<result name="error">pages/secure/report/error.jsp</result>
+		</action>
+		
+		<action name="show_extended_warrantyplans_quicksearch"
+			class="tavant.twms.web.warranty.PurchaseExtendedWarranty" method="showPEWFromQuickSearch">
+			<interceptor-ref name="paramsPrepareWithoutValidation" />
+			<result name="success">pages/secure/warranty/purchase_extended_warranty.jsp</result>
+			<result name="none">pages/secure/inventory/machineScrapped.jsp</result>
+			<result name="input">
+				pages/secure/warranty/purchase_extended_warranty_error.jsp
+			</result>
+		</action>
+		
+		<action name="display_searchinventories_PEW"
+			class="tavant.twms.web.warranty.PurchaseExtendedWarranty"
+			method="displaySearchPage">
+			<interceptor-ref name="paramsPrepareWithoutValidation" />
+				<result name="success">pages/secure/warranty/purchase_extended_warranty.jsp</result>
+		</action>
+		<action name="add_inventories_extendedwarrantypurchase"
+			class="tavant.twms.web.warranty.PurchaseExtendedWarranty" method="handleInventorySelection">
+			<interceptor-ref name="twmsParamsPrepareParams" />
+			<result name="success">pages/secure/warranty/purchase_extended_warrantyinclude.jsp</result>			
+		</action>
+		<action name="register_extended_warranty"
+			class="tavant.twms.web.warranty.PurchaseExtendedWarranty"
+			method="register">
+			<interceptor-ref name="twmsParamsPrepareParams" />
+				<result name="success">pages/secure/common/successFullRefresh.jsp</result>			
+			<result name="input">
+				pages/secure/warranty/purchase_extended_warranty.jsp
+			</result>
+		</action>
+		<action name="confirmExtendedWarrantyPurchase"
+			class="tavant.twms.web.warranty.PurchaseExtendedWarranty" method="confirmPurchase">
+			<interceptor-ref name="twmsParamsPrepareParams" />
+			<result name="success">pages/secure/warranty/purchase_extended_warranty_conf.jsp</result>
+			<result name="input">
+				pages/secure/warranty/purchase_extended_warranty_error.jsp
+			</result>
+		</action>
+		<action name="get_extended_warranty_policies"
+			class="tavant.twms.web.warranty.PurchaseExtendedWarranty"
+			method="fetchAvailablePolicies">
+			<interceptor-ref name="twmsParamsPrepareParams" />
+			<result name="success">pages/secure/warranty/ewp_policy_list.jsp</result>			
+			<result name="input">
+				pages/secure/warranty/ewp_policy_list.jsp
+			</result>
+		</action>
+		<action name="viewPlanInfo"
+			class="tavant.twms.web.warranty.PurchaseExtendedWarranty" method="viewPlanInformation">
+			<interceptor-ref name="paramsPrepareWithoutValidation" />
+			<result name="success">pages/secure/warranty/view_plan_details.jsp</result>			
+		</action>	
+		<action name="searchInventories_EWP"
+			class="tavant.twms.web.warranty.PurchaseExtendedWarranty" method="searchInventories">
+			<interceptor-ref name="paramsPrepareWithoutValidation" />
+			<result name="input">pages/secure/multipleInventoryPicker/searchError.jsp</result>
+            <result name="success">pages/secure/multipleInventoryPicker/multipleInventorySearchResults.jsp</result>		
+		</action>	
+		
+		<action name="get_states_by_country"
+			class="tavant.twms.web.actions.ManageCustomer" method="getStatesByCountry">
+		    <interceptor-ref name="paramsWithoutValidation"/>
+		</action>	
+		
+		<action name="get_cities_by_country_and_state"
+			class="tavant.twms.web.actions.ManageCustomer" method="getCitiesByCountryAndState">
+		    <interceptor-ref name="paramsWithoutValidation"/>
+		</action>
+		
+		<action name="get_zips_by_country_state_and_city"
+			class="tavant.twms.web.actions.ManageCustomer" method="getZipsByCountryStateAndCity">
+		    <interceptor-ref name="paramsWithoutValidation"/>
+		</action>		
+		
+		<action name="get_counties_by_country_state_and_zip"
+			class="tavant.twms.web.actions.ManageCustomer" method="getCountiesByCountryStateAndZip">
+		    <interceptor-ref name="paramsWithoutValidation"/>
+		</action>
+		
+		<action name="input_customer_search"
+			class="tavant.twms.web.actions.ManageCustomer">
+		    <interceptor-ref name="paramsWithoutValidation"/>
+		    <result name="success">pages/secure/warranty/input_customer_search.jsp</result>
+		</action>	
+		
+		<action name="search_customer"
+			class="tavant.twms.web.actions.ManageCustomer"
+			method="searchCustomers">
+			<interceptor-ref name="paramsPrepareWithoutValidation"/>
+			<result name="success">pages/secure/warranty/search_customer.jsp</result>
+		</action>
+		<!-- Start Merge End Customer -->
+		<action name="merge_customer"
+			class="tavant.twms.web.actions.EndCustomerMgmt"
+			method="searchEndCustomers">
+			<interceptor-ref name="paramsPrepareWithoutValidation"/>
+			<result name="success">pages/secure/warranty/end_customer_search.jsp</result>
+		</action>
+		<action name="search_end_customer"
+			class="tavant.twms.web.actions.EndCustomerMgmt"
+			method="searchEndCustomers">
+			<interceptor-ref name="paramsPrepareWithoutValidation"/>
+			<result name="success">pages/secure/warranty/end_customer_list.jsp</result>
+		</action>
+		<action name="select_merge_customer"
+			class="tavant.twms.web.actions.EndCustomerMgmt"
+			method="selectedEndCustomersForMerge">
+			<interceptor-ref name="paramsPrepareWithoutValidation"/>
+			<result name="success">pages/secure/warranty/end_customer_search.jsp</result>
+		</action>
+		<action name="preview_merge"
+			class="tavant.twms.web.actions.EndCustomerMgmt"
+			method="perviewMerge">
+			<interceptor-ref name="paramsPrepareWithoutValidation"/>
+			<result name="success">pages/secure/warranty/confirm_customer_merge.jsp</result>
+			<result name="input">pages/secure/warranty/end_customer_search.jsp</result>
+		</action>
+		<action name="confirm_merge"
+			class="tavant.twms.web.actions.EndCustomerMgmt"
+			method="confirmMerge">
+			<interceptor-ref name="twmsParamsPrepareParams"/>
+			<result name="success">pages/secure/warranty/confirm_customer_merge.jsp</result>
+			<result name="input">pages/secure/warranty/confirm_customer_merge.jsp</result>
+		</action>	
+	</package>
+</struts>

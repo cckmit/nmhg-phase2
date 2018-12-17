@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<tocdata>
+<book name="SRA" url="Before_you_Begin/Introduction.htm" >
+  <book name="Before you Begin" >
+    <item name="Copyright" url="Before_you_Begin/Copyright.htm" />
+    <item name="Introduction" url="Before_you_Begin/Introduction.htm" />
+    <item name="Before you Begin" url="Before_you_Begin/Before_you_Begin.htm" />
+    <item name="Common Application Features" url="Before_you_Begin/common_application_features.htm" />
+  </book>
+  <book name="Claims" >
+    <item name="Search Claims" url="Claims/Search_Claims.htm" />
+    <item name="Claim Details" url="Claims/Claim_Details.htm" />
+    <item name="Policy Details" url="Claims/Policy_Details.htm" />
+  </book>
+  <book name="Inventory" >
+    <item name="Inventory" url="Inventory/Inventory.htm" />
+    <item name="Search Inventory" url="Inventory/Search_Inventory.htm" />
+    <item name="Equipment Details" url="Inventory/Equipment_Details.htm" />
+  </book>
+  <book name="Field Modifications" >
+    <item name="Search Campaigns" url="Field_Modifications/Search_Campaigns.htm" />
+  </book>
+  <book name="Part Returns" >
+    <item name="Search Parts" url="Part_Returns/Search_Parts.htm" />
+  </book>
+  <book name="Parts Recovery" >
+    <book name="Parts Recovery Folder" >
+      <item name="Parts Recovery" url="Parts_Recovery/Parts_Recovery.htm" />
+      <item name="Awaiting Shipment" url="Parts_Recovery/Awaiting_Shipment.htm" />
+      <item name="Awaiting Shipment To Warehouse" url="Parts_Recovery/Awaiting_Shipment_To_Warehouse.htm" />
+      <item name="Part Not In Warehouse" url="Parts_Recovery/Part_Not_In_Warehouse.htm" />
+      <item name="Supplier Parts Claimed" url="Parts_Recovery/Supplier_Parts_Claimed.htm" />
+      <item name="Supplier Parts Shipped" url="Parts_Recovery/Supplier_Parts_Shipped.htm" />
+    </book>
+    <item name="Shipment Generated" url="Parts_Recovery/Shipment_Generated.htm" />
+    <item name="Shipment Tag" url="Parts_Recovery/Shipment_Tag.htm" />
+    <item name="Search Parts" url="Parts_Recovery/Search_Parts.htm" />
+  </book>
+  <book name="Supplier Recovery" >
+    <book name="Supplier Recovery Folders" >
+      <item name="Supplier Recovery Folders" url="Supplier_Recovery/Supplier_Recovery_Folders.htm" />
+      <item name="Claims Due for Recovery" url="Supplier_Recovery/Claims_Due_for_Recovery.htm" />
+      <item name="Claims Under Recovery" url="Supplier_Recovery/Claims_Under_Recovery.htm" />
+      <item name="Multi Claim Maintenance" url="Supplier_Recovery/Multi_Claim_Maintenance.htm" />
+      <item name="Pending Recovery Initiation" url="Supplier_Recovery/Pending_Recovery_Initiation.htm" />
+    </book>
+    <item name="Search Supplier Recovery Claims" url="Supplier_Recovery/Search_Supplier_Recovery_Claims.htm" />
+  </book>
+  <book name="Contract Admin" >
+    <item name="Maintain Supplier Contracts" url="Contract_Admin/Maintain_Supplier_Contracts.htm" />
+    <item name="Business Conditions" url="Contract_Admin/Business_Conditions.htm" />
+    <item name="Business Rules" url="Contract_Admin/Business_Rules.htm" />
+    <item name="Manage Suppliers" url="Contract_Admin/Manage_Suppliers.htm" />
+    <item name="View Part Source History" url="Contract_Admin/View_Part_Source_History.htm" />
+    <item name="View Supplier" url="Contract_Admin/View_Supplier.htm" />
+    <item name="User Groups" url="Contract_Admin/User_Groups.htm" />
+  </book>
+  <book name="Items" >
+    <item name="Search Items" url="Items/Search_Items.htm" />
+  </book>
+  <book name="Reports" >
+    <item name="Reports" url="Reports/Reports.htm" />
+    <item name="Vendor Recovery Report" url="Reports/Vendor_Recovery_Report.htm" />
+    <item name="Download Management" url="Reports/Download_Management.htm" />
+    <item name="Upload Management" url="Reports/Upload_Management.htm" />
+  </book>
+  <book name="Settings" >
+    <item name="Profile" url="Settings/Profile.htm" />
+    <item name="Email Subscription" url="Settings/Email_Subscription.htm" />
+    <item name="Manage User BU Mapping" url="Settings/Manage_User_BU_Mapping.htm" />
+    <item name="Map Service Provider Business Unit" url="Settings/Map_Service_Provider_Business_Unit.htm" />
+  </book>
+</book>
+
+</tocdata>

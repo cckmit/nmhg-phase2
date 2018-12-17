@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<indexdata>
+<key name="Address Book" >
+  <topic name="Address Book" url="Inventory/Address_Book.htm" />
+</key>
+<key name="Claim Failure Reports" >
+  <topic name="Claim Failure Reports" url="Claims/Claim_Failure_Reports.htm" />
+</key>
+<key name="Claims" >
+  <topic name="Claim Submission" url="Claims/Claim_Submission.htm" />
+</key>
+<key name="Download Management" >
+  <topic name="Download Management" url="Reports/Download_Management.htm" />
+</key>
+<key name="Equipment Details" >
+  <topic name="Equipment Details" url="Inventory/Equipment_Details.htm" />
+</key>
+<key name="Equipment Transfer" >
+  <topic name="Equipment Transfer Report" url="Inventory/Equipment_Transfer_Report.htm" />
+</key>
+<key name="Extended Warranty Purchase" >
+  <topic name="Extended Warranty Purchase" url="Inventory/Extended_Warranty_Purchase.htm" />
+</key>
+<key name="Field Modification Claim" >
+  <topic name="Pending Campaigns" url="Field_Modifications/Pending_Campaigns.htm" />
+</key>
+<key name="Generate Shipment" >
+  <topic name="Shipment Generated" url="Part_Returns/Shipment_Generated.htm" />
+</key>
+<key name="Major Component Registration" >
+  <topic name="Major Component Registration" url="Claims/Major_Component_Registration.htm" />
+</key>
+<key name="Overdue Parts" >
+  <topic name="Overdue Parts" url="Part_Returns/Overdue_Parts.htm" />
+</key>
+<key name="Part Returns" >
+  <topic name="Part Return Folders" url="Part_Returns/Part_Return_Folders.htm" />
+</key>
+<key name="Parts Shipped" >
+  <topic name="Parts Shipped" url="Part_Returns/Parts_Shipped.htm" />
+</key>
+<key name="Pending Field Modifications" >
+  <topic name="Pending Campaigns" url="Field_Modifications/Pending_Campaigns.htm" />
+</key>
+<key name="Policy Details" >
+  <topic name="Policy Details" url="Claims/Policy_Details.htm" />
+</key>
+<key name="Profile" >
+  <topic name="Profile" url="Settings/Profile.htm" />
+</key>
+<key name="Retail Machine Transfer" >
+  <topic name="Retail Machine Transfer" url="Inventory/Retail_Machine_Transfer.htm" />
+</key>
+<key name="Retailed Inventory" >
+  <topic name="Inventory" url="Inventory/Inventory.htm" />
+  <topic name="Retailed" url="Inventory/Retailed.htm" />
+</key>
+<key name="Service Manager Response" >
+  <topic name="Claim Submission" url="Claims/Claim_Submission.htm" />
+</key>
+<key name="Shipment Generated" >
+  <topic name="Shipment Generated" url="Part_Returns/Shipment_Generated.htm" />
+</key>
+<key name="Shipment Number" >
+  <topic name="Shipment Generated" url="Part_Returns/Shipment_Generated.htm" />
+</key>
+<key name="Stock Inventory" >
+  <topic name="Inventory" url="Inventory/Inventory.htm" />
+</key>
+<key name="Upload Management" >
+  <topic name="Upload Management" url="Reports/Upload_Management.htm" />
+</key>
+<key name="User Management" >
+  <topic name="User Management" url="Settings/User_Management.htm" />
+</key>
+
+</indexdata>

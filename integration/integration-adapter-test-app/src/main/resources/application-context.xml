@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd"
+       default-autowire="byName">
+
+    <import resource="classpath:datasource-context.xml"/>
+    <import resource="classpath:integration-adapter-context.xml"/>
+
+    <bean id="transactionManager"
+          class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean id="activeMQConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+        <property name="brokerURL" value="tcp://localhost:61616"/>
+        <property name="redeliveryPolicy" ref="redeliveryPolicy"/>
+    </bean>
+
+    <bean id="redeliveryPolicy" class="org.apache.activemq.RedeliveryPolicy">
+        <!-- The delay after which the message gets redelivered -->
+        <property name="initialRedeliveryDelay" value="2000"/>
+        <!-- The number of times a message gets redelivered -->
+        <property name="maximumRedeliveries" value="3"/>
+        <!-- To enable exponential backoff -->
+        <property name="useExponentialBackOff" value="true"/>
+        <!-- This multiplier to use if exponential back off is enabled. In this case the message gets redelivered
+        after 5 seconds, 10 seconds, 20 seconds and so on till we reach the maximumRedeliveries limit -->
+        <property name="backOffMultiplier" value="2"/>
+    </bean>
+
+</beans>

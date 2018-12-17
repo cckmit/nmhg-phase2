@@ -1,0 +1,37 @@
+<!DOCTYPE validators PUBLIC 
+    "-//Apache Struts//XWork Validator 1.0.2//EN"   
+    "http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+<validators>
+	<field name="inboxView.name">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>		
+			<message key="error.createView.requiredName">View Name is Required</message>
+		</field-validator>
+	</field>
+	<field name="inboxView.name">		
+		<field-validator type="stringlength">
+			<param name="minLength">2</param>
+	        <param name="maxLength">120</param>
+	        <param name="trim">true</param>
+	        <message key="error.createView.maxLengthForName"/>
+        </field-validator>
+	</field>
+	<field name="inboxView.sortByField">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>		
+			<message key="error.createView.requiredSortByField">Sort field is Required</message>
+		</field-validator>
+	</field>
+	<field name="selectedFields">
+        <field-validator type="expression">
+            <param name="expression"><![CDATA[selectedFields.size() > 0]]></param>
+            <message key="error.createView.selectSomeFields"/>
+        </field-validator>
+    </field>
+	 <field name="selectedFields">
+        <field-validator type="expression">
+            <param name="expression"><![CDATA[selectedFields.size() <= 12]]></param>
+            <message key="error.createView.maxNumberOfSelectedFieldsExceeded"/>
+        </field-validator>
+        </field>
+</validators>
